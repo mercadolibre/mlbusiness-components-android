@@ -1,4 +1,4 @@
-![Screenshot iOS](https://github.com/juansanzone/MLBusinessComponents/blob/refactor/Documentation/images/android_cover.png?raw=true)
+![Screenshot Android](https://github.com/mercadolibre/mlbusiness-components-android/blob/master/documentation/images/android_cover.png?raw=true)
 
 # 📲 How to Install
 
@@ -27,14 +27,19 @@ Each component is a subclass of ```ConstraintLayout```.
 This component allow you to show the progress ring of points, a label and actionable button. The most common use of this component is to show a user's progress within the loyalty program.
 
 #### Visual Example:
-![MLBusinessLoyaltyRingView](https://github.com/juansanzone/MLBusinessComponents/blob/refactor/Documentation/images/loyaltyRingViewComponent.png?raw=true)
+![MLBusinessLoyaltyRingView](https://github.com/mercadolibre/mlbusiness-components-android/blob/master/documentation/images/loyaltyRingViewComponent.png?raw=true)
 
 ### MLBusinessLoyaltyRingView init
-You need to set `MLBusinessLoyaltyRingData` interface. This interface allow you to populate the draw data into component. (Ring progress percent, ring color, label text, button title and button deeplink).
+You need to set `MLBusinessLoyaltyRingData` interface. This interface allow you to populate the draw data into component. (Ring progress percent, ring color, label text, button title and button deeplink). You can be informed when the user presses the button of the component and receive the deeplink previously sent in `MLBusinessLoyaltyRingData`. Just add `OnClickLoyaltyRing` callback.
 
 ```java
 MLBusinessLoyaltyRingView ringView = findViewById(R.id.ringView);
-ringView.setBusinessLoyaltyRingData(new MLBusinessLoyaltyRingDataSample());
+ringView.init(new MLBusinessLoyaltyRingDataSample(), new MLBusinessLoyaltyRingView.OnClickLoyaltyRing() {
+            @Override
+            public void onClickLoyaltyButton(@NonNull final String deepLink) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
+            }
+        });
 ```
 
 ### MLBusinessLoyaltyRingData Interface
@@ -88,32 +93,28 @@ public class MLBusinessLoyaltyRingDataSample implements MLBusinessLoyaltyRingDat
 }
 ```
 
-### How to receive click action and button deeplink?
-You can be informed when the user presses the button of the component and receive the deeplink previously sent in `MLBusinessLoyaltyRingData`. Just add `OnClickLoyaltyRing` callback.
-```java
-ringView.setOnClickLoyaltyRing(new MLBusinessLoyaltyRingView.OnClickLoyaltyRing() {
-            @Override
-            public void onClickLoyaltyButton(@NonNull final String deepLink) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
-            }
-        });
-```
-
 ## 2️⃣ - MLBusinessDiscountBoxView Component
 This component allow you to show a group of N items in a grid system (3 cols by default). You can add a title and subtitle for the main component. Also, you can provide imageUrl, title, subtitle, deepLinkItem and trackId for each item. This component is responsible for knowing and setting your own height based on number of cols and item quantity.
 #### Visual Example:
-![MLBusinessDiscountBoxView](https://github.com/juansanzone/MLBusinessComponents/blob/refactor/Documentation/images/discountBoxViewComponent.png?raw=true)
+![MLBusinessDiscountBoxView](https://github.com/mercadolibre/mlbusiness-components-android/blob/master/documentation/images/discountBoxViewComponent.png?raw=true)
 
 ### MLBusinessDiscountBoxView init
-You need to set `MLBusinessDiscountBoxData` interface. This interface allow you to populate the draw data into component. (Title, subtitle for the main component and imageUrl, title, subtitle, deepLinkItem and trackId for each item).
+You need to set `MLBusinessDiscountBoxData` interface. This interface allow you to populate the draw data into component. (Title, subtitle for the main component and imageUrl, title, subtitle, deepLinkItem and trackId for each item). You can be informed when the user presses the item of the component and receive the deeplink and trackId previously sent in `MLBusinessSingleItem`. Additionally receive the index of the selected item. Just add `OnClickDiscountBox` callback.
 
 ```java
 MLBusinessDiscountBoxView discountBoxView = findViewById(R.id.discountView);
-discountBoxView.setBusinessDiscountBoxData(new MLBusinessDiscountBoxDataSample());
+discountBoxView.init(new MLBusinessDiscountBoxDataSample(),
+            new MLBusinessDiscountBoxView.OnClickDiscountBox() {
+                @Override
+                public void onClickDiscountItem(final int index, @Nullable final String deepLink,
+                    @Nullable final String trackId) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
+                }
+            });
 ```
 
 ### MLBusinessDiscountBoxData Interface
-This interface allow you to providade the proper data to draw `MLBusinessDiscountBoxView`. You can setup title and subtitle for the main component and a list of `MLBusinessDiscountSingleItem` that represent each element of the cell.
+This interface allow you to providade the proper data to draw `MLBusinessDiscountBoxView`. You can setup title and subtitle for the main component and a list of `MLBusinessSingleItem` that represent each element of the cell.
 
 #### Definition
 ```java
@@ -123,7 +124,7 @@ public interface MLBusinessDiscountBoxData {
     @Nullable
     String getSubtitle();
     @NonNull
-    List<SingleItem> getItems();
+    List<MLBusinessSingleItem> getItems();
 }
 ```
 
@@ -150,13 +151,13 @@ public class MLBusinessDiscountBoxDataSample implements MLBusinessDiscountBoxDat
     }
 }
 ```
-### SingleItem
+### MLBusinessSingleItem
 This interface represents the element of each cell for `MLBusinessDiscountBoxView`.
 Each element contains imageUrl, title, subtitle, deepLinkItem and trackId.
 
 #### Definition
 ```java
-public interface SingleItem {
+public interface MLBusinessSingleItem {
     String getImageUrl();
     String getTitleLabel();
     String getSubtitleLabel();
@@ -170,7 +171,7 @@ public interface SingleItem {
 Implementation of `SingleItemDataSample` example:
 
 ```java
-public class SingleItemDataSample implements SingleItem {
+public class SingleItemDataSample implements MLBusinessSingleItem {
 
     @Override
     public String getImageUrl() {
@@ -199,18 +200,6 @@ public class SingleItemDataSample implements SingleItem {
         return null;
     }
 }
-```
-
-### How to receive a click action of an item with the deep link and trackId?
-You can be informed when the user presses the item of the component and receive the deeplink and trackId previously sent in `MLBusinessDiscountSingleItem`. Just add `onClickDiscountItem` callback.
-```java
-  discountBoxView.setOnClickDiscountBox(new MLBusinessDiscountBoxView.OnClickDiscountBox() {
-            @Override
-            public void onClickDiscountItem(@Nullable final String deepLink,
-                @Nullable final String trackId) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
-            }
-        });
 ```
 
 ## 🔠 Font and color customization.
