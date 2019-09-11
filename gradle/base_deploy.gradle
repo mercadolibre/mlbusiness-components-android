@@ -112,7 +112,7 @@ bintray {
         repo = project.hasProperty('production') ? 'android' : 'android-experimental'
         name = libraryName
         desc = libraryDescription
-        userOrg = 'mercadolibre'
+        userOrg = 'mercadopago'
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]

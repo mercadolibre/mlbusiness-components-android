@@ -2,8 +2,8 @@ ext {
     artifactLib = 'mlbusinesscomponents'
     libraryName = 'com.mercadolibre.android.mlbusinesscomponents'
     libraryDescription = 'MercadoLibre Android Business Components'
-    siteUrl = 'https://github.com/mercadopago/mlbusinessComponents-android'
-    gitUrl = 'https://github.com/mercadopago/mlbusinessComponents-android.git'
+    siteUrl = 'https://github.com/mercadolibre/mlbusiness-components-android'
+    gitUrl = 'https://github.com/mercadolibre/mlbusiness-components-android.git'
     licenseName = 'The Apache Software License, Version 2.0'
     licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
     groupName = "com.mercadolibre.android.mlbusinesscomponents"
