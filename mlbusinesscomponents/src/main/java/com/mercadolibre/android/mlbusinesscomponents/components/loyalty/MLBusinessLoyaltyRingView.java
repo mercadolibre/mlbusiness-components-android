@@ -58,27 +58,28 @@ public class MLBusinessLoyaltyRingView extends ConstraintLayout {
 
         loyaltyTitle.setText(businessLoyaltyRingData.getTitle());
         loyaltyButton.setText(businessLoyaltyRingData.getButtonTitle());
-        loyaltyButton.setOnClickListener(v ->
-            onClickLoyaltyRing.onClickLoyaltyButton(businessLoyaltyRingData.getButtonDeepLink())
+        loyaltyButton.setOnClickListener(v -> {
+                if (onClickLoyaltyRing != null) {
+                    onClickLoyaltyRing
+                        .onClickLoyaltyButton(businessLoyaltyRingData.getButtonDeepLink());
+                }
+            }
         );
     }
 
-    @Override
-    protected void onAttachedToWindow() {
-        if (businessLoyaltyRingData == null) {
-            throw new RuntimeException("MLBusinessLoyaltyRingData is required");
-        }
-
-        configLoyaltyRingView();
-        super.onAttachedToWindow();
-    }
-
-    public void setBusinessLoyaltyRingData(
-        @NonNull final MLBusinessLoyaltyRingData businessLoyaltyRingData) {
+    public void init(
+        @NonNull final MLBusinessLoyaltyRingData businessLoyaltyRingData,
+        @NonNull final OnClickLoyaltyRing onClick) {
         this.businessLoyaltyRingData = businessLoyaltyRingData;
+        this.onClickLoyaltyRing = onClick;
+        configLoyaltyRingView();
     }
 
-    public void setOnClickLoyaltyRing(@NonNull final OnClickLoyaltyRing onClick) {
-        this.onClickLoyaltyRing = onClick;
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        if (onClickLoyaltyRing != null) {
+            onClickLoyaltyRing = null;
+        }
     }
 }

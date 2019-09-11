@@ -12,18 +12,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
-import com.mercadolibre.android.mlbusinesscomponents.commons.SingleItem;
+import com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem;
 import com.squareup.picasso.Picasso;
 import java.util.List;
 
 class MLBusinessDiscountBoxAdapter
     extends RecyclerView.Adapter<MLBusinessDiscountBoxAdapter.DiscountBoxViewHolder> {
 
-    final private List<SingleItem> items;
+    final private List<MLBusinessSingleItem> items;
     final private MLBusinessDiscountBoxView.OnClickDiscountBox onClickDiscountBox;
 
     MLBusinessDiscountBoxAdapter(
-        final List<SingleItem> items,
+        final List<com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem> items,
         @Nullable final MLBusinessDiscountBoxView.OnClickDiscountBox onClickDiscountBox) {
         this.items = items;
         this.onClickDiscountBox = onClickDiscountBox;
@@ -37,15 +37,15 @@ class MLBusinessDiscountBoxAdapter
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final DiscountBoxViewHolder holder, final int i) {
-        final SingleItem item = items.get(i);
+    public void onBindViewHolder(@NonNull final DiscountBoxViewHolder holder, final int position) {
+        final com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem item = items.get(position);
 
         holder.titleLabel.setText(item.getTitleLabel());
         holder.subtitleLabel.setText(item.getSubtitleLabel());
         holder.loadIconImage(item.getImageUrl());
         if (onClickDiscountBox != null) {
             holder.setRippleEffect();
-            holder.setOnClickItem(item.getDeepLinkItem(), item.getTrackId());
+            holder.setOnClickItem(position, item.getDeepLinkItem(), item.getTrackId());
         }
     }
 
@@ -78,8 +78,8 @@ class MLBusinessDiscountBoxAdapter
             }
         }
 
-        void setOnClickItem(@Nullable final String deepLink, @Nullable final String trackId) {
-            itemView.setOnClickListener(v -> onClickDiscountBox.onClickDiscountItem(deepLink, trackId));
+        void setOnClickItem(final int indexItem, @Nullable final String deepLink, @Nullable final String trackId) {
+            itemView.setOnClickListener(v -> onClickDiscountBox.onClickDiscountItem(indexItem, deepLink, trackId));
         }
 
         void loadIconImage(@NonNull String url) {

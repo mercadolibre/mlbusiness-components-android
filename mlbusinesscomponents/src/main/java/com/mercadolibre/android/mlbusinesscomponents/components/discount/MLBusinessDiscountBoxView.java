@@ -1,6 +1,7 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.discount;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.GridLayoutManager;
@@ -15,7 +16,8 @@ import static com.mercadolibre.android.mlbusinesscomponents.components.utils.Str
 public class MLBusinessDiscountBoxView extends ConstraintLayout {
 
     public interface OnClickDiscountBox {
-        void onClickDiscountItem(@Nullable final String deepLink, @Nullable final String trackId);
+        void onClickDiscountItem(final int index, @Nullable final String deepLink,
+            @Nullable final String trackId);
     }
 
     private RecyclerView recyclerDiscountBox;
@@ -36,7 +38,8 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
         initMLBusinessDiscountBoxView(context);
     }
 
-    public MLBusinessDiscountBoxView(final Context context, final AttributeSet attrs, final int defStyleAttr) {
+    public MLBusinessDiscountBoxView(final Context context, final AttributeSet attrs,
+        final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initMLBusinessDiscountBoxView(context);
     }
@@ -64,7 +67,8 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
 
     private void configDiscountBoxView() {
         final MLBusinessDiscountBoxAdapter discountBoxAdapter =
-            new MLBusinessDiscountBoxAdapter(businessDiscountBoxData.getItems(), onClickDiscountBox);
+            new MLBusinessDiscountBoxAdapter(businessDiscountBoxData.getItems(),
+                onClickDiscountBox);
 
         final int totalSize = discountBoxAdapter.getItemCount();
         final int span = totalSize % 3;
@@ -99,23 +103,18 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
         }
     }
 
-    @Override
-    protected void onAttachedToWindow() {
-        if (businessDiscountBoxData == null) {
-            throw new RuntimeException("MLBusinessDiscountBoxData is required");
-        }
-
-        configDiscountBoxView();
-        super.onAttachedToWindow();
-    }
-
-    public void setOnClickDiscountBox(
-        final OnClickDiscountBox onclick) {
-        this.onClickDiscountBox = onclick;
-    }
-
-    public void setBusinessDiscountBoxData(
-        final MLBusinessDiscountBoxData businessDiscountBoxData) {
+    public void init(@NonNull final MLBusinessDiscountBoxData businessDiscountBoxData,
+        @Nullable final OnClickDiscountBox onclick) {
         this.businessDiscountBoxData = businessDiscountBoxData;
+        this.onClickDiscountBox = onclick;
+        configDiscountBoxView();
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        if (onClickDiscountBox != null) {
+            onClickDiscountBox = null;
+        }
     }
 }

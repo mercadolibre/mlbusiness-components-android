@@ -2,7 +2,6 @@ package com.mercadolibre.android.mlbusinesscomponentsapp;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.mercadolibre.android.mlbusinesscomponents.commons.SingleItem;
 import com.mercadolibre.android.mlbusinesscomponents.components.discount.MLBusinessDiscountBoxData;
 
 import java.util.List;
@@ -23,7 +22,7 @@ public class MLBusinessDiscountBoxDataSample implements MLBusinessDiscountBoxDat
 
     @NonNull
     @Override
-    public List<SingleItem> getItems() {
+    public List<com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem> getItems() {
         return DataSampleUtils.getItems();
     }
 }

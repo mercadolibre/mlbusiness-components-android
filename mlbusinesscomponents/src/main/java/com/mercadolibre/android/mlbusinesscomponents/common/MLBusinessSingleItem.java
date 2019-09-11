@@ -1,8 +1,8 @@
-package com.mercadolibre.android.mlbusinesscomponents.commons;
+package com.mercadolibre.android.mlbusinesscomponents.common;
 
 import android.support.annotation.Nullable;
 
-public interface SingleItem {
+public interface MLBusinessSingleItem {
     String getImageUrl();
     String getTitleLabel();
     String getSubtitleLabel();

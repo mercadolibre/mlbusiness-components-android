@@ -1,10 +1,10 @@
-package com.mercadolibre.android.mlbusinesscomponents.components;
+package com.mercadolibre.android.mlbusinesscomponents.components.common;
 
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
 
-public class DownloadView extends ConstraintLayout {
+class DownloadView extends ConstraintLayout {
     public DownloadView(final Context context) {
         super(context);
     }

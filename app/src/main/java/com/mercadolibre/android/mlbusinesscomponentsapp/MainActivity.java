@@ -20,12 +20,9 @@ public class MainActivity extends AppCompatActivity implements MLBusinessLoyalty
         MLBusinessLoyaltyRingView ringView = findViewById(R.id.loyaltyView);
         MLBusinessDiscountBoxView discountBoxView = findViewById(R.id.discountView);
 
-        ringView.setBusinessLoyaltyRingData(new MLBusinessLoyaltyRingDataSample());
-        ringView.setOnClickLoyaltyRing(this);
+        ringView.init(new MLBusinessLoyaltyRingDataSample(), this);
 
-        discountBoxView.setBusinessDiscountBoxData(new MLBusinessDiscountBoxDataSample());
-        discountBoxView.setOnClickDiscountBox(this);
-
+        discountBoxView.init(new MLBusinessDiscountBoxDataSample(), this);
     }
 
     @Override
@@ -34,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements MLBusinessLoyalty
     }
 
     @Override
-    public void onClickDiscountItem(@Nullable final String deepLink, @Nullable final String trackId) {
+    public void onClickDiscountItem(final int index, @Nullable final String deepLink, @Nullable final String trackId) {
         if (deepLink != null) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
         }

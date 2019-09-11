@@ -1,4 +1,4 @@
-package com.mercadolibre.android.mlbusinesscomponents.components;
+package com.mercadolibre.android.mlbusinesscomponents.components.common;
 
 import android.content.Context;
 import android.content.res.TypedArray;

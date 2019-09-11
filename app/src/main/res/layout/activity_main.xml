@@ -21,7 +21,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <com.mercadolibre.android.mlbusinesscomponents.components.DividingLineView
+        <com.mercadolibre.android.mlbusinesscomponents.components.common.DividingLineView
             android:id="@+id/divider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

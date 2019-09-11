@@ -1,14 +1,13 @@
 package com.mercadolibre.android.mlbusinesscomponentsapp;
 
-import com.mercadolibre.android.mlbusinesscomponents.commons.SingleItem;
 import java.util.LinkedList;
 import java.util.List;
 
 class DataSampleUtils {
 
-    static List<SingleItem> getItems() {
+    static List<com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem> getItems() {
 
-        List<SingleItem> items = new LinkedList<>();
+        List<com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem> items = new LinkedList<>();
 
         items.add(new SingleItemDataSample(
             "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/1200px-McDonald%27s_Golden_Arches.svg.png",
