@@ -1,0 +1,51 @@
+apply plugin:'com.android.library'
+
+android {
+
+    compileSdkVersion api_level as int
+    buildToolsVersion build_tools_version as String
+
+    defaultConfig {
+        minSdkVersion min_api_level
+        targetSdkVersion api_level
+        versionCode 1
+        versionName version_to_deploy as String
+        consumerProguardFiles 'proguard-rules.pro'
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+
+        debug {
+            versionNameSuffix ".debug"
+            debuggable true
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+
+}
+
+apply from:"$rootDir/gradle/deploy_business_components.gradle"
+
+
+dependencies {
+    implementation fileTree(dir:'libs', include:['*.jar'])
+
+    implementation "com.android.support:appcompat-v7:$support_library_version"
+    testImplementation "junit:junit:$junit"
+    androidTestImplementation "com.android.support.test:runner:$android_runner"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso"
+
+    implementation "com.android.support:recyclerview-v7:$support_library_version"
+    implementation "com.squareup.picasso:picasso:$picasso"
+    implementation "com.mercadolibre.android:ui:$meli_ui_lib"
+    implementation "com.android.support.constraint:constraint-layout:$constraint_layout"
+}

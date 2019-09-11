@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Layout Dimens -->
+    <dimen name="ui_view_discount_box">122dp</dimen>
+
+    <!-- Font Dimens -->
+    <dimen name="ui_font_discount_title">22sp</dimen>
+
+</resources>

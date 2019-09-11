@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LoyaltyProgress">
+        <attr name="loyaltyNumber" format="integer"/>
+        <attr name="sizeLoyaltyNumber" format="dimension"/>
+        <attr name="colorLoyaltyProgressText" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="DividingLineView">
+        <attr name="hasTriangle" format="boolean"/>
+    </declare-styleable>
+</resources>
