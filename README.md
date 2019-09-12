@@ -1,5 +1,8 @@
 ![Screenshot Android](https://github.com/mercadolibre/mlbusiness-components-android/blob/master/documentation/images/android_cover.png?raw=true)
 
+<a href="https://codebeat.co/projects/github-com-mercadolibre-mlbusiness-components-android-master"><img alt="codebeat badge" src="https://codebeat.co/badges/d67f4c91-472f-4d98-99d8-3686ae75b853" /></a>
+
+
 # 📲 How to Install
 
 #### Local deployment
