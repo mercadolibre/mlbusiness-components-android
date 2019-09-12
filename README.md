@@ -1,7 +1,14 @@
 ![Screenshot Android](https://github.com/mercadolibre/mlbusiness-components-android/blob/master/documentation/images/android_cover.png?raw=true)
 
-<a href="https://codebeat.co/projects/github-com-mercadolibre-mlbusiness-components-android-master"><img alt="codebeat badge" src="https://codebeat.co/badges/d67f4c91-472f-4d98-99d8-3686ae75b853" /></a>
-
+<p align="center">
+<a href="https://app.bitrise.io/app/6a0b02551ce70568">
+<img src="https://app.bitrise.io/app/6a0b02551ce70568/status.svg?token=Zb_oXsTJoxHYoTS06kEZvg">
+</a>
+    
+<a href="https://codebeat.co/projects/github-com-mercadolibre-mlbusiness-components-android-master">
+<img src="https://codebeat.co/badges/d67f4c91-472f-4d98-99d8-3686ae75b853" alt="Codebeat quality status" />
+</a>
+</p>
 
 # 📲 How to Install
 
