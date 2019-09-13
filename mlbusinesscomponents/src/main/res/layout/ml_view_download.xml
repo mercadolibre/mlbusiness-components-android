@@ -1,57 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
+    android:layout_height="wrap_content"
+    android:background="@drawable/download_background">
 
     <android.support.v7.widget.AppCompatImageView
-        android:id="@+id/image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:id="@+id/imageSite"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/ui_ic_clear_fullscreen"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/titleDownload"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/titleDownload" />
 
     <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView"
+        android:id="@+id/titleDownload"
+        style="@style/MLFont.Bold.Semi"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:lineSpacingExtra="4sp"
+        android:maxLines="3"
         android:text="Exclusivo con la app de Mercado Pago"
-        app:layout_constraintBottom_toBottomOf="@+id/image"
-        app:layout_constraintEnd_toStartOf="@+id/meliButton"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/image"
-        app:layout_constraintTop_toTopOf="@+id/image"
-        tools:lines="2" />
+        android:textColor="@color/ui_fullscreenmodal_toolbar_text_color"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/downloadButton"
+        app:layout_constraintEnd_toStartOf="@+id/downloadButton"
+        app:layout_constraintStart_toEndOf="@+id/imageSite"
+        app:layout_constraintTop_toTopOf="@+id/downloadButton" />
 
     <com.mercadolibre.android.ui.widgets.MeliButton
-        android:id="@+id/meliButton"
+        android:id="@+id/downloadButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginStart="16dp"
-        android:text="Descargar"
-        app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView"
+        android:layout_marginTop="16dp"
+        android:text="Descargas"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/appCompatTextView"
-        app:layout_constraintTop_toTopOf="@+id/appCompatTextView"
+        app:layout_constraintStart_toEndOf="@+id/titleDownload"
+        app:layout_constraintTop_toTopOf="parent"
         app:type="actionPrimary" />
-
 
 </android.support.constraint.ConstraintLayout>
