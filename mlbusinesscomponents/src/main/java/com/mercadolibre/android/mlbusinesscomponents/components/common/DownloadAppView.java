@@ -13,21 +13,17 @@ public class DownloadAppView extends ConstraintLayout {
 
     public DownloadAppView(final Context context) {
         super(context);
-        initDownloadView(context);
+        inflate(context, R.layout.ml_view_download, this);
     }
 
     public DownloadAppView(final Context context, final AttributeSet attrs) {
         super(context, attrs);
-        initDownloadView(context);
+        inflate(context, R.layout.ml_view_download, this);
     }
 
     public DownloadAppView(final Context context, final AttributeSet attrs,
         final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initDownloadView(context);
-    }
-
-    private void initDownloadView(final Context context) {
         inflate(context, R.layout.ml_view_download, this);
     }
 
@@ -38,7 +34,7 @@ public class DownloadAppView extends ConstraintLayout {
         ((MeliButton) findViewById(R.id.downloadButton)).setText(buttonTitle);
     }
 
-    public void setOnClickDownloadView(@NonNull final OnClickListener onClick) {
+    public void setOnClickDownloadButton(@NonNull final OnClickListener onClick) {
         findViewById(R.id.downloadButton).setOnClickListener(onClick);
     }
 
