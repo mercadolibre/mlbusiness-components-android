@@ -1,5 +1,15 @@
 ![Screenshot Android](https://github.com/mercadolibre/mlbusiness-components-android/blob/master/documentation/images/android_cover.png?raw=true)
 
+<p align="center">
+<a href="https://app.bitrise.io/app/6a0b02551ce70568">
+<img src="https://app.bitrise.io/app/6a0b02551ce70568/status.svg?token=Zb_oXsTJoxHYoTS06kEZvg">
+</a>
+    
+<a href="https://codebeat.co/projects/github-com-mercadolibre-mlbusiness-components-android-master">
+<img src="https://codebeat.co/badges/d67f4c91-472f-4d98-99d8-3686ae75b853" alt="Codebeat quality status" />
+</a>
+</p>
+
 # 📲 How to Install
 
 #### Local deployment
@@ -14,7 +24,7 @@ With this command you can generate a local version for testing:
 
 Add this line to your app's build.gradle inside the dependencies section:
 
-```implementation 'com.mercadolibre.android.mlbusinesscomponents:1.0.0'```
+```implementation 'com.mercadolibre.android.mlbusinesscomponents:mlbusinesscomponents:EXPERIMENTAL-1.0.0-11092019184008130'```
 
 ### 2 - Use your UI component.
 Choose and instantiate your component.
