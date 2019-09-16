@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/ui_meli_white"
     tools:context=".MainActivity">
 
     <android.support.constraint.ConstraintLayout
@@ -11,6 +12,37 @@
         android:layout_height="match_parent"
         android:focusableInTouchMode="true">
 
+        <com.mercadolibre.android.mlbusinesscomponents.components.common.dividingline.MLBusinessDividingLineView
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hasTriangle="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loyaltyView" />
+
+        <com.mercadolibre.android.mlbusinesscomponents.components.common.downloadapp.MLBusinessDownloadAppView
+            android:id="@+id/downloadAppView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/discountView" />
+
+
+        <com.mercadolibre.android.mlbusinesscomponents.components.discount.MLBusinessDiscountBoxView
+            android:id="@+id/discountView"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider" />
 
         <com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyRingView
             android:id="@+id/loyaltyView"
@@ -20,24 +52,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-        <com.mercadolibre.android.mlbusinesscomponents.components.common.DividingLineView
-            android:id="@+id/divider"
+        <com.mercadolibre.android.mlbusinesscomponents.components.common.crossselling.MLBusinessCrossSellingBoxView
+            android:id="@+id/crossSellingView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:hasTriangle="false"
-            app:layout_constraintTop_toBottomOf="@+id/loyaltyView"
+            app:layout_constraintTop_toBottomOf="@+id/downloadAppView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
-
-
-        <com.mercadolibre.android.mlbusinesscomponents.components.discount.MLBusinessDiscountBoxView
-            android:id="@+id/discountView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider" />
 
     </android.support.constraint.ConstraintLayout>
 

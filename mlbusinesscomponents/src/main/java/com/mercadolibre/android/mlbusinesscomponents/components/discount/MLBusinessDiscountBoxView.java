@@ -1,6 +1,7 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.discount;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
@@ -10,6 +11,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
+import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils;
 
 import static com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtils.isValidString;
 
@@ -21,7 +23,6 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
     }
 
     private RecyclerView recyclerDiscountBox;
-    private GridLayoutManager manager;
 
     private MLBusinessDiscountBoxData businessDiscountBoxData;
     private TextView titleLabel;
@@ -46,10 +47,21 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
 
     private void initMLBusinessDiscountBoxView(final Context context) {
         inflate(context, R.layout.ml_view_business_discount_box, this);
-        final int DEFAULT_COLUMNS = 6;
 
         recyclerDiscountBox = findViewById(R.id.recyclerDiscountBox);
-        manager = new GridLayoutManager(context, DEFAULT_COLUMNS) {
+        titleLabel = findViewById(R.id.titleLabel);
+        subtitleLabel = findViewById(R.id.subtitleLabel);
+    }
+
+    private void configDiscountBoxView() {
+        final MLBusinessDiscountBoxAdapter discountBoxAdapter =
+            new MLBusinessDiscountBoxAdapter(businessDiscountBoxData.getItems(),
+                onClickDiscountBox);
+        final int totalSize = discountBoxAdapter.getItemCount();
+        final int DEFAULT_COLUMNS = totalSize == 4 ? 2 : 6;
+        final int span = totalSize % (DEFAULT_COLUMNS / 2);
+
+        final GridLayoutManager manager = new GridLayoutManager(getContext(), DEFAULT_COLUMNS) {
             @Override
             public boolean canScrollVertically() {
                 return false;
@@ -60,31 +72,23 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
                 return false;
             }
         };
-        recyclerDiscountBox.setLayoutManager(manager);
-        titleLabel = findViewById(R.id.titleLabel);
-        subtitleLabel = findViewById(R.id.subtitleLabel);
-    }
-
-    private void configDiscountBoxView() {
-        final MLBusinessDiscountBoxAdapter discountBoxAdapter =
-            new MLBusinessDiscountBoxAdapter(businessDiscountBoxData.getItems(),
-                onClickDiscountBox);
-
-        final int totalSize = discountBoxAdapter.getItemCount();
-        final int span = totalSize % 3;
-        manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-            @Override
-            public int getSpanSize(final int position) {
-                if (span == 0 || (position <= ((totalSize - 1) - span))) {
-                    return 2;
-                } else if (span == 1) {
-                    return 6;
-                } else {
-                    return 3;
+        if (DEFAULT_COLUMNS == 6) {
+            manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                @Override
+                public int getSpanSize(final int position) {
+                    if (span == 0 || (position <= ((totalSize - 1) - span))) {
+                        return 2;
+                    } else if (span == 1) {
+                        return 6;
+                    } else {
+                        return 3;
+                    }
                 }
-            }
-        });
+            });
+        }
 
+        recyclerDiscountBox.addItemDecoration(new SpacesItemDecoration(getContext(), span));
+        recyclerDiscountBox.setLayoutManager(manager);
         recyclerDiscountBox.setAdapter(discountBoxAdapter);
         recyclerDiscountBox.setHasFixedSize(true);
 
@@ -119,6 +123,47 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
         super.onDetachedFromWindow();
         if (onClickDiscountBox != null) {
             onClickDiscountBox = null;
+        }
+    }
+
+    private static class SpacesItemDecoration extends RecyclerView.ItemDecoration {
+        private int topSpace;
+        private int lateralSpace;
+        private int itemsInLastRow;
+
+        SpacesItemDecoration(final Context context, int itemsInLastRow) {
+            this.topSpace = (int) ScaleUtils.getPxFromDp(context, 24);
+            this.lateralSpace = (int) ScaleUtils.getPxFromDp(context, 8);
+            this.itemsInLastRow = itemsInLastRow;
+        }
+
+        @Override
+        public void getItemOffsets(@NonNull Rect outRect, @NonNull View view,
+            @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+            RecyclerView.Adapter adapter = parent.getAdapter();
+            if (adapter != null) {
+                if (itemsInLastRow > 0 &&
+                    startLastRow(parent, adapter, view, itemsInLastRow)) {
+                    if (itemsInLastRow == 2) {
+                        outRect.left = (view.getLayoutParams().width + lateralSpace * 4) / 2;
+                    } else {
+                        outRect.left = (view.getLayoutParams().width) + lateralSpace * 3;
+                    }
+                } else {
+                    outRect.left = lateralSpace;
+                }
+
+                outRect.right = lateralSpace;
+                outRect.bottom = 0;
+                outRect.top = topSpace;
+            }
+        }
+
+        private boolean startLastRow(final RecyclerView parent,
+            final RecyclerView.Adapter adapter, final View view, final int itemsInLastRow) {
+            final int itemCount = adapter.getItemCount();
+            return itemCount > 1 &&
+                parent.getChildAdapterPosition(view) == itemCount - itemsInLastRow;
         }
     }
 }

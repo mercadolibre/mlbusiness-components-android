@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/ui_view_cross_selling_height"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/crossSellingImage"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="28dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/crossSellingTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginStart="16dp"
+        android:text="Gana $50 de regalo para tus pagos diarios"
+        android:textSize="@dimen/ui_fontsize_xsmall"
+        android:textColor="@color/ui_components_grey_color"
+        style="@style/MLFont.Regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/crossSellingImage"
+        app:layout_constraintTop_toTopOf="@+id/crossSellingImage" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/crossSellingAction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:layout_marginTop="4dp"
+        android:lineSpacingExtra="4.5sp"
+        android:text="Invita a más amigos a usar la app"
+        android:textColor="@color/ui_components_android_color_accent"
+        android:textSize="@dimen/ui_fontsize_xsmall"
+        style="@style/MLFont.Bold.Semi"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/crossSellingTitle"
+        app:layout_constraintTop_toBottomOf="@+id/crossSellingTitle"
+        app:layout_constraintVertical_bias="0.0" />
+
+</android.support.constraint.ConstraintLayout>
