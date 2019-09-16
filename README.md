@@ -4,7 +4,7 @@
 <a href="https://app.bitrise.io/app/6a0b02551ce70568">
 <img src="https://app.bitrise.io/app/6a0b02551ce70568/status.svg?token=Zb_oXsTJoxHYoTS06kEZvg">
 </a>
-    
+
 <a href="https://codebeat.co/projects/github-com-mercadolibre-mlbusiness-components-android-master">
 <img src="https://codebeat.co/badges/d67f4c91-472f-4d98-99d8-3686ae75b853" alt="Codebeat quality status" />
 </a>
@@ -156,7 +156,7 @@ public class MLBusinessDiscountBoxDataSample implements MLBusinessDiscountBoxDat
 
     @NonNull
     @Override
-    public List<SingleItem> getItems() {
+    public List<MLBusinessSingleItem> getItems() {
         return DataSampleUtils.getItems();
     }
 }
@@ -212,14 +212,87 @@ public class SingleItemDataSample implements MLBusinessSingleItem {
 }
 ```
 
+## 3️⃣ - MLBusinessDividingLineView Component
+This component allow you to show a divider line with option to show an inverted triangle.
+See `app:hasTriangle="boolean"`.
+
+#### Visual Example:
+![MLBusinessDividingLineView](https://raw.githubusercontent.com/mercadolibre/mlbusiness-components-android/feature/new_components/documentation/images/MLBusinessDividingLineView.png)
+
+#### Implementation
+```xml
+<com.mercadolibre.android.mlbusinesscomponents.components.common.dividingline.MLBusinessDividingLineView
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hasTriangle="true"/>
+```
+
+## 4️⃣ - MLBusinessDownloadAppView Component
+This component allows you to show a means to download the ML or MP application. You can add an AppSite to display ML or MP icons, title and button title.
+
+#### Visual Example:
+![MLBusinessDownloadAppView](https://raw.githubusercontent.com/mercadolibre/mlbusiness-components-android/feature/new_components/documentation/images/MLBusinessDownloadAppView.png)
+
+### MLBusinessDownloadAppView init
+You need to set `MLBusinessDownloadAppData` interface. This interface allow you to populate the draw data into component. (AppSite, Title and ButtonTitle). You can be informed when the user presses the item of the component. Just add `OnClickListener` callback.
+
+```java
+MLBusinessDownloadAppView downloadAppView = findViewById(R.id.downloadAppView);
+downloadAppView.init(new MLBusinessDownloadAppDataSample());
+downloadAppView.setOnClickDownloadButton(new View.OnClickListener() {
+        @Override
+        public void onClick(final View v) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.mercadolibre.com.ar/")));
+        }
+    });
+```
+### MLBusinessDownloadAppData Interface
+This interface allow you to providade the proper data to draw `MLBusinessDownloadAppView`. You can setup AppSite, Title and ButtonTitle. Each value is mandatory.
+
+#### Definition
+```java
+public interface MLBusinessDownloadAppData {
+    @NonNull
+    MLBusinessDownloadAppView.AppSite getAppSite();
+    @NonNull
+    String getTitle();
+    @NonNull
+    String getButtonTitle();
+}
+```
+
+Implementation of `MLBusinessDownloadAppDataSample` example:
+```java
+public class MLBusinessDownloadAppDataSample implements MLBusinessDownloadAppData {
+    @NonNull
+    @Override
+    public MLBusinessDownloadAppView.AppSite getAppSite() {
+        return MLBusinessDownloadAppView.AppSite.MP;
+    }
+
+    @NonNull
+    @Override
+    public String getTitle() {
+        return "Exclusivo con la app de Mercado Pago";
+    }
+
+    @NonNull
+    @Override
+    public String getButtonTitle() {
+        return "Descargar";
+    }
+}
+```
+
 ## 🔠 Font and color customization.
 We use `MLUI` open source library to customize accent colors and font labels. In order to change those values check the documentation of `MLUI` stylesheet protocol.
 https://github.com/mercadolibre/fury_mobile-android-ui
 
 ## 😉 Next steps?
-* [ ] Bitrise for releases.
-* [ ] Codebeat
-* [ ] AndroidLint.
+* [x] Bitrise for releases.
+* [x] Codebeat
+* [x] AndroidLint.
 
 ## 📋 Supported OS & SDK Versions
 * Android 4.1 (nivel de API 16)
