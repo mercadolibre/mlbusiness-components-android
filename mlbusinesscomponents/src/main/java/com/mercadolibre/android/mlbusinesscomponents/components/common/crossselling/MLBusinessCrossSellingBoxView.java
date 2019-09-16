@@ -1,4 +1,4 @@
-package com.mercadolibre.android.mlbusinesscomponents.components.common;
+package com.mercadolibre.android.mlbusinesscomponents.components.common.crossselling;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,36 +9,37 @@ import android.util.AttributeSet;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.squareup.picasso.Picasso;
 
-public class CrossSellingBoxView extends ConstraintLayout {
+public class MLBusinessCrossSellingBoxView extends ConstraintLayout {
 
     public interface OnClickCrossSellingBoxView {
         void OnClickCrossSellingButton(@NonNull final String deepLink);
     }
 
-    public CrossSellingBoxView(final Context context) {
+    public MLBusinessCrossSellingBoxView(final Context context) {
         super(context);
         inflate(context, R.layout.ml_view_crossselling, this);
     }
 
-    public CrossSellingBoxView(final Context context, final AttributeSet attrs) {
+    public MLBusinessCrossSellingBoxView(final Context context, final AttributeSet attrs) {
         super(context, attrs);
         inflate(context, R.layout.ml_view_crossselling, this);
     }
 
-    public CrossSellingBoxView(final Context context, final AttributeSet attrs,
+    public MLBusinessCrossSellingBoxView(final Context context, final AttributeSet attrs,
         final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         inflate(context, R.layout.ml_view_crossselling, this);
     }
 
-    public void init(@NonNull final String iconUrl, @NonNull final String title,
-        @NonNull final String buttonLink, @NonNull final String buttonTitle,
+    public void init(@NonNull final MLBusinessCrossSellingBoxData businessCrossSellingBoxData,
         @NonNull final OnClickCrossSellingBoxView onClick) {
-        loadImageUrl(iconUrl);
-        ((AppCompatTextView) findViewById(R.id.crossSellingTitle)).setText(title);
+        loadImageUrl(businessCrossSellingBoxData.getIconUrl());
+        ((AppCompatTextView) findViewById(R.id.crossSellingTitle))
+            .setText(businessCrossSellingBoxData.getTitle());
         AppCompatTextView action = findViewById(R.id.crossSellingAction);
-        action.setText(buttonTitle);
-        action.setOnClickListener(v -> onClick.OnClickCrossSellingButton(buttonLink));
+        action.setText(businessCrossSellingBoxData.getButtonTitle());
+        action.setOnClickListener(v -> onClick
+            .OnClickCrossSellingButton(businessCrossSellingBoxData.getButtonDeepLink()));
     }
 
     private void loadImageUrl(@NonNull String url) {

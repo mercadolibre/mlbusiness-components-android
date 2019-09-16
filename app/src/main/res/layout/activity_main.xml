@@ -12,16 +12,16 @@
         android:layout_height="match_parent"
         android:focusableInTouchMode="true">
 
-        <com.mercadolibre.android.mlbusinesscomponents.components.common.DividingLineView
+        <com.mercadolibre.android.mlbusinesscomponents.components.common.dividingline.MLBusinessDividingLineView
             android:id="@+id/divider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:hasTriangle="false"
+            app:hasTriangle="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/loyaltyView" />
 
-        <com.mercadolibre.android.mlbusinesscomponents.components.common.DownloadAppView
+        <com.mercadolibre.android.mlbusinesscomponents.components.common.downloadapp.MLBusinessDownloadAppView
             android:id="@+id/downloadAppView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.mercadolibre.android.mlbusinesscomponents.components.common.CrossSellingBoxView
+        <com.mercadolibre.android.mlbusinesscomponents.components.common.crossselling.MLBusinessCrossSellingBoxView
             android:id="@+id/crossSellingView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

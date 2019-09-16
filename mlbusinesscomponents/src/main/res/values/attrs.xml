@@ -6,7 +6,7 @@
         <attr name="colorLoyaltyProgressText" format="reference"/>
     </declare-styleable>
 
-    <declare-styleable name="DividingLineView">
+    <declare-styleable name="MLBusinessDividingLineView">
         <attr name="hasTriangle" format="boolean"/>
     </declare-styleable>
 </resources>
