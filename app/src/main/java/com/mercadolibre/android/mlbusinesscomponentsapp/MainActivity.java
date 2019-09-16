@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity
         downloadAppView.setOnClickDownloadButton(this);
 
         crossSellingBoxView
-            .init("https://cdn2.iconfinder.com/data/icons/celebration-party/48/64-512.png",
+            .init("https://www.pngrepo.com/png/4897/170/gift.png",
                 "Gana $50 de regalo para tus pagos diarios",
                 "https://www.mercadolibre.com.ar/", "Invita a más amigos a usar la app", this);
     }

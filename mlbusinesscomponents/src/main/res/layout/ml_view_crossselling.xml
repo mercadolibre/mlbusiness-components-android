@@ -12,11 +12,9 @@
         android:layout_marginLeft="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/skeleton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/skeleton" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/crossSellingTitle"

@@ -58,18 +58,6 @@ class DataSampleUtils {
             "$ 200",
             "https://www.mercadopago.com.ar/", null
         ));
-        items.add(new SingleItemDataSample(
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/1200px-McDonald%27s_Golden_Arches.svg.png",
-            "Hasta",
-            "$ 200",
-            null, ""
-        ));
-        items.add(new SingleItemDataSample(
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY0eFECzyTCa83gOV3smCYDOSIggdUxSPirwtt5rS3LcWlzefo",
-            "Hasta",
-            "$ 300",
-            "https://www.mercadopago.com.ar/", null
-        ));
 
 
         return items;

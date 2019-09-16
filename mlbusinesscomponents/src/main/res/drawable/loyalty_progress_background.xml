@@ -7,7 +7,8 @@
             android:innerRadiusRatio="3"
             android:shape="ring"
             android:thicknessRatio="16"
-            android:useLevel="false">
+            android:useLevel="false"
+            android:adjustViewBounds="true">
 
             <solid android:color="@color/ui_meli_light_grey"/>
 
