@@ -111,6 +111,10 @@ class LoyaltyProgress extends View {
         borderPaint.setColor(color);
     }
 
+    public void setColorText(@ColorInt final int color) {
+        textPaint.setColor(color);
+    }
+
     public void setProgress(final float progress) {
         this.progress = progress;
     }
