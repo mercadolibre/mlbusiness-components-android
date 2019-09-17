@@ -35,14 +35,13 @@ public class MLBusinessLoyaltyHeaderView extends ConstraintLayout {
     }
 
     private void initMLBusinessLoyaltyHeaderView(final Context context) {
-        inflate(context, R.layout.ml_view_business_loyalty_ring, this);
-
+        inflate(context, R.layout.ml_view_business_loyalty_header, this);
         initLoyaltyHeaderView();
     }
 
     private void initLoyaltyHeaderView() {
         progress = findViewById(R.id.loyaltyRing);
-        title = findViewById(R.id.title);
+        title = findViewById(R.id.loyaltyTitle);
         loyaltyLevelInfo = findViewById(R.id.loyaltyLevelInfo);
     }
 
