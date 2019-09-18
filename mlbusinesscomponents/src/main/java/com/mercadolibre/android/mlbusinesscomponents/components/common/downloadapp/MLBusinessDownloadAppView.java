@@ -36,6 +36,10 @@ public class MLBusinessDownloadAppView extends ConstraintLayout {
             .setText(businessDownloadAppData.getButtonTitle());
     }
 
+    public void updateView(@NonNull final MLBusinessDownloadAppData businessDownloadAppData) {
+        init(businessDownloadAppData);
+    }
+
     public void setOnClickDownloadButton(@NonNull final OnClickListener onClick) {
         findViewById(R.id.downloadButton).setOnClickListener(onClick);
     }
