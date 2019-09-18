@@ -40,7 +40,7 @@ This component allow you to show the progress ring of points, a label and action
 ![MLBusinessLoyaltyRingView](https://github.com/mercadolibre/mlbusiness-components-android/blob/master/documentation/images/loyaltyRingViewComponent.png?raw=true)
 
 ### MLBusinessLoyaltyRingView init
-You need to set `MLBusinessLoyaltyRingData` interface. This interface allow you to populate the draw data into component. (Ring progress percent, ring color, label text, button title and button deeplink). You can be informed when the user presses the button of the component and receive the deeplink previously sent in `MLBusinessLoyaltyRingData`. Just add `OnClickLoyaltyRing` callback.
+You need to set `MLBusinessLoyaltyRingData` interface. This interface allow you to populate the draw data into the component. (Ring progress percent, ring color, label text, button title and button deeplink). You can be informed when the user presses the button of the component and receive the deeplink previously sent in `MLBusinessLoyaltyRingData`. Just add `OnClickLoyaltyRing` callback.
 
 ```java
 MLBusinessLoyaltyRingView ringView = findViewById(R.id.ringView);
@@ -53,7 +53,7 @@ ringView.init(new MLBusinessLoyaltyRingDataSample(), new MLBusinessLoyaltyRingVi
 ```
 
 ### MLBusinessLoyaltyRingData Interface
-This interface allow you to providade the proper data to draw `MLBusinessLoyaltyRingView`. You can setup ring progress percent, ring color, label text, button title and button deeplink. Each value is mandatory.
+This interface allow you to provide the proper data to draw `MLBusinessLoyaltyRingView`. You can setup ring progress percent, ring color, label text, button title and button deeplink. Each value is mandatory.
 
 #### Definition
 ```java
@@ -109,7 +109,7 @@ This component allow you to show a group of N items in a grid system (3 cols by 
 ![MLBusinessDiscountBoxView](https://github.com/mercadolibre/mlbusiness-components-android/blob/master/documentation/images/discountBoxViewComponent.png?raw=true)
 
 ### MLBusinessDiscountBoxView init
-You need to set `MLBusinessDiscountBoxData` interface. This interface allow you to populate the draw data into component. (Title, subtitle for the main component and imageUrl, title, subtitle, deepLinkItem and trackId for each item). You can be informed when the user presses the item of the component and receive the deeplink and trackId previously sent in `MLBusinessSingleItem`. Additionally receive the index of the selected item. Just add `OnClickDiscountBox` callback.
+You need to set `MLBusinessDiscountBoxData` interface. This interface allow you to populate the draw data into the component. (Title, subtitle for the main component and imageUrl, title, subtitle, deepLinkItem and trackId for each item). You can be informed when the user presses the item of the component and receive the deeplink and trackId previously sent in `MLBusinessSingleItem`. Additionally receive the index of the selected item. Just add `OnClickDiscountBox` callback.
 
 ```java
 MLBusinessDiscountBoxView discountBoxView = findViewById(R.id.discountView);
@@ -124,7 +124,7 @@ discountBoxView.init(new MLBusinessDiscountBoxDataSample(),
 ```
 
 ### MLBusinessDiscountBoxData Interface
-This interface allow you to providade the proper data to draw `MLBusinessDiscountBoxView`. You can setup title and subtitle for the main component and a list of `MLBusinessSingleItem` that represent each element of the cell.
+This interface allow you to provide the proper data to draw `MLBusinessDiscountBoxView`. You can setup title and subtitle for the main component and a list of `MLBusinessSingleItem` that represent each element of the cell.
 
 #### Definition
 ```java
@@ -235,7 +235,7 @@ This component allows you to show a means to download the ML or MP application. 
 ![MLBusinessDownloadAppView](https://raw.githubusercontent.com/mercadolibre/mlbusiness-components-android/feature/new_components/documentation/images/MLBusinessDownloadAppView.png)
 
 ### MLBusinessDownloadAppView init
-You need to set `MLBusinessDownloadAppData` interface. This interface allow you to populate the draw data into component. (AppSite, Title and ButtonTitle). You can be informed when the user presses the item of the component. Just add `OnClickListener` callback.
+You need to set `MLBusinessDownloadAppData` interface. This interface allow you to populate the draw data into the component. (AppSite, Title and ButtonTitle). You can be informed when the user presses the item of the component. Just add `OnClickListener` callback.
 
 ```java
 MLBusinessDownloadAppView downloadAppView = findViewById(R.id.downloadAppView);
@@ -248,7 +248,7 @@ downloadAppView.setOnClickDownloadButton(new View.OnClickListener() {
     });
 ```
 ### MLBusinessDownloadAppData Interface
-This interface allow you to providade the proper data to draw `MLBusinessDownloadAppView`. You can setup AppSite, Title and ButtonTitle. Each value is mandatory.
+This interface allow you to provide the proper data to draw `MLBusinessDownloadAppView`. You can setup AppSite, Title and ButtonTitle. Each value is mandatory.
 
 #### Definition
 ```java
@@ -281,6 +281,148 @@ public class MLBusinessDownloadAppDataSample implements MLBusinessDownloadAppDat
     @Override
     public String getButtonTitle() {
         return "Descargar";
+    }
+}
+```
+
+## 5️⃣ - MLBusinessLoyaltyHeaderView Component
+This component allows you to show a colored header view composed with a shrinked version of the loyalty ring. It has the ability to display a title and a subtitle.
+
+#### Visual Example:
+![MLBusinessLoyaltyHeaderView](https://github.com/mercadolibre/mlbusiness-components-android/blob/master/documentation/images/MLBusinessLoyaltyHeaderView.png?raw=true)
+
+### MLBusinessLoyaltyHeaderView init
+You need to set `MLBusinessLoyaltyHeaderData` interface. This interface allow you to populate the draw data into the component.
+
+```java
+MLBusinessLoyaltyHeader loyaltyHeaderView = findViewById(R.id.loyaltyHeaderView);
+loyaltyHeaderView.init(new MLBusinessLoyaltyHeaderDataSample());
+```
+### MLBusinessLoyaltyHeaderData Interface
+This interface allow you to provide the proper data to draw `MLBusinessLoyaltyHeaderView`. You can setup:
+- **primary color**: will be used for text and accent in the ring view
+- **secondary color**: will be used for the background of the ring view
+- **background color**: will configure the background of the full header
+- **title** (optional)
+- **subtitle** (optional)
+- **ring percentage**: the ring's progress, as a number between 0 and 100 
+- **ring number**: a number to display inside the ring
+
+#### Definition
+```java
+public interface MLBusinessLoyaltyHeaderData {
+    @NonNull
+    String getBackgroundHexaColor();
+    @NonNull
+    String getPrimaryHexaColor();
+    @NonNull
+    String getSecondaryHexaColor();
+
+    int getRingNumber();
+    float getRingPercentage();
+
+    @Nullable
+    String getTitle();
+    @Nullable
+    String getSubtitle();
+}
+```
+
+Implementation of `MLBusinessLoyaltyHeaderDataSample` example:
+```java
+public class MLBusinessLoyaltyHeaderDataSample implements MLBusinessLoyaltyHeaderData {
+    @NonNull
+    @Override
+    public String getBackgroundHexaColor() {
+        return "#1AC2B0";
+    }
+
+    @NonNull
+    @Override
+    public String getPrimaryHexaColor() {
+        return "#FFFFFF";
+    }
+
+    @NonNull
+    @Override
+    public String getSecondaryHexaColor() {
+        return "#A3E6DF";
+    }
+
+    @Override
+    public int getRingNumber() {
+        return 2;
+    }
+
+    @Override
+    public float getRingPercentage() {
+        return 66f;
+    }
+
+    @Nullable
+    @Override
+    public String getTitle() {
+        return "Beneficios";
+    }
+    
+    @Nullable
+    @Override
+    public String getSubtitle() {
+        return "Nivel 2 - Mercado Puntos";
+    }
+}
+```
+
+## 6️⃣ - MLBusinessInfoView Component
+This component allows you to show a row composed of a colored, circular icon and a short text descriptiono.
+
+#### Visual Example:
+![MLBusinessInfoView](https://github.com/mercadolibre/mlbusiness-components-android/blob/master/documentation/images/MLBusinessInfoView.png?raw=true)
+
+### MLBusinessInfoView init
+You need to set `MLBusinessInfoData` interface. This interface allow you to populate the draw data into the component.
+
+```java
+MLBusinessInfoHeader infoView = findViewById(R.id.infoView);
+infoView.init(new MLBusinessInfoDataSample());
+```
+### MLBusinessInfoData Interface
+This interface allow you to provide the proper data to draw `MLBusinessInfoView`. You can setup:
+- **icon**: The url of the asset you want to display next to the text
+- **description**: The text that will be displayed
+- **icon background color**: will configure the background of circular icon
+
+#### Definition
+```java
+public interface MLBusinessInfoData {
+    @NonNull
+    String getIcon();
+    @NonNull
+    String getDescription();
+    @NonNull
+    String getIconBackgroundHexaColor();
+}
+```
+
+Implementation of `MLBusinessInfoDataSample` example:
+```java
+public class MLBusinessInfoDataSample implements MLBusinessInfoData {
+    @NonNull
+    @Override
+    public String getIcon() {
+        return "https://http2.mlstatic.com/static/org-img/loyalty/benefits/mobile/ic-shipping-discount-64.png";
+    }
+
+    @NonNull
+    @Override
+    public String getDescription() {
+        return "Descuentos con Mercado Pago";
+    }
+
+    @NonNull
+    @Override
+    public String getIconBackgroundHexaColor() {
+        return "#1AC2B0";
     }
 }
 ```

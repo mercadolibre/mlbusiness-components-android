@@ -2,13 +2,16 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/containerView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingStart="16dp"
+    android:background="@color/ui_meli_white"
+    android:paddingStart="11dp"
+    android:paddingLeft="11dp"
     android:paddingTop="10dp"
     android:paddingEnd="16dp"
+    android:paddingRight="16dp"
     android:paddingBottom="10dp"
-    android:background="@color/ui_meli_white"
     tools:ignore="Overdraw">
 
     <TextView
@@ -16,20 +19,20 @@
         style="@style/MLFont.Regular.XSmall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="16dp"
         android:layout_marginStart="8dp"
-        android:paddingTop="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:lineSpacingExtra="2.4sp"
         android:maxLines="2"
+        android:paddingTop="4dp"
         android:textColor="@color/ui_fullscreenmodal_toolbar_text_color"
         app:layout_constraintBottom_toTopOf="@+id/loyaltyButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        tools:text="Beneficios"
         app:layout_constraintStart_toEndOf="@+id/loyaltyRing"
-        app:layout_constraintTop_toTopOf="@+id/loyaltyRing" />
+        app:layout_constraintTop_toTopOf="@+id/loyaltyRing"
+        tools:text="Beneficios" />
 
     <TextView
         android:id="@+id/loyaltyLevelInfo"
@@ -39,22 +42,24 @@
         android:background="?selectableItemBackground"
         android:lineSpacingExtra="2.1sp"
         android:paddingBottom="4dp"
-        tools:text="Nivel 2 - Mercado Puntos"
         android:textColor="@color/ui_components_action_bar_text_color"
         android:textSize="@dimen/ui_fontsize_medium"
         app:layout_constraintBottom_toBottomOf="@+id/loyaltyRing"
         app:layout_constraintEnd_toEndOf="@+id/loyaltyTitle"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/loyaltyTitle"
-        app:layout_constraintTop_toBottomOf="@+id/loyaltyTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/loyaltyTitle"
+        tools:text="Nivel 2 - Mercado Puntos" />
 
     <com.mercadolibre.android.mlbusinesscomponents.components.loyalty.LoyaltyProgress
         android:id="@+id/loyaltyRing"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:background="@drawable/loyalty_progress_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:sizeLoyaltyNumber="20sp"
+        app:sizeRingStroke="3.4dp" />
 
 </android.support.constraint.ConstraintLayout>

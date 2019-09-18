@@ -58,7 +58,26 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/downloadAppView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyHeaderView
+            android:layout_width="match_parent"
+            android:id="@+id/loyaltyHeaderView"
+            app:layout_constraintTop_toBottomOf="@id/crossSellingView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:id="@+id/loyaltyBenefitsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/loyaltyHeaderView"
+            tools:ignore="UselessLeaf" />
 
     </android.support.constraint.ConstraintLayout>
 

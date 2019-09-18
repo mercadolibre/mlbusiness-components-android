@@ -16,7 +16,6 @@ import android.os.Looper;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
 import android.support.annotation.Dimension;
 import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
@@ -24,6 +23,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ProgressBar;
+
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils;
 import com.mercadolibre.android.ui.font.Font;
@@ -31,10 +31,14 @@ import com.mercadolibre.android.ui.font.TypefaceHelper;
 
 class LoyaltyProgress extends View {
 
-    @ColorRes
+    private final float DEFAULT_SIZE_RING_STROKE = 4.3f;
+
+    @ColorInt
     private int colorLoyaltyText;
     @Dimension
     private float sizeLoyaltyNumber;
+    @Dimension
+    private float sizeRingStroke;
 
     private int loyaltyNumber;
     private final Rect bounds = new Rect();
@@ -57,14 +61,14 @@ class LoyaltyProgress extends View {
     }
 
     public LoyaltyProgress(final Context context, final AttributeSet attrs,
-        final int defStyleAttr) {
+                           final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initLoyaltyProgress(context, attrs);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public LoyaltyProgress(final Context context, final AttributeSet attrs, final int defStyleAttr,
-        final int defStyleRes) {
+                           final int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         initLoyaltyProgress(context, attrs);
     }
@@ -74,20 +78,25 @@ class LoyaltyProgress extends View {
         final int DEFAULT_LOYALTY_NUMBER = 1;
 
         final TypedArray typedArray = context.obtainStyledAttributes(
-            attrs,
-            R.styleable.LoyaltyProgress,
-            0, 0);
+                attrs,
+                R.styleable.LoyaltyProgress,
+                0, 0);
 
         loyaltyNumber =
-            typedArray
-                .getInteger(R.styleable.LoyaltyProgress_loyaltyNumber, DEFAULT_LOYALTY_NUMBER);
+                typedArray
+                        .getInteger(R.styleable.LoyaltyProgress_loyaltyNumber, DEFAULT_LOYALTY_NUMBER);
         colorLoyaltyText =
-            typedArray.getResourceId(R.styleable.LoyaltyProgress_colorLoyaltyProgressText,
-                R.color.ui_components_android_color_accent);
+                ContextCompat.getColor(getContext(), typedArray.getResourceId(R.styleable.LoyaltyProgress_colorLoyaltyProgressText,
+                        R.color.ui_components_android_color_accent));
         sizeLoyaltyNumber =
-            typedArray.getDimension(R.styleable.LoyaltyProgress_sizeLoyaltyNumber,
-                ScaleUtils.getPxFromSp(context,
-                    DEFAULT_SIZE_LOYALTY_NUMBER));
+                typedArray.getDimension(R.styleable.LoyaltyProgress_sizeLoyaltyNumber,
+                        ScaleUtils.getPxFromSp(context,
+                                DEFAULT_SIZE_LOYALTY_NUMBER));
+
+        sizeRingStroke =
+                typedArray.getDimension(R.styleable.LoyaltyProgress_sizeRingStroke,
+                        ScaleUtils.getPxFromDp(context,
+                                DEFAULT_SIZE_RING_STROKE));
 
         typedArray.recycle();
 
@@ -97,10 +106,10 @@ class LoyaltyProgress extends View {
     private void initPaint(final Context context) {
         borderPaint.setAntiAlias(true);
         borderPaint.setStyle(Paint.Style.STROKE);
-        borderPaint.setStrokeWidth(ScaleUtils.getPxFromDp(context, 4.3f));
+        borderPaint.setStrokeWidth(sizeRingStroke);
         borderPaint.setStrokeCap(Paint.Cap.ROUND);
         borderPaint
-            .setColor(ContextCompat.getColor(context, R.color.ui_components_android_color_accent));
+                .setColor(ContextCompat.getColor(context, R.color.ui_components_android_color_accent));
     }
 
     public void setLoyaltyNumber(final int loyaltyNumber) {
@@ -113,6 +122,7 @@ class LoyaltyProgress extends View {
 
     public void setColorText(@ColorInt final int color) {
         textPaint.setColor(color);
+        colorLoyaltyText = color;
     }
 
     public void setProgress(final float progress) {
@@ -130,11 +140,11 @@ class LoyaltyProgress extends View {
                     final float progressValue = progress;
                     final ValueAnimator valueAnimator = new ValueAnimator();
                     valueAnimator
-                        .setValues(
-                            PropertyValuesHolder.ofFloat(PROPERTY_PROGRESS, 0, progressValue));
+                            .setValues(
+                                    PropertyValuesHolder.ofFloat(PROPERTY_PROGRESS, 0, progressValue));
                     valueAnimator
-                        .setDuration(1500)
-                        .setInterpolator(new AccelerateDecelerateInterpolator());
+                            .setDuration(1500)
+                            .setInterpolator(new AccelerateDecelerateInterpolator());
                     valueAnimator.addUpdateListener(animation -> {
                         progress = (float) animation.getAnimatedValue(PROPERTY_PROGRESS);
                         invalidate();
@@ -181,7 +191,7 @@ class LoyaltyProgress extends View {
         }
 
         public static final Parcelable.Creator<SavedState> CREATOR
-            = new Parcelable.Creator<SavedState>() {
+                = new Parcelable.Creator<SavedState>() {
             public SavedState createFromParcel(Parcel in) {
                 return new SavedState(in);
             }
@@ -219,7 +229,7 @@ class LoyaltyProgress extends View {
 
         //draw text
         final String loyaltyText = String.valueOf(loyaltyNumber);
-        textPaint.setColor(ContextCompat.getColor(getContext(), colorLoyaltyText));
+        textPaint.setColor(colorLoyaltyText);
         textPaint.setTextSize(sizeLoyaltyNumber);
         textPaint.getTextBounds(loyaltyText, 0, loyaltyText.length(), bounds);
         TypefaceHelper.setTypeface(getContext().getApplicationContext(), textPaint, Font.SEMI_BOLD);
@@ -230,10 +240,17 @@ class LoyaltyProgress extends View {
         canvas.drawText(loyaltyText, x, y, textPaint);
 
         //draw progress with round corners
-        float dx = ScaleUtils.getPxFromDp(getContext(), 8.5f);
+        float defaultInset = ScaleUtils.getPxFromDp(getContext(), 8.5f);
+        float defaultStrokeWidth = ScaleUtils.getPxFromDp(getContext(), DEFAULT_SIZE_RING_STROKE);
+        float currentStrokeWidth = sizeRingStroke;
+
+        // We calculate the necessary amount of inset proportionally
+        // based on the current stroke width
+        float currentInset = currentStrokeWidth * defaultInset / defaultStrokeWidth;
+
         final float startAngle = 270f;
         boundsF.set(getBackground().getBounds());
-        boundsF.inset(dx, dx);
+        boundsF.inset(currentInset, currentInset);
 
         canvas.drawArc(boundsF, startAngle, progress * 3.60f, false, borderPaint);
     }
