@@ -289,7 +289,7 @@ public class MLBusinessDownloadAppDataSample implements MLBusinessDownloadAppDat
 This component allows you to show a colored header view composed with a shrinked version of the loyalty ring. It has the ability to display a title and a subtitle.
 
 #### Visual Example:
-![MLBusinessLoyaltyHeaderView](https://raw.githubusercontent.com/mercadolibre/mlbusiness-components-android/feature/new_components/documentation/images/MLBusinessLoyaltyHeaderView.png)
+![MLBusinessLoyaltyHeaderView](https://github.com/mercadolibre/mlbusiness-components-android/blob/master/documentation/images/MLBusinessLoyaltyHeaderView.png?raw=true)
 
 ### MLBusinessLoyaltyHeaderView init
 You need to set `MLBusinessLoyaltyHeaderData` interface. This interface allow you to populate the draw data into the component.
@@ -377,7 +377,7 @@ public class MLBusinessLoyaltyHeaderDataSample implements MLBusinessLoyaltyHeade
 This component allows you to show a row composed of a colored, circular icon and a short text descriptiono.
 
 #### Visual Example:
-![MLBusinessInfoView](https://raw.githubusercontent.com/mercadolibre/mlbusiness-components-android/feature/new_components/documentation/images/MLBusinessInfoView.png)
+![MLBusinessInfoView](https://github.com/mercadolibre/mlbusiness-components-android/blob/master/documentation/images/MLBusinessInfoView.png?raw=true)
 
 ### MLBusinessInfoView init
 You need to set `MLBusinessInfoData` interface. This interface allow you to populate the draw data into the component.
