@@ -14,7 +14,7 @@ public class MLBusinessInfoDataSample implements MLBusinessInfoData {
     }
 
     @Override
-    public String getBackgroundHexaColor() {
+    public String getIconBackgroundHexaColor() {
         return "#1AC2B0";
     }
 }

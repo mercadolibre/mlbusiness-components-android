@@ -11,6 +11,6 @@ public interface MLBusinessInfoData {
     String getDescription();
 
     @NonNull
-    String getBackgroundHexaColor();
+    String getIconBackgroundHexaColor();
 
 }

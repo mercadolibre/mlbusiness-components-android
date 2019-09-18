@@ -390,7 +390,7 @@ infoView.init(new MLBusinessInfoDataSample());
 This interface allow you to provide the proper data to draw `MLBusinessInfoView`. You can setup:
 - **icon**: The url of the asset you want to display next to the text
 - **description**: The text that will be displayed
-- **background color**: will configure the background of circular icon
+- **icon background color**: will configure the background of circular icon
 
 #### Definition
 ```java
@@ -400,7 +400,7 @@ public interface MLBusinessInfoData {
     @NonNull
     String getDescription();
     @NonNull
-    String getBackgroundHexaColor();
+    String getIconBackgroundHexaColor();
 }
 ```
 
@@ -421,7 +421,7 @@ public class MLBusinessInfoDataSample implements MLBusinessInfoData {
 
     @NonNull
     @Override
-    public String getBackgroundHexaColor() {
+    public String getIconBackgroundHexaColor() {
         return "#1AC2B0";
     }
 }
