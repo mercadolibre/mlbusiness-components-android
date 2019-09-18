@@ -244,6 +244,8 @@ class LoyaltyProgress extends View {
         float defaultStrokeWidth = ScaleUtils.getPxFromDp(getContext(), DEFAULT_SIZE_RING_STROKE);
         float currentStrokeWidth = sizeRingStroke;
 
+        // We calculate the necessary amount of inset proportionally
+        // based on the current stroke width
         float currentInset = currentStrokeWidth * defaultInset / defaultStrokeWidth;
 
         final float startAngle = 270f;
