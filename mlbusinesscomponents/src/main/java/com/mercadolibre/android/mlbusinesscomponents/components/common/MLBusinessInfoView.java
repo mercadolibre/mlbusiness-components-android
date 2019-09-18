@@ -50,6 +50,7 @@ public class MLBusinessInfoView extends ConstraintLayout {
         if (unwrappedDrawable != null) {
             Drawable wrappedDrawable = DrawableCompat.wrap(unwrappedDrawable);
             DrawableCompat.setTint(wrappedDrawable, Color.parseColor(businessInfoData.getBackgroundHexaColor()));
+            icon.setBackground(wrappedDrawable);
         }
 
         description.setText(businessInfoData.getDescription());

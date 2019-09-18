@@ -3,10 +3,9 @@ package com.mercadolibre.android.mlbusinesscomponents.components.loyalty;
 public interface MLBusinessLoyaltyHeaderData {
 
     String getBackgroundHexaColor();
-    String getTextHexaColor();
+    String getPrimaryHexaColor();
+    String getSecondaryHexaColor();
 
-    String getRingHexaColor();
-    String getRingBackgroundHexaColor();
     int getRingNumber();
     float getRingPercentage();
 
