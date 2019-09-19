@@ -15,7 +15,7 @@ public class MLBusinessLoyaltyRingDataSample implements MLBusinessLoyaltyRingDat
 
     @Override
     public float getRingPercentage() {
-        return 60f;
+        return 0.6f;
     }
 
     @Override

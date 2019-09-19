@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/ui_view_cross_selling_height"
+    android:layout_height="wrap_content"
+    tools:parentTag="android.support.constraint.ConstraintLayout"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.v7.widget.AppCompatImageView
@@ -51,4 +53,4 @@
         app:layout_constraintTop_toBottomOf="@+id/crossSellingTitle"
         app:layout_constraintVertical_bias="0.0" />
 
-</android.support.constraint.ConstraintLayout>
+</merge>

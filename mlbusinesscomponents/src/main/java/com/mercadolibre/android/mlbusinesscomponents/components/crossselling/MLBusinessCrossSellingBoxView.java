@@ -1,4 +1,4 @@
-package com.mercadolibre.android.mlbusinesscomponents.components.common.crossselling;
+package com.mercadolibre.android.mlbusinesscomponents.components.crossselling;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -16,13 +16,11 @@ public class MLBusinessCrossSellingBoxView extends ConstraintLayout {
     }
 
     public MLBusinessCrossSellingBoxView(final Context context) {
-        super(context);
-        inflate(context, R.layout.ml_view_crossselling, this);
+        this(context, null);
     }
 
     public MLBusinessCrossSellingBoxView(final Context context, final AttributeSet attrs) {
-        super(context, attrs);
-        inflate(context, R.layout.ml_view_crossselling, this);
+        this(context, attrs, 0);
     }
 
     public MLBusinessCrossSellingBoxView(final Context context, final AttributeSet attrs,

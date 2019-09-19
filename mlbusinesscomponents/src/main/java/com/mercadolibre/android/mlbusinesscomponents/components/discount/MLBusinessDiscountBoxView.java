@@ -29,14 +29,14 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
     private TextView subtitleLabel;
     private OnClickDiscountBox onClickDiscountBox;
 
+    private static final int DEFAULT_LIST_SIZE = 6;
+
     public MLBusinessDiscountBoxView(final Context context) {
-        super(context);
-        initMLBusinessDiscountBoxView(context);
+        this(context, null);
     }
 
     public MLBusinessDiscountBoxView(final Context context, final AttributeSet attrs) {
-        super(context, attrs);
-        initMLBusinessDiscountBoxView(context);
+        this(context, attrs, 0);
     }
 
     public MLBusinessDiscountBoxView(final Context context, final AttributeSet attrs,
@@ -55,7 +55,8 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
 
     private void configDiscountBoxView() {
         final MLBusinessDiscountBoxAdapter discountBoxAdapter =
-            new MLBusinessDiscountBoxAdapter(businessDiscountBoxData.getItems(),
+            new MLBusinessDiscountBoxAdapter(
+                businessDiscountBoxData.getItems().subList(0, DEFAULT_LIST_SIZE),
                 onClickDiscountBox);
         final int totalSize = discountBoxAdapter.getItemCount();
         final int DEFAULT_COLUMNS = totalSize == 4 ? 2 : 6;
@@ -147,7 +148,7 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
                     if (itemsInLastRow == 2) {
                         outRect.left = (view.getLayoutParams().width + lateralSpace * 4) / 2;
                     } else {
-                        outRect.left = (view.getLayoutParams().width) + lateralSpace * 3;
+                        outRect.left = view.getLayoutParams().width + lateralSpace * 3;
                     }
                 } else {
                     outRect.left = lateralSpace;

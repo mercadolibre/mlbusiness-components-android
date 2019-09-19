@@ -2,20 +2,20 @@ package com.mercadolibre.android.mlbusinesscomponentsapp;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import com.mercadolibre.android.mlbusinesscomponents.components.common.crossselling.MLBusinessCrossSellingBoxView;
 import com.mercadolibre.android.mlbusinesscomponents.components.common.downloadapp.MLBusinessDownloadAppView;
+import com.mercadolibre.android.mlbusinesscomponents.components.crossselling.MLBusinessCrossSellingBoxView;
 import com.mercadolibre.android.mlbusinesscomponents.components.discount.MLBusinessDiscountBoxView;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyRingView;
 
 public class MainActivity extends AppCompatActivity
     implements MLBusinessLoyaltyRingView.OnClickLoyaltyRing,
-    MLBusinessDiscountBoxView.OnClickDiscountBox, View.OnClickListener,
-    MLBusinessCrossSellingBoxView.OnClickCrossSellingBoxView {
+    MLBusinessDiscountBoxView.OnClickDiscountBox,
+    MLBusinessCrossSellingBoxView.OnClickCrossSellingBoxView,
+    MLBusinessDownloadAppView.OnClickDownloadApp {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +32,7 @@ public class MainActivity extends AppCompatActivity
 
         discountBoxView.init(new MLBusinessDiscountBoxDataSample(), this);
 
-        downloadAppView.init(new MLBusinessDownloadAppDataSample());
-        downloadAppView.setOnClickDownloadButton(this);
+        downloadAppView.init(new MLBusinessDownloadAppDataSample(), this);
 
         crossSellingBoxView.init(new MLBusinessCrossSellingBoxDataSample(), this);
     }
@@ -52,13 +51,12 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onClick(final View v) {
-        startActivity(
-            new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.mercadolibre.com.ar/")));
+    public void OnClickCrossSellingButton(@NonNull final String deepLink) {
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
     }
 
     @Override
-    public void OnClickCrossSellingButton(@NonNull final String deepLink) {
+    public void OnClickDownloadAppButton(@NonNull final String deepLink) {
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
     }
 }

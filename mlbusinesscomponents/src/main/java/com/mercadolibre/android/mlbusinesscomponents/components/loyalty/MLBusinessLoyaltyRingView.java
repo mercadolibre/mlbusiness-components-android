@@ -22,13 +22,11 @@ public class MLBusinessLoyaltyRingView extends ConstraintLayout {
     private MLBusinessLoyaltyRingData businessLoyaltyRingData;
 
     public MLBusinessLoyaltyRingView(final Context context) {
-        super(context);
-        initMLBusinessLoyaltyRingView(context, null);
+        this(context, null);
     }
 
     public MLBusinessLoyaltyRingView(final Context context, final AttributeSet attrs) {
-        super(context, attrs);
-        initMLBusinessLoyaltyRingView(context, attrs);
+        this(context, attrs, 0);
     }
 
     public MLBusinessLoyaltyRingView(final Context context, final AttributeSet attrs,
@@ -39,7 +37,6 @@ public class MLBusinessLoyaltyRingView extends ConstraintLayout {
 
     private void initMLBusinessLoyaltyRingView(final Context context, final AttributeSet attrs) {
         inflate(context, R.layout.ml_view_business_loyalty_ring, this);
-
         initLoyaltyRingView();
     }
 

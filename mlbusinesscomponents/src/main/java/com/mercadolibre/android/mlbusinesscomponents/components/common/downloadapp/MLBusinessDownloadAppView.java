@@ -1,9 +1,11 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.common.downloadapp;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import com.mercadolibre.android.mlbusinesscomponents.R;
@@ -11,33 +13,41 @@ import com.mercadolibre.android.ui.widgets.MeliButton;
 
 public class MLBusinessDownloadAppView extends ConstraintLayout {
 
+    public interface OnClickDownloadApp {
+        void OnClickDownloadAppButton(@NonNull final String deepLink);
+    }
+
     public MLBusinessDownloadAppView(final Context context) {
-        super(context);
-        inflate(context, R.layout.ml_view_download, this);
+        this(context, null);
     }
 
     public MLBusinessDownloadAppView(final Context context, final AttributeSet attrs) {
-        super(context, attrs);
-        inflate(context, R.layout.ml_view_download, this);
+        this(context, attrs, 0);
     }
 
-    public MLBusinessDownloadAppView(final Context context, final AttributeSet attrs,
-        final int defStyleAttr) {
+    public MLBusinessDownloadAppView(final Context context, final AttributeSet attrs, final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        inflate(context, R.layout.ml_view_download, this);
+        configureDownloadAppView(context);
     }
 
-    public void init(@NonNull final MLBusinessDownloadAppData businessDownloadAppData) {
+    private void configureDownloadAppView(final Context context) {
+        inflate(context, R.layout.ml_view_download, this);
+        Drawable background = getBackground();
+        setBackground(
+            background != null ? background : ContextCompat.getDrawable(getContext(), R.drawable.download_background));
+    }
+
+    public void init(@NonNull final MLBusinessDownloadAppData businessDownloadAppData,
+        @NonNull final OnClickDownloadApp onClick) {
         findViewById(R.id.imageSite)
             .setBackgroundResource(businessDownloadAppData.getAppSite().getResource());
         ((AppCompatTextView) findViewById(R.id.titleDownload))
             .setText(businessDownloadAppData.getTitle());
-        ((MeliButton) findViewById(R.id.downloadButton))
-            .setText(businessDownloadAppData.getButtonTitle());
-    }
 
-    public void setOnClickDownloadButton(@NonNull final OnClickListener onClick) {
-        findViewById(R.id.downloadButton).setOnClickListener(onClick);
+        final MeliButton downloadButton = findViewById(R.id.downloadButton);
+        downloadButton.setText(businessDownloadAppData.getButtonTitle());
+        downloadButton.setOnClickListener(
+            v -> onClick.OnClickDownloadAppButton(businessDownloadAppData.getButtonDeepLink()));
     }
 
     public enum AppSite {

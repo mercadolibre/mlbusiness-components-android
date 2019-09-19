@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,60 +7,45 @@
     android:background="@color/ui_meli_white"
     tools:context=".MainActivity">
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:focusableInTouchMode="true">
+
+        <com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyRingView
+            android:id="@+id/loyaltyView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <com.mercadolibre.android.mlbusinesscomponents.components.common.dividingline.MLBusinessDividingLineView
             android:id="@+id/divider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:hasTriangle="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loyaltyView" />
+            app:hasTriangle="true"/>
+
+        <com.mercadolibre.android.mlbusinesscomponents.components.discount.MLBusinessDiscountBoxView
+            android:id="@+id/discountView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
 
         <com.mercadolibre.android.mlbusinesscomponents.components.common.downloadapp.MLBusinessDownloadAppView
             android:id="@+id/downloadAppView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/discountView" />
+            android:layout_marginTop="8dp"/>
 
-
-        <com.mercadolibre.android.mlbusinesscomponents.components.discount.MLBusinessDiscountBoxView
-            android:id="@+id/discountView"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider" />
-
-        <com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyRingView
-            android:id="@+id/loyaltyView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.mercadolibre.android.mlbusinesscomponents.components.common.crossselling.MLBusinessCrossSellingBoxView
+        <com.mercadolibre.android.mlbusinesscomponents.components.crossselling.MLBusinessCrossSellingBoxView
             android:id="@+id/crossSellingView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/downloadAppView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:layout_height="wrap_content"/>
 
-    </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
 
-</android.support.v4.widget.NestedScrollView>
-
+</ScrollView>
