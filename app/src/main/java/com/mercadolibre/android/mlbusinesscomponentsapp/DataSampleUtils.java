@@ -46,12 +46,6 @@ class DataSampleUtils {
             "$ 200",
             "https://www.mercadopago.com.ar/", null
         ));
-
-
-
-
-
-
         items.add(new SingleItemDataSample(
             "https://upload.wikimedia.org/wikipedia/en/thumb/6/66/Wendy%27s_logo_2012.svg/1200px-Wendy%27s_logo_2012.svg.png",
             "Hasta",
