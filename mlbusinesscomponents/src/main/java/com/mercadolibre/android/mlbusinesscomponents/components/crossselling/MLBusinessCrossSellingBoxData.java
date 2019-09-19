@@ -7,7 +7,7 @@ public interface MLBusinessCrossSellingBoxData {
     String getIconUrl();
 
     @NonNull
-    String getTitle();
+    String getText();
 
     @NonNull
     String getButtonTitle();

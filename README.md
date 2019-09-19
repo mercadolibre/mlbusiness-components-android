@@ -235,17 +235,17 @@ This component allows you to show a means to download the ML or MP application. 
 ![MLBusinessDownloadAppView](https://raw.githubusercontent.com/mercadolibre/mlbusiness-components-android/feature/new_components/documentation/images/MLBusinessDownloadAppView.png)
 
 ### MLBusinessDownloadAppView init
-You need to set `MLBusinessDownloadAppData` interface. This interface allow you to populate the draw data into the component. (AppSite, Title and ButtonTitle). You can be informed when the user presses the item of the component. Just add `OnClickListener` callback.
+You need to set `MLBusinessDownloadAppData` interface. This interface allow you to populate the draw data into the component. (AppSite, Title and ButtonTitle). You can be informed when the user presses the button of the component and receive the deeplink previously sent in `MLBusinessDownloadAppData`. Just add `OnClickDownloadApp` callback.
 
 ```java
 MLBusinessDownloadAppView downloadAppView = findViewById(R.id.downloadAppView);
-downloadAppView.init(new MLBusinessDownloadAppDataSample());
-downloadAppView.setOnClickDownloadButton(new View.OnClickListener() {
-        @Override
-        public void onClick(final View v) {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.mercadolibre.com.ar/")));
-        }
-    });
+downloadAppView.init(new MLBusinessDownloadAppDataSample(), 
+new MLBusinessDownloadAppView.OnClickDownloadApp() {
+            @Override
+            public void OnClickDownloadAppButton(@NonNull final String deepLink) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
+            }
+        });
 ```
 ### MLBusinessDownloadAppData Interface
 This interface allow you to provide the proper data to draw `MLBusinessDownloadAppView`. You can setup AppSite, Title and ButtonTitle. Each value is mandatory.
@@ -259,6 +259,8 @@ public interface MLBusinessDownloadAppData {
     String getTitle();
     @NonNull
     String getButtonTitle();
+    @NonNull
+    String getButtonDeepLink();
 }
 ```
 
@@ -282,8 +284,21 @@ public class MLBusinessDownloadAppDataSample implements MLBusinessDownloadAppDat
     public String getButtonTitle() {
         return "Descargar";
     }
+    
+    @NonNull
+    @Override
+    public String getButtonDeepLink() {
+        return "https://play.google.com/store/apps/details?id=com.mercadopago.wallet&hl=es_419";
+    }
 }
 ```
+
+### How to change MLBusinessDownloadAppView background? 
+Using `setBackground(Drawable background)` method.
+```java
+downloadAppView.setBackground(ContextCompat.getDrawable(context, R.drawable.download_background));
+```
+
 
 ## 5️⃣ - MLBusinessLoyaltyHeaderView Component
 This component allows you to show a colored header view composed with a shrinked version of the loyalty ring. It has the ability to display a title and a subtitle.
@@ -423,6 +438,76 @@ public class MLBusinessInfoDataSample implements MLBusinessInfoData {
     @Override
     public String getIconBackgroundHexaColor() {
         return "#1AC2B0";
+    }
+}
+```
+## 7️⃣ - MLBusinessCrossSellingBoxView Component
+This component allows you to show a view with an image icon, a text and an actionable button.
+
+#### Visual Example:
+![MLBusinessCrossSellingBoxView](https://github.com/mercadolibre/mlbusiness-components-android/blob/master/documentation/images/MLBusinessCrossSellingBoxView.png?raw=true)
+
+### MLBusinessCrossSellingBoxView init
+You need to set `MLBusinessCrossSellingBoxData` interface. This interface allow you to populate the draw data into the component. You can be informed when the user presses the button of the component and receive the deeplink previously sent in `MLBusinessCrossSellingBoxData`. Just add `OnClickCrossSellingBoxView` callback.
+
+```java
+    MLBusinessCrossSellingBoxView crossSellingBoxView = findViewById(R.id.crossSellingView);
+    crossSellingBoxView.init(new MLBusinessCrossSellingBoxDataSample(),
+            new MLBusinessCrossSellingBoxView.OnClickCrossSellingBoxView() {
+                @Override
+                public void OnClickCrossSellingButton(@NonNull final String deepLink) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
+                }
+            });
+```
+
+### MLBusinessCrossSellingBoxData Interface
+This interface allow you to provide the proper data to draw `MLBusinessCrossSellingBoxView`. You can setup iconUrl, text, buttonTitle and buttonDeepLink. Each value is mandatory.
+
+#### Definition
+```java
+public interface MLBusinessCrossSellingBoxData {
+    @NonNull
+    String getIconUrl();
+
+    @NonNull
+    String getText();
+
+    @NonNull
+    String getButtonTitle();
+
+    @NonNull
+    String getButtonDeepLink();
+}
+```
+
+#### Implementation Example
+Implementation of `MLBusinessCrossSellingBoxDataSample` example:
+
+```java
+public class MLBusinessCrossSellingBoxDataSample implements MLBusinessCrossSellingBoxData {
+    @NonNull
+    @Override
+    public String getIconUrl() {
+        return "https://www.pngrepo.com/png/4897/170/gift.png";
+    }
+
+    @NonNull
+    @Override
+    public String getText() {
+        return "Gana $50 de regalo para tus pagos diarios";
+    }
+
+    @NonNull
+    @Override
+    public String getButtonTitle() {
+        return "Invita a más amigos a usar la app";
+    }
+
+    @NonNull
+    @Override
+    public String getButtonDeepLink() {
+        return "https://www.mercadolibre.com.ar/";
     }
 }
 ```

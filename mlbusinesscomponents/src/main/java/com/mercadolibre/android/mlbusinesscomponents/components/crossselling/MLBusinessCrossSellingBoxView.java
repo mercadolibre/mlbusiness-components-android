@@ -33,7 +33,7 @@ public class MLBusinessCrossSellingBoxView extends ConstraintLayout {
         @NonNull final OnClickCrossSellingBoxView onClick) {
         loadImageUrl(businessCrossSellingBoxData.getIconUrl());
         ((AppCompatTextView) findViewById(R.id.crossSellingTitle))
-            .setText(businessCrossSellingBoxData.getTitle());
+            .setText(businessCrossSellingBoxData.getText());
         AppCompatTextView action = findViewById(R.id.crossSellingAction);
         action.setText(businessCrossSellingBoxData.getButtonTitle());
         action.setOnClickListener(v -> onClick

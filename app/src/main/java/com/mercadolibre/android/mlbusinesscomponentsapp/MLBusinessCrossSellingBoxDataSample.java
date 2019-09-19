@@ -12,7 +12,7 @@ public class MLBusinessCrossSellingBoxDataSample implements MLBusinessCrossSelli
 
     @NonNull
     @Override
-    public String getTitle() {
+    public String getText() {
         return "Gana $50 de regalo para tus pagos diarios";
     }
 
