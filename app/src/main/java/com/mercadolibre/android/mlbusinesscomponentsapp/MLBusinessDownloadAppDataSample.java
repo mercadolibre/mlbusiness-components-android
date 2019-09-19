@@ -22,4 +22,10 @@ public class MLBusinessDownloadAppDataSample implements MLBusinessDownloadAppDat
     public String getButtonTitle() {
         return "Descargar";
     }
+
+    @NonNull
+    @Override
+    public String getButtonDeepLink() {
+        return "https://www.mercadolibre.com.ar/";
+    }
 }

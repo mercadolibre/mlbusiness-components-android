@@ -1,7 +1,7 @@
 package com.mercadolibre.android.mlbusinesscomponentsapp;
 
 import android.support.annotation.NonNull;
-import com.mercadolibre.android.mlbusinesscomponents.components.common.crossselling.MLBusinessCrossSellingBoxData;
+import com.mercadolibre.android.mlbusinesscomponents.components.crossselling.MLBusinessCrossSellingBoxData;
 
 public class MLBusinessCrossSellingBoxDataSample implements MLBusinessCrossSellingBoxData {
     @NonNull

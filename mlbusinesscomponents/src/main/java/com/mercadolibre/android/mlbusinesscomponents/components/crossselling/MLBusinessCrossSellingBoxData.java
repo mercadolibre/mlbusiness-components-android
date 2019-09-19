@@ -1,4 +1,4 @@
-package com.mercadolibre.android.mlbusinesscomponents.components.common.crossselling;
+package com.mercadolibre.android.mlbusinesscomponents.components.crossselling;
 
 import android.support.annotation.NonNull;
 

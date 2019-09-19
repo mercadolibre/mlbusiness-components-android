@@ -1,12 +1,6 @@
 package com.mercadolibre.android.mlbusinesscomponentsapp;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-
-import com.mercadolibre.android.mlbusinesscomponents.components.discount.MLBusinessDiscountBoxData;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyHeaderData;
-
-import java.util.List;
 
 public class MLBusinessLoyaltyHeaderDataSample implements MLBusinessLoyaltyHeaderData {
 
@@ -32,7 +26,7 @@ public class MLBusinessLoyaltyHeaderDataSample implements MLBusinessLoyaltyHeade
 
     @Override
     public float getRingPercentage() {
-        return 66f;
+        return 0.66f;
     }
 
     @Override

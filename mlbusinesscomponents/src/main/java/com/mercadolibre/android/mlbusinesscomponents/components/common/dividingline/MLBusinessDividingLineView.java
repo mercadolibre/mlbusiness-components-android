@@ -4,9 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.os.Build;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
@@ -21,26 +19,16 @@ public class MLBusinessDividingLineView extends View {
     private static final int DEFAULT_SIZE = 11;
 
     public MLBusinessDividingLineView(final Context context) {
-        super(context);
-        initDividingLineView(context, null);
+        this(context, null);
     }
 
     public MLBusinessDividingLineView(final Context context, @Nullable final AttributeSet attrs) {
-        super(context, attrs);
-        initDividingLineView(context, attrs);
+        this(context, attrs, 0);
     }
 
     public MLBusinessDividingLineView(final Context context, @Nullable final AttributeSet attrs,
         final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initDividingLineView(context, attrs);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public MLBusinessDividingLineView(final Context context, @Nullable final AttributeSet attrs,
-        final int defStyleAttr,
-        final int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
         initDividingLineView(context, attrs);
     }
 

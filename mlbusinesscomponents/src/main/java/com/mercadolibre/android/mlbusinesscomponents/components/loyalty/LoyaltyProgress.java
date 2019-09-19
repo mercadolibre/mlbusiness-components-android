@@ -10,14 +10,13 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.ColorInt;
 import android.support.annotation.Dimension;
-import android.support.annotation.RequiresApi;
+import android.support.annotation.FloatRange;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
@@ -51,25 +50,16 @@ class LoyaltyProgress extends View {
     private static final String PROPERTY_PROGRESS = "progress";
 
     public LoyaltyProgress(final Context context) {
-        super(context);
-        initLoyaltyProgress(context, null);
+        this(context, null);
     }
 
     public LoyaltyProgress(final Context context, final AttributeSet attrs) {
-        super(context, attrs);
-        initLoyaltyProgress(context, attrs);
+        this(context, attrs, 0);
     }
 
     public LoyaltyProgress(final Context context, final AttributeSet attrs,
                            final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initLoyaltyProgress(context, attrs);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public LoyaltyProgress(final Context context, final AttributeSet attrs, final int defStyleAttr,
-                           final int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
         initLoyaltyProgress(context, attrs);
     }
 
@@ -125,7 +115,7 @@ class LoyaltyProgress extends View {
         colorLoyaltyText = color;
     }
 
-    public void setProgress(final float progress) {
+    public void setProgress(@FloatRange(from = 0, to = 1) final float progress) {
         this.progress = progress;
     }
 
@@ -252,6 +242,6 @@ class LoyaltyProgress extends View {
         boundsF.set(getBackground().getBounds());
         boundsF.inset(currentInset, currentInset);
 
-        canvas.drawArc(boundsF, startAngle, progress * 3.60f, false, borderPaint);
+        canvas.drawArc(boundsF, startAngle, progress * 360f, false, borderPaint);
     }
 }

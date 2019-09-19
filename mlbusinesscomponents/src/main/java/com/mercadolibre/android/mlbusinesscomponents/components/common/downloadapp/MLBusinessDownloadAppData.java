@@ -11,4 +11,7 @@ public interface MLBusinessDownloadAppData {
 
     @NonNull
     String getButtonTitle();
+
+    @NonNull
+    String getButtonDeepLink();
 }
