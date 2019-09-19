@@ -46,6 +46,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+        <com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyHeaderView
+            android:layout_width="match_parent"
+            android:id="@+id/loyaltyHeaderView"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:id="@+id/loyaltyBenefitsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            tools:ignore="UselessLeaf" />
+
     </LinearLayout>
 
 </ScrollView>

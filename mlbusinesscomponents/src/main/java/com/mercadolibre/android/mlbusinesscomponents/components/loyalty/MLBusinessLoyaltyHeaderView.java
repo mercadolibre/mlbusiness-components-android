@@ -8,12 +8,14 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.content.res.AppCompatResources;
 import android.util.AttributeSet;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.mercadolibre.android.mlbusinesscomponents.R;
 
 public class MLBusinessLoyaltyHeaderView extends ConstraintLayout {
 
+    private ViewGroup containerView;
     private LoyaltyProgress progress;
     private TextView title;
     private TextView loyaltyLevelInfo;
@@ -35,40 +37,41 @@ public class MLBusinessLoyaltyHeaderView extends ConstraintLayout {
     }
 
     private void initMLBusinessLoyaltyHeaderView(final Context context) {
-        inflate(context, R.layout.ml_view_business_loyalty_ring, this);
-
+        inflate(context, R.layout.ml_view_business_loyalty_header, this);
         initLoyaltyHeaderView();
     }
 
     private void initLoyaltyHeaderView() {
+        containerView = findViewById(R.id.containerView);
         progress = findViewById(R.id.loyaltyRing);
-        title = findViewById(R.id.title);
+        title = findViewById(R.id.loyaltyTitle);
         loyaltyLevelInfo = findViewById(R.id.loyaltyLevelInfo);
     }
 
     private void configLoyaltyHeaderView() {
         updateRing();
 
-        int textColor = Color.parseColor(businessLoyaltyHeaderData.getTextHexaColor());
+        int textColor = Color.parseColor(businessLoyaltyHeaderData.getPrimaryHexaColor());
         title.setText(businessLoyaltyHeaderData.getTitle());
         title.setTextColor(textColor);
 
         loyaltyLevelInfo.setText(businessLoyaltyHeaderData.getSubtitle());
         loyaltyLevelInfo.setTextColor(textColor);
 
-        this.setBackgroundColor(Color.parseColor(businessLoyaltyHeaderData.getBackgroundHexaColor()));
+        containerView.setBackgroundColor(Color.parseColor(businessLoyaltyHeaderData.getBackgroundHexaColor()));
     }
 
     private void updateRing() {
         Drawable unwrappedDrawable = AppCompatResources.getDrawable(getContext(), R.drawable.loyalty_progress_background);
         if (unwrappedDrawable != null) {
             Drawable wrappedDrawable = DrawableCompat.wrap(unwrappedDrawable);
-            DrawableCompat.setTint(wrappedDrawable, Color.parseColor(businessLoyaltyHeaderData.getRingBackgroundHexaColor()));
+            DrawableCompat.setTint(wrappedDrawable, Color.parseColor(businessLoyaltyHeaderData.getSecondaryHexaColor()));
+            progress.setBackground(wrappedDrawable);
         }
 
         final float percentage = businessLoyaltyHeaderData.getRingPercentage();
-        progress.setColorProgress(Color.parseColor(businessLoyaltyHeaderData.getRingHexaColor()));
-        progress.setColorText(Color.parseColor(businessLoyaltyHeaderData.getRingHexaColor()));
+        progress.setColorProgress(Color.parseColor(businessLoyaltyHeaderData.getPrimaryHexaColor()));
+        progress.setColorText(Color.parseColor(businessLoyaltyHeaderData.getPrimaryHexaColor()));
         progress.setProgress(percentage);
         progress.setAnimation();
         progress.setLoyaltyNumber(businessLoyaltyHeaderData.getRingNumber());

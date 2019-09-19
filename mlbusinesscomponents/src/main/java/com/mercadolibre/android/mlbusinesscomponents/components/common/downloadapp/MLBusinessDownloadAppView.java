@@ -17,6 +17,8 @@ public class MLBusinessDownloadAppView extends ConstraintLayout {
         void OnClickDownloadAppButton(@NonNull final String deepLink);
     }
 
+    private OnClickDownloadApp onClickDownloadApp;
+
     public MLBusinessDownloadAppView(final Context context) {
         this(context, null);
     }
@@ -46,8 +48,21 @@ public class MLBusinessDownloadAppView extends ConstraintLayout {
 
         final MeliButton downloadButton = findViewById(R.id.downloadButton);
         downloadButton.setText(businessDownloadAppData.getButtonTitle());
+        onClickDownloadApp = onClick;
         downloadButton.setOnClickListener(
-            v -> onClick.OnClickDownloadAppButton(businessDownloadAppData.getButtonDeepLink()));
+            v -> onClickDownloadApp.OnClickDownloadAppButton(businessDownloadAppData.getButtonDeepLink()));
+    }
+
+    public void updateView(@NonNull final MLBusinessDownloadAppData businessDownloadAppData) {
+        init(businessDownloadAppData, this.onClickDownloadApp);
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        if (onClickDownloadApp != null) {
+            onClickDownloadApp = null;
+        }
     }
 
     public enum AppSite {

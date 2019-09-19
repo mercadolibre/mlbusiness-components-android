@@ -19,15 +19,15 @@
         android:textColor="@color/ui_components_action_bar_text_color"
         android:textSize="@dimen/ui_fontsize_medium"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/icon"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="Nivel 2 - Mercado Puntos" />
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/icon"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:background="@drawable/info_icon_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
