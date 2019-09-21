@@ -30,22 +30,16 @@ import com.mercadolibre.android.ui.font.TypefaceHelper;
 
 class LoyaltyProgress extends View {
 
-    private final float DEFAULT_SIZE_RING_STROKE = 4.3f;
-
-    @ColorInt
-    private int colorLoyaltyText;
-    @Dimension
-    private float sizeLoyaltyNumber;
-    @Dimension
-    private float sizeRingStroke;
+    private final float DEFAULT_SIZE_RING_STROKE = 3.4f;
 
     private int loyaltyNumber;
-    private final Rect bounds = new Rect();
+    private final Rect boundsText = new Rect();
     private final Paint textPaint = new Paint();
-    private final Paint borderPaint = new Paint();
+    private final Paint ringPaint = new Paint();
+    private final Paint progressPaint = new Paint();
     private final RectF boundsF = new RectF();
     private boolean animatedEnd;
-    private float progress = 0;
+    private float progress;
 
     private static final String PROPERTY_PROGRESS = "progress";
 
@@ -58,7 +52,7 @@ class LoyaltyProgress extends View {
     }
 
     public LoyaltyProgress(final Context context, final AttributeSet attrs,
-                           final int defStyleAttr) {
+        final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initLoyaltyProgress(context, attrs);
     }
@@ -68,59 +62,87 @@ class LoyaltyProgress extends View {
         final int DEFAULT_LOYALTY_NUMBER = 1;
 
         final TypedArray typedArray = context.obtainStyledAttributes(
-                attrs,
-                R.styleable.LoyaltyProgress,
-                0, 0);
+            attrs,
+            R.styleable.LoyaltyProgress,
+            0, 0);
 
         loyaltyNumber =
-                typedArray
-                        .getInteger(R.styleable.LoyaltyProgress_loyaltyNumber, DEFAULT_LOYALTY_NUMBER);
-        colorLoyaltyText =
-                ContextCompat.getColor(getContext(), typedArray.getResourceId(R.styleable.LoyaltyProgress_colorLoyaltyProgressText,
-                        R.color.ui_components_android_color_accent));
-        sizeLoyaltyNumber =
-                typedArray.getDimension(R.styleable.LoyaltyProgress_sizeLoyaltyNumber,
-                        ScaleUtils.getPxFromSp(context,
-                                DEFAULT_SIZE_LOYALTY_NUMBER));
+            typedArray
+                .getInteger(R.styleable.LoyaltyProgress_loyaltyNumber, DEFAULT_LOYALTY_NUMBER);
+        final int colorLoyaltyText =
+            ContextCompat
+                .getColor(getContext(), typedArray.getResourceId(R.styleable.LoyaltyProgress_colorLoyaltyProgressText,
+                    R.color.ui_components_android_color_accent));
+        final float sizeLoyaltyNumber =
+            typedArray.getDimension(R.styleable.LoyaltyProgress_sizeLoyaltyNumber,
+                ScaleUtils.getPxFromSp(context,
+                    DEFAULT_SIZE_LOYALTY_NUMBER));
 
-        sizeRingStroke =
-                typedArray.getDimension(R.styleable.LoyaltyProgress_sizeRingStroke,
-                        ScaleUtils.getPxFromDp(context,
-                                DEFAULT_SIZE_RING_STROKE));
+        final float sizeRingStroke =
+            typedArray.getDimension(R.styleable.LoyaltyProgress_sizeRingStroke,
+                ScaleUtils.getPxFromDp(context,
+                    DEFAULT_SIZE_RING_STROKE));
 
         typedArray.recycle();
 
-        initPaint(context);
+        initTextPaint(context, loyaltyNumber, colorLoyaltyText, sizeLoyaltyNumber);
+        initRingPaint(context, sizeRingStroke);
+        initProgressPaint(context, sizeRingStroke);
     }
 
-    private void initPaint(final Context context) {
-        borderPaint.setAntiAlias(true);
-        borderPaint.setStyle(Paint.Style.STROKE);
-        borderPaint.setStrokeWidth(sizeRingStroke);
-        borderPaint.setStrokeCap(Paint.Cap.ROUND);
-        borderPaint
-                .setColor(ContextCompat.getColor(context, R.color.ui_components_android_color_accent));
+    private void initTextPaint(final Context context, final int loyaltyNumber, final int colorLoyaltyText,
+        final float sizeLoyaltyNumber) {
+        final String loyaltyText = String.valueOf(loyaltyNumber);
+        textPaint.setAntiAlias(true);
+        textPaint.setColor(colorLoyaltyText);
+        textPaint.setTextSize(sizeLoyaltyNumber);
+        textPaint.getTextBounds(loyaltyText, 0, loyaltyText.length(), boundsText);
+        TypefaceHelper.setTypeface(context.getApplicationContext(), textPaint, Font.SEMI_BOLD);
     }
 
-    public void setLoyaltyNumber(final int loyaltyNumber) {
+    private void configPaint(final Paint paint, final float sizeRingStroke) {
+        paint.setAntiAlias(true);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(sizeRingStroke);
+    }
+
+    private void initProgressPaint(final Context context, final float sizeRingStroke) {
+        configPaint(progressPaint, sizeRingStroke);
+        progressPaint.setStrokeCap(Paint.Cap.ROUND);
+        progressPaint
+            .setColor(ContextCompat.getColor(context, R.color.ui_components_android_color_accent));
+    }
+
+    private void initRingPaint(final Context context, final float sizeRingStroke) {
+        configPaint(ringPaint, sizeRingStroke);
+        ringPaint
+            .setColor(ContextCompat.getColor(context, R.color.ui_meli_light_grey));
+    }
+
+    public void setNumber(final int loyaltyNumber) {
+        final String loyaltyText = String.valueOf(loyaltyNumber);
+        textPaint.getTextBounds(loyaltyText, 0, loyaltyText.length(), boundsText);
         this.loyaltyNumber = loyaltyNumber;
     }
 
     public void setColorProgress(@ColorInt final int color) {
-        borderPaint.setColor(color);
+        progressPaint.setColor(color);
     }
 
     public void setColorText(@ColorInt final int color) {
         textPaint.setColor(color);
-        colorLoyaltyText = color;
+    }
+
+    public void setSizeText(@Dimension final float sizeLoyaltyNumber) {
+        textPaint.setTextSize(sizeLoyaltyNumber);
+    }
+
+    public void setColorSecondaryRing(@ColorInt final int color) {
+        ringPaint.setColor(color);
     }
 
     public void setProgress(@FloatRange(from = 0, to = 1) final float progress) {
         this.progress = progress;
-    }
-
-    public float getProgress() {
-        return progress;
     }
 
     public void setAnimation() {
@@ -130,11 +152,11 @@ class LoyaltyProgress extends View {
                     final float progressValue = progress;
                     final ValueAnimator valueAnimator = new ValueAnimator();
                     valueAnimator
-                            .setValues(
-                                    PropertyValuesHolder.ofFloat(PROPERTY_PROGRESS, 0, progressValue));
+                        .setValues(
+                            PropertyValuesHolder.ofFloat(PROPERTY_PROGRESS, 0, progressValue));
                     valueAnimator
-                            .setDuration(1500)
-                            .setInterpolator(new AccelerateDecelerateInterpolator());
+                        .setDuration(1500)
+                        .setInterpolator(new AccelerateDecelerateInterpolator());
                     valueAnimator.addUpdateListener(animation -> {
                         progress = (float) animation.getAnimatedValue(PROPERTY_PROGRESS);
                         invalidate();
@@ -181,7 +203,7 @@ class LoyaltyProgress extends View {
         }
 
         public static final Parcelable.Creator<SavedState> CREATOR
-                = new Parcelable.Creator<SavedState>() {
+            = new Parcelable.Creator<SavedState>() {
             public SavedState createFromParcel(Parcel in) {
                 return new SavedState(in);
             }
@@ -214,34 +236,62 @@ class LoyaltyProgress extends View {
     }
 
     @Override
-    protected void onDraw(final Canvas canvas) {
-        super.onDraw(canvas);
+    protected void onMeasure(final int widthMeasureSpec, final int heightMeasureSpec) {
+        final int width = measureSize(widthMeasureSpec);
+        final int height = measureSize(heightMeasureSpec);
+        setMeasuredDimension(width, height);
+    }
 
+    private int getMeasurement(int measureSpec, int preferred) {
+        int specSize = MeasureSpec.getSize(measureSpec);
+        int measurement = preferred;
+
+        switch (MeasureSpec.getMode(measureSpec)) {
+        case MeasureSpec.EXACTLY:
+            measurement = specSize;
+            break;
+        case MeasureSpec.AT_MOST:
+            measurement = Math.min(preferred, specSize);
+        case MeasureSpec.UNSPECIFIED:
+            break;
+        }
+
+        return measurement;
+    }
+
+    private int measureSize(int measureSpec) {
+        final int DEFAULT_SIZE = 46; // Dimension in dp
+        int preferred = (int) ScaleUtils.getPxFromDp(getContext(), DEFAULT_SIZE);
+        return getMeasurement(measureSpec, preferred);
+    }
+
+    @Override
+    protected synchronized void onDraw(final Canvas canvas) {
         //draw text
         final String loyaltyText = String.valueOf(loyaltyNumber);
-        textPaint.setColor(colorLoyaltyText);
-        textPaint.setTextSize(sizeLoyaltyNumber);
-        textPaint.getTextBounds(loyaltyText, 0, loyaltyText.length(), bounds);
-        TypefaceHelper.setTypeface(getContext().getApplicationContext(), textPaint, Font.SEMI_BOLD);
 
-        int x = (getWidth() / 2) - bounds.centerX();
-        int y = (getHeight() / 2) - bounds.centerY();
+        int averageWidth = (getWidth() / 2);
+        int averageHeight = (getHeight() / 2);
+        int x = averageWidth - boundsText.centerX();
+        int y = averageHeight - boundsText.centerY();
 
         canvas.drawText(loyaltyText, x, y, textPaint);
+
+        //draw ring
+        float radius = (float) (getWidth() / 2.2);
+        canvas.drawCircle(averageWidth, averageHeight, radius, ringPaint);
 
         //draw progress with round corners
         float defaultInset = ScaleUtils.getPxFromDp(getContext(), 8.5f);
         float defaultStrokeWidth = ScaleUtils.getPxFromDp(getContext(), DEFAULT_SIZE_RING_STROKE);
-        float currentStrokeWidth = sizeRingStroke;
+        float currentStrokeWidth = progressPaint.getStrokeWidth();
 
         // We calculate the necessary amount of inset proportionally
         // based on the current stroke width
         float currentInset = currentStrokeWidth * defaultInset / defaultStrokeWidth;
-
         final float startAngle = 270f;
-        boundsF.set(getBackground().getBounds());
-        boundsF.inset(currentInset, currentInset);
 
-        canvas.drawArc(boundsF, startAngle, progress * 360f, false, borderPaint);
+        boundsF.set(averageWidth - radius, averageHeight - radius, averageWidth + radius, averageHeight + radius);
+        canvas.drawArc(boundsF, startAngle, progress * 360f, false, progressPaint);
     }
 }

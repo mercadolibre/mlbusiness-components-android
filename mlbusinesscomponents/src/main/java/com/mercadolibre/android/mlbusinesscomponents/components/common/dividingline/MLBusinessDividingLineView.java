@@ -44,6 +44,7 @@ public class MLBusinessDividingLineView extends View {
         typedArray.recycle();
 
         final int dividerColor = ContextCompat.getColor(context, R.color.divider_line_gray);
+        linePaint.setAntiAlias(true);
         linePaint.setColor(dividerColor);
         linePaint.setStrokeWidth(ScaleUtils.getPxFromDp(context, 1f));
         setBackgroundColor(ContextCompat.getColor(context, R.color.ui_meli_white));
