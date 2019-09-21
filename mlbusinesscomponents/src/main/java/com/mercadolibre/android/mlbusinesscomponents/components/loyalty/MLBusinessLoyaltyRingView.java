@@ -48,10 +48,12 @@ public class MLBusinessLoyaltyRingView extends ConstraintLayout {
 
     private void configLoyaltyRingView() {
         final float percentage = businessLoyaltyRingData.getRingPercentage();
-        progress.setColorProgress(Color.parseColor(businessLoyaltyRingData.getRingHexaColor()));
+        final int colorRing = Color.parseColor(businessLoyaltyRingData.getRingHexaColor());
+        progress.setColorText(colorRing);
+        progress.setColorProgress(colorRing);
         progress.setProgress(percentage);
         progress.setAnimation();
-        progress.setLoyaltyNumber(businessLoyaltyRingData.getRingNumber());
+        progress.setNumber(businessLoyaltyRingData.getRingNumber());
 
         loyaltyTitle.setText(businessLoyaltyRingData.getTitle());
         loyaltyButton.setText(businessLoyaltyRingData.getButtonTitle());

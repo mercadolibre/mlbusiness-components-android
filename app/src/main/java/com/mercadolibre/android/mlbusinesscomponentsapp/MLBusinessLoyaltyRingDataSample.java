@@ -5,7 +5,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusine
 public class MLBusinessLoyaltyRingDataSample implements MLBusinessLoyaltyRingData {
     @Override
     public String getRingHexaColor() {
-        return "#3483FA";
+        return "#9483FA";
     }
 
     @Override
