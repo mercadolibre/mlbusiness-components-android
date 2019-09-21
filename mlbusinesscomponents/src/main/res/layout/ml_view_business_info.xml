@@ -17,7 +17,6 @@
         android:background="?selectableItemBackground"
         android:lineSpacingExtra="2.1sp"
         android:textColor="@color/ui_components_action_bar_text_color"
-        android:textSize="@dimen/ui_fontsize_medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/icon"
