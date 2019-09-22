@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.squareup.picasso.Picasso;
 
+@SuppressWarnings("WeakerAccess")
 public class MLBusinessCrossSellingBoxView extends ConstraintLayout {
 
     public interface OnClickCrossSellingBoxView {

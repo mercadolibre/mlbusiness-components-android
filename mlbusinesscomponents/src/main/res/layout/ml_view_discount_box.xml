@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="@dimen/ui_view_discount_box_width"
     android:layout_height="@dimen/ui_view_discount_box_height"
+    android:orientation="vertical"
     android:layout_gravity="center">
 
     <ImageView
@@ -13,12 +13,11 @@
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
         android:layout_marginStart="12dp"
-        android:contentDescription="@string/app_name"
-        app:layout_constraintBottom_toTopOf="@+id/titleLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="@dimen/ui_025m"
+        android:background="@drawable/discount_item_background"
+        android:scaleType="centerInside"
+        android:padding="@dimen/ui_050m"
+        android:contentDescription="@string/app_name" />
 
     <TextView
         android:id="@+id/titleLabel"
@@ -29,12 +28,7 @@
         android:gravity="center"
         android:lineSpacingExtra="2sp"
         android:textColor="@color/ui_fullscreenmodal_toolbar_text_color"
-        android:textSize="@dimen/ui_fontsize_xxsmall"
-        app:layout_constraintBottom_toTopOf="@+id/subtitleLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iconImage" />
+        android:textSize="@dimen/ui_fontsize_xxsmall" />
 
     <TextView
         android:id="@+id/subtitleLabel"
@@ -44,11 +38,5 @@
         android:gravity="center"
         android:textColor="@color/ui_fullscreenmodal_toolbar_text_color"
         android:textSize="@dimen/ui_fontsize_large"
-        android:lineSpacingExtra="4sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleLabel" />
-
-</android.support.constraint.ConstraintLayout>
+        android:lineSpacingExtra="4sp" />
+</LinearLayout>

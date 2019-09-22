@@ -46,7 +46,6 @@ public class MLBusinessDividingLineView extends View {
         final int dividerColor = ContextCompat.getColor(context, R.color.divider_line_gray);
         linePaint.setAntiAlias(true);
         linePaint.setColor(dividerColor);
-        linePaint.setStrokeWidth(ScaleUtils.getPxFromDp(context, 1f));
         setBackgroundColor(ContextCompat.getColor(context, R.color.ui_meli_white));
     }
 
@@ -79,7 +78,6 @@ public class MLBusinessDividingLineView extends View {
 
     @Override
     protected void onDraw(final Canvas canvas) {
-        super.onDraw(canvas);
 
         float averageHeight;
 
@@ -91,10 +89,12 @@ public class MLBusinessDividingLineView extends View {
                 (averageHeight + ScaleUtils.getPxFromDp(getContext(), 10));
             final float factor = ScaleUtils.getPxFromDp(getContext(), 7.67f);
 
+            linePaint.setStrokeWidth(ScaleUtils.getPxFromDp(getContext(), 1f));
+
             // Draw triangle
-            canvas.drawLine((mediumLength - factor), averageHeight, mediumLength,
+            canvas.drawLine((mediumLength - factor + 0.5f), averageHeight, mediumLength - 0.15f,
                 maximumTrianglePoint, linePaint);
-            canvas.drawLine(mediumLength, maximumTrianglePoint, (mediumLength + factor),
+            canvas.drawLine(mediumLength + 0.15f, maximumTrianglePoint, (mediumLength + factor - 0.5f),
                 averageHeight, linePaint);
 
             linePaint.setStrokeWidth(ScaleUtils.getPxFromDp(getContext(), 1.5f));

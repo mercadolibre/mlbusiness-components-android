@@ -128,9 +128,9 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
     }
 
     private static class SpacesItemDecoration extends RecyclerView.ItemDecoration {
-        private int topSpace;
-        private int lateralSpace;
-        private int itemsInLastRow;
+        private final int topSpace;
+        private final int lateralSpace;
+        private final int itemsInLastRow;
 
         SpacesItemDecoration(final Context context, int itemsInLastRow) {
             this.topSpace = (int) ScaleUtils.getPxFromDp(context, 24);
