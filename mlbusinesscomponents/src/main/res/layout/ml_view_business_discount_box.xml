@@ -20,7 +20,7 @@
         android:layout_marginStart="8dp"
         android:lineSpacingExtra="4sp"
         android:textColor="@color/ui_fullscreenmodal_toolbar_text_color"
-        android:textSize="@dimen/ui_font_discount_title"
+        android:textSize="@dimen/ui_fontsize_large"
         app:layout_constraintBottom_toTopOf="@+id/subtitleLabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

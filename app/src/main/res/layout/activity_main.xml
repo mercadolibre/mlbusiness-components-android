@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:focusableInTouchMode="true">
+        android:focusableInTouchMode="true"
+        android:layout_marginTop="@dimen/ui_1m">
 
         <com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyRingView
             android:id="@+id/loyaltyView"
@@ -22,6 +23,8 @@
             android:id="@+id/divider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ui_1m"
+            android:layout_marginBottom="@dimen/ui_1m"
             app:hasTriangle="true"/>
 
         <com.mercadolibre.android.mlbusinesscomponents.components.discount.MLBusinessDiscountBoxView

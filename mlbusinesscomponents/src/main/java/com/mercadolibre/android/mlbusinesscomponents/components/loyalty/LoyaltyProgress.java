@@ -85,6 +85,7 @@ class LoyaltyProgress extends View {
 
         typedArray.recycle();
 
+        setSaveEnabled(true);
         initTextPaint(context, loyaltyNumber, colorLoyaltyText, sizeLoyaltyNumber);
         initRingPaint(context, sizeRingStroke);
         initProgressPaint(context, sizeRingStroke);
