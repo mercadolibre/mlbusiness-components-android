@@ -88,6 +88,9 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
             });
         }
 
+        for (int i = 0; i < recyclerDiscountBox.getItemDecorationCount(); i++) {
+            recyclerDiscountBox.removeItemDecorationAt(0);
+        }
         recyclerDiscountBox.addItemDecoration(new SpacesItemDecoration(getContext(), span));
         recyclerDiscountBox.setLayoutManager(manager);
         recyclerDiscountBox.setAdapter(discountBoxAdapter);
