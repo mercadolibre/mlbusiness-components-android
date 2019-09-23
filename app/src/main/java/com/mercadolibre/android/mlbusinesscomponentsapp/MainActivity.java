@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.LinearLayout;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
 import com.mercadolibre.android.mlbusinesscomponents.components.common.MLBusinessInfoView;
 import com.mercadolibre.android.mlbusinesscomponents.components.common.downloadapp.MLBusinessDownloadAppView;
 import com.mercadolibre.android.mlbusinesscomponents.components.crossselling.MLBusinessCrossSellingBoxView;
@@ -17,15 +16,14 @@ import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusine
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyRingView;
 
 public class MainActivity extends AppCompatActivity
-    implements MLBusinessLoyaltyRingView.OnClickLoyaltyRing,
-    MLBusinessDiscountBoxView.OnClickDiscountBox,
-    MLBusinessCrossSellingBoxView.OnClickCrossSellingBoxView,
-    MLBusinessDownloadAppView.OnClickDownloadApp {
+        implements MLBusinessLoyaltyRingView.OnClickLoyaltyRing,
+        MLBusinessDiscountBoxView.OnClickDiscountBox,
+        MLBusinessCrossSellingBoxView.OnClickCrossSellingBoxView,
+        MLBusinessDownloadAppView.OnClickDownloadApp {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Fresco.initialize(this);
         setContentView(R.layout.activity_main);
 
         MLBusinessLoyaltyRingView ringView = findViewById(R.id.loyaltyView);
@@ -58,7 +56,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onClickDiscountItem(final int index, @Nullable final String deepLink,
-        @Nullable final String trackId) {
+                                    @Nullable final String trackId) {
         if (deepLink != null) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
         }
