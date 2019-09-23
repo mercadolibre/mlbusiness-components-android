@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Nivel 2 - Mercado Puntos" />
 
-    <com.facebook.drawee.view.SimpleDraweeView
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/icon"
         android:layout_width="36dp"
         android:layout_height="36dp"
