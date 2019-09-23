@@ -88,6 +88,9 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
             });
         }
 
+        for (int i = 0; i < recyclerDiscountBox.getItemDecorationCount(); i++) {
+            recyclerDiscountBox.removeItemDecorationAt(0);
+        }
         recyclerDiscountBox.addItemDecoration(new SpacesItemDecoration(getContext(), span));
         recyclerDiscountBox.setLayoutManager(manager);
         recyclerDiscountBox.setAdapter(discountBoxAdapter);
@@ -117,6 +120,10 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
 
     public void updateWithData(@NonNull final MLBusinessDiscountBoxData businessDiscountBoxData) {
         init(businessDiscountBoxData, this.onClickDiscountBox);
+    }
+
+    public void updateWithData(@NonNull final MLBusinessDiscountBoxData businessDiscountBoxData, @Nullable final OnClickDiscountBox onclick) {
+        init(businessDiscountBoxData, onclick);
     }
 
     @Override
