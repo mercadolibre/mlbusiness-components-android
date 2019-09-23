@@ -119,6 +119,10 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
         init(businessDiscountBoxData, this.onClickDiscountBox);
     }
 
+    public void updateWithData(@NonNull final MLBusinessDiscountBoxData businessDiscountBoxData, @Nullable final OnClickDiscountBox onclick) {
+        init(businessDiscountBoxData, onclick);
+    }
+
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();

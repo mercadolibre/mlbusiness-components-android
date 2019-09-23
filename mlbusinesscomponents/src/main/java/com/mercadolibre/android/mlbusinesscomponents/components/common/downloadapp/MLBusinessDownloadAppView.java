@@ -57,6 +57,10 @@ public class MLBusinessDownloadAppView extends ConstraintLayout {
         init(businessDownloadAppData, this.onClickDownloadApp);
     }
 
+    public void updateView(@NonNull final MLBusinessDownloadAppData businessDownloadAppData, @NonNull final OnClickDownloadApp onClick) {
+        init(businessDownloadAppData, onClick);
+    }
+
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
