@@ -6,32 +6,31 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/ui_meli_white"
-    android:paddingStart="11dp"
-    android:paddingLeft="11dp"
-    android:paddingTop="10dp"
+    android:paddingStart="16dp"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
     android:paddingEnd="16dp"
     android:paddingRight="16dp"
-    android:paddingBottom="10dp"
+    android:paddingBottom="16dp"
     tools:ignore="Overdraw">
 
     <TextView
         android:id="@+id/loyaltyTitle"
-        style="@style/MLFont.Regular.XSmall"
+        style="@style/MLFont.Bold.Semi"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:lineSpacingExtra="2.4sp"
         android:maxLines="2"
-        android:paddingTop="4dp"
+        android:textSize="@dimen/ui_fontsize_xsmall"
         android:textColor="@color/ui_fullscreenmodal_toolbar_text_color"
         app:layout_constraintBottom_toTopOf="@+id/loyaltyButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/loyaltyRing"
-        app:layout_constraintTop_toTopOf="@+id/loyaltyRing"
         tools:text="Beneficios" />
 
     <TextView
@@ -41,10 +40,8 @@
         android:layout_height="wrap_content"
         android:background="?selectableItemBackground"
         android:lineSpacingExtra="2.1sp"
-        android:paddingBottom="4dp"
         android:textColor="@color/ui_components_action_bar_text_color"
         android:textSize="@dimen/ui_fontsize_medium"
-        app:layout_constraintBottom_toBottomOf="@+id/loyaltyRing"
         app:layout_constraintEnd_toEndOf="@+id/loyaltyTitle"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/loyaltyTitle"
@@ -53,12 +50,12 @@
 
     <com.mercadolibre.android.mlbusinesscomponents.components.loyalty.LoyaltyProgress
         android:id="@+id/loyaltyRing"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:sizeLoyaltyNumber="20sp"
-        app:sizeRingStroke="3.4dp" />
+        app:sizeLoyaltyNumber="22sp"
+        app:sizeRingStroke="3dp" />
 
 </android.support.constraint.ConstraintLayout>
