@@ -32,7 +32,6 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
     private OnClickDiscountBox onClickDiscountBox;
 
     private static final int DEFAULT_LIST_SIZE = 6;
-    private static int DEFAULT_COLUMNS;
 
     public MLBusinessDiscountBoxView(final Context context) {
         this(context, null);
@@ -62,10 +61,10 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
                 getLimitedList(),
                 onClickDiscountBox);
         final int totalSize = discountBoxAdapter.getItemCount();
-        DEFAULT_COLUMNS = totalSize == 4 ? 2 : 6;
-        final int span = totalSize % (DEFAULT_COLUMNS / 2);
+        final int defaultColumns = totalSize == 4 ? 2 : 6;
+        final int span = totalSize % (defaultColumns / 2);
 
-        final GridLayoutManager manager = new GridLayoutManager(getContext(), DEFAULT_COLUMNS) {
+        final GridLayoutManager manager = new GridLayoutManager(getContext(), defaultColumns) {
             @Override
             public boolean canScrollVertically() {
                 return false;
@@ -76,7 +75,7 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
                 return false;
             }
         };
-        if (DEFAULT_COLUMNS == 6) {
+        if (defaultColumns == 6) {
             manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                 @Override
                 public int getSpanSize(final int position) {
@@ -94,7 +93,7 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
         for (int i = 0; i < recyclerDiscountBox.getItemDecorationCount(); i++) {
             recyclerDiscountBox.removeItemDecorationAt(0);
         }
-        recyclerDiscountBox.addItemDecoration(new SpacesItemDecoration(getContext(), span));
+        recyclerDiscountBox.addItemDecoration(new SpacesItemDecoration(getContext(), span, defaultColumns));
         recyclerDiscountBox.setLayoutManager(manager);
         recyclerDiscountBox.setAdapter(discountBoxAdapter);
         recyclerDiscountBox.setHasFixedSize(true);
@@ -144,11 +143,13 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
         private final int topSpace;
         private final int lateralSpace;
         private final int itemsInLastRow;
+        private final int defaultColumns;
 
-        SpacesItemDecoration(final Context context, int itemsInLastRow) {
+        SpacesItemDecoration(final Context context, final int itemsInLastRow, final int defaultColumns) {
             this.topSpace = (int) ScaleUtils.getPxFromDp(context, 24);
             this.lateralSpace = (int) ScaleUtils.getPxFromDp(context, 16);
             this.itemsInLastRow = itemsInLastRow;
+            this.defaultColumns = defaultColumns;
         }
 
         @Override
@@ -179,7 +180,7 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
         }
 
         private boolean isFirstRow(final RecyclerView parent, final View view) {
-            final int columns = DEFAULT_COLUMNS == 6 ? 2 : 1;
+            final int columns = defaultColumns == 6 ? 2 : 1;
             return parent.getChildAdapterPosition(view) <= columns;
         }
 
