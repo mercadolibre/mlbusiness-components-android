@@ -2,11 +2,8 @@ package com.mercadolibre.android.mlbusinesscomponents.components.loyalty;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
-import android.support.v4.graphics.drawable.DrawableCompat;
-import android.support.v7.content.res.AppCompatResources;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -62,19 +59,13 @@ public class MLBusinessLoyaltyHeaderView extends ConstraintLayout {
     }
 
     private void updateRing() {
-        Drawable unwrappedDrawable = AppCompatResources.getDrawable(getContext(), R.drawable.loyalty_progress_background);
-        if (unwrappedDrawable != null) {
-            Drawable wrappedDrawable = DrawableCompat.wrap(unwrappedDrawable);
-            DrawableCompat.setTint(wrappedDrawable, Color.parseColor(businessLoyaltyHeaderData.getSecondaryHexaColor()));
-            progress.setBackground(wrappedDrawable);
-        }
-
         final float percentage = businessLoyaltyHeaderData.getRingPercentage();
         progress.setColorProgress(Color.parseColor(businessLoyaltyHeaderData.getPrimaryHexaColor()));
         progress.setColorText(Color.parseColor(businessLoyaltyHeaderData.getPrimaryHexaColor()));
+        progress.setColorSecondaryRing(Color.parseColor(businessLoyaltyHeaderData.getSecondaryHexaColor()));
         progress.setProgress(percentage);
         progress.setAnimation();
-        progress.setLoyaltyNumber(businessLoyaltyHeaderData.getRingNumber());
+        progress.setNumber(businessLoyaltyHeaderData.getRingNumber());
     }
 
     public void init(

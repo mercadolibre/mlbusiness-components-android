@@ -8,15 +8,15 @@
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/imageSite"
-        android:layout_width="34dp"
-        android:layout_height="24dp"
+        android:layout_width="@dimen/ui_view_download_icon_width"
+        android:layout_height="@dimen/ui_view_download_icon_height"
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/titleDownload"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/titleDownload" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/titleDownload"
@@ -27,32 +27,37 @@
         android:layout_marginEnd="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:ellipsize="end"
         android:lineSpacingExtra="2sp"
         android:maxLines="2"
         android:textColor="@color/ui_fullscreenmodal_toolbar_text_color"
         android:textSize="@dimen/ui_fontsize_xsmall"
-        app:layout_constraintBottom_toBottomOf="@+id/downloadButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/downloadButton"
         app:layout_constraintStart_toEndOf="@+id/imageSite"
-        app:layout_constraintTop_toTopOf="@+id/downloadButton"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="Exclusivo con la app de Mercado Pago" />
 
     <com.mercadolibre.android.ui.widgets.MeliButton
         android:id="@+id/downloadButton"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
+        android:paddingStart="16dp"
+        android:paddingLeft="16dp"
+        android:paddingEnd="16dp"
+        android:paddingRight="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/titleDownload"
         app:layout_constraintTop_toTopOf="parent"
-        app:type="actionPrimary" />
+        app:type="actionPrimary"
+        app:button_size="small"
+        tools:text="Descargar" />
 
 </merge>

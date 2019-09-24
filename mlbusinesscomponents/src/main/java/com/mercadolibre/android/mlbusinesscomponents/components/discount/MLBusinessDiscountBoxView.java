@@ -88,6 +88,9 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
             });
         }
 
+        for (int i = 0; i < recyclerDiscountBox.getItemDecorationCount(); i++) {
+            recyclerDiscountBox.removeItemDecorationAt(0);
+        }
         recyclerDiscountBox.addItemDecoration(new SpacesItemDecoration(getContext(), span));
         recyclerDiscountBox.setLayoutManager(manager);
         recyclerDiscountBox.setAdapter(discountBoxAdapter);
@@ -119,6 +122,10 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
         init(businessDiscountBoxData, this.onClickDiscountBox);
     }
 
+    public void updateWithData(@NonNull final MLBusinessDiscountBoxData businessDiscountBoxData, @Nullable final OnClickDiscountBox onclick) {
+        init(businessDiscountBoxData, onclick);
+    }
+
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
@@ -128,13 +135,13 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
     }
 
     private static class SpacesItemDecoration extends RecyclerView.ItemDecoration {
-        private int topSpace;
-        private int lateralSpace;
-        private int itemsInLastRow;
+        private final int topSpace;
+        private final int lateralSpace;
+        private final int itemsInLastRow;
 
         SpacesItemDecoration(final Context context, int itemsInLastRow) {
             this.topSpace = (int) ScaleUtils.getPxFromDp(context, 24);
-            this.lateralSpace = (int) ScaleUtils.getPxFromDp(context, 8);
+            this.lateralSpace = (int) ScaleUtils.getPxFromDp(context, 16);
             this.itemsInLastRow = itemsInLastRow;
         }
 

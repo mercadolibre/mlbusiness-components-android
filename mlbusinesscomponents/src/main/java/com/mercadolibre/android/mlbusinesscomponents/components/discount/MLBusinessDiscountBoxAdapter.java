@@ -59,18 +59,17 @@ class MLBusinessDiscountBoxAdapter
         final ImageView iconImage;
         final TextView titleLabel;
         final TextView subtitleLabel;
-        private final Context context;
 
         DiscountBoxViewHolder(@NonNull final View itemView) {
             super(itemView);
 
-            context = itemView.getContext();
             iconImage = itemView.findViewById(R.id.iconImage);
             titleLabel = itemView.findViewById(R.id.titleLabel);
             subtitleLabel = itemView.findViewById(R.id.subtitleLabel);
         }
 
         void setRippleEffect() {
+            final Context context = itemView.getContext();
             if (context != null) {
                 TypedValue outValue = new TypedValue();
                 context.getTheme().resolveAttribute(android.R.attr.selectableItemBackground, outValue, true);
@@ -83,6 +82,7 @@ class MLBusinessDiscountBoxAdapter
         }
 
         void loadIconImage(@NonNull String url) {
+            final Context context = itemView.getContext();
             if (context != null) {
                 Picasso
                     .with(context)
