@@ -8,8 +8,11 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
+
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.ui.widgets.MeliButton;
+
+import java.lang.ref.WeakReference;
 
 public class MLBusinessDownloadAppView extends ConstraintLayout {
 
@@ -17,7 +20,7 @@ public class MLBusinessDownloadAppView extends ConstraintLayout {
         void OnClickDownloadAppButton(@NonNull final String deepLink);
     }
 
-    private OnClickDownloadApp onClickDownloadApp;
+    private WeakReference<OnClickDownloadApp> onClickDownloadApp;
 
     public MLBusinessDownloadAppView(final Context context) {
         this(context, null);
@@ -48,25 +51,17 @@ public class MLBusinessDownloadAppView extends ConstraintLayout {
 
         final MeliButton downloadButton = findViewById(R.id.downloadButton);
         downloadButton.setText(businessDownloadAppData.getButtonTitle());
-        onClickDownloadApp = onClick;
-        downloadButton.setOnClickListener(
-            v -> onClickDownloadApp.OnClickDownloadAppButton(businessDownloadAppData.getButtonDeepLink()));
-    }
-
-    public void updateView(@NonNull final MLBusinessDownloadAppData businessDownloadAppData) {
-        init(businessDownloadAppData, this.onClickDownloadApp);
+        onClickDownloadApp = new WeakReference<>(onClick);
+        downloadButton.setOnClickListener(v -> {
+            OnClickDownloadApp listener = onClickDownloadApp.get();
+            if (listener != null) {
+                listener.OnClickDownloadAppButton(businessDownloadAppData.getButtonDeepLink());
+            }
+        });
     }
 
     public void updateView(@NonNull final MLBusinessDownloadAppData businessDownloadAppData, @NonNull final OnClickDownloadApp onClick) {
         init(businessDownloadAppData, onClick);
-    }
-
-    @Override
-    protected void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
-        if (onClickDownloadApp != null) {
-            onClickDownloadApp = null;
-        }
     }
 
     public enum AppSite {
