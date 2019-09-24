@@ -5,17 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:parentTag="android.support.constraint.ConstraintLayout"
-    android:background="@color/ui_meli_red"
+    tools:layout_height="wrap_content"
     tools:ignore="Overdraw">
 
     <TextView
         android:id="@+id/titleLabel"
         style="@style/MLFont.Bold.Semi"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
         android:lineSpacingExtra="4sp"
+        android:gravity="center"
         android:textColor="@color/ui_fullscreenmodal_toolbar_text_color"
         tools:text="Title"
         android:textSize="@dimen/ui_fontsize_large"
