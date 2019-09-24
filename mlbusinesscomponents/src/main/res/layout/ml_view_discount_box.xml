@@ -14,7 +14,6 @@
         android:layout_marginRight="12dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="@dimen/ui_025m"
-        android:background="@drawable/discount_item_background"
         android:scaleType="centerInside"
         android:padding="@dimen/ui_050m"
         android:contentDescription="@string/app_name" />
