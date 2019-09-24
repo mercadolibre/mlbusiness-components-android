@@ -141,7 +141,7 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
 
         SpacesItemDecoration(final Context context, int itemsInLastRow) {
             this.topSpace = (int) ScaleUtils.getPxFromDp(context, 24);
-            this.lateralSpace = (int) ScaleUtils.getPxFromDp(context, 8);
+            this.lateralSpace = (int) ScaleUtils.getPxFromDp(context, 16);
             this.itemsInLastRow = itemsInLastRow;
         }
 
