@@ -15,6 +15,8 @@ import com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils;
 import java.util.List;
 
+import java.lang.ref.WeakReference;
+
 import static com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtils.isValidString;
 
 public class MLBusinessDiscountBoxView extends ConstraintLayout {
@@ -29,7 +31,7 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
     private MLBusinessDiscountBoxData businessDiscountBoxData;
     private TextView titleLabel;
     private TextView subtitleLabel;
-    private OnClickDiscountBox onClickDiscountBox;
+    private WeakReference<OnClickDiscountBox> onClickDiscountBox;
 
     private static final int DEFAULT_LIST_SIZE = 6;
 
@@ -118,25 +120,12 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
     public void init(@NonNull final MLBusinessDiscountBoxData businessDiscountBoxData,
         @Nullable final OnClickDiscountBox onclick) {
         this.businessDiscountBoxData = businessDiscountBoxData;
-        this.onClickDiscountBox = onclick;
+        this.onClickDiscountBox = new WeakReference<>(onclick);
         configDiscountBoxView();
     }
 
-    public void updateWithData(@NonNull final MLBusinessDiscountBoxData businessDiscountBoxData) {
-        init(businessDiscountBoxData, this.onClickDiscountBox);
-    }
-
-    public void updateWithData(@NonNull final MLBusinessDiscountBoxData businessDiscountBoxData,
-        @Nullable final OnClickDiscountBox onclick) {
+    public void updateWithData(@NonNull final MLBusinessDiscountBoxData businessDiscountBoxData, @Nullable final OnClickDiscountBox onclick) {
         init(businessDiscountBoxData, onclick);
-    }
-
-    @Override
-    protected void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
-        if (onClickDiscountBox != null) {
-            onClickDiscountBox = null;
-        }
     }
 
     private static class SpacesItemDecoration extends RecyclerView.ItemDecoration {

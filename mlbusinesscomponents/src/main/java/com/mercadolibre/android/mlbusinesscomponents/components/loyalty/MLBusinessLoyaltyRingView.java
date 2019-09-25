@@ -9,6 +9,8 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 
+import java.lang.ref.WeakReference;
+
 public class MLBusinessLoyaltyRingView extends ConstraintLayout {
 
     public interface OnClickLoyaltyRing {
@@ -18,7 +20,7 @@ public class MLBusinessLoyaltyRingView extends ConstraintLayout {
     private LoyaltyProgress progress;
     private TextView loyaltyTitle;
     private TextView loyaltyButton;
-    private OnClickLoyaltyRing onClickLoyaltyRing;
+    private WeakReference<OnClickLoyaltyRing> onClickLoyaltyRing;
     private MLBusinessLoyaltyRingData businessLoyaltyRingData;
 
     public MLBusinessLoyaltyRingView(final Context context) {
@@ -59,8 +61,11 @@ public class MLBusinessLoyaltyRingView extends ConstraintLayout {
         loyaltyButton.setText(businessLoyaltyRingData.getButtonTitle());
         loyaltyButton.setOnClickListener(v -> {
                 if (onClickLoyaltyRing != null) {
-                    onClickLoyaltyRing
-                        .onClickLoyaltyButton(businessLoyaltyRingData.getButtonDeepLink());
+                    OnClickLoyaltyRing listener = onClickLoyaltyRing.get();
+                    if (listener != null) {
+                        listener
+                                .onClickLoyaltyButton(businessLoyaltyRingData.getButtonDeepLink());
+                    }
                 }
             }
         );
@@ -70,15 +75,8 @@ public class MLBusinessLoyaltyRingView extends ConstraintLayout {
         @NonNull final MLBusinessLoyaltyRingData businessLoyaltyRingData,
         @NonNull final OnClickLoyaltyRing onClick) {
         this.businessLoyaltyRingData = businessLoyaltyRingData;
-        this.onClickLoyaltyRing = onClick;
+        this.onClickLoyaltyRing = new WeakReference<>(onClick);
         configLoyaltyRingView();
     }
 
-    @Override
-    protected void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
-        if (onClickLoyaltyRing != null) {
-            onClickLoyaltyRing = null;
-        }
-    }
 }

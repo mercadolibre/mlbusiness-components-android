@@ -14,17 +14,19 @@ import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem;
 import com.squareup.picasso.Picasso;
+
+import java.lang.ref.WeakReference;
 import java.util.List;
 
 class MLBusinessDiscountBoxAdapter
     extends RecyclerView.Adapter<MLBusinessDiscountBoxAdapter.DiscountBoxViewHolder> {
 
     final private List<MLBusinessSingleItem> items;
-    final private MLBusinessDiscountBoxView.OnClickDiscountBox onClickDiscountBox;
+    final private WeakReference<MLBusinessDiscountBoxView.OnClickDiscountBox> onClickDiscountBox;
 
     MLBusinessDiscountBoxAdapter(
-        final List<com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem> items,
-        @Nullable final MLBusinessDiscountBoxView.OnClickDiscountBox onClickDiscountBox) {
+            final List<com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem> items,
+            @Nullable final WeakReference<MLBusinessDiscountBoxView.OnClickDiscountBox> onClickDiscountBox) {
         this.items = items;
         this.onClickDiscountBox = onClickDiscountBox;
     }
@@ -78,7 +80,12 @@ class MLBusinessDiscountBoxAdapter
         }
 
         void setOnClickItem(final int indexItem, @Nullable final String deepLink, @Nullable final String trackId) {
-            itemView.setOnClickListener(v -> onClickDiscountBox.onClickDiscountItem(indexItem, deepLink, trackId));
+            itemView.setOnClickListener(v -> {
+                MLBusinessDiscountBoxView.OnClickDiscountBox listener = onClickDiscountBox.get();
+                if (listener != null) {
+                    listener.onClickDiscountItem(indexItem, deepLink, trackId);
+                }
+            });
         }
 
         void loadIconImage(@NonNull String url) {
