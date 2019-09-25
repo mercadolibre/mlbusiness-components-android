@@ -61,7 +61,7 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
                 getLimitedList(),
                 onClickDiscountBox);
         final int totalSize = discountBoxAdapter.getItemCount();
-        final int defaultColumns = totalSize == 4 ? 2 : 6;
+        final int defaultColumns = totalSize == 4 ? 2 : DEFAULT_LIST_SIZE;
         final int span = totalSize % (defaultColumns / 2);
 
         final GridLayoutManager manager = new GridLayoutManager(getContext(), defaultColumns) {
@@ -82,7 +82,7 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
                     if (span == 0 || (position <= ((totalSize - 1) - span))) {
                         return 2;
                     } else if (span == 1) {
-                        return 6;
+                        return DEFAULT_LIST_SIZE;
                     } else {
                         return 3;
                     }
@@ -180,7 +180,7 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
         }
 
         private boolean isFirstRow(final RecyclerView parent, final View view) {
-            final int columns = defaultColumns == 6 ? 2 : 1;
+            final int columns = defaultColumns == DEFAULT_LIST_SIZE ? 2 : 1;
             return parent.getChildAdapterPosition(view) <= columns;
         }
 
