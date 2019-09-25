@@ -7,38 +7,29 @@ import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.mercadolibre.android.mlbusinesscomponents.R;
 
 public class MLBusinessLoyaltyHeaderView extends ConstraintLayout {
 
-    private ViewGroup containerView;
-    private LoyaltyProgress progress;
-    private TextView title;
-    private TextView loyaltyLevelInfo;
+    private final ViewGroup containerView;
+    private final LoyaltyProgress progress;
+    private final TextView title;
+    private final TextView loyaltyLevelInfo;
     private MLBusinessLoyaltyHeaderData businessLoyaltyHeaderData;
 
-    public MLBusinessLoyaltyHeaderView(Context context) {
-        super(context);
-        initMLBusinessLoyaltyHeaderView(context);
+    public MLBusinessLoyaltyHeaderView(final Context context) {
+        this(context, null);
     }
 
-    public MLBusinessLoyaltyHeaderView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        initMLBusinessLoyaltyHeaderView(context);
+    public MLBusinessLoyaltyHeaderView(final Context context, final AttributeSet attrs) {
+        this(context, attrs, 0);
     }
 
-    public MLBusinessLoyaltyHeaderView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public MLBusinessLoyaltyHeaderView(final Context context, final AttributeSet attrs, final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initMLBusinessLoyaltyHeaderView(context);
-    }
 
-    private void initMLBusinessLoyaltyHeaderView(final Context context) {
         inflate(context, R.layout.ml_view_business_loyalty_header, this);
-        initLoyaltyHeaderView();
-    }
 
-    private void initLoyaltyHeaderView() {
         containerView = findViewById(R.id.containerView);
         progress = findViewById(R.id.loyaltyRing);
         title = findViewById(R.id.loyaltyTitle);
@@ -48,7 +39,7 @@ public class MLBusinessLoyaltyHeaderView extends ConstraintLayout {
     private void configLoyaltyHeaderView() {
         updateRing();
 
-        int textColor = Color.parseColor(businessLoyaltyHeaderData.getPrimaryHexaColor());
+        final int textColor = Color.parseColor(businessLoyaltyHeaderData.getPrimaryHexaColor());
         title.setText(businessLoyaltyHeaderData.getTitle());
         title.setTextColor(textColor);
 
@@ -68,14 +59,12 @@ public class MLBusinessLoyaltyHeaderView extends ConstraintLayout {
         progress.setNumber(businessLoyaltyHeaderData.getRingNumber());
     }
 
-    public void init(
-            @NonNull final MLBusinessLoyaltyHeaderData businessLoyaltyHeaderData) {
+    public void init(@NonNull final MLBusinessLoyaltyHeaderData businessLoyaltyHeaderData) {
         this.businessLoyaltyHeaderData = businessLoyaltyHeaderData;
         configLoyaltyHeaderView();
     }
 
-    public void updateWithModel(
-            @NonNull final MLBusinessLoyaltyHeaderData businessLoyaltyHeaderData) {
+    public void updateWithModel(@NonNull final MLBusinessLoyaltyHeaderData businessLoyaltyHeaderData) {
         init(businessLoyaltyHeaderData);
     }
 }

@@ -9,7 +9,6 @@ import android.util.AttributeSet;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.squareup.picasso.Picasso;
 
-@SuppressWarnings("WeakerAccess")
 public class MLBusinessCrossSellingBoxView extends ConstraintLayout {
 
     public interface OnClickCrossSellingBoxView {
@@ -35,17 +34,16 @@ public class MLBusinessCrossSellingBoxView extends ConstraintLayout {
         loadImageUrl(businessCrossSellingBoxData.getIconUrl());
         ((AppCompatTextView) findViewById(R.id.crossSellingTitle))
             .setText(businessCrossSellingBoxData.getText());
-        AppCompatTextView action = findViewById(R.id.crossSellingAction);
+        final AppCompatTextView action = findViewById(R.id.crossSellingAction);
         action.setText(businessCrossSellingBoxData.getButtonTitle());
         action.setOnClickListener(v -> onClick
             .OnClickCrossSellingButton(businessCrossSellingBoxData.getButtonDeepLink()));
     }
 
-    private void loadImageUrl(@NonNull String url) {
-        Context context;
+    private void loadImageUrl(@NonNull final String url) {
+        final Context context;
         if ((context = getContext()) != null) {
-            Picasso
-                .with(context)
+            Picasso.with(context)
                 .load(url)
                 .placeholder(R.drawable.skeleton)
                 .into((AppCompatImageView) findViewById(R.id.crossSellingImage));
