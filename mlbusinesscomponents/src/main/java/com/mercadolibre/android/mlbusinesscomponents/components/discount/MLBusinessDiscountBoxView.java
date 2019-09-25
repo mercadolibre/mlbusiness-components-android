@@ -75,7 +75,7 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
                 return false;
             }
         };
-        if (defaultColumns == 6) {
+        if (defaultColumns == DEFAULT_LIST_SIZE) {
             manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                 @Override
                 public int getSpanSize(final int position) {
