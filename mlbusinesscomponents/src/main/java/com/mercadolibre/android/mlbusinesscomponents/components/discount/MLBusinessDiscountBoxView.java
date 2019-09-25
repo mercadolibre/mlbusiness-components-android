@@ -21,18 +21,16 @@ import static com.mercadolibre.android.mlbusinesscomponents.components.utils.Str
 public class MLBusinessDiscountBoxView extends ConstraintLayout {
 
     public interface OnClickDiscountBox {
-        void onClickDiscountItem(final int index, @Nullable final String deepLink,
-            @Nullable final String trackId);
+        void onClickDiscountItem(final int index, @Nullable final String deepLink, @Nullable final String trackId);
     }
 
-    private RecyclerView recyclerDiscountBox;
+    private static final int DEFAULT_LIST_SIZE = 6;
 
+    private RecyclerView recyclerDiscountBox;
     private MLBusinessDiscountBoxData businessDiscountBoxData;
     private TextView titleLabel;
     private TextView subtitleLabel;
     private WeakReference<OnClickDiscountBox> onClickDiscountBox;
-
-    private static final int DEFAULT_LIST_SIZE = 6;
 
     public MLBusinessDiscountBoxView(final Context context) {
         this(context, null);
@@ -42,8 +40,7 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
         this(context, attrs, 0);
     }
 
-    public MLBusinessDiscountBoxView(final Context context, final AttributeSet attrs,
-        final int defStyleAttr) {
+    public MLBusinessDiscountBoxView(final Context context, final AttributeSet attrs, final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initMLBusinessDiscountBoxView(context);
     }
@@ -99,8 +96,8 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
         recyclerDiscountBox.setAdapter(discountBoxAdapter);
         recyclerDiscountBox.setHasFixedSize(true);
 
-        String title = businessDiscountBoxData.getTitle();
-        String subTitle = businessDiscountBoxData.getSubtitle();
+        final String title = businessDiscountBoxData.getTitle();
+        final String subTitle = businessDiscountBoxData.getSubtitle();
 
         if (isValidString(title) && isValidString(subTitle)) {
             titleLabel.setText(title);
@@ -112,14 +109,14 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
     }
 
     private List<MLBusinessSingleItem> getLimitedList() {
-        List<MLBusinessSingleItem> items = businessDiscountBoxData.getItems();
+        final List<MLBusinessSingleItem> items = businessDiscountBoxData.getItems();
         return items.size() > DEFAULT_LIST_SIZE ? items.subList(0, DEFAULT_LIST_SIZE) : items;
     }
 
     public void init(@NonNull final MLBusinessDiscountBoxData businessDiscountBoxData,
         @Nullable final OnClickDiscountBox onclick) {
         this.businessDiscountBoxData = businessDiscountBoxData;
-        this.onClickDiscountBox = new WeakReference<>(onclick);
+        onClickDiscountBox = new WeakReference<>(onclick);
         configDiscountBoxView();
     }
 
@@ -135,16 +132,16 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
         private final int defaultColumns;
 
         SpacesItemDecoration(final Context context, final int itemsInLastRow, final int defaultColumns) {
-            this.topSpace = (int) ScaleUtils.getPxFromDp(context, 24);
-            this.lateralSpace = (int) ScaleUtils.getPxFromDp(context, 16);
+            topSpace = (int) ScaleUtils.getPxFromDp(context, 24);
+            lateralSpace = (int) ScaleUtils.getPxFromDp(context, 16);
             this.itemsInLastRow = itemsInLastRow;
             this.defaultColumns = defaultColumns;
         }
 
         @Override
-        public void getItemOffsets(@NonNull Rect outRect, @NonNull View view,
-            @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
-            RecyclerView.Adapter adapter = parent.getAdapter();
+        public void getItemOffsets(@NonNull final Rect outRect, @NonNull final View view,
+            @NonNull final RecyclerView parent, @NonNull final RecyclerView.State state) {
+            final RecyclerView.Adapter adapter = parent.getAdapter();
             if (adapter != null) {
                 if (itemsInLastRow > 0 &&
                     startLastRow(parent, adapter, view, itemsInLastRow)) {
@@ -176,8 +173,7 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
         private boolean startLastRow(final RecyclerView parent,
             final RecyclerView.Adapter adapter, final View view, final int itemsInLastRow) {
             final int itemCount = adapter.getItemCount();
-            return itemCount > 1 &&
-                parent.getChildAdapterPosition(view) == itemCount - itemsInLastRow;
+            return itemCount > 1 && parent.getChildAdapterPosition(view) == itemCount - itemsInLastRow;
         }
     }
 }

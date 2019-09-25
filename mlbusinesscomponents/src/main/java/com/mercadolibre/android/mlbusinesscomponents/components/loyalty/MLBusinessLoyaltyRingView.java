@@ -5,10 +5,8 @@ import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
-
 import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
-
 import java.lang.ref.WeakReference;
 
 public class MLBusinessLoyaltyRingView extends ConstraintLayout {
@@ -17,9 +15,9 @@ public class MLBusinessLoyaltyRingView extends ConstraintLayout {
         void onClickLoyaltyButton(@NonNull final String deepLink);
     }
 
-    private LoyaltyProgress progress;
-    private TextView loyaltyTitle;
-    private TextView loyaltyButton;
+    private final LoyaltyProgress progress;
+    private final TextView loyaltyTitle;
+    private final TextView loyaltyButton;
     private WeakReference<OnClickLoyaltyRing> onClickLoyaltyRing;
     private MLBusinessLoyaltyRingData businessLoyaltyRingData;
 
@@ -31,18 +29,11 @@ public class MLBusinessLoyaltyRingView extends ConstraintLayout {
         this(context, attrs, 0);
     }
 
-    public MLBusinessLoyaltyRingView(final Context context, final AttributeSet attrs,
-        final int defStyleAttr) {
+    public MLBusinessLoyaltyRingView(final Context context, final AttributeSet attrs, final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initMLBusinessLoyaltyRingView(context, attrs);
-    }
 
-    private void initMLBusinessLoyaltyRingView(final Context context, final AttributeSet attrs) {
         inflate(context, R.layout.ml_view_business_loyalty_ring, this);
-        initLoyaltyRingView();
-    }
 
-    private void initLoyaltyRingView() {
         progress = findViewById(R.id.loyaltyRing);
         loyaltyTitle = findViewById(R.id.loyaltyTitle);
         loyaltyButton = findViewById(R.id.loyaltyButton);
@@ -60,23 +51,19 @@ public class MLBusinessLoyaltyRingView extends ConstraintLayout {
         loyaltyTitle.setText(businessLoyaltyRingData.getTitle());
         loyaltyButton.setText(businessLoyaltyRingData.getButtonTitle());
         loyaltyButton.setOnClickListener(v -> {
-                if (onClickLoyaltyRing != null) {
-                    OnClickLoyaltyRing listener = onClickLoyaltyRing.get();
-                    if (listener != null) {
-                        listener
-                                .onClickLoyaltyButton(businessLoyaltyRingData.getButtonDeepLink());
-                    }
+            if (onClickLoyaltyRing != null) {
+                final OnClickLoyaltyRing listener = onClickLoyaltyRing.get();
+                if (listener != null) {
+                    listener.onClickLoyaltyButton(businessLoyaltyRingData.getButtonDeepLink());
                 }
             }
-        );
+        });
     }
 
-    public void init(
-        @NonNull final MLBusinessLoyaltyRingData businessLoyaltyRingData,
+    public void init(@NonNull final MLBusinessLoyaltyRingData businessLoyaltyRingData,
         @NonNull final OnClickLoyaltyRing onClick) {
         this.businessLoyaltyRingData = businessLoyaltyRingData;
-        this.onClickLoyaltyRing = new WeakReference<>(onClick);
+        onClickLoyaltyRing = new WeakReference<>(onClick);
         configLoyaltyRingView();
     }
-
 }

@@ -22,7 +22,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ProgressBar;
-
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils;
 import com.mercadolibre.android.ui.font.Font;
@@ -30,7 +29,8 @@ import com.mercadolibre.android.ui.font.TypefaceHelper;
 
 class LoyaltyProgress extends View {
 
-    private final float DEFAULT_SIZE_RING_STROKE = 3.4f;
+    private static final float DEFAULT_SIZE_RING_STROKE = 3.4f;
+    private static final String PROPERTY_PROGRESS = "progress";
 
     private int loyaltyNumber;
     private final Rect boundsText = new Rect();
@@ -40,8 +40,6 @@ class LoyaltyProgress extends View {
     private final RectF boundsF = new RectF();
     private boolean animatedEnd;
     private float progress;
-
-    private static final String PROPERTY_PROGRESS = "progress";
 
     public LoyaltyProgress(final Context context) {
         this(context, null);
@@ -58,8 +56,8 @@ class LoyaltyProgress extends View {
     }
 
     private void initLoyaltyProgress(final Context context, final AttributeSet attrs) {
-        final int DEFAULT_SIZE_LOYALTY_NUMBER = 28;
-        final int DEFAULT_LOYALTY_NUMBER = 1;
+        final int defaultSizeLoyaltyNumber = 28;
+        final int defaultLoyaltyNumber = 1;
 
         final TypedArray typedArray = context.obtainStyledAttributes(
             attrs,
@@ -68,7 +66,7 @@ class LoyaltyProgress extends View {
 
         loyaltyNumber =
             typedArray
-                .getInteger(R.styleable.LoyaltyProgress_loyaltyNumber, DEFAULT_LOYALTY_NUMBER);
+                .getInteger(R.styleable.LoyaltyProgress_loyaltyNumber, defaultLoyaltyNumber);
         final int colorLoyaltyText =
             ContextCompat
                 .getColor(getContext(), typedArray.getResourceId(R.styleable.LoyaltyProgress_colorLoyaltyProgressText,
@@ -76,7 +74,7 @@ class LoyaltyProgress extends View {
         final float sizeLoyaltyNumber =
             typedArray.getDimension(R.styleable.LoyaltyProgress_sizeLoyaltyNumber,
                 ScaleUtils.getPxFromSp(context,
-                    DEFAULT_SIZE_LOYALTY_NUMBER));
+                    defaultSizeLoyaltyNumber));
 
         final float sizeRingStroke =
             typedArray.getDimension(R.styleable.LoyaltyProgress_sizeRingStroke,
@@ -171,7 +169,7 @@ class LoyaltyProgress extends View {
                     valueAnimator.start();
                 });
             }
-        } catch (RuntimeException e) {
+        } catch (final RuntimeException e) {
             e.printStackTrace();
         }
     }
@@ -183,21 +181,21 @@ class LoyaltyProgress extends View {
         /**
          * Constructor called from {@link ProgressBar#onSaveInstanceState()}
          */
-        SavedState(Parcelable superState) {
+        SavedState(final Parcelable superState) {
             super(superState);
         }
 
         /**
          * Constructor called from {@link #CREATOR}
          */
-        private SavedState(Parcel in) {
+        /* default */ SavedState(final Parcel in) {
             super(in);
             progress = in.readFloat();
             animationEnd = in.readByte() != 0;
         }
 
         @Override
-        public void writeToParcel(Parcel out, int flags) {
+        public void writeToParcel(final Parcel out, final int flags) {
             super.writeToParcel(out, flags);
             out.writeFloat(progress);
             out.writeByte((byte) (animationEnd ? 1 : 0));
@@ -205,11 +203,13 @@ class LoyaltyProgress extends View {
 
         public static final Parcelable.Creator<SavedState> CREATOR
             = new Parcelable.Creator<SavedState>() {
-            public SavedState createFromParcel(Parcel in) {
+            @Override
+            public SavedState createFromParcel(final Parcel in) {
                 return new SavedState(in);
             }
 
-            public SavedState[] newArray(int size) {
+            @Override
+            public SavedState[] newArray(final int size) {
                 return new SavedState[size];
             }
         };
@@ -218,8 +218,8 @@ class LoyaltyProgress extends View {
     @Override
     public Parcelable onSaveInstanceState() {
         // Force our ancestor class to save its state
-        Parcelable superState = super.onSaveInstanceState();
-        SavedState ss = new SavedState(superState);
+        final Parcelable superState = super.onSaveInstanceState();
+        final SavedState ss = new SavedState(superState);
 
         ss.progress = progress;
         ss.animationEnd = animatedEnd;
@@ -228,8 +228,8 @@ class LoyaltyProgress extends View {
     }
 
     @Override
-    public void onRestoreInstanceState(Parcelable state) {
-        SavedState ss = (SavedState) state;
+    public void onRestoreInstanceState(final Parcelable state) {
+        final SavedState ss = (SavedState) state;
         super.onRestoreInstanceState(ss.getSuperState());
 
         progress = ss.progress;
@@ -243,8 +243,8 @@ class LoyaltyProgress extends View {
         setMeasuredDimension(width, height);
     }
 
-    private int getMeasurement(int measureSpec, int preferred) {
-        int specSize = MeasureSpec.getSize(measureSpec);
+    private int getMeasurement(final int measureSpec, final int preferred) {
+        final int specSize = MeasureSpec.getSize(measureSpec);
         int measurement = preferred;
 
         switch (MeasureSpec.getMode(measureSpec)) {
@@ -253,16 +253,16 @@ class LoyaltyProgress extends View {
             break;
         case MeasureSpec.AT_MOST:
             measurement = Math.min(preferred, specSize);
-        case MeasureSpec.UNSPECIFIED:
+            break;
+        case MeasureSpec.UNSPECIFIED: default:
             break;
         }
 
         return measurement;
     }
 
-    private int measureSize(int measureSpec) {
-        final int DEFAULT_SIZE = 46; // Dimension in dp
-        int preferred = (int) ScaleUtils.getPxFromDp(getContext(), DEFAULT_SIZE);
+    private int measureSize(final int measureSpec) {
+        final int preferred = (int) ScaleUtils.getPxFromDp(getContext(), 46);
         return getMeasurement(measureSpec, preferred);
     }
 
@@ -271,25 +271,25 @@ class LoyaltyProgress extends View {
         //draw text
         final String loyaltyText = String.valueOf(loyaltyNumber);
 
-        int averageWidth = (getWidth() / 2);
-        int averageHeight = (getHeight() / 2);
-        int x = averageWidth - boundsText.centerX();
-        int y = averageHeight - boundsText.centerY();
+        final int averageWidth = (getWidth() / 2);
+        final int averageHeight = (getHeight() / 2);
+        final int x = averageWidth - boundsText.centerX();
+        final int y = averageHeight - boundsText.centerY();
 
         canvas.drawText(loyaltyText, x, y, textPaint);
 
         //draw ring
-        float radius = (float) (getWidth() / 2.2);
+        final float radius = (float) (getWidth() / 2.2);
         canvas.drawCircle(averageWidth, averageHeight, radius, ringPaint);
 
         //draw progress with round corners
-        float defaultInset = ScaleUtils.getPxFromDp(getContext(), 8.5f);
-        float defaultStrokeWidth = ScaleUtils.getPxFromDp(getContext(), DEFAULT_SIZE_RING_STROKE);
-        float currentStrokeWidth = progressPaint.getStrokeWidth();
+        final float defaultInset = ScaleUtils.getPxFromDp(getContext(), 8.5f);
+        final float defaultStrokeWidth = ScaleUtils.getPxFromDp(getContext(), DEFAULT_SIZE_RING_STROKE);
+        final float currentStrokeWidth = progressPaint.getStrokeWidth();
 
         // We calculate the necessary amount of inset proportionally
         // based on the current stroke width
-        float currentInset = currentStrokeWidth * defaultInset / defaultStrokeWidth;
+        final float currentInset = currentStrokeWidth * defaultInset / defaultStrokeWidth;
         final float startAngle = 270f;
 
         boundsF.set(averageWidth - radius, averageHeight - radius, averageWidth + radius, averageHeight + radius);

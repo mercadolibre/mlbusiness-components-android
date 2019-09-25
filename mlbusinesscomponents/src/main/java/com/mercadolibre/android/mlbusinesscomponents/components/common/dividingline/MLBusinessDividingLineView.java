@@ -38,15 +38,13 @@ public class MLBusinessDividingLineView extends View {
             R.styleable.MLBusinessDividingLineView,
             0, 0);
 
-        hasTriangle =
-            typedArray.getBoolean(R.styleable.MLBusinessDividingLineView_hasTriangle, false);
+        hasTriangle = typedArray.getBoolean(R.styleable.MLBusinessDividingLineView_hasTriangle, false);
 
         typedArray.recycle();
 
         final int dividerColor = ContextCompat.getColor(context, R.color.divider_line_gray);
         linePaint.setAntiAlias(true);
         linePaint.setColor(dividerColor);
-        setBackgroundColor(ContextCompat.getColor(context, R.color.ui_meli_white));
     }
 
     @Override
@@ -54,8 +52,8 @@ public class MLBusinessDividingLineView extends View {
         setMeasuredDimension(widthMeasureSpec, measureHeight(heightMeasureSpec));
     }
 
-    private int getMeasurement(int measureSpec, int preferred) {
-        int specSize = MeasureSpec.getSize(measureSpec);
+    private int getMeasurement(final int measureSpec, final int preferred) {
+        final int specSize = MeasureSpec.getSize(measureSpec);
         int measurement = preferred;
 
         switch (MeasureSpec.getMode(measureSpec)) {
@@ -64,22 +62,23 @@ public class MLBusinessDividingLineView extends View {
             break;
         case MeasureSpec.AT_MOST:
             measurement = Math.min(preferred, specSize);
-        case MeasureSpec.UNSPECIFIED:
+            break;
+        case MeasureSpec.UNSPECIFIED: default:
             break;
         }
 
         return measurement;
     }
 
-    private int measureHeight(int measureSpec) {
-        int preferred = (int) ScaleUtils.getPxFromDp(getContext(), DEFAULT_SIZE);
+    private int measureHeight(final int measureSpec) {
+        final int preferred = (int) ScaleUtils.getPxFromDp(getContext(), DEFAULT_SIZE);
         return getMeasurement(measureSpec, preferred);
     }
 
     @Override
     protected void onDraw(final Canvas canvas) {
 
-        float averageHeight;
+        final float averageHeight;
 
         if (hasTriangle) {
             averageHeight = 0f;
