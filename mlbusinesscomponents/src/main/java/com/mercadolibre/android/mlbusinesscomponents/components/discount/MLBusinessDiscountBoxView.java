@@ -14,11 +14,7 @@ import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils;
 import java.util.List;
-<<<<<<< HEAD
-
 import java.lang.ref.WeakReference;
-=======
->>>>>>> bc5a82de6eb1a1776fe774fb4a464d1847a97ef7
 
 import static com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtils.isValidString;
 
