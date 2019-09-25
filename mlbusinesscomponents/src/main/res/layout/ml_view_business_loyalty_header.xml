@@ -8,7 +8,7 @@
     android:background="@color/ui_meli_white"
     android:paddingStart="16dp"
     android:paddingLeft="16dp"
-    android:paddingTop="16dp"
+    android:paddingTop="10dp"
     android:paddingEnd="16dp"
     android:paddingRight="16dp"
     android:paddingBottom="10dp"
