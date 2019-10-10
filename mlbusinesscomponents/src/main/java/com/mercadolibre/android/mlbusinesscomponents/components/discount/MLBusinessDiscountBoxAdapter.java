@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem;
+import com.mercadolibre.android.mlbusinesscomponents.components.utils.FontUtils;
+import com.mercadolibre.android.ui.font.Font;
 import com.squareup.picasso.Picasso;
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -67,6 +69,9 @@ class MLBusinessDiscountBoxAdapter
             iconImage = itemView.findViewById(R.id.iconImage);
             titleLabel = itemView.findViewById(R.id.titleLabel);
             subtitleLabel = itemView.findViewById(R.id.subtitleLabel);
+
+            FontUtils.setFontRegular(titleLabel);
+            FontUtils.setFontSemiBold(subtitleLabel);
         }
 
         void setRippleEffect() {

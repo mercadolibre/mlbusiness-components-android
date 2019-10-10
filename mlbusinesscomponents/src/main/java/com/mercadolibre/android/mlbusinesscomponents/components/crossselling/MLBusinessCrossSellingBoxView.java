@@ -7,6 +7,7 @@ import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import com.mercadolibre.android.mlbusinesscomponents.R;
+import com.mercadolibre.android.mlbusinesscomponents.components.utils.FontUtils;
 import com.squareup.picasso.Picasso;
 
 public class MLBusinessCrossSellingBoxView extends ConstraintLayout {
@@ -31,13 +32,19 @@ public class MLBusinessCrossSellingBoxView extends ConstraintLayout {
 
     public void init(@NonNull final MLBusinessCrossSellingBoxData businessCrossSellingBoxData,
         @NonNull final OnClickCrossSellingBoxView onClick) {
+
         loadImageUrl(businessCrossSellingBoxData.getIconUrl());
-        ((AppCompatTextView) findViewById(R.id.crossSellingTitle))
-            .setText(businessCrossSellingBoxData.getText());
-        final AppCompatTextView action = findViewById(R.id.crossSellingAction);
-        action.setText(businessCrossSellingBoxData.getButtonTitle());
-        action.setOnClickListener(v -> onClick
+
+        AppCompatTextView crossSellingTitle = findViewById(R.id.crossSellingTitle);
+        crossSellingTitle.setText(businessCrossSellingBoxData.getText());
+
+        final AppCompatTextView crossSellingAction = findViewById(R.id.crossSellingAction);
+        crossSellingAction.setText(businessCrossSellingBoxData.getButtonTitle());
+        crossSellingAction.setOnClickListener(v -> onClick
             .OnClickCrossSellingButton(businessCrossSellingBoxData.getButtonDeepLink()));
+
+        FontUtils.setFontRegular(crossSellingTitle);
+        FontUtils.setFontSemiBold(crossSellingAction);
     }
 
     private void loadImageUrl(@NonNull final String url) {
