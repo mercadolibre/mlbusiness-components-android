@@ -7,6 +7,7 @@ import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
+import com.mercadolibre.android.mlbusinesscomponents.components.utils.FontUtils;
 import java.lang.ref.WeakReference;
 
 public class MLBusinessLoyaltyRingView extends ConstraintLayout {
@@ -37,6 +38,9 @@ public class MLBusinessLoyaltyRingView extends ConstraintLayout {
         progress = findViewById(R.id.loyaltyRing);
         loyaltyTitle = findViewById(R.id.loyaltyTitle);
         loyaltyButton = findViewById(R.id.loyaltyButton);
+
+        FontUtils.setFontSemiBold(loyaltyTitle);
+        FontUtils.setFontSemiBold(loyaltyButton);
     }
 
     private void configLoyaltyRingView() {
