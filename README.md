@@ -217,7 +217,7 @@ This component allow you to show a divider line with option to show an inverted 
 See `app:hasTriangle="boolean"`.
 
 #### Visual Example:
-![MLBusinessDividingLineView](https://raw.githubusercontent.com/mercadolibre/mlbusiness-components-android/feature/new_components/documentation/images/MLBusinessDividingLineView.png)
+![MLBusinessDividingLineView](https://raw.githubusercontent.com/mercadolibre/mlbusiness-components-android/master/documentation/images/MLBusinessDividingLineView.png)
 
 #### Implementation
 ```xml
@@ -232,7 +232,7 @@ See `app:hasTriangle="boolean"`.
 This component allows you to show a means to download the ML or MP application. You can add an AppSite to display ML or MP icons, title and button title.
 
 #### Visual Example:
-![MLBusinessDownloadAppView](https://raw.githubusercontent.com/mercadolibre/mlbusiness-components-android/feature/new_components/documentation/images/MLBusinessDownloadAppView.png)
+![MLBusinessDownloadAppView](https://raw.githubusercontent.com/mercadolibre/mlbusiness-components-android/master/documentation/images/MLBusinessDownloadAppView.png)
 
 ### MLBusinessDownloadAppView init
 You need to set `MLBusinessDownloadAppData` interface. This interface allow you to populate the draw data into the component. (AppSite, Title and ButtonTitle). You can be informed when the user presses the button of the component and receive the deeplink previously sent in `MLBusinessDownloadAppData`. Just add `OnClickDownloadApp` callback.
