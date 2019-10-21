@@ -4,43 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    tools:layout_height="200dp"
     tools:parentTag="android.support.constraint.ConstraintLayout">
 
     <TextView
         android:id="@+id/loyaltyTitle"
-        style="@style/MLFont.Bold.Semi"
-        android:layout_width="wrap_content"
+        android:textAppearance="@style/MLFont.Bold.Semi"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginBottom="4dp"
         android:lineSpacingExtra="4sp"
         android:maxLines="2"
         android:textColor="@color/ui_fullscreenmodal_toolbar_text_color"
         android:textSize="@dimen/ui_fontsize_small"
+        tools:text="Sumaste 20 Mercado Puntos dsfsdf sdfsf sdfsdf sdfsdf sfsd"
+        app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintBottom_toTopOf="@+id/loyaltyButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/loyaltyRing"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/loyaltyButton"
-        style="@style/MLFont.Bold.Semi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="3dp"
         android:background="?selectableItemBackground"
         android:lineSpacingExtra="4.5sp"
+        android:maxLines="1"
+        android:textAppearance="@style/MLFont.Bold.Semi"
         android:textColor="@color/ui_components_android_color_accent"
         android:textSize="@dimen/ui_fontsize_xsmall"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/loyaltyTitle"
-        app:layout_constraintTop_toBottomOf="@+id/loyaltyTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/loyaltyTitle"
+        tools:text="Ver mis beneficios" />
 
     <com.mercadolibre.android.mlbusinesscomponents.components.loyalty.LoyaltyProgress
         android:id="@+id/loyaltyRing"
