@@ -96,7 +96,9 @@ class LoyaltyProgress extends View {
         textPaint.setColor(colorLoyaltyText);
         textPaint.setTextSize(sizeLoyaltyNumber);
         textPaint.getTextBounds(loyaltyText, 0, loyaltyText.length(), boundsText);
-        TypefaceHelper.setTypeface(context.getApplicationContext(), textPaint, Font.SEMI_BOLD);
+        if (!isInEditMode()) {
+            TypefaceHelper.setTypeface(context.getApplicationContext(), textPaint, Font.SEMI_BOLD);
+        }
     }
 
     private void configPaint(final Paint paint, final float sizeRingStroke) {
@@ -262,7 +264,7 @@ class LoyaltyProgress extends View {
     }
 
     private int measureSize(final int measureSpec) {
-        final int preferred = (int) ScaleUtils.getPxFromDp(getContext(), 46);
+        final int preferred = (int) ScaleUtils.getPxFromDp(getContext(), 48);
         return getMeasurement(measureSpec, preferred);
     }
 

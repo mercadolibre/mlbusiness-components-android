@@ -18,7 +18,7 @@
         android:lineSpacingExtra="4sp"
         android:gravity="center"
         android:textColor="@color/ui_fullscreenmodal_toolbar_text_color"
-        tools:text="Title"
+        tools:text="200 descuentos"
         android:textSize="@dimen/ui_fontsize_large"
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintBottom_toTopOf="@+id/subtitleLabel"
@@ -37,14 +37,14 @@
         android:layout_marginBottom="24dp"
         android:gravity="center"
         android:lineSpacingExtra="4sp"
-        android:textColor="@color/ui_fullscreenmodal_toolbar_text_color"
+        android:textColor="@color/text_secondary_color"
         android:textSize="@dimen/ui_fontsize_xsmall"
         app:layout_constraintBottom_toTopOf="@+id/recyclerDiscountBox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleLabel"
-        tools:text="subtitle" />
+        tools:text="35 exclusivos por tu nivel" />
 
 
     <android.support.v7.widget.RecyclerView

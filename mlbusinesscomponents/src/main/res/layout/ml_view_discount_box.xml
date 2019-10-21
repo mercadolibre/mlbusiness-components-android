@@ -3,8 +3,8 @@
     android:layout_width="@dimen/ui_view_discount_box_width"
     android:layout_height="@dimen/ui_view_discount_box_height"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_gravity="center">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:layout_width="wrap_content"
@@ -23,27 +23,30 @@
             android:layout_width="@dimen/ui_7m"
             android:layout_height="@dimen/ui_7m"
             android:scaleType="centerInside"
+            tools:src="@drawable/mercado_pago"
             android:contentDescription="@string/app_name" />
 
     </android.support.v7.widget.CardView>
 
     <TextView
         android:id="@+id/titleLabel"
-        style="@style/MLFont.Regular"
+        android:textAppearance="@style/MLFont.Regular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:gravity="center"
         android:lineSpacingExtra="2sp"
+        tools:text="Hasta"
         android:textColor="@color/ui_fullscreenmodal_toolbar_text_color"
         android:textSize="@dimen/ui_fontsize_xxsmall" />
 
     <TextView
         android:id="@+id/subtitleLabel"
-        style="@style/MLFont.Bold.Semi"
+        android:textAppearance="@style/MLFont.Bold.Semi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        tools:text="$ 200"
         android:textColor="@color/ui_fullscreenmodal_toolbar_text_color"
         android:textSize="@dimen/ui_fontsize_large"
         android:lineSpacingExtra="4sp" />

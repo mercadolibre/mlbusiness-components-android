@@ -14,6 +14,7 @@
         android:layout_marginLeft="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
+        tools:src="@drawable/skeleton"
         app:layout_constraintVertical_bias="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +22,6 @@
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/crossSellingTitle"
-        style="@style/MLFont.Regular"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
@@ -32,6 +32,7 @@
         tools:text="Gana $50 de regalo para tus pagos diarios"
         android:textColor="@color/ui_components_grey_color"
         android:textSize="@dimen/ui_fontsize_xsmall"
+        android:textAppearance="@style/MLFont.Regular"
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/crossSellingImage"
@@ -40,7 +41,7 @@
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/crossSellingAction"
-        style="@style/MLFont.Bold.Semi"
+        android:textAppearance="@style/MLFont.Regular"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
