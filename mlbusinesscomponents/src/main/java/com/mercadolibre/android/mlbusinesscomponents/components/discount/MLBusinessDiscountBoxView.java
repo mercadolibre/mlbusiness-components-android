@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem;
-import com.mercadolibre.android.mlbusinesscomponents.components.utils.FontUtils;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils;
 import java.util.List;
 import java.lang.ref.WeakReference;
@@ -52,9 +51,6 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
         recyclerDiscountBox = findViewById(R.id.recyclerDiscountBox);
         titleLabel = findViewById(R.id.titleLabel);
         subtitleLabel = findViewById(R.id.subtitleLabel);
-
-        FontUtils.setFontRegular(subtitleLabel);
-        FontUtils.setFontSemiBold(titleLabel);
     }
 
     private void configDiscountBoxView() {

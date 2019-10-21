@@ -8,7 +8,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import com.mercadolibre.android.mlbusinesscomponents.R;
-import com.mercadolibre.android.mlbusinesscomponents.components.utils.FontUtils;
 import com.mercadolibre.android.ui.widgets.MeliButton;
 import java.lang.ref.WeakReference;
 
@@ -43,8 +42,7 @@ public class MLBusinessDownloadAppView extends ConstraintLayout {
     public void init(@NonNull final MLBusinessDownloadAppData businessDownloadAppData,
         @NonNull final OnClickDownloadApp onClick) {
         findViewById(R.id.imageSite).setBackgroundResource(businessDownloadAppData.getAppSite().getResource());
-        AppCompatTextView titleDownload = findViewById(R.id.titleDownload);
-        titleDownload.setText(businessDownloadAppData.getTitle());
+        ((AppCompatTextView) findViewById(R.id.titleDownload)).setText(businessDownloadAppData.getTitle());
 
         final MeliButton downloadButton = findViewById(R.id.downloadButton);
         downloadButton.setText(businessDownloadAppData.getButtonTitle());
@@ -55,8 +53,6 @@ public class MLBusinessDownloadAppView extends ConstraintLayout {
                 listener.OnClickDownloadAppButton(businessDownloadAppData.getButtonDeepLink());
             }
         });
-
-        FontUtils.setFontSemiBold(titleDownload);
     }
 
     public void updateView(@NonNull final MLBusinessDownloadAppData businessDownloadAppData,
