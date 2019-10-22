@@ -13,10 +13,9 @@ import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils;
-import java.util.List;
+import com.mercadolibre.android.mlbusinesscomponents.components.utils.ViewUtils;
 import java.lang.ref.WeakReference;
-
-import static com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtils.isValidString;
+import java.util.List;
 
 public class MLBusinessDiscountBoxView extends ConstraintLayout {
 
@@ -99,12 +98,8 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
         final String title = businessDiscountBoxData.getTitle();
         final String subTitle = businessDiscountBoxData.getSubtitle();
 
-        if (isValidString(title) && isValidString(subTitle)) {
-            titleLabel.setText(title);
-            subtitleLabel.setText(subTitle);
-        } else {
-            titleLabel.setVisibility(View.GONE);
-            subtitleLabel.setVisibility(View.GONE);
+        if (ViewUtils.loadOrGone(titleLabel, title)) {
+            ViewUtils.loadOrGone(subtitleLabel, subTitle);
         }
     }
 
