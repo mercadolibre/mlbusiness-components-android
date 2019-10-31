@@ -7,7 +7,7 @@ import android.graphics.Paint;
 import android.support.annotation.NonNull;
 import com.squareup.picasso.Transformation;
 
-public class CircleTransform implements Transformation {
+class CircleTransform implements Transformation {
 
     private static final String KEY_CIRCLE = "circle";
 
