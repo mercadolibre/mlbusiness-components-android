@@ -94,6 +94,7 @@ class MLBusinessDiscountBoxAdapter
             if (context != null) {
                 Picasso.with(context)
                     .load(Uri.parse(url))
+                    .transform(new CircleTransform())
                     .placeholder(R.drawable.skeleton)
                     .into(iconImage);
             }
