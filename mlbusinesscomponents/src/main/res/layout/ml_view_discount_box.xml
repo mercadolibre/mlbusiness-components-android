@@ -38,6 +38,6 @@
         android:gravity="center"
         tools:text="$ 200"
         android:textColor="@color/ui_fullscreenmodal_toolbar_text_color"
-        android:textSize="@dimen/ui_fontsize_large"
+        android:textSize="@dimen/ui_fontsize_medium"
         android:lineSpacingExtra="4sp" />
 </LinearLayout>
