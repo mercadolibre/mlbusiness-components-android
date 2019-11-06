@@ -1,5 +1,5 @@
 ## VERSION 1.0.6
-_____________
+_06_11_2019_
 * FIX - Fixed font size
 
 ## VERSION 1.0.5
