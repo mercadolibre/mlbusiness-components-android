@@ -1,4 +1,4 @@
-package com.mercadolibre.android.mlbusinesscomponentsapp;
+package com.mercadolibre.android.mlbusinesscomponents.components.exploatingbutton;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -8,9 +8,11 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.ClipDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Build;
@@ -19,8 +21,8 @@ import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -36,23 +38,24 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.mercadolibre.android.mlbusinesscomponents.R;
+
 public class ButtonProgress extends LinearLayout implements View.OnClickListener {
     private ProgressBar progressBar;
     private ObjectAnimator animator;
     private TextView textProgressBar;
     private ImageView circle;
     private ImageView icon;
-    private String title;
+    @ColorRes private int rippleColor;
+    //private String title;
     private OnFinishAnimationListener onFinishAnimationListener;
     private int durationRipple = 800;
     private int durationTimeout = 10000;
-    private int maxProgress = 1000;
+    private int durationFinishProgress = 500;
+    private int durationAnimation = 500;
+    private int durationDelayRipple = 200;
     private static final float DARKEN_FACTOR = 0.1f;
-
-    @ColorRes
-    private int rippleColor;
-
-    public static final float ICON_SCALE = 3.0f;
+    private final float ICON_SCALE = 3.0f;
     private View reveal;
     private View container;
 
@@ -76,8 +79,27 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     }
 
     public ButtonProgress setTitle(String title) {
-        this.title = title;
         textProgressBar.setText(title);
+        return this;
+    }
+
+    public ButtonProgress setTextSize(int size) {
+        textProgressBar.setTextSize(size);
+        return this;
+    }
+
+    public ButtonProgress setColorText(int color) {
+        textProgressBar.setTextColor(ContextCompat.getColor(getContext(),color));
+        return this;
+    }
+
+    public ButtonProgress setColorButton(int backgroundColor, int progressColor){
+        LayerDrawable dr = (LayerDrawable)getResources().getDrawable(R.drawable.button_background);
+        GradientDrawable background = (GradientDrawable) dr.findDrawableByLayerId(R.id.background);
+        ClipDrawable progress = (ClipDrawable) dr.findDrawableByLayerId(R.id.progress);
+        background.setColor(ContextCompat.getColor(getContext(),backgroundColor));
+        DrawableCompat.setTint(progress,progressColor);
+        progressBar.setProgressDrawable(dr);
         return this;
     }
 
@@ -86,8 +108,18 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         return this;
     }
 
-    public ButtonProgress setMaxProgress(int maxProgress) {
-        this.maxProgress = maxProgress;
+    public ButtonProgress setDurationDelayRipple(int duration) {
+        this.durationDelayRipple = duration;
+        return this;
+    }
+
+    public ButtonProgress setDurationAnimationCircle(int duration) {
+        this.durationAnimation = duration;
+        return this;
+    }
+
+    public ButtonProgress setDurationFinishProgress(int duration) {
+        this.durationFinishProgress = duration;
         return this;
     }
 
@@ -103,14 +135,15 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
 
     public void finishProgress(@ColorRes int color, @DrawableRes int icon) {
         this.rippleColor = color;
+        this.icon.setImageResource(icon);
 
         final int progress = progressBar.getProgress();
         if (animator != null){
             animator.cancel();
         }
-        animator = ObjectAnimator.ofInt(progressBar, "progress", progress, maxProgress);
+        animator = ObjectAnimator.ofInt(progressBar, "progress", progress, durationTimeout);
         animator.setInterpolator(new AccelerateDecelerateInterpolator());
-        animator.setDuration(500);
+        animator.setDuration(durationFinishProgress);
 
         animator.addListener(new AnimatorListenerAdapter() {
             @Override
@@ -140,35 +173,31 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.view_color_options, this, true);
         textProgressBar = findViewById(R.id.cho_loading_buy_progress_text);
-        textProgressBar.setText(title);
         progressBar = findViewById(R.id.cho_loading_buy_progress);
         circle = findViewById(R.id.cho_loading_buy_circular);
         icon = findViewById(R.id.cho_loading_buy_icon);
         container = findViewById(R.id.cho_loading_buy_container);
         adjustHeight(circle);
         adjustHeight(icon);
-
     }
 
     @Override
     public void onClick(View v) {
-        progressBar.setMax(maxProgress);
-        animator = ObjectAnimator.ofInt(progressBar, "progress", 0, maxProgress);
+        progressBar.setMax(durationTimeout);
+        animator = ObjectAnimator.ofInt(progressBar, "progress", 0, durationTimeout);
         animator.setInterpolator(new LinearInterpolator());
         animator.setDuration(durationTimeout);
         animator.start();
     }
 
     void createResultAnim() {
-        final int duration = 500;
+        final int duration = durationAnimation;
         final int initialWidth = progressBar.getWidth();
         final int finalSize = progressBar.getHeight();
         final int initialRadius = getResources().getDimensionPixelOffset(R.dimen.ui_050m);
         final int finalRadius = finalSize / 2;
-
-        final GradientDrawable initialBg = getProgressBarShape(ContextCompat.getColor(getContext(), R.color.ui_action_button_pressed), initialRadius);
-        final GradientDrawable finalBg = getProgressBarShape(ContextCompat.getColor(getContext(), R.color.ui_meli_green), initialRadius);
-
+        final GradientDrawable initialBg = getProgressBarShape(ContextCompat.getColor(getContext(), rippleColor), initialRadius);
+        final GradientDrawable finalBg = getProgressBarShape(ContextCompat.getColor(getContext(),rippleColor), initialRadius);
         final TransitionDrawable transitionDrawable = new TransitionDrawable(new Drawable[]{initialBg, finalBg});
         progressBar.setProgressDrawable(transitionDrawable);
         transitionDrawable.startTransition(duration);
@@ -202,13 +231,14 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
             @Override
             public void onAnimationEnd(final Animator animation) {
                 animation.removeAllListeners();
-                createResultIconAnim(R.drawable.mercado_pago);
+                createResultIconAnim();
             }
         });
         textProgressBar.setVisibility(View.GONE);
         a.setInterpolator(new DecelerateInterpolator(2f));
         a.setDuration(duration);
         a.start();
+        setColorDrawable();
     }
 
     private GradientDrawable getProgressBarShape(final int color, final int radius) {
@@ -218,14 +248,14 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         return drawable;
     }
 
-    private void createResultIconAnim(@DrawableRes int icon) {
-        progressBar.setVisibility(View.INVISIBLE);
-        this.icon.setImageResource(icon);
+    private void createResultIconAnim() {
+        //progressBar.setVisibility(View.INVISIBLE);
+        progressBar.setClickable(false);
         this.icon.setVisibility(View.VISIBLE);
         this.icon.setScaleY(ICON_SCALE);
         this.icon.setScaleX(ICON_SCALE);
         this.icon.setAlpha(0f);
-        circle.setVisibility(View.VISIBLE);
+        //circle.setVisibility(View.VISIBLE);
         this.icon.animate().alpha(1.0f).scaleX(1.0f).scaleY(1.0f)
                 .setInterpolator(new DecelerateInterpolator(2f))
                 .setDuration(300)
@@ -236,17 +266,16 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
                         createCircularReveal();
                     }
                 }).start();
-        setColorDrawable();
     }
 
     private void setColorDrawable() {
         Drawable background = circle.getBackground();
         if (background instanceof ShapeDrawable) {
-            ((ShapeDrawable) background).getPaint().setColor(ContextCompat.getColor(getContext(), R.color.ui_meli_green));
+            ((ShapeDrawable) background).getPaint().setColor(ContextCompat.getColor(getContext(), rippleColor));
         } else if (background instanceof GradientDrawable) {
-            ((GradientDrawable) background).setColor(ContextCompat.getColor(getContext(), R.color.ui_meli_green));
+            ((GradientDrawable) background).setColor(ContextCompat.getColor(getContext(), rippleColor));
         } else if (background instanceof ColorDrawable) {
-            ((ColorDrawable) background).setColor(ContextCompat.getColor(getContext(), R.color.ui_meli_green));
+            ((ColorDrawable) background).setColor(ContextCompat.getColor(getContext(), rippleColor));
         }
     }
 
@@ -258,12 +287,9 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         final int startRadius = (int) (getContext().getResources().getDimension(R.dimen.ui_7m) / 2);
 
         final int[] location = new int[2];
-
         container.getLocationOnScreen(location);
-
-
-        final int cx = progressBar.getLeft() + (progressBar.getWidth()/2);
         final int cy = (progressBar.getTop() + progressBar.getBottom()) / 2 + (location[1] - container.getMeasuredHeight() / 2);
+        final int cx = location[0] + (container.getWidth()/2);
 
         //try to avoid reveal detached view
         reveal.post(() -> {
@@ -274,7 +300,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
                 anim = ObjectAnimator.ofFloat(reveal, "alpha", 0, 1);
             }
             anim.setDuration(durationRipple);
-            anim.setStartDelay(200);
+            anim.setStartDelay(durationDelayRipple);
             anim.setInterpolator(new AccelerateInterpolator());
             anim.addListener(new AnimatorListenerAdapter() {
                 @Override
@@ -282,8 +308,8 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
                     circle.setVisibility(View.GONE);
                     icon.setVisibility(View.GONE);
 
-                    final int startColor = ContextCompat.getColor(getContext(), R.color.ui_meli_orange);
-                    final int endColor = ContextCompat.getColor(getContext(), R.color.ui_components_actionModeBackground);
+                    final int startColor = ContextCompat.getColor(getContext(), rippleColor);
+                    final int endColor = ContextCompat.getColor(getContext(), rippleColor);
                     final Drawable[] switchColors =
                             {new ColorDrawable(startColor), new ColorDrawable(endColor)};
                     final TransitionDrawable colorSwitch = new TransitionDrawable(switchColors);
@@ -328,6 +354,3 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
 
 }
 
-interface OnFinishAnimationListener {
-    void finishAnimation();
-}
