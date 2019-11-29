@@ -40,6 +40,9 @@ import android.widget.TextView;
 
 import com.mercadolibre.android.mlbusinesscomponents.R;
 
+import static com.mercadolibre.android.mlbusinesscomponents.components.exploatingbutton.ButtonProgressState.DISABLED;
+import static com.mercadolibre.android.mlbusinesscomponents.components.exploatingbutton.ButtonProgressState.ENABLED;
+
 public class ButtonProgress extends LinearLayout implements View.OnClickListener {
     private ProgressBar progressBar;
     private ObjectAnimator animator;
@@ -47,6 +50,9 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     private ImageView circle;
     private ImageView icon;
     @ColorRes private int rippleColor;
+    @ColorRes private int colorText;
+    @ColorRes private int backgroundColor;
+    @ColorRes private int progressColor;
     private String titleProgress;
     private OnFinishAnimationListener onFinishAnimationListener;
     private int durationRipple = 800;
@@ -90,18 +96,41 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     }
 
     public ButtonProgress setColorText(int color) {
-        textProgressBar.setTextColor(ContextCompat.getColor(getContext(),color));
+        colorText = color;
+        paintText(colorText);
         return this;
     }
 
+    public void setState(ButtonProgressState state){
+        if (state == DISABLED){
+            this.setClickable(false);
+            paintButton(R.color.ui_components_grey_color,R.color.ui_components_grey_color);
+            paintText(R.color.ui_meli_white);
+        } else{
+            this.setClickable(true);
+            paintButton(backgroundColor,progressColor);
+            paintText(colorText);
+        }
+    }
+
     public ButtonProgress setColorButton(int backgroundColor, int progressColor){
+        this.backgroundColor = backgroundColor;
+        this.progressColor = progressColor;
+        paintButton(backgroundColor, progressColor);
+        return this;
+    }
+
+    private void paintText(int color){
+        textProgressBar.setTextColor(ContextCompat.getColor(getContext(),color));
+    }
+
+    private void paintButton(int backgroundColor, int progressColor){
         LayerDrawable dr = (LayerDrawable)getResources().getDrawable(R.drawable.button_background);
         GradientDrawable background = (GradientDrawable) dr.findDrawableByLayerId(R.id.background);
         ClipDrawable progress = (ClipDrawable) dr.findDrawableByLayerId(R.id.progress);
         background.setColor(ContextCompat.getColor(getContext(),backgroundColor));
         DrawableCompat.setTint(progress,progressColor);
         progressBar.setProgressDrawable(dr);
-        return this;
     }
 
     public ButtonProgress setDurationRipple(int duration) {

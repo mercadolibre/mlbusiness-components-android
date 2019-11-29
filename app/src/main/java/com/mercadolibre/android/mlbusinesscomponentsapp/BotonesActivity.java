@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.mercadolibre.android.mlbusinesscomponents.components.exploatingbutton.ButtonProgress;
+import com.mercadolibre.android.mlbusinesscomponents.components.exploatingbutton.ButtonProgressState;
 
 
 public class BotonesActivity extends AppCompatActivity {
@@ -18,8 +19,8 @@ public class BotonesActivity extends AppCompatActivity {
         buttonProgress.Builder()
                 .setTextSize(16)
                 .setTextInformation("Procesar Pago","Cargando")
-                .setColorText(R.color.ui_meli_white)
-                .setColorButton(R.color.ui_meli_green,R.color.ui_meli_red)
+                .setColorText(R.color.ui_meli_red)
+                .setColorButton(R.color.ui_meli_green,R.color.ui_meli_green)
                 .setDurationRipple(500)
                 .setMaxTimeFromServices(7000)
                 .setDurationFinishProgress(1000)
@@ -30,10 +31,15 @@ public class BotonesActivity extends AppCompatActivity {
                     Toast.makeText(this,"A nimation finish", Toast.LENGTH_SHORT).show();
                 });
 
-        new Handler().postDelayed(() -> buttonProgress.finishProgress(
+        buttonProgress.setState(ButtonProgressState.DISABLED);
+        new Handler().postDelayed(() -> buttonProgress.setState(ButtonProgressState.ENABLED), 6000);
+
+        new Handler().postDelayed(() -> buttonProgress.finishProgress(R.color.ui_meli_yellow, R.drawable.ui_ic_clear), 9000);
+
+        /*new Handler().postDelayed(() -> buttonProgress.finishProgress(
                 R.color.ui_meli_blue,
                 R.drawable.mercado_pago
-        ), 3000);
+        ), 3000);*/
 
         //
 
