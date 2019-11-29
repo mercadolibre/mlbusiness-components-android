@@ -16,8 +16,8 @@ public class BotonesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_botones);
         ButtonProgress buttonProgress = findViewById(R.id.progressTest1);
         buttonProgress.Builder()
-                .setTitle("Realizar Pago")
                 .setTextSize(16)
+                .setTextInformation("Procesar Pago","Cargando")
                 .setColorText(R.color.ui_meli_white)
                 .setColorButton(R.color.ui_meli_green,R.color.ui_meli_red)
                 .setDurationRipple(500)
@@ -31,16 +31,16 @@ public class BotonesActivity extends AppCompatActivity {
                 });
 
         new Handler().postDelayed(() -> buttonProgress.finishProgress(
-                R.color.ui_meli_red,
+                R.color.ui_meli_blue,
                 R.drawable.mercado_pago
         ), 3000);
 
         //
 
-        ButtonProgress buttonProgress2 = findViewById(R.id.progressTest2);
+        /*ButtonProgress buttonProgress2 = findViewById(R.id.progressTest2);
         buttonProgress2.Builder()
-                .setTitle("Realizar Pago")
                 .setTextSize(16)
+                .setTextInformation("Procesar Pago","Cargando")
                 .setColorText(R.color.ui_meli_black)
                 .setColorButton(R.color.ui_base_light_color,R.color.ui_base_light_color)
                 .setDurationRipple(500)
@@ -62,8 +62,8 @@ public class BotonesActivity extends AppCompatActivity {
 
         ButtonProgress buttonProgress3 = findViewById(R.id.progressTest3);
         buttonProgress3.Builder()
-                .setTitle("Realizar Pago")
-                .setTextSize(24)
+                .setTextSize(16)
+                .setTextInformation("Procesar Pago","Cargando")
                 .setColorText(R.color.ui_meli_white)
                 .setColorButton(R.color.ui_meli_red,R.color.ui_meli_red)
                 .setDurationRipple(500)
@@ -85,8 +85,8 @@ public class BotonesActivity extends AppCompatActivity {
 
         ButtonProgress buttonProgress4 = findViewById(R.id.progressTest4);
         buttonProgress4.Builder()
-                .setTitle("Realizar Pago")
-                .setTextSize(24)
+                .setTextSize(16)
+                .setTextInformation("Procesar Pago","Cargando")
                 .setColorText(R.color.ui_meli_white)
                 .setColorButton(R.color.ui_meli_blue,R.color.ui_meli_blue)
                 .setDurationRipple(500)
@@ -103,7 +103,7 @@ public class BotonesActivity extends AppCompatActivity {
                 R.color.ui_meli_green,
                 R.drawable.mercado_libre
         ), 5250);
-
+*/
 
     }
 }

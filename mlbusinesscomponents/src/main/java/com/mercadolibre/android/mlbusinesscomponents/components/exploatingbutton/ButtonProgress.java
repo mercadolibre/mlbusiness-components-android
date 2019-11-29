@@ -47,7 +47,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     private ImageView circle;
     private ImageView icon;
     @ColorRes private int rippleColor;
-    //private String title;
+    private String titleProgress;
     private OnFinishAnimationListener onFinishAnimationListener;
     private int durationRipple = 800;
     private int durationTimeout = 10000;
@@ -78,8 +78,9 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         return this;
     }
 
-    public ButtonProgress setTitle(String title) {
+    public ButtonProgress setTextInformation(String title, String titleProgress){
         textProgressBar.setText(title);
+        this.titleProgress = titleProgress;
         return this;
     }
 
@@ -184,6 +185,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     @Override
     public void onClick(View v) {
         progressBar.setMax(durationTimeout);
+        textProgressBar.setText(titleProgress);
         animator = ObjectAnimator.ofInt(progressBar, "progress", 0, durationTimeout);
         animator.setInterpolator(new LinearInterpolator());
         animator.setDuration(durationTimeout);
@@ -321,7 +323,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
                 @Override
                 public void onAnimationEnd(final Animator animation) {
                     Activity activity = (Activity) reveal.getContext();
-                    setStatusBarColor(getDarkPrimaryColor(rippleColor), activity.getWindow());
+                    setStatusBarColor(getDarkPrimaryColor(ContextCompat.getColor(getContext(), rippleColor)), activity.getWindow());
                     onFinishAnimationListener.finishAnimation();
                 }
             });

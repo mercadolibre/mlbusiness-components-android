@@ -38,10 +38,10 @@ public class MainActivity extends AppCompatActivity
         LinearLayout benefitContainer = findViewById(R.id.loyaltyBenefitsContainer);
         ButtonProgress buttonProgress = findViewById(R.id.progressTest);
         buttonProgress.Builder()
-                .setTitle("Rodri capo")
                 .setTextSize(16)
+                .setTextInformation("Procesar Pago","Cargando")
                 .setColorText(R.color.ui_meli_white)
-                .setColorButton(R.color.ui_meli_green,R.color.ui_meli_red)
+                .setColorButton(R.color.ui_meli_green,R.color.ui_meli_green)
                 .setDurationRipple(500)
                 .setMaxTimeFromServices(7000)
                 .setDurationFinishProgress(1000)
