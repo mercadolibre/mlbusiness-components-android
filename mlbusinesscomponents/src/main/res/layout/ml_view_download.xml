@@ -20,7 +20,7 @@
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/titleDownload"
-        style="@style/MLFont.Bold.Semi"
+        style="@style/MLFont.Regular"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
