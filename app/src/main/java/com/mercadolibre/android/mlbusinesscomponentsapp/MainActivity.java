@@ -1,21 +1,18 @@
 package com.mercadolibre.android.mlbusinesscomponentsapp;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.mercadolibre.android.mlbusinesscomponents.components.common.MLBusinessInfoView;
 import com.mercadolibre.android.mlbusinesscomponents.components.common.downloadapp.MLBusinessDownloadAppView;
 import com.mercadolibre.android.mlbusinesscomponents.components.crossselling.MLBusinessCrossSellingBoxView;
 import com.mercadolibre.android.mlbusinesscomponents.components.discount.MLBusinessDiscountBoxView;
-import com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgress;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyHeaderView;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyRingView;
 
@@ -36,32 +33,12 @@ public class MainActivity extends AppCompatActivity
         MLBusinessCrossSellingBoxView crossSellingBoxView = findViewById(R.id.crossSellingView);
         MLBusinessLoyaltyHeaderView loyaltyHeaderView = findViewById(R.id.loyaltyHeaderView);
         LinearLayout benefitContainer = findViewById(R.id.loyaltyBenefitsContainer);
-        ButtonProgress buttonProgress = findViewById(R.id.progressTest);
-        buttonProgress.Builder()
-                .setTextSize(16)
-                .setTextInformation("Procesar Pago","Cargando")
-                .setColorText(R.color.ui_meli_white)
-                .setColorButton(R.color.ui_meli_green,R.color.ui_meli_green)
-                .setDurationRipple(500)
-                .setMaxTimeFromServices(7000)
-                .setDurationFinishProgress(1000)
-                .setDurationAnimationCircle(200)
-                .setDurationDelayRipple(500)
-                .setViewParent(findViewById(R.id.ripple))
-                .addFinishAnimationListener(() -> {
-                    Toast.makeText(this,"A nimation finish", Toast.LENGTH_SHORT).show();
-                });
 
-        new Handler().postDelayed(new Runnable() {
-            @SuppressLint("ResourceType")
-            @Override
-            public void run() {
-                buttonProgress.finishProgress(
-                        R.color.ui_meli_red,
-                        R.drawable.mercado_pago
-                );
-            }
-        }, 5000);
+        Button button = findViewById(R.id.buttonOpen);
+        button.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this,BotonesActivity.class);
+            startActivity(intent);
+        });
 
         MLBusinessInfoView benefitView = new MLBusinessInfoView(this);
 

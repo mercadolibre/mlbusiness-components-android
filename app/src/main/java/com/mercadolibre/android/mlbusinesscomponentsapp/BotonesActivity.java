@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgress;
-import com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgressState;
 
 
 public class BotonesActivity extends AppCompatActivity {
@@ -31,19 +30,12 @@ public class BotonesActivity extends AppCompatActivity {
                     Toast.makeText(this,"A nimation finish", Toast.LENGTH_SHORT).show();
                 });
 
-        buttonProgress.setState(ButtonProgressState.DISABLED);
-        new Handler().postDelayed(() -> buttonProgress.setState(ButtonProgressState.ENABLED), 6000);
-
-        new Handler().postDelayed(() -> buttonProgress.finishProgress(R.color.ui_meli_yellow, R.drawable.ui_ic_clear), 9000);
-
-        /*new Handler().postDelayed(() -> buttonProgress.finishProgress(
-                R.color.ui_meli_blue,
+        new Handler().postDelayed(() -> buttonProgress.finishProgress(
+                R.color.ui_meli_red,
                 R.drawable.mercado_pago
-        ), 3000);*/
+        ), 3000);
 
-        //
-
-        /*ButtonProgress buttonProgress2 = findViewById(R.id.progressTest2);
+        ButtonProgress buttonProgress2 = findViewById(R.id.progressTest2);
         buttonProgress2.Builder()
                 .setTextSize(16)
                 .setTextInformation("Procesar Pago","Cargando")
@@ -64,8 +56,6 @@ public class BotonesActivity extends AppCompatActivity {
                 R.drawable.ui_ic_clear
         ), 3750);
 
-        //
-
         ButtonProgress buttonProgress3 = findViewById(R.id.progressTest3);
         buttonProgress3.Builder()
                 .setTextSize(16)
@@ -83,11 +73,9 @@ public class BotonesActivity extends AppCompatActivity {
                 });
 
         new Handler().postDelayed(() -> buttonProgress3.finishProgress(
-                R.color.ui_meli_dark_grey,
+                R.color.ui_meli_blue,
                 R.drawable.skeleton
         ), 4500);
-
-        //
 
         ButtonProgress buttonProgress4 = findViewById(R.id.progressTest4);
         buttonProgress4.Builder()
@@ -109,7 +97,6 @@ public class BotonesActivity extends AppCompatActivity {
                 R.color.ui_meli_green,
                 R.drawable.mercado_libre
         ), 5250);
-*/
 
     }
 }

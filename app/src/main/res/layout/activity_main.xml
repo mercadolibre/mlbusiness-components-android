@@ -14,7 +14,6 @@
         android:focusableInTouchMode="true"
         android:orientation="vertical">
 
-
         <com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyRingView
             android:id="@+id/loyaltyView"
             android:layout_width="match_parent"
@@ -55,27 +54,29 @@
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp" />
 
+        <Button
+            android:id="@+id/buttonOpen"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="20dp"
+            android:text="Abrir Activity Progress Button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/downloadAppView" />
+
         <com.mercadolibre.android.mlbusinesscomponents.components.crossselling.MLBusinessCrossSellingBoxView
             android:id="@+id/crossSellingView"
             android:layout_width="match_parent"
-            app:layout_constraintTop_toBottomOf="@id/downloadAppView"
+            app:layout_constraintTop_toBottomOf="@id/buttonOpen"
             android:layout_height="wrap_content" />
-
-        <com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgress
-            android:id="@+id/progressTest"
-            android:layout_width="0dp"
-            android:layout_height="56dp"
-            android:layout_marginStart="@dimen/ui_7m"
-            android:layout_marginEnd="@dimen/ui_7m"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/crossSellingView" />
 
         <com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyHeaderView
             android:id="@+id/loyaltyHeaderView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/progressTest"
+            app:layout_constraintTop_toBottomOf="@id/crossSellingView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -84,20 +85,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/progressTest"
+            app:layout_constraintTop_toBottomOf="@id/loyaltyHeaderView"
             android:padding="16dp"
             tools:ignore="UselessLeaf" />
 
-        <View
-            android:id="@+id/ripple"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+
     </android.support.constraint.ConstraintLayout>
 
 </ScrollView>
