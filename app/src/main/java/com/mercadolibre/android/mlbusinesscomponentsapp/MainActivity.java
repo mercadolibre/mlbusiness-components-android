@@ -15,7 +15,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.common.MLBusines
 import com.mercadolibre.android.mlbusinesscomponents.components.common.downloadapp.MLBusinessDownloadAppView;
 import com.mercadolibre.android.mlbusinesscomponents.components.crossselling.MLBusinessCrossSellingBoxView;
 import com.mercadolibre.android.mlbusinesscomponents.components.discount.MLBusinessDiscountBoxView;
-import com.mercadolibre.android.mlbusinesscomponents.components.exploatingbutton.ButtonProgress;
+import com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgress;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyHeaderView;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyRingView;
 

@@ -61,7 +61,7 @@
             app:layout_constraintTop_toBottomOf="@id/downloadAppView"
             android:layout_height="wrap_content" />
 
-        <com.mercadolibre.android.mlbusinesscomponents.components.exploatingbutton.ButtonProgress
+        <com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgress
             android:id="@+id/progressTest"
             android:layout_width="0dp"
             android:layout_height="56dp"

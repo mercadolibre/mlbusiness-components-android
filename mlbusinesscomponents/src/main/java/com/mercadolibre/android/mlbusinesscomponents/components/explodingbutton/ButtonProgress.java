@@ -1,4 +1,4 @@
-package com.mercadolibre.android.mlbusinesscomponents.components.exploatingbutton;
+package com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -40,8 +40,7 @@ import android.widget.TextView;
 
 import com.mercadolibre.android.mlbusinesscomponents.R;
 
-import static com.mercadolibre.android.mlbusinesscomponents.components.exploatingbutton.ButtonProgressState.DISABLED;
-import static com.mercadolibre.android.mlbusinesscomponents.components.exploatingbutton.ButtonProgressState.ENABLED;
+import static com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgressState.DISABLED;
 
 public class ButtonProgress extends LinearLayout implements View.OnClickListener {
     private ProgressBar progressBar;

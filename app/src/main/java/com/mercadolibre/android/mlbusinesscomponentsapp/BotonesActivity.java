@@ -5,8 +5,8 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import com.mercadolibre.android.mlbusinesscomponents.components.exploatingbutton.ButtonProgress;
-import com.mercadolibre.android.mlbusinesscomponents.components.exploatingbutton.ButtonProgressState;
+import com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgress;
+import com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgressState;
 
 
 public class BotonesActivity extends AppCompatActivity {

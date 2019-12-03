@@ -6,7 +6,7 @@
     android:background="@color/ui_meli_white"
     android:layout_height="match_parent">
 
-    <com.mercadolibre.android.mlbusinesscomponents.components.exploatingbutton.ButtonProgress
+    <com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgress
         android:id="@+id/progressTest1"
         android:layout_width="163dp"
         android:layout_height="56dp"
@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.mercadolibre.android.mlbusinesscomponents.components.exploatingbutton.ButtonProgress
+    <com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgress
         android:id="@+id/progressTest2"
         android:layout_width="136dp"
         android:layout_height="56dp"
@@ -29,7 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progressTest1" />
 
-    <com.mercadolibre.android.mlbusinesscomponents.components.exploatingbutton.ButtonProgress
+    <com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgress
         android:id="@+id/progressTest3"
         android:layout_width="182dp"
         android:layout_height="56dp"
@@ -41,7 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progressTest2" />
 
-    <com.mercadolibre.android.mlbusinesscomponents.components.exploatingbutton.ButtonProgress
+    <com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgress
         android:id="@+id/progressTest4"
         android:layout_width="0dp"
         android:layout_height="56dp"
