@@ -48,10 +48,14 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     private TextView textProgressBar;
     private ImageView circle;
     private ImageView icon;
-    @ColorRes private int rippleColor;
-    @ColorRes private int colorText;
-    @ColorRes private int backgroundColor;
-    @ColorRes private int progressColor;
+    @ColorRes
+    private int rippleColor;
+    @ColorRes
+    private int colorText;
+    @ColorRes
+    private int backgroundColor;
+    @ColorRes
+    private int progressColor;
     private String titleProgress;
     private OnFinishAnimationListener onFinishAnimationListener;
     private int durationRipple = 800;
@@ -63,6 +67,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     private final float ICON_SCALE = 3.0f;
     private View reveal;
     private View container;
+    private OnClickListener onClickListener;
 
     public ButtonProgress(Context context) {
         super(context);
@@ -83,7 +88,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         return this;
     }
 
-    public ButtonProgress setTextInformation(String title, String titleProgress){
+    public ButtonProgress setTextInformation(String title, String titleProgress) {
         textProgressBar.setText(title);
         this.titleProgress = titleProgress;
         return this;
@@ -100,35 +105,35 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         return this;
     }
 
-    public void setState(ButtonProgressState state){
-        if (state == DISABLED){
+    public void setState(ButtonProgressState state) {
+        if (state == DISABLED) {
             this.setClickable(false);
-            paintButton(R.color.ui_components_grey_color,R.color.ui_components_grey_color);
+            paintButton(R.color.ui_components_grey_color, R.color.ui_components_grey_color);
             paintText(R.color.ui_meli_white);
-        } else{
+        } else {
             this.setClickable(true);
-            paintButton(backgroundColor,progressColor);
+            paintButton(backgroundColor, progressColor);
             paintText(colorText);
         }
     }
 
-    public ButtonProgress setColorButton(int backgroundColor, int progressColor){
+    public ButtonProgress setColorButton(int backgroundColor, int progressColor) {
         this.backgroundColor = backgroundColor;
         this.progressColor = progressColor;
         paintButton(backgroundColor, progressColor);
         return this;
     }
 
-    private void paintText(int color){
-        textProgressBar.setTextColor(ContextCompat.getColor(getContext(),color));
+    private void paintText(int color) {
+        textProgressBar.setTextColor(ContextCompat.getColor(getContext(), color));
     }
 
-    private void paintButton(int backgroundColor, int progressColor){
-        LayerDrawable dr = (LayerDrawable)getResources().getDrawable(R.drawable.button_background);
+    private void paintButton(int backgroundColor, int progressColor) {
+        LayerDrawable dr = (LayerDrawable) getResources().getDrawable(R.drawable.button_background);
         GradientDrawable background = (GradientDrawable) dr.findDrawableByLayerId(R.id.background);
         ClipDrawable progress = (ClipDrawable) dr.findDrawableByLayerId(R.id.progress);
-        background.setColor(ContextCompat.getColor(getContext(),backgroundColor));
-        DrawableCompat.setTint(progress,progressColor);
+        background.setColor(ContextCompat.getColor(getContext(), backgroundColor));
+        DrawableCompat.setTint(progress, progressColor);
         progressBar.setProgressDrawable(dr);
     }
 
@@ -162,12 +167,16 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         return this;
     }
 
+    public void setOnClickListener(OnClickListener l) {
+        onClickListener = l;
+    }
+
     public void finishProgress(@ColorRes int color, @DrawableRes int icon) {
         this.rippleColor = color;
         this.icon.setImageResource(icon);
 
         final int progress = progressBar.getProgress();
-        if (animator != null){
+        if (animator != null) {
             animator.cancel();
         }
         animator = ObjectAnimator.ofInt(progressBar, "progress", progress, durationTimeout);
@@ -197,7 +206,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     }
 
     private void initView(Context context) {
-        setOnClickListener(this);
+        super.setOnClickListener(this);
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.view_color_options, this, true);
@@ -218,6 +227,9 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         animator.setInterpolator(new LinearInterpolator());
         animator.setDuration(durationTimeout);
         animator.start();
+        if (onClickListener != null) {
+            onClickListener.onClick(v);
+        }
     }
 
     void createResultAnim() {
@@ -227,7 +239,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         final int initialRadius = getResources().getDimensionPixelOffset(R.dimen.ui_050m);
         final int finalRadius = finalSize / 2;
         final GradientDrawable initialBg = getProgressBarShape(ContextCompat.getColor(getContext(), rippleColor), initialRadius);
-        final GradientDrawable finalBg = getProgressBarShape(ContextCompat.getColor(getContext(),rippleColor), initialRadius);
+        final GradientDrawable finalBg = getProgressBarShape(ContextCompat.getColor(getContext(), rippleColor), initialRadius);
         final TransitionDrawable transitionDrawable = new TransitionDrawable(new Drawable[]{initialBg, finalBg});
         progressBar.setProgressDrawable(transitionDrawable);
         transitionDrawable.startTransition(duration);
@@ -319,7 +331,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         final int[] location = new int[2];
         container.getLocationOnScreen(location);
         final int cy = (progressBar.getTop() + progressBar.getBottom()) / 2 + (location[1] - container.getMeasuredHeight() / 2);
-        final int cx = location[0] + (container.getWidth()/2);
+        final int cx = location[0] + (container.getWidth() / 2);
 
         //try to avoid reveal detached view
         reveal.post(() -> {
