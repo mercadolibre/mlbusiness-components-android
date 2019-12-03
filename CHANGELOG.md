@@ -1,3 +1,8 @@
+## VERSION 1.0.7
+_03_12_2019_
+* FIX - Fixed discounts center box item height.
+* FIX - Loyalty font family.
+
 ## VERSION 1.0.6
 _06_11_2019_
 * FIX - Fixed font size
