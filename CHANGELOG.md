@@ -1,5 +1,8 @@
-## VERSION 1.0.7
-_03_12_2019_
+## VERSION 1.1.0
+_05_12_2019_
+* FEATURE - Added Picasso disk cache.
+* FEATURE - Migrated to min api level 19.
+* FEATURE - Migrated to UI 8+.
 * FIX - Fixed discounts center box item height.
 * FIX - Loyalty font family.
 

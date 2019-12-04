@@ -7,7 +7,7 @@ import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import com.mercadolibre.android.mlbusinesscomponents.R;
-import com.squareup.picasso.Picasso;
+import com.mercadolibre.android.picassodiskcache.PicassoDiskLoader;
 
 public class MLBusinessCrossSellingBoxView extends ConstraintLayout {
 
@@ -43,7 +43,7 @@ public class MLBusinessCrossSellingBoxView extends ConstraintLayout {
     private void loadImageUrl(@NonNull final String url) {
         final Context context;
         if ((context = getContext()) != null) {
-            Picasso.with(context)
+            PicassoDiskLoader.get(context)
                 .load(url)
                 .placeholder(R.drawable.skeleton)
                 .into((AppCompatImageView) findViewById(R.id.crossSellingImage));
