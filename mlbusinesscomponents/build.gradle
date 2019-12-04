@@ -30,7 +30,6 @@ android {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
     }
-
 }
 
 apply from:"$rootDir/gradle/deploy_business_components.gradle"
@@ -45,7 +44,7 @@ dependencies {
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso"
 
     implementation "com.android.support:recyclerview-v7:$support_library_version"
-    implementation "com.squareup.picasso:picasso:$picasso"
+    implementation "com.mercadolibre.android:picasso-disk-cache:$picassoDiskCache"
     implementation "com.mercadolibre.android:ui:$meli_ui_lib"
     implementation "com.android.support.constraint:constraint-layout:$constraint_layout"
     implementation "com.android.support:cardview-v7:$support_library_version"

@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem;
-import com.squareup.picasso.Picasso;
+import com.mercadolibre.android.picassodiskcache.PicassoDiskLoader;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
@@ -92,7 +92,7 @@ class MLBusinessDiscountBoxAdapter
         void loadIconImage(@NonNull final String url) {
             final Context context = itemView.getContext();
             if (context != null) {
-                Picasso.with(context)
+                PicassoDiskLoader.get(context)
                     .load(Uri.parse(url))
                     .transform(new CircleTransform())
                     .placeholder(R.drawable.skeleton)

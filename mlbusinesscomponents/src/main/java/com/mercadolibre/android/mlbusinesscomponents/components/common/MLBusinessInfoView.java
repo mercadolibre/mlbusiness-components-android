@@ -11,7 +11,7 @@ import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
-import com.squareup.picasso.Picasso;
+import com.mercadolibre.android.picassodiskcache.PicassoDiskLoader;
 
 public class MLBusinessInfoView extends ConstraintLayout {
 
@@ -46,7 +46,7 @@ public class MLBusinessInfoView extends ConstraintLayout {
 
         description.setText(businessInfoData.getDescription());
 
-        Picasso.with(getContext()).load(businessInfoData.getIcon()).into(icon);
+        PicassoDiskLoader.get(getContext()).load(businessInfoData.getIcon()).into(icon);
     }
 
     public void init(@NonNull final MLBusinessInfoData businessInfoData) {
