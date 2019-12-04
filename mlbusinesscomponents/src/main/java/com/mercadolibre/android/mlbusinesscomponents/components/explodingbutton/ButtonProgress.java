@@ -64,7 +64,6 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     private int durationAnimation = 500;
     private int durationDelayRipple = 200;
     private static final float DARKEN_FACTOR = 0.1f;
-    private final float ICON_SCALE = 3.0f;
     private View reveal;
     private View container;
     private OnClickListener onClickListener;
@@ -108,7 +107,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     public void setState(ButtonProgressState state) {
         if (state == DISABLED) {
             this.setClickable(false);
-            paintButton(R.color.ui_components_grey_color, R.color.ui_components_grey_color);
+            paintButton(R.color.mlbusiness_color_disable_button, R.color.mlbusiness_color_disable_button);
             paintText(R.color.ui_meli_white);
         } else {
             this.setClickable(true);
@@ -294,6 +293,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         //progressBar.setVisibility(View.INVISIBLE);
         progressBar.setClickable(false);
         this.icon.setVisibility(View.VISIBLE);
+        float ICON_SCALE = 3.0f;
         this.icon.setScaleY(ICON_SCALE);
         this.icon.setScaleX(ICON_SCALE);
         this.icon.setAlpha(0f);
