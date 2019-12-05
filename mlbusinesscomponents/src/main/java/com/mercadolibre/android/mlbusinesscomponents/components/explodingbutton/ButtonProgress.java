@@ -68,7 +68,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     private View reveal;
     private View container;
     private WeakReference<OnFinishAnimationListener> onFinishAnimationListener;
-    private OnClickListener onClickListener;
+    private WeakReference<OnClickListener> onClickListener;
 
     public ButtonProgress(Context context) {
         super(context);
@@ -169,7 +169,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     }
 
     public void setOnClickListener(OnClickListener l) {
-        onClickListener = l;
+        onClickListener = new WeakReference<>(l);
     }
 
     public void finishProgress(@ColorRes int color, @DrawableRes int icon) {
@@ -229,7 +229,10 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         animator.setDuration(durationTimeout);
         animator.start();
         if (onClickListener != null) {
-            onClickListener.onClick(v);
+            final OnClickListener listener = onClickListener.get();
+            if (listener != null){
+                onClickListener.get().onClick(v);
+            }
         }
     }
 
