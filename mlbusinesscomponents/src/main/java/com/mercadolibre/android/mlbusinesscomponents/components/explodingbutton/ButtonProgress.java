@@ -55,9 +55,10 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     @ColorRes
     private int colorText;
     @ColorRes
-    private int backgroundColor = R.color.ui_components_primary_color_pressed;
+    private int backgroundColor = R.color.ui_components_primary_color;
     @ColorRes
-    private int progressColor = R.color.ui_components_primary_color;
+
+    private int progressColor = R.color.ui_components_primary_color_pressed;
     private String titleProgress;
     private int durationRipple = 500;
     private int durationTimeout = 7000;

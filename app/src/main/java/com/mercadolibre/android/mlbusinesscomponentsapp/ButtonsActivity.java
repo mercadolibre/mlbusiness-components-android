@@ -19,12 +19,7 @@ public class ButtonsActivity extends AppCompatActivity {
         buttonProgress.Builder(findViewById(R.id.ripple))
                 .setTextSize(16)
                 .setTextInformation("Procesar Pago","Cargando")
-                .setColorText(R.color.ui_meli_red)
-                .setDurationRipple(500)
-                .setMaxTimeFromServices(7000)
-                .setDurationFinishProgress(1000)
-                .setDurationAnimationCircle(200)
-                .setDurationDelayRipple(500);
+                .setColorText(R.color.ui_meli_red);
 
         new Handler().postDelayed(() -> buttonProgress.finishProgress(
                 R.color.ui_meli_red,
