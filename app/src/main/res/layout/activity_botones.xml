@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@color/ui_meli_white"
+    android:layout_height="match_parent">
+
+    <com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgress
+        android:id="@+id/progressTest1"
+        android:layout_width="163dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="@dimen/ui_6m"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="@dimen/ui_6m"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgress
+        android:id="@+id/progressTest2"
+        android:layout_width="136dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="@dimen/ui_6m"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="@dimen/ui_6m"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressTest1" />
+
+    <com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgress
+        android:id="@+id/progressTest3"
+        android:layout_width="182dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="@dimen/ui_6m"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="@dimen/ui_6m"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.187"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressTest2" />
+
+    <com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgress
+        android:id="@+id/progressTest4"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="@dimen/ui_6m"
+        android:layout_marginEnd="@dimen/ui_6m"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressTest3"/>
+
+    <View
+        android:id="@+id/ripple"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+</android.support.constraint.ConstraintLayout>

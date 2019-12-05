@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.mercadolibre.android.mlbusinesscomponents.components.common.MLBusinessInfoView;
@@ -32,6 +33,12 @@ public class MainActivity extends AppCompatActivity
         MLBusinessCrossSellingBoxView crossSellingBoxView = findViewById(R.id.crossSellingView);
         MLBusinessLoyaltyHeaderView loyaltyHeaderView = findViewById(R.id.loyaltyHeaderView);
         LinearLayout benefitContainer = findViewById(R.id.loyaltyBenefitsContainer);
+
+        Button button = findViewById(R.id.buttonOpen);
+        button.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ButtonsActivity.class);
+            startActivity(intent);
+        });
 
         MLBusinessInfoView benefitView = new MLBusinessInfoView(this);
 

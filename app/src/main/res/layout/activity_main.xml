@@ -2,60 +2,81 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentTest"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/ui_meli_white"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:focusableInTouchMode="true">
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
 
         <com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyRingView
             android:id="@+id/loyaltyView"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="16dp" />
 
         <com.mercadolibre.android.mlbusinesscomponents.components.common.dividingline.MLBusinessDividingLineView
             android:id="@+id/divider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/loyaltyView"
             android:layout_marginTop="@dimen/ui_1m"
             android:layout_marginBottom="@dimen/ui_1m"
-            app:hasTriangle="true"/>
+            app:hasTriangle="true" />
 
         <com.mercadolibre.android.mlbusinesscomponents.components.discount.MLBusinessDiscountBoxView
             android:id="@+id/discountView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider"
+            android:layout_gravity="center" />
 
         <com.mercadolibre.android.mlbusinesscomponents.components.common.downloadapp.MLBusinessDownloadAppView
             android:id="@+id/downloadAppView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
+            app:layout_constraintTop_toBottomOf="@id/discountView"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/buttonOpen"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="20dp"
+            android:text="Abrir Activity Progress Button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/downloadAppView" />
 
         <com.mercadolibre.android.mlbusinesscomponents.components.crossselling.MLBusinessCrossSellingBoxView
             android:id="@+id/crossSellingView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            app:layout_constraintTop_toBottomOf="@id/buttonOpen"
+            android:layout_height="wrap_content" />
 
         <com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyHeaderView
             android:id="@+id/loyaltyHeaderView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/crossSellingView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -64,9 +85,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/loyaltyHeaderView"
             android:padding="16dp"
             tools:ignore="UselessLeaf" />
 
-    </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
 
 </ScrollView>

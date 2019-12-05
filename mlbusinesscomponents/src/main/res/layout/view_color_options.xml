@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/cho_loading_buy_container"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    tools:layout_gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ProgressBar
+        android:id="@+id/cho_loading_buy_progress"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ui_exploting_button_height"
+        android:layout_centerInParent="true"
+        android:indeterminate="false"
+        android:progressDrawable="@drawable/button_background"
+        tools:max="100"
+        tools:progress="10"/>
+
+    <TextView
+        android:id="@+id/cho_loading_buy_progress_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="ESDGDGDFGDc"
+        android:layout_centerInParent="true"
+        android:textColor="#fff"/>
+
+    <ImageView
+        android:id="@+id/cho_loading_buy_circular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/button_white_circle"
+        android:visibility="gone"
+        tools:visibility="visible"/>
+
+
+    <ImageView
+        android:id="@+id/cho_loading_buy_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:scaleType="centerInside"
+        android:visibility="gone"
+        tools:visibility="visible"/>
+
+    <View
+        android:id="@+id/cho_loading_buy_reveal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible"
+        />
+
+</RelativeLayout>
+

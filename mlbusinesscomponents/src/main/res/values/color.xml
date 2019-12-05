@@ -4,4 +4,5 @@
     <color name="download_app_background_color">#f5f5f5</color>
     <color name="cross_selling_action_color">#009ee3</color>
     <color name="text_secondary_color">#73000000</color>
+    <color name="mlbusiness_color_disable_button">#c1c1c1</color>
 </resources>
