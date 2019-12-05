@@ -40,6 +40,8 @@ import android.widget.TextView;
 
 import com.mercadolibre.android.mlbusinesscomponents.R;
 
+import java.lang.ref.WeakReference;
+
 import static com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgressState.DISABLED;
 
 public class ButtonProgress extends LinearLayout implements View.OnClickListener {
@@ -57,7 +59,6 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     @ColorRes
     private int progressColor = R.color.ui_components_primary_color_pressed;
     private String titleProgress;
-    private OnFinishAnimationListener onFinishAnimationListener;
     private int durationRipple = 500;
     private int durationTimeout = 7000;
     private int durationFinishProgress = 1000;
@@ -66,6 +67,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     private static final float DARKEN_FACTOR = 0.1f;
     private View reveal;
     private View container;
+    private WeakReference<OnFinishAnimationListener> onFinishAnimationListener;
     private OnClickListener onClickListener;
 
     public ButtonProgress(Context context) {
@@ -162,7 +164,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     }
 
     public ButtonProgress addFinishAnimationListener(OnFinishAnimationListener onFinishAnimationListener) {
-        this.onFinishAnimationListener = onFinishAnimationListener;
+        this.onFinishAnimationListener = new WeakReference<>(onFinishAnimationListener);
         return this;
     }
 
@@ -362,10 +364,13 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
                 @SuppressLint("ResourceAsColor")
                 @Override
                 public void onAnimationEnd(final Animator animation) {
-                    Activity activity = (Activity) reveal.getContext();
-                    setStatusBarColor(getDarkPrimaryColor(ContextCompat.getColor(getContext(), rippleColor)), activity.getWindow());
-                    if (onFinishAnimationListener != null)
-                        onFinishAnimationListener.finishAnimation();
+                    if (reveal != null) {
+                        Activity activity = (Activity) reveal.getContext();
+                        setStatusBarColor(getDarkPrimaryColor(ContextCompat.getColor(getContext(), rippleColor)), activity.getWindow());
+                        final OnFinishAnimationListener listener = onFinishAnimationListener.get();
+                        if (listener != null)
+                            listener.finishAnimation();
+                    }
                 }
             });
 

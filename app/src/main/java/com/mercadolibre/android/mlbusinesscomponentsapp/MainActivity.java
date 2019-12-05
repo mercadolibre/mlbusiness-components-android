@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity
 
         Button button = findViewById(R.id.buttonOpen);
         button.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this,BotonesActivity.class);
+            Intent intent = new Intent(MainActivity.this,ButtonsActivity.class);
             startActivity(intent);
         });
 
