@@ -10,7 +10,7 @@
         android:id="@+id/cho_loading_buy_progress"
         style="@android:style/Widget.ProgressBar.Horizontal"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="@dimen/ui_exploting_button_height"
         android:layout_centerInParent="true"
         android:indeterminate="false"
         android:progressDrawable="@drawable/button_background"

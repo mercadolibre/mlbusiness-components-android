@@ -10,4 +10,8 @@
     <!-- Font Dimens -->
     <dimen name="ui_font_discount_title">22sp</dimen>
 
+
+    <!-- Exploting Button Dimens -->
+    <dimen name="ui_exploting_button_height">56dp</dimen>
+
 </resources>

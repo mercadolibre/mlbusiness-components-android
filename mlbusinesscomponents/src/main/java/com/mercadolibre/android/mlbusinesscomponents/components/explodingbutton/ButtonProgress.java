@@ -53,16 +53,16 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     @ColorRes
     private int colorText;
     @ColorRes
-    private int backgroundColor;
+    private int backgroundColor = R.color.ui_components_primary_color;
     @ColorRes
-    private int progressColor;
+    private int progressColor = R.color.ui_components_primary_color_pressed;
     private String titleProgress;
     private OnFinishAnimationListener onFinishAnimationListener;
-    private int durationRipple = 800;
-    private int durationTimeout = 10000;
-    private int durationFinishProgress = 500;
-    private int durationAnimation = 500;
-    private int durationDelayRipple = 200;
+    private int durationRipple = 500;
+    private int durationTimeout = 7000;
+    private int durationFinishProgress = 1000;
+    private int durationAnimation = 200;
+    private int durationDelayRipple = 500;
     private static final float DARKEN_FACTOR = 0.1f;
     private View reveal;
     private View container;
@@ -355,7 +355,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
                     final Drawable[] switchColors =
                             {new ColorDrawable(startColor), new ColorDrawable(endColor)};
                     final TransitionDrawable colorSwitch = new TransitionDrawable(switchColors);
-                    reveal.setBackgroundDrawable(colorSwitch);
+                    reveal.setBackground(colorSwitch);
                     colorSwitch.startTransition((int) animation.getDuration());
                 }
 
@@ -364,7 +364,8 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
                 public void onAnimationEnd(final Animator animation) {
                     Activity activity = (Activity) reveal.getContext();
                     setStatusBarColor(getDarkPrimaryColor(ContextCompat.getColor(getContext(), rippleColor)), activity.getWindow());
-                    onFinishAnimationListener.finishAnimation();
+                    if (onFinishAnimationListener != null)
+                        onFinishAnimationListener.finishAnimation();
                 }
             });
 
