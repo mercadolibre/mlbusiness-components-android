@@ -61,8 +61,7 @@ public class ButtonsActivity extends AppCompatActivity {
                 .setDurationFinishProgress(1000)
                 .setDurationAnimationCircle(200)
                 .setDurationDelayRipple(500)
-                .setViewParent(findViewById(R.id.ripple))
-                .addFinishAnimationListener(getFinishAnimationListener());
+                .setViewParent(findViewById(R.id.ripple));
 
         new Handler().postDelayed(() -> buttonProgress3.finishProgress(
                 R.color.ui_meli_blue,
