@@ -1,5 +1,6 @@
 ## VERSION 1.1.0
 _05_12_2019_
+* FEATURE - Added ButtonProgress
 * FEATURE - Added Picasso disk cache.
 * FEATURE - Migrated to min api level 19.
 * FEATURE - Migrated to UI 8+.
