@@ -85,7 +85,8 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         initView(context);
     }
 
-    public ButtonProgress Builder() {
+    public ButtonProgress Builder(View reveal) {
+        this.reveal = reveal;
         return this;
     }
 
@@ -367,14 +368,13 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
                 @SuppressLint("ResourceAsColor")
                 @Override
                 public void onAnimationEnd(final Animator animation) {
-                    if (reveal != null) {
-                        Activity activity = (Activity) reveal.getContext();
+                    Activity activity = (Activity) reveal.getContext();
+                    if (activity != null)
                         setStatusBarColor(getDarkPrimaryColor(ContextCompat.getColor(getContext(), rippleColor)), activity.getWindow());
-                        if (onFinishAnimationListener != null){
-                            final OnFinishAnimationListener listener = onFinishAnimationListener.get();
-                            if (listener != null)
-                                listener.finishAnimation();
-                        }
+                    if (onFinishAnimationListener != null){
+                        final OnFinishAnimationListener listener = onFinishAnimationListener.get();
+                        if (listener != null)
+                            listener.finishAnimation();
                     }
                 }
             });

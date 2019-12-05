@@ -16,7 +16,7 @@ public class ButtonsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_botones);
         ButtonProgress buttonProgress = findViewById(R.id.progressTest1);
-        buttonProgress.Builder()
+        buttonProgress.Builder(findViewById(R.id.ripple))
                 .setTextSize(16)
                 .setTextInformation("Procesar Pago","Cargando")
                 .setColorText(R.color.ui_meli_red)
@@ -24,9 +24,7 @@ public class ButtonsActivity extends AppCompatActivity {
                 .setMaxTimeFromServices(7000)
                 .setDurationFinishProgress(1000)
                 .setDurationAnimationCircle(200)
-                .setDurationDelayRipple(500)
-                .setViewParent(findViewById(R.id.ripple))
-                .addFinishAnimationListener(getFinishAnimationListener());
+                .setDurationDelayRipple(500);
 
         new Handler().postDelayed(() -> buttonProgress.finishProgress(
                 R.color.ui_meli_red,
@@ -34,7 +32,7 @@ public class ButtonsActivity extends AppCompatActivity {
         ), 3000);
 
         ButtonProgress buttonProgress2 = findViewById(R.id.progressTest2);
-        buttonProgress2.Builder()
+        buttonProgress2.Builder(findViewById(R.id.ripple))
                 .setTextSize(16)
                 .setTextInformation("Procesar Pago","Cargando")
                 .setColorText(R.color.ui_meli_black)
@@ -42,9 +40,7 @@ public class ButtonsActivity extends AppCompatActivity {
                 .setMaxTimeFromServices(7000)
                 .setDurationFinishProgress(1000)
                 .setDurationAnimationCircle(200)
-                .setDurationDelayRipple(500)
-                .setViewParent(findViewById(R.id.ripple))
-                .addFinishAnimationListener(getFinishAnimationListener());
+                .setDurationDelayRipple(500);
 
         new Handler().postDelayed(() -> buttonProgress2.finishProgress(
                 R.color.ui_meli_yellow,
@@ -52,7 +48,7 @@ public class ButtonsActivity extends AppCompatActivity {
         ), 3750);
 
         ButtonProgress buttonProgress3 = findViewById(R.id.progressTest3);
-        buttonProgress3.Builder()
+        buttonProgress3.Builder(findViewById(R.id.ripple))
                 .setTextSize(16)
                 .setTextInformation("Procesar Pago","Cargando")
                 .setColorText(R.color.ui_meli_white)
@@ -60,8 +56,7 @@ public class ButtonsActivity extends AppCompatActivity {
                 .setMaxTimeFromServices(7000)
                 .setDurationFinishProgress(1000)
                 .setDurationAnimationCircle(200)
-                .setDurationDelayRipple(500)
-                .setViewParent(findViewById(R.id.ripple));
+                .setDurationDelayRipple(500);
 
         new Handler().postDelayed(() -> buttonProgress3.finishProgress(
                 R.color.ui_meli_blue,
@@ -69,7 +64,7 @@ public class ButtonsActivity extends AppCompatActivity {
         ), 4500);
 
         ButtonProgress buttonProgress4 = findViewById(R.id.progressTest4);
-        buttonProgress4.Builder()
+        buttonProgress4.Builder(findViewById(R.id.ripple))
                 .setTextSize(16)
                 .setTextInformation("Procesar Pago","Cargando")
                 .setColorText(R.color.ui_meli_white)
@@ -77,9 +72,7 @@ public class ButtonsActivity extends AppCompatActivity {
                 .setMaxTimeFromServices(7000)
                 .setDurationFinishProgress(1000)
                 .setDurationAnimationCircle(200)
-                .setDurationDelayRipple(500)
-                .setViewParent(findViewById(R.id.ripple))
-                .addFinishAnimationListener(getFinishAnimationListener());
+                .setDurationDelayRipple(500);
 
         new Handler().postDelayed(() -> buttonProgress4.finishProgress(
                 R.color.ui_meli_green,
