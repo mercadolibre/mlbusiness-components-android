@@ -170,7 +170,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         return this;
     }
 
-    public void setOnClickListener(OnClickListener l) {
+    public void setOnClickButtonProgress(OnClickListener l) {
         onClickListener = new WeakReference<>(l);
     }
 
