@@ -165,8 +165,8 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         return this;
     }
 
-    public void setOnClickListener(OnClickListener l) {
-        onClickListener = l;
+    public void setOnClickListener(OnClickListener onClickListener) {
+        this.onClickListener = onClickListener;
     }
 
     public void finishProgress(@ColorRes int color, @DrawableRes int icon) {
@@ -293,14 +293,12 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     }
 
     private void createResultIconAnim() {
-        //progressBar.setVisibility(View.INVISIBLE);
         progressBar.setClickable(false);
         this.icon.setVisibility(View.VISIBLE);
         float ICON_SCALE = 3.0f;
         this.icon.setScaleY(ICON_SCALE);
         this.icon.setScaleX(ICON_SCALE);
         this.icon.setAlpha(0f);
-        //circle.setVisibility(View.VISIBLE);
         this.icon.animate().alpha(1.0f).scaleX(1.0f).scaleY(1.0f)
                 .setInterpolator(new DecelerateInterpolator(2f))
                 .setDuration(300)
