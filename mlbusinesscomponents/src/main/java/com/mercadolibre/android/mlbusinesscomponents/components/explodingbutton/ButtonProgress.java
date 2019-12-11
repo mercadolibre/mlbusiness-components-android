@@ -364,10 +364,12 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
                 @Override
                 public void onAnimationEnd(final Animator animation) {
                     Activity activity = (Activity) reveal.getContext();
-                    if (activity != null)
+                    if (activity != null) {
                         setStatusBarColor(getDarkPrimaryColor(ContextCompat.getColor(getContext(), rippleColor)), activity.getWindow());
-                    if (onFinishAnimationListener != null)
+                    }
+                    if (onFinishAnimationListener != null) {
                         onFinishAnimationListener.finishAnimation();
+                    }
                 }
             });
 
