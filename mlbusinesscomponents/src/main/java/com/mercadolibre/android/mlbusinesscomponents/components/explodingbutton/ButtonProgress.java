@@ -37,11 +37,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import com.mercadolibre.android.mlbusinesscomponents.R;
-
-import java.lang.ref.WeakReference;
-
 import static com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgressState.DISABLED;
 
 public class ButtonProgress extends LinearLayout implements View.OnClickListener {
@@ -57,7 +53,6 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     @ColorRes
     private int backgroundColor = R.color.ui_components_primary_color;
     @ColorRes
-
     private int progressColor = R.color.ui_components_primary_color_pressed;
     private String titleProgress;
     private int durationRipple = 500;
@@ -68,8 +63,8 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     private static final float DARKEN_FACTOR = 0.1f;
     private View reveal;
     private View container;
-    private WeakReference<OnFinishAnimationListener> onFinishAnimationListener;
-    private WeakReference<OnClickListener> onClickListener;
+    private OnFinishAnimationListener onFinishAnimationListener;
+    private OnClickListener onClickListener;
 
     public ButtonProgress(Context context) {
         super(context);
@@ -166,12 +161,12 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     }
 
     public ButtonProgress addFinishAnimationListener(OnFinishAnimationListener onFinishAnimationListener) {
-        this.onFinishAnimationListener = new WeakReference<>(onFinishAnimationListener);
+        this.onFinishAnimationListener = onFinishAnimationListener;
         return this;
     }
 
-    public void setOnClickButtonProgress(OnClickListener l) {
-        onClickListener = new WeakReference<>(l);
+    public void setOnClickListener(OnClickListener l) {
+        onClickListener = l;
     }
 
     public void finishProgress(@ColorRes int color, @DrawableRes int icon) {
@@ -224,18 +219,19 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
+        startAnimationCustom();
+        if (onClickListener != null) {
+            onClickListener.onClick(v);
+        }
+    }
+
+    public void startAnimationCustom() {
         progressBar.setMax(durationTimeout);
         textProgressBar.setText(titleProgress);
         animator = ObjectAnimator.ofInt(progressBar, "progress", 0, durationTimeout);
         animator.setInterpolator(new LinearInterpolator());
         animator.setDuration(durationTimeout);
         animator.start();
-        if (onClickListener != null) {
-            final OnClickListener listener = onClickListener.get();
-            if (listener != null){
-                onClickListener.get().onClick(v);
-            }
-        }
     }
 
     void createResultAnim() {
@@ -372,16 +368,20 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
                     Activity activity = (Activity) reveal.getContext();
                     if (activity != null)
                         setStatusBarColor(getDarkPrimaryColor(ContextCompat.getColor(getContext(), rippleColor)), activity.getWindow());
-                    if (onFinishAnimationListener != null){
-                        final OnFinishAnimationListener listener = onFinishAnimationListener.get();
-                        if (listener != null)
-                            listener.finishAnimation();
-                    }
+                    if (onFinishAnimationListener != null)
+                        onFinishAnimationListener.finishAnimation();
                 }
             });
 
             anim.start();
         });
+    }
+
+    @Override
+    public void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        onClickListener = null;
+        onFinishAnimationListener = null;
     }
 
     @ColorInt
