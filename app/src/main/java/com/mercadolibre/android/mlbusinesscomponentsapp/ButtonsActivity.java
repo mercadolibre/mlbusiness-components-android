@@ -33,7 +33,7 @@ public class ButtonsActivity extends AppCompatActivity {
                 R.drawable.mercado_pago
         ), 3000);
 
-        /*ButtonProgress buttonProgress2 = findViewById(R.id.progressTest2);
+        ButtonProgress buttonProgress2 = findViewById(R.id.progressTest2);
         buttonProgress2.Builder(findViewById(R.id.ripple))
                 .setTextSize(16)
                 .setTextInformation("Procesar Pago","Cargando")
@@ -79,7 +79,7 @@ public class ButtonsActivity extends AppCompatActivity {
         new Handler().postDelayed(() -> buttonProgress4.finishProgress(
                 R.color.ui_meli_green,
                 R.drawable.mercado_libre
-        ), 5250);*/
+        ), 5250);
     }
 
     private OnFinishAnimationListener getFinishAnimationListener(){
