@@ -18,6 +18,8 @@ import com.mercadolibre.android.picassodiskcache.PicassoDiskLoader;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
+import static android.text.TextUtils.isEmpty;
+
 class MLBusinessDiscountBoxAdapter
     extends RecyclerView.Adapter<MLBusinessDiscountBoxAdapter.DiscountBoxViewHolder> {
 
@@ -46,7 +48,7 @@ class MLBusinessDiscountBoxAdapter
         holder.subtitleLabel.setText(item.getSubtitleLabel());
         holder.loadIconImage(item.getImageUrl());
         if (onClickDiscountBox != null) {
-            holder.setRippleEffect();
+            holder.setRippleEffect(item.getDeepLinkItem());
             holder.setOnClickItem(position, item.getDeepLinkItem(), item.getTrackId());
         }
     }
@@ -69,14 +71,15 @@ class MLBusinessDiscountBoxAdapter
             subtitleLabel = itemView.findViewById(R.id.subtitleLabel);
         }
 
-        void setRippleEffect() {
-            final Context context = itemView.getContext();
-            if (context != null) {
-                final int resId = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ?
-                    android.R.attr.selectableItemBackgroundBorderless : android.R.attr.selectableItemBackground;
-                final TypedValue outValue = new TypedValue();
-                context.getTheme().resolveAttribute(resId, outValue, true);
-                itemView.setBackgroundResource(outValue.resourceId);
+        void setRippleEffect(String itemDeepLink) {
+            if (!isEmpty(itemDeepLink)) {
+                final Context context = itemView.getContext();
+                if (context != null) {
+                    final int resId =  android.R.attr.selectableItemBackground;
+                    final TypedValue outValue = new TypedValue();
+                    context.getTheme().resolveAttribute(resId, outValue, true);
+                    itemView.setBackgroundResource(outValue.resourceId);
+                }
             }
         }
 

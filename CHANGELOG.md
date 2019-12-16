@@ -1,3 +1,6 @@
+## VERSION 1.1.1
+* FIX - Loyalty discounts center item ripple effect fix.
+
 ## VERSION 1.1.0
 _05_12_2019_
 * FEATURE - Added Picasso disk cache.
