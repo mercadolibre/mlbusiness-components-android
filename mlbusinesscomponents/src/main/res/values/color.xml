@@ -5,4 +5,5 @@
     <color name="cross_selling_action_color">#009ee3</color>
     <color name="text_secondary_color">#73000000</color>
     <color name="mlbusiness_color_disable_button">#c1c1c1</color>
+    <color name="box_image_overlay_color">#0A000000</color>
 </resources>

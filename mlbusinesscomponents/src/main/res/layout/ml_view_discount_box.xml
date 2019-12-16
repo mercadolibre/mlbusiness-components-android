@@ -5,18 +5,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/iconImage"
-        android:layout_width="@dimen/ui_7m"
-        android:layout_height="@dimen/ui_7m"
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="@dimen/ui_025m"
-        android:scaleType="centerInside"
-        tools:src="@drawable/mercado_pago"
-        android:contentDescription="@string/app_name" />
+        android:layout_marginTop="@dimen/ui_025m">
+
+        <ImageView
+            android:id="@+id/iconImage"
+            android:layout_width="@dimen/ui_7m"
+            android:layout_height="@dimen/ui_7m"
+            android:scaleType="centerInside"
+            tools:src="@drawable/mercado_pago"
+            android:contentDescription="@string/app_name" />
+
+        <View
+            android:layout_width="@dimen/ui_7m"
+            android:layout_height="@dimen/ui_7m"
+            android:background="@drawable/box_icon_overlay" />
+
+    </FrameLayout>
 
     <TextView
         android:id="@+id/titleLabel"
