@@ -71,7 +71,7 @@ class MLBusinessDiscountBoxAdapter
             subtitleLabel = itemView.findViewById(R.id.subtitleLabel);
         }
 
-        void setRippleEffect(String itemDeepLink) {
+        void setRippleEffect(@Nullable String itemDeepLink) {
             if (!isEmpty(itemDeepLink)) {
                 final Context context = itemView.getContext();
                 if (context != null) {

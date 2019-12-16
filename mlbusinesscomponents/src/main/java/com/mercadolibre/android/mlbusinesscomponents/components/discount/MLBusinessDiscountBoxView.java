@@ -90,7 +90,6 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
         for (int i = 0; i < recyclerDiscountBox.getItemDecorationCount(); i++) {
             recyclerDiscountBox.removeItemDecorationAt(0);
         }
-//        recyclerDiscountBox.addItemDecoration(new SpacesItemDecoration(getContext(), span, defaultColumns));
         recyclerDiscountBox.setLayoutManager(manager);
         recyclerDiscountBox.setAdapter(discountBoxAdapter);
         recyclerDiscountBox.setHasFixedSize(true);
@@ -127,7 +126,7 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
         private final int defaultColumns;
 
         SpacesItemDecoration(final Context context, final int itemsInLastRow, final int defaultColumns) {
-            topSpace = (int) ScaleUtils.getPxFromDp(context, 0);
+            topSpace = (int) ScaleUtils.getPxFromDp(context, 24);
             lateralSpace = (int) ScaleUtils.getPxFromDp(context, 16);
             this.itemsInLastRow = itemsInLastRow;
             this.defaultColumns = defaultColumns;
