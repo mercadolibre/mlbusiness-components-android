@@ -1,3 +1,7 @@
+## VERSION 1.1.1
+_28_12_2019_
+* REFACTOR - Overlay on discount box image
+
 ## VERSION 1.1.0
 _05_12_2019_
 * FEATURE - Added ButtonProgress
