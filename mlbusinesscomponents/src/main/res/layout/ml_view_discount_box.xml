@@ -4,10 +4,10 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:paddingTop="12dp"
-    android:paddingBottom="12dp"
-    android:paddingStart="8dp"
-    android:paddingEnd="8dp">
+    android:paddingTop="@dimen/ui_view_discounts_center_item_height_padding"
+    android:paddingBottom="@dimen/ui_view_discounts_center_item_height_padding"
+    android:paddingStart="@dimen/ui_view_discounts_center_item_side_padding"
+    android:paddingEnd="@dimen/ui_view_discounts_center_item_side_padding">
 
     <ImageView
         android:id="@+id/iconImage"
