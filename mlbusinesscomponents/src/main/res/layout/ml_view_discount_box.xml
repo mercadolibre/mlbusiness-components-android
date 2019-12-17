@@ -12,6 +12,7 @@
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginEnd="12dp"
         android:layout_marginStart="12dp"
         android:layout_marginBottom="12dp"
