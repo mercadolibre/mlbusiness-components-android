@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
+    <solid android:color="@color/box_image_overlay_color"/>
+    <size
+        android:width="@dimen/ui_7m"
+        android:height="@dimen/ui_7m"/>
+</shape>
