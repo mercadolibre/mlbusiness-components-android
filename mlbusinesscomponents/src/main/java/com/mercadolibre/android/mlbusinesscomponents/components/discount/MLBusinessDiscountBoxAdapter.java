@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem;
+import com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtils;
 import com.mercadolibre.android.picassodiskcache.PicassoDiskLoader;
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -40,15 +41,7 @@ class MLBusinessDiscountBoxAdapter
 
     @Override
     public void onBindViewHolder(@NonNull final DiscountBoxViewHolder holder, final int position) {
-        final com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem item = items.get(position);
-
-        holder.titleLabel.setText(item.getTitleLabel());
-        holder.subtitleLabel.setText(item.getSubtitleLabel());
-        holder.loadIconImage(item.getImageUrl());
-        if (onClickDiscountBox != null) {
-            holder.setRippleEffect();
-            holder.setOnClickItem(position, item.getDeepLinkItem(), item.getTrackId());
-        }
+        holder.bind(items.get(position), position);
     }
 
     @Override
@@ -67,6 +60,35 @@ class MLBusinessDiscountBoxAdapter
             iconImage = itemView.findViewById(R.id.iconImage);
             titleLabel = itemView.findViewById(R.id.titleLabel);
             subtitleLabel = itemView.findViewById(R.id.subtitleLabel);
+        }
+
+        void bind(final MLBusinessSingleItem item, final int position) {
+            setTitle(item.getTitleLabel());
+            setSubtitle(item.getSubtitleLabel());
+            setOnClickListener(item.getDeepLinkItem(), item.getTrackId(), position);
+            loadIconImage(item.getImageUrl());
+        }
+
+        private void setTitle(final String title) {
+            if (StringUtils.isValidString(title)) {
+                titleLabel.setText(title);
+                titleLabel.setVisibility(View.VISIBLE);
+            }
+        }
+
+        private void setSubtitle(final String subtitle) {
+            if (StringUtils.isValidString(subtitle)) {
+                subtitleLabel.setText(subtitle);
+                subtitleLabel.setVisibility(View.VISIBLE);
+            }
+        }
+
+        private void setOnClickListener(@Nullable final String deeplink, @Nullable final String trackId,
+            final int position) {
+            if (onClickDiscountBox != null) {
+                setRippleEffect();
+                setOnClickItem(position, deeplink, trackId);
+            }
         }
 
         void setRippleEffect() {
