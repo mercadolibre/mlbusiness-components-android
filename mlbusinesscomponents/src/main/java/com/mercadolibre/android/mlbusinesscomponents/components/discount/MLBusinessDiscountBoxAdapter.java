@@ -88,7 +88,7 @@ class MLBusinessDiscountBoxAdapter
         private void setOnClickListener(@Nullable final String deeplink, @Nullable final String trackId,
             final int position) {
             if (onClickDiscountBox != null) {
-                setRippleEffect();
+                setRippleEffect(deeplink);
                 setOnClickItem(position, deeplink, trackId);
             }
         }
