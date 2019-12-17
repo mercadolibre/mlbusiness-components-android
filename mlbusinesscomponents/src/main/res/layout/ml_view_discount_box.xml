@@ -9,27 +9,41 @@
     android:paddingStart="@dimen/ui_view_discounts_center_item_side_padding"
     android:paddingEnd="@dimen/ui_view_discounts_center_item_side_padding">
 
-    <ImageView
-        android:id="@+id/iconImage"
-        android:layout_width="@dimen/ui_7m"
-        android:layout_height="@dimen/ui_7m"
-        android:layout_marginTop="@dimen/ui_025m"
-        android:layout_gravity="center_horizontal"
-        android:scaleType="centerInside"
-        tools:src="@drawable/mercado_pago"
-        android:contentDescription="@string/app_name" />
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="@dimen/ui_025m">
+
+        <ImageView
+            android:id="@+id/iconImage"
+            android:layout_width="@dimen/ui_7m"
+            android:layout_height="@dimen/ui_7m"
+            android:scaleType="centerInside"
+            tools:src="@drawable/mercado_pago"
+            android:contentDescription="@string/app_name" />
+
+        <View
+            android:layout_width="@dimen/ui_7m"
+            android:layout_height="@dimen/ui_7m"
+            android:background="@drawable/box_icon_overlay" />
+
+    </FrameLayout>
 
     <TextView
         android:id="@+id/titleLabel"
         android:textAppearance="@style/MLFont.Regular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:gravity="center"
         android:lineSpacingExtra="2sp"
-        tools:text="Hasta"
         android:textColor="@color/ui_fullscreenmodal_toolbar_text_color"
-        android:textSize="@dimen/ui_fontsize_xxsmall" />
+        android:textSize="@dimen/ui_fontsize_xxsmall"
+        android:visibility="gone"
+        tools:text="Hasta"
+        tools:visibility="visible"/>
 
     <TextView
         android:id="@+id/subtitleLabel"
@@ -37,8 +51,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        tools:text="$ 200"
         android:textColor="@color/ui_fullscreenmodal_toolbar_text_color"
         android:textSize="@dimen/ui_fontsize_medium"
-        android:lineSpacingExtra="4sp" />
+        android:lineSpacingExtra="4sp"
+        android:visibility="gone"
+        tools:text="$ 200"
+        tools:visibility="visible"/>
 </LinearLayout>
