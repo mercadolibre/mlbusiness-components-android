@@ -12,12 +12,7 @@
         android:layout_height="match_parent"
         app:cardCornerRadius="6dp"
         app:cardElevation="0dp"
-        app:cardUseCompatPadding="true"
-        android:paddingTop="@dimen/ui_view_discounts_center_item_height_padding"
-        android:paddingBottom="@dimen/ui_view_discounts_center_item_height_padding"
-        android:paddingStart="@dimen/ui_view_discounts_center_item_side_padding"
-        android:paddingEnd="@dimen/ui_view_discounts_center_item_side_padding"
-        android:background="?android:attr/selectableItemBackground">
+        app:cardUseCompatPadding="true">
 
         <LinearLayout
             android:id="@+id/cardView"
@@ -25,7 +20,11 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:clickable="true"
-            android:focusable="true">
+            android:focusable="true"
+            android:paddingTop="@dimen/ui_view_discounts_center_item_height_padding"
+            android:paddingBottom="@dimen/ui_view_discounts_center_item_height_padding"
+            android:paddingStart="@dimen/ui_view_discounts_center_item_side_padding"
+            android:paddingEnd="@dimen/ui_view_discounts_center_item_side_padding">
 
             <FrameLayout
                 android:layout_width="wrap_content"
