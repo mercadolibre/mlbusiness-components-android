@@ -5,12 +5,14 @@ import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem;
@@ -55,6 +57,7 @@ class MLBusinessDiscountBoxAdapter
         final ImageView iconImage;
         final TextView titleLabel;
         final TextView subtitleLabel;
+        final LinearLayout cardView;
 
         DiscountBoxViewHolder(@NonNull final View itemView) {
             super(itemView);
@@ -62,6 +65,7 @@ class MLBusinessDiscountBoxAdapter
             iconImage = itemView.findViewById(R.id.iconImage);
             titleLabel = itemView.findViewById(R.id.titleLabel);
             subtitleLabel = itemView.findViewById(R.id.subtitleLabel);
+            cardView = itemView.findViewById(R.id.cardView);
         }
 
         void bind(final MLBusinessSingleItem item, final int position) {
@@ -100,7 +104,7 @@ class MLBusinessDiscountBoxAdapter
                     final int resId =  android.R.attr.selectableItemBackground;
                     final TypedValue outValue = new TypedValue();
                     context.getTheme().resolveAttribute(resId, outValue, true);
-                    itemView.setBackgroundResource(outValue.resourceId);
+                    cardView.setBackgroundResource(outValue.resourceId);
                 }
             }
         }
