@@ -26,7 +26,7 @@ public class ButtonsActivity extends AppCompatActivity {
 
         new Handler().postDelayed(() -> buttonProgress.finishProgress(
                 R.color.ui_meli_red,
-                R.drawable.mercado_pago
+                null
         ), 3000);
 
         ButtonProgress buttonProgress2 = findViewById(R.id.progressTest2);
