@@ -20,6 +20,7 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.AttributeSet;
@@ -169,9 +170,11 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         this.onClickListener = onClickListener;
     }
 
-    public void finishProgress(@ColorRes int color, @DrawableRes int icon) {
+    public void finishProgress(@ColorRes int color, @Nullable @DrawableRes Integer icon) {
         this.rippleColor = color;
-        this.icon.setImageResource(icon);
+        if (icon != null) {
+            this.icon.setImageResource(icon);
+        }
 
         final int progress = progressBar.getProgress();
         if (animator != null) {
