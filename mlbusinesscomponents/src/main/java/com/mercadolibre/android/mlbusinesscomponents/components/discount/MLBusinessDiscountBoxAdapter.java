@@ -2,6 +2,7 @@ package com.mercadolibre.android.mlbusinesscomponents.components.discount;
 
 import android.content.Context;
 import android.net.Uri;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
@@ -99,7 +100,8 @@ class MLBusinessDiscountBoxAdapter
             if (!isEmpty(itemDeepLink)) {
                 final Context context = itemView.getContext();
                 if (context != null) {
-                    final int resId =  android.R.attr.selectableItemBackground;
+                    final int resId = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ?
+                            android.R.attr.selectableItemBackgroundBorderless : android.R.attr.selectableItemBackground;
                     final TypedValue outValue = new TypedValue();
                     context.getTheme().resolveAttribute(resId, outValue, true);
                     cardView.setBackgroundResource(outValue.resourceId);
@@ -108,7 +110,7 @@ class MLBusinessDiscountBoxAdapter
         }
 
         void setOnClickItem(final int indexItem, @Nullable final String deepLink, @Nullable final String trackId) {
-            itemView.setOnClickListener(v -> {
+            cardView.setOnClickListener(v -> {
                 final MLBusinessDiscountBoxView.OnClickDiscountBox listener = onClickDiscountBox.get();
                 if (listener != null) {
                     listener.onClickDiscountItem(indexItem, deepLink, trackId);
