@@ -128,7 +128,7 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
 
         SpacesItemDecoration(final Context context, final int itemsInLastRow, final int defaultColumns) {
             topSpace = (int) ScaleUtils.getPxFromDp(context, 0);
-            lateralSpace = (int) ScaleUtils.getPxFromDp(context, 10);
+            lateralSpace = (int) ScaleUtils.getPxFromDp(context, 0);
             this.itemsInLastRow = itemsInLastRow;
             this.defaultColumns = defaultColumns;
         }
@@ -141,7 +141,11 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
                 if (itemsInLastRow > 0 &&
                     startLastRow(parent, adapter, view, itemsInLastRow)) {
                     if (itemsInLastRow == 2) {
-                        outRect.left = (view.getLayoutParams().width + lateralSpace * 4) / 2;
+                        if (view.getLayoutParams().width <= 0) {
+                            outRect.left = (view.getMinimumWidth() + lateralSpace * 4) / 2;
+                        } else {
+                            outRect.left = (view.getLayoutParams().width + lateralSpace * 4) / 2;
+                        }
                     } else {
                         outRect.left = view.getLayoutParams().width + lateralSpace * 3;
                     }

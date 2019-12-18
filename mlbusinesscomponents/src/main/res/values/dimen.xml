@@ -3,7 +3,8 @@
 
     <!-- Layout Dimens -->
     <dimen name="ui_view_discount_box_height">108dp</dimen>
-    <dimen name="ui_view_discount_box_width">110dp</dimen>
+    <dimen name="ui_view_discount_box_min_width">90dp</dimen>
+    <dimen name="ui_view_discount_box_max_width">110dp</dimen>
     <dimen name="ui_view_download_icon_width">34dp</dimen>
     <dimen name="ui_view_download_icon_height">24dp</dimen>
 
