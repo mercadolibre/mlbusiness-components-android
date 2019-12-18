@@ -141,11 +141,7 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
                 if (itemsInLastRow > 0 &&
                     startLastRow(parent, adapter, view, itemsInLastRow)) {
                     if (itemsInLastRow == 2) {
-                        if (view.getLayoutParams().width <= 0) {
-                            outRect.left = (view.getMinimumWidth() + lateralSpace * 4) / 2;
-                        } else {
-                            outRect.left = (view.getLayoutParams().width + lateralSpace * 4) / 2;
-                        }
+                        setRectLeft(outRect, view, lateralSpace);
                     } else {
                         outRect.left = view.getLayoutParams().width + lateralSpace * 3;
                     }
@@ -161,6 +157,19 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
 
                 outRect.right = lateralSpace;
                 outRect.bottom = 0;
+            }
+        }
+
+        /**
+         * @param outRect holds four integer coordinates for a rectangle.
+         * @param view the item view.
+         * @param lateralSpace the lateral space set  previously.
+         */
+        private void setRectLeft(Rect outRect, View view, int lateralSpace) {
+            if (view.getLayoutParams().width <= 0) {
+                outRect.left = (view.getMinimumWidth() + lateralSpace * 4) / 2;
+            } else {
+                outRect.left = (view.getLayoutParams().width + lateralSpace * 4) / 2;
             }
         }
 
