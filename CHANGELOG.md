@@ -1,6 +1,7 @@
 ## VERSION 1.1.1
-_28_12_2019_
+_19_12_2019_
 * REFACTOR - Overlay on discount box image
+* ENHANCEMENT - Button colors are changed, and null icons are allowed in the final circle of the animation
 * FIX - Loyalty discounts center item ripple effect fix.
 
 ## VERSION 1.1.0
