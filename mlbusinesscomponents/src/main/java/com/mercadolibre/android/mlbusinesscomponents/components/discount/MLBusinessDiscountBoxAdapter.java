@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem;
@@ -18,6 +19,8 @@ import com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtil
 import com.mercadolibre.android.picassodiskcache.PicassoDiskLoader;
 import java.lang.ref.WeakReference;
 import java.util.List;
+
+import static android.text.TextUtils.isEmpty;
 
 class MLBusinessDiscountBoxAdapter
     extends RecyclerView.Adapter<MLBusinessDiscountBoxAdapter.DiscountBoxViewHolder> {
@@ -53,6 +56,7 @@ class MLBusinessDiscountBoxAdapter
         final ImageView iconImage;
         final TextView titleLabel;
         final TextView subtitleLabel;
+        final LinearLayout cardView;
 
         DiscountBoxViewHolder(@NonNull final View itemView) {
             super(itemView);
@@ -60,6 +64,7 @@ class MLBusinessDiscountBoxAdapter
             iconImage = itemView.findViewById(R.id.iconImage);
             titleLabel = itemView.findViewById(R.id.titleLabel);
             subtitleLabel = itemView.findViewById(R.id.subtitleLabel);
+            cardView = itemView.findViewById(R.id.cardView);
         }
 
         void bind(final MLBusinessSingleItem item, final int position) {
@@ -86,24 +91,26 @@ class MLBusinessDiscountBoxAdapter
         private void setOnClickListener(@Nullable final String deeplink, @Nullable final String trackId,
             final int position) {
             if (onClickDiscountBox != null) {
-                setRippleEffect();
+                setRippleEffect(deeplink);
                 setOnClickItem(position, deeplink, trackId);
             }
         }
 
-        void setRippleEffect() {
-            final Context context = itemView.getContext();
-            if (context != null) {
-                final int resId = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ?
-                    android.R.attr.selectableItemBackgroundBorderless : android.R.attr.selectableItemBackground;
-                final TypedValue outValue = new TypedValue();
-                context.getTheme().resolveAttribute(resId, outValue, true);
-                itemView.setBackgroundResource(outValue.resourceId);
+        void setRippleEffect(@Nullable String itemDeepLink) {
+            if (!isEmpty(itemDeepLink)) {
+                final Context context = itemView.getContext();
+                if (context != null) {
+                    final int resId = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ?
+                            android.R.attr.selectableItemBackgroundBorderless : android.R.attr.selectableItemBackground;
+                    final TypedValue outValue = new TypedValue();
+                    context.getTheme().resolveAttribute(resId, outValue, true);
+                    cardView.setBackgroundResource(outValue.resourceId);
+                }
             }
         }
 
         void setOnClickItem(final int indexItem, @Nullable final String deepLink, @Nullable final String trackId) {
-            itemView.setOnClickListener(v -> {
+            cardView.setOnClickListener(v -> {
                 final MLBusinessDiscountBoxView.OnClickDiscountBox listener = onClickDiscountBox.get();
                 if (listener != null) {
                     listener.onClickDiscountItem(indexItem, deepLink, trackId);
