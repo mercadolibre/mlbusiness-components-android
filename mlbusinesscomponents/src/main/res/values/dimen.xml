@@ -8,7 +8,7 @@
     <dimen name="ui_view_download_icon_width">34dp</dimen>
     <dimen name="ui_view_download_icon_height">24dp</dimen>
 
-    <dimen name="ui_view_discounts_center_item_side_padding">8dp</dimen>
+    <dimen name="ui_view_discounts_center_item_side_padding">4dp</dimen>
     <dimen name="ui_view_discounts_center_item_height_padding">12dp</dimen>
 
     <!-- Font Dimens -->

@@ -12,7 +12,9 @@
         android:layout_height="match_parent"
         app:cardCornerRadius="6dp"
         app:cardElevation="0dp"
-        app:cardUseCompatPadding="true">
+        app:cardUseCompatPadding="true"
+        android:paddingStart="@dimen/ui_view_discounts_center_item_side_padding"
+        android:paddingEnd="@dimen/ui_view_discounts_center_item_side_padding">
 
         <LinearLayout
             android:id="@+id/cardView"
