@@ -31,9 +31,7 @@
                 android:layout_marginEnd="12dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginBottom="12dp"
-                android:layout_marginTop="@dimen/ui_025m"
-                android:paddingStart="@dimen/ui_view_discounts_center_item_side_padding"
-                android:paddingEnd="@dimen/ui_view_discounts_center_item_side_padding">
+                android:layout_marginTop="@dimen/ui_025m">
 
                 <ImageView
                     android:id="@+id/iconImage"
