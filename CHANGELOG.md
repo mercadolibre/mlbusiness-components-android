@@ -1,5 +1,5 @@
 ## VERSION 1.1.3
-_06_01_2020_
+_15_01_2020_
 * FIX - Discounts center, lateral space between items.
 
 ## VERSION 1.1.2
