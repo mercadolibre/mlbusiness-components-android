@@ -18,8 +18,6 @@ import com.mercadolibre.android.mlbusinesscomponents.components.utils.ViewUtils;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-import static android.util.DisplayMetrics.DENSITY_LOW;
-import static android.util.DisplayMetrics.DENSITY_MEDIUM;
 
 public class MLBusinessDiscountBoxView extends ConstraintLayout {
 
