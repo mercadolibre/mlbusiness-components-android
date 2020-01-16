@@ -1,6 +1,7 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.discount;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,6 +17,9 @@ import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.ViewUtils;
 import java.lang.ref.WeakReference;
 import java.util.List;
+
+import static android.util.DisplayMetrics.DENSITY_LOW;
+import static android.util.DisplayMetrics.DENSITY_MEDIUM;
 
 public class MLBusinessDiscountBoxView extends ConstraintLayout {
 
@@ -121,6 +125,7 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
     }
 
     private static class SpacesItemDecoration extends RecyclerView.ItemDecoration {
+        private static final int MINIMUM_PIXELS_WIDTH = 720;
         private final int topSpace;
         private final int lateralSpace;
         private final int itemsInLastRow;
@@ -128,9 +133,17 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
 
         SpacesItemDecoration(final Context context, final int itemsInLastRow, final int defaultColumns) {
             topSpace = (int) ScaleUtils.getPxFromDp(context, 0);
-            lateralSpace = (int) ScaleUtils.getPxFromDp(context, 16);
+            if (isSmallDevice()) {
+                lateralSpace = 0;
+            } else {
+                lateralSpace = (int) ScaleUtils.getPxFromDp(context, 16);
+            }
             this.itemsInLastRow = itemsInLastRow;
             this.defaultColumns = defaultColumns;
+        }
+
+        private boolean isSmallDevice() {
+            return ((int) Resources.getSystem().getDisplayMetrics().xdpi) < MINIMUM_PIXELS_WIDTH;
         }
 
         @Override
