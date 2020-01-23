@@ -24,7 +24,7 @@ With this command you can generate a local version for testing:
 
 Add this line to your app's build.gradle inside the dependencies section:
 
-```implementation 'com.mercadolibre.android.mlbusinesscomponents:mlbusinesscomponents:1.1.2'```
+```implementation 'com.mercadolibre.android.mlbusinesscomponents:mlbusinesscomponents:1.1.3'```
 
 ### 2 - Use your UI component.
 Choose and instantiate your component.
