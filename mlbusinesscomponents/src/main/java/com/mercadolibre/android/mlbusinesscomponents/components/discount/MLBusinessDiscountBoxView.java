@@ -123,7 +123,7 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
     }
 
     private static class SpacesItemDecoration extends RecyclerView.ItemDecoration {
-        private static final int MINIMUM_PIXELS_WIDTH = 720;
+        private static final int MINIMUM_PIXELS_WIDTH = 1080;
         private final int topSpace;
         private final int lateralSpace;
         private final int itemsInLastRow;
@@ -134,14 +134,14 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
             if (isSmallDevice()) {
                 lateralSpace = 0;
             } else {
-                lateralSpace = (int) ScaleUtils.getPxFromDp(context, 16);
+                lateralSpace = (int) ScaleUtils.getPxFromDp(context, 16.0f);
             }
             this.itemsInLastRow = itemsInLastRow;
             this.defaultColumns = defaultColumns;
         }
 
         private boolean isSmallDevice() {
-            return ((int) Resources.getSystem().getDisplayMetrics().xdpi) < MINIMUM_PIXELS_WIDTH;
+            return Resources.getSystem().getDisplayMetrics().widthPixels < MINIMUM_PIXELS_WIDTH;
         }
 
         @Override
