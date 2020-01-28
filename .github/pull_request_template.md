@@ -16,9 +16,10 @@
 [Si aplica, adjuntar screenshots en un solo idioma donde se vea el flujo completo]
 
 ### Checklist
-- [ ] Probé la biblioteca en PX
-- [ ] Probé la biblioteca en Mercado Pago
-- [ ] Probé la biblioteca en Mercado Libre
+- [ ] Chequeado con el equipo de central de descuentos (Obligatorio)
+- [ ] Probé la biblioteca en PX (Obligatorio)
+- [ ] Probé la biblioteca en Mercado Pago (Obligatorio)
+- [ ] Probé la biblioteca en Mercado Libre (Obligatorio)
 - [ ] Modifiqué el [changelog](https://github.com/mercadolibre/mlbusiness-components-android/blob/master/CHANGELOG.md)
 
 ## Aclaraciones importantes
