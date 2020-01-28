@@ -16,8 +16,9 @@ import com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.ViewUtils;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Map;
 
 public class MLBusinessDiscountBoxView extends ConstraintLayout {
 
@@ -29,6 +30,7 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
 
     private RecyclerView recyclerDiscountBox;
     private MLBusinessDiscountBoxData businessDiscountBoxData;
+    @Nullable private MLBusinessDiscountTracker businessDiscountTracker;
     private TextView titleLabel;
     private TextView subtitleLabel;
     private WeakReference<OnClickDiscountBox> onClickDiscountBox;
@@ -52,13 +54,22 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
         recyclerDiscountBox = findViewById(R.id.recyclerDiscountBox);
         titleLabel = findViewById(R.id.titleLabel);
         subtitleLabel = findViewById(R.id.subtitleLabel);
+        trackShowEvent();
+    }
+
+    private void trackShowEvent() {
+        if (businessDiscountTracker != null) {
+            final List<Map<String, Object>> eventData = new ArrayList<>();
+            for (final MLBusinessSingleItem item : businessDiscountBoxData.getItems()) {
+                eventData.add(item.getEventData());
+            }
+            businessDiscountTracker.track("show", eventData);
+        }
     }
 
     private void configDiscountBoxView() {
         final MLBusinessDiscountBoxAdapter discountBoxAdapter =
-            new MLBusinessDiscountBoxAdapter(
-                getLimitedList(),
-                onClickDiscountBox);
+            new MLBusinessDiscountBoxAdapter(getLimitedList(), onClickDiscountBox, businessDiscountTracker);
         final int totalSize = discountBoxAdapter.getItemCount();
         final int defaultColumns = totalSize == 4 ? 2 : DEFAULT_LIST_SIZE;
         final int span = totalSize % (defaultColumns / 2);
@@ -113,6 +124,7 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
     public void init(@NonNull final MLBusinessDiscountBoxData businessDiscountBoxData,
         @Nullable final OnClickDiscountBox onclick) {
         this.businessDiscountBoxData = businessDiscountBoxData;
+        businessDiscountTracker = businessDiscountBoxData.getTracker();
         onClickDiscountBox = new WeakReference<>(onclick);
         configDiscountBoxView();
     }
