@@ -6,13 +6,6 @@ import java.util.Map;
 public interface MLBusinessDiscountTracker {
 
     /**
-     * Get extra information to track
-     *
-     * @return The touchpoint id
-     */
-     String getTouchpointId();
-
-    /**
      * Track event
      *
      * @param eventData the tracking information

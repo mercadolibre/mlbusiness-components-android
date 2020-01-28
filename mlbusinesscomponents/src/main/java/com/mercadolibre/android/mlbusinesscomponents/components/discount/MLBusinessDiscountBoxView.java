@@ -54,7 +54,6 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
         recyclerDiscountBox = findViewById(R.id.recyclerDiscountBox);
         titleLabel = findViewById(R.id.titleLabel);
         subtitleLabel = findViewById(R.id.subtitleLabel);
-        trackShowEvent();
     }
 
     private void trackShowEvent() {
@@ -127,6 +126,7 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
         businessDiscountTracker = businessDiscountBoxData.getTracker();
         onClickDiscountBox = new WeakReference<>(onclick);
         configDiscountBoxView();
+        trackShowEvent();
     }
 
     public void updateWithData(@NonNull final MLBusinessDiscountBoxData businessDiscountBoxData,
