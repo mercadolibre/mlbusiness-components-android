@@ -118,12 +118,16 @@ class MLBusinessDiscountBoxAdapter
             cardView.setOnClickListener(v -> {
                 final MLBusinessDiscountBoxView.OnClickDiscountBox listener = onClickDiscountBox.get();
                 if (listener != null) {
-                    if (businessDiscountTracker != null) {
-                        businessDiscountTracker.track("tap", Collections.singletonList(eventData));
-                    }
+                    trackTapEvent(eventData);
                     listener.onClickDiscountItem(indexItem, deepLink, trackingId);
                 }
             });
+        }
+
+        private void trackTapEvent(@Nullable final Map<String, Object> eventData) {
+            if (businessDiscountTracker != null) {
+                businessDiscountTracker.track("tap", Collections.singletonList(eventData));
+            }
         }
 
         void loadIconImage(@NonNull final String url) {
