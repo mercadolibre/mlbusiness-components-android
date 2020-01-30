@@ -134,7 +134,7 @@ public class MLBusinessDiscountBoxView extends ConstraintLayout {
             if (isSmallDevice()) {
                 lateralSpace = 0;
             } else {
-                lateralSpace = (int) ScaleUtils.getPxFromDp(context, 16.0f);
+                lateralSpace = (int) ScaleUtils.getPxFromDp(context, 10.0f);
             }
             this.itemsInLastRow = itemsInLastRow;
             this.defaultColumns = defaultColumns;

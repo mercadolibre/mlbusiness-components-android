@@ -44,6 +44,7 @@
                     android:contentDescription="@string/app_name" />
 
                 <View
+                    android:id="@+id/iconOverlay"
                     android:layout_width="@dimen/ui_7m"
                     android:layout_height="@dimen/ui_7m"
                     android:background="@drawable/box_icon_overlay" />
