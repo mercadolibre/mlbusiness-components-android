@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="0dp"
+        app:cardUseCompatPadding="true" >
+
+        <LinearLayout
+            android:id="@+id/discount_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+
+                <ImageView
+                    android:id="@+id/discount_item_icon"
+                    android:layout_width="@dimen/ui_7m"
+                    android:layout_height="@dimen/ui_7m"
+                    android:scaleType="centerInside"
+                    tools:src="@drawable/mercado_pago"
+                    android:contentDescription="@string/app_name" />
+
+                <View
+                    android:id="@+id/discount_item_overlay"
+                    android:layout_width="@dimen/ui_7m"
+                    android:layout_height="@dimen/ui_7m"
+                    android:background="@drawable/box_icon_overlay" />
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/discount_item_title"
+                android:textAppearance="@style/MLFont.Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingExtra="2sp"
+                android:textColor="@color/ui_fullscreenmodal_toolbar_text_color"
+                android:textSize="@dimen/ui_fontsize_xxsmall"
+                tools:text="Hasta" />
+
+            <TextView
+                android:id="@+id/discount_item_subtitle"
+                android:textAppearance="@style/MLFont.Bold.Semi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/ui_fullscreenmodal_toolbar_text_color"
+                android:textSize="@dimen/ui_fontsize_medium"
+                android:lineSpacingExtra="4sp"
+                tools:text="$ 200" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</merge>
