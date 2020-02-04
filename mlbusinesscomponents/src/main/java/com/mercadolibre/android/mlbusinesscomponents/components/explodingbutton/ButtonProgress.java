@@ -7,6 +7,7 @@ import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ClipDrawable;
 import android.graphics.drawable.ColorDrawable;
@@ -26,19 +27,19 @@ import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import com.mercadolibre.android.mlbusinesscomponents.R;
+
 import static com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgressState.DISABLED;
 
 public class ButtonProgress extends LinearLayout implements View.OnClickListener {
@@ -82,8 +83,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         initView(context);
     }
 
-    public ButtonProgress Builder(View reveal) {
-        this.reveal = reveal;
+    public ButtonProgress Builder() {
         return this;
     }
 
@@ -325,9 +325,70 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         }
     }
 
+    private void scaleView(ButtonProgress v) {
+        int scale = getScale();
+        v.animate().scaleX(scale).scaleY(scale).setDuration(800).setUpdateListener(animation -> {
+            if (animation.getCurrentPlayTime() > 600) {
+                Activity activity = (Activity) ButtonProgress.this.getContext();
+                if (activity != null) {
+                    setStatusBarColor(getDarkPrimaryColor(ContextCompat.getColor(getContext(), rippleColor)), activity.getWindow());
+                }
+                if (onFinishAnimationListener != null) {
+                    onFinishAnimationListener.finishAnimation();
+                }
+            }
+        }).setListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationCancel(Animator animation) {
+                super.onAnimationCancel(animation);
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+                super.onAnimationRepeat(animation);
+            }
+
+            @Override
+            public void onAnimationStart(Animator animation) {
+                super.onAnimationStart(animation);
+                icon.setVisibility(View.GONE);
+                ButtonProgress.this.setClickable(false);
+            }
+
+            @Override
+            public void onAnimationPause(Animator animation) {
+                super.onAnimationPause(animation);
+            }
+
+            @Override
+            public void onAnimationResume(Animator animation) {
+                super.onAnimationResume(animation);
+            }
+        }).start();
+    }
+
+    private int getScale () {
+        int[] locationCircle = new int[2];
+        circle.getLocationOnScreen(locationCircle);
+        int widthCircle = circle.getWidth();
+        int widthScrenn = Resources.getSystem().getDisplayMetrics().widthPixels;
+        int heightScreen = Resources.getSystem().getDisplayMetrics().heightPixels;
+        int valorX1 = locationCircle[0] / widthCircle;
+        int valorX2 = (widthScrenn - widthCircle - locationCircle[0]) / widthCircle;
+        int valorY1 = locationCircle[1] / widthCircle;
+        int valorY2 = (heightScreen - widthCircle - locationCircle[1]) / widthCircle;
+        return valorX1 + valorX2 + valorY1 + valorY2 + 1;
+    }
+
     void createCircularReveal() {
 
-        // when the icon anim has finished, paint the whole screen with the result color
+        scaleView(this);
+       /* // when the icon anim has finished, paint the whole screen with the result color
         final float finalRadius = (float) Math.hypot(reveal.getWidth(), reveal.getHeight());
         // FIXME altura original del boton
         final int startRadius = (int) (getContext().getResources().getDimension(R.dimen.ui_7m) / 2);
@@ -377,7 +438,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
             });
 
             anim.start();
-        });
+        });*/
     }
 
     @Override

@@ -8,11 +8,13 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.mercadolibre.android.mlbusinesscomponents.components.common.MLBusinessInfoView;
 import com.mercadolibre.android.mlbusinesscomponents.components.common.downloadapp.MLBusinessDownloadAppView;
 import com.mercadolibre.android.mlbusinesscomponents.components.crossselling.MLBusinessCrossSellingBoxView;
 import com.mercadolibre.android.mlbusinesscomponents.components.discount.MLBusinessDiscountBoxView;
+import com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgress;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyHeaderView;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyRingView;
 
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        setSupportActionBar(findViewById(R.id.toolbar));
         MLBusinessLoyaltyRingView ringView = findViewById(R.id.loyaltyView);
         MLBusinessDiscountBoxView discountBoxView = findViewById(R.id.discountView);
         MLBusinessDownloadAppView downloadAppView = findViewById(R.id.downloadAppView);
@@ -34,11 +36,20 @@ public class MainActivity extends AppCompatActivity
         MLBusinessLoyaltyHeaderView loyaltyHeaderView = findViewById(R.id.loyaltyHeaderView);
         LinearLayout benefitContainer = findViewById(R.id.loyaltyBenefitsContainer);
 
-        Button button = findViewById(R.id.buttonOpen);
-        button.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, ButtonsActivity.class);
-            startActivity(intent);
-        });
+        ButtonProgress buttonProgress = findViewById(R.id.buttonOpen);
+        buttonProgress.Builder()
+                .setTextSize(16)
+                .setTextInformation("Procesar Pago","Cargando")
+                .setColorText(R.color.ui_meli_red);
+
+        buttonProgress.setOnClickListener(v ->
+                buttonProgress.finishProgress(
+                        R.color.ui_meli_red,
+                        R.drawable.mercado_pago
+                )
+        );
+
+        buttonProgress.addFinishAnimationListener(() -> Toast.makeText(MainActivity.this, "hola", Toast.LENGTH_SHORT).show());
 
         MLBusinessInfoView benefitView = new MLBusinessInfoView(this);
 

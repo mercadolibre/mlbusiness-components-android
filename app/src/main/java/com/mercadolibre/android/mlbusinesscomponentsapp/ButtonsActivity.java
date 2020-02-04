@@ -15,7 +15,7 @@ public class ButtonsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_botones);
         ButtonProgress buttonProgress = findViewById(R.id.progressTest1);
-        buttonProgress.Builder(findViewById(R.id.ripple))
+        buttonProgress.Builder()
                 .setTextSize(16)
                 .setTextInformation("Procesar Pago","Cargando")
                 .setColorText(R.color.ui_meli_red);
@@ -24,58 +24,12 @@ public class ButtonsActivity extends AppCompatActivity {
                 Toast.makeText(ButtonsActivity.this,"hola", Toast.LENGTH_SHORT).show()
         );
 
+        buttonProgress.addFinishAnimationListener(() -> Toast.makeText(ButtonsActivity.this, "hola", Toast.LENGTH_SHORT).show());
+
         new Handler().postDelayed(() -> buttonProgress.finishProgress(
                 R.color.ui_meli_red,
                 null
         ), 3000);
-
-        ButtonProgress buttonProgress2 = findViewById(R.id.progressTest2);
-        buttonProgress2.Builder(findViewById(R.id.ripple))
-                .setTextSize(16)
-                .setTextInformation("Procesar Pago","Cargando")
-                .setColorText(R.color.ui_meli_black)
-                .setDurationRipple(500)
-                .setMaxTimeFromServices(7000)
-                .setDurationFinishProgress(1000)
-                .setDurationAnimationCircle(200)
-                .setDurationDelayRipple(500);
-
-        new Handler().postDelayed(() -> buttonProgress2.finishProgress(
-                R.color.ui_meli_yellow,
-                R.drawable.ui_ic_clear
-        ), 3750);
-
-        ButtonProgress buttonProgress3 = findViewById(R.id.progressTest3);
-        buttonProgress3.Builder(findViewById(R.id.ripple))
-                .setTextSize(16)
-                .setTextInformation("Procesar Pago","Cargando")
-                .setColorText(R.color.ui_meli_white)
-                .setDurationRipple(500)
-                .setMaxTimeFromServices(7000)
-                .setDurationFinishProgress(1000)
-                .setDurationAnimationCircle(200)
-                .setDurationDelayRipple(500);
-
-        new Handler().postDelayed(() -> buttonProgress3.finishProgress(
-                R.color.ui_meli_blue,
-                R.drawable.skeleton
-        ), 4500);
-
-        ButtonProgress buttonProgress4 = findViewById(R.id.progressTest4);
-        buttonProgress4.Builder(findViewById(R.id.ripple))
-                .setTextSize(16)
-                .setTextInformation("Procesar Pago","Cargando")
-                .setColorText(R.color.ui_meli_white)
-                .setDurationRipple(500)
-                .setMaxTimeFromServices(7000)
-                .setDurationFinishProgress(1000)
-                .setDurationAnimationCircle(200)
-                .setDurationDelayRipple(500);
-
-        new Handler().postDelayed(() -> buttonProgress4.finishProgress(
-                R.color.ui_meli_green,
-                R.drawable.mercado_libre
-        ), 5250);
     }
 
     private OnFinishAnimationListener getFinishAnimationListener(){
