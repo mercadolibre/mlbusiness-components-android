@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
-import com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgress;
+import com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ProgressButton;
 import com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.OnFinishAnimationListener;
 
 
@@ -14,7 +14,7 @@ public class ButtonsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_botones);
-        ButtonProgress buttonProgress = findViewById(R.id.progressTest1);
+        ProgressButton buttonProgress = findViewById(R.id.progressTest1);
         buttonProgress.Builder()
                 .setTextSize(16)
                 .setTextInformation("Procesar Pago","Cargando")

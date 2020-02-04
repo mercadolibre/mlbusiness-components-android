@@ -40,9 +40,9 @@ import android.widget.TextView;
 
 import com.mercadolibre.android.mlbusinesscomponents.R;
 
-import static com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgressState.DISABLED;
+import static com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ProgressButtonState.DISABLED;
 
-public class ButtonProgress extends LinearLayout implements View.OnClickListener {
+public class ProgressButton extends LinearLayout implements View.OnClickListener {
     private ProgressBar progressBar;
     private ObjectAnimator animator;
     private TextView textProgressBar;
@@ -68,43 +68,43 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     private OnFinishAnimationListener onFinishAnimationListener;
     private OnClickListener onClickListener;
 
-    public ButtonProgress(Context context) {
+    public ProgressButton(Context context) {
         super(context);
         initView(context);
     }
 
-    public ButtonProgress(Context context, AttributeSet attrs) {
+    public ProgressButton(Context context, AttributeSet attrs) {
         super(context, attrs);
         initView(context);
     }
 
-    public ButtonProgress(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ProgressButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView(context);
     }
 
-    public ButtonProgress Builder() {
+    public ProgressButton Builder() {
         return this;
     }
 
-    public ButtonProgress setTextInformation(String title, String titleProgress) {
+    public ProgressButton setTextInformation(String title, String titleProgress) {
         textProgressBar.setText(title);
         this.titleProgress = titleProgress;
         return this;
     }
 
-    public ButtonProgress setTextSize(int size) {
+    public ProgressButton setTextSize(int size) {
         textProgressBar.setTextSize(size);
         return this;
     }
 
-    public ButtonProgress setColorText(int color) {
+    public ProgressButton setColorText(int color) {
         colorText = color;
         paintText(colorText);
         return this;
     }
 
-    public void setState(ButtonProgressState state) {
+    public void setState(ProgressButtonState state) {
         if (state == DISABLED) {
             this.setClickable(false);
             paintButton(R.color.mlbusiness_color_disable_button, R.color.mlbusiness_color_disable_button);
@@ -116,7 +116,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         }
     }
 
-    public ButtonProgress setColorButton(int backgroundColor, int progressColor) {
+    public ProgressButton setColorButton(int backgroundColor, int progressColor) {
         this.backgroundColor = backgroundColor;
         this.progressColor = progressColor;
         paintButton(backgroundColor, progressColor);
@@ -136,32 +136,32 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         progressBar.setProgressDrawable(dr);
     }
 
-    public ButtonProgress setDurationRipple(int duration) {
+    public ProgressButton setDurationRipple(int duration) {
         this.durationRipple = duration;
         return this;
     }
 
-    public ButtonProgress setDurationDelayRipple(int duration) {
+    public ProgressButton setDurationDelayRipple(int duration) {
         this.durationDelayRipple = duration;
         return this;
     }
 
-    public ButtonProgress setDurationAnimationCircle(int duration) {
+    public ProgressButton setDurationAnimationCircle(int duration) {
         this.durationAnimation = duration;
         return this;
     }
 
-    public ButtonProgress setDurationFinishProgress(int duration) {
+    public ProgressButton setDurationFinishProgress(int duration) {
         this.durationFinishProgress = duration;
         return this;
     }
 
-    public ButtonProgress setMaxTimeFromServices(int durationServices) {
+    public ProgressButton setMaxTimeFromServices(int durationServices) {
         this.durationTimeout = durationServices;
         return this;
     }
 
-    public ButtonProgress addFinishAnimationListener(OnFinishAnimationListener onFinishAnimationListener) {
+    public ProgressButton addFinishAnimationListener(OnFinishAnimationListener onFinishAnimationListener) {
         this.onFinishAnimationListener = onFinishAnimationListener;
         return this;
     }
@@ -201,7 +201,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         view.setLayoutParams(params);
     }
 
-    public ButtonProgress setViewParent(View view) {
+    public ProgressButton setViewParent(View view) {
         reveal = view;
         return this;
     }
@@ -325,11 +325,11 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         }
     }
 
-    private void scaleView(ButtonProgress v) {
+    private void scaleView(ProgressButton v) {
         int scale = getScale();
         v.animate().scaleX(scale).scaleY(scale).setDuration(800).setUpdateListener(animation -> {
             if (animation.getCurrentPlayTime() > 600) {
-                Activity activity = (Activity) ButtonProgress.this.getContext();
+                Activity activity = (Activity) ProgressButton.this.getContext();
                 if (activity != null) {
                     setStatusBarColor(getDarkPrimaryColor(ContextCompat.getColor(getContext(), rippleColor)), activity.getWindow());
                 }
@@ -357,7 +357,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
             public void onAnimationStart(Animator animation) {
                 super.onAnimationStart(animation);
                 icon.setVisibility(View.GONE);
-                ButtonProgress.this.setClickable(false);
+                ProgressButton.this.setClickable(false);
             }
 
             @Override

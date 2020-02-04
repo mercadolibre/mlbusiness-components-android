@@ -62,7 +62,7 @@
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp" />
 
-        <com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgress
+        <com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ProgressButton
             android:id="@+id/buttonOpen"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -14,7 +13,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.common.MLBusines
 import com.mercadolibre.android.mlbusinesscomponents.components.common.downloadapp.MLBusinessDownloadAppView;
 import com.mercadolibre.android.mlbusinesscomponents.components.crossselling.MLBusinessCrossSellingBoxView;
 import com.mercadolibre.android.mlbusinesscomponents.components.discount.MLBusinessDiscountBoxView;
-import com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgress;
+import com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ProgressButton;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyHeaderView;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyRingView;
 
@@ -36,7 +35,7 @@ public class MainActivity extends AppCompatActivity
         MLBusinessLoyaltyHeaderView loyaltyHeaderView = findViewById(R.id.loyaltyHeaderView);
         LinearLayout benefitContainer = findViewById(R.id.loyaltyBenefitsContainer);
 
-        ButtonProgress buttonProgress = findViewById(R.id.buttonOpen);
+        ProgressButton buttonProgress = findViewById(R.id.buttonOpen);
         buttonProgress.Builder()
                 .setTextSize(16)
                 .setTextInformation("Procesar Pago","Cargando")
