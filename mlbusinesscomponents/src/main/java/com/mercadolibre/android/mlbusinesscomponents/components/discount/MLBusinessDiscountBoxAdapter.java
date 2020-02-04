@@ -20,7 +20,9 @@ import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtils;
 import com.mercadolibre.android.picassodiskcache.PicassoDiskLoader;
 import java.lang.ref.WeakReference;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import static android.text.TextUtils.isEmpty;
 
@@ -29,12 +31,14 @@ class MLBusinessDiscountBoxAdapter
 
     private final List<MLBusinessSingleItem> items;
     /* default */ final WeakReference<MLBusinessDiscountBoxView.OnClickDiscountBox> onClickDiscountBox;
+    /* default */ @Nullable final MLBusinessDiscountTracker businessDiscountTracker;
 
-    MLBusinessDiscountBoxAdapter(
-            final List<com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem> items,
-            @Nullable final WeakReference<MLBusinessDiscountBoxView.OnClickDiscountBox> onClickDiscountBox) {
+    MLBusinessDiscountBoxAdapter(final List<MLBusinessSingleItem> items,
+            @Nullable final WeakReference<MLBusinessDiscountBoxView.OnClickDiscountBox> onClickDiscountBox,
+            @Nullable final MLBusinessDiscountTracker businessDiscountTracker) {
         this.items = items;
         this.onClickDiscountBox = onClickDiscountBox;
+        this.businessDiscountTracker = businessDiscountTracker;
     }
 
     @NonNull
@@ -74,7 +78,7 @@ class MLBusinessDiscountBoxAdapter
         void bind(final MLBusinessSingleItem item, final int position) {
             setTitle(item.getTitleLabel());
             setSubtitle(item.getSubtitleLabel());
-            setOnClickListener(item.getDeepLinkItem(), item.getTrackId(), position);
+            setOnClickListener(item.getDeepLinkItem(), item.getTrackId(), item.getEventData(), position);
             loadIconImage(item.getImageUrl());
         }
 
@@ -92,11 +96,11 @@ class MLBusinessDiscountBoxAdapter
             }
         }
 
-        private void setOnClickListener(@Nullable final String deeplink, @Nullable final String trackId,
-            final int position) {
+        private void setOnClickListener(@Nullable final String deeplink, @Nullable final String trackingId,
+            @Nullable final Map<String, Object> eventData, final int position) {
             if (onClickDiscountBox != null) {
                 setRippleEffect(deeplink);
-                setOnClickItem(position, deeplink, trackId);
+                setOnClickItem(position, deeplink, trackingId, eventData);
             }
         }
 
@@ -113,13 +117,21 @@ class MLBusinessDiscountBoxAdapter
             }
         }
 
-        void setOnClickItem(final int indexItem, @Nullable final String deepLink, @Nullable final String trackId) {
+        void setOnClickItem(final int indexItem, @Nullable final String deepLink, @Nullable final String trackingId,
+            @Nullable final Map<String, Object> eventData) {
             cardView.setOnClickListener(v -> {
                 final MLBusinessDiscountBoxView.OnClickDiscountBox listener = onClickDiscountBox.get();
                 if (listener != null) {
-                    listener.onClickDiscountItem(indexItem, deepLink, trackId);
+                    trackTapEvent(eventData);
+                    listener.onClickDiscountItem(indexItem, deepLink, trackingId);
                 }
             });
+        }
+
+        private void trackTapEvent(@Nullable final Map<String, Object> eventData) {
+            if (businessDiscountTracker != null) {
+                businessDiscountTracker.track("tap", Collections.singletonList(eventData));
+            }
         }
 
         void loadIconImage(@NonNull final String url) {

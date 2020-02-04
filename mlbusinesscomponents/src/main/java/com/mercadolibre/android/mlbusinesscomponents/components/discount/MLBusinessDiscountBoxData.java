@@ -13,4 +13,9 @@ public interface MLBusinessDiscountBoxData {
     String getSubtitle();
     @NonNull
     List<MLBusinessSingleItem> getItems();
+
+    @Nullable
+    default MLBusinessDiscountTracker getTracker() {
+        return null;
+    }
 }
