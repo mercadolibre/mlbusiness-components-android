@@ -1,3 +1,7 @@
+## VERSION 1.1.4
+_28_01_2020_
+* FIX - Discounts center, icons showing incorrectly in small and high resolution devices.
+
 ## VERSION 1.1.3
 _15_01_2020_
 * FIX - Discounts center, lateral space between items.

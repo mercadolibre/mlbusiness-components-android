@@ -1,6 +1,7 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.discount;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -15,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem;
+import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtils;
 import com.mercadolibre.android.picassodiskcache.PicassoDiskLoader;
 import java.lang.ref.WeakReference;
@@ -58,6 +60,7 @@ class MLBusinessDiscountBoxAdapter
 
     class DiscountBoxViewHolder extends RecyclerView.ViewHolder {
         final ImageView iconImage;
+        final View iconOverlay;
         final TextView titleLabel;
         final TextView subtitleLabel;
         final LinearLayout cardView;
@@ -66,6 +69,7 @@ class MLBusinessDiscountBoxAdapter
             super(itemView);
 
             iconImage = itemView.findViewById(R.id.iconImage);
+            iconOverlay = itemView.findViewById(R.id.iconOverlay);
             titleLabel = itemView.findViewById(R.id.titleLabel);
             subtitleLabel = itemView.findViewById(R.id.subtitleLabel);
             cardView = itemView.findViewById(R.id.cardView);
@@ -132,6 +136,9 @@ class MLBusinessDiscountBoxAdapter
 
         void loadIconImage(@NonNull final String url) {
             final Context context = itemView.getContext();
+            if (Resources.getSystem().getDisplayMetrics().widthPixels <= 480) {
+                resizeIconImage(context);
+            }
             if (context != null) {
                 PicassoDiskLoader.get(context)
                     .load(Uri.parse(url))
@@ -139,6 +146,18 @@ class MLBusinessDiscountBoxAdapter
                     .placeholder(R.drawable.skeleton)
                     .into(iconImage);
             }
+        }
+
+        private void resizeIconImage(Context context) {
+            ViewGroup.LayoutParams iconImageParams = iconImage.getLayoutParams();
+            ViewGroup.LayoutParams overlayParams = iconOverlay.getLayoutParams();
+            int iconNewSize = (int) ScaleUtils.getPxFromDp(context, 48.0f);
+            iconImageParams.height = iconNewSize;
+            iconImageParams.width = iconNewSize;
+            overlayParams.height = iconNewSize;
+            overlayParams.width = iconNewSize;
+            iconImage.setLayoutParams(iconImageParams);
+            iconOverlay.setLayoutParams(overlayParams);
         }
     }
 }
