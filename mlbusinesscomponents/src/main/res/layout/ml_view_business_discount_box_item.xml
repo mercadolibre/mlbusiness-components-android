@@ -6,7 +6,7 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="6dp"
+        app:cardCornerRadius="@dimen/ui_075m"
         app:cardElevation="0dp" >
 
         <LinearLayout
@@ -61,7 +61,7 @@
                 android:gravity="center"
                 android:textColor="@color/ui_fullscreenmodal_toolbar_text_color"
                 android:textSize="@dimen/ui_fontsize_medium"
-                android:lineSpacingExtra="4sp"
+                android:lineSpacingExtra="@dimen/ui_linespacing_small"
                 tools:text="$ 200" />
         </LinearLayout>
     </android.support.v7.widget.CardView>

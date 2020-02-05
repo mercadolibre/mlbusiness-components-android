@@ -38,9 +38,10 @@ public class MainActivity extends AppCompatActivity
         LinearLayout benefitContainer = findViewById(R.id.loyaltyBenefitsContainer);
 
         Button button = findViewById(R.id.buttonOpen);
-        Button nextDiscountBox = findViewById(R.id.discountButton);
+
+        final Button nextDiscountBox = findViewById(R.id.discountButton);
         button.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, ButtonsActivity.class);
+            final Intent intent = new Intent(MainActivity.this, ButtonsActivity.class);
             startActivity(intent);
         });
 

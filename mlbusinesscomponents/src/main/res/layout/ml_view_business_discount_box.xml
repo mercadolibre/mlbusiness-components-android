@@ -6,18 +6,16 @@
     android:layout_height="wrap_content"
     tools:parentTag="android.widget.LinearLayout"
     tools:orientation="vertical"
-    tools:gravity="center"
-    tools:layout_height="wrap_content"
-    tools:ignore="Overdraw">
+    tools:gravity="center" >
 
     <TextView
         android:id="@+id/titleLabel"
         style="@style/MLFont.Bold.Semi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
-        android:lineSpacingExtra="4sp"
+        android:layout_marginEnd="@dimen/ui_4m"
+        android:layout_marginStart="@dimen/ui_4m"
+        android:lineSpacingExtra="@dimen/ui_linespacing_small"
         android:gravity="center"
         android:textColor="@color/ui_fullscreenmodal_toolbar_text_color"
         android:textSize="@dimen/ui_fontsize_large"
@@ -29,11 +27,11 @@
         style="@style/MLFont.Regular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="@dimen/ui_4m"
+        android:layout_marginStart="@dimen/ui_4m"
+        android:layout_marginBottom="@dimen/ui_3m"
         android:gravity="center"
-        android:lineSpacingExtra="4sp"
+        android:lineSpacingExtra="@dimen/ui_linespacing_small"
         android:textColor="@color/text_secondary_color"
         android:textSize="@dimen/ui_fontsize_xsmall"
         android:visibility="gone"
@@ -43,14 +41,14 @@
     <GridLayout
         android:id="@+id/gridBox"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/ui_1_5m"
         android:layout_marginBottom="@dimen/ui_1_5m"
         android:layout_marginStart="@dimen/ui_2m"
         android:layout_marginEnd="@dimen/ui_2m"
         android:columnCount="1"
         android:orientation="vertical"
-        tools:layout_height="200dp"
+        tools:layout_height="@dimen/ui_view_discount_box_height"
         tools:listitem="@layout/ml_view_discount_box" />
 
 </merge>
