@@ -121,11 +121,6 @@ public class MLBusinessDiscountBoxItemView extends LinearLayout {
     @NotNull
     private List<Map<String, Object>> retrieveDataToTrack(final MLBusinessSingleItem item) {
         final List<Map<String, Object>> eventsData = new ArrayList<>();
-        if (StringUtils.isValidString(item.getTrackId())) {
-            final Map<String, Object> eventData = new HashMap<>();
-            eventData.put("tracking_id", item.getTrackId());
-            eventsData.add(eventData);
-        }
         if (item.getEventData() != null && !item.getEventData().isEmpty()) {
             eventsData.add(item.getEventData());
         }
