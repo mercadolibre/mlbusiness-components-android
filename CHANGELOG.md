@@ -1,3 +1,7 @@
+## VERSION 1.1.5
+_05_02_2020_
+* FEATURE - Add discount tracker interface
+
 ## VERSION 1.1.4
 _28_01_2020_
 * FIX - Discounts center, icons showing incorrectly in small and high resolution devices.

@@ -73,7 +73,6 @@ public class MLBusinessDiscountBoxView extends LinearLayout {
      */
     public void init(@NonNull final MLBusinessDiscountBoxData discountBoxData,
         @Nullable final OnClickDiscountBox listener) {
-        gridBoxView.removeAllViews();
         presenter.bind(discountBoxData, listener, this);
     }
 
@@ -85,6 +84,7 @@ public class MLBusinessDiscountBoxView extends LinearLayout {
      */
     public void updateWithData(@NonNull final MLBusinessDiscountBoxData discountBoxData,
         @Nullable final OnClickDiscountBox listener) {
+        gridBoxView.removeAllViews();
         init(discountBoxData, listener);
     }
 
@@ -110,12 +110,12 @@ public class MLBusinessDiscountBoxView extends LinearLayout {
         gridBoxView.setRowCount(rawCount);
     }
 
-    /* default */ void showRowWithItems(final List<MLBusinessSingleItem> items,
-        @Nullable final OnClickDiscountBox listener, int startIndex) {
+    /* default */ void showRowWithItems(final List<MLBusinessSingleItem> items, int startIndex,
+        @Nullable final OnClickDiscountBox listener, @Nullable final MLBusinessDiscountTracker discountTracker) {
         final LinearLayout rowView = getRowView();
         for (final MLBusinessSingleItem item : items) {
             final MLBusinessDiscountBoxItemView itemView = new MLBusinessDiscountBoxItemView(getContext());
-            itemView.bind(item, listener, startIndex);
+            itemView.bind(item, listener, startIndex, discountTracker);
             rowView.addView(itemView);
             startIndex++;
         }

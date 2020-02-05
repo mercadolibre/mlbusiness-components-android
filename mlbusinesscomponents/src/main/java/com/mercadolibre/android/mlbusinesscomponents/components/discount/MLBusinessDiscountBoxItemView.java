@@ -14,6 +14,11 @@ import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtils;
 import com.mercadolibre.android.picassodiskcache.PicassoDiskLoader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.jetbrains.annotations.NotNull;
 
 public class MLBusinessDiscountBoxItemView extends LinearLayout {
 
@@ -69,11 +74,12 @@ public class MLBusinessDiscountBoxItemView extends LinearLayout {
      *
      * @param item A {@link MLBusinessSingleItem}
      */
-    public void bind(final MLBusinessSingleItem item, @Nullable final OnClickDiscountBox onClick, final int index) {
+    public void bind(final MLBusinessSingleItem item, @Nullable final OnClickDiscountBox onClick, final int index,
+        @Nullable final MLBusinessDiscountTracker discountTracker) {
         showImage(item.getImageUrl());
         showTitle(item.getTitleLabel());
         showSubtitle(item.getSubtitleLabel());
-        setListener(item, onClick, index);
+        setListener(item, onClick, index, discountTracker);
     }
 
     private void showImage(@NonNull final String url) {
@@ -93,11 +99,37 @@ public class MLBusinessDiscountBoxItemView extends LinearLayout {
     }
 
     private void setListener(final MLBusinessSingleItem item, @Nullable final OnClickDiscountBox listener,
-        final int index) {
+        final int index, @Nullable final MLBusinessDiscountTracker discountTracker) {
         if (listener != null) {
-            itemClick.setOnClickListener(
-                v -> listener.onClickDiscountItem(index, item.getDeepLinkItem(), item.getTrackId()));
+            itemClick.setOnClickListener(v -> onClickItem(listener, index, item, discountTracker));
         }
+    }
+
+    private void onClickItem(@NonNull final OnClickDiscountBox listener, final int index,
+        final MLBusinessSingleItem item, @Nullable final MLBusinessDiscountTracker discountTracker) {
+        listener.onClickDiscountItem(index, item.getDeepLinkItem(), item.getTrackId());
+        trackTapEvent(item, discountTracker);
+    }
+
+    private void trackTapEvent(final MLBusinessSingleItem item,
+        @Nullable final MLBusinessDiscountTracker discountTracker) {
+        if (discountTracker != null) {
+            discountTracker.track("tap", retrieveDataToTrack(item));
+        }
+    }
+
+    @NotNull
+    private List<Map<String, Object>> retrieveDataToTrack(final MLBusinessSingleItem item) {
+        final List<Map<String, Object>> eventsData = new ArrayList<>();
+        if (StringUtils.isValidString(item.getTrackId())) {
+            final Map<String, Object> eventData = new HashMap<>();
+            eventData.put("tracking_id", item.getTrackId());
+            eventsData.add(eventData);
+        }
+        if (item.getEventData() != null && !item.getEventData().isEmpty()) {
+            eventsData.add(item.getEventData());
+        }
+        return eventsData;
     }
 
     private void showTextIfCould(final String text, final TextView textView) {
