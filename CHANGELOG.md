@@ -1,5 +1,5 @@
 ## VERSION 1.1.5
-_28_01_2020_
+_05_02_2020_
 * FEATURE - Add discount tracker interface
 
 ## VERSION 1.1.4
