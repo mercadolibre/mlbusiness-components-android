@@ -87,18 +87,6 @@ public class ProgressButton extends LinearLayout implements View.OnClickListener
         return this;
     }
 
-    public void reset() {
-        setTextInformation(title, titleProgress);
-        this.setClickable(true);
-        resetColors();
-        paintButton(backgroundColor, progressColor);
-    }
-
-    private void resetColors() {
-        backgroundColor = R.color.components_primary_color;
-        progressColor = R.color.components_secondary_color;
-    }
-
     public ProgressButton setTextInformation(String title, String titleProgress) {
         textProgressBar.setText(title);
         this.title = title;
