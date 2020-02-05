@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:parentTag="android.support.constraint.ConstraintLayout"
+    tools:parentTag="android.widget.LinearLayout"
+    tools:orientation="vertical"
+    tools:gravity="center"
     tools:layout_height="wrap_content"
     tools:ignore="Overdraw">
 
@@ -15,18 +17,12 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
-        app:layout_goneMarginBottom="24dp"
         android:lineSpacingExtra="4sp"
         android:gravity="center"
         android:textColor="@color/ui_fullscreenmodal_toolbar_text_color"
-        tools:text="200 descuentos"
         android:textSize="@dimen/ui_fontsize_large"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintBottom_toTopOf="@+id/subtitleLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_goneMarginBottom="24dp"
+        tools:text="200 descuentos" />
 
     <TextView
         android:id="@+id/subtitleLabel"
@@ -42,24 +38,19 @@
         android:textSize="@dimen/ui_fontsize_xsmall"
         android:visibility="gone"
         tools:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerDiscountBox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleLabel"
         tools:text="35 exclusivos por tu nivel" />
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerDiscountBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <GridLayout
+        android:id="@+id/gridBox"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/ui_1_5m"
+        android:layout_marginBottom="@dimen/ui_1_5m"
+        android:layout_marginStart="@dimen/ui_2m"
+        android:layout_marginEnd="@dimen/ui_2m"
+        android:columnCount="1"
+        android:orientation="vertical"
         tools:layout_height="200dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/subtitleLabel"
-        app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/ml_view_discount_box" />
 
 </merge>

@@ -2,11 +2,15 @@ package com.mercadolibre.android.mlbusinesscomponentsapp;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem;
 import com.mercadolibre.android.mlbusinesscomponents.components.discount.MLBusinessDiscountBoxData;
 
 import java.util.List;
 
 public class MLBusinessDiscountBoxDataSample implements MLBusinessDiscountBoxData {
+
+    private List<MLBusinessSingleItem> items = DataSampleUtils.getItems();
+
 
     @Nullable
     @Override
@@ -22,7 +26,15 @@ public class MLBusinessDiscountBoxDataSample implements MLBusinessDiscountBoxDat
 
     @NonNull
     @Override
-    public List<com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem> getItems() {
-        return DataSampleUtils.getItems();
+    public List<MLBusinessSingleItem> getItems() {
+        return items;
+    }
+
+    /* default */ void changeItems() {
+        if (!items.isEmpty()) {
+            items.remove(0);
+            return;
+        }
+        items = DataSampleUtils.getItems();
     }
 }

@@ -1,4 +1,4 @@
-package com.mercadolibre.android.mlbusinesscomponents.components.discount_v2;
+package com.mercadolibre.android.mlbusinesscomponents.components.discount;
 
 import android.support.annotation.Nullable;
 

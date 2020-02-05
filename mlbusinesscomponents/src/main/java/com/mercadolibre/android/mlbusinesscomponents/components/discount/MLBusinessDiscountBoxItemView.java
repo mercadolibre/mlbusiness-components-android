@@ -1,13 +1,14 @@
-package com.mercadolibre.android.mlbusinesscomponents.components.discount_v2;
+package com.mercadolibre.android.mlbusinesscomponents.components.discount;
 
 import android.content.Context;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.Gravity;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem;
@@ -50,8 +51,8 @@ public class MLBusinessDiscountBoxItemView extends LinearLayout {
     public MLBusinessDiscountBoxItemView(final Context context, @Nullable final AttributeSet attrs,
         final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        inflate(context, R.layout.ml_view_business_discount_box_item, this);
         init();
-        inflate(context, R.layout.ml_view_business_discount_box_item_v2, this);
         itemClick = findViewById(R.id.discount_item);
         icon = findViewById(R.id.discount_item_icon);
         title = findViewById(R.id.discount_item_title);
@@ -59,8 +60,8 @@ public class MLBusinessDiscountBoxItemView extends LinearLayout {
     }
 
     private void init() {
-        final LayoutParams params = new TableRow.LayoutParams(0, LayoutParams.WRAP_CONTENT, 1);
-        setLayoutParams(params);
+        setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+        setGravity(Gravity.CENTER);
     }
 
     /**

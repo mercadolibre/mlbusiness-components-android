@@ -1,4 +1,4 @@
-package com.mercadolibre.android.mlbusinesscomponents.components.discount_v2;
+package com.mercadolibre.android.mlbusinesscomponents.components.discount;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,7 +10,7 @@ import java.util.List;
 
     private static final int MAX_ITEM_PER_ROW = 3;
 
-    private int rowCount = 1;
+    private int rowCount;
 
     /* default */ void bind(@NonNull final MLBusinessDiscountBoxData model, @Nullable final OnClickDiscountBox listener,
         @NonNull final MLBusinessDiscountBoxView view) {
@@ -37,19 +37,29 @@ import java.util.List;
 
     private void setBox(final List<MLBusinessSingleItem> items, @Nullable final OnClickDiscountBox listener,
         final MLBusinessDiscountBoxView view) {
-        setColumns(items.size(), view);
+        final List<MLBusinessSingleItem> validItems = getItems(items);
+        setRawCount(validItems.size(), view);
         if (rowCount == 1) {
             view.showRowWithItems(items, listener, 0);
-            return;
+        } else {
+            view.showRowWithItems(validItems.subList(0, 3), listener, 0);
+            view.showRowWithItems(validItems.subList(3, validItems.size()), listener, 3);
         }
-        view.showRowWithItems(items.subList(0, 2), listener, 0);
-        view.showRowWithItems(items.subList(3, items.size() - 1), listener, 3);
     }
 
-    private void setColumns(final int itemCount, final MLBusinessDiscountBoxView view) {
+    private List<MLBusinessSingleItem> getItems(final List<MLBusinessSingleItem> items) {
+        if (items.size() > 6) {
+            return items.subList(0, 6);
+        }
+        return items;
+    }
+
+    private void setRawCount(final int itemCount, final MLBusinessDiscountBoxView view) {
         if (itemCount > MAX_ITEM_PER_ROW) {
             rowCount = 2;
+        } else {
+            rowCount = 1;
         }
-        view.setColumnsCount(rowCount);
+        view.setRawCount(rowCount);
     }
 }

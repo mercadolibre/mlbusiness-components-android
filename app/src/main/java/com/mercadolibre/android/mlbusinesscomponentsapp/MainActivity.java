@@ -5,7 +5,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -13,12 +16,12 @@ import com.mercadolibre.android.mlbusinesscomponents.components.common.MLBusines
 import com.mercadolibre.android.mlbusinesscomponents.components.common.downloadapp.MLBusinessDownloadAppView;
 import com.mercadolibre.android.mlbusinesscomponents.components.crossselling.MLBusinessCrossSellingBoxView;
 import com.mercadolibre.android.mlbusinesscomponents.components.discount.MLBusinessDiscountBoxView;
+import com.mercadolibre.android.mlbusinesscomponents.components.discount.OnClickDiscountBox;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyHeaderView;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyRingView;
 
 public class MainActivity extends AppCompatActivity
-        implements MLBusinessLoyaltyRingView.OnClickLoyaltyRing,
-        MLBusinessDiscountBoxView.OnClickDiscountBox,
+        implements MLBusinessLoyaltyRingView.OnClickLoyaltyRing, OnClickDiscountBox,
         MLBusinessCrossSellingBoxView.OnClickCrossSellingBoxView,
         MLBusinessDownloadAppView.OnClickDownloadApp {
 
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity
         LinearLayout benefitContainer = findViewById(R.id.loyaltyBenefitsContainer);
 
         Button button = findViewById(R.id.buttonOpen);
+        Button nextDiscountBox = findViewById(R.id.discountButton);
         button.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, ButtonsActivity.class);
             startActivity(intent);
@@ -44,7 +48,12 @@ public class MainActivity extends AppCompatActivity
 
         ringView.init(new MLBusinessLoyaltyRingDataSample(), this);
 
-        discountBoxView.init(new MLBusinessDiscountBoxDataSample(), this);
+        final MLBusinessDiscountBoxDataSample discount = new MLBusinessDiscountBoxDataSample();
+        discountBoxView.init(discount, this);
+        nextDiscountBox.setOnClickListener(v -> {
+            discount.changeItems();
+            discountBoxView.updateWithData(discount, this);
+        });
 
         downloadAppView.init(new MLBusinessDownloadAppDataSample(), this);
 
