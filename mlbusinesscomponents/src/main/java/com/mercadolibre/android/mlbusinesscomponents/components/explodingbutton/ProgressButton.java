@@ -57,14 +57,14 @@ public class ProgressButton extends LinearLayout implements View.OnClickListener
     @ColorRes
     private int progressColor = R.color.components_secondary_color;
     private String titleProgress;
+    private String title;
     private int durationRipple = 500;
     private int durationTimeout = 7000;
     private int durationFinishProgress = 1000;
     private int durationAnimation = 200;
     private int durationDelayRipple = 500;
+    private int periodSubtract = 100;
     private static final float DARKEN_FACTOR = 0.1f;
-    private View reveal;
-    private View container;
     private OnFinishAnimationListener onFinishAnimationListener;
     private OnClickListener onClickListener;
 
@@ -87,8 +87,21 @@ public class ProgressButton extends LinearLayout implements View.OnClickListener
         return this;
     }
 
+    public void reset() {
+        setTextInformation(title, titleProgress);
+        this.setClickable(true);
+        resetColors();
+        paintButton(backgroundColor, progressColor);
+    }
+
+    private void resetColors() {
+        backgroundColor = R.color.components_primary_color;
+        progressColor = R.color.components_secondary_color;
+    }
+
     public ProgressButton setTextInformation(String title, String titleProgress) {
         textProgressBar.setText(title);
+        this.title = title;
         this.titleProgress = titleProgress;
         return this;
     }
@@ -201,11 +214,6 @@ public class ProgressButton extends LinearLayout implements View.OnClickListener
         view.setLayoutParams(params);
     }
 
-    public ProgressButton setViewParent(View view) {
-        reveal = view;
-        return this;
-    }
-
     private void initView(Context context) {
         super.setOnClickListener(this);
         LayoutInflater inflater = (LayoutInflater) context
@@ -215,7 +223,6 @@ public class ProgressButton extends LinearLayout implements View.OnClickListener
         progressBar = findViewById(R.id.cho_loading_buy_progress);
         circle = findViewById(R.id.cho_loading_buy_circular);
         icon = findViewById(R.id.cho_loading_buy_icon);
-        container = findViewById(R.id.cho_loading_buy_container);
         adjustHeight(circle);
         adjustHeight(icon);
     }
@@ -226,6 +233,8 @@ public class ProgressButton extends LinearLayout implements View.OnClickListener
         if (onClickListener != null) {
             onClickListener.onClick(v);
         }
+        this.setClickable(false);
+        progressBar.setClickable(false);
     }
 
     public void startAnimationCustom() {
@@ -296,7 +305,6 @@ public class ProgressButton extends LinearLayout implements View.OnClickListener
     }
 
     private void createResultIconAnim() {
-        progressBar.setClickable(false);
         this.icon.setVisibility(View.VISIBLE);
         float ICON_SCALE = 3.0f;
         this.icon.setScaleY(ICON_SCALE);
@@ -327,8 +335,11 @@ public class ProgressButton extends LinearLayout implements View.OnClickListener
 
     private void scaleView(ProgressButton v) {
         int scale = getScale();
-        v.animate().scaleX(scale).scaleY(scale).setDuration(800).setUpdateListener(animation -> {
-            if (animation.getCurrentPlayTime() > 600) {
+        v.animate().scaleX(scale).scaleY(scale)
+                .setDuration(durationRipple)
+                .setStartDelay(durationDelayRipple)
+                .setUpdateListener(animation -> {
+            if (animation.getCurrentPlayTime() > durationDelayRipple - periodSubtract) {
                 Activity activity = (Activity) ProgressButton.this.getContext();
                 if (activity != null) {
                     setStatusBarColor(getDarkPrimaryColor(ContextCompat.getColor(getContext(), rippleColor)), activity.getWindow());
@@ -357,7 +368,6 @@ public class ProgressButton extends LinearLayout implements View.OnClickListener
             public void onAnimationStart(Animator animation) {
                 super.onAnimationStart(animation);
                 icon.setVisibility(View.GONE);
-                ProgressButton.this.setClickable(false);
             }
 
             @Override
@@ -386,59 +396,7 @@ public class ProgressButton extends LinearLayout implements View.OnClickListener
     }
 
     void createCircularReveal() {
-
         scaleView(this);
-       /* // when the icon anim has finished, paint the whole screen with the result color
-        final float finalRadius = (float) Math.hypot(reveal.getWidth(), reveal.getHeight());
-        // FIXME altura original del boton
-        final int startRadius = (int) (getContext().getResources().getDimension(R.dimen.ui_7m) / 2);
-
-        final int[] location = new int[2];
-        container.getLocationOnScreen(location);
-        final int cy = (progressBar.getTop() + progressBar.getBottom()) / 2 + (location[1] - container.getMeasuredHeight() / 2);
-        final int cx = location[0] + (container.getWidth() / 2);
-
-        //try to avoid reveal detached view
-        reveal.post(() -> {
-            final Animator anim;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                anim = ViewAnimationUtils.createCircularReveal(reveal, cx, cy, startRadius, finalRadius);
-            } else {
-                anim = ObjectAnimator.ofFloat(reveal, "alpha", 0, 1);
-            }
-            anim.setDuration(durationRipple);
-            anim.setStartDelay(durationDelayRipple);
-            anim.setInterpolator(new AccelerateInterpolator());
-            anim.addListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationStart(final Animator animation) {
-                    circle.setVisibility(View.GONE);
-                    icon.setVisibility(View.GONE);
-
-                    final int startColor = ContextCompat.getColor(getContext(), rippleColor);
-                    final int endColor = ContextCompat.getColor(getContext(), rippleColor);
-                    final Drawable[] switchColors =
-                            {new ColorDrawable(startColor), new ColorDrawable(endColor)};
-                    final TransitionDrawable colorSwitch = new TransitionDrawable(switchColors);
-                    reveal.setBackground(colorSwitch);
-                    colorSwitch.startTransition((int) animation.getDuration());
-                }
-
-                @SuppressLint("ResourceAsColor")
-                @Override
-                public void onAnimationEnd(final Animator animation) {
-                    Activity activity = (Activity) reveal.getContext();
-                    if (activity != null) {
-                        setStatusBarColor(getDarkPrimaryColor(ContextCompat.getColor(getContext(), rippleColor)), activity.getWindow());
-                    }
-                    if (onFinishAnimationListener != null) {
-                        onFinishAnimationListener.finishAnimation();
-                    }
-                }
-            });
-
-            anim.start();
-        });*/
     }
 
     @Override

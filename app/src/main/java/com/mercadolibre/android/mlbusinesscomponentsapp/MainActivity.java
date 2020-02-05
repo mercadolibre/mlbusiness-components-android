@@ -3,12 +3,12 @@ package com.mercadolibre.android.mlbusinesscomponentsapp;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
 import com.mercadolibre.android.mlbusinesscomponents.components.common.MLBusinessInfoView;
 import com.mercadolibre.android.mlbusinesscomponents.components.common.downloadapp.MLBusinessDownloadAppView;
 import com.mercadolibre.android.mlbusinesscomponents.components.crossselling.MLBusinessCrossSellingBoxView;
@@ -38,8 +38,7 @@ public class MainActivity extends AppCompatActivity
         ProgressButton buttonProgress = findViewById(R.id.buttonOpen);
         buttonProgress.Builder()
                 .setTextSize(16)
-                .setTextInformation("Procesar Pago","Cargando")
-                .setColorText(R.color.ui_meli_red);
+                .setTextInformation("Procesar Pago","Cargando");
 
         buttonProgress.setOnClickListener(v ->
                 buttonProgress.finishProgress(
@@ -48,7 +47,12 @@ public class MainActivity extends AppCompatActivity
                 )
         );
 
-        buttonProgress.addFinishAnimationListener(() -> Toast.makeText(MainActivity.this, "hola", Toast.LENGTH_SHORT).show());
+        buttonProgress.addFinishAnimationListener(() -> {
+            Toast.makeText(MainActivity.this, "hola", Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(() -> {
+                finish();
+            }, 3000);
+        });
 
         MLBusinessInfoView benefitView = new MLBusinessInfoView(this);
 
