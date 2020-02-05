@@ -74,7 +74,8 @@ public class MLBusinessDiscountBoxItemView extends LinearLayout {
      *
      * @param item A {@link MLBusinessSingleItem}
      */
-    public void bind(final MLBusinessSingleItem item, @Nullable final OnClickDiscountBox onClick, final int index,
+    public void bind(final MLBusinessSingleItem item,
+        @Nullable final MLBusinessDiscountBoxView.OnClickDiscountBox onClick, final int index,
         @Nullable final MLBusinessDiscountTracker discountTracker) {
         showImage(item.getImageUrl());
         showTitle(item.getTitleLabel());
@@ -98,14 +99,15 @@ public class MLBusinessDiscountBoxItemView extends LinearLayout {
         showTextIfCould(subtitle, this.subtitle);
     }
 
-    private void setListener(final MLBusinessSingleItem item, @Nullable final OnClickDiscountBox listener,
+    private void setListener(final MLBusinessSingleItem item,
+        @Nullable final MLBusinessDiscountBoxView.OnClickDiscountBox listener,
         final int index, @Nullable final MLBusinessDiscountTracker discountTracker) {
         if (listener != null) {
             itemClick.setOnClickListener(v -> onClickItem(listener, index, item, discountTracker));
         }
     }
 
-    private void onClickItem(@NonNull final OnClickDiscountBox listener, final int index,
+    private void onClickItem(@NonNull final MLBusinessDiscountBoxView.OnClickDiscountBox listener, final int index,
         final MLBusinessSingleItem item, @Nullable final MLBusinessDiscountTracker discountTracker) {
         listener.onClickDiscountItem(index, item.getDeepLinkItem(), item.getTrackId());
         trackTapEvent(item, discountTracker);

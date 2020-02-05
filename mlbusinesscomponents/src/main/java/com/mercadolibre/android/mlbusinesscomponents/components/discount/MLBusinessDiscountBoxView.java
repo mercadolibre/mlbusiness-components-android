@@ -131,4 +131,16 @@ public class MLBusinessDiscountBoxView extends LinearLayout {
         rowView.setOrientation(LinearLayout.HORIZONTAL);
         return rowView;
     }
+
+    public interface OnClickDiscountBox {
+
+        /**
+         * On click discount item callback
+         *
+         * @param index The position which one is draw
+         * @param deepLink The desiree link to lunch
+         * @param trackId The item identifier to be tracked
+         */
+        void onClickDiscountItem(final int index, @Nullable final String deepLink, @Nullable final String trackId);
+    }
 }

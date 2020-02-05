@@ -15,7 +15,8 @@ import org.jetbrains.annotations.NotNull;
 
     private int rowCount;
 
-    /* default */ void bind(@NonNull final MLBusinessDiscountBoxData model, @Nullable final OnClickDiscountBox listener,
+    /* default */ void bind(@NonNull final MLBusinessDiscountBoxData model,
+        @Nullable final MLBusinessDiscountBoxView.OnClickDiscountBox listener,
         @NonNull final MLBusinessDiscountBoxView view) {
         trackShowEvent(model.getTracker(), model.getItems());
         setTitle(model.getTitle(), view);
@@ -57,7 +58,8 @@ import org.jetbrains.annotations.NotNull;
         view.hideSubtitle();
     }
 
-    private void setBox(final List<MLBusinessSingleItem> items, @Nullable final OnClickDiscountBox listener,
+    private void setBox(final List<MLBusinessSingleItem> items,
+        @Nullable final MLBusinessDiscountBoxView.OnClickDiscountBox listener,
         final MLBusinessDiscountBoxView view, @Nullable final MLBusinessDiscountTracker discountTracker) {
         final List<MLBusinessSingleItem> validItems = getItems(items);
         setRawCount(validItems.size(), view);
