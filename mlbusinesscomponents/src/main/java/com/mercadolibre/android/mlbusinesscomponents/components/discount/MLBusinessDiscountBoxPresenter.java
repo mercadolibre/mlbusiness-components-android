@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Map;
 import org.jetbrains.annotations.NotNull;
 
+import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.SHOW;
+import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.retrieveDataToTrack;
+
 /* default */ class MLBusinessDiscountBoxPresenter {
 
     private static final int MAX_ITEM_PER_ROW = 3;
@@ -27,19 +30,8 @@ import org.jetbrains.annotations.NotNull;
     private void trackShowEvent(@Nullable final MLBusinessDiscountTracker discountTracker,
         final List<MLBusinessSingleItem> items) {
         if (discountTracker != null) {
-            discountTracker.track("show", retrieveDataToTrack(items));
+            discountTracker.track(SHOW, retrieveDataToTrack(items));
         }
-    }
-
-    @NotNull
-    private List<Map<String, Object>> retrieveDataToTrack(final List<MLBusinessSingleItem> items) {
-        final List<Map<String, Object>> eventData = new ArrayList<>();
-        for (final MLBusinessSingleItem item : items) {
-            if (item.getEventData() != null && !item.getEventData().isEmpty()) {
-                eventData.add(item.getEventData());
-            }
-        }
-        return eventData;
     }
 
     private void setTitle(@Nullable final String title, final MLBusinessDiscountBoxView view) {

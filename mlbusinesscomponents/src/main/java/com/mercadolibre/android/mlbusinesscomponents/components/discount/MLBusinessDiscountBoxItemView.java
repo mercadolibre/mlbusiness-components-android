@@ -20,6 +20,9 @@ import java.util.List;
 import java.util.Map;
 import org.jetbrains.annotations.NotNull;
 
+import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.TAP;
+import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.retrieveDataToTrack;
+
 public class MLBusinessDiscountBoxItemView extends LinearLayout {
 
     private final LinearLayout itemClick;
@@ -116,17 +119,8 @@ public class MLBusinessDiscountBoxItemView extends LinearLayout {
     private void trackTapEvent(final MLBusinessSingleItem item,
         @Nullable final MLBusinessDiscountTracker discountTracker) {
         if (discountTracker != null) {
-            discountTracker.track("tap", retrieveDataToTrack(item));
+            discountTracker.track(TAP, item.getEventData());
         }
-    }
-
-    @NotNull
-    private List<Map<String, Object>> retrieveDataToTrack(final MLBusinessSingleItem item) {
-        final List<Map<String, Object>> eventsData = new ArrayList<>();
-        if (item.getEventData() != null && !item.getEventData().isEmpty()) {
-            eventsData.add(item.getEventData());
-        }
-        return eventsData;
     }
 
     private void showTextIfCould(final String text, final TextView textView) {

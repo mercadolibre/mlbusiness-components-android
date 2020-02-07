@@ -1,6 +1,6 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.discount;
 
-import java.util.List;
+import android.support.annotation.Nullable;
 import java.util.Map;
 
 public interface MLBusinessDiscountTracker {
@@ -10,5 +10,5 @@ public interface MLBusinessDiscountTracker {
      *
      * @param eventData the tracking information
      */
-    void track(final String action, final List<Map<String, Object>> eventData);
+    void track(@Nullable final String action, @Nullable final Map<String, Object> eventData);
 }

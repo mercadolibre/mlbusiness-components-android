@@ -73,6 +73,7 @@ public class MLBusinessDiscountBoxView extends LinearLayout {
      */
     public void init(@NonNull final MLBusinessDiscountBoxData discountBoxData,
         @Nullable final OnClickDiscountBox listener) {
+        gridBoxView.removeAllViews();
         presenter.bind(discountBoxData, listener, this);
     }
 
@@ -84,7 +85,6 @@ public class MLBusinessDiscountBoxView extends LinearLayout {
      */
     public void updateWithData(@NonNull final MLBusinessDiscountBoxData discountBoxData,
         @Nullable final OnClickDiscountBox listener) {
-        gridBoxView.removeAllViews();
         init(discountBoxData, listener);
     }
 
