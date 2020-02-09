@@ -1,210 +1,146 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.discount;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.view.View;
+import android.view.Gravity;
+import android.view.ViewGroup;
+import android.widget.GridLayout;
+import android.widget.LinearLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem;
-import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils;
-import com.mercadolibre.android.mlbusinesscomponents.components.utils.ViewUtils;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import org.jetbrains.annotations.NotNull;
 
-public class MLBusinessDiscountBoxView extends ConstraintLayout {
+public class MLBusinessDiscountBoxView extends LinearLayout {
 
-    public interface OnClickDiscountBox {
-        void onClickDiscountItem(final int index, @Nullable final String deepLink, @Nullable final String trackId);
-    }
+    private final TextView titleLabel;
+    private final TextView subtitleLabel;
+    private final GridLayout gridBoxView;
+    private final MLBusinessDiscountBoxPresenter presenter;
 
-    private static final int DEFAULT_LIST_SIZE = 6;
-
-    private RecyclerView recyclerDiscountBox;
-    private MLBusinessDiscountBoxData businessDiscountBoxData;
-    @Nullable private MLBusinessDiscountTracker businessDiscountTracker;
-    private TextView titleLabel;
-    private TextView subtitleLabel;
-    private WeakReference<OnClickDiscountBox> onClickDiscountBox;
-
+    /**
+     * Constructor
+     *
+     * @param context the context
+     */
     public MLBusinessDiscountBoxView(final Context context) {
         this(context, null);
     }
 
-    public MLBusinessDiscountBoxView(final Context context, final AttributeSet attrs) {
+    /**
+     * Constructor
+     *
+     * @param context the context
+     * @param attrs the attribute set
+     */
+    public MLBusinessDiscountBoxView(final Context context, @Nullable final AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public MLBusinessDiscountBoxView(final Context context, final AttributeSet attrs, final int defStyleAttr) {
+    /**
+     * Constructor
+     *
+     * @param context the context
+     * @param attrs the attribute set
+     * @param defStyleAttr the attribute style
+     */
+    public MLBusinessDiscountBoxView(final Context context, @Nullable final AttributeSet attrs,
+        final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initMLBusinessDiscountBoxView(context);
-    }
-
-    private void initMLBusinessDiscountBoxView(final Context context) {
         inflate(context, R.layout.ml_view_business_discount_box, this);
-
-        recyclerDiscountBox = findViewById(R.id.recyclerDiscountBox);
+        initView();
         titleLabel = findViewById(R.id.titleLabel);
         subtitleLabel = findViewById(R.id.subtitleLabel);
+        gridBoxView = findViewById(R.id.gridBox);
+
+        presenter = new MLBusinessDiscountBoxPresenter();
     }
 
-    private void trackShowEvent() {
-        if (businessDiscountTracker != null) {
-            final List<Map<String, Object>> eventData = new ArrayList<>();
-            for (final MLBusinessSingleItem item : businessDiscountBoxData.getItems()) {
-                eventData.add(item.getEventData());
-            }
-            businessDiscountTracker.track("show", eventData);
-        }
+    private void initView() {
+        setOrientation(VERTICAL);
+        setGravity(Gravity.CENTER);
     }
 
-    private void configDiscountBoxView() {
-        final MLBusinessDiscountBoxAdapter discountBoxAdapter =
-            new MLBusinessDiscountBoxAdapter(getLimitedList(), onClickDiscountBox, businessDiscountTracker);
-        final int totalSize = discountBoxAdapter.getItemCount();
-        final int defaultColumns = totalSize == 4 ? 2 : DEFAULT_LIST_SIZE;
-        final int span = totalSize % (defaultColumns / 2);
-
-        final GridLayoutManager manager = new GridLayoutManager(getContext(), defaultColumns) {
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-            }
-
-            @Override
-            public boolean canScrollHorizontally() {
-                return false;
-            }
-        };
-        if (defaultColumns == DEFAULT_LIST_SIZE) {
-            manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-                @Override
-                public int getSpanSize(final int position) {
-                    if (span == 0 || (position <= ((totalSize - 1) - span))) {
-                        return 2;
-                    } else if (span == 1) {
-                        return DEFAULT_LIST_SIZE;
-                    } else {
-                        return 3;
-                    }
-                }
-            });
-        }
-
-        for (int i = 0; i < recyclerDiscountBox.getItemDecorationCount(); i++) {
-            recyclerDiscountBox.removeItemDecorationAt(0);
-        }
-        recyclerDiscountBox.addItemDecoration(new SpacesItemDecoration(getContext(), span, defaultColumns));
-        recyclerDiscountBox.setLayoutManager(manager);
-        recyclerDiscountBox.setAdapter(discountBoxAdapter);
-        recyclerDiscountBox.setHasFixedSize(true);
-
-        final String title = businessDiscountBoxData.getTitle();
-        final String subTitle = businessDiscountBoxData.getSubtitle();
-
-        if (ViewUtils.loadOrGone(titleLabel, title)) {
-            ViewUtils.loadOrGone(subtitleLabel, subTitle);
-        }
+    /**
+     * Bind discount component
+     *
+     * @param discountBoxData A {@link MLBusinessDiscountBoxData} to be bind
+     * @param listener A {@link OnClickDiscountBox} callback to be called on {@link MLBusinessSingleItem} click event
+     */
+    public void init(@NonNull final MLBusinessDiscountBoxData discountBoxData,
+        @Nullable final OnClickDiscountBox listener) {
+        gridBoxView.removeAllViews();
+        presenter.bind(discountBoxData, listener, this);
     }
 
-    private List<MLBusinessSingleItem> getLimitedList() {
-        final List<MLBusinessSingleItem> items = businessDiscountBoxData.getItems();
-        return items.size() > DEFAULT_LIST_SIZE ? items.subList(0, DEFAULT_LIST_SIZE) : items;
+    /**
+     * Re bind model with new model
+     *
+     * @param discountBoxData A new {@link MLBusinessDiscountBoxData} to bind
+     * @param listener A {@link OnClickDiscountBox} callback to be called on {@link MLBusinessSingleItem} click event
+     */
+    public void updateWithData(@NonNull final MLBusinessDiscountBoxData discountBoxData,
+        @Nullable final OnClickDiscountBox listener) {
+        init(discountBoxData, listener);
     }
 
-    public void init(@NonNull final MLBusinessDiscountBoxData businessDiscountBoxData,
-        @Nullable final OnClickDiscountBox onclick) {
-        this.businessDiscountBoxData = businessDiscountBoxData;
-        businessDiscountTracker = businessDiscountBoxData.getTracker();
-        onClickDiscountBox = new WeakReference<>(onclick);
-        configDiscountBoxView();
-        trackShowEvent();
+    /* default */ void showTitle(final String title) {
+        titleLabel.setText(title);
+        titleLabel.setVisibility(VISIBLE);
     }
 
-    public void updateWithData(@NonNull final MLBusinessDiscountBoxData businessDiscountBoxData,
-        @Nullable final OnClickDiscountBox onclick) {
-        init(businessDiscountBoxData, onclick);
+    /* default */ void hideTitle() {
+        titleLabel.setVisibility(GONE);
     }
 
-    private static class SpacesItemDecoration extends RecyclerView.ItemDecoration {
-        private static final int MINIMUM_PIXELS_WIDTH = 1080;
-        private final int topSpace;
-        private final int lateralSpace;
-        private final int itemsInLastRow;
-        private final int defaultColumns;
+    /* default */ void showSubtitle(final String subtitle) {
+        subtitleLabel.setText(subtitle);
+        titleLabel.setVisibility(VISIBLE);
+    }
 
-        SpacesItemDecoration(final Context context, final int itemsInLastRow, final int defaultColumns) {
-            topSpace = (int) ScaleUtils.getPxFromDp(context, 0);
-            if (isSmallDevice()) {
-                lateralSpace = 0;
-            } else {
-                lateralSpace = (int) ScaleUtils.getPxFromDp(context, 10.0f);
-            }
-            this.itemsInLastRow = itemsInLastRow;
-            this.defaultColumns = defaultColumns;
+    /* default */ void hideSubtitle() {
+        titleLabel.setVisibility(GONE);
+    }
+
+    /* default */ void setRawCount(final int rawCount) {
+        gridBoxView.setRowCount(rawCount);
+    }
+
+    /* default */ void showRowWithItems(final List<MLBusinessSingleItem> items, int startIndex,
+        @Nullable final OnClickDiscountBox listener, @Nullable final MLBusinessDiscountTracker discountTracker) {
+        final LinearLayout rowView = getRowView();
+        for (final MLBusinessSingleItem item : items) {
+            final MLBusinessDiscountBoxItemView itemView = new MLBusinessDiscountBoxItemView(getContext());
+            itemView.bind(item, listener, startIndex, discountTracker);
+            rowView.addView(itemView);
+            startIndex++;
         }
+        gridBoxView.addView(rowView);
+    }
 
-        private boolean isSmallDevice() {
-            return Resources.getSystem().getDisplayMetrics().widthPixels < MINIMUM_PIXELS_WIDTH;
-        }
+    @NotNull
+    private LinearLayout getRowView() {
+        final LinearLayout rowView = new LinearLayout(getContext());
+        rowView.setLayoutParams(
+            new TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        rowView.setVisibility(VISIBLE);
+        rowView.setOrientation(LinearLayout.HORIZONTAL);
+        return rowView;
+    }
 
-        @Override
-        public void getItemOffsets(@NonNull final Rect outRect, @NonNull final View view,
-            @NonNull final RecyclerView parent, @NonNull final RecyclerView.State state) {
-            final RecyclerView.Adapter adapter = parent.getAdapter();
-            if (adapter != null) {
-                if (itemsInLastRow > 0 &&
-                    startLastRow(parent, adapter, view, itemsInLastRow)) {
-                    if (itemsInLastRow == 2) {
-                        setRectLeft(outRect, view, lateralSpace);
-                    } else {
-                        outRect.left = view.getLayoutParams().width + lateralSpace * 3;
-                    }
-                } else {
-                    outRect.left = lateralSpace;
-                }
-
-                if (isFirstRow(parent, view)) {
-                    outRect.top = 0;
-                } else {
-                    outRect.top = topSpace;
-                }
-
-                outRect.right = lateralSpace;
-                outRect.bottom = 0;
-            }
-        }
+    public interface OnClickDiscountBox {
 
         /**
-         * @param outRect holds four integer coordinates for a rectangle.
-         * @param view the item view.
-         * @param lateralSpace the lateral space set  previously.
+         * On click discount item callback
+         *
+         * @param index The position which one is draw
+         * @param deepLink The desiree link to lunch
+         * @param trackId The item identifier to be tracked
          */
-        private void setRectLeft(Rect outRect, View view, int lateralSpace) {
-            if (view.getLayoutParams().width <= 0) {
-                outRect.left = (view.getMinimumWidth() + lateralSpace * 4) / 2;
-            } else {
-                outRect.left = (view.getLayoutParams().width + lateralSpace * 4) / 2;
-            }
-        }
-
-        private boolean isFirstRow(final RecyclerView parent, final View view) {
-            final int columns = defaultColumns == DEFAULT_LIST_SIZE ? 2 : 1;
-            return parent.getChildAdapterPosition(view) <= columns;
-        }
-
-        private boolean startLastRow(final RecyclerView parent,
-            final RecyclerView.Adapter adapter, final View view, final int itemsInLastRow) {
-            final int itemCount = adapter.getItemCount();
-            return itemCount > 1 && parent.getChildAdapterPosition(view) == itemCount - itemsInLastRow;
-        }
+        void onClickDiscountItem(final int index, @Nullable final String deepLink, @Nullable final String trackId);
     }
 }
