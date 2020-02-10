@@ -1,5 +1,7 @@
 package com.mercadolibre.android.mlbusinesscomponentsapp;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,6 +17,9 @@ import com.mercadolibre.android.mlbusinesscomponents.components.crossselling.MLB
 import com.mercadolibre.android.mlbusinesscomponents.components.discount.MLBusinessDiscountBoxView;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyHeaderView;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyRingView;
+import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadcaster.LoyaltyBroadcastData;
+import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadcaster.LoyaltyBroadcastReceiver;
+import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadcaster.LoyaltyBroadcaster;
 
 public class MainActivity extends AppCompatActivity
         implements MLBusinessLoyaltyRingView.OnClickLoyaltyRing,
@@ -54,11 +59,31 @@ public class MainActivity extends AppCompatActivity
 
         benefitView.init(new MLBusinessInfoDataSample());
         benefitContainer.addView(benefitView);
+
+        LoyaltyBroadcaster.getInstance().register(new LoyaltyBroadcast(), getApplicationContext());
+    }
+
+
+    private class LoyaltyBroadcast extends LoyaltyBroadcastReceiver {
+
+        @Override
+        public void onReceive(LoyaltyBroadcastData loyaltyBroadcastData) {
+
+        }
     }
 
     @Override
     public void onClickLoyaltyButton(@NonNull final String deepLink) {
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
+        LoyaltyBroadcastData loyaltyBroadcastData = new LoyaltyBroadcastData();
+        loyaltyBroadcastData.setPercentage(0.2f);
+        loyaltyBroadcastData.setPoints(200);
+        loyaltyBroadcastData.setLevel(2);
+        loyaltyBroadcastData.setPrimaryColor("#FEFEFE");
+        loyaltyBroadcastData.setPendingNotifications(0);
+
+
+        LoyaltyBroadcaster.getInstance().updateInfo(getApplicationContext(), loyaltyBroadcastData);
+        //startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
     }
 
     @Override
