@@ -83,7 +83,8 @@ public class MainActivity extends AppCompatActivity
 
 
         LoyaltyBroadcaster.getInstance().updateInfo(getApplicationContext(), loyaltyBroadcastData);
-        //startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
+
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
     }
 
     @Override
