@@ -1,5 +1,9 @@
-## VERSION 1.1.6
+## VERSION 1.1.7
 * FEATURE - Loyalty broadcast
+
+## VERSION 1.1.6
+_13_02_2020_
+* REFACTOR - New discount center box view
 
 ## VERSION 1.1.5
 _05_02_2020_
