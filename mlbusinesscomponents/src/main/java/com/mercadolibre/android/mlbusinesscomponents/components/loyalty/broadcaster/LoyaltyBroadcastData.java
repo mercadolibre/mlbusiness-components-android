@@ -2,19 +2,9 @@ package com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadca
 
 public class LoyaltyBroadcastData {
 
-    private Integer points;
     private Integer level;
     private Float percentage;
     private String primaryColor;
-    private Integer pendingNotifications;
-
-    public Integer getPoints() {
-        return points;
-    }
-
-    public void setPoints(Integer points) {
-        this.points = points;
-    }
 
     public Integer getLevel() {
         return level;
@@ -40,11 +30,4 @@ public class LoyaltyBroadcastData {
         this.primaryColor = primaryColor;
     }
 
-    public Integer getPendingNotifications() {
-        return pendingNotifications;
-    }
-
-    public void setPendingNotifications(Integer pendingNotifications) {
-        this.pendingNotifications = pendingNotifications;
-    }
 }

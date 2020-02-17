@@ -82,10 +82,8 @@ public class MainActivity extends AppCompatActivity
     public void onClickLoyaltyButton(@NonNull final String deepLink) {
         LoyaltyBroadcastData loyaltyBroadcastData = new LoyaltyBroadcastData();
         loyaltyBroadcastData.setPercentage(0.2f);
-        loyaltyBroadcastData.setPoints(200);
         loyaltyBroadcastData.setLevel(2);
         loyaltyBroadcastData.setPrimaryColor("#FEFEFE");
-        loyaltyBroadcastData.setPendingNotifications(0);
 
 
         LoyaltyBroadcaster.getInstance().updateInfo(getApplicationContext(), loyaltyBroadcastData);
