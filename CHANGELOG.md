@@ -1,3 +1,6 @@
+## VERSION 1.1.6
+* FEATURE - Loyalty broadcast
+
 ## VERSION 1.1.5
 _05_02_2020_
 * FEATURE - Add discount tracker interface

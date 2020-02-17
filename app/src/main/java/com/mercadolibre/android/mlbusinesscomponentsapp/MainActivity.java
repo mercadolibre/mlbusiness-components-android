@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity
 
         @Override
         public void onReceive(LoyaltyBroadcastData loyaltyBroadcastData) {
-
+            Log.d("LoyaltyBroadcast", "Mensaje recibido del broadcast de Loyalty");
         }
     }
 
