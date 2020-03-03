@@ -99,11 +99,11 @@ public class MLBusinessDiscountBoxView extends LinearLayout {
 
     /* default */ void showSubtitle(final String subtitle) {
         subtitleLabel.setText(subtitle);
-        titleLabel.setVisibility(VISIBLE);
+        subtitleLabel.setVisibility(VISIBLE);
     }
 
     /* default */ void hideSubtitle() {
-        titleLabel.setVisibility(GONE);
+        subtitleLabel.setVisibility(GONE);
     }
 
     /* default */ void setRawCount(final int rawCount) {
