@@ -1,3 +1,7 @@
+## VERSION 1.1.7
+_03_03_2020_
+* FIX - discount box titles
+
 ## VERSION 1.1.6
 _13_02_2020_
 * REFACTOR - New discount center box view
