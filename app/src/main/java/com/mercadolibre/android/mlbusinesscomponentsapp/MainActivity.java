@@ -1,11 +1,14 @@
 package com.mercadolibre.android.mlbusinesscomponentsapp;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import com.mercadolibre.android.mlbusinesscomponents.components.common.MLBusinessInfoView;
@@ -14,11 +17,16 @@ import com.mercadolibre.android.mlbusinesscomponents.components.crossselling.MLB
 import com.mercadolibre.android.mlbusinesscomponents.components.discount.MLBusinessDiscountBoxView;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyHeaderView;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyRingView;
+import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadcaster.LoyaltyBroadcastData;
+import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadcaster.LoyaltyBroadcastReceiver;
+import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadcaster.LoyaltyBroadcaster;
 
 public class MainActivity extends AppCompatActivity
         implements MLBusinessLoyaltyRingView.OnClickLoyaltyRing, MLBusinessDiscountBoxView.OnClickDiscountBox,
         MLBusinessCrossSellingBoxView.OnClickCrossSellingBoxView,
         MLBusinessDownloadAppView.OnClickDownloadApp {
+
+    LoyaltyBroadcast loyaltyBroadcast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +67,30 @@ public class MainActivity extends AppCompatActivity
 
         benefitView.init(new MLBusinessInfoDataSample());
         benefitContainer.addView(benefitView);
+
+        loyaltyBroadcast = new LoyaltyBroadcast();
+        LoyaltyBroadcaster.getInstance().register(loyaltyBroadcast, getApplicationContext());
+    }
+
+
+    private class LoyaltyBroadcast extends LoyaltyBroadcastReceiver {
+
+        @Override
+        public void onReceive(LoyaltyBroadcastData loyaltyBroadcastData) {
+            Log.d("LoyaltyBroadcast", "Mensaje recibido del broadcast de Loyalty");
+        }
     }
 
     @Override
     public void onClickLoyaltyButton(@NonNull final String deepLink) {
+        LoyaltyBroadcastData loyaltyBroadcastData = new LoyaltyBroadcastData();
+        loyaltyBroadcastData.setPercentage(0.2f);
+        loyaltyBroadcastData.setLevel(2);
+        loyaltyBroadcastData.setPrimaryColor("#FEFEFE");
+
+
+        LoyaltyBroadcaster.getInstance().updateInfo(getApplicationContext(), loyaltyBroadcastData);
+
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
     }
 
@@ -82,5 +110,11 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void OnClickDownloadAppButton(@NonNull final String deepLink) {
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
+    }
+
+    @Override
+    protected void onDestroy() {
+        LoyaltyBroadcaster.getInstance().unregister(loyaltyBroadcast, getApplicationContext());
+        super.onDestroy();
     }
 }
