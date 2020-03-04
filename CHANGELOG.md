@@ -1,5 +1,8 @@
-## VERSION 1.1.7
+## VERSION 1.1.8
 * FEATURE - Loyalty broadcast
+
+## VERSION 1.1.7
+* FIX - discount box titles
 
 ## VERSION 1.1.6
 _13_02_2020_
