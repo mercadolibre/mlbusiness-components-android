@@ -27,6 +27,10 @@ public final class LoyaltyBroadcaster {
         LocalBroadcastManager.getInstance(context).registerReceiver(receiver, new IntentFilter(LOYALTY_BROADCASTER_NAME));
     }
 
+    public void unregister(LoyaltyBroadcastReceiver receiver, Context context) {
+        LocalBroadcastManager.getInstance(context).unregisterReceiver(receiver);
+    }
+
     @SuppressWarnings("unused")
     public void updateInfo(Context context, LoyaltyBroadcastData loyaltyBroadcastData) {
         Intent intent = new Intent(LOYALTY_BROADCASTER_NAME);

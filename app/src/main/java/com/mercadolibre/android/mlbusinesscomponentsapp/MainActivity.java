@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity
         MLBusinessCrossSellingBoxView.OnClickCrossSellingBoxView,
         MLBusinessDownloadAppView.OnClickDownloadApp {
 
+    LoyaltyBroadcast loyaltyBroadcast;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +68,8 @@ public class MainActivity extends AppCompatActivity
         benefitView.init(new MLBusinessInfoDataSample());
         benefitContainer.addView(benefitView);
 
-        LoyaltyBroadcaster.getInstance().register(new LoyaltyBroadcast(), getApplicationContext());
+        loyaltyBroadcast = new LoyaltyBroadcast();
+        LoyaltyBroadcaster.getInstance().register(loyaltyBroadcast, getApplicationContext());
     }
 
 
@@ -107,5 +110,11 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void OnClickDownloadAppButton(@NonNull final String deepLink) {
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
+    }
+
+    @Override
+    protected void onDestroy() {
+        LoyaltyBroadcaster.getInstance().unregister(loyaltyBroadcast, getApplicationContext());
+        super.onDestroy();
     }
 }
