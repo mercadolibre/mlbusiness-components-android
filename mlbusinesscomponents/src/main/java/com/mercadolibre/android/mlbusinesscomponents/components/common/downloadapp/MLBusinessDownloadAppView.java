@@ -5,13 +5,21 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
+import android.text.Layout;
 import android.util.AttributeSet;
+import android.view.ViewTreeObserver;
+
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.ui.widgets.MeliButton;
+
 import java.lang.ref.WeakReference;
 
 public class MLBusinessDownloadAppView extends ConstraintLayout {
+
+    private AppCompatImageView logoImage;
+    private AppCompatTextView downloadTitle;
 
     public interface OnClickDownloadApp {
         void OnClickDownloadAppButton(@NonNull final String deepLink);
@@ -40,9 +48,13 @@ public class MLBusinessDownloadAppView extends ConstraintLayout {
     }
 
     public void init(@NonNull final MLBusinessDownloadAppData businessDownloadAppData,
-        @NonNull final OnClickDownloadApp onClick) {
-        findViewById(R.id.imageSite).setBackgroundResource(businessDownloadAppData.getAppSite().getResource());
-        ((AppCompatTextView) findViewById(R.id.titleDownload)).setText(businessDownloadAppData.getTitle());
+                     @NonNull final OnClickDownloadApp onClick) {
+        logoImage = findViewById(R.id.imageSite);
+        logoImage.setBackgroundResource(businessDownloadAppData.getAppSite().getResource());
+
+        downloadTitle = findViewById(R.id.titleDownload);
+        downloadTitle.setText(businessDownloadAppData.getTitle());
+        downloadTitle.getViewTreeObserver().addOnGlobalLayoutListener(getRemoveSiteLogoListener());
 
         final MeliButton downloadButton = findViewById(R.id.downloadButton);
         downloadButton.setText(businessDownloadAppData.getButtonTitle());
@@ -56,9 +68,32 @@ public class MLBusinessDownloadAppView extends ConstraintLayout {
     }
 
     public void updateView(@NonNull final MLBusinessDownloadAppData businessDownloadAppData,
-        @NonNull final OnClickDownloadApp onClick) {
+                           @NonNull final OnClickDownloadApp onClick) {
         init(businessDownloadAppData, onClick);
     }
+
+    private boolean textIsEllipsized(AppCompatTextView text) {
+        Layout titleLayout = text.getLayout();
+        return titleLayout != null && titleLayout.getLineCount() > 0 && titleLayout.getEllipsisCount(titleLayout.getLineCount() - 1) > 0;
+    }
+
+    private ViewTreeObserver.OnGlobalLayoutListener getRemoveSiteLogoListener() {
+        return new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                if (textIsEllipsized(downloadTitle)) {
+                    logoImage.setVisibility(GONE);
+                }
+            }
+
+            @Override
+            protected void finalize() throws Throwable {
+                super.finalize();
+                downloadTitle.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            }
+        };
+    }
+
 
     public enum AppSite {
         ML(R.drawable.mercado_libre),
