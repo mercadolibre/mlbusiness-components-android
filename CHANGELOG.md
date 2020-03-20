@@ -1,3 +1,7 @@
+## VERSION 1.1.9
+_20_03_2020_
+* FEATURE - Download logo can disappear
+
 ## VERSION 1.1.8
 _04_03_2020_
 * FEATURE - Loyalty broadcast
