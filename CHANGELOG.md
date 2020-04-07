@@ -1,3 +1,7 @@
+## VERSION 1.1.#
+_04_03_2020_
+* REFACTOR - Change height exploting button
+
 ## VERSION 1.1.8
 _04_03_2020_
 * FEATURE - Loyalty broadcast
