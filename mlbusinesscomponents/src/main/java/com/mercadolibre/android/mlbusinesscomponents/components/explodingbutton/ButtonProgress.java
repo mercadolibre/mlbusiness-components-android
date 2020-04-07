@@ -225,6 +225,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         startAnimationCustom();
         if (onClickListener != null) {
             onClickListener.onClick(v);
+            setClickable(false);
         }
     }
 
@@ -330,12 +331,12 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         // when the icon anim has finished, paint the whole screen with the result color
         final float finalRadius = (float) Math.hypot(reveal.getWidth(), reveal.getHeight());
         // FIXME altura original del boton
-        final int startRadius = (int) (getContext().getResources().getDimension(R.dimen.ui_7m) / 2);
+        final int startRadius = (int) (getContext().getResources().getDimension(R.dimen.ui_6m) / 2);
 
-        final int[] location = new int[2];
-        container.getLocationOnScreen(location);
-        final int cy = (progressBar.getTop() + progressBar.getBottom()) / 2 + (location[1] - container.getMeasuredHeight() / 2);
-        final int cx = location[0] + (container.getWidth() / 2);
+        final int[] locationContainer = new int[2];
+        container.getLocationOnScreen(locationContainer);
+        final int cy = (locationContainer[1] - container.getMeasuredHeight() / 2);
+        final int cx = locationContainer[0] + (container.getWidth() / 2);
 
         //try to avoid reveal detached view
         reveal.post(() -> {
