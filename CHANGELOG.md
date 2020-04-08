@@ -1,3 +1,7 @@
+## VERSION 1.1.9
+_08_04_2020_
+* REFACTOR - Refactor exploting button
+
 ## VERSION 1.1.8
 _04_03_2020_
 * FEATURE - Loyalty broadcast
