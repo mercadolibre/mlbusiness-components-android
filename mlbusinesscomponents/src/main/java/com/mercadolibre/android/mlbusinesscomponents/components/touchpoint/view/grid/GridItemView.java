@@ -1,4 +1,4 @@
-package com.mercadolibre.android.mlbusinesscomponents.components.discount;
+package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.grid;
 
 import android.content.Context;
 import android.net.Uri;
@@ -11,13 +11,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
-import com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem;
+import com.mercadolibre.android.mlbusinesscomponents.components.discount.CircleTransform;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.OnClickCallback;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.TouchpointTracker;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid.GridItem;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtils;
 import com.mercadolibre.android.picassodiskcache.PicassoDiskLoader;
 
-import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.TAP;
-
-public class MLBusinessDiscountBoxItemView extends LinearLayout {
+public class GridItemView extends LinearLayout {
 
     private final LinearLayout itemClick;
     private final ImageView icon;
@@ -29,7 +30,7 @@ public class MLBusinessDiscountBoxItemView extends LinearLayout {
      *
      * @param context the context
      */
-    public MLBusinessDiscountBoxItemView(final Context context) {
+    public GridItemView(final Context context) {
         this(context, null);
     }
 
@@ -39,7 +40,7 @@ public class MLBusinessDiscountBoxItemView extends LinearLayout {
      * @param context the context
      * @param attrs the attribute set
      */
-    public MLBusinessDiscountBoxItemView(final Context context, @Nullable final AttributeSet attrs) {
+    public GridItemView(final Context context, @Nullable final AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
@@ -50,7 +51,7 @@ public class MLBusinessDiscountBoxItemView extends LinearLayout {
      * @param attrs the attribute set
      * @param defStyleAttr the attribute style
      */
-    public MLBusinessDiscountBoxItemView(final Context context, @Nullable final AttributeSet attrs,
+    public GridItemView(final Context context, @Nullable final AttributeSet attrs,
         final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         inflate(context, R.layout.ml_view_business_discount_box_item, this);
@@ -69,15 +70,16 @@ public class MLBusinessDiscountBoxItemView extends LinearLayout {
     /**
      * Bind model
      *
-     * @param item A {@link MLBusinessSingleItem}
+     * @param item A {@link GridItem}
+     * @param callback A {@link OnClickCallback}
+     * @param tracker A {@link TouchpointTracker}
      */
-    public void bind(final MLBusinessSingleItem item,
-        @Nullable final MLBusinessDiscountBoxView.OnClickDiscountBox onClick, final int index,
-        @Nullable final MLBusinessDiscountTracker discountTracker) {
-        showImage(item.getImageUrl());
-        showTitle(item.getTitleLabel());
-        showSubtitle(item.getSubtitleLabel());
-        setListener(item, onClick, index, discountTracker);
+    public void bind(final GridItem item, @Nullable final OnClickCallback callback,
+        @Nullable final TouchpointTracker tracker) {
+        showImage(item.getImage());
+        showTitle(item.getTitle());
+        showSubtitle(item.getSubtitle());
+        setOnClick(item.getLink(), callback, tracker);
     }
 
     private void showImage(@NonNull final String url) {
@@ -96,24 +98,10 @@ public class MLBusinessDiscountBoxItemView extends LinearLayout {
         showTextIfCould(subtitle, this.subtitle);
     }
 
-    private void setListener(final MLBusinessSingleItem item,
-        @Nullable final MLBusinessDiscountBoxView.OnClickDiscountBox listener,
-        final int index, @Nullable final MLBusinessDiscountTracker discountTracker) {
-        if (listener != null) {
-            itemClick.setOnClickListener(v -> onClickItem(listener, index, item, discountTracker));
-        }
-    }
-
-    private void onClickItem(@NonNull final MLBusinessDiscountBoxView.OnClickDiscountBox listener, final int index,
-        final MLBusinessSingleItem item, @Nullable final MLBusinessDiscountTracker discountTracker) {
-        listener.onClickDiscountItem(index, item.getDeepLinkItem(), item.getTrackId());
-        trackTapEvent(item, discountTracker);
-    }
-
-    private void trackTapEvent(final MLBusinessSingleItem item,
-        @Nullable final MLBusinessDiscountTracker discountTracker) {
-        if (discountTracker != null) {
-            discountTracker.track(TAP, item.getEventData());
+    private void setOnClick(final String link, @Nullable final OnClickCallback callback,
+        @Nullable final TouchpointTracker tracker) {
+        if (callback != null) {
+            itemClick.setOnClickListener(v -> callback.onClick(link));
         }
     }
 

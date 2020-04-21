@@ -43,6 +43,7 @@ dependencies {
     androidTestImplementation "com.android.support.test:runner:$android_runner"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso"
 
+    implementation "com.google.code.gson:gson:$gson"
     implementation "com.android.support:recyclerview-v7:$support_library_version"
     implementation "com.mercadolibre.android:picasso-disk-cache:$picassoDiskCache"
     implementation "com.mercadolibre.android:ui:$meli_ui_lib"
