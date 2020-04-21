@@ -1,3 +1,6 @@
+## VERSION 1.1.10
+* REFACTOR - Refactor exploting button by status bar
+
 ## VERSION 1.1.9
 _08_04_2020_
 * REFACTOR - Refactor exploting button

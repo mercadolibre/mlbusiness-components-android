@@ -24,6 +24,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -66,6 +67,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     private View container;
     private OnFinishAnimationListener onFinishAnimationListener;
     private OnClickListener onClickListener;
+    private static final int DP = 25;
 
     public ButtonProgress(Context context) {
         super(context);
@@ -326,6 +328,12 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         }
     }
 
+    private int getResourceValue(int resId) {
+        TypedValue value = new TypedValue();
+        getResources().getValue(resId, value, true);
+        return (int) TypedValue.complexToFloat(value.data);
+    }
+
     void createCircularReveal() {
 
         // when the icon anim has finished, paint the whole screen with the result color
@@ -335,7 +343,18 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
 
         final int[] locationContainer = new int[2];
         container.getLocationOnScreen(locationContainer);
-        final int cy = (locationContainer[1] - container.getMeasuredHeight() / 2);
+        final int cy;
+
+        int heightStatusBarDP = getResourceValue(getResources()
+                .getIdentifier("status_bar_height", "dimen", "android"));
+
+        if (heightStatusBarDP <= DP) {
+            cy = locationContainer[1];
+        }
+        else {
+           cy = (locationContainer[1] - container.getMeasuredHeight() / 2);
+        }
+
         final int cx = locationContainer[0] + (container.getWidth() / 2);
 
         //try to avoid reveal detached view

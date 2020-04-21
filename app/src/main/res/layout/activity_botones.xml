@@ -8,11 +8,11 @@
 
     <com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgress
         android:id="@+id/progressTest1"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/ui_6m"
-        android:layout_marginTop="644dp"
         android:layout_marginEnd="@dimen/ui_6m"
+        app:layout_constraintBottom_toBottomOf="@+id/ripple"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.532"
         app:layout_constraintStart_toStartOf="parent"
