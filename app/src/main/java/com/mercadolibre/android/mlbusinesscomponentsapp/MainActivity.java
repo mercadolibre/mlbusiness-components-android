@@ -10,6 +10,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import com.google.gson.Gson;
 import com.mercadolibre.android.mlbusinesscomponents.components.common.MLBusinessInfoView;
 import com.mercadolibre.android.mlbusinesscomponents.components.common.downloadapp.MLBusinessDownloadAppView;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ScrollView scrollView = findViewById(R.id.parentTest);
         MLBusinessLoyaltyRingView ringView = findViewById(R.id.loyaltyView);
         MLBusinessDiscountBoxView discountBoxView = findViewById(R.id.discountView);
         MLBusinessDownloadAppView downloadAppView = findViewById(R.id.downloadAppView);
@@ -48,7 +50,6 @@ public class MainActivity extends AppCompatActivity
         MLBusinessLoyaltyHeaderView loyaltyHeaderView = findViewById(R.id.loyaltyHeaderView);
         LinearLayout benefitContainer = findViewById(R.id.loyaltyBenefitsContainer);
         FrameLayout touchpointContainer = findViewById(R.id.touchpoint_container);
-
 
         Button button = findViewById(R.id.buttonOpen);
 

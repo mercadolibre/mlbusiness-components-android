@@ -13,6 +13,8 @@ public final class TrackingUtils {
     private static final String KEY = "items";
     public static final String SHOW = "show";
     public static final String TAP = "tap";
+    public static final String PRINT = "print";
+
 
     private TrackingUtils() {
         //no-op
