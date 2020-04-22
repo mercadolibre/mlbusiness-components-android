@@ -1,9 +1,12 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid;
 
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent;
+import java.io.Serializable;
 import java.util.List;
 
-public class Grid implements TouchpointContent {
+public class Grid implements TouchpointContent, Serializable {
+
+    private static final long serialVersionUID = -8525135238159542478L;
 
     private final String title;
     private final String subtitle;

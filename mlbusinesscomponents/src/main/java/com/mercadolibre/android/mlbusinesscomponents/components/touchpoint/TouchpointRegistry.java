@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.TouchpointMapper;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchPoint;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid.Grid;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.TouchpointResponse;
@@ -49,13 +50,12 @@ public enum TouchpointRegistry {
      * @param tracker A {@link TouchpointTracker}
      * @return the view
      */
-    public TouchpointView getViewFromResponse(final Context context, final TouchpointResponse response,
+    public TouchpointView createViewFromResponse(final Context context, final TouchpointResponse response,
         @Nullable final OnClickCallback onClickCallback, @Nullable final TouchpointTracker tracker) {
-        final TouchpointContent content = TouchpointMapper.mapToContent(gson, response);
         final TouchpointView view = factory.create(context);
         view.setTracker(tracker);
         view.setOnClickCallback(onClickCallback);
-        view.bind(content);
+        view.bind(TouchpointMapper.mapToContent(gson, response));
         return view;
     }
 }

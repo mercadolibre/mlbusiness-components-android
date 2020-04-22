@@ -16,6 +16,21 @@ public final class TouchpointMapper {
     }
 
     /**
+     * Get {@link TouchpointRegistry} by id
+     *
+     * @param id The touchpoint identifier
+     * @return A {@link TouchpointRegistry}
+     */
+    @Nullable
+    public static TouchpointRegistry getTouchpointById(final String id) {
+        try {
+            return TouchpointRegistry.valueOf(id.toUpperCase(Locale.getDefault()));
+        } catch (final IllegalArgumentException e) {
+            return null;
+        }
+    }
+
+    /**
      * Converts from {@link TouchpointResponse} DTO to {@link TouchpointContent} model
      *
      * @param response The service response
@@ -40,13 +55,7 @@ public final class TouchpointMapper {
         if (typeResponse == null) {
             return false;
         }
-        try {
-            TouchpointRegistry.valueOf(typeResponse.toUpperCase(Locale.getDefault()));
-        } catch (final IllegalArgumentException e) {
-            return false;
-        }
-
-        return true;
+        return getTouchpointById(typeResponse) != null;
     }
 
     private static boolean isAValidContent(@Nullable final JsonElement contentResponse) {
