@@ -21,8 +21,7 @@ import java.util.Map;
         this.accumulated = accumulated;
     }
 
-    /* default */
-    static TouchointPrintProvider create() {
+    /* default */ static TouchointPrintProvider create() {
         return new TouchointPrintProvider(new HashMap<>(), new HashMap<>());
     }
 

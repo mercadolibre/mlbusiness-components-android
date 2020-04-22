@@ -22,7 +22,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadcas
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadcaster.LoyaltyBroadcastReceiver;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadcaster.LoyaltyBroadcaster;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.OnClickCallback;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.TouchpointCreator;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.TouchpointFactory;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.TouchpointResponse;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.TouchpointView;
 import java.util.Arrays;
@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ScrollView scrollView = findViewById(R.id.parentTest);
         MLBusinessLoyaltyRingView ringView = findViewById(R.id.loyaltyView);
         MLBusinessDiscountBoxView discountBoxView = findViewById(R.id.discountView);
         MLBusinessDownloadAppView downloadAppView = findViewById(R.id.downloadAppView);
@@ -79,7 +78,7 @@ public class MainActivity extends AppCompatActivity
                 i = 0;
             }
             final TouchpointResponse otherResponse = samples.get(i).get(gson, this);
-            final TouchpointView otherView = TouchpointCreator.create(this, otherResponse).withOnClick(this).get();
+            final TouchpointView otherView = TouchpointFactory.create(this, otherResponse).setOnClick(this).get();
             touchpointContainer.addView(otherView);
             i++;
         });

@@ -7,35 +7,35 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.TouchpointResponse;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.TouchpointView;
 
-public final class TouchpointCreator {
+public final class TouchpointFactory {
 
     private final Context context;
     private final TouchpointResponse response;
     @Nullable private TouchpointTracker tracker;
     @Nullable private OnClickCallback callback;
 
-    private TouchpointCreator(@NonNull final Context context, @NonNull final TouchpointResponse response) {
+    private TouchpointFactory(@NonNull final Context context, @NonNull final TouchpointResponse response) {
         this.context = context;
         this.response = response;
     }
 
     /**
-     * Create a {@link TouchpointCreator}
+     * Create a {@link TouchpointFactory}
      *
      * @param context The activity caller
      * @param response A {@link TouchpointResponse}
      * @return The creator
      */
-    public static TouchpointCreator create(@NonNull final Context context, @NonNull final TouchpointResponse response) {
-        return new TouchpointCreator(context, response);
+    public static TouchpointFactory create(@NonNull final Context context, @NonNull final TouchpointResponse response) {
+        return new TouchpointFactory(context, response);
     }
 
-    public TouchpointCreator withTracker(@Nullable final TouchpointTracker tracker) {
+    public TouchpointFactory setTracker(@Nullable final TouchpointTracker tracker) {
         this.tracker = tracker;
         return this;
     }
 
-    public TouchpointCreator withOnClick(@Nullable final OnClickCallback callback) {
+    public TouchpointFactory setOnClick(@Nullable final OnClickCallback callback) {
         this.callback = callback;
         return this;
     }
