@@ -1,6 +1,8 @@
 {
     "type": "grid",
     "content": {
+        "title": "200 descuentos",
+        "subtitle": "35 exclusivos nivel 3",
         "items": [
             {
                 "image": "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg",
