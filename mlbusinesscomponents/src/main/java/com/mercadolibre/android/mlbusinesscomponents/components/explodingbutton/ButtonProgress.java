@@ -335,30 +335,23 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     }
 
     void createCircularReveal() {
-
-        // when the icon anim has finished, paint the whole screen with the result color
-        final float finalRadius = (float) Math.hypot(reveal.getWidth(), reveal.getHeight());
-        // FIXME altura original del boton
-        final int startRadius = (int) (getContext().getResources().getDimension(R.dimen.ui_6m) / 2);
-
-        final int[] locationContainer = new int[2];
-        container.getLocationOnScreen(locationContainer);
-        final int cy;
-
-        int heightStatusBarDP = getResourceValue(getResources()
-                .getIdentifier("status_bar_height", "dimen", "android"));
-
-        if (heightStatusBarDP <= DP) {
-            cy = locationContainer[1];
-        }
-        else {
-           cy = (locationContainer[1] - container.getMeasuredHeight() / 2);
-        }
-
-        final int cx = locationContainer[0] + (container.getWidth() / 2);
-
-        //try to avoid reveal detached view
         reveal.post(() -> {
+
+            final float finalRadius = (float) Math.hypot(reveal.getWidth(), reveal.getHeight());
+            final int startRadius = (int) (getContext().getResources().getDimension(R.dimen.ui_6m) / 2);
+
+            final int[] locationContainer = new int[2];
+            container.getLocationOnScreen(locationContainer);
+            final int cx = locationContainer[0] + (container.getWidth() / 2);
+            int cy = locationContainer[1];
+
+            int heightStatusBarDP = getResourceValue(getResources()
+                    .getIdentifier("status_bar_height", "dimen", "android"));
+
+            if (heightStatusBarDP > DP) {
+                cy = (cy - container.getMeasuredHeight() / 2);
+            }
+
             final Animator anim;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 anim = ViewAnimationUtils.createCircularReveal(reveal, cx, cy, startRadius, finalRadius);
