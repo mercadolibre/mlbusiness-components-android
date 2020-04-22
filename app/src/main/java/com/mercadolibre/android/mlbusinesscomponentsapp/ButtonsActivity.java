@@ -24,7 +24,8 @@ public class ButtonsActivity extends AppCompatActivity {
                 Toast.makeText(ButtonsActivity.this,"hola", Toast.LENGTH_SHORT).show()
         );
 
-        new Handler().postDelayed(() -> buttonProgress.resetButton(), 3000);
+        new Handler().postDelayed(buttonProgress::startAnimationCustom, 3000);
+        new Handler().postDelayed(buttonProgress::resetButton, 5000);
     }
 
     private OnFinishAnimationListener getFinishAnimationListener(){

@@ -218,6 +218,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         circle = findViewById(R.id.cho_loading_buy_circular);
         icon = findViewById(R.id.cho_loading_buy_icon);
         container = findViewById(R.id.cho_loading_buy_container);
+        animator = ObjectAnimator.ofInt(progressBar, "progress", 0, durationTimeout);
         adjustHeight(circle);
         adjustHeight(icon);
     }
@@ -240,7 +241,6 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     public void startAnimationCustom() {
         progressBar.setMax(durationTimeout);
         textProgressBar.setText(titleProgress);
-        animator = ObjectAnimator.ofInt(progressBar, "progress", 0, durationTimeout);
         animator.setInterpolator(new LinearInterpolator());
         animator.setDuration(durationTimeout);
         animator.start();
