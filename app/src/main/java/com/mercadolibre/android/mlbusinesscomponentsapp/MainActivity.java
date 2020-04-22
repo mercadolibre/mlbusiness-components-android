@@ -25,6 +25,9 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.OnCli
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.TouchpointCreator;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.TouchpointResponse;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.TouchpointView;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
     implements MLBusinessLoyaltyRingView.OnClickLoyaltyRing, MLBusinessDiscountBoxView.OnClickDiscountBox,
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity
     MLBusinessDownloadAppView.OnClickDownloadApp, OnClickCallback {
 
     Gson gson = new Gson();
+    int i = 0;
     LoyaltyBroadcast loyaltyBroadcast;
 
     @Override
@@ -69,12 +73,16 @@ public class MainActivity extends AppCompatActivity
             discountBoxView.updateWithData(discount, this);
         });
 
-
+        final List<TouchpointSamples> samples = Arrays.asList(TouchpointSamples.values());
         changeTouchpointView.setOnClickListener(v -> {
             touchpointContainer.removeAllViews();
-            final TouchpointResponse otherResponse = TouchpointFactory.createGridResponse(gson, this);
+            if (samples.size() <= i) {
+                i = 0;
+            }
+            final TouchpointResponse otherResponse = samples.get(i).get(gson, this);
             final TouchpointView otherView = TouchpointCreator.create(this, otherResponse).withOnClick(this).get();
             touchpointContainer.addView(otherView);
+            i++;
         });
         changeTouchpointView.callOnClick();
 
