@@ -231,6 +231,12 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         }
     }
 
+    public void resetButton() {
+        animator.start();
+        animator.cancel();
+        setClickable(true);
+    }
+
     public void startAnimationCustom() {
         progressBar.setMax(durationTimeout);
         textProgressBar.setText(titleProgress);

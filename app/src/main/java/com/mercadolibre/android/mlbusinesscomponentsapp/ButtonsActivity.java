@@ -24,10 +24,7 @@ public class ButtonsActivity extends AppCompatActivity {
                 Toast.makeText(ButtonsActivity.this,"hola", Toast.LENGTH_SHORT).show()
         );
 
-        new Handler().postDelayed(() -> buttonProgress.finishProgress(
-                R.color.ui_meli_red,
-                R.drawable.mercado_pago
-        ), 3000);
+        new Handler().postDelayed(() -> buttonProgress.resetButton(), 3000);
     }
 
     private OnFinishAnimationListener getFinishAnimationListener(){
