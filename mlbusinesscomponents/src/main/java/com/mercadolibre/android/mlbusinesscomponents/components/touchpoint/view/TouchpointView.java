@@ -5,14 +5,18 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.OnClickCallback;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.TouchpointRegistry;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.TouchpointTracker;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.TouchpointMapper;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.TouchpointResponse;
 
-public abstract class TouchpointView<M extends TouchpointContent> extends FrameLayout {
+public class TouchpointView extends FrameLayout {
 
-    @Nullable protected TouchpointTracker tracker;
-    @Nullable protected OnClickCallback onClickCallback;
+    @Nullable private TouchpointTracker tracker;
+    @Nullable private OnClickCallback callback;
+    private TouchpointRegistry type;
+    private AbstractTouchpointChildView child;
 
     /**
      * Constructor
@@ -20,7 +24,7 @@ public abstract class TouchpointView<M extends TouchpointContent> extends FrameL
      * @param context the context
      */
     public TouchpointView(@NonNull final Context context) {
-        super(context);
+        this(context, null);
     }
 
     /**
@@ -30,7 +34,7 @@ public abstract class TouchpointView<M extends TouchpointContent> extends FrameL
      * @param attrs the attribute set
      */
     public TouchpointView(@NonNull final Context context, @Nullable final AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, 0);
     }
 
     /**
@@ -45,17 +49,42 @@ public abstract class TouchpointView<M extends TouchpointContent> extends FrameL
     }
 
     /**
-     * Bind model on view
+     * Init view
      *
-     * @param model A {@link TouchpointContent}
+     * @param response A {@link TouchpointResponse}
      */
-    public abstract void bind(@Nullable M model);
+    public void init(final TouchpointResponse response) {
+        final TouchpointRegistry touchpointRegistry = TouchpointMapper.getTouchpointById(response.type);
+        if (touchpointRegistry != null) {
+            updateContent(response, touchpointRegistry);
+        }
+    }
+
+    /**
+     * Update view
+     *
+     * @param response A {@link TouchpointResponse}
+     */
+    public void update(final TouchpointResponse response) {
+        init(response);
+    }
+
+    private void updateContent(final TouchpointResponse response, final TouchpointRegistry touchpointRegistry) {
+        if (touchpointRegistry == type) {
+            child.bind(TouchpointMapper.mapToContent(response));
+        } else {
+            removeAllViews();
+            type = touchpointRegistry;
+            child = touchpointRegistry.createViewFromResponse(getContext(), response, callback, tracker);
+            addView(child);
+        }
+    }
 
     public void setTracker(@Nullable final TouchpointTracker tracker) {
         this.tracker = tracker;
     }
 
-    public void setOnClickCallback(@Nullable final OnClickCallback onClickCallback) {
-        this.onClickCallback = onClickCallback;
+    public void setOnClickCallback(@Nullable final OnClickCallback callback) {
+        this.callback = callback;
     }
 }

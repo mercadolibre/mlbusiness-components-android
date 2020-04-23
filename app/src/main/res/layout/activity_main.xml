@@ -54,7 +54,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/discountView" />
 
-        <FrameLayout
+        <com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.TouchpointView
             android:id="@+id/touchpoint_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

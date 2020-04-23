@@ -10,12 +10,14 @@ public enum TouchpointSamples {
     ;
 
     private final int rawId;
+    private final Gson gson;
 
     TouchpointSamples(final int rawId) {
         this.rawId = rawId;
+        gson = new Gson();
     }
 
-    public TouchpointResponse get(final Gson gson, final Context context) {
+    public TouchpointResponse retrieveResponse(final Context context) {
         return gson.fromJson(FileUtils.loadFromRaw(context, rawId), TouchpointResponse.class);
     }
 }

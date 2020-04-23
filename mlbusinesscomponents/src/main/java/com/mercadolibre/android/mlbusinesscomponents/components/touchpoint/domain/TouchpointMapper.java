@@ -37,14 +37,14 @@ public final class TouchpointMapper {
      * @return A {@link TouchpointContent}
      */
     @Nullable
-    public static TouchpointContent mapToContent(final Gson gson, final TouchpointResponse response) {
-        return isValidResponse(response) ? createTouchpoint(gson, response) : null;
+    public static TouchpointContent mapToContent(final TouchpointResponse response) {
+        return isValidResponse(response) ? createTouchpoint(response) : null;
     }
 
     @NotNull
-    private static TouchpointContent createTouchpoint(final Gson gson, final TouchpointResponse response) {
+    private static TouchpointContent createTouchpoint(final TouchpointResponse response) {
         final TouchpointRegistry type = TouchpointRegistry.valueOf(response.type.toUpperCase(Locale.getDefault()));
-        return type.getModelFromType(gson, response.content.getAsJsonObject());
+        return type.getModelFromType(response.content.getAsJsonObject());
     }
 
     private static boolean isValidResponse(final TouchpointResponse response) {

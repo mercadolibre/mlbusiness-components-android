@@ -11,14 +11,14 @@ import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid.Grid;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid.GridItem;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.TouchpointView;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils;
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
 
 import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.SHOW;
 
-public class GridView extends TouchpointView<Grid> {
+public class GridView extends AbstractTouchpointChildView<Grid> {
 
     private final TextView title;
     private final TextView subtitle;

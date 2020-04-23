@@ -1,4 +1,4 @@
-package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint;
+package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback;
 
 import android.support.annotation.Nullable;
 

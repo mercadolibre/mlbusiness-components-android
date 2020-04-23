@@ -6,12 +6,12 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.TouchpointMapper;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchPoint;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid.Grid;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.TouchpointResponse;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.TouchpointView;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.TouchpointViewFactory;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.grid.GridView;
 
@@ -33,11 +33,10 @@ public enum TouchpointRegistry {
     /**
      * Retrieves the corresponding model for the given type
      *
-     * @param gson the JSON serializer
      * @param json the JSON object
      * @return the model
      */
-    public TouchpointContent getModelFromType(final Gson gson, final JsonObject json) {
+    public TouchpointContent getModelFromType(final JsonObject json) {
         return gson.fromJson(json.toString(), model);
     }
 
@@ -50,12 +49,12 @@ public enum TouchpointRegistry {
      * @param tracker A {@link TouchpointTracker}
      * @return the view
      */
-    public TouchpointView createViewFromResponse(final Context context, final TouchpointResponse response,
+    public AbstractTouchpointChildView createViewFromResponse(final Context context, final TouchpointResponse response,
         @Nullable final OnClickCallback onClickCallback, @Nullable final TouchpointTracker tracker) {
-        final TouchpointView view = factory.create(context);
+        final AbstractTouchpointChildView view = factory.create(context);
         view.setTracker(tracker);
         view.setOnClickCallback(onClickCallback);
-        view.bind(TouchpointMapper.mapToContent(gson, response));
+        view.bind(TouchpointMapper.mapToContent(response));
         return view;
     }
 }

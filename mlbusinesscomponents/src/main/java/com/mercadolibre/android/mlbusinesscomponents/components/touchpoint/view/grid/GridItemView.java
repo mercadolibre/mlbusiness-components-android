@@ -12,11 +12,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.components.discount.CircleTransform;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.OnClickCallback;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.TouchpointTracker;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid.GridItem;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTracker;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtils;
 import com.mercadolibre.android.picassodiskcache.PicassoDiskLoader;
+import org.jetbrains.annotations.NotNull;
+
+import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.TAP;
 
 public class GridItemView extends LinearLayout {
 
@@ -79,7 +82,7 @@ public class GridItemView extends LinearLayout {
         showImage(item.getImage());
         showTitle(item.getTitle());
         showSubtitle(item.getSubtitle());
-        setOnClick(item.getLink(), callback, tracker);
+        setOnClick(item, callback, tracker);
     }
 
     private void showImage(@NonNull final String url) {
@@ -98,11 +101,19 @@ public class GridItemView extends LinearLayout {
         showTextIfCould(subtitle, this.subtitle);
     }
 
-    private void setOnClick(final String link, @Nullable final OnClickCallback callback,
+    private void setOnClick(final GridItem item, @Nullable final OnClickCallback callback,
         @Nullable final TouchpointTracker tracker) {
         if (callback != null) {
-            itemClick.setOnClickListener(v -> callback.onClick(link));
+            itemClick.setOnClickListener(v -> onClick(item, callback, tracker));
         }
+    }
+
+    private void onClick(final GridItem item, @NotNull final OnClickCallback callback,
+        @Nullable final TouchpointTracker tracker) {
+        if (tracker != null) {
+            tracker.track(TAP, item.getEventData());
+        }
+        callback.onClick(item.getLink());
     }
 
     private void showTextIfCould(final String text, final TextView textView) {

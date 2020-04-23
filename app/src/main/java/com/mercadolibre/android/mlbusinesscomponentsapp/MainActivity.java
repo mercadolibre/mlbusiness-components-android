@@ -8,10 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import com.google.gson.Gson;
 import com.mercadolibre.android.mlbusinesscomponents.components.common.MLBusinessInfoView;
 import com.mercadolibre.android.mlbusinesscomponents.components.common.downloadapp.MLBusinessDownloadAppView;
 import com.mercadolibre.android.mlbusinesscomponents.components.crossselling.MLBusinessCrossSellingBoxView;
@@ -21,8 +18,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusine
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadcaster.LoyaltyBroadcastData;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadcaster.LoyaltyBroadcastReceiver;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadcaster.LoyaltyBroadcaster;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.OnClickCallback;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.TouchpointFactory;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.TouchpointResponse;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.TouchpointView;
 import java.util.Arrays;
@@ -33,7 +29,6 @@ public class MainActivity extends AppCompatActivity
     MLBusinessCrossSellingBoxView.OnClickCrossSellingBoxView,
     MLBusinessDownloadAppView.OnClickDownloadApp, OnClickCallback {
 
-    Gson gson = new Gson();
     int i = 0;
     LoyaltyBroadcast loyaltyBroadcast;
 
@@ -48,7 +43,8 @@ public class MainActivity extends AppCompatActivity
         MLBusinessCrossSellingBoxView crossSellingBoxView = findViewById(R.id.crossSellingView);
         MLBusinessLoyaltyHeaderView loyaltyHeaderView = findViewById(R.id.loyaltyHeaderView);
         LinearLayout benefitContainer = findViewById(R.id.loyaltyBenefitsContainer);
-        FrameLayout touchpointContainer = findViewById(R.id.touchpoint_container);
+        TouchpointView touchpointView = findViewById(R.id.touchpoint_container);
+        touchpointView.setOnClickCallback(this);
 
         Button button = findViewById(R.id.buttonOpen);
 
@@ -73,13 +69,11 @@ public class MainActivity extends AppCompatActivity
 
         final List<TouchpointSamples> samples = Arrays.asList(TouchpointSamples.values());
         changeTouchpointView.setOnClickListener(v -> {
-            touchpointContainer.removeAllViews();
             if (samples.size() <= i) {
                 i = 0;
             }
-            final TouchpointResponse otherResponse = samples.get(i).get(gson, this);
-            final TouchpointView otherView = TouchpointFactory.create(this, otherResponse).setOnClick(this).get();
-            touchpointContainer.addView(otherView);
+            final TouchpointResponse otherResponse = samples.get(i).retrieveResponse(this);
+            touchpointView.init(otherResponse);
             i++;
         });
         changeTouchpointView.callOnClick();
