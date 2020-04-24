@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import com.mercadolibre.android.mlbusinesscomponents.components.common.MLBusinessInfoView;
@@ -18,18 +19,13 @@ import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusine
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadcaster.LoyaltyBroadcastData;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadcaster.LoyaltyBroadcastReceiver;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadcaster.LoyaltyBroadcaster;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.TouchpointResponse;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.TouchpointView;
-import java.util.Arrays;
-import java.util.List;
+import com.mercadolibre.android.mlbusinesscomponentsapp.touchpoint.TouchpointTestActivity;
 
 public class MainActivity extends AppCompatActivity
     implements MLBusinessLoyaltyRingView.OnClickLoyaltyRing, MLBusinessDiscountBoxView.OnClickDiscountBox,
     MLBusinessCrossSellingBoxView.OnClickCrossSellingBoxView,
-    MLBusinessDownloadAppView.OnClickDownloadApp, OnClickCallback {
+    MLBusinessDownloadAppView.OnClickDownloadApp {
 
-    int i = 0;
     LoyaltyBroadcast loyaltyBroadcast;
 
     @Override
@@ -43,13 +39,12 @@ public class MainActivity extends AppCompatActivity
         MLBusinessCrossSellingBoxView crossSellingBoxView = findViewById(R.id.crossSellingView);
         MLBusinessLoyaltyHeaderView loyaltyHeaderView = findViewById(R.id.loyaltyHeaderView);
         LinearLayout benefitContainer = findViewById(R.id.loyaltyBenefitsContainer);
-        TouchpointView touchpointView = findViewById(R.id.touchpoint_container);
-        touchpointView.setOnClickCallback(this);
 
         Button button = findViewById(R.id.buttonOpen);
 
         final Button nextDiscountBox = findViewById(R.id.discountButton);
-        final Button changeTouchpointView = findViewById(R.id.touchpoint_button);
+        final Button openTouchpoint = findViewById(R.id.touchpoint_button);
+        openTouchpoint.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, TouchpointTestActivity.class)));
 
         button.setOnClickListener(v -> {
             final Intent intent = new Intent(MainActivity.this, ButtonsActivity.class);
@@ -67,17 +62,6 @@ public class MainActivity extends AppCompatActivity
             discountBoxView.updateWithData(discount, this);
         });
 
-        final List<TouchpointSamples> samples = Arrays.asList(TouchpointSamples.values());
-        changeTouchpointView.setOnClickListener(v -> {
-            if (samples.size() <= i) {
-                i = 0;
-            }
-            final TouchpointResponse otherResponse = samples.get(i).retrieveResponse(this);
-            touchpointView.init(otherResponse);
-            i++;
-        });
-        changeTouchpointView.callOnClick();
-
         downloadAppView.init(new MLBusinessDownloadAppDataSample(), this);
 
         crossSellingBoxView.init(new MLBusinessCrossSellingBoxDataSample(), this);
@@ -89,13 +73,6 @@ public class MainActivity extends AppCompatActivity
 
         loyaltyBroadcast = new LoyaltyBroadcast();
         LoyaltyBroadcaster.getInstance().register(loyaltyBroadcast, getApplicationContext());
-    }
-
-    @Override
-    public void onClick(@Nullable final String deepLink) {
-        if (deepLink != null) {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
-        }
     }
 
     private class LoyaltyBroadcast extends LoyaltyBroadcastReceiver {

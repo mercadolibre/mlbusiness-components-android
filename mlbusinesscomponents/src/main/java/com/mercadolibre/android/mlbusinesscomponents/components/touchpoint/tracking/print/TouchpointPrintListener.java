@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.TouchpointTracker;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTracker;
 import java.util.Map;
 
 import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.PRINT;

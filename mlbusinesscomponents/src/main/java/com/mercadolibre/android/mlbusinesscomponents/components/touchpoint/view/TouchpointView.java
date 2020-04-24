@@ -7,9 +7,9 @@ import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.TouchpointRegistry;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.TouchpointTracker;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.TouchpointMapper;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.TouchpointResponse;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTracker;
 
 public class TouchpointView extends FrameLayout {
 

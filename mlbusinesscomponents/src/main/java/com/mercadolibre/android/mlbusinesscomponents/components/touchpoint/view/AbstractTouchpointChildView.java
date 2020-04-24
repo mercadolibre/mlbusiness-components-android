@@ -6,8 +6,8 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.TouchpointTracker;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTracker;
 
 public abstract class AbstractTouchpointChildView<M extends TouchpointContent> extends FrameLayout {
 
@@ -40,7 +40,8 @@ public abstract class AbstractTouchpointChildView<M extends TouchpointContent> e
      * @param attrs the attribute set
      * @param defStyleAttr the attribute style
      */
-    public AbstractTouchpointChildView(@NonNull final Context context, @Nullable final AttributeSet attrs, final int defStyleAttr) {
+    public AbstractTouchpointChildView(@NonNull final Context context, @Nullable final AttributeSet attrs,
+        final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

@@ -54,16 +54,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/discountView" />
 
-        <com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.TouchpointView
-            android:id="@+id/touchpoint_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/discountButton"
-            android:layout_gravity="center" />
-
         <Button
             android:id="@+id/touchpoint_button"
             android:layout_width="0dp"
@@ -71,10 +61,10 @@
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:layout_marginTop="20dp"
-            android:text="Cambiar touchpoint"
+            android:text="Abrir touchpoint activity"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/touchpoint_container" />
+            app:layout_constraintTop_toBottomOf="@id/discountButton" />
 
         <com.mercadolibre.android.mlbusinesscomponents.components.common.downloadapp.MLBusinessDownloadAppView
             android:id="@+id/downloadAppView"

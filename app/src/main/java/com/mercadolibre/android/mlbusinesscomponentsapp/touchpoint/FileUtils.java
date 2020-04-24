@@ -1,4 +1,4 @@
-package com.mercadolibre.android.mlbusinesscomponentsapp;
+package com.mercadolibre.android.mlbusinesscomponentsapp.touchpoint;
 
 import android.content.Context;
 import android.support.annotation.RawRes;
