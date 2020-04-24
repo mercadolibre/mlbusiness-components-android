@@ -7,8 +7,8 @@ import com.mercadolibre.android.mlbusinesscomponentsapp.R;
 
 public enum TouchpointSamples {
 
-    GRID(R.raw.touchpoint_grid_content),
-    GRID2(R.raw.touchpoint_grid_content2),
+    FULL_GRID(R.raw.touchpoint_grid_full_content),
+    PARTIAL_GRID(R.raw.touchpoint_grid_partial_content),
     ;
 
     private final int rawId;
