@@ -15,16 +15,13 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.track
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointPrintListener;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.TouchpointView;
 import com.mercadolibre.android.mlbusinesscomponentsapp.R;
-import java.util.Arrays;
-import java.util.List;
 
 public class TouchpointTestActivity extends AppCompatActivity implements OnClickCallback {
 
     private TouchpointView touchpointView;
     private ScrollView scrollView;
     private Button touchpointChanger;
-    private int touchpointResponseIndex;
-    private TouchpointResponse response;
+    private int touchpointResponseIndex = -1;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -42,16 +39,20 @@ public class TouchpointTestActivity extends AppCompatActivity implements OnClick
         scrollView.setOnTouchListener(new TouchpointPrintListener(tracker));
         touchpointView.setTracker(tracker);
         touchpointView.setOnClickCallback(this);
-        final List<TouchpointSamples> samples = Arrays.asList(TouchpointSamples.values());
         touchpointChanger.setOnClickListener(v -> {
-            if (samples.size() <= touchpointResponseIndex) {
-                touchpointResponseIndex = 0;
-            }
-            response = samples.get(touchpointResponseIndex).retrieveResponse(this);
-            touchpointResponseIndex++;
+            final TouchpointResponse response = getResponse();
             touchpointView.init(response);
         });
         touchpointChanger.callOnClick();
+    }
+
+    private TouchpointResponse getResponse() {
+        if (TouchpointSamples.values().length <= touchpointResponseIndex) {
+            touchpointResponseIndex = -1;
+        }
+        touchpointResponseIndex++;
+        return TouchpointSamples.values()[touchpointResponseIndex].retrieveResponse(this);
+
     }
 
     private TouchpointTracker mockTracker() {
