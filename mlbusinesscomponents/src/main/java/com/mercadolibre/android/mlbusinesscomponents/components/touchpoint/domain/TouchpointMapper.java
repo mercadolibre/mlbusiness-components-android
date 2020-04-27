@@ -1,7 +1,6 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain;
 
 import android.support.annotation.Nullable;
-import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.TouchpointRegistry;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent;

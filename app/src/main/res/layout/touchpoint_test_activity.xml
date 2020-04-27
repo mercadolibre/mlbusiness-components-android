@@ -14,7 +14,7 @@
         android:layout_marginTop="@dimen/ui_1m"
         android:orientation="vertical">
 
-        <com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.TouchpointView
+        <com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.MLBusinessTouchpointView
             android:id="@+id/touchpoint_view"
             android:layout_marginTop="@dimen/ui_1m"
             android:layout_width="match_parent"

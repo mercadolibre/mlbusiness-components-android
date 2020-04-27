@@ -8,12 +8,12 @@ import android.widget.FrameLayout;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.TouchpointRegistry;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.TouchpointMapper;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointData;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.TouchpointResponse;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTracker;
 
-public class TouchpointView extends FrameLayout {
+public class MLBusinessTouchpointView extends FrameLayout {
 
-    @Nullable private TouchpointTracker tracker;
     @Nullable private OnClickCallback callback;
     private TouchpointRegistry type;
     private AbstractTouchpointChildView child;
@@ -23,7 +23,7 @@ public class TouchpointView extends FrameLayout {
      *
      * @param context the context
      */
-    public TouchpointView(@NonNull final Context context) {
+    public MLBusinessTouchpointView(@NonNull final Context context) {
         this(context, null);
     }
 
@@ -33,7 +33,7 @@ public class TouchpointView extends FrameLayout {
      * @param context the context
      * @param attrs the attribute set
      */
-    public TouchpointView(@NonNull final Context context, @Nullable final AttributeSet attrs) {
+    public MLBusinessTouchpointView(@NonNull final Context context, @Nullable final AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
@@ -44,32 +44,36 @@ public class TouchpointView extends FrameLayout {
      * @param attrs the attribute set
      * @param defStyleAttr the attribute style
      */
-    public TouchpointView(@NonNull final Context context, @Nullable final AttributeSet attrs, final int defStyleAttr) {
+    public MLBusinessTouchpointView(@NonNull final Context context, @Nullable final AttributeSet attrs, final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     /**
      * Init view
      *
-     * @param response A {@link TouchpointResponse}
+     * @param data A {@link MLBusinessTouchpointData}
      */
-    public void init(final TouchpointResponse response) {
-        final TouchpointRegistry touchpointRegistry = TouchpointMapper.getTouchpointById(response.type);
-        if (touchpointRegistry != null) {
-            updateContent(response, touchpointRegistry);
+    public void init(final MLBusinessTouchpointData data) {
+        final TouchpointResponse response = data.getResponse();
+        if (response != null) {
+            final TouchpointRegistry touchpointRegistry = TouchpointMapper.getTouchpointById(response.type);
+            if (touchpointRegistry != null) {
+                updateContent(response, touchpointRegistry, data.getTouchpointTracker());
+            }
         }
     }
 
     /**
      * Update view
      *
-     * @param response A {@link TouchpointResponse}
+     * @param data A {@link MLBusinessTouchpointData}
      */
-    public void update(final TouchpointResponse response) {
-        init(response);
+    public void update(final MLBusinessTouchpointData data) {
+        init(data);
     }
 
-    private void updateContent(final TouchpointResponse response, final TouchpointRegistry touchpointRegistry) {
+    private void updateContent(final TouchpointResponse response, final TouchpointRegistry touchpointRegistry,
+        @Nullable final TouchpointTracker tracker) {
         if (touchpointRegistry == type) {
             child.bind(TouchpointMapper.mapToContent(response));
         } else {
@@ -78,10 +82,6 @@ public class TouchpointView extends FrameLayout {
             child = touchpointRegistry.createViewFromResponse(getContext(), response, callback, tracker);
             addView(child);
         }
-    }
-
-    public void setTracker(@Nullable final TouchpointTracker tracker) {
-        this.tracker = tracker;
     }
 
     public void setOnClickCallback(@Nullable final OnClickCallback callback) {

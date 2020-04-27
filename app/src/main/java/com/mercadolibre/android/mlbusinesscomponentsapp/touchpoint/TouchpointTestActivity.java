@@ -10,18 +10,18 @@ import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.Toast;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.TouchpointResponse;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointData;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTracker;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointPrintListener;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.TouchpointView;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.MLBusinessTouchpointView;
 import com.mercadolibre.android.mlbusinesscomponentsapp.R;
 
 public class TouchpointTestActivity extends AppCompatActivity implements OnClickCallback {
 
-    private TouchpointView touchpointView;
+    private MLBusinessTouchpointView touchpointView;
     private ScrollView scrollView;
     private Button touchpointChanger;
-    private int touchpointResponseIndex = -1;
+    private int touchpointResponseIndex;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -37,21 +37,20 @@ public class TouchpointTestActivity extends AppCompatActivity implements OnClick
     private void init() {
         final TouchpointTracker tracker = mockTracker();
         scrollView.setOnTouchListener(new TouchpointPrintListener(tracker));
-        touchpointView.setTracker(tracker);
         touchpointView.setOnClickCallback(this);
         touchpointChanger.setOnClickListener(v -> {
-            final TouchpointResponse response = getResponse();
-            touchpointView.init(response);
+            if (TouchpointSamples.values().length == touchpointResponseIndex) {
+                touchpointResponseIndex = 0;
+            }
+            final MLBusinessTouchpointData data = getData();
+            touchpointView.init(data);
+            touchpointResponseIndex++;
         });
         touchpointChanger.callOnClick();
     }
 
-    private TouchpointResponse getResponse() {
-        if (TouchpointSamples.values().length <= touchpointResponseIndex) {
-            touchpointResponseIndex = -1;
-        }
-        touchpointResponseIndex++;
-        return TouchpointSamples.values()[touchpointResponseIndex].retrieveResponse(this);
+    private MLBusinessTouchpointData getData() {
+        return TouchpointSamples.values()[touchpointResponseIndex].retrieveResponse(this, mockTracker());
 
     }
 
