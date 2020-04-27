@@ -9,7 +9,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callb
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.TouchpointRegistry;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.TouchpointMapper;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointData;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.TouchpointResponse;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointResponse;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTracker;
 
 public class MLBusinessTouchpointView extends FrameLayout {
@@ -54,7 +54,7 @@ public class MLBusinessTouchpointView extends FrameLayout {
      * @param data A {@link MLBusinessTouchpointData}
      */
     public void init(final MLBusinessTouchpointData data) {
-        final TouchpointResponse response = data.getResponse();
+        final MLBusinessTouchpointResponse response = data.getResponse();
         if (response != null) {
             final TouchpointRegistry touchpointRegistry = TouchpointMapper.getTouchpointById(response.type);
             if (touchpointRegistry != null) {
@@ -72,7 +72,7 @@ public class MLBusinessTouchpointView extends FrameLayout {
         init(data);
     }
 
-    private void updateContent(final TouchpointResponse response, final TouchpointRegistry touchpointRegistry,
+    private void updateContent(final MLBusinessTouchpointResponse response, final TouchpointRegistry touchpointRegistry,
         @Nullable final TouchpointTracker tracker) {
         if (touchpointRegistry == type) {
             child.bind(TouchpointMapper.mapToContent(response));

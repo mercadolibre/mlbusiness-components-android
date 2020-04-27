@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import com.google.gson.Gson;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointData;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.TouchpointResponse;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointResponse;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTracker;
 import com.mercadolibre.android.mlbusinesscomponentsapp.R;
 
@@ -25,8 +25,8 @@ public enum TouchpointSamples {
     public MLBusinessTouchpointData retrieveResponse(final Context context, @Nullable final TouchpointTracker tracker) {
         return new MLBusinessTouchpointData() {
             @Override
-            public TouchpointResponse getResponse() {
-                return gson.fromJson(FileUtils.loadFromRaw(context, rawId), TouchpointResponse.class);
+            public MLBusinessTouchpointResponse getResponse() {
+                return gson.fromJson(FileUtils.loadFromRaw(context, rawId), MLBusinessTouchpointResponse.class);
             }
 
             @Override

@@ -4,7 +4,7 @@ import android.support.annotation.Nullable;
 import com.google.gson.JsonElement;
 import java.io.Serializable;
 
-public class TouchpointResponse implements Serializable {
+public class MLBusinessTouchpointResponse implements Serializable {
 
     private static final long serialVersionUID = -6143525838531474740L;
 

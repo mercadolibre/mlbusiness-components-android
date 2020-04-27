@@ -8,9 +8,9 @@ public interface MLBusinessTouchpointData {
     /**
      * Get touchpoint response
      *
-     * @return A {@link TouchpointResponse}
+     * @return A {@link MLBusinessTouchpointResponse}
      */
-    TouchpointResponse getResponse();
+    MLBusinessTouchpointResponse getResponse();
 
     /**
      * Get tracker

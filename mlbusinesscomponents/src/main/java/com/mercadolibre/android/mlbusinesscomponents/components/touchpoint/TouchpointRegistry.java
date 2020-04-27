@@ -10,7 +10,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callb
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.TouchpointMapper;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid.Grid;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.TouchpointResponse;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointResponse;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTracker;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.TouchpointViewFactory;
@@ -45,12 +45,12 @@ public enum TouchpointRegistry {
      * Creates a view from the given type
      *
      * @param context the context
-     * @param response A {@link TouchpointResponse}
+     * @param response A {@link MLBusinessTouchpointResponse}
      * @param onClickCallback A {@link OnClickCallback}
      * @param tracker A {@link TouchpointTracker}
      * @return the view
      */
-    public AbstractTouchpointChildView createViewFromResponse(final Context context, final TouchpointResponse response,
+    public AbstractTouchpointChildView createViewFromResponse(final Context context, final MLBusinessTouchpointResponse response,
         @Nullable final OnClickCallback onClickCallback, @Nullable final TouchpointTracker tracker) {
         final AbstractTouchpointChildView view = factory.create(context);
         view.setTracker(tracker);

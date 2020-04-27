@@ -4,7 +4,7 @@ import android.support.annotation.Nullable;
 import com.google.gson.JsonElement;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.TouchpointRegistry;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.TouchpointResponse;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointResponse;
 import java.util.Locale;
 import org.jetbrains.annotations.NotNull;
 
@@ -30,23 +30,23 @@ public final class TouchpointMapper {
     }
 
     /**
-     * Converts from {@link TouchpointResponse} DTO to {@link TouchpointContent} model
+     * Converts from {@link MLBusinessTouchpointResponse} DTO to {@link TouchpointContent} model
      *
      * @param response The service response
      * @return A {@link TouchpointContent}
      */
     @Nullable
-    public static TouchpointContent mapToContent(final TouchpointResponse response) {
+    public static TouchpointContent mapToContent(final MLBusinessTouchpointResponse response) {
         return isValidResponse(response) ? createTouchpoint(response) : null;
     }
 
     @NotNull
-    private static TouchpointContent createTouchpoint(final TouchpointResponse response) {
+    private static TouchpointContent createTouchpoint(final MLBusinessTouchpointResponse response) {
         final TouchpointRegistry type = TouchpointRegistry.valueOf(response.type.toUpperCase(Locale.getDefault()));
         return type.getModelFromType(response.content.getAsJsonObject());
     }
 
-    private static boolean isValidResponse(final TouchpointResponse response) {
+    private static boolean isValidResponse(final MLBusinessTouchpointResponse response) {
         return isAValidType(response.type) && isAValidContent(response.content);
     }
 
