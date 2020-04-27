@@ -14,6 +14,11 @@
         android:layout_marginTop="@dimen/ui_1m"
         android:orientation="vertical">
 
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1000dp"
+            android:background="@color/ui_meli_green"/>
+
         <com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.MLBusinessTouchpointView
             android:id="@+id/touchpoint_view"
             android:layout_marginTop="@dimen/ui_1m"

@@ -2,12 +2,18 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.trac
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
-/* default */ public final class TouchointPrintProvider {
+/* default */ final class TouchointPrintProvider {
 
-    private final Map<String, Object> history;
+    private static final String TOUCHPOINT_KEY = "items";
+
+    private final Set<String> history;
     private final Map<String, Object> accumulated;
 
     /**
@@ -16,38 +22,32 @@ import java.util.Map;
      * @param history A history of data who was tracked
      * @param accumulated The data to track when scroll stop
      */
-    private TouchointPrintProvider(final Map<String, Object> history, final Map<String, Object> accumulated) {
+    private TouchointPrintProvider(final Set<String> history, final Map<String, Object> accumulated) {
         this.history = history;
         this.accumulated = accumulated;
     }
 
     /* default */ static TouchointPrintProvider create() {
-        return new TouchointPrintProvider(new HashMap<>(), new HashMap<>());
-    }
-
-    /* default */ void cleanHistory() {
-        history.clear(); //TODO llamar cuando se termina la session
+        return new TouchointPrintProvider(new HashSet<>(), new HashMap<>());
     }
 
     /**
-     * Update history
+     * Clean history of tracks
      */
-    /* default */ void updateHistory() {
-        history.putAll(accumulated);
+    public void cleanHistory() {
+        history.clear();
     }
 
-    /**
-     * True if history of tracks contains the data
-     *
-     * @param value The value of track
-     * @return True if contains this id, false otherwise
-     */
-    public boolean historyContains(final Object value) {
-        return history.containsValue(value);
-    }
-
-    /* default */ void accumulateData(@Nullable final Map<String, Object> data) {
-        //TODO
+    /* default */ void accumulateData(@Nullable final TouchpointTracking tracking) {
+        if (tracking != null && !historyContains(tracking.getTrackingId())) {
+            List<Object> eventData = (List<Object>) accumulated.get(TOUCHPOINT_KEY);
+            if (eventData == null) {
+                eventData = new ArrayList<>();
+            }
+            eventData.add(tracking.getEventData());
+            accumulated.put(TOUCHPOINT_KEY, eventData);
+            updateHistory(tracking.getTrackingId());
+        }
     }
 
     @NonNull
@@ -57,5 +57,13 @@ import java.util.Map;
 
     /* default */ void cleanData() {
         accumulated.clear();
+    }
+
+    private boolean historyContains(final String key) {
+        return history.contains(key);
+    }
+
+    private void updateHistory(final String key) {
+        history.add(key);
     }
 }

@@ -10,7 +10,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.Touch
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.TouchpointMapper;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointData;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointResponse;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTracker;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
 
 public class MLBusinessTouchpointView extends FrameLayout {
 
@@ -73,7 +73,7 @@ public class MLBusinessTouchpointView extends FrameLayout {
     }
 
     private void updateContent(final MLBusinessTouchpointResponse response, final TouchpointRegistry touchpointRegistry,
-        @Nullable final TouchpointTracker tracker) {
+        @Nullable final MLBusinessTouchpointTracker tracker) {
         if (touchpointRegistry == type) {
             child.bind(TouchpointMapper.mapToContent(response));
         } else {

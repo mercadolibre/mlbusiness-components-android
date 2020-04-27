@@ -3,7 +3,7 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.trac
 import android.support.annotation.Nullable;
 import java.util.Map;
 
-public interface TouchpointTracker {
+public interface MLBusinessTouchpointTracker {
 
     /**
      * Track event

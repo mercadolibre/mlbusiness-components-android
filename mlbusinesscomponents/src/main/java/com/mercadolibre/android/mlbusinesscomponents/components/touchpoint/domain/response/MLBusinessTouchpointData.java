@@ -1,7 +1,7 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response;
 
 import android.support.annotation.Nullable;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTracker;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
 
 public interface MLBusinessTouchpointData {
 
@@ -15,8 +15,8 @@ public interface MLBusinessTouchpointData {
     /**
      * Get tracker
      *
-     * @return A {@link TouchpointTracker}
+     * @return A {@link MLBusinessTouchpointTracker}
      */
     @Nullable
-    TouchpointTracker getTouchpointTracker();
+    MLBusinessTouchpointTracker getTouchpointTracker();
 }

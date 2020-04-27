@@ -1,6 +1,5 @@
 package com.mercadolibre.android.mlbusinesscomponentsapp.touchpoint;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,17 +10,20 @@ import android.widget.ScrollView;
 import android.widget.Toast;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointData;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTracker;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointPrintListener;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.MLBusinessTouchpointListener;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.MLBusinessTouchpointView;
 import com.mercadolibre.android.mlbusinesscomponentsapp.R;
 
 public class TouchpointTestActivity extends AppCompatActivity implements OnClickCallback {
 
-    private MLBusinessTouchpointView touchpointView;
     private ScrollView scrollView;
     private Button touchpointChanger;
     private int touchpointResponseIndex;
+
+    private MLBusinessTouchpointView touchpointView;
+    private MLBusinessTouchpointListener printerListener;
+    private MLBusinessTouchpointTracker tracker;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -33,30 +35,24 @@ public class TouchpointTestActivity extends AppCompatActivity implements OnClick
         init();
     }
 
-    @SuppressLint("ClickableViewAccessibility")
+    @Override
+    protected void onStop() {
+        super.onStop();
+        printerListener.resetTrackedPrints();
+    }
+
     private void init() {
-        final TouchpointTracker tracker = mockTracker();
-        scrollView.setOnTouchListener(new TouchpointPrintListener(tracker));
+        tracker = mockTracker();
+        printerListener = MLBusinessTouchpointListener.listen(tracker, scrollView);
         touchpointView.setOnClickCallback(this);
-        touchpointChanger.setOnClickListener(v -> {
-            if (TouchpointSamples.values().length == touchpointResponseIndex) {
-                touchpointResponseIndex = 0;
-            }
-            final MLBusinessTouchpointData data = getData();
-            touchpointView.init(data);
-            touchpointResponseIndex++;
-        });
-        touchpointChanger.callOnClick();
+        configButton();
     }
 
-    private MLBusinessTouchpointData getData() {
-        return TouchpointSamples.values()[touchpointResponseIndex].retrieveResponse(this, mockTracker());
-
-    }
-
-    private TouchpointTracker mockTracker() {
-        return (action, eventData) -> Toast
-            .makeText(this, "Track -> action: " + action + " with data: " + eventData, Toast.LENGTH_SHORT).show();
+    private void updateView() {
+        final MLBusinessTouchpointData data =
+            TouchpointSamples.values()[touchpointResponseIndex].retrieveResponse(this, tracker);
+        touchpointView.update(data);
+        printerListener.resetTrackedPrints();
     }
 
     @Override
@@ -64,5 +60,21 @@ public class TouchpointTestActivity extends AppCompatActivity implements OnClick
         if (deepLink != null) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
         }
+    }
+
+    private void configButton() {
+        touchpointChanger.setOnClickListener(v -> {
+            if (TouchpointSamples.values().length == touchpointResponseIndex) {
+                touchpointResponseIndex = 0;
+            }
+            updateView();
+            touchpointResponseIndex++;
+        });
+        touchpointChanger.callOnClick();
+    }
+
+    private MLBusinessTouchpointTracker mockTracker() {
+        return (action, eventData) -> Toast
+            .makeText(this, "Track -> action: " + action + " with data: " + eventData, Toast.LENGTH_SHORT).show();
     }
 }

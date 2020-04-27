@@ -14,7 +14,7 @@ import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.components.discount.CircleTransform;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid.GridItem;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTracker;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtils;
 import com.mercadolibre.android.picassodiskcache.PicassoDiskLoader;
 import org.jetbrains.annotations.NotNull;
@@ -75,10 +75,10 @@ public class GridItemView extends LinearLayout {
      *
      * @param item A {@link GridItem}
      * @param callback A {@link OnClickCallback}
-     * @param tracker A {@link TouchpointTracker}
+     * @param tracker A {@link MLBusinessTouchpointTracker}
      */
     public void bind(final GridItem item, @Nullable final OnClickCallback callback,
-        @Nullable final TouchpointTracker tracker) {
+        @Nullable final MLBusinessTouchpointTracker tracker) {
         showImage(item.getImage());
         showTitle(item.getTitle());
         showSubtitle(item.getSubtitle());
@@ -102,14 +102,14 @@ public class GridItemView extends LinearLayout {
     }
 
     private void setOnClick(final GridItem item, @Nullable final OnClickCallback callback,
-        @Nullable final TouchpointTracker tracker) {
+        @Nullable final MLBusinessTouchpointTracker tracker) {
         if (callback != null) {
             itemClick.setOnClickListener(v -> onClick(item, callback, tracker));
         }
     }
 
     private void onClick(final GridItem item, @NotNull final OnClickCallback callback,
-        @Nullable final TouchpointTracker tracker) {
+        @Nullable final MLBusinessTouchpointTracker tracker) {
         if (tracker != null) {
             tracker.track(TAP, item.getEventData());
         }

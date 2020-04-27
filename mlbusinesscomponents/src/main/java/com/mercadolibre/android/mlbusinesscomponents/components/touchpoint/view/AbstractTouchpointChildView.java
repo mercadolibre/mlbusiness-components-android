@@ -7,11 +7,11 @@ import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTracker;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
 
 public abstract class AbstractTouchpointChildView<M extends TouchpointContent> extends FrameLayout {
 
-    @Nullable protected TouchpointTracker tracker;
+    @Nullable protected MLBusinessTouchpointTracker tracker;
     @Nullable protected OnClickCallback onClickCallback;
 
     /**
@@ -52,7 +52,7 @@ public abstract class AbstractTouchpointChildView<M extends TouchpointContent> e
      */
     public abstract void bind(@Nullable M model);
 
-    public void setTracker(@Nullable final TouchpointTracker tracker) {
+    public void setTracker(@Nullable final MLBusinessTouchpointTracker tracker) {
         this.tracker = tracker;
     }
 

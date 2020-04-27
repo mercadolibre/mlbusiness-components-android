@@ -1,7 +1,6 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print;
 
 import android.support.annotation.Nullable;
-import java.util.Map;
 
 public interface TouchpointPrintable {
 
@@ -11,5 +10,5 @@ public interface TouchpointPrintable {
      * @return An event data
      */
     @Nullable
-    Map<String, Object> getTracking();
+    TouchpointTracking getTracking();
 }

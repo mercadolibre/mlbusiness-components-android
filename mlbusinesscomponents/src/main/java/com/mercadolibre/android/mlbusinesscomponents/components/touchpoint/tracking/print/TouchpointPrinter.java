@@ -1,55 +1,41 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print;
 
-import android.annotation.SuppressLint;
 import android.graphics.Rect;
 import android.support.annotation.NonNull;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTracker;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
 import java.util.Map;
 
 import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.PRINT;
 
-public class TouchpointPrintListener implements View.OnTouchListener {
+/* default */ class TouchpointPrinter {
 
-    private final TouchpointTracker tracker;
+    private final MLBusinessTouchpointTracker tracker;
     private final TouchointPrintProvider trackeableProvider;
     private final Rect rect;
 
-    /**
-     * Constructor
-     *
-     * @param tracker A {@link TouchpointTracker}
-     */
-    public TouchpointPrintListener(@NonNull final TouchpointTracker tracker) {
+    /* default */ TouchpointPrinter(@NonNull final MLBusinessTouchpointTracker tracker) {
         this.tracker = tracker;
         trackeableProvider = TouchointPrintProvider.create();
         rect = new Rect();
     }
 
-    @SuppressLint("ClickableViewAccessibility")
-    @Override
-    public boolean onTouch(final View v, final MotionEvent event) {
-        if (MotionEvent.ACTION_UP == event.getAction()) {
-            addPrints((ViewGroup) v);
-            sendPrints();
-        }
-        return false;
-    }
-
-    private void sendPrints() {
+    /* default */ void sendPrints() {
         final Map<String, Object> data = trackeableProvider.getData();
         if (!data.isEmpty()) {
             tracker.track(PRINT, data);
-            trackeableProvider.updateHistory();
             trackeableProvider.cleanData();
         }
     }
 
-    private void addPrints(final ViewGroup viewGroup) {
+    /* default */ void addPrints(final ViewGroup viewGroup) {
         viewGroup.getHitRect(rect);
         findAndAddTracking(viewGroup);
+    }
+
+    /* default */ void cleanHistory() {
+        trackeableProvider.cleanHistory();
     }
 
     private void findAndAddTracking(final ViewGroup viewGroup) {
