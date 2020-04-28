@@ -20,8 +20,10 @@ public class ButtonsActivity extends AppCompatActivity {
                 .setTextInformation("Procesar Pago","Cargando")
                 .setColorText(R.color.ui_meli_red);
 
-        buttonProgress.setOnClickListener(v ->
-                Toast.makeText(ButtonsActivity.this,"hola", Toast.LENGTH_SHORT).show()
+        buttonProgress.setOnClickListener(v -> {
+                Toast.makeText(ButtonsActivity.this,"hola", Toast.LENGTH_SHORT).show();
+                buttonProgress.startAnimationCustom();
+            }
         );
 
         new Handler().postDelayed(buttonProgress::startAnimationCustom, 3000);
