@@ -1,5 +1,5 @@
 ## VERSION 1.2.1
-_30_04_2020_
+_29_04_2020_
 * REFACTOR - Refactor exploting button, fix onClick
 
 ## VERSION 1.2.0
