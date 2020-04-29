@@ -1,7 +1,7 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid;
 
 import android.support.annotation.Nullable;
-import java.util.Map;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
 
 public class GridItem {
 
@@ -9,7 +9,7 @@ public class GridItem {
     private final String title;
     private final String subtitle;
     private final String link;
-    @Nullable private final Map<String, Object> eventData;
+    @Nullable private final TouchpointTracking tracking;
 
     /**
      * Constructor
@@ -18,15 +18,15 @@ public class GridItem {
      * @param title A title
      * @param subtitle A subtitle
      * @param link The desired link to launch
-     * @param eventData A event data to track
+     * @param tracking A {@link TouchpointTracking}
      */
     public GridItem(final String image, final String title, final String subtitle, final String link,
-        @Nullable final Map<String, Object> eventData) {
+        @Nullable final TouchpointTracking tracking) {
         this.image = image;
         this.title = title;
         this.subtitle = subtitle;
         this.link = link;
-        this.eventData = eventData;
+        this.tracking = tracking;
     }
 
     public String getImage() {
@@ -46,7 +46,7 @@ public class GridItem {
     }
 
     @Nullable
-    public Map<String, Object> getEventData() {
-        return eventData;
+    public TouchpointTracking getTracking() {
+        return tracking;
     }
 }

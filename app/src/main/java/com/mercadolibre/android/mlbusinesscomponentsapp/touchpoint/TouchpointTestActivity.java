@@ -1,5 +1,6 @@
 package com.mercadolibre.android.mlbusinesscomponentsapp.touchpoint;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,12 +19,11 @@ import com.mercadolibre.android.mlbusinesscomponentsapp.R;
 public class TouchpointTestActivity extends AppCompatActivity implements OnClickCallback {
 
     private ScrollView scrollView;
-    private Button touchpointChanger;
+    private Button touchpointChangerTop;
+    private Button touchpointChangerBottom;
     private int touchpointResponseIndex;
-
     private MLBusinessTouchpointView touchpointView;
-    private MLBusinessTouchpointListener printerListener;
-    private MLBusinessTouchpointTracker tracker;
+    private MLBusinessTouchpointListener touchpointListener;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -31,28 +31,34 @@ public class TouchpointTestActivity extends AppCompatActivity implements OnClick
         setContentView(R.layout.touchpoint_test_activity);
         scrollView = findViewById(R.id.tochpoint_scrollview);
         touchpointView = findViewById(R.id.touchpoint_view);
-        touchpointChanger = findViewById(R.id.touchpoint_button);
+        touchpointChangerBottom = findViewById(R.id.touchpoint_button_bottom);
+        touchpointChangerTop = findViewById(R.id.touchpoint_button_top);
         init();
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        printerListener.resetTrackedPrints();
+    @SuppressLint("ClickableViewAccessibility")
+    private void init() {
+        final MLBusinessTouchpointTracker tracker = mockTracker();
+        touchpointListener = new MLBusinessTouchpointListener();
+        touchpointListener.listen(scrollView);
+        touchpointView.setOnClickCallback(this);
+        touchpointView.setTracker(tracker);
+        configTouchpointButton(touchpointChangerBottom);
+        configTouchpointButton(touchpointChangerTop);
+        touchpointChangerBottom.callOnClick();
     }
 
-    private void init() {
-        tracker = mockTracker();
-        printerListener = MLBusinessTouchpointListener.listen(tracker, scrollView);
-        touchpointView.setOnClickCallback(this);
-        configButton();
+    @Override
+    protected void onPause() {
+        super.onPause();
+        touchpointListener.resetTrackedPrints();
+        Toast.makeText(this, "Clean prints history", Toast.LENGTH_SHORT).show();
     }
 
     private void updateView() {
         final MLBusinessTouchpointData data =
-            TouchpointSamples.values()[touchpointResponseIndex].retrieveResponse(this, tracker);
+            TouchpointSamples.values()[touchpointResponseIndex].retrieveResponse(this);
         touchpointView.update(data);
-        printerListener.resetTrackedPrints();
     }
 
     @Override
@@ -62,19 +68,18 @@ public class TouchpointTestActivity extends AppCompatActivity implements OnClick
         }
     }
 
-    private void configButton() {
-        touchpointChanger.setOnClickListener(v -> {
+    private void configTouchpointButton(final Button touchpointButton) {
+        touchpointButton.setOnClickListener(v -> {
             if (TouchpointSamples.values().length == touchpointResponseIndex) {
                 touchpointResponseIndex = 0;
             }
             updateView();
             touchpointResponseIndex++;
         });
-        touchpointChanger.callOnClick();
     }
 
     private MLBusinessTouchpointTracker mockTracker() {
-        return (action, eventData) -> Toast
-            .makeText(this, "Track -> action: " + action + " with data: " + eventData, Toast.LENGTH_SHORT).show();
+        return (action, data) -> Toast
+            .makeText(this, "Track -> action: " + action + " with data: " + data, Toast.LENGTH_SHORT).show();
     }
 }

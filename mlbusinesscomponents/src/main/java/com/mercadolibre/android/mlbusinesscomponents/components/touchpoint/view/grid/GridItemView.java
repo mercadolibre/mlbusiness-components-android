@@ -15,18 +15,21 @@ import com.mercadolibre.android.mlbusinesscomponents.components.discount.CircleT
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid.GridItem;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointPrintable;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtils;
 import com.mercadolibre.android.picassodiskcache.PicassoDiskLoader;
 import org.jetbrains.annotations.NotNull;
 
 import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.TAP;
 
-public class GridItemView extends LinearLayout {
+public class GridItemView extends LinearLayout implements TouchpointPrintable {
 
     private final LinearLayout itemClick;
     private final ImageView icon;
     private final TextView title;
     private final TextView subtitle;
+    @Nullable private TouchpointTracking tracking;
 
     /**
      * Constructor
@@ -83,6 +86,7 @@ public class GridItemView extends LinearLayout {
         showTitle(item.getTitle());
         showSubtitle(item.getSubtitle());
         setOnClick(item, callback, tracker);
+        setTracking(item.getTracking());
     }
 
     private void showImage(@NonNull final String url) {
@@ -110,8 +114,8 @@ public class GridItemView extends LinearLayout {
 
     private void onClick(final GridItem item, @NotNull final OnClickCallback callback,
         @Nullable final MLBusinessTouchpointTracker tracker) {
-        if (tracker != null) {
-            tracker.track(TAP, item.getEventData());
+        if (tracker != null && item.getTracking() != null) {
+            tracker.track(TAP, item.getTracking().getEventData());
         }
         callback.onClick(item.getLink());
     }
@@ -122,5 +126,16 @@ public class GridItemView extends LinearLayout {
             return;
         }
         textView.setVisibility(GONE);
+    }
+
+    @Override
+    public void setTracking(@Nullable final TouchpointTracking tracking) {
+        this.tracking = tracking;
+    }
+
+    @Nullable
+    @Override
+    public TouchpointTracking getTracking() {
+        return tracking;
     }
 }

@@ -1,11 +1,9 @@
 package com.mercadolibre.android.mlbusinesscomponentsapp.touchpoint;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import com.google.gson.Gson;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointData;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointResponse;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
 import com.mercadolibre.android.mlbusinesscomponentsapp.R;
 
 public enum TouchpointSamples {
@@ -22,17 +20,7 @@ public enum TouchpointSamples {
         gson = new Gson();
     }
 
-    public MLBusinessTouchpointData retrieveResponse(final Context context, @Nullable final MLBusinessTouchpointTracker tracker) {
-        return new MLBusinessTouchpointData() {
-            @Override
-            public MLBusinessTouchpointResponse getResponse() {
-                return gson.fromJson(FileUtils.loadFromRaw(context, rawId), MLBusinessTouchpointResponse.class);
-            }
-
-            @Override
-            public MLBusinessTouchpointTracker getTouchpointTracker() {
-                return tracker;
-            }
-        };
+    public MLBusinessTouchpointData retrieveResponse(final Context context) {
+        return () -> gson.fromJson(FileUtils.loadFromRaw(context, rawId), MLBusinessTouchpointResponse.class);
     }
 }

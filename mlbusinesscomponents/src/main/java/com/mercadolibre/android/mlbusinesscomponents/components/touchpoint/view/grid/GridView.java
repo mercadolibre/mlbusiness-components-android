@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid.Grid;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid.GridItem;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointPrintProvider;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils;
 import java.util.List;
@@ -65,6 +67,11 @@ public class GridView extends AbstractTouchpointChildView<Grid> {
         gridLayout.removeAllViews();
         presenter.bind(model, this);
         trackShowEvent(model.getItems());
+    }
+
+    @Override
+    public void print(final TouchpointPrintProvider printProvider, final MLBusinessTouchpointTracker tracker) {
+        //TODO
     }
 
     private void trackShowEvent(final List<GridItem> items) {

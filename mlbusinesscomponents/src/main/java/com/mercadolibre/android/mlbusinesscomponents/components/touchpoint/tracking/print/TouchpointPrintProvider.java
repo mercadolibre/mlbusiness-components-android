@@ -3,13 +3,11 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.trac
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-/* default */ final class TouchointPrintProvider {
+public final class TouchpointPrintProvider {
 
     private static final String TOUCHPOINT_KEY = "items";
 
@@ -22,25 +20,18 @@ import java.util.Set;
      * @param history A history of data who was tracked
      * @param accumulated The data to track when scroll stop
      */
-    private TouchointPrintProvider(final Set<String> history, final Map<String, Object> accumulated) {
+    public TouchpointPrintProvider(final Set<String> history, final Map<String, Object> accumulated) {
         this.history = history;
         this.accumulated = accumulated;
     }
 
-    /* default */ static TouchointPrintProvider create() {
-        return new TouchointPrintProvider(new HashSet<>(), new HashMap<>());
-    }
-
-    /**
-     * Clean history of tracks
-     */
     public void cleanHistory() {
         history.clear();
     }
 
-    /* default */ void accumulateData(@Nullable final TouchpointTracking tracking) {
+    public void accumulateData(@Nullable final TouchpointTracking tracking) {
         if (tracking != null && !historyContains(tracking.getTrackingId())) {
-            List<Object> eventData = (List<Object>) accumulated.get(TOUCHPOINT_KEY);
+            List<Map<String, Object>> eventData = (List<Map<String, Object>>) accumulated.get(TOUCHPOINT_KEY);
             if (eventData == null) {
                 eventData = new ArrayList<>();
             }
@@ -51,11 +42,11 @@ import java.util.Set;
     }
 
     @NonNull
-    /* default */ Map<String, Object> getData() {
+    public Map<String, Object> getData() {
         return accumulated;
     }
 
-    /* default */ void cleanData() {
+    public void cleanData() {
         accumulated.clear();
     }
 

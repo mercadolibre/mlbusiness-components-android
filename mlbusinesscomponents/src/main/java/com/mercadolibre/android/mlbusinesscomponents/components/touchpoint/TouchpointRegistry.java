@@ -50,8 +50,9 @@ public enum TouchpointRegistry {
      * @param tracker A {@link MLBusinessTouchpointTracker}
      * @return the view
      */
-    public AbstractTouchpointChildView createViewFromResponse(final Context context, final MLBusinessTouchpointResponse response,
-        @Nullable final OnClickCallback onClickCallback, @Nullable final MLBusinessTouchpointTracker tracker) {
+    public AbstractTouchpointChildView createViewFromResponse(final Context context,
+        final MLBusinessTouchpointResponse response, @Nullable final OnClickCallback onClickCallback,
+        @Nullable final MLBusinessTouchpointTracker tracker) {
         final AbstractTouchpointChildView view = factory.create(context);
         view.setTracker(tracker);
         view.setOnClickCallback(onClickCallback);

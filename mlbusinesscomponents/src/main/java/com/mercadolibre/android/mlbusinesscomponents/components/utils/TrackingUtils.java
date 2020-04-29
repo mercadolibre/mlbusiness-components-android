@@ -15,7 +15,6 @@ public final class TrackingUtils {
     public static final String TAP = "tap";
     public static final String PRINT = "print";
 
-
     private TrackingUtils() {
         //no-op
     }
@@ -33,8 +32,9 @@ public final class TrackingUtils {
     public static Map<String, Object> retrieveGridItemsDataToTrack(final List<GridItem> items) {
         final List<Map<String, Object>> eventData = new ArrayList<>();
         for (final GridItem item : items) {
-            if (item.getEventData() != null && !item.getEventData().isEmpty()) {
-                eventData.add(item.getEventData());
+            if (item.getTracking() != null && item.getTracking().getEventData() != null
+                && !item.getTracking().getEventData().isEmpty()) {
+                eventData.add(item.getTracking().getEventData());
             }
         }
         return new HashMap<>(Collections.singletonMap(KEY, eventData));

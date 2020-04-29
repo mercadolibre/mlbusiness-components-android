@@ -8,6 +8,7 @@ import android.widget.FrameLayout;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointPrintProvider;
 
 public abstract class AbstractTouchpointChildView<M extends TouchpointContent> extends FrameLayout {
 
@@ -59,4 +60,12 @@ public abstract class AbstractTouchpointChildView<M extends TouchpointContent> e
     public void setOnClickCallback(@Nullable final OnClickCallback onClickCallback) {
         this.onClickCallback = onClickCallback;
     }
+
+    /**
+     * Do print
+     *
+     * @param printProvider A {@link TouchpointPrintProvider}
+     * @param tracker A {@link MLBusinessTouchpointTracker}
+     */
+    public abstract void print(final TouchpointPrintProvider printProvider, final MLBusinessTouchpointTracker tracker);
 }

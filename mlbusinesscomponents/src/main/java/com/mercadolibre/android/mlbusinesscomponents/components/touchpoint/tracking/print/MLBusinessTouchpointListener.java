@@ -1,44 +1,57 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print;
 
-import android.annotation.SuppressLint;
-import android.support.annotation.NonNull;
+import android.graphics.Rect;
+import android.support.annotation.Nullable;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.ViewGroup;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.MLBusinessTouchpointView;
 
 public final class MLBusinessTouchpointListener {
 
-    private final TouchpointPrinter printer;
+    private static final int ACTION_UP = MotionEvent.ACTION_UP;
 
-    @SuppressLint("ClickableViewAccessibility")
-    private MLBusinessTouchpointListener(@NonNull final MLBusinessTouchpointTracker tracker, final ViewGroup viewGroup) {
-        printer = new TouchpointPrinter(tracker);
-        viewGroup.setOnTouchListener((v, event) -> isActionUp(viewGroup, event));
-    }
+    private final TouchpointViewFinder finder;
+    @Nullable private MLBusinessTouchpointView touchpointView;
 
-    /**
-     * Start listen {@link ViewGroup} touch events
-     *
-     * @param tracker A {@link MLBusinessTouchpointTracker}
-     * @param viewGroup the {@link ViewGroup}
-     * @return A {@link MLBusinessTouchpointListener}
-     */
-    public static MLBusinessTouchpointListener listen(@NonNull final MLBusinessTouchpointTracker tracker,
-        final ViewGroup viewGroup) {
-        return new MLBusinessTouchpointListener(tracker, viewGroup);
+    public MLBusinessTouchpointListener() {
+        finder = new TouchpointViewFinder(new Rect());
     }
 
     /**
      * Reset history of tracked prints
      */
     public void resetTrackedPrints() {
-        printer.cleanHistory();
+        if (touchpointView != null) {
+            touchpointView.cleanHistory();
+        }
     }
 
-    private boolean isActionUp(final ViewGroup viewGroup, final MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_UP) {
-            printer.addPrints(viewGroup);
-            printer.sendPrints();
+    /**
+     * Do print if view is visible
+     *
+     * @param container A {@link ViewGroup}
+     */
+    public void print(final ViewGroup container) {
+        touchpointView = finder.find(container);
+        if (touchpointView != null) {
+            touchpointView.print();
+        }
+    }
+
+    /**
+     * Listen the event {@value ACTION_UP} of the container
+     *
+     * @param container A {@link ViewGroup}
+     */
+    public void listen(final ViewGroup container) {
+        print(container);
+        container.setOnTouchListener(this::isActionUp);
+    }
+
+    private boolean isActionUp(final View viewGroup, final MotionEvent event) {
+        if (event.getAction() == ACTION_UP) {
+            print((ViewGroup) viewGroup);
         }
         return false;
     }
