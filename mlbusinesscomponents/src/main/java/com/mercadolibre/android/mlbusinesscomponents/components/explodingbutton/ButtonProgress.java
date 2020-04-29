@@ -225,7 +225,6 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        startAnimationCustom();
         if (onClickListener != null) {
             onClickListener.onClick(v);
             setClickable(false);
