@@ -1,16 +1,9 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print;
 
 import android.support.annotation.Nullable;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 
-public interface TouchpointPrintable {
-
-    /**
-     * Forward tracking
-     *
-     * @return A {@link TouchpointTracking}
-     */
-    @Nullable
-    TouchpointTracking getTracking();
+public interface TouchpointPrintable extends TouchpointTrackeable {
 
     /**
      * Set tracking

@@ -1,6 +1,5 @@
 package com.mercadolibre.android.mlbusinesscomponentsapp.touchpoint;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -36,11 +35,10 @@ public class TouchpointTestActivity extends AppCompatActivity implements OnClick
         init();
     }
 
-    @SuppressLint("ClickableViewAccessibility")
     private void init() {
         final MLBusinessTouchpointTracker tracker = mockTracker();
         touchpointListener = new MLBusinessTouchpointListener();
-        touchpointListener.listen(scrollView);
+        touchpointListener.setOnTouchListener(scrollView);
         touchpointView.setOnClickCallback(this);
         touchpointView.setTracker(tracker);
         configTouchpointButton(touchpointChangerBottom);

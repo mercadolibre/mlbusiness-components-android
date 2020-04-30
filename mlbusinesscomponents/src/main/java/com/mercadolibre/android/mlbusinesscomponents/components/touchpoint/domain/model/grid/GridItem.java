@@ -1,9 +1,10 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid;
 
 import android.support.annotation.Nullable;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
 
-public class GridItem {
+public class GridItem implements TouchpointTrackeable {
 
     private final String image;
     private final String title;
@@ -45,6 +46,7 @@ public class GridItem {
         return link;
     }
 
+    @Override
     @Nullable
     public TouchpointTracking getTracking() {
         return tracking;

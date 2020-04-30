@@ -1,6 +1,7 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid;
 
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import java.io.Serializable;
 import java.util.List;
 

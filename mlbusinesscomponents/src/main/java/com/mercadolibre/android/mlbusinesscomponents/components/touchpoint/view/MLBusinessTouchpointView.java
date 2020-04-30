@@ -103,9 +103,8 @@ public class MLBusinessTouchpointView extends FrameLayout {
      * Do print
      */
     public void print() {
-        if (tracker != null) {
-            child.print(printProvider, tracker);
-        }
+        child.setPrintProvider(printProvider);
+        child.print();
     }
 
     /**

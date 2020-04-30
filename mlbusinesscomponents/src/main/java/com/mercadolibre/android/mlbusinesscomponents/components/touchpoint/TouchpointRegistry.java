@@ -56,6 +56,7 @@ public enum TouchpointRegistry {
         final AbstractTouchpointChildView view = factory.create(context);
         view.setTracker(tracker);
         view.setOnClickCallback(onClickCallback);
+        view.setExtraData(response.tracking);
         view.bind(TouchpointMapper.mapToContent(response));
         return view;
     }

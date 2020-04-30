@@ -12,13 +12,19 @@ import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid.Grid;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid.GridItem;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointPrintProvider;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import org.jetbrains.annotations.NotNull;
 
+import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.PRINT;
 import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.SHOW;
+import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.mergeData;
 
 public class GridView extends AbstractTouchpointChildView<Grid> {
 
@@ -26,6 +32,7 @@ public class GridView extends AbstractTouchpointChildView<Grid> {
     private final TextView subtitle;
     private final GridLayout gridLayout;
     private final GridPresenter presenter;
+    private List<TouchpointTrackeable> trackeables;
 
     /**
      * Constructor
@@ -66,17 +73,27 @@ public class GridView extends AbstractTouchpointChildView<Grid> {
     public void bind(final Grid model) {
         gridLayout.removeAllViews();
         presenter.bind(model, this);
-        trackShowEvent(model.getItems());
+        trackeables = new ArrayList<>(model.getItems());
+        trackShowEvent();
     }
 
     @Override
-    public void print(final TouchpointPrintProvider printProvider, final MLBusinessTouchpointTracker tracker) {
-        //TODO
+    public void print() {
+        if (tracker != null && printProvider != null) {
+            for (final TouchpointTrackeable trackeable : trackeables) {
+                printProvider.accumulateData(trackeable.getTracking());
+            }
+            final Map<String, Object> data = printProvider.getData();
+            if (!data.isEmpty()) {
+                tracker.track(PRINT, mergeData(data, tracking));
+            }
+            printProvider.cleanData();
+        }
     }
 
-    private void trackShowEvent(final List<GridItem> items) {
+    private void trackShowEvent() {
         if (tracker != null) {
-            tracker.track(SHOW, TrackingUtils.retrieveGridItemsDataToTrack(items));
+            tracker.track(SHOW, TrackingUtils.retrieveDataToTrack(trackeables, tracking));
         }
     }
 
@@ -106,7 +123,7 @@ public class GridView extends AbstractTouchpointChildView<Grid> {
         final LinearLayout rowView = getRowView();
         for (final GridItem item : items) {
             final GridItemView itemView = new GridItemView(getContext());
-            itemView.bind(item, onClickCallback, tracker);
+            itemView.bind(item, onClickCallback, tracker, tracking);
             rowView.addView(itemView);
         }
         gridLayout.addView(rowView);

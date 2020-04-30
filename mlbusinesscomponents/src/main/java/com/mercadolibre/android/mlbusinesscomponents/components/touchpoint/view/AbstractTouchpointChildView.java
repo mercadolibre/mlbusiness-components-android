@@ -9,11 +9,14 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callb
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointPrintProvider;
+import java.util.Map;
 
 public abstract class AbstractTouchpointChildView<M extends TouchpointContent> extends FrameLayout {
 
     @Nullable protected MLBusinessTouchpointTracker tracker;
     @Nullable protected OnClickCallback onClickCallback;
+    @Nullable protected Map<String, Object> tracking;
+    @Nullable protected TouchpointPrintProvider printProvider;
 
     /**
      * Constructor
@@ -53,6 +56,11 @@ public abstract class AbstractTouchpointChildView<M extends TouchpointContent> e
      */
     public abstract void bind(@Nullable M model);
 
+    /**
+     * Do print
+     */
+    public abstract void print();
+
     public void setTracker(@Nullable final MLBusinessTouchpointTracker tracker) {
         this.tracker = tracker;
     }
@@ -61,11 +69,11 @@ public abstract class AbstractTouchpointChildView<M extends TouchpointContent> e
         this.onClickCallback = onClickCallback;
     }
 
-    /**
-     * Do print
-     *
-     * @param printProvider A {@link TouchpointPrintProvider}
-     * @param tracker A {@link MLBusinessTouchpointTracker}
-     */
-    public abstract void print(final TouchpointPrintProvider printProvider, final MLBusinessTouchpointTracker tracker);
+    public void setExtraData(@Nullable final Map<String, Object> tracking) {
+        this.tracking = tracking;
+    }
+
+    public void setPrintProvider(@Nullable final TouchpointPrintProvider printProvider) {
+        this.printProvider = printProvider;
+    }
 }

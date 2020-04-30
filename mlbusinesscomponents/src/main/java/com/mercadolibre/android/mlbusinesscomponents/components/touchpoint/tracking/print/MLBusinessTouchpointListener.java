@@ -44,7 +44,7 @@ public final class MLBusinessTouchpointListener {
      *
      * @param container A {@link ViewGroup}
      */
-    public void listen(final ViewGroup container) {
+    public void setOnTouchListener(final ViewGroup container) {
         print(container);
         container.setOnTouchListener(this::isActionUp);
     }

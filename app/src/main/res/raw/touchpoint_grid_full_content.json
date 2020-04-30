@@ -1,5 +1,11 @@
 {
   "type": "grid",
+  "id": "test",
+  "tracking": {
+    "id": "test",
+    "type": "grid",
+    "extra_data": "data"
+  },
   "content": {
     "items": [
       {

@@ -18,10 +18,15 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.track
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointPrintable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtils;
+import com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils;
 import com.mercadolibre.android.picassodiskcache.PicassoDiskLoader;
+import java.util.Collections;
+import java.util.Map;
 import org.jetbrains.annotations.NotNull;
 
 import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.TAP;
+import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.mergeData;
+import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.toItem;
 
 public class GridItemView extends LinearLayout implements TouchpointPrintable {
 
@@ -75,17 +80,17 @@ public class GridItemView extends LinearLayout implements TouchpointPrintable {
 
     /**
      * Bind model
-     *
-     * @param item A {@link GridItem}
+     *  @param item A {@link GridItem}
      * @param callback A {@link OnClickCallback}
      * @param tracker A {@link MLBusinessTouchpointTracker}
+     * @param tracking Extra data to track
      */
     public void bind(final GridItem item, @Nullable final OnClickCallback callback,
-        @Nullable final MLBusinessTouchpointTracker tracker) {
+        @Nullable final MLBusinessTouchpointTracker tracker, @Nullable final Map<String, Object> tracking) {
         showImage(item.getImage());
         showTitle(item.getTitle());
         showSubtitle(item.getSubtitle());
-        setOnClick(item, callback, tracker);
+        setOnClick(item, callback, tracker, tracking);
         setTracking(item.getTracking());
     }
 
@@ -106,16 +111,17 @@ public class GridItemView extends LinearLayout implements TouchpointPrintable {
     }
 
     private void setOnClick(final GridItem item, @Nullable final OnClickCallback callback,
-        @Nullable final MLBusinessTouchpointTracker tracker) {
+        @Nullable final MLBusinessTouchpointTracker tracker, @Nullable final Map<String, Object> tracking) {
         if (callback != null) {
-            itemClick.setOnClickListener(v -> onClick(item, callback, tracker));
+            itemClick.setOnClickListener(v -> onClick(item, callback, tracker, tracking));
         }
     }
 
     private void onClick(final GridItem item, @NotNull final OnClickCallback callback,
-        @Nullable final MLBusinessTouchpointTracker tracker) {
-        if (tracker != null && item.getTracking() != null) {
-            tracker.track(TAP, item.getTracking().getEventData());
+        @Nullable final MLBusinessTouchpointTracker tracker, @Nullable final Map<String, Object> tracking) {
+        final TouchpointTracking itemData = item.getTracking();
+        if (tracker != null && itemData != null) {
+            tracker.track(TAP, mergeData(toItem(itemData.getEventData()), tracking));
         }
         callback.onClick(item.getLink());
     }
