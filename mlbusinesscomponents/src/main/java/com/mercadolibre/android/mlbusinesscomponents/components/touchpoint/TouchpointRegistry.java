@@ -15,6 +15,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.track
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.TouchpointViewFactory;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.grid.GridView;
+import com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtils;
 
 public enum TouchpointRegistry {
 
@@ -54,10 +55,18 @@ public enum TouchpointRegistry {
         final MLBusinessTouchpointResponse response, @Nullable final OnClickCallback onClickCallback,
         @Nullable final MLBusinessTouchpointTracker tracker) {
         final AbstractTouchpointChildView view = factory.create(context);
-        view.setTracker(tracker);
+        setTracker(response.id, tracker, view);
         view.setOnClickCallback(onClickCallback);
         view.setExtraData(response.tracking);
         view.bind(TouchpointMapper.mapToContent(response));
         return view;
+    }
+
+    private void setTracker(final String id, @Nullable final MLBusinessTouchpointTracker tracker,
+        final AbstractTouchpointChildView view) {
+        if (StringUtils.isValidString(id) && tracker != null) {
+            tracker.setId(id);
+            view.setTracker(tracker);
+        }
     }
 }

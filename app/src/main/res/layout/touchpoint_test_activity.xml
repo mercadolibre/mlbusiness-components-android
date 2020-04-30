@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/ui_1m"
-            android:layout_marginBottom="700dp"
+            android:layout_marginBottom="500dp"
             android:text="Cambiar touchpoint" />
 
         <com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.MLBusinessTouchpointView

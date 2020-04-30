@@ -11,4 +11,11 @@ public interface MLBusinessTouchpointTracker {
      * @param eventData the tracking information
      */
     void track(@Nullable final String action, @Nullable final Map<String, Object> eventData);
+
+    /**
+     * Set context identifier
+     *
+     * @param id The context identifier
+     */
+    void setId(final String id);
 }

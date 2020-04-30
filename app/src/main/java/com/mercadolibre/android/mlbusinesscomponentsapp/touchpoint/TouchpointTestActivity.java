@@ -14,6 +14,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.track
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.MLBusinessTouchpointListener;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.MLBusinessTouchpointView;
 import com.mercadolibre.android.mlbusinesscomponentsapp.R;
+import java.util.Map;
 
 public class TouchpointTestActivity extends AppCompatActivity implements OnClickCallback {
 
@@ -21,8 +22,10 @@ public class TouchpointTestActivity extends AppCompatActivity implements OnClick
     private Button touchpointChangerTop;
     private Button touchpointChangerBottom;
     private int touchpointResponseIndex;
+
     private MLBusinessTouchpointView touchpointView;
     private MLBusinessTouchpointListener touchpointListener;
+    private MLBusinessTouchpointTracker tracker;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -36,11 +39,15 @@ public class TouchpointTestActivity extends AppCompatActivity implements OnClick
     }
 
     private void init() {
-        final MLBusinessTouchpointTracker tracker = mockTracker();
+        tracker = mockTracker();
         touchpointListener = new MLBusinessTouchpointListener();
         touchpointListener.setOnTouchListener(scrollView);
         touchpointView.setOnClickCallback(this);
         touchpointView.setTracker(tracker);
+        initButtons();
+    }
+
+    private void initButtons() {
         configTouchpointButton(touchpointChangerBottom);
         configTouchpointButton(touchpointChangerTop);
         touchpointChangerBottom.callOnClick();
@@ -77,7 +84,21 @@ public class TouchpointTestActivity extends AppCompatActivity implements OnClick
     }
 
     private MLBusinessTouchpointTracker mockTracker() {
-        return (action, data) -> Toast
-            .makeText(this, "Track -> action: " + action + " with data: " + data, Toast.LENGTH_SHORT).show();
+        return new MLBusinessTouchpointTracker() {
+
+            private String id;
+
+            @Override
+            public void track(@Nullable final String action, @Nullable final Map<String, Object> data) {
+                Toast.makeText(getBaseContext(),
+                    "Track -> context: " + id + " action: " + action + " with data: " + data, Toast.LENGTH_SHORT)
+                    .show();
+            }
+
+            @Override
+            public void setId(final String id) {
+                this.id = id;
+            }
+        };
     }
 }
