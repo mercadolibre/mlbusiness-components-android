@@ -8,15 +8,19 @@ import android.widget.FrameLayout;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointChildPrintable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointPrintProvider;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
-public abstract class AbstractTouchpointChildView<M extends TouchpointContent> extends FrameLayout {
+public abstract class AbstractTouchpointChildView<M extends TouchpointContent> extends FrameLayout
+    implements TouchpointChildPrintable {
 
     @Nullable protected MLBusinessTouchpointTracker tracker;
     @Nullable protected OnClickCallback onClickCallback;
     @Nullable protected Map<String, Object> tracking;
-    @Nullable protected TouchpointPrintProvider printProvider;
+    protected TouchpointPrintProvider printProvider;
 
     /**
      * Constructor
@@ -47,6 +51,8 @@ public abstract class AbstractTouchpointChildView<M extends TouchpointContent> e
     public AbstractTouchpointChildView(@NonNull final Context context, @Nullable final AttributeSet attrs,
         final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        printProvider = new TouchpointPrintProvider(new HashSet<>(), new HashMap<>());
+
     }
 
     /**
@@ -56,10 +62,10 @@ public abstract class AbstractTouchpointChildView<M extends TouchpointContent> e
      */
     public abstract void bind(@Nullable M model);
 
-    /**
-     * Do print
-     */
-    public abstract void print();
+    @Override
+    public void cleanHistory() {
+        printProvider.cleanHistory();
+    }
 
     public void setTracker(@Nullable final MLBusinessTouchpointTracker tracker) {
         this.tracker = tracker;
@@ -71,9 +77,5 @@ public abstract class AbstractTouchpointChildView<M extends TouchpointContent> e
 
     public void setExtraData(@Nullable final Map<String, Object> tracking) {
         this.tracking = tracking;
-    }
-
-    public void setPrintProvider(@Nullable final TouchpointPrintProvider printProvider) {
-        this.printProvider = printProvider;
     }
 }

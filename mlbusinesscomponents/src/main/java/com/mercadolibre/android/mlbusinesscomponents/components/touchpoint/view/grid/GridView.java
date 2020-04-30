@@ -79,7 +79,7 @@ public class GridView extends AbstractTouchpointChildView<Grid> {
 
     @Override
     public void print() {
-        if (tracker != null && printProvider != null) {
+        if (tracker != null) {
             for (final TouchpointTrackeable trackeable : trackeables) {
                 printProvider.accumulateData(trackeable.getTracking());
             }

@@ -12,7 +12,7 @@ public final class MLBusinessTouchpointListener {
     private static final int ACTION_UP = MotionEvent.ACTION_UP;
 
     private final TouchpointViewFinder finder;
-    @Nullable private MLBusinessTouchpointView touchpointView;
+    @Nullable private TouchpointChildPrintable printable;
 
     public MLBusinessTouchpointListener() {
         finder = new TouchpointViewFinder(new Rect());
@@ -22,8 +22,8 @@ public final class MLBusinessTouchpointListener {
      * Reset history of tracked prints
      */
     public void resetTrackedPrints() {
-        if (touchpointView != null) {
-            touchpointView.cleanHistory();
+        if (printable != null) {
+            printable.cleanHistory();
         }
     }
 
@@ -33,9 +33,9 @@ public final class MLBusinessTouchpointListener {
      * @param container A {@link ViewGroup}
      */
     public void print(final ViewGroup container) {
-        touchpointView = finder.find(container);
-        if (touchpointView != null) {
-            touchpointView.print();
+        printable = finder.find(container);
+        if (printable != null) {
+            printable.print();
         }
     }
 

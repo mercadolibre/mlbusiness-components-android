@@ -4,7 +4,6 @@ import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.MLBusinessTouchpointView;
 
 /* default */ class TouchpointViewFinder {
 
@@ -15,20 +14,20 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.
     }
 
     /**
-     * Find touchpoint view
+     * Find a {@link TouchpointChildPrintable}
      *
      * @param viewGroup a {@link ViewGroup}
-     * @return Retrieve the touchpoint view or null if could not find it
+     * @return Retrieve printable child or null if could not find it
      */
     @Nullable
-    /* default */ MLBusinessTouchpointView find(final ViewGroup viewGroup) {
+    /* default */ TouchpointChildPrintable find(final ViewGroup viewGroup) {
         for (int i = 0; i < viewGroup.getChildCount(); i++) {
             final View child = viewGroup.getChildAt(i);
-            if (child instanceof ViewGroup && !(child instanceof MLBusinessTouchpointView)) {
+            if (child instanceof ViewGroup && !(child instanceof TouchpointChildPrintable)) {
                 return find((ViewGroup) child);
             }
-            if (child instanceof MLBusinessTouchpointView && child.getLocalVisibleRect(rect)) {
-                return (MLBusinessTouchpointView) child;
+            if (child instanceof TouchpointChildPrintable && child.getLocalVisibleRect(rect)) {
+                return (TouchpointChildPrintable) child;
             }
         }
         return null;

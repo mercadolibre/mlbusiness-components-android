@@ -8,12 +8,8 @@ import android.widget.FrameLayout;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.TouchpointRegistry;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.TouchpointMapper;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointData;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointResponse;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointPrintProvider;
-import java.util.HashMap;
-import java.util.HashSet;
 
 public class MLBusinessTouchpointView extends FrameLayout {
 
@@ -21,7 +17,6 @@ public class MLBusinessTouchpointView extends FrameLayout {
     private TouchpointRegistry type;
     private AbstractTouchpointChildView child;
     @Nullable private MLBusinessTouchpointTracker tracker;
-    private final TouchpointPrintProvider printProvider;
 
     /**
      * Constructor
@@ -52,16 +47,14 @@ public class MLBusinessTouchpointView extends FrameLayout {
     public MLBusinessTouchpointView(@NonNull final Context context, @Nullable final AttributeSet attrs,
         final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        printProvider = new TouchpointPrintProvider(new HashSet<>(), new HashMap<>());
     }
 
     /**
      * Init view
      *
-     * @param data A {@link MLBusinessTouchpointData}
+     * @param response A {@link MLBusinessTouchpointResponse}
      */
-    public void init(final MLBusinessTouchpointData data) {
-        final MLBusinessTouchpointResponse response = data.getResponse();
+    public void init(final MLBusinessTouchpointResponse response) {
         if (response != null) {
             final TouchpointRegistry touchpointRegistry = TouchpointMapper.getTouchpointById(response.type);
             if (touchpointRegistry != null) {
@@ -73,10 +66,10 @@ public class MLBusinessTouchpointView extends FrameLayout {
     /**
      * Update view
      *
-     * @param data A {@link MLBusinessTouchpointData}
+     * @param response A {@link MLBusinessTouchpointResponse}
      */
-    public void update(final MLBusinessTouchpointData data) {
-        init(data);
+    public void update(final MLBusinessTouchpointResponse response) {
+        init(response);
     }
 
     private void updateContent(final MLBusinessTouchpointResponse response,
@@ -97,20 +90,5 @@ public class MLBusinessTouchpointView extends FrameLayout {
 
     public void setTracker(@Nullable final MLBusinessTouchpointTracker tracker) {
         this.tracker = tracker;
-    }
-
-    /**
-     * Do print
-     */
-    public void print() {
-        child.setPrintProvider(printProvider);
-        child.print();
-    }
-
-    /**
-     * Clean tracks history
-     */
-    public void cleanHistory() {
-        printProvider.cleanHistory();
     }
 }

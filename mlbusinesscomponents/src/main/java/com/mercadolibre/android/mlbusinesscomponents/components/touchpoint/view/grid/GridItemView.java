@@ -18,9 +18,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.track
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointPrintable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtils;
-import com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils;
 import com.mercadolibre.android.picassodiskcache.PicassoDiskLoader;
-import java.util.Collections;
 import java.util.Map;
 import org.jetbrains.annotations.NotNull;
 

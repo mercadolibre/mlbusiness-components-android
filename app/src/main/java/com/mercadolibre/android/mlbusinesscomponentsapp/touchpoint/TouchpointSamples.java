@@ -2,7 +2,6 @@ package com.mercadolibre.android.mlbusinesscomponentsapp.touchpoint;
 
 import android.content.Context;
 import com.google.gson.Gson;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointData;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointResponse;
 import com.mercadolibre.android.mlbusinesscomponentsapp.R;
 
@@ -20,7 +19,7 @@ public enum TouchpointSamples {
         gson = new Gson();
     }
 
-    public MLBusinessTouchpointData retrieveResponse(final Context context) {
-        return () -> gson.fromJson(FileUtils.loadFromRaw(context, rawId), MLBusinessTouchpointResponse.class);
+    public MLBusinessTouchpointResponse retrieveResponse(final Context context) {
+        return gson.fromJson(FileUtils.loadFromRaw(context, rawId), MLBusinessTouchpointResponse.class);
     }
 }

@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.Toast;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointData;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointResponse;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.MLBusinessTouchpointListener;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.MLBusinessTouchpointView;
@@ -25,7 +25,6 @@ public class TouchpointTestActivity extends AppCompatActivity implements OnClick
 
     private MLBusinessTouchpointView touchpointView;
     private MLBusinessTouchpointListener touchpointListener;
-    private MLBusinessTouchpointTracker tracker;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -39,11 +38,10 @@ public class TouchpointTestActivity extends AppCompatActivity implements OnClick
     }
 
     private void init() {
-        tracker = mockTracker();
         touchpointListener = new MLBusinessTouchpointListener();
         touchpointListener.setOnTouchListener(scrollView);
         touchpointView.setOnClickCallback(this);
-        touchpointView.setTracker(tracker);
+        touchpointView.setTracker(mockTracker());
         initButtons();
     }
 
@@ -61,7 +59,7 @@ public class TouchpointTestActivity extends AppCompatActivity implements OnClick
     }
 
     private void updateView() {
-        final MLBusinessTouchpointData data =
+        final MLBusinessTouchpointResponse data =
             TouchpointSamples.values()[touchpointResponseIndex].retrieveResponse(this);
         touchpointView.update(data);
     }
