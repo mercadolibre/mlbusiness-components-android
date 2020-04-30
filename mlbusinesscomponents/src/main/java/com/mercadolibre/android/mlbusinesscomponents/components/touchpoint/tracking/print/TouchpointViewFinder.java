@@ -22,7 +22,9 @@ import android.view.ViewGroup;
      */
     @Nullable
     /* default */ TouchpointChildPrintable getPrintable(final ViewGroup viewGroup) {
-        find(viewGroup);
+        if (printable == null) {
+            find(viewGroup);
+        }
         return printable;
     }
 
