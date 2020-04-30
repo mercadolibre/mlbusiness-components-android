@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 /* default */ class TouchpointViewFinder {
 
     private final Rect rect;
+    @Nullable private TouchpointChildPrintable printable;
 
     /* default */ TouchpointViewFinder(final Rect rect) {
         this.rect = rect;
@@ -20,16 +21,20 @@ import android.view.ViewGroup;
      * @return Retrieve printable child or null if could not find it
      */
     @Nullable
-    /* default */ TouchpointChildPrintable find(final ViewGroup viewGroup) {
+    /* default */ TouchpointChildPrintable getPrintable(final ViewGroup viewGroup) {
+        find(viewGroup);
+        return printable;
+    }
+
+    private void find(final ViewGroup viewGroup) {
         for (int i = 0; i < viewGroup.getChildCount(); i++) {
             final View child = viewGroup.getChildAt(i);
-            if (child instanceof ViewGroup && !(child instanceof TouchpointChildPrintable)) {
-                return find((ViewGroup) child);
-            }
             if (child instanceof TouchpointChildPrintable && child.getLocalVisibleRect(rect)) {
-                return (TouchpointChildPrintable) child;
+                printable = (TouchpointChildPrintable) child;
+            }
+            if (child instanceof ViewGroup) {
+                find((ViewGroup) child);
             }
         }
-        return null;
     }
 }

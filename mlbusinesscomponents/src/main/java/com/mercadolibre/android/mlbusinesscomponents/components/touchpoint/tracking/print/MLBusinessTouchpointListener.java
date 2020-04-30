@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.MLBusinessTouchpointView;
 
 public final class MLBusinessTouchpointListener {
 
@@ -33,7 +32,7 @@ public final class MLBusinessTouchpointListener {
      * @param container A {@link ViewGroup}
      */
     public void print(final ViewGroup container) {
-        printable = finder.find(container);
+        printable = finder.getPrintable(container);
         if (printable != null) {
             printable.print();
         }
