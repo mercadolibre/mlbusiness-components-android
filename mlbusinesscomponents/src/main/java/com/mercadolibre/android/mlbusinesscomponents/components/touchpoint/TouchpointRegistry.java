@@ -9,17 +9,20 @@ import com.google.gson.JsonObject;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.TouchpointMapper;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.Carousel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid.Grid;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointResponse;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.TouchpointViewFactory;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.CarouselView;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.grid.GridView;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtils;
 
 public enum TouchpointRegistry {
 
     GRID(Grid.class, GridView::new),
+    CAROUSEL(Carousel.class, CarouselView::new)
     ;
 
     private final Class<? extends TouchpointContent> model;

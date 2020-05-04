@@ -8,10 +8,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/ui_1m"
-        android:layout_marginEnd="@dimen/ui_2m"
-        android:layout_marginStart="@dimen/ui_2m"
-        android:layout_marginTop="@dimen/ui_1m"
         android:orientation="vertical">
 
         <TextView
@@ -30,6 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/ui_1m"
+            android:layout_marginStart="@dimen/ui_2m"
+            android:layout_marginEnd="@dimen/ui_2m"
             android:layout_marginBottom="500dp"
             android:text="Cambiar touchpoint" />
 
@@ -44,6 +42,8 @@
             android:id="@+id/touchpoint_button_bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/ui_2m"
+            android:layout_marginEnd="@dimen/ui_2m"
             android:layout_marginTop="@dimen/ui_1m"
             android:layout_marginBottom="@dimen/ui_3_5m"
             android:text="Cambiar touchpoint" />

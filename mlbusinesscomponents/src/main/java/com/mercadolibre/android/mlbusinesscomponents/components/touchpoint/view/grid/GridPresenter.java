@@ -14,25 +14,7 @@ import java.util.List;
     private int rowCount;
 
     /* default */ void bind(@NonNull final Grid model, @NonNull final GridView view) {
-        setTitle(model.getTitle(), view);
-        setSubtitle(model.getSubtitle(), view);
         setGrid(model.getItems(), view);
-    }
-
-    private void setTitle(@Nullable final String title, final GridView view) {
-        if (StringUtils.isValidString(title)) {
-            view.showTitle(title);
-            return;
-        }
-        view.hideTitle();
-    }
-
-    private void setSubtitle(@Nullable final String subtitle, final GridView view) {
-        if (StringUtils.isValidString(subtitle)) {
-            view.showSubtitle(subtitle);
-            return;
-        }
-        view.hideSubtitle();
     }
 
     private void setGrid(final List<GridItem> items, final GridView view) {

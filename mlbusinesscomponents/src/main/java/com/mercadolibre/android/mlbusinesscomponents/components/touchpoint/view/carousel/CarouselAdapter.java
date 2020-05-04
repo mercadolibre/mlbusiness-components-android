@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCardResponse;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCard;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.CarouselCardView;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.DiffUtils;
@@ -19,7 +19,7 @@ import java.util.Map;
 
 public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.CarouselViewHolder> {
 
-    private final List<CarouselCardResponse> cards;
+    private final List<CarouselCard> cards;
     @Nullable private OnClickCallback onClickCallback;
     @Nullable private MLBusinessTouchpointTracker tracker;
     @Nullable private Map<String, Object> extraData;
@@ -55,9 +55,9 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
     /**
      * Set cards
      *
-     * @param cards A list of of {@link CarouselCardResponse}
+     * @param cards A list of of {@link CarouselCard}
      */
-    public void setItems(@NonNull final List<CarouselCardResponse> cards) {
+    public void setItems(@NonNull final List<CarouselCard> cards) {
         final DiffUtils diffCallback = new DiffUtils<>(this.cards, cards);
         final DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(diffCallback);
         this.cards.clear();
@@ -86,7 +86,7 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
             view = itemView.findViewById(R.id.touchpoint_carousel_card_view);
         }
 
-        /* default */ void bindView(final CarouselCardResponse card) {
+        /* default */ void bindView(final CarouselCard card) {
             view.bind(card);
         }
 

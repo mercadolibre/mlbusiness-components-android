@@ -4,21 +4,21 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 import java.io.Serializable;
 import java.util.List;
 
-public class CarouselResponse implements TouchpointContent, Serializable {
+public class Carousel implements TouchpointContent, Serializable {
 
     private static final long serialVersionUID = 7998836654820333977L;
 
-    private final List<CarouselCardResponse> items;
+    private final List<CarouselCard> items;
 
     /**
      * Constructor
-     * @param items A list of {@link CarouselCardResponse} cards
+     * @param items A list of {@link CarouselCard} cards
      */
-    public CarouselResponse(final List<CarouselCardResponse> items) {
+    public Carousel(final List<CarouselCard> items) {
         this.items = items;
     }
 
-    public List<CarouselCardResponse> getItems() {
+    public List<CarouselCard> getItems() {
         return items;
     }
 
@@ -35,7 +35,7 @@ public class CarouselResponse implements TouchpointContent, Serializable {
             return false;
         }
 
-        final CarouselResponse that = (CarouselResponse) o;
+        final Carousel that = (Carousel) o;
 
         return getItems() != null ? getItems().equals(that.getItems()) : that.getItems() == null;
     }

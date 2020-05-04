@@ -1,41 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:gravity="center">
-
-    <TextView
-        android:id="@+id/grid_title"
-        style="@style/MLFont.Bold.Semi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/ui_4m"
-        android:layout_marginStart="@dimen/ui_4m"
-        android:lineSpacingExtra="@dimen/ui_linespacing_small"
-        android:gravity="center"
-        android:textColor="@color/ui_fullscreenmodal_toolbar_text_color"
-        android:textSize="@dimen/ui_fontsize_large"
-        app:layout_goneMarginBottom="24dp"
-        tools:text="200 descuentos" />
-
-    <TextView
-        android:id="@+id/grid_subtitle"
-        style="@style/MLFont.Regular"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/ui_4m"
-        android:layout_marginStart="@dimen/ui_4m"
-        android:layout_marginBottom="@dimen/ui_3m"
-        android:gravity="center"
-        android:lineSpacingExtra="@dimen/ui_linespacing_small"
-        android:textColor="@color/text_secondary_color"
-        android:textSize="@dimen/ui_fontsize_xsmall"
-        android:visibility="gone"
-        tools:visibility="visible"
-        tools:text="35 exclusivos por tu nivel" />
+    android:gravity="center"
+    tools:parentTag="android.widget.FrameLayout">
 
     <GridLayout
         android:id="@+id/grid_layout"
@@ -50,4 +19,4 @@
         tools:layout_height="@dimen/ui_view_discount_box_height"
         tools:listitem="@layout/ml_view_discount_box" />
 
-</LinearLayout>
+</merge>

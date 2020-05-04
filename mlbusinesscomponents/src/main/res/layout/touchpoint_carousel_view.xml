@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    tools:parentTag="android.widget.FrameLayout">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/touchpoint_carousel_recycler_view"
@@ -14,4 +15,4 @@
         <!--  Childs added here   -->
 
     </android.support.v7.widget.RecyclerView>
-</LinearLayout>
+</merge>

@@ -1,15 +1,14 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card;
 
 import android.graphics.Color;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCardResponse;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselPillResponse;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCard;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselPill;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtils;
 import org.jetbrains.annotations.Nullable;
 
 /* default */ class CarouselCardPresenter {
 
-    /* default */ void onBind(final CarouselCardResponse card, final CarouselCardView view) {
+    /* default */ void onBind(final CarouselCard card, final CarouselCardView view) {
         setCardBackgroundColor(card.getBackgroundColor(), view);
         setImage(card.getImage(), view);
         setPill(card.getPill(), view);
@@ -41,7 +40,7 @@ import org.jetbrains.annotations.Nullable;
         view.showImage(image);
     }
 
-    private void setPill(@Nullable final CarouselPillResponse pill, final CarouselCardView view) {
+    private void setPill(@Nullable final CarouselPill pill, final CarouselCardView view) {
         if (pill == null) {
             view.hideLevel();
             return;
@@ -99,7 +98,7 @@ import org.jetbrains.annotations.Nullable;
         }
     }
 
-    private boolean isValidPillFormat(@Nullable final CarouselPillResponse pill) {
+    private boolean isValidPillFormat(@Nullable final CarouselPill pill) {
         return pill != null && pill.getFormat() != null &&
             StringUtils.isValidString(pill.getFormat().getTextColor());
     }

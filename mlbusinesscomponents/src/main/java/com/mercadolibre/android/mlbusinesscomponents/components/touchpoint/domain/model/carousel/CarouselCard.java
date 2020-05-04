@@ -1,15 +1,16 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel;
 
 import android.support.annotation.Nullable;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
 
-public class CarouselCardResponse {
+public class CarouselCard implements TouchpointTrackeable {
 
     private final String image;
     private final String topLabel;
     private final String mainLabel;
     private final String rightLabel;
-    private final CarouselPillResponse pill;
+    private final CarouselPill pill;
     private final String title;
     private final String subtitle;
     private final String link;
@@ -31,7 +32,7 @@ public class CarouselCardResponse {
      * @param backgroundColor the card background color
      * @param tracking A {@link TouchpointTracking}
      */
-    public CarouselCardResponse(final String image, final CarouselPillResponse pill, final String title,
+    public CarouselCard(final String image, final CarouselPill pill, final String title,
         final String subtitle,
         final String rightLabel, final String mainLabel, final String topLabel, final String link,
         final String textColor, final String backgroundColor,
@@ -53,7 +54,7 @@ public class CarouselCardResponse {
         return image;
     }
 
-    public CarouselPillResponse getPill() {
+    public CarouselPill getPill() {
         return pill;
     }
 
@@ -89,6 +90,7 @@ public class CarouselCardResponse {
         return backgroundColor;
     }
 
+    @Override
     @Nullable
     public TouchpointTracking getTracking() {
         return tracking;
@@ -103,7 +105,7 @@ public class CarouselCardResponse {
             return false;
         }
 
-        final CarouselCardResponse that = (CarouselCardResponse) o;
+        final CarouselCard that = (CarouselCard) o;
 
         if (getImage() != null ? !getImage().equals(that.getImage()) : that.getImage() != null) {
             return false;

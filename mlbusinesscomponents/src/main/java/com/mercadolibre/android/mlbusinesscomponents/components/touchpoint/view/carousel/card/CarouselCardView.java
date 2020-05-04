@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.components.discount.CircleTransform;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCardResponse;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCard;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
@@ -93,7 +93,7 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
      *
      * @param card the model
      */
-    public void bind(final CarouselCardResponse card) {
+    public void bind(final CarouselCard card) {
         presenter.onBind(card, this);
     }
 
@@ -212,7 +212,7 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
             levelContainer.setVisibility(VISIBLE);
             final int color = Color.parseColor(backgroundColor);
             final GradientDrawable shape = (GradientDrawable) getResources()
-                .getDrawable(R.drawable.discounts_payers_level_background);
+                .getDrawable(R.drawable.touchpoint_carousel_level_background);
             shape.setColor(color);
             levelContainer.setBackground(shape);
             decorateLogo(Boolean.TRUE);

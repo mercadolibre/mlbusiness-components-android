@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/ui_2m"
             android:layout_gravity="center"
-            android:background="@drawable/discounts_payers_level_background"
+            android:background="@drawable/touchpoint_carousel_level_background"
             android:orientation="horizontal"
             android:translationY="-8dp"
             android:paddingBottom="@dimen/ui_025m"
@@ -57,7 +57,7 @@
 
             <TextView
                 android:id="@+id/touchpoint_carousel_card_level"
-                style="@style/discounts_payers_commons_level"
+                style="@style/touchpoint_carousel_label_font"
                 android:maxWidth="@dimen/ui_9m"
                 android:translationY="-1dp"
                 android:layout_width="wrap_content"
@@ -67,7 +67,7 @@
 
         <TextView
             android:id="@+id/touchpoint_carousel_card_top_title"
-            style="@style/discounts_payers_list_carousel_card_top_title"
+            style="@style/touchpoint_carousel_card_top_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -80,7 +80,7 @@
 
         <TextView
             android:id="@+id/touchpoint_carousel_card_main_title"
-            style="@style/discounts_payers_list_carousel_card_main_title"
+            style="@style/touchpoint_carousel_card_main_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="3dp"
@@ -94,7 +94,7 @@
 
         <TextView
             android:id="@+id/touchpoint_carousel_card_right_title"
-            style="@style/discounts_payers_list_carousel_card_right_title"
+            style="@style/touchpoint_carousel_card_right_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/ui_1m"
@@ -107,7 +107,7 @@
 
         <TextView
             android:id="@+id/touchpoint_carousel_card_top_label"
-            style="@style/discounts_payers_list_carousel_card_top_label"
+            style="@style/touchpoint_carousel_card_top_label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -119,7 +119,7 @@
 
         <TextView
             android:id="@+id/touchpoint_carousel_card_main_label"
-            style="@style/discounts_payers_list_carousel_card_main_label"
+            style="@style/touchpoint_carousel_card_main_label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"

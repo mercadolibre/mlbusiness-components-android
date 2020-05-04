@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid.Grid;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid.GridItem;
@@ -25,8 +24,6 @@ import static com.mercadolibre.android.mlbusinesscomponents.components.utils.Tra
 
 public class GridView extends AbstractTouchpointChildView<Grid> {
 
-    private final TextView title;
-    private final TextView subtitle;
     private final GridLayout gridLayout;
     private final GridPresenter presenter;
     private List<TouchpointTrackeable> trackeables;
@@ -60,8 +57,6 @@ public class GridView extends AbstractTouchpointChildView<Grid> {
     public GridView(final Context context, @Nullable final AttributeSet attrs, final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         inflate(context, R.layout.touchpoint_grid_view, this);
-        title = findViewById(R.id.grid_title);
-        subtitle = findViewById(R.id.grid_subtitle);
         gridLayout = findViewById(R.id.grid_layout);
         presenter = new GridPresenter();
     }
@@ -92,24 +87,6 @@ public class GridView extends AbstractTouchpointChildView<Grid> {
         if (tracker != null) {
             tracker.track(SHOW, TrackingUtils.retrieveDataToTrack(trackeables, tracking));
         }
-    }
-
-    /* default */ void showTitle(final String title) {
-        this.title.setText(title);
-        this.title.setVisibility(VISIBLE);
-    }
-
-    /* default */ void hideTitle() {
-        title.setVisibility(GONE);
-    }
-
-    /* default */ void showSubtitle(final String subtitle) {
-        this.subtitle.setText(subtitle);
-        this.subtitle.setVisibility(VISIBLE);
-    }
-
-    /* default */ void hideSubtitle() {
-        subtitle.setVisibility(GONE);
     }
 
     /* default */ void setRawCount(final int rawCount) {

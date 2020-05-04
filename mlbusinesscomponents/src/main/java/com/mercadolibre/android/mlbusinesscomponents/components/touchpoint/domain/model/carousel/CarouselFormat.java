@@ -3,17 +3,17 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.doma
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class CarouselFormatResponse implements Parcelable {
+public class CarouselFormat implements Parcelable {
 
-    public static final Creator<CarouselFormatResponse> CREATOR = new Creator<CarouselFormatResponse>() {
+    public static final Creator<CarouselFormat> CREATOR = new Creator<CarouselFormat>() {
         @Override
-        public CarouselFormatResponse createFromParcel(final Parcel in) {
-            return new CarouselFormatResponse(in);
+        public CarouselFormat createFromParcel(final Parcel in) {
+            return new CarouselFormat(in);
         }
 
         @Override
-        public CarouselFormatResponse[] newArray(final int size) {
-            return new CarouselFormatResponse[size];
+        public CarouselFormat[] newArray(final int size) {
+            return new CarouselFormat[size];
         }
     };
 
@@ -26,7 +26,7 @@ public class CarouselFormatResponse implements Parcelable {
      * @param backgroundColor the feature background color.
      * @param textColor the feature text color.
      */
-    public CarouselFormatResponse(final String backgroundColor, final String textColor) {
+    public CarouselFormat(final String backgroundColor, final String textColor) {
         this.backgroundColor = backgroundColor;
         this.textColor = textColor;
     }
@@ -36,7 +36,7 @@ public class CarouselFormatResponse implements Parcelable {
      *
      * @param in the input data.
      */
-    protected CarouselFormatResponse(final Parcel in) {
+    protected CarouselFormat(final Parcel in) {
         backgroundColor = in.readString();
         textColor = in.readString();
     }
@@ -66,11 +66,11 @@ public class CarouselFormatResponse implements Parcelable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof CarouselFormatResponse)) {
+        if (!(o instanceof CarouselFormat)) {
             return false;
         }
 
-        final CarouselFormatResponse that = (CarouselFormatResponse) o;
+        final CarouselFormat that = (CarouselFormat) o;
 
         if (getBackgroundColor() == null ? that.getBackgroundColor() != null
             : !getBackgroundColor().equals(that.getBackgroundColor())) {

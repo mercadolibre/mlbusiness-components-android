@@ -1,10 +1,10 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel;
 
-public class CarouselPillResponse {
+public class CarouselPill {
 
     private final String icon;
     private final String label;
-    private final CarouselFormatResponse format;
+    private final CarouselFormat format;
 
     /**
      * Constructor
@@ -13,8 +13,8 @@ public class CarouselPillResponse {
      * @param label The text
      * @param format The background and text color
      */
-    public CarouselPillResponse(final String icon, final String label,
-        final CarouselFormatResponse format) {
+    public CarouselPill(final String icon, final String label,
+        final CarouselFormat format) {
         this.icon = icon;
         this.label = label;
         this.format = format;
@@ -28,7 +28,7 @@ public class CarouselPillResponse {
         return label;
     }
 
-    public CarouselFormatResponse getFormat() {
+    public CarouselFormat getFormat() {
         return format;
     }
 
@@ -42,7 +42,7 @@ public class CarouselPillResponse {
             return false;
         }
 
-        final CarouselPillResponse that = (CarouselPillResponse) o;
+        final CarouselPill that = (CarouselPill) o;
 
         if (getIcon() == null ? that.getIcon() != null : !getIcon().equals(that.getIcon())) {
             return false;
