@@ -51,4 +51,40 @@ public class GridItem implements TouchpointTrackeable {
     public TouchpointTracking getTracking() {
         return tracking;
     }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || !getClass().equals(o.getClass())) {
+            return false;
+        }
+
+        final GridItem gridItem = (GridItem) o;
+
+        if (getImage() != null ? !getImage().equals(gridItem.getImage()) : gridItem.getImage() != null) {
+            return false;
+        }
+        if (getTitle() != null ? !getTitle().equals(gridItem.getTitle()) : gridItem.getTitle() != null) {
+            return false;
+        }
+        if (getSubtitle() != null ? !getSubtitle().equals(gridItem.getSubtitle()) : gridItem.getSubtitle() != null) {
+            return false;
+        }
+        if (getLink() != null ? !getLink().equals(gridItem.getLink()) : gridItem.getLink() != null) {
+            return false;
+        }
+        return getTracking() != null ? getTracking().equals(gridItem.getTracking()) : gridItem.getTracking() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getImage() != null ? getImage().hashCode() : 0;
+        result = 31 * result + (getTitle() != null ? getTitle().hashCode() : 0);
+        result = 31 * result + (getSubtitle() != null ? getSubtitle().hashCode() : 0);
+        result = 31 * result + (getLink() != null ? getLink().hashCode() : 0);
+        result = 31 * result + (getTracking() != null ? getTracking().hashCode() : 0);
+        return result;
+    }
 }

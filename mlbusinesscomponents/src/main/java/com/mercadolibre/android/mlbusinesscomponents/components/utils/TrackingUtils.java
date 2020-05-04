@@ -3,7 +3,6 @@ package com.mercadolibre.android.mlbusinesscomponents.components.utils;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid.GridItem;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import java.util.ArrayList;
 import java.util.Collections;
