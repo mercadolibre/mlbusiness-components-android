@@ -73,6 +73,7 @@ public class TouchpointTestActivity extends AppCompatActivity implements OnClick
 
     private void configTouchpointButton(final Button touchpointButton) {
         touchpointButton.setOnClickListener(v -> {
+            touchpointListener.resetTrackedPrints();
             if (TouchpointSamples.values().length == touchpointResponseIndex) {
                 touchpointResponseIndex = 0;
             }

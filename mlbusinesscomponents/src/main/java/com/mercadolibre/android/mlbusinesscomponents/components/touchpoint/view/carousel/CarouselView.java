@@ -92,7 +92,7 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
     }
 
     private void trackShowEvent(final List<TouchpointTrackeable> trackeables) {
-        if (tracker != null) {
+        if (tracker != null && !trackeables.isEmpty()) {
             tracker.track(SHOW, TrackingUtils.retrieveDataToTrack(trackeables, tracking));
         }
     }

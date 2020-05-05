@@ -21,6 +21,7 @@ public final class MLBusinessTouchpointListener {
      * Reset history of tracked prints
      */
     public void resetTrackedPrints() {
+        printable = finder.getPrintable();
         if (printable != null) {
             printable.cleanHistory();
         }
@@ -32,7 +33,7 @@ public final class MLBusinessTouchpointListener {
      * @param container A {@link ViewGroup}
      */
     public void print(final ViewGroup container) {
-        printable = finder.getPrintable(container);
+        printable = finder.getPrintableIfVisible(container);
         if (printable != null) {
             printable.print();
         }

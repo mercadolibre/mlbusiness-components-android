@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
     private final Rect rect;
     @Nullable private TouchpointChildPrintable printable;
+    @Nullable private ViewGroup parent;
 
     /* default */ TouchpointViewFinder(final Rect rect) {
         this.rect = rect;
@@ -21,16 +22,42 @@ import android.view.ViewGroup;
      * @return Retrieve printable child or null if could not find it
      */
     @Nullable
-    /* default */ TouchpointChildPrintable getPrintable(final ViewGroup viewGroup) {
+    /* default */ TouchpointChildPrintable getPrintableIfVisible(final ViewGroup viewGroup) {
         printable = null;
-        find(viewGroup);
+        findOnVisibleRect(viewGroup);
         return printable;
+    }
+
+    /**
+     * Find a {@link TouchpointChildPrintable}
+     *
+     * @return Retrieve printable child or null if could not find it
+     */
+    @Nullable
+    /* default */ TouchpointChildPrintable getPrintable() {
+        if (parent != null) {
+            find(parent);
+        }
+        return printable;
+    }
+
+    private void findOnVisibleRect(final ViewGroup viewGroup) {
+        parent = viewGroup;
+        for (int i = 0; i < viewGroup.getChildCount(); i++) {
+            final View child = viewGroup.getChildAt(i);
+            if (child instanceof TouchpointChildPrintable && child.getLocalVisibleRect(rect)) {
+                printable = (TouchpointChildPrintable) child;
+            }
+            if (child instanceof ViewGroup) {
+                findOnVisibleRect((ViewGroup) child);
+            }
+        }
     }
 
     private void find(final ViewGroup viewGroup) {
         for (int i = 0; i < viewGroup.getChildCount(); i++) {
             final View child = viewGroup.getChildAt(i);
-            if (child instanceof TouchpointChildPrintable && child.getLocalVisibleRect(rect)) {
+            if (child instanceof TouchpointChildPrintable) {
                 printable = (TouchpointChildPrintable) child;
             }
             if (child instanceof ViewGroup) {
