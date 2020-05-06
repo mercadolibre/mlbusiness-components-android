@@ -137,11 +137,7 @@ public class CarouselCard implements TouchpointTrackeable, Serializable {
         if (getTextColor() != null ? !getTextColor().equals(that.getTextColor()) : that.getTextColor() != null) {
             return false;
         }
-        if (getBackgroundColor() != null ? !getBackgroundColor().equals(that.getBackgroundColor())
-            : that.getBackgroundColor() != null) {
-            return false;
-        }
-        return getTracking() != null ? getTracking().equals(that.getTracking()) : that.getTracking() == null;
+        return getBackgroundColor() != null ? getBackgroundColor().equals(that.getBackgroundColor()) : that.getBackgroundColor() == null;
     }
 
     @Override
@@ -156,7 +152,6 @@ public class CarouselCard implements TouchpointTrackeable, Serializable {
         result = 31 * result + (getLink() != null ? getLink().hashCode() : 0);
         result = 31 * result + (getTextColor() != null ? getTextColor().hashCode() : 0);
         result = 31 * result + (getBackgroundColor() != null ? getBackgroundColor().hashCode() : 0);
-        result = 31 * result + (getTracking() != null ? getTracking().hashCode() : 0);
         return result;
     }
 }
