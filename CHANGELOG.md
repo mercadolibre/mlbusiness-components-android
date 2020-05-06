@@ -1,3 +1,9 @@
+## VERSION 1.3.0
+_06_05_2020_
+* FEATURE - Add touchpoint component
+* FEATURE - Add touchpoint carousel view
+* FEATURE - Add touchpoint grid view
+
 ## VERSION 1.2.1
 _29_04_2020_
 * REFACTOR - Refactor exploting button, fix onClick

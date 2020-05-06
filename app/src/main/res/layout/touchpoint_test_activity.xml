@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tochpoint_scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ui_components_white_color">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ui_2m"
+            android:layout_marginStart="@dimen/ui_2m"
+            android:layout_marginEnd="@dimen/ui_2m"
+            android:layout_marginBottom="@dimen/ui_2m"
+            android:textSize="@dimen/ui_fontsize_xxlarge"
+            android:gravity="center|top"
+            android:text="Scrollea para abajo para ver el componente"/>
+
+        <Button
+            android:id="@+id/touchpoint_button_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ui_1m"
+            android:layout_marginStart="@dimen/ui_2m"
+            android:layout_marginEnd="@dimen/ui_2m"
+            android:layout_marginBottom="500dp"
+            android:text="Cambiar touchpoint" />
+
+        <com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.MLBusinessTouchpointView
+            android:id="@+id/touchpoint_view"
+            android:layout_marginTop="@dimen/ui_1m"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/touchpoint_button_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/ui_2m"
+            android:layout_marginEnd="@dimen/ui_2m"
+            android:layout_marginTop="@dimen/ui_1m"
+            android:layout_marginBottom="@dimen/ui_3_5m"
+            android:text="Cambiar touchpoint" />
+    </LinearLayout>
+</ScrollView>

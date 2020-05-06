@@ -1,7 +1,5 @@
 package com.mercadolibre.android.mlbusinesscomponentsapp;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import com.mercadolibre.android.mlbusinesscomponents.components.common.MLBusinessInfoView;
@@ -20,11 +19,12 @@ import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusine
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadcaster.LoyaltyBroadcastData;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadcaster.LoyaltyBroadcastReceiver;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadcaster.LoyaltyBroadcaster;
+import com.mercadolibre.android.mlbusinesscomponentsapp.touchpoint.TouchpointTestActivity;
 
 public class MainActivity extends AppCompatActivity
-        implements MLBusinessLoyaltyRingView.OnClickLoyaltyRing, MLBusinessDiscountBoxView.OnClickDiscountBox,
-        MLBusinessCrossSellingBoxView.OnClickCrossSellingBoxView,
-        MLBusinessDownloadAppView.OnClickDownloadApp {
+    implements MLBusinessLoyaltyRingView.OnClickLoyaltyRing, MLBusinessDiscountBoxView.OnClickDiscountBox,
+    MLBusinessCrossSellingBoxView.OnClickCrossSellingBoxView,
+    MLBusinessDownloadAppView.OnClickDownloadApp {
 
     LoyaltyBroadcast loyaltyBroadcast;
 
@@ -43,6 +43,9 @@ public class MainActivity extends AppCompatActivity
         Button button = findViewById(R.id.buttonOpen);
 
         final Button nextDiscountBox = findViewById(R.id.discountButton);
+        final Button openTouchpoint = findViewById(R.id.touchpoint_button);
+        openTouchpoint.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, TouchpointTestActivity.class)));
+
         button.setOnClickListener(v -> {
             final Intent intent = new Intent(MainActivity.this, ButtonsActivity.class);
             startActivity(intent);
@@ -72,7 +75,6 @@ public class MainActivity extends AppCompatActivity
         LoyaltyBroadcaster.getInstance().register(loyaltyBroadcast, getApplicationContext());
     }
 
-
     private class LoyaltyBroadcast extends LoyaltyBroadcastReceiver {
 
         @Override
@@ -88,7 +90,6 @@ public class MainActivity extends AppCompatActivity
         loyaltyBroadcastData.setLevel(2);
         loyaltyBroadcastData.setPrimaryColor("#FEFEFE");
 
-
         LoyaltyBroadcaster.getInstance().updateInfo(getApplicationContext(), loyaltyBroadcastData);
 
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
@@ -96,7 +97,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onClickDiscountItem(final int index, @Nullable final String deepLink,
-                                    @Nullable final String trackId) {
+        @Nullable final String trackId) {
         if (deepLink != null) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
         }

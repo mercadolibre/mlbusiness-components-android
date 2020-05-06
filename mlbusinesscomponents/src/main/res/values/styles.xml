@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="touchpoint_carousel_label_font" parent="MLFont.Bold.Semi">
+        <item name="android:textSize">9sp</item>
+        <item name="android:textColor">@color/ui_components_white_color</item>
+    </style>
+
+    <style name="touchpoint_carousel_card_top_title" parent="MLFont.Bold.Semi">
+        <item name="android:textColor">@color/touchpoint_semi_black</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="touchpoint_carousel_card_main_title" parent="MLFont.Bold.Semi">
+        <item name="android:textColor">@color/touchpoint_semi_black</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="touchpoint_carousel_card_right_title" parent="MLFont.Bold.Semi">
+        <item name="android:textColor">@color/touchpoint_semi_black</item>
+        <item name="android:layout_gravity">top|center</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="touchpoint_carousel_card_top_label" parent="MLFont.Bold.Semi">
+        <item name="android:textColor">@color/touchpoint_semi_black</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:textSize">@dimen/ui_fontsize_xsmall</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="touchpoint_carousel_card_main_label" parent="MLFont.Regular">
+        <item name="android:textColor">@color/touchpoint_semi_black</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:textSize">@dimen/ui_fontsize_xxsmall</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:lineSpacingExtra">3sp</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+</resources>

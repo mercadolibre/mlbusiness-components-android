@@ -4,13 +4,10 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtils;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import org.jetbrains.annotations.NotNull;
 
 import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.SHOW;
-import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.retrieveDataToTrack;
+import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.retrieveBusinessSingleItemDataToTrack;
 
 /* default */ class MLBusinessDiscountBoxPresenter {
 
@@ -30,7 +27,7 @@ import static com.mercadolibre.android.mlbusinesscomponents.components.utils.Tra
     private void trackShowEvent(@Nullable final MLBusinessDiscountTracker discountTracker,
         final List<MLBusinessSingleItem> items) {
         if (discountTracker != null) {
-            discountTracker.track(SHOW, retrieveDataToTrack(items));
+            discountTracker.track(SHOW, retrieveBusinessSingleItemDataToTrack(items));
         }
     }
 

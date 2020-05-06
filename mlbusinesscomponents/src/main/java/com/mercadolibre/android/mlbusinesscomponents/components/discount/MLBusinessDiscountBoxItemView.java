@@ -14,14 +14,8 @@ import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtils;
 import com.mercadolibre.android.picassodiskcache.PicassoDiskLoader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import org.jetbrains.annotations.NotNull;
 
 import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.TAP;
-import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.retrieveDataToTrack;
 
 public class MLBusinessDiscountBoxItemView extends LinearLayout {
 
