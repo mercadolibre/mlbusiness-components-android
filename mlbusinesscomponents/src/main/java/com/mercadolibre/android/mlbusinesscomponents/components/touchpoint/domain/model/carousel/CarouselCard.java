@@ -3,8 +3,11 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.doma
 import android.support.annotation.Nullable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
+import java.io.Serializable;
 
-public class CarouselCard implements TouchpointTrackeable {
+public class CarouselCard implements TouchpointTrackeable, Serializable {
+
+    private static final long serialVersionUID = 7278154289419469849L;
 
     private final String image;
     private final String topLabel;
@@ -134,11 +137,7 @@ public class CarouselCard implements TouchpointTrackeable {
         if (getTextColor() != null ? !getTextColor().equals(that.getTextColor()) : that.getTextColor() != null) {
             return false;
         }
-        if (getBackgroundColor() != null ? !getBackgroundColor().equals(that.getBackgroundColor())
-            : that.getBackgroundColor() != null) {
-            return false;
-        }
-        return getTracking() != null ? getTracking().equals(that.getTracking()) : that.getTracking() == null;
+        return getBackgroundColor() != null ? getBackgroundColor().equals(that.getBackgroundColor()) : that.getBackgroundColor() == null;
     }
 
     @Override
@@ -153,7 +152,6 @@ public class CarouselCard implements TouchpointTrackeable {
         result = 31 * result + (getLink() != null ? getLink().hashCode() : 0);
         result = 31 * result + (getTextColor() != null ? getTextColor().hashCode() : 0);
         result = 31 * result + (getBackgroundColor() != null ? getBackgroundColor().hashCode() : 0);
-        result = 31 * result + (getTracking() != null ? getTracking().hashCode() : 0);
         return result;
     }
 }

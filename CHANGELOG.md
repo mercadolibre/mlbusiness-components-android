@@ -1,3 +1,7 @@
+## VERSION 1.3.1
+_06_05_2020_
+* FIX - touchpoint carousel
+
 ## VERSION 1.3.0
 _06_05_2020_
 * FEATURE - Add touchpoint component

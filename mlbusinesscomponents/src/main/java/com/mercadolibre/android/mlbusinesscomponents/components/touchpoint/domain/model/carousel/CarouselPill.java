@@ -1,6 +1,10 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel;
 
-public class CarouselPill {
+import java.io.Serializable;
+
+public class CarouselPill implements Serializable {
+
+    private static final long serialVersionUID = 9141249547623194230L;
 
     private final String icon;
     private final String label;

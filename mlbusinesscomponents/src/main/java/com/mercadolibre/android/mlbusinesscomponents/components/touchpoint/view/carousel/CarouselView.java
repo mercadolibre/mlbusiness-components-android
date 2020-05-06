@@ -93,10 +93,11 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
         if (additionalInsets != null) {
             setPadding(0, (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getTop()),
                 0,  (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getBottom()));
-            recyclerView.removeItemDecorationAt(0);
-            recyclerView.addItemDecoration(
-                new CarouselDecorator((int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getLeft()),
-                    (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getRight())));
+            if (recyclerView.getItemDecorationCount() == 0) {
+                recyclerView.addItemDecoration(
+                    new CarouselDecorator((int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getLeft()),
+                        (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getRight())));
+            }
         }
     }
 
