@@ -24,6 +24,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -66,6 +67,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     private View container;
     private OnFinishAnimationListener onFinishAnimationListener;
     private OnClickListener onClickListener;
+    private static final int DP = 25;
 
     public ButtonProgress(Context context) {
         super(context);
@@ -216,23 +218,28 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         circle = findViewById(R.id.cho_loading_buy_circular);
         icon = findViewById(R.id.cho_loading_buy_icon);
         container = findViewById(R.id.cho_loading_buy_container);
+        animator = ObjectAnimator.ofInt(progressBar, "progress", 0, durationTimeout);
         adjustHeight(circle);
         adjustHeight(icon);
     }
 
     @Override
     public void onClick(View v) {
-        startAnimationCustom();
         if (onClickListener != null) {
             onClickListener.onClick(v);
             setClickable(false);
         }
     }
 
+    public void resetButton() {
+        animator.start();
+        animator.cancel();
+        setClickable(true);
+    }
+
     public void startAnimationCustom() {
         progressBar.setMax(durationTimeout);
         textProgressBar.setText(titleProgress);
-        animator = ObjectAnimator.ofInt(progressBar, "progress", 0, durationTimeout);
         animator.setInterpolator(new LinearInterpolator());
         animator.setDuration(durationTimeout);
         animator.start();
@@ -326,22 +333,31 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         }
     }
 
+    private int getResourceValue(int resId) {
+        TypedValue value = new TypedValue();
+        getResources().getValue(resId, value, true);
+        return (int) TypedValue.complexToFloat(value.data);
+    }
+
     void createCircularReveal() {
-
-        // when the icon anim has finished, paint the whole screen with the result color
-        final float finalRadius = (float) Math.hypot(reveal.getWidth(), reveal.getHeight());
-        // FIXME altura original del boton
-        final int startRadius = (int) (getContext().getResources().getDimension(R.dimen.ui_6m) / 2);
-
-        final int[] locationContainer = new int[2];
-        container.getLocationOnScreen(locationContainer);
-        final int cy = (locationContainer[1] - container.getMeasuredHeight() / 2);
-        final int cx = locationContainer[0] + (container.getWidth() / 2);
-
-        //try to avoid reveal detached view
         reveal.post(() -> {
             final Animator anim;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                final float finalRadius = (float) Math.hypot(reveal.getWidth(), reveal.getHeight());
+                final int startRadius = (int) (getContext().getResources().getDimension(R.dimen.ui_6m) / 2);
+
+                final int[] locationContainer = new int[2];
+                container.getLocationOnScreen(locationContainer);
+                final int cx = locationContainer[0] + (container.getWidth() / 2);
+                int cy = locationContainer[1];
+
+                int heightStatusBarDP = getResourceValue(getResources()
+                        .getIdentifier("status_bar_height", "dimen", "android"));
+
+                if (heightStatusBarDP > DP) {
+                    cy = (cy - container.getMeasuredHeight() / 2);
+                }
+
                 anim = ViewAnimationUtils.createCircularReveal(reveal, cx, cy, startRadius, finalRadius);
             } else {
                 anim = ObjectAnimator.ofFloat(reveal, "alpha", 0, 1);
