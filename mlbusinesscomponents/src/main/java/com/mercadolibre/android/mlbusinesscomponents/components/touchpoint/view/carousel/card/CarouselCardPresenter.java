@@ -22,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
 
     private void setCardBackgroundColor(final String backgroundColor, final CarouselCardView view) {
         if (StringUtils.isValidString(backgroundColor)) {
-            view.setBackgroundColor(Color.parseColor(backgroundColor));
+            view.changeBackgroundColor(backgroundColor);
         }
     }
 
