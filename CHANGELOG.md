@@ -1,4 +1,8 @@
-## VERSION 1.3.2
+## VERSION 1.3.4
+_06_05_2020_
+* FIX - Add keep annotation on dto
+
+## VERSION 1.3.3
 _06_05_2020_
 * REFACTOR - Add overlay on carousel items image
 
