@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -36,6 +37,7 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
     private final TextView topLabel;
     private final TextView mainLabel;
     private final ConstraintLayout button;
+    private final FrameLayout logoContainer;
     @Nullable private TouchpointTracking tracking;
     @Nullable private Map<String, Object> extraData;
     @Nullable private OnClickCallback onClickCallback;
@@ -83,6 +85,7 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
         topLabel = findViewById(R.id.touchpoint_carousel_card_top_label);
         mainLabel = findViewById(R.id.touchpoint_carousel_card_main_label);
         button = findViewById(R.id.touchpoint_carousel_card_button);
+        logoContainer = findViewById(R.id.touchpoint_carousel_card_logo_container);
         presenter = new CarouselCardPresenter();
     }
 
@@ -187,7 +190,7 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
     private void decorateLogo(final boolean havePill) {
         final int marginStartEnd = getResources().getDimensionPixelSize(R.dimen.ui_1_75m);
         final ConstraintLayout.LayoutParams logoParams =
-            (ConstraintLayout.LayoutParams) logo.getLayoutParams();
+            (ConstraintLayout.LayoutParams) logoContainer.getLayoutParams();
         logoParams.leftMargin = marginStartEnd;
         logoParams.rightMargin = marginStartEnd;
         if (havePill) {
@@ -197,7 +200,7 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
             logoParams.topMargin = getResources().getDimensionPixelSize(R.dimen.ui_2m);
             logoParams.bottomMargin = getResources().getDimensionPixelSize(R.dimen.ui_1_5m);
         }
-        logo.setLayoutParams(logoParams);
+        logoContainer.setLayoutParams(logoParams);
     }
 
     private void setLevelBackground(final String backgroundColor) {
