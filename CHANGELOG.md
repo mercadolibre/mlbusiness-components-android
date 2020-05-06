@@ -1,5 +1,9 @@
 ## VERSION 1.3.2
 _06_05_2020_
+* REFACTOR - Add overlay on carousel items image
+
+## VERSION 1.3.2
+_06_05_2020_
 * FIX - touchpoint carousel
 
 ## VERSION 1.3.1

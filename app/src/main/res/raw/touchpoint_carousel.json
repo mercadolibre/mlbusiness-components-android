@@ -1,190 +1,198 @@
 {
-  "id":"test",
-  "type":"CAROUSEL",
-  "content":{
-    "items":[
+  "id": "test",
+  "type": "CAROUSEL",
+  "content": {
+    "items": [
       {
-        "image":"https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg",
-        "link":"mercadopago://discount_center_payers/detail?campaign_id=1048784&user_level=4&mcc=561013&sections=%5B%7B%22id%22%3A%22header%22%2C%22type%22%3A%22header%22%2C%22content%22%3A%7B%22logo%22%3A%22https%3A%2F%2Fmla-s1-p.mlstatic.com%2F952848-MLA41109062105_032020-O.jpg%22%2C%22title%22%3A%2220%25%20OFF%22%2C%22subtitle%22%3A%22El%20Noble%22%2C%22level%22%3A%7B%22icon%22%3A%22discount_payers_black_check%22%2C%22label%22%3A%22NIVEL%201%22%2C%22format%22%3A%7B%22text_color%22%3A%22%23000000%22%2C%22background_color%22%3A%22%23EDEDED%22%7D%7D%7D%7D%5D&distance=427&coupon_used=false&status=FULL&store_id=12934127#from=/home_wallet/discount_center",
-        "subtitle":"Comida rápida",
-        "title":"El Noble",
-        "main_label":"20%",
-        "right_label":"OFF",
-        "tracking":{
-          "tracking_id":"1048784",
-          "event_data":{
-            "amount":99999999,
-            "amount_type":"percent",
-            "availability":"full",
-            "blocked":false,
-            "category":"Comida rápida",
-            "coupon_used":false,
-            "distance":427,
-            "has_logo":true,
-            "index":0,
-            "level":1,
-            "mcc":"561013",
-            "name":"El Noble",
-            "position":0,
-            "priority":7,
-            "store_id":12934127,
-            "tracking_id":"1048784"
+        "image": "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg",
+        "link": "mercadopago://discount_center_payers/detail?campaign_id=1048784&user_level=4&mcc=561013&sections=%5B%7B%22id%22%3A%22header%22%2C%22type%22%3A%22header%22%2C%22content%22%3A%7B%22logo%22%3A%22https%3A%2F%2Fmla-s1-p.mlstatic.com%2F952848-MLA41109062105_032020-O.jpg%22%2C%22title%22%3A%2220%25%20OFF%22%2C%22subtitle%22%3A%22El%20Noble%22%2C%22level%22%3A%7B%22icon%22%3A%22discount_payers_black_check%22%2C%22label%22%3A%22NIVEL%201%22%2C%22format%22%3A%7B%22text_color%22%3A%22%23000000%22%2C%22background_color%22%3A%22%23EDEDED%22%7D%7D%7D%7D%5D&distance=427&coupon_used=false&status=FULL&store_id=12934127#from=/home_wallet/discount_center",
+        "subtitle": "Comida rápida",
+        "title": "El Noble",
+        "main_label": "20%",
+        "right_label": "OFF",
+        "pill": {
+          "icon": "discount_payers_lock",
+          "label": "NIVEL 5",
+          "format": {
+            "text_color": "#ffffff",
+            "background_color": "#000000"
+          }
+        },
+        "tracking": {
+          "tracking_id": "1048784",
+          "event_data": {
+            "amount": 99999999,
+            "amount_type": "percent",
+            "availability": "full",
+            "blocked": false,
+            "category": "Comida rápida",
+            "coupon_used": false,
+            "distance": 427,
+            "has_logo": true,
+            "index": 0,
+            "level": 1,
+            "mcc": "561013",
+            "name": "El Noble",
+            "position": 0,
+            "priority": 7,
+            "store_id": 12934127,
+            "tracking_id": "1048784"
           }
         }
       },
       {
-        "image":"https://mla-s2-p.mlstatic.com/796321-MLA41164832890_032020-O.jpg",
-        "link":"mercadopago://discount_center_payers/detail?campaign_id=1049300&user_level=4&mcc=477310&sections=%5B%7B%22id%22%3A%22header%22%2C%22type%22%3A%22header%22%2C%22content%22%3A%7B%22logo%22%3A%22https%3A%2F%2Fmla-s2-p.mlstatic.com%2F796321-MLA41164832890_032020-O.jpg%22%2C%22title%22%3A%2220%25%20OFF%22%2C%22subtitle%22%3A%22Farmacia%20Azul%22%2C%22level%22%3A%7B%22icon%22%3A%22discount_payers_black_check%22%2C%22label%22%3A%22NIVEL%201%22%2C%22format%22%3A%7B%22text_color%22%3A%22%23000000%22%2C%22background_color%22%3A%22%23EDEDED%22%7D%7D%7D%7D%5D&distance=1918&coupon_used=false&status=FULL&store_id=30859042#from=/home_wallet/discount_center",
-        "subtitle":"Salud / Farmacia",
-        "title":"Farmacia Azul",
-        "main_label":"20%",
-        "right_label":"OFF",
-        "tracking":{
-          "tracking_id":"1049300",
-          "event_data":{
-            "amount":200,
-            "amount_type":"percent",
-            "availability":"full",
-            "blocked":false,
-            "category":"Salud / Farmacia",
-            "coupon_used":false,
-            "distance":1918,
-            "has_logo":true,
-            "index":1,
-            "level":1,
-            "mcc":"477310",
-            "name":"Farmacia Azul",
-            "position":1,
-            "priority":9,
-            "store_id":30859042,
-            "tracking_id":"1049300"
+        "image": "https://mla-s2-p.mlstatic.com/796321-MLA41164832890_032020-O.jpg",
+        "link": "mercadopago://discount_center_payers/detail?campaign_id=1049300&user_level=4&mcc=477310&sections=%5B%7B%22id%22%3A%22header%22%2C%22type%22%3A%22header%22%2C%22content%22%3A%7B%22logo%22%3A%22https%3A%2F%2Fmla-s2-p.mlstatic.com%2F796321-MLA41164832890_032020-O.jpg%22%2C%22title%22%3A%2220%25%20OFF%22%2C%22subtitle%22%3A%22Farmacia%20Azul%22%2C%22level%22%3A%7B%22icon%22%3A%22discount_payers_black_check%22%2C%22label%22%3A%22NIVEL%201%22%2C%22format%22%3A%7B%22text_color%22%3A%22%23000000%22%2C%22background_color%22%3A%22%23EDEDED%22%7D%7D%7D%7D%5D&distance=1918&coupon_used=false&status=FULL&store_id=30859042#from=/home_wallet/discount_center",
+        "subtitle": "Salud / Farmacia",
+        "title": "Farmacia Azul",
+        "main_label": "20%",
+        "right_label": "OFF",
+        "tracking": {
+          "tracking_id": "1049300",
+          "event_data": {
+            "amount": 200,
+            "amount_type": "percent",
+            "availability": "full",
+            "blocked": false,
+            "category": "Salud / Farmacia",
+            "coupon_used": false,
+            "distance": 1918,
+            "has_logo": true,
+            "index": 1,
+            "level": 1,
+            "mcc": "477310",
+            "name": "Farmacia Azul",
+            "position": 1,
+            "priority": 9,
+            "store_id": 30859042,
+            "tracking_id": "1049300"
           }
         }
       },
       {
-        "image":"https://mla-s2-p.mlstatic.com/727254-MLA40027104261_122019-O.jpg",
-        "link":"mercadopago://discount_center_payers/detail?campaign_id=1049140&user_level=4&mcc=471120&sections=%5B%7B%22id%22%3A%22header%22%2C%22type%22%3A%22header%22%2C%22content%22%3A%7B%22logo%22%3A%22https%3A%2F%2Fmla-s2-p.mlstatic.com%2F727254-MLA40027104261_122019-O.jpg%22%2C%22title%22%3A%2220%25%20OFF%22%2C%22subtitle%22%3A%22Walmart%22%2C%22level%22%3A%7B%22icon%22%3A%22discount_payers_black_check%22%2C%22label%22%3A%22NIVEL%201%22%2C%22format%22%3A%7B%22text_color%22%3A%22%23000000%22%2C%22background_color%22%3A%22%23EDEDED%22%7D%7D%7D%7D%5D&distance=2843&coupon_used=false&status=FULL&store_id=30361605#from=/home_wallet/discount_center",
-        "subtitle":"Supermercado",
-        "title":"Walmart",
-        "main_label":"20%",
-        "right_label":"OFF",
-        "tracking":{
-          "tracking_id":"1048785",
-          "event_data":{
-            "amount":300,
-            "amount_type":"percent",
-            "availability":"full",
-            "blocked":false,
-            "category":"Supermercado",
-            "coupon_used":false,
-            "distance":2843,
-            "has_logo":true,
-            "index":2,
-            "level":1,
-            "mcc":"471120",
-            "name":"Walmart",
-            "position":2,
-            "priority":9,
-            "store_id":30361605,
-            "tracking_id":"1049140"
+        "image": "https://mla-s2-p.mlstatic.com/727254-MLA40027104261_122019-O.jpg",
+        "link": "mercadopago://discount_center_payers/detail?campaign_id=1049140&user_level=4&mcc=471120&sections=%5B%7B%22id%22%3A%22header%22%2C%22type%22%3A%22header%22%2C%22content%22%3A%7B%22logo%22%3A%22https%3A%2F%2Fmla-s2-p.mlstatic.com%2F727254-MLA40027104261_122019-O.jpg%22%2C%22title%22%3A%2220%25%20OFF%22%2C%22subtitle%22%3A%22Walmart%22%2C%22level%22%3A%7B%22icon%22%3A%22discount_payers_black_check%22%2C%22label%22%3A%22NIVEL%201%22%2C%22format%22%3A%7B%22text_color%22%3A%22%23000000%22%2C%22background_color%22%3A%22%23EDEDED%22%7D%7D%7D%7D%5D&distance=2843&coupon_used=false&status=FULL&store_id=30361605#from=/home_wallet/discount_center",
+        "subtitle": "Supermercado",
+        "title": "Walmart",
+        "main_label": "20%",
+        "right_label": "OFF",
+        "tracking": {
+          "tracking_id": "1048785",
+          "event_data": {
+            "amount": 300,
+            "amount_type": "percent",
+            "availability": "full",
+            "blocked": false,
+            "category": "Supermercado",
+            "coupon_used": false,
+            "distance": 2843,
+            "has_logo": true,
+            "index": 2,
+            "level": 1,
+            "mcc": "471120",
+            "name": "Walmart",
+            "position": 2,
+            "priority": 9,
+            "store_id": 30361605,
+            "tracking_id": "1049140"
           }
         }
       },
       {
-        "image":"https://mla-s2-p.mlstatic.com/987538-MLA40035208112_122019-O.jpg",
-        "link":"mercadopago://discount_center_payers/detail?campaign_id=1049147&user_level=4&mcc=471120&sections=%5B%7B%22id%22%3A%22header%22%2C%22type%22%3A%22header%22%2C%22content%22%3A%7B%22logo%22%3A%22https%3A%2F%2Fmla-s2-p.mlstatic.com%2F987538-MLA40035208112_122019-O.jpg%22%2C%22title%22%3A%2220%25%20OFF%22%2C%22subtitle%22%3A%22Changomas%22%2C%22level%22%3A%7B%22icon%22%3A%22discount_payers_black_check%22%2C%22label%22%3A%22NIVEL%201%22%2C%22format%22%3A%7B%22text_color%22%3A%22%23000000%22%2C%22background_color%22%3A%22%23EDEDED%22%7D%7D%7D%7D%5D&distance=4575&coupon_used=false&status=FULL&store_id=30451381#from=/home_wallet/discount_center",
-        "subtitle":"Supermercado",
-        "title":"Changomas",
-        "main_label":"20%",
-        "right_label":"OFF",
-        "tracking":{
-          "tracking_id":"1048786",
-          "event_data":{
-            "amount":300,
-            "amount_type":"percent",
-            "availability":"full",
-            "blocked":false,
-            "category":"Supermercado",
-            "coupon_used":false,
-            "distance":4575,
-            "has_logo":true,
-            "index":3,
-            "level":1,
-            "mcc":"471120",
-            "name":"Changomas",
-            "position":3,
-            "priority":8,
-            "store_id":30451381,
-            "tracking_id":"1049147"
+        "image": "https://mla-s2-p.mlstatic.com/987538-MLA40035208112_122019-O.jpg",
+        "link": "mercadopago://discount_center_payers/detail?campaign_id=1049147&user_level=4&mcc=471120&sections=%5B%7B%22id%22%3A%22header%22%2C%22type%22%3A%22header%22%2C%22content%22%3A%7B%22logo%22%3A%22https%3A%2F%2Fmla-s2-p.mlstatic.com%2F987538-MLA40035208112_122019-O.jpg%22%2C%22title%22%3A%2220%25%20OFF%22%2C%22subtitle%22%3A%22Changomas%22%2C%22level%22%3A%7B%22icon%22%3A%22discount_payers_black_check%22%2C%22label%22%3A%22NIVEL%201%22%2C%22format%22%3A%7B%22text_color%22%3A%22%23000000%22%2C%22background_color%22%3A%22%23EDEDED%22%7D%7D%7D%7D%5D&distance=4575&coupon_used=false&status=FULL&store_id=30451381#from=/home_wallet/discount_center",
+        "subtitle": "Supermercado",
+        "title": "Changomas",
+        "main_label": "20%",
+        "right_label": "OFF",
+        "tracking": {
+          "tracking_id": "1048786",
+          "event_data": {
+            "amount": 300,
+            "amount_type": "percent",
+            "availability": "full",
+            "blocked": false,
+            "category": "Supermercado",
+            "coupon_used": false,
+            "distance": 4575,
+            "has_logo": true,
+            "index": 3,
+            "level": 1,
+            "mcc": "471120",
+            "name": "Changomas",
+            "position": 3,
+            "priority": 8,
+            "store_id": 30451381,
+            "tracking_id": "1049147"
           }
         }
       },
       {
-        "image":"https://mla-s1-p.mlstatic.com/665036-MLA41364219464_042020-O.jpg",
-        "link":"mercadopago://discount_center_payers/detail?campaign_id=1048971&user_level=4&mcc=621102&sections=%5B%7B%22id%22%3A%22header%22%2C%22type%22%3A%22header%22%2C%22content%22%3A%7B%22logo%22%3A%22https%3A%2F%2Fmla-s1-p.mlstatic.com%2F665036-MLA41364219464_042020-O.jpg%22%2C%22title%22%3A%2225%25%20OFF%22%2C%22subtitle%22%3A%22K24%22%2C%22level%22%3A%7B%22icon%22%3A%22discount_payers_black_check%22%2C%22label%22%3A%22NIVEL%201%22%2C%22format%22%3A%7B%22text_color%22%3A%22%23000000%22%2C%22background_color%22%3A%22%23EDEDED%22%7D%7D%7D%7D%5D&distance=2410&coupon_used=false&status=FULL&store_id=31210462#from=/home_wallet/discount_center",
-        "subtitle":"Almacén / Kiosco",
-        "title":"K24",
-        "main_label":"20%",
-        "right_label":"OFF",
-        "tracking":{
-          "tracking_id":"1048787",
-          "event_data":{
-            "amount":50,
-            "amount_type":"percent",
-            "availability":"full",
-            "blocked":false,
-            "category":"Almacén / Kiosco",
-            "coupon_used":false,
-            "distance":2410,
-            "has_logo":true,
-            "index":4,
-            "level":1,
-            "mcc":"621102",
-            "name":"K24",
-            "position":4,
-            "priority":7,
-            "store_id":31210462,
-            "tracking_id":"1048971"
+        "image": "https://mla-s1-p.mlstatic.com/665036-MLA41364219464_042020-O.jpg",
+        "link": "mercadopago://discount_center_payers/detail?campaign_id=1048971&user_level=4&mcc=621102&sections=%5B%7B%22id%22%3A%22header%22%2C%22type%22%3A%22header%22%2C%22content%22%3A%7B%22logo%22%3A%22https%3A%2F%2Fmla-s1-p.mlstatic.com%2F665036-MLA41364219464_042020-O.jpg%22%2C%22title%22%3A%2225%25%20OFF%22%2C%22subtitle%22%3A%22K24%22%2C%22level%22%3A%7B%22icon%22%3A%22discount_payers_black_check%22%2C%22label%22%3A%22NIVEL%201%22%2C%22format%22%3A%7B%22text_color%22%3A%22%23000000%22%2C%22background_color%22%3A%22%23EDEDED%22%7D%7D%7D%7D%5D&distance=2410&coupon_used=false&status=FULL&store_id=31210462#from=/home_wallet/discount_center",
+        "subtitle": "Almacén / Kiosco",
+        "title": "K24",
+        "main_label": "20%",
+        "right_label": "OFF",
+        "tracking": {
+          "tracking_id": "1048787",
+          "event_data": {
+            "amount": 50,
+            "amount_type": "percent",
+            "availability": "full",
+            "blocked": false,
+            "category": "Almacén / Kiosco",
+            "coupon_used": false,
+            "distance": 2410,
+            "has_logo": true,
+            "index": 4,
+            "level": 1,
+            "mcc": "621102",
+            "name": "K24",
+            "position": 4,
+            "priority": 7,
+            "store_id": 31210462,
+            "tracking_id": "1048971"
           }
         }
       },
       {
-        "image":"https://mla-s2-p.mlstatic.com/702591-MLA41445410868_042020-O.jpg",
-        "link":"mercadopago://discount_center_payers/detail?campaign_id=1048708&user_level=4&mcc=621013&sections=%5B%7B%22id%22%3A%22header%22%2C%22type%22%3A%22header%22%2C%22content%22%3A%7B%22logo%22%3A%22https%3A%2F%2Fmla-s2-p.mlstatic.com%2F702591-MLA41445410868_042020-O.jpg%22%2C%22title%22%3A%2220%25%20OFF%22%2C%22subtitle%22%3A%22Tienda%20de%20carnes%22%2C%22level%22%3A%7B%22icon%22%3A%22discount_payers_black_check%22%2C%22label%22%3A%22NIVEL%201%22%2C%22format%22%3A%7B%22text_color%22%3A%22%23000000%22%2C%22background_color%22%3A%22%23EDEDED%22%7D%7D%7D%7D%5D&distance=8760&coupon_used=false&status=FULL&store_id=31292638#from=/home_wallet/discount_center",
-        "subtitle":"Carnicería",
-        "title":"Tienda de carnes",
-        "main_label":"20%",
-        "right_label":"OFF",
-        "tracking":{
-          "tracking_id":"1048788",
-          "event_data":{
-            "amount":100,
-            "amount_type":"percent",
-            "availability":"full",
-            "blocked":false,
-            "category":"Carnicería",
-            "coupon_used":false,
-            "distance":8760,
-            "has_logo":true,
-            "index":5,
-            "level":1,
-            "mcc":"621013",
-            "name":"Tienda de carnes",
-            "position":5,
-            "priority":7,
-            "store_id":31292638,
-            "tracking_id":"1048708"
+        "image": "https://mla-s2-p.mlstatic.com/702591-MLA41445410868_042020-O.jpg",
+        "link": "mercadopago://discount_center_payers/detail?campaign_id=1048708&user_level=4&mcc=621013&sections=%5B%7B%22id%22%3A%22header%22%2C%22type%22%3A%22header%22%2C%22content%22%3A%7B%22logo%22%3A%22https%3A%2F%2Fmla-s2-p.mlstatic.com%2F702591-MLA41445410868_042020-O.jpg%22%2C%22title%22%3A%2220%25%20OFF%22%2C%22subtitle%22%3A%22Tienda%20de%20carnes%22%2C%22level%22%3A%7B%22icon%22%3A%22discount_payers_black_check%22%2C%22label%22%3A%22NIVEL%201%22%2C%22format%22%3A%7B%22text_color%22%3A%22%23000000%22%2C%22background_color%22%3A%22%23EDEDED%22%7D%7D%7D%7D%5D&distance=8760&coupon_used=false&status=FULL&store_id=31292638#from=/home_wallet/discount_center",
+        "subtitle": "Carnicería",
+        "title": "Tienda de carnes",
+        "main_label": "20%",
+        "right_label": "OFF",
+        "tracking": {
+          "tracking_id": "1048788",
+          "event_data": {
+            "amount": 100,
+            "amount_type": "percent",
+            "availability": "full",
+            "blocked": false,
+            "category": "Carnicería",
+            "coupon_used": false,
+            "distance": 8760,
+            "has_logo": true,
+            "index": 5,
+            "level": 1,
+            "mcc": "621013",
+            "name": "Tienda de carnes",
+            "position": 5,
+            "priority": 7,
+            "store_id": 31292638,
+            "tracking_id": "1048708"
           }
         }
       }
     ]
   },
-  "tracking":{
-    "id":"mp_home",
-    "type":"GRID",
-    "info_adicional":"Valor de la info adicional"
+  "tracking": {
+    "id": "mp_home",
+    "type": "GRID",
+    "info_adicional": "Valor de la info adicional"
   },
-  "format":{
-    "margin":16
+  "format": {
+    "margin": 16
   }
 }
