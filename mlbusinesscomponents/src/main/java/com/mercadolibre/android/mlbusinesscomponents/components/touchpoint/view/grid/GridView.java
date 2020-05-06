@@ -13,15 +13,12 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils;
-import com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import org.jetbrains.annotations.NotNull;
 
-import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.PRINT;
-import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.SHOW;
-import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.mergeData;
+import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.trackPrint;
+import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.trackShow;
 
 public class GridView extends AbstractTouchpointChildView<Grid> {
 
@@ -67,7 +64,7 @@ public class GridView extends AbstractTouchpointChildView<Grid> {
         gridLayout.removeAllViews();
         presenter.bind(model, this);
         trackeables = new ArrayList<>(model.getItems());
-        trackShowEvent();
+        trackShow(tracker, trackeables);
         decorate();
     }
 
@@ -82,22 +79,10 @@ public class GridView extends AbstractTouchpointChildView<Grid> {
 
     @Override
     public void print() {
-        if (tracker != null) {
-            for (final TouchpointTrackeable trackeable : trackeables) {
-                printProvider.accumulateData(trackeable.getTracking());
-            }
-            final Map<String, Object> data = printProvider.getData();
-            if (!data.isEmpty()) {
-                tracker.track(PRINT, mergeData(data, tracking));
-            }
-            printProvider.cleanData();
+        for (final TouchpointTrackeable trackeable : trackeables) {
+            printProvider.accumulateData(trackeable.getTracking());
         }
-    }
-
-    private void trackShowEvent() {
-        if (tracker != null) {
-            tracker.track(SHOW, TrackingUtils.retrieveDataToTrack(trackeables, tracking));
-        }
+        trackPrint(tracker, printProvider);
     }
 
     /* default */ void setRawCount(final int rawCount) {

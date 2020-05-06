@@ -22,9 +22,7 @@ import com.mercadolibre.android.picassodiskcache.PicassoDiskLoader;
 import java.util.Map;
 import org.jetbrains.annotations.NotNull;
 
-import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.TAP;
-import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.mergeData;
-import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.toItem;
+import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.trackTap;
 
 public class GridItemView extends LinearLayout implements TouchpointPrintable {
 
@@ -117,10 +115,7 @@ public class GridItemView extends LinearLayout implements TouchpointPrintable {
 
     private void onClick(final GridItem item, @NotNull final OnClickCallback callback,
         @Nullable final MLBusinessTouchpointTracker tracker, @Nullable final Map<String, Object> tracking) {
-        final TouchpointTracking itemData = item.getTracking();
-        if (tracker != null && itemData != null) {
-            tracker.track(TAP, mergeData(toItem(itemData.getEventData()), tracking));
-        }
+        trackTap(tracker, item.getTracking());
         callback.onClick(item.getLink());
     }
 

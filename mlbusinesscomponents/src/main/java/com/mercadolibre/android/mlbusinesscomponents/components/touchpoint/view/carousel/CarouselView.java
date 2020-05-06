@@ -10,20 +10,17 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import com.mercadolibre.android.mlbusinesscomponents.R;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCard;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.Carousel;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCard;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils;
-import com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import static android.support.v7.widget.RecyclerView.SCROLL_STATE_IDLE;
-import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.PRINT;
-import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.SHOW;
-import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.mergeData;
+import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.trackPrint;
+import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.trackShow;
 
 public class CarouselView extends AbstractTouchpointChildView<Carousel> {
 
@@ -87,21 +84,16 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
             adapter.setTracker(tracker);
             adapter.setExtraData(tracking);
             showCards(model.getItems());
-            trackShowEvent(new ArrayList<>(model.getItems()));
+            trackShow(tracker, new ArrayList<>(model.getItems()));
         }
         decorate();
-    }
-
-    private void trackShowEvent(final List<TouchpointTrackeable> trackeables) {
-        if (tracker != null && !trackeables.isEmpty()) {
-            tracker.track(SHOW, TrackingUtils.retrieveDataToTrack(trackeables, tracking));
-        }
     }
 
     private void decorate() {
         if (additionalInsets != null) {
             setPadding(0, (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getTop()),
                 0,  (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getBottom()));
+            recyclerView.removeItemDecorationAt(0);
             recyclerView.addItemDecoration(
                 new CarouselDecorator((int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getLeft()),
                     (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getRight())));
@@ -114,15 +106,9 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
 
     @Override
     public void print() {
-        if (tracker != null) {
-            recyclerView.getHitRect(rect);
-            findData(recyclerView);
-            final Map<String, Object> data = printProvider.getData();
-            if (!data.isEmpty()) {
-                tracker.track(PRINT, mergeData(data, tracking));
-            }
-            printProvider.cleanData();
-        }
+        recyclerView.getHitRect(rect);
+        findData(recyclerView);
+        trackPrint(tracker, printProvider);
     }
 
     private void findData(final ViewGroup viewGroup) {

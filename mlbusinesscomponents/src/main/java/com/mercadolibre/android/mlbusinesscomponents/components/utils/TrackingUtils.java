@@ -1,9 +1,11 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.utils;
 
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointPrintProvider;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -31,36 +33,46 @@ public final class TrackingUtils {
         return new HashMap<>(Collections.singletonMap(KEY, eventData));
     }
 
-    public static Map<String, Object> retrieveDataToTrack(final List<TouchpointTrackeable> items,
-        @Nullable final Map<String, Object> tracking) {
+    public static void trackTap(@Nullable final MLBusinessTouchpointTracker tracker,
+        @Nullable final TouchpointTracking tracking) {
+        if (tracker != null && isValidTracking(tracking)) {
+            tracker.track(TAP, tracking.getEventData());
+        }
+    }
+
+    public static void trackShow(@Nullable final MLBusinessTouchpointTracker tracker,
+        final List<TouchpointTrackeable> trackeables) {
+        if (tracker != null && !trackeables.isEmpty() && !retrieveDataToTrack(trackeables).isEmpty()) {
+            tracker.track(SHOW, retrieveDataToTrack(trackeables));
+        }
+    }
+
+    public static void trackPrint(@Nullable final MLBusinessTouchpointTracker tracker,
+        final TouchpointPrintProvider printProvider) {
+        if (tracker != null) {
+            final Map<String, Object> data = printProvider.getData();
+            if (!data.isEmpty()) {
+                tracker.track(PRINT, data);
+            }
+            printProvider.cleanData();
+        }
+    }
+
+    private static Map<String, Object> retrieveDataToTrack(final List<TouchpointTrackeable> items) {
         final List<Map<String, Object>> eventData = new ArrayList<>();
         for (final TouchpointTrackeable trackeable : items) {
-            if (haveData(trackeable)) {
+            if (isValidTracking(trackeable.getTracking())) {
                 eventData.add(trackeable.getTracking().getEventData());
             }
         }
         final Map<String, Object> data = new HashMap<>();
-        data.put(KEY, eventData);
-        return mergeData(data, tracking);
-    }
-
-    private static boolean haveData(final TouchpointTrackeable trackeable) {
-        return trackeable.getTracking() != null
-            && trackeable.getTracking().getEventData() != null
-            && !trackeable.getTracking().getEventData().isEmpty();
-    }
-
-    public static Map<String, Object> mergeData(@NonNull final Map<String, Object> data,
-        @Nullable final Map<String, Object> tracking) {
-        if (tracking != null) {
-            data.putAll(tracking);
+        if (!eventData.isEmpty()) {
+            data.put(KEY, eventData);
         }
         return data;
     }
 
-    public static Map<String, Object> toItem(@NonNull final Map<String, Object> eventData) {
-        final Map<String, Object> data = new HashMap<>();
-        data.put(KEY, Collections.singletonList(eventData));
-        return data;
+    private static boolean isValidTracking(@Nullable final TouchpointTracking tracking) {
+        return tracking != null && tracking.getEventData() != null && !tracking.getEventData().isEmpty();
     }
 }

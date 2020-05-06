@@ -22,9 +22,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.track
 import com.mercadolibre.android.picassodiskcache.PicassoDiskLoader;
 import java.util.Map;
 
-import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.TAP;
-import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.mergeData;
-import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.toItem;
+import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.trackTap;
 
 public class CarouselCardView extends CardView implements TouchpointTrackeable {
 
@@ -181,9 +179,7 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
 
     private void onClickEvent(final String link) {
         if (onClickCallback != null) {
-            if (tracker != null && tracking != null) {
-                tracker.track(TAP, mergeData(toItem(tracking.getEventData()), extraData));
-            }
+            trackTap(tracker, tracking);
             onClickCallback.onClick(link);
         }
     }
