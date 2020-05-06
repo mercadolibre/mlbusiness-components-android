@@ -3,8 +3,11 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.doma
 import android.support.annotation.Nullable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
+import java.io.Serializable;
 
-public class CarouselCard implements TouchpointTrackeable {
+public class CarouselCard implements TouchpointTrackeable, Serializable {
+
+    private static final long serialVersionUID = 7278154289419469849L;
 
     private final String image;
     private final String topLabel;

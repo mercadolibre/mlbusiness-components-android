@@ -3,8 +3,11 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.doma
 import android.support.annotation.Nullable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
+import java.io.Serializable;
 
-public class GridItem implements TouchpointTrackeable {
+public class GridItem implements TouchpointTrackeable, Serializable {
+
+    private static final long serialVersionUID = 4629334061837323019L;
 
     private final String image;
     private final String title;
