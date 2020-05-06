@@ -14,6 +14,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.Carousel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
+import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils;
 import java.util.ArrayList;
 import java.util.List;
@@ -68,7 +69,6 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
     private void initList(final Context context) {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
-        recyclerView.addItemDecoration(new CarouselDecorator(getResources().getDimensionPixelOffset(R.dimen.ui_1_25m)));
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull final RecyclerView recyclerView, final int state) {
@@ -89,11 +89,22 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
             showCards(model.getItems());
             trackShowEvent(new ArrayList<>(model.getItems()));
         }
+        decorate();
     }
 
     private void trackShowEvent(final List<TouchpointTrackeable> trackeables) {
         if (tracker != null && !trackeables.isEmpty()) {
             tracker.track(SHOW, TrackingUtils.retrieveDataToTrack(trackeables, tracking));
+        }
+    }
+
+    private void decorate() {
+        if (additionalInsets != null) {
+            setPadding(0, (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getTop()),
+                0,  (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getBottom()));
+            recyclerView.addItemDecoration(
+                new CarouselDecorator((int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getLeft()),
+                    (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getRight())));
         }
     }
 

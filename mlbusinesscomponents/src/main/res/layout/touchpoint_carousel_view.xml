@@ -8,9 +8,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/touchpoint_carousel_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/ui_1_5m"
-        android:paddingBottom="@dimen/ui_1_5m">
+        android:layout_height="wrap_content">
 
         <!--  Childs added here   -->
 

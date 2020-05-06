@@ -61,6 +61,7 @@ public enum TouchpointRegistry {
         setTracker(response.id, tracker, view);
         view.setOnClickCallback(onClickCallback);
         view.setExtraData(response.tracking);
+        view.setAdditionalInsets(response.additionalEdgeInsets);
         view.bind(TouchpointMapper.mapToContent(response));
         return view;
     }

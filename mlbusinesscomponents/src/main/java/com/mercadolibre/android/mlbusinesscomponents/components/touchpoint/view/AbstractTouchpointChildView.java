@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.AdditionalEdgeInsets;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointChildPrintable;
@@ -20,6 +21,7 @@ public abstract class AbstractTouchpointChildView<M extends TouchpointContent> e
     @Nullable protected MLBusinessTouchpointTracker tracker;
     @Nullable protected OnClickCallback onClickCallback;
     @Nullable protected Map<String, Object> tracking;
+    @Nullable protected AdditionalEdgeInsets additionalInsets;
     protected TouchpointPrintProvider printProvider;
 
     /**
@@ -52,7 +54,6 @@ public abstract class AbstractTouchpointChildView<M extends TouchpointContent> e
         final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         printProvider = new TouchpointPrintProvider(new HashSet<>(), new HashMap<>());
-
     }
 
     /**
@@ -77,5 +78,9 @@ public abstract class AbstractTouchpointChildView<M extends TouchpointContent> e
 
     public void setExtraData(@Nullable final Map<String, Object> tracking) {
         this.tracking = tracking;
+    }
+
+    public void setAdditionalInsets(@Nullable final AdditionalEdgeInsets additionalInsets) {
+        this.additionalInsets = additionalInsets;
     }
 }

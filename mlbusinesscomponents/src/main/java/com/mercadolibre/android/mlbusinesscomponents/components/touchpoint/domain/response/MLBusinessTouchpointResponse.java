@@ -2,6 +2,7 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.doma
 
 import android.support.annotation.Nullable;
 import com.google.gson.JsonElement;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.AdditionalEdgeInsets;
 import java.io.Serializable;
 import java.util.Map;
 
@@ -13,4 +14,5 @@ public class MLBusinessTouchpointResponse implements Serializable {
     public String type;
     @Nullable public JsonElement content;
     @Nullable public Map<String, Object> tracking;
+    @Nullable public AdditionalEdgeInsets additionalEdgeInsets;
 }

@@ -12,6 +12,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid.GridItem;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
+import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +68,16 @@ public class GridView extends AbstractTouchpointChildView<Grid> {
         presenter.bind(model, this);
         trackeables = new ArrayList<>(model.getItems());
         trackShowEvent();
+        decorate();
+    }
+
+    private void decorate() {
+        if (additionalInsets != null) {
+            setPadding((int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getLeft()),
+                (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getTop()),
+                (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getRight()),
+                (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getBottom()));
+        }
     }
 
     @Override

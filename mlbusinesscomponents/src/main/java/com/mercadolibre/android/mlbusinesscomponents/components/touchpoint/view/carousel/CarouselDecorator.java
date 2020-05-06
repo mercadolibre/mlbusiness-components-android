@@ -7,10 +7,12 @@ import android.view.View;
 
 /* default */ class CarouselDecorator extends RecyclerView.ItemDecoration {
 
-    private final int margin;
+    private final int marginLeft;
+    private final int marginRight;
 
-    /* default */ CarouselDecorator(final int margin) {
-        this.margin = margin;
+    /* default */ CarouselDecorator(final int marginLeft, final int marginRight) {
+        this.marginLeft = marginLeft;
+        this.marginRight = marginRight;
     }
 
     @Override
@@ -18,10 +20,10 @@ import android.view.View;
         @NonNull final RecyclerView parent, @NonNull final RecyclerView.State state) {
         final int childPosition = parent.getChildAdapterPosition(view);
         if (childPosition == 0) {
-            outRect.left = margin;
+            outRect.left = marginLeft;
         }
         if (childPosition == state.getItemCount() - 1) {
-            outRect.right = margin;
+            outRect.right = marginRight;
         }
     }
 }

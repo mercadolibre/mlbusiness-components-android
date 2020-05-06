@@ -4,14 +4,19 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.TypedValue;
 
-public class ScaleUtils {
+public final class ScaleUtils {
+
+    private ScaleUtils() {
+        //no-op
+    }
 
     public static float getPxFromDp(@NonNull final Context context, final float dp) {
-        return dp * context.getResources().getDisplayMetrics().density;
+        return Math.round(
+            TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics()));
     }
 
     public static int getPxFromSp(@NonNull final Context context, final float sp) {
-        return (int) TypedValue
-            .applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, context.getResources().getDisplayMetrics());
+        return Math.round(
+                TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, context.getResources().getDisplayMetrics()));
     }
 }

@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -75,6 +76,7 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
         final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         inflate(getContext(), R.layout.touchpoint_carousel_card_view, this);
+        init();
         logo = findViewById(R.id.touchpoint_carousel_card_logo);
         levelContainer = findViewById(R.id.touchpoint_carousel_card_level_container);
         levelIcon = findViewById(R.id.touchpoint_carousel_card_level_icon);
@@ -86,6 +88,16 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
         mainLabel = findViewById(R.id.touchpoint_carousel_card_main_label);
         button = findViewById(R.id.touchpoint_carousel_card_button);
         presenter = new CarouselCardPresenter();
+    }
+
+    private void init() {
+        final LinearLayout.LayoutParams params =
+            new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        final int margin = getResources().getDimensionPixelSize(R.dimen.ui_075m);
+        params.setMargins(margin, margin, margin, margin);
+        setLayoutParams(params);
+        setCardElevation(getResources().getDimensionPixelSize(R.dimen.ui_025m));
+        setRadius(getResources().getDimensionPixelSize(R.dimen.ui_075m));
     }
 
     /**
