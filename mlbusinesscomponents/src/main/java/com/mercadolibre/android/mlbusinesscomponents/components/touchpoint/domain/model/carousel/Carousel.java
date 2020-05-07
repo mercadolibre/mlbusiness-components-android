@@ -1,9 +1,11 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel;
 
+import android.support.annotation.Keep;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent;
 import java.io.Serializable;
 import java.util.List;
 
+@Keep
 public class Carousel implements TouchpointContent, Serializable {
 
     private static final long serialVersionUID = 7998836654820333977L;

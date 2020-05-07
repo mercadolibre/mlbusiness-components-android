@@ -1,4 +1,4 @@
-## VERSION 1.3.4
+## VERSION 1.3.5
 _06_05_2020_
 * FIX - Add keep annotation on dto
 
