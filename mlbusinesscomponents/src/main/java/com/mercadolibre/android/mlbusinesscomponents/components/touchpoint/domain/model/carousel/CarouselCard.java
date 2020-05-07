@@ -1,10 +1,12 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel;
 
+import android.support.annotation.Keep;
 import android.support.annotation.Nullable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
 import java.io.Serializable;
 
+@Keep
 public class CarouselCard implements TouchpointTrackeable, Serializable {
 
     private static final long serialVersionUID = 7278154289419469849L;

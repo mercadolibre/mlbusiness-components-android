@@ -1,7 +1,9 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model;
 
+import android.support.annotation.Keep;
 import java.io.Serializable;
 
+@Keep
 public class AdditionalEdgeInsets implements Serializable {
 
     private static final long serialVersionUID = -1355285710958843901L;
