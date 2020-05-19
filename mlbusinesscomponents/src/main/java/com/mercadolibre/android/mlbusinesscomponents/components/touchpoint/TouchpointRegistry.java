@@ -52,13 +52,15 @@ public enum TouchpointRegistry {
      * @param response A {@link MLBusinessTouchpointResponse}
      * @param onClickCallback A {@link OnClickCallback}
      * @param tracker A {@link MLBusinessTouchpointTracker}
+     * @param isMPInstalled true if MP is installed, false otherwise
      * @return the view
      */
     public AbstractTouchpointChildView createViewFromResponse(final Context context,
         final MLBusinessTouchpointResponse response, @Nullable final OnClickCallback onClickCallback,
-        @Nullable final MLBusinessTouchpointTracker tracker) {
+        @Nullable final MLBusinessTouchpointTracker tracker, final boolean isMPInstalled) {
         final AbstractTouchpointChildView view = factory.create(context);
         setTracker(response.id, tracker, view);
+        view.setCanOpenMercadoPago(isMPInstalled);
         view.setOnClickCallback(onClickCallback);
         view.setExtraData(response.tracking);
         view.setAdditionalInsets(response.additionalEdgeInsets);
