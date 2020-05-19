@@ -80,6 +80,7 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
     @Override
     public void bind(@Nullable final Carousel model) {
         if (model != null && model.isValid()) {
+            adapter.setCanOpenMercadoPago(isMPInstalled);
             adapter.setOnClickCallback(onClickCallback);
             adapter.setTracker(tracker);
             adapter.setExtraData(tracking);

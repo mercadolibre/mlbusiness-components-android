@@ -23,6 +23,7 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
     @Nullable private OnClickCallback onClickCallback;
     @Nullable private MLBusinessTouchpointTracker tracker;
     @Nullable private Map<String, Object> extraData;
+    private boolean isMPInstalled = true;
 
     /**
      * Constructor
@@ -44,6 +45,7 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
         holder.setOnClickCallback(onClickCallback);
         holder.setTracker(tracker);
         holder.setExtraData(extraData);
+        holder.setCanOpenMercadoPago(isMPInstalled);
         holder.bindView(cards.get(index));
     }
 
@@ -77,6 +79,10 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
         this.extraData = extraData;
     }
 
+    /* default */ void setCanOpenMercadoPago(final boolean isMPInstalled) {
+        this.isMPInstalled = isMPInstalled;
+    }
+
     /* default */ static class CarouselViewHolder extends RecyclerView.ViewHolder {
 
         private final CarouselCardView view;
@@ -100,6 +106,10 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
 
         /* default */ void setExtraData(@Nullable final Map<String, Object> extraData) {
             view.setExtraData(extraData);
+        }
+
+        /* default */ void setCanOpenMercadoPago(final boolean isMPInstalled) {
+            view.setCanOpenMercadoPago(isMPInstalled);
         }
     }
 }
