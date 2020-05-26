@@ -1,3 +1,6 @@
+## VERSION 1.4.0
+* FEATURE - Add optional subtitle on Loyalty Ring
+
 ## VERSION 1.3.6
 _19_05_2020_
 * REFACTOR - Add optional ripple on touchpoints view
