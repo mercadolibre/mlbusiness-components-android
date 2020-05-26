@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import java.lang.ref.WeakReference;
 
-public class MLBusinessLoyaltyRingView extends RelativeLayout {
+public class MLBusinessLoyaltyRingView extends ConstraintLayout {
 
     public interface OnClickLoyaltyRing {
         void onClickLoyaltyButton(@NonNull final String deepLink);
