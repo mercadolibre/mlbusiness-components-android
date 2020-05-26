@@ -21,7 +21,6 @@ public class MLBusinessLoyaltyRingView extends ConstraintLayout {
     private final TextView loyaltyButton;
     private WeakReference<OnClickLoyaltyRing> onClickLoyaltyRing;
     private MLBusinessLoyaltyRingData businessLoyaltyRingData;
-    private MLBusinessLoyaltyRingCompleteData businessLoyaltyRingCompletedData;
 
     public MLBusinessLoyaltyRingView(final Context context) {
         this(context, null);
@@ -75,8 +74,8 @@ public class MLBusinessLoyaltyRingView extends ConstraintLayout {
     }
 
     private void setSubtitle() {
-        if (businessLoyaltyRingCompletedData != null && businessLoyaltyRingCompletedData.getSubtitle() != null) {
-            loyaltySubtitle.setText(businessLoyaltyRingCompletedData.getSubtitle());
+        if (businessLoyaltyRingData.getSubtitle() != null) {
+            loyaltySubtitle.setText(businessLoyaltyRingData.getSubtitle());
             loyaltySubtitle.setVisibility(VISIBLE);
         } else {
             loyaltySubtitle.setVisibility(GONE);
@@ -90,11 +89,4 @@ public class MLBusinessLoyaltyRingView extends ConstraintLayout {
         configLoyaltyRingView();
     }
 
-    public void init(@NonNull final MLBusinessLoyaltyRingCompleteData businessLoyaltyRingCompletedData,
-                     @NonNull final OnClickLoyaltyRing onClick) {
-        this.businessLoyaltyRingCompletedData = businessLoyaltyRingCompletedData;
-        this.businessLoyaltyRingData = businessLoyaltyRingCompletedData;
-        onClickLoyaltyRing = new WeakReference<>(onClick);
-        configLoyaltyRingView();
-    }
 }
