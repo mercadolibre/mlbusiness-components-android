@@ -43,9 +43,22 @@ public class MLBusinessLoyaltyRingView extends ConstraintLayout {
 
     private void configLoyaltyRingView() {
         setProgress();
-        loyaltyTitle.setText(businessLoyaltyRingData.getTitle());
+        setTitle();
         setButton();
         setSubtitle();
+    }
+
+    private void setProgress() {
+        final int colorRing = Color.parseColor(businessLoyaltyRingData.getRingHexaColor());
+        progress.setColorText(colorRing);
+        progress.setColorProgress(colorRing);
+        progress.setProgress(businessLoyaltyRingData.getRingPercentage());
+        progress.setAnimation();
+        progress.setNumber(businessLoyaltyRingData.getRingNumber());
+    }
+
+    private void setTitle() {
+        loyaltyTitle.setText(businessLoyaltyRingData.getTitle());
     }
 
     private void setButton() {
@@ -64,14 +77,7 @@ public class MLBusinessLoyaltyRingView extends ConstraintLayout {
         }
     }
 
-    private void setProgress() {
-        final int colorRing = Color.parseColor(businessLoyaltyRingData.getRingHexaColor());
-        progress.setColorText(colorRing);
-        progress.setColorProgress(colorRing);
-        progress.setProgress(businessLoyaltyRingData.getRingPercentage());
-        progress.setAnimation();
-        progress.setNumber(businessLoyaltyRingData.getRingNumber());
-    }
+
 
     private void setSubtitle() {
         if (businessLoyaltyRingData.getSubtitle() != null) {
