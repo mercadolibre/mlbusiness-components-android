@@ -5,11 +5,12 @@ import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import java.lang.ref.WeakReference;
 
-public class MLBusinessLoyaltyRingView extends ConstraintLayout {
+public class MLBusinessLoyaltyRingView extends RelativeLayout {
 
     public interface OnClickLoyaltyRing {
         void onClickLoyaltyButton(@NonNull final String deepLink);
