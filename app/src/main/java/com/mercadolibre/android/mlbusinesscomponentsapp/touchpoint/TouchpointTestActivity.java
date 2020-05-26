@@ -42,6 +42,7 @@ public class TouchpointTestActivity extends AppCompatActivity implements OnClick
         touchpointListener.setOnTouchListener(scrollView);
         touchpointView.setOnClickCallback(this);
         touchpointView.setTracker(mockTracker());
+        touchpointView.setCanOpenMercadoPago(true);
         initButtons();
     }
 

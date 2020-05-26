@@ -1,3 +1,7 @@
+## VERSION 1.3.6
+_19_05_2020_
+* REFACTOR - Add optional ripple on touchpoints view
+
 ## VERSION 1.3.5
 _06_05_2020_
 * FIX - Add keep annotation on dto

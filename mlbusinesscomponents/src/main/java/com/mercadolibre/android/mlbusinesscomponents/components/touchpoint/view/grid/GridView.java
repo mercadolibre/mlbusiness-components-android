@@ -93,7 +93,7 @@ public class GridView extends AbstractTouchpointChildView<Grid> {
         final LinearLayout rowView = getRowView();
         for (final GridItem item : items) {
             final GridItemView itemView = new GridItemView(getContext());
-            itemView.bind(item, onClickCallback, tracker, tracking);
+            itemView.bind(item, onClickCallback, tracker, tracking, isMPInstalled);
             rowView.addView(itemView);
         }
         gridLayout.addView(rowView);

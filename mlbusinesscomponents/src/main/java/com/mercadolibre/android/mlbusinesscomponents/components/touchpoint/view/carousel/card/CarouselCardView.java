@@ -42,6 +42,7 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
     @Nullable private Map<String, Object> extraData;
     @Nullable private OnClickCallback onClickCallback;
     @Nullable private MLBusinessTouchpointTracker tracker;
+    private boolean isMPInstalled = true;
 
     private final CarouselCardPresenter presenter;
 
@@ -177,7 +178,10 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
     }
 
     /* default */ void onClick(final String link) {
-        button.setOnClickListener(v -> onClickEvent(link));
+        button.setClickable(isMPInstalled);
+        if (isMPInstalled) {
+            button.setOnClickListener(v -> onClickEvent(link));
+        }
     }
 
     private void onClickEvent(final String link) {
@@ -275,5 +279,9 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
         } catch (final IllegalArgumentException e) {
             //no-op
         }
+    }
+
+    public void setCanOpenMercadoPago(final boolean isMPInstalled) {
+        this.isMPInstalled = isMPInstalled;
     }
 }

@@ -23,6 +23,7 @@ public abstract class AbstractTouchpointChildView<M extends TouchpointContent> e
     @Nullable protected Map<String, Object> tracking;
     @Nullable protected AdditionalEdgeInsets additionalInsets;
     protected TouchpointPrintProvider printProvider;
+    protected boolean isMPInstalled = true;
 
     /**
      * Constructor
@@ -82,5 +83,9 @@ public abstract class AbstractTouchpointChildView<M extends TouchpointContent> e
 
     public void setAdditionalInsets(@Nullable final AdditionalEdgeInsets additionalInsets) {
         this.additionalInsets = additionalInsets;
+    }
+
+    public void setCanOpenMercadoPago(final boolean isMPInstalled) {
+        this.isMPInstalled = isMPInstalled;
     }
 }

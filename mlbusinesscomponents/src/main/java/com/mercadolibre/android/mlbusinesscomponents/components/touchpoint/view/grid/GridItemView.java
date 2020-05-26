@@ -76,17 +76,19 @@ public class GridItemView extends LinearLayout implements TouchpointPrintable {
 
     /**
      * Bind model
-     *  @param item A {@link GridItem}
+     * @param item A {@link GridItem}
      * @param callback A {@link OnClickCallback}
      * @param tracker A {@link MLBusinessTouchpointTracker}
      * @param tracking Extra data to track
+     * @param isMPInstalled true if MP is installed, false otherwise
      */
     public void bind(final GridItem item, @Nullable final OnClickCallback callback,
-        @Nullable final MLBusinessTouchpointTracker tracker, @Nullable final Map<String, Object> tracking) {
+        @Nullable final MLBusinessTouchpointTracker tracker, @Nullable final Map<String, Object> tracking,
+        final boolean isMPInstalled) {
         showImage(item.getImage());
         showTitle(item.getTitle());
         showSubtitle(item.getSubtitle());
-        setOnClick(item, callback, tracker, tracking);
+        setOnClick(item, callback, tracker, tracking, isMPInstalled);
         setTracking(item.getTracking());
     }
 
@@ -107,9 +109,13 @@ public class GridItemView extends LinearLayout implements TouchpointPrintable {
     }
 
     private void setOnClick(final GridItem item, @Nullable final OnClickCallback callback,
-        @Nullable final MLBusinessTouchpointTracker tracker, @Nullable final Map<String, Object> tracking) {
+        @Nullable final MLBusinessTouchpointTracker tracker, @Nullable final Map<String, Object> tracking,
+        final boolean isMPInstalled) {
         if (callback != null) {
-            itemClick.setOnClickListener(v -> onClick(item, callback, tracker, tracking));
+            itemClick.setClickable(isMPInstalled);
+            if (isMPInstalled) {
+                itemClick.setOnClickListener(v -> onClick(item, callback, tracker, tracking));
+            }
         }
     }
 

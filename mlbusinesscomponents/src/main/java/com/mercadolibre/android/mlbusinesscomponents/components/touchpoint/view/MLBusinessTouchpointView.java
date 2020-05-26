@@ -17,6 +17,7 @@ public class MLBusinessTouchpointView extends FrameLayout {
     private TouchpointRegistry type;
     private AbstractTouchpointChildView child;
     @Nullable private MLBusinessTouchpointTracker tracker;
+    private boolean isMPInstalled = true;
 
     /**
      * Constructor
@@ -75,11 +76,12 @@ public class MLBusinessTouchpointView extends FrameLayout {
     private void updateContent(final MLBusinessTouchpointResponse response,
         final TouchpointRegistry touchpointRegistry) {
         if (touchpointRegistry == type) {
+            child.setCanOpenMercadoPago(isMPInstalled);
             child.bind(TouchpointMapper.mapToContent(response));
         } else {
             removeAllViews();
             type = touchpointRegistry;
-            child = touchpointRegistry.createViewFromResponse(getContext(), response, callback, tracker);
+            child = touchpointRegistry.createViewFromResponse(getContext(), response, callback, tracker, isMPInstalled);
             addView(child);
         }
     }
@@ -90,5 +92,9 @@ public class MLBusinessTouchpointView extends FrameLayout {
 
     public void setTracker(@Nullable final MLBusinessTouchpointTracker tracker) {
         this.tracker = tracker;
+    }
+
+    public void setCanOpenMercadoPago(final boolean isMPInstalled) {
+        this.isMPInstalled = isMPInstalled;
     }
 }
