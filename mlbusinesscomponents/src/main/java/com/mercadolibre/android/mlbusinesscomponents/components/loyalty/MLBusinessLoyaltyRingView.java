@@ -17,9 +17,11 @@ public class MLBusinessLoyaltyRingView extends ConstraintLayout {
 
     private final LoyaltyProgress progress;
     private final TextView loyaltyTitle;
+    private final TextView loyaltySubtitle;
     private final TextView loyaltyButton;
     private WeakReference<OnClickLoyaltyRing> onClickLoyaltyRing;
     private MLBusinessLoyaltyRingData businessLoyaltyRingData;
+    private MLBusinessLoyaltyRingCompleteData businessLoyaltyRingCompletedData;
 
     public MLBusinessLoyaltyRingView(final Context context) {
         this(context, null);
@@ -36,6 +38,7 @@ public class MLBusinessLoyaltyRingView extends ConstraintLayout {
 
         progress = findViewById(R.id.loyaltyRing);
         loyaltyTitle = findViewById(R.id.loyaltyTitle);
+        loyaltySubtitle = findViewById(R.id.loyaltySubtitle);
         loyaltyButton = findViewById(R.id.loyaltyButton);
     }
 
@@ -50,19 +53,44 @@ public class MLBusinessLoyaltyRingView extends ConstraintLayout {
 
         loyaltyTitle.setText(businessLoyaltyRingData.getTitle());
         loyaltyButton.setText(businessLoyaltyRingData.getButtonTitle());
-        loyaltyButton.setOnClickListener(v -> {
-            if (onClickLoyaltyRing != null) {
-                final OnClickLoyaltyRing listener = onClickLoyaltyRing.get();
-                if (listener != null) {
-                    listener.onClickLoyaltyButton(businessLoyaltyRingData.getButtonDeepLink());
+
+        if (businessLoyaltyRingData.getButtonDeepLink() != null) {
+            loyaltyButton.setOnClickListener(v -> {
+                if (onClickLoyaltyRing != null) {
+                    final OnClickLoyaltyRing listener = onClickLoyaltyRing.get();
+                    if (listener != null) {
+                        listener.onClickLoyaltyButton(businessLoyaltyRingData.getButtonDeepLink());
+                    }
                 }
-            }
-        });
+            });
+        } else {
+            loyaltyButton.setVisibility(GONE);
+        }
+
+        setSubtitle();
+
+    }
+
+    private void setSubtitle() {
+        if (businessLoyaltyRingCompletedData != null && businessLoyaltyRingCompletedData.getSubtitle() != null) {
+            loyaltySubtitle.setText(businessLoyaltyRingCompletedData.getSubtitle());
+            loyaltySubtitle.setVisibility(VISIBLE);
+        } else {
+            loyaltySubtitle.setVisibility(GONE);
+        }
     }
 
     public void init(@NonNull final MLBusinessLoyaltyRingData businessLoyaltyRingData,
-        @NonNull final OnClickLoyaltyRing onClick) {
+                     @NonNull final OnClickLoyaltyRing onClick) {
         this.businessLoyaltyRingData = businessLoyaltyRingData;
+        onClickLoyaltyRing = new WeakReference<>(onClick);
+        configLoyaltyRingView();
+    }
+
+    public void init(@NonNull final MLBusinessLoyaltyRingCompleteData businessLoyaltyRingCompletedData,
+                     @NonNull final OnClickLoyaltyRing onClick) {
+        this.businessLoyaltyRingCompletedData = businessLoyaltyRingCompletedData;
+        this.businessLoyaltyRingData = businessLoyaltyRingCompletedData;
         onClickLoyaltyRing = new WeakReference<>(onClick);
         configLoyaltyRingView();
     }

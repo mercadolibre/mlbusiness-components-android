@@ -1,54 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:layout_height="200dp"
-    tools:parentTag="android.support.constraint.ConstraintLayout">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/loyaltyTitle"
-        android:textAppearance="@style/MLFont.Bold.Semi"
-        android:layout_width="0dp"
+    <RelativeLayout
+        android:id="@+id/loyaltyRingContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.mercadolibre.android.mlbusinesscomponents.components.loyalty.LoyaltyProgress
+            android:id="@+id/loyaltyRing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/loyaltySubtitleAndButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginBottom="4dp"
-        android:lineSpacingExtra="4sp"
-        android:maxLines="2"
-        android:textColor="@color/ui_fullscreenmodal_toolbar_text_color"
-        android:textSize="@dimen/ui_fontsize_small"
-        tools:text="Sumaste 20 Mercado Puntos dsfsdf sdfsf sdfsdf sdfsdf sfsd"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintBottom_toTopOf="@+id/loyaltyButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toEndOf="@+id/loyaltyRing"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_toRightOf="@+id/loyaltyRingContainer"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/loyaltyButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="?selectableItemBackground"
-        android:lineSpacingExtra="4.5sp"
-        android:maxLines="1"
-        android:textAppearance="@style/MLFont.Bold.Semi"
-        android:textColor="@color/ui_components_android_color_accent"
-        android:textSize="@dimen/ui_fontsize_xsmall"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/loyaltyTitle"
-        app:layout_constraintTop_toBottomOf="@+id/loyaltyTitle"
-        tools:text="Ver mis beneficios" />
+        <TextView
+            android:id="@+id/loyaltyTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="4sp"
+            android:maxLines="2"
+            android:textAppearance="@style/MLFont.Bold.Semi"
+            android:textColor="@color/ui_fullscreenmodal_toolbar_text_color"
+            android:textSize="@dimen/ui_fontsize_small"
+            tools:text="Sumaste 20 Mercado Puntos " />
 
-    <com.mercadolibre.android.mlbusinesscomponents.components.loyalty.LoyaltyProgress
-        android:id="@+id/loyaltyRing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</merge>
+        <TextView
+            android:id="@+id/loyaltySubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/loyaltyTitle"
+            android:layout_marginTop="4dp"
+            android:background="?selectableItemBackground"
+            android:lineSpacingExtra="4.5sp"
+            android:textAppearance="@style/MLFont.Regular"
+            android:textColor="@color/ui_components_dark_grey_color"
+            android:textSize="@dimen/ui_fontsize_xsmall"
+            tools:text="Una vez que se acredite tu pago, ganarás 20 mercado puntos." />
+
+        <TextView
+            android:id="@+id/loyaltyButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/loyaltySubtitle"
+            android:layout_marginTop="4dp"
+            android:background="?selectableItemBackground"
+            android:lineSpacingExtra="4.5sp"
+            android:maxLines="1"
+            android:textAppearance="@style/MLFont.Bold.Semi"
+            android:textColor="@color/ui_components_android_color_accent"
+            android:textSize="@dimen/ui_fontsize_xsmall"
+            tools:text="Ver mis beneficios" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
