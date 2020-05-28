@@ -75,7 +75,7 @@ public class MLBusinessTouchpointView extends FrameLayout {
 
     private void updateContent(final MLBusinessTouchpointResponse response,
         final TouchpointRegistry touchpointRegistry) {
-        if (touchpointRegistry == type) {
+        if (child != null && touchpointRegistry == type) {
             child.setCanOpenMercadoPago(isMPInstalled);
             child.bind(TouchpointMapper.mapToContent(response));
         } else {
