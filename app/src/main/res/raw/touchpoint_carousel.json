@@ -14,14 +14,14 @@
           "overlay":false
         },
         "title_format":{
-          "size":20,
+          "size":14,
           "color":"#008000",
-          "weight":"bold"
+          "weight":"semibold"
         },
         "subtitle_format":{
-          "size":20,
+          "size":14,
           "color":"#008000",
-          "weight":"bold"
+          "weight":"semibold"
         }
       },
       {
@@ -159,14 +159,14 @@
           "overlay":false
         },
         "title_format":{
-          "size":20,
+          "size":14,
           "color":"#008000",
-          "weight":"bold"
+          "weight":"semibold"
         },
         "subtitle_format":{
-          "size":20,
+          "size":14,
           "color":"#008000",
-          "weight":"bold"
+          "weight":"semibold"
         }
       },
       {
@@ -267,14 +267,14 @@
           "overlay":false
         },
         "title_format":{
-          "size":20,
+          "size":14,
           "color":"#008000",
-          "weight":"bold"
+          "weight":"semibold"
         },
         "subtitle_format":{
-          "size":20,
+          "size":14,
           "color":"#008000",
-          "weight":"bold"
+          "weight":"semibold"
         }
       },
       {
