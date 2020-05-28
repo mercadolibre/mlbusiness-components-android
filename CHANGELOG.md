@@ -1,6 +1,7 @@
 # new
 * REFACTOR - Add category card to carousel
 * REFACTOR - Changing Carousel card layout
+* REFACTOR - Add static height
 
 ## VERSION 1.3.6
 _19_05_2020_

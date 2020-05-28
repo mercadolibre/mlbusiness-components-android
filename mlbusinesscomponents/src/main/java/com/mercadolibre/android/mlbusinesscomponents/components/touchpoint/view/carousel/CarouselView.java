@@ -27,6 +27,7 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
     private final CarouselAdapter adapter;
     private final RecyclerView recyclerView;
     private final Rect rect;
+    private Carousel model;
 
     /**
      * Constructor
@@ -79,15 +80,16 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
 
     @Override
     public void bind(@Nullable final Carousel model) {
-        if (model != null && model.isValid()) {
+        if (model != null && model.isValid() && !model.equals(this.model)) {
+            this.model = model;
             adapter.setCanOpenMercadoPago(isMPInstalled);
             adapter.setOnClickCallback(onClickCallback);
             adapter.setTracker(tracker);
             adapter.setExtraData(tracking);
             showCards(model.getItems(), model);
+            decorate();
             trackShow(tracker, new ArrayList<>(model.getItems()));
         }
-        decorate();
     }
 
     private void decorate() {
@@ -128,5 +130,10 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
 
     private boolean shouldTrackPrint(final View child) {
         return child instanceof TouchpointTrackeable && child.getLocalVisibleRect(rect);
+    }
+
+    @Override
+    public int getStaticHeight() {
+        return getResources().getDimensionPixelSize(R.dimen.carousel_static_height);
     }
 }
