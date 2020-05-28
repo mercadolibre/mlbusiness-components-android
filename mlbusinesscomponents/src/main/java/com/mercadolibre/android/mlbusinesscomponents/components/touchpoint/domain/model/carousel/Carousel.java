@@ -2,11 +2,12 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.doma
 
 import android.support.annotation.Keep;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.HeightCalculatorDelegate;
 import java.io.Serializable;
 import java.util.List;
 
 @Keep
-public class Carousel implements TouchpointContent, Serializable {
+public class Carousel implements TouchpointContent, Serializable, HeightCalculatorDelegate {
 
     private static final long serialVersionUID = 7998836654820333977L;
 
@@ -14,6 +15,7 @@ public class Carousel implements TouchpointContent, Serializable {
 
     /**
      * Constructor
+     *
      * @param items A list of {@link CarouselCard} cards
      */
     public Carousel(final List<CarouselCard> items) {
@@ -45,5 +47,16 @@ public class Carousel implements TouchpointContent, Serializable {
     @Override
     public int hashCode() {
         return getItems() != null ? getItems().hashCode() : 0;
+    }
+
+    @Override
+    public double getFixedCardHeight() {
+        double maxHeight = 0;
+        for (final CarouselCard carouselCard: items) {
+            if(maxHeight < carouselCard.getHeight()) {
+                maxHeight = carouselCard.getHeight();
+            }
+        }
+        return maxHeight;
     }
 }
