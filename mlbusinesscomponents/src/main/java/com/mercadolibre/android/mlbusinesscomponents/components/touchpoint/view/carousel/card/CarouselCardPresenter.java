@@ -3,6 +3,8 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view
 import android.graphics.Color;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCard;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselPill;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselTextFormat;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.LogoImageFormat;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtils;
 import org.jetbrains.annotations.Nullable;
 
@@ -17,12 +19,80 @@ import org.jetbrains.annotations.Nullable;
         setTopLabel(card.getTitle(), view);
         setCardFormat(card.getTextColor(), view);
         setOnClickEvent(card.getLink(), view);
+        setTitleFormat(card.getTitleFormat(), card.getTextColor(), view);
+        SetSubtitleFormat(card.getSubtitleFormat(), card.getTextColor(), view);
+        CofigureLogoOverlay(card.getImageFormat(), view);
         view.setTracking(card.getTracking());
+    }
+
+    private void CofigureLogoOverlay(final LogoImageFormat imageFormat, final CarouselCardView view) {
+        if(imageFormat == null) {
+            view.enableLogoOverlay();
+            return;
+        }
+
+        if(imageFormat.isOverlay()) {
+            view.enableLogoOverlay();
+        } else {
+            view.disableLogoOverlay();
+        }
+    }
+
+    private void SetSubtitleFormat(final CarouselTextFormat subtitleFormat, final String fallbackColor, final CarouselCardView view) {
+        if(subtitleFormat == null) {
+            view.changeSubtitleFontStyleToDefault();
+            return;
+        }
+
+        if (subtitleFormat.getWeight() != null &&  !subtitleFormat.getWeight().isEmpty()) {
+            view.changeSubtitleFontStyle(subtitleFormat.getWeight());
+        } else {
+            view.changeSubtitleFontStyleToDefault();
+        }
+
+        if (subtitleFormat.getColor() != null && !subtitleFormat.getColor().isEmpty()  ) {
+            view.changeSubtitleColor(subtitleFormat.getColor());
+        } else {
+            view.changeSubtitleColor(fallbackColor);
+        }
+
+        if (subtitleFormat.getSize() > 0) {
+            view.changeSubtitleSize(subtitleFormat.getSize());
+        } else {
+            view.changeSubtitleSizeToDefault();
+        }
+    }
+
+    private void setTitleFormat(final CarouselTextFormat titleFormat, final String fallbackColor,final CarouselCardView view) {
+        if(titleFormat == null) {
+            view.changeFontStyleToDefault();
+            return;
+        }
+
+        if (titleFormat.getWeight() != null &&  !titleFormat.getWeight().isEmpty()) {
+            view.changeTitleFontStyle(titleFormat.getWeight());
+        } else {
+            view.changeFontStyleToDefault();
+        }
+
+        if (titleFormat.getColor() != null && !titleFormat.getColor().isEmpty()  ) {
+            view.changeTitleColor(titleFormat.getColor());
+        } else {
+            view.changeTitleColor(fallbackColor);
+        }
+
+        if (titleFormat.getSize() > 0) {
+            view.changeTitleSize(titleFormat.getSize());
+        } else {
+            view.changeTitleSizeToDefault();
+        }
     }
 
     private void setCardBackgroundColor(final String backgroundColor, final CarouselCardView view) {
         if (StringUtils.isValidString(backgroundColor)) {
             view.changeBackgroundColor(backgroundColor);
+        } else {
+            view.changeBackgroundColorToDefault();
         }
     }
 
@@ -95,6 +165,8 @@ import org.jetbrains.annotations.Nullable;
     private void setCardFormat(final String textColor, final CarouselCardView view) {
         if (StringUtils.isValidString(textColor)) {
             view.setTextColor(textColor);
+        } else {
+            view.setDefaultColor();
         }
     }
 

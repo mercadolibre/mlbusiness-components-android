@@ -84,7 +84,7 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
             adapter.setOnClickCallback(onClickCallback);
             adapter.setTracker(tracker);
             adapter.setExtraData(tracking);
-            showCards(model.getItems());
+            showCards(model.getItems(), model);
             trackShow(tracker, new ArrayList<>(model.getItems()));
         }
         decorate();
@@ -102,8 +102,9 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
         }
     }
 
-    private void showCards(final List<CarouselCard> cards) {
+    private void showCards(final List<CarouselCard> cards, final HeightCalculatorDelegate heightCalculator) {
         adapter.setItems(cards);
+        adapter.setCardHeight(heightCalculator.getFixedCardHeight());
     }
 
     @Override

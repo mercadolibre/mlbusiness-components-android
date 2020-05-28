@@ -21,10 +21,14 @@ public class CarouselCard implements TouchpointTrackeable, Serializable {
     private final String link;
     private final String textColor;
     private final String backgroundColor;
+    private final CarouselTextFormat titleFormat;
+    private final CarouselTextFormat subtitleFormat;
+    private final LogoImageFormat imageFormat;
     @Nullable private final TouchpointTracking tracking;
 
     /**
      * Constructor
+     *
      * @param image The logo to show
      * @param pill The pill to show
      * @param title The title to show
@@ -35,12 +39,18 @@ public class CarouselCard implements TouchpointTrackeable, Serializable {
      * @param link The link to launch
      * @param textColor The text color
      * @param backgroundColor the card background color
+     * @param titleFormat the title format
+     * @param subtitleFormat the subtitle format
+     * @param imageFormat the image format
      * @param tracking A {@link TouchpointTracking}
      */
     public CarouselCard(final String image, final CarouselPill pill, final String title,
         final String subtitle,
         final String rightLabel, final String mainLabel, final String topLabel, final String link,
         final String textColor, final String backgroundColor,
+        final CarouselTextFormat titleFormat,
+        final CarouselTextFormat subtitleFormat,
+        final LogoImageFormat imageFormat,
         @Nullable final TouchpointTracking tracking) {
         this.image = image;
         this.pill = pill;
@@ -52,6 +62,9 @@ public class CarouselCard implements TouchpointTrackeable, Serializable {
         this.link = link;
         this.textColor = textColor;
         this.backgroundColor = backgroundColor;
+        this.titleFormat = titleFormat;
+        this.subtitleFormat = subtitleFormat;
+        this.imageFormat = imageFormat;
         this.tracking = tracking;
     }
 
@@ -93,6 +106,18 @@ public class CarouselCard implements TouchpointTrackeable, Serializable {
 
     public String getBackgroundColor() {
         return backgroundColor;
+    }
+
+    public CarouselTextFormat getTitleFormat() {
+        return titleFormat;
+    }
+
+    public CarouselTextFormat getSubtitleFormat() {
+        return subtitleFormat;
+    }
+
+    public LogoImageFormat getImageFormat() {
+        return imageFormat;
     }
 
     @Override
@@ -155,5 +180,33 @@ public class CarouselCard implements TouchpointTrackeable, Serializable {
         result = 31 * result + (getTextColor() != null ? getTextColor().hashCode() : 0);
         result = 31 * result + (getBackgroundColor() != null ? getBackgroundColor().hashCode() : 0);
         return result;
+    }
+
+    public double getHeight() {
+        boolean hasTopLabel = false, hasMainLabel = false, hasTitle = false, hasSubtitle = false;
+
+        if (topLabel != null && !topLabel.isEmpty()) {
+            hasTopLabel = true;
+        }
+        if (mainLabel != null && !mainLabel.isEmpty()) {
+            hasMainLabel = true;
+        }
+        if (title != null && !title.isEmpty()) {
+            hasTitle = true;
+        }
+        if (subtitle != null && !subtitle.isEmpty()) {
+            hasSubtitle = true;
+        }
+
+        double spaceToMainLabel = 100, topLabelHeight = 14, mainLabelHeight = 28, titleHeight = 23, subtitleHeight = 13, spaceToBottom = 13;
+
+        double maxItemHeight = spaceToMainLabel
+            + (hasTopLabel ? topLabelHeight : 0.0)
+            + (hasMainLabel ? mainLabelHeight : 0.0)
+            + (hasTitle ? titleHeight : 0.0)
+            + (hasSubtitle ? subtitleHeight : 0.0)
+            + spaceToBottom;
+
+        return maxItemHeight;
     }
 }
