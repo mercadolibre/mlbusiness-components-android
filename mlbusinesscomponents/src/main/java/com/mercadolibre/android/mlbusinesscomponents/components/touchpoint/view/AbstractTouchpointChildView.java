@@ -88,4 +88,6 @@ public abstract class AbstractTouchpointChildView<M extends TouchpointContent> e
     public void setCanOpenMercadoPago(final boolean isMPInstalled) {
         this.isMPInstalled = isMPInstalled;
     }
+
+    public abstract int getStaticHeight();
 }

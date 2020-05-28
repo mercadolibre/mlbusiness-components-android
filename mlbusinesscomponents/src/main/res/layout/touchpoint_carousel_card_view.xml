@@ -15,7 +15,6 @@
         android:paddingBottom="@dimen/ui_1_5m"
         android:background="?android:attr/selectableItemBackground">
 
-
         <FrameLayout
             android:id="@+id/touchpoint_carousel_card_logo_container"
             android:layout_width="wrap_content"

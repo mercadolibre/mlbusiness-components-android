@@ -14,4 +14,8 @@
     <!-- Exploting Button Dimens -->
     <dimen name="ui_exploting_button_height">48dp</dimen>
 
+    <!-- Touchpoint static height -->
+    <dimen name="carousel_static_height">210dp</dimen>
+    <dimen name="grid_static_height">290dp</dimen>
+
 </resources>

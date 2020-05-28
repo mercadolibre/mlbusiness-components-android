@@ -15,7 +15,7 @@ public class MLBusinessTouchpointView extends FrameLayout {
 
     @Nullable private OnClickCallback callback;
     private TouchpointRegistry type;
-    private AbstractTouchpointChildView child;
+    @Nullable AbstractTouchpointChildView child;
     @Nullable private MLBusinessTouchpointTracker tracker;
     private boolean isMPInstalled = true;
 
@@ -96,5 +96,12 @@ public class MLBusinessTouchpointView extends FrameLayout {
 
     public void setCanOpenMercadoPago(final boolean isMPInstalled) {
         this.isMPInstalled = isMPInstalled;
+    }
+
+    public int getStaticHeight() {
+        if (child == null) {
+            return 0;
+        }
+        return child.getStaticHeight();
     }
 }

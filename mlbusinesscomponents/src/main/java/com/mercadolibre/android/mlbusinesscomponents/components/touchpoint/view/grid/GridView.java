@@ -108,4 +108,9 @@ public class GridView extends AbstractTouchpointChildView<Grid> {
         rowView.setOrientation(LinearLayout.HORIZONTAL);
         return rowView;
     }
+
+    @Override
+    public int getStaticHeight() {
+        return getResources().getDimensionPixelSize(R.dimen.grid_static_height);
+    }
 }

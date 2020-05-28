@@ -38,9 +38,8 @@ public class CarouselCard implements TouchpointTrackeable, Serializable {
      * @param tracking A {@link TouchpointTracking}
      */
     public CarouselCard(final String image, final CarouselPill pill, final String title,
-        final String subtitle,
-        final String rightLabel, final String mainLabel, final String topLabel, final String link,
-        final String textColor, final String backgroundColor,
+        final String subtitle, final String rightLabel, final String mainLabel, final String topLabel,
+        final String link, final String textColor, final String backgroundColor,
         @Nullable final TouchpointTracking tracking) {
         this.image = image;
         this.pill = pill;
