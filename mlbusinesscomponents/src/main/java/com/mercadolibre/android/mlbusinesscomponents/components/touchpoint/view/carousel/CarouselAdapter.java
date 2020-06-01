@@ -23,6 +23,7 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
     @Nullable private OnClickCallback onClickCallback;
     @Nullable private MLBusinessTouchpointTracker tracker;
     @Nullable private Map<String, Object> extraData;
+    private double cardHeight;
     private boolean isMPInstalled = true;
 
     /**
@@ -30,6 +31,7 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
      */
     /* default */ CarouselAdapter() {
         cards = new ArrayList<>();
+        cardHeight = 500;
     }
 
     @NonNull
@@ -46,7 +48,7 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
         holder.setTracker(tracker);
         holder.setExtraData(extraData);
         holder.setCanOpenMercadoPago(isMPInstalled);
-        holder.bindView(cards.get(index));
+        holder.bindView(cards.get(index), cardHeight);
     }
 
     @Override
@@ -83,6 +85,10 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
         this.isMPInstalled = isMPInstalled;
     }
 
+    public void setCardHeight(final double fixedCardHeight) {
+        cardHeight = fixedCardHeight;
+    }
+
     /* default */ static class CarouselViewHolder extends RecyclerView.ViewHolder {
 
         private final CarouselCardView view;
@@ -92,8 +98,8 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
             view = itemView.findViewById(R.id.touchpoint_carousel_card_view);
         }
 
-        /* default */ void bindView(final CarouselCard card) {
-            view.bind(card);
+        /* default */ void bindView(final CarouselCard card, final double size) {
+            view.bind(card, size);
         }
 
         /* default */ void setOnClickCallback(@Nullable final OnClickCallback onClickCallback) {
