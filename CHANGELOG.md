@@ -1,4 +1,5 @@
 ## VERSION 1.4.0
+_02_06_2020_
 * FEATURE - Add optional subtitle on Loyalty Ring
 
 ## VERSION 1.3.7
