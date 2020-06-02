@@ -3,6 +3,7 @@ package com.mercadolibre.android.mlbusinesscomponentsapp;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusinessLoyaltyRingData;
 
 public class MLBusinessLoyaltyRingDataSample implements MLBusinessLoyaltyRingData {
+
     @Override
     public String getRingHexaColor() {
         return "#9483FA";
@@ -32,4 +33,5 @@ public class MLBusinessLoyaltyRingDataSample implements MLBusinessLoyaltyRingDat
     public String getButtonDeepLink() {
         return "https://www.mercadolibre.com.ar/";
     }
+
 }

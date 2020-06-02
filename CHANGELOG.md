@@ -1,3 +1,6 @@
+## VERSION 1.4.0
+* FEATURE - Add optional subtitle on Loyalty Ring
+
 ## VERSION 1.3.7
 * REFACTOR - Add category card to carousel
 * REFACTOR - Changing Carousel card layout

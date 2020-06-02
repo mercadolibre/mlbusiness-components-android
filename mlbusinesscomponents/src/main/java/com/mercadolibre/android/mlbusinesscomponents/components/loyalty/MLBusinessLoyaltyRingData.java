@@ -10,4 +10,9 @@ public interface MLBusinessLoyaltyRingData {
 
     String getButtonTitle();
     String getButtonDeepLink();
+
+    default String getSubtitle() {
+        return null;
+    }
+
 }
