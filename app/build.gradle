@@ -6,6 +6,7 @@ android {
     buildToolsVersion build_tools_version as String
 
     defaultConfig {
+        signingConfig signingConfigs.debug
         applicationId "com.mercadolibre.android.mlbusinesscomponentsapp"
         minSdkVersion min_api_level as int
         targetSdkVersion api_level as int
@@ -15,7 +16,6 @@ android {
     }
 
     buildTypes {
-
         debug {
             versionNameSuffix ".debug"
             debuggable true
