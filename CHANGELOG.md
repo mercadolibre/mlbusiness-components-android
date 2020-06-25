@@ -1,3 +1,7 @@
+## VERSION 1.5.0
+_25_06_2020_
+* FEATURE - Add action card view component
+
 ## VERSION 1.4.0
 * FEATURE - Add optional subtitle on Loyalty Ring
 
