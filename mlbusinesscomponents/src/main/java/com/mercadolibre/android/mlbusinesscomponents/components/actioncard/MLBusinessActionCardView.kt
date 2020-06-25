@@ -1,4 +1,4 @@
-package com.mercadolibre.android.mlbusinesscomponents.components.splitpayment
+package com.mercadolibre.android.mlbusinesscomponents.components.actioncard
 
 import android.content.Context
 import android.graphics.Color

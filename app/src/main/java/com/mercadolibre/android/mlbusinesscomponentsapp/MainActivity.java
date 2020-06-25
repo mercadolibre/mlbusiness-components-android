@@ -18,7 +18,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusine
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadcaster.LoyaltyBroadcastData;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadcaster.LoyaltyBroadcastReceiver;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadcaster.LoyaltyBroadcaster;
-import com.mercadolibre.android.mlbusinesscomponents.components.splitpayment.MLBusinessActionCardView;
+import com.mercadolibre.android.mlbusinesscomponents.components.actioncard.MLBusinessActionCardView;
 import com.mercadolibre.android.mlbusinesscomponentsapp.touchpoint.TouchpointTestActivity;
 
 public class MainActivity extends AppCompatActivity

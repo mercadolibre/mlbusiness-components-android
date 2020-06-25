@@ -66,7 +66,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/discountButton" />
 
-        <com.mercadolibre.android.mlbusinesscomponents.components.splitpayment.MLBusinessActionCardView
+        <com.mercadolibre.android.mlbusinesscomponents.components.actioncard.MLBusinessActionCardView
             android:id="@+id/money_split"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

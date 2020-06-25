@@ -1,6 +1,6 @@
 package com.mercadolibre.android.mlbusinesscomponentsapp
 
-import com.mercadolibre.android.mlbusinesscomponents.components.splitpayment.MLBusinessActionCardViewData
+import com.mercadolibre.android.mlbusinesscomponents.components.actioncard.MLBusinessActionCardViewData
 
 class MLBusinessActionCardViewDataSample: MLBusinessActionCardViewData {
     override fun getTitle() = "Podés dividir este gasto con tus contactos"
