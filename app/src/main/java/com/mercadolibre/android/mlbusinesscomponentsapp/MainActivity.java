@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import com.mercadolibre.android.mlbusinesscomponents.components.common.MLBusinessInfoView;
@@ -19,6 +18,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.MLBusine
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadcaster.LoyaltyBroadcastData;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadcaster.LoyaltyBroadcastReceiver;
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadcaster.LoyaltyBroadcaster;
+import com.mercadolibre.android.mlbusinesscomponents.components.actioncard.MLBusinessActionCardView;
 import com.mercadolibre.android.mlbusinesscomponentsapp.touchpoint.TouchpointTestActivity;
 
 public class MainActivity extends AppCompatActivity
@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity
         MLBusinessLoyaltyRingView ringView = findViewById(R.id.loyaltyView);
         MLBusinessDiscountBoxView discountBoxView = findViewById(R.id.discountView);
         MLBusinessDownloadAppView downloadAppView = findViewById(R.id.downloadAppView);
+        MLBusinessActionCardView splitPaymentView = findViewById(R.id.money_split);
         MLBusinessCrossSellingBoxView crossSellingBoxView = findViewById(R.id.crossSellingView);
         MLBusinessLoyaltyHeaderView loyaltyHeaderView = findViewById(R.id.loyaltyHeaderView);
         LinearLayout benefitContainer = findViewById(R.id.loyaltyBenefitsContainer);
@@ -44,7 +45,8 @@ public class MainActivity extends AppCompatActivity
 
         final Button nextDiscountBox = findViewById(R.id.discountButton);
         final Button openTouchpoint = findViewById(R.id.touchpoint_button);
-        openTouchpoint.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, TouchpointTestActivity.class)));
+        openTouchpoint
+            .setOnClickListener(v -> startActivity(new Intent(MainActivity.this, TouchpointTestActivity.class)));
 
         button.setOnClickListener(v -> {
             final Intent intent = new Intent(MainActivity.this, ButtonsActivity.class);
@@ -64,6 +66,9 @@ public class MainActivity extends AppCompatActivity
 
         downloadAppView.init(new MLBusinessDownloadAppDataSample(), this);
 
+        splitPaymentView.init(new MLBusinessActionCardViewDataSample());
+        splitPaymentView.setOnClickListener(v -> onClickSplitPaymentButton());
+
         crossSellingBoxView.init(new MLBusinessCrossSellingBoxDataSample(), this);
 
         loyaltyHeaderView.init(new MLBusinessLoyaltyHeaderDataSample());
@@ -75,7 +80,7 @@ public class MainActivity extends AppCompatActivity
         LoyaltyBroadcaster.getInstance().register(loyaltyBroadcast, getApplicationContext());
     }
 
-    private class LoyaltyBroadcast extends LoyaltyBroadcastReceiver {
+    private static class LoyaltyBroadcast extends LoyaltyBroadcastReceiver {
 
         @Override
         public void onReceive(LoyaltyBroadcastData loyaltyBroadcastData) {
@@ -91,26 +96,37 @@ public class MainActivity extends AppCompatActivity
         loyaltyBroadcastData.setPrimaryColor("#FEFEFE");
 
         LoyaltyBroadcaster.getInstance().updateInfo(getApplicationContext(), loyaltyBroadcastData);
-
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
+        launchActivity(deepLink);
     }
 
     @Override
     public void onClickDiscountItem(final int index, @Nullable final String deepLink,
         @Nullable final String trackId) {
         if (deepLink != null) {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
+            launchActivity(deepLink);
         }
     }
 
     @Override
     public void OnClickCrossSellingButton(@NonNull final String deepLink) {
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
+        launchActivity(deepLink);
     }
 
     @Override
     public void OnClickDownloadAppButton(@NonNull final String deepLink) {
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
+        launchActivity(deepLink);
+    }
+
+    private void onClickSplitPaymentButton() {
+        launchActivity("mercadopago://mplayer/money_split_external?operation_id=7068064969&source=px");
+    }
+
+    private void launchActivity(@NonNull final String deepLink) {
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
+        } catch (Exception e) {
+
+        }
     }
 
     @Override
