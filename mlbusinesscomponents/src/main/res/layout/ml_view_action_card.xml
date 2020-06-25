@@ -27,8 +27,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guide_line"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_money_split" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/split_text"
