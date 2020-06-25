@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity
         MLBusinessLoyaltyRingView ringView = findViewById(R.id.loyaltyView);
         MLBusinessDiscountBoxView discountBoxView = findViewById(R.id.discountView);
         MLBusinessDownloadAppView downloadAppView = findViewById(R.id.downloadAppView);
-        MLBusinessActionCardView splitPaymentView = findViewById(R.id.split_payment);
+        MLBusinessActionCardView splitPaymentView = findViewById(R.id.money_split);
         MLBusinessCrossSellingBoxView crossSellingBoxView = findViewById(R.id.crossSellingView);
         MLBusinessLoyaltyHeaderView loyaltyHeaderView = findViewById(R.id.loyaltyHeaderView);
         LinearLayout benefitContainer = findViewById(R.id.loyaltyBenefitsContainer);

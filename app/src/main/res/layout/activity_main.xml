@@ -67,7 +67,7 @@
             app:layout_constraintTop_toBottomOf="@id/discountButton" />
 
         <com.mercadolibre.android.mlbusinesscomponents.components.splitpayment.MLBusinessActionCardView
-            android:id="@+id/split_payment"
+            android:id="@+id/money_split"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -85,7 +85,7 @@
             android:id="@+id/downloadAppView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/split_payment"
+            app:layout_constraintTop_toBottomOf="@id/money_split"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
