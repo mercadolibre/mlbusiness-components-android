@@ -20,7 +20,6 @@ import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadcas
 import com.mercadolibre.android.mlbusinesscomponents.components.loyalty.broadcaster.LoyaltyBroadcaster;
 import com.mercadolibre.android.mlbusinesscomponents.components.splitpayment.MLBusinessActionCardView;
 import com.mercadolibre.android.mlbusinesscomponentsapp.touchpoint.TouchpointTestActivity;
-import org.jetbrains.annotations.NotNull;
 
 public class MainActivity extends AppCompatActivity
     implements MLBusinessLoyaltyRingView.OnClickLoyaltyRing, MLBusinessDiscountBoxView.OnClickDiscountBox,
@@ -46,7 +45,8 @@ public class MainActivity extends AppCompatActivity
 
         final Button nextDiscountBox = findViewById(R.id.discountButton);
         final Button openTouchpoint = findViewById(R.id.touchpoint_button);
-        openTouchpoint.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, TouchpointTestActivity.class)));
+        openTouchpoint
+            .setOnClickListener(v -> startActivity(new Intent(MainActivity.this, TouchpointTestActivity.class)));
 
         button.setOnClickListener(v -> {
             final Intent intent = new Intent(MainActivity.this, ButtonsActivity.class);
@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity
         launchActivity("mercadopago://mplayer/money_split_external?operation_id=7068064969&source=px");
     }
 
-    private void launchActivity(@NotNull final String deepLink) {
+    private void launchActivity(@NonNull final String deepLink) {
         try {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(deepLink)));
         } catch (Exception e) {
