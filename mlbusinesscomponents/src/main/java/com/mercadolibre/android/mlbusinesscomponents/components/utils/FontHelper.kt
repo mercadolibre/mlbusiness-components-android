@@ -6,7 +6,7 @@ internal object FontHelper {
 
     fun from(fontName: String): Font {
         Font.values().forEach {
-            if (it.fontName.equals(fontName, true)) {
+            if (it.name.equals(fontName, true)) {
                 return it
             }
         }
