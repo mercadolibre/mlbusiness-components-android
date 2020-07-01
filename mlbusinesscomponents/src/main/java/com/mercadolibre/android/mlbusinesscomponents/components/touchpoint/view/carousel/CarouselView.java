@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.Carousel;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCard;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCardTouchpoint;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils;
@@ -104,7 +104,7 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
         }
     }
 
-    private void showCards(final List<CarouselCard> cards, final HeightCalculatorDelegate heightCalculator) {
+    private void showCards(final List<CarouselCardTouchpoint> cards, final HeightCalculatorDelegate heightCalculator) {
         adapter.setItems(cards);
         adapter.setCardHeight(heightCalculator.getFixedCardHeight());
     }

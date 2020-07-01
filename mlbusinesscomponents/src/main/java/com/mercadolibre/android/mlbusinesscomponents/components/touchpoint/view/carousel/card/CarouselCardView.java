@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
 import android.view.View;
@@ -19,7 +18,7 @@ import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.components.discount.CircleTransform;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCard;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCardTouchpoint;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
@@ -103,7 +102,7 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
      *
      * @param card the model
      */
-    public void bind(final CarouselCard card, final double size) {
+    public void bind(final CarouselCardTouchpoint card, final double size) {
         presenter.onBind(card, this);
         ViewGroup.LayoutParams layoutParams = getLayoutParams();
         layoutParams.height = (int) (size * getResources().getDisplayMetrics().density);
@@ -199,7 +198,7 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
     private void onClickEvent(final String link) {
         if (onClickCallback != null) {
             trackTap(tracker, tracking);
-            onClickCallback.onClick(link);
+            onClickCallback.onClickWithTracking(link, tracking);
         }
     }
 

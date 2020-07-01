@@ -11,18 +11,18 @@ public class Carousel implements TouchpointContent, Serializable, HeightCalculat
 
     private static final long serialVersionUID = 7998836654820333977L;
 
-    private final List<CarouselCard> items;
+    private final List<CarouselCardTouchpoint> items;
 
     /**
      * Constructor
      *
-     * @param items A list of {@link CarouselCard} cards
+     * @param items A list of {@link CarouselCardTouchpoint} cards
      */
-    public Carousel(final List<CarouselCard> items) {
+    public Carousel(final List<CarouselCardTouchpoint> items) {
         this.items = items;
     }
 
-    public List<CarouselCard> getItems() {
+    public List<CarouselCardTouchpoint> getItems() {
         return items;
     }
 
@@ -52,7 +52,7 @@ public class Carousel implements TouchpointContent, Serializable, HeightCalculat
     @Override
     public double getFixedCardHeight() {
         double maxHeight = 0;
-        for (final CarouselCard carouselCard: items) {
+        for (final CarouselCardTouchpoint carouselCard: items) {
             if(maxHeight < carouselCard.getHeight()) {
                 maxHeight = carouselCard.getHeight();
             }
