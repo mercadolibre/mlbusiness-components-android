@@ -11,9 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.Carousel;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCardTouchpoint;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCard;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.TrackListener;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,7 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
     private final RecyclerView recyclerView;
     private final Rect rect;
     private Carousel model;
+    private TrackListener trackListener;
 
     /**
      * Constructor
@@ -72,10 +74,18 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
             public void onScrollStateChanged(@NonNull final RecyclerView recyclerView, final int state) {
                 super.onScrollStateChanged(recyclerView, state);
                 if (state == SCROLL_STATE_IDLE) {
-                    print();
+                    if (trackListener == null) {
+                        print();
+                    } else {
+                        trackListener.print();
+                    }
                 }
             }
         });
+    }
+
+    public void setTrackListener(final TrackListener trackListener) {
+        this.trackListener = trackListener;
     }
 
     @Override
@@ -88,14 +98,16 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
             adapter.setExtraData(tracking);
             showCards(model.getItems(), model);
             decorate();
-            trackShow(tracker, new ArrayList<>(model.getItems()));
+            if (trackListener == null) {
+                trackShow(tracker, new ArrayList<>(model.getItems()));
+            }
         }
     }
 
     private void decorate() {
         if (additionalInsets != null) {
             setPadding(0, (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getTop()),
-                0,  (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getBottom()));
+                0, (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getBottom()));
             if (recyclerView.getItemDecorationCount() == 0) {
                 recyclerView.addItemDecoration(
                     new CarouselDecorator((int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getLeft()),
@@ -104,7 +116,7 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
         }
     }
 
-    private void showCards(final List<CarouselCardTouchpoint> cards, final HeightCalculatorDelegate heightCalculator) {
+    private void showCards(final List<CarouselCard> cards, final HeightCalculatorDelegate heightCalculator) {
         adapter.setItems(cards);
         adapter.setCardHeight(heightCalculator.getFixedCardHeight());
     }

@@ -7,7 +7,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.track
 import java.io.Serializable;
 
 @Keep
-public class CarouselCardTouchpoint implements TouchpointTrackeable, Serializable {
+public class CarouselCard implements TouchpointTrackeable, Serializable {
 
     private static final long serialVersionUID = 7278154289419469849L;
 
@@ -44,7 +44,7 @@ public class CarouselCardTouchpoint implements TouchpointTrackeable, Serializabl
      * @param imageFormat the image format
      * @param tracking A {@link TouchpointTracking}
      */
-    public CarouselCardTouchpoint(final String image, final CarouselPill pill, final String title,
+    public CarouselCard(final String image, final CarouselPill pill, final String title,
         final String subtitle,
         final String rightLabel, final String mainLabel, final String topLabel, final String link,
         final String textColor, final String backgroundColor,
@@ -135,7 +135,7 @@ public class CarouselCardTouchpoint implements TouchpointTrackeable, Serializabl
             return false;
         }
 
-        final CarouselCardTouchpoint that = (CarouselCardTouchpoint) o;
+        final CarouselCard that = (CarouselCard) o;
 
         if (getImage() != null ? !getImage().equals(that.getImage()) : that.getImage() != null) {
             return false;

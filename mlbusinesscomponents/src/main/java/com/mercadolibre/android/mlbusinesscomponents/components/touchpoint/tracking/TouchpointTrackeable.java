@@ -12,4 +12,5 @@ public interface TouchpointTrackeable {
      */
     @Nullable
     TouchpointTracking getTracking();
+
 }

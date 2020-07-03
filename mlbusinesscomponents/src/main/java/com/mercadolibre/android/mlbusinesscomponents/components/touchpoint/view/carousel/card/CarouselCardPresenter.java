@@ -1,6 +1,6 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card;
 
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCardTouchpoint;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCard;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselPill;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselTextFormat;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.LogoImageFormat;
@@ -9,7 +9,7 @@ import org.jetbrains.annotations.Nullable;
 
 /* default */ class CarouselCardPresenter {
 
-    /* default */ void onBind(final CarouselCardTouchpoint card, final CarouselCardView view) {
+    /* default */ void onBind(final CarouselCard card, final CarouselCardView view) {
         setCardBackgroundColor(card.getBackgroundColor(), view);
         setImage(card.getImage(), view);
         setPill(card.getPill(), view);
