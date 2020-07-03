@@ -30,6 +30,7 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
     private final Rect rect;
     private Carousel model;
     private TrackListener trackListener;
+    private HorizontalScrollingEnhancer horizontalScrollingEnhancer;
 
     /**
      * Constructor
@@ -82,10 +83,19 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
                 }
             }
         });
+
+        if (horizontalScrollingEnhancer != null) {
+            horizontalScrollingEnhancer.enhanceHorizontalScroll(recyclerView);
+        }
     }
 
     public void setTrackListener(final TrackListener trackListener) {
         this.trackListener = trackListener;
+    }
+
+    public void setHorizontalScrollingEnhancer(
+        final HorizontalScrollingEnhancer horizontalScrollingEnhancer) {
+        this.horizontalScrollingEnhancer = horizontalScrollingEnhancer;
     }
 
     @Override
