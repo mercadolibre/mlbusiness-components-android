@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.mercadolibre.android.mlbusinesscomponents.R;
+import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointImageLoader;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCard;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
@@ -25,6 +26,7 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
     @Nullable private Map<String, Object> extraData;
     private double cardHeight;
     private boolean isMPInstalled = true;
+    private TouchpointImageLoader imageLoader;
 
     /**
      * Constructor
@@ -48,6 +50,7 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
         holder.setTracker(tracker);
         holder.setExtraData(extraData);
         holder.setCanOpenMercadoPago(isMPInstalled);
+        holder.setImageLoader(imageLoader);
         holder.bindView(cards.get(index), cardHeight);
     }
 
@@ -67,6 +70,10 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
         this.cards.clear();
         this.cards.addAll(cards);
         diffResult.dispatchUpdatesTo(this);
+    }
+
+    public void setImageLoader(final TouchpointImageLoader imageLoader) {
+        this.imageLoader = imageLoader;
     }
 
     /* default */ void setOnClickCallback(@Nullable final OnClickCallback onClickCallback) {
@@ -116,6 +123,10 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
 
         /* default */ void setCanOpenMercadoPago(final boolean isMPInstalled) {
             view.setCanOpenMercadoPago(isMPInstalled);
+        }
+
+        /* default */ void setImageLoader(final TouchpointImageLoader touchpointImageLoader) {
+            view.setImageLoader(touchpointImageLoader);
         }
     }
 }

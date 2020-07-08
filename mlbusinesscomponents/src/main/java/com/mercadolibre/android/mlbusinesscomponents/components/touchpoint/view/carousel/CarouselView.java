@@ -10,6 +10,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import com.mercadolibre.android.mlbusinesscomponents.R;
+import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointImageLoader;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.Carousel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCard;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
@@ -30,6 +31,7 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
     private final Rect rect;
     private Carousel model;
     private TrackListener trackListener;
+    private TouchpointImageLoader imageLoader;
     private HorizontalScrollingEnhancer horizontalScrollingEnhancer;
 
     /**
@@ -96,6 +98,10 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
     public void setHorizontalScrollingEnhancer(
         final HorizontalScrollingEnhancer horizontalScrollingEnhancer) {
         this.horizontalScrollingEnhancer = horizontalScrollingEnhancer;
+    }
+
+    public void setImageLoader(final TouchpointImageLoader imageLoader) {
+        adapter.setImageLoader(imageLoader);
     }
 
     @Override
