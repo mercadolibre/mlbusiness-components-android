@@ -1,3 +1,6 @@
+## VERSION 1.6.0
+* FEATURE - Adding functionality to use the carousel on discount center
+
 ## VERSION 1.5.0
 _25_06_2020_
 * FEATURE - Add action card view component

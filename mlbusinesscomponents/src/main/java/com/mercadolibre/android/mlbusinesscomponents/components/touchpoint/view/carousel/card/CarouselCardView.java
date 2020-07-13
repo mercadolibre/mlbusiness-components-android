@@ -1,13 +1,18 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
 import android.view.View;
@@ -16,7 +21,10 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
+import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointAssetLoader;
+import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointImageLoader;
 import com.mercadolibre.android.mlbusinesscomponents.components.discount.CircleTransform;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCard;
@@ -33,9 +41,9 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
     private static final String REGULAR = "regular";
     private static final String SEMIBOLD = "semibold";
 
-    private final ImageView logo;
+    private final SimpleDraweeView logo;
     private final LinearLayout levelContainer;
-    private final ImageView levelIcon;
+    private final SimpleDraweeView levelIcon;
     private final TextView levelDescription;
     private final TextView mainTitle;
     private final TextView topTitle;
@@ -50,7 +58,6 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
     @Nullable private OnClickCallback onClickCallback;
     @Nullable private MLBusinessTouchpointTracker tracker;
     private boolean isMPInstalled = true;
-
     private final CarouselCardPresenter presenter;
 
     /**
@@ -110,11 +117,11 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
     }
 
     /* default */ void showImage(final String logo) {
-        PicassoDiskLoader.get(getContext())
-            .load(Uri.parse(logo))
-            .transform(new CircleTransform())
-            .placeholder(R.drawable.skeleton)
-            .into(this.logo);
+        AssetLoader.getImage(logo, this.logo, (shouldLoadImage -> {
+            if (shouldLoadImage) {
+                TouchpointAssetLoader.create().withContainer(this.logo).withSource(logo).load();
+            }
+        }));
     }
 
     /* default */ void hideImage() {
@@ -165,10 +172,13 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
     }
 
     /* default */ void showLevelIcon(final String iconName) {
-        levelIcon.setVisibility(VISIBLE);
-        PicassoDiskLoader.get(getContext())
-            .load(Uri.parse(iconName))
-            .into(levelIcon);
+        AssetLoader.getImage(iconName, levelIcon, (shouldLoadImage -> {
+            levelIcon.setVisibility(VISIBLE);
+
+            if (shouldLoadImage) {
+                TouchpointAssetLoader.create().withContainer(levelIcon).withSource(iconName).load();
+            }
+        }));
     }
 
     /* default */ void hideLevelIcon() {
@@ -199,7 +209,7 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
     private void onClickEvent(final String link) {
         if (onClickCallback != null) {
             trackTap(tracker, tracking);
-            onClickCallback.onClick(link);
+            onClickCallback.onClickWithTracking(link, tracking);
         }
     }
 
@@ -321,6 +331,7 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
 
     /**
      * Changes the title color
+     *
      * @param color to change the title.
      */
     public void changeTitleColor(final String color) {
@@ -333,6 +344,7 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
 
     /**
      * Changes the title size.
+     *
      * @param size to change the title size to.
      */
     public void changeTitleSize(final int size) {
@@ -356,10 +368,11 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
 
     /**
      * Changes the title font style.
+     *
      * @param weight font style to change to.
      */
     public void changeTitleFontStyle(final String weight) {
-        try{
+        try {
             if (Build.VERSION.SDK_INT < 23) {
                 topLabel.setTextAppearance(getContext(), getStyle(weight));
             } else {
@@ -371,7 +384,7 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
     }
 
     private int getStyle(final String weight) {
-        switch(weight) {
+        switch (weight) {
         case REGULAR:
             return R.style.touchpoint_carousel_card_main_label;
         case SEMIBOLD:
@@ -384,7 +397,7 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
      * Returns the title font style to a default value
      */
     public void changeFontStyleToDefault() {
-        try{
+        try {
             if (Build.VERSION.SDK_INT < 23) {
                 topLabel.setTextAppearance(getContext(), R.style.touchpoint_carousel_card_top_label);
             } else {
@@ -397,10 +410,11 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
 
     /**
      * Changes the subtitle font style.
+     *
      * @param weight to change the font style to.
      */
     public void changeSubtitleFontStyle(final String weight) {
-        try{
+        try {
             if (Build.VERSION.SDK_INT < 23) {
                 mainLabel.setTextAppearance(getContext(), getStyle(weight));
             } else {
@@ -415,7 +429,7 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
      * Returns the subtitle font style to a default value.
      */
     public void changeSubtitleFontStyleToDefault() {
-        try{
+        try {
             if (Build.VERSION.SDK_INT < 23) {
                 mainLabel.setTextAppearance(getContext(), R.style.touchpoint_carousel_card_main_label);
             } else {
@@ -428,6 +442,7 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
 
     /**
      * Changes the subtitle text color.
+     *
      * @param color to change the subtitle to.
      */
     public void changeSubtitleColor(final String color) {
@@ -440,6 +455,7 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
 
     /**
      * Changes the subtitle text size.
+     *
      * @param size to change the subtitle size to.
      */
     public void changeSubtitleSize(final int size) {
@@ -473,5 +489,14 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
      */
     public void disableLogoOverlay() {
         logoOverlay.setVisibility(GONE);
+    }
+
+    /**
+     * Sets the image loader
+     *
+     * @param imageLoader the image loader.
+     */
+    public void setImageLoader(final TouchpointImageLoader imageLoader) {
+        AssetLoader.setStrategy(imageLoader);
     }
 }

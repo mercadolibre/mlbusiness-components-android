@@ -26,12 +26,14 @@
             android:layout_marginEnd="@dimen/ui_1_75m"
             android:layout_marginStart="@dimen/ui_1_75m">
 
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/touchpoint_carousel_card_logo"
                 android:layout_width="@dimen/ui_9m"
                 android:layout_height="@dimen/ui_9m"
                 android:scaleType="fitCenter"
                 tools:src="@drawable/mercado_pago"
+                android:src="@drawable/skeleton"
+                app:roundAsCircle="true"
                 android:contentDescription="@string/app_name" />
 
             <View
@@ -55,19 +57,19 @@
             android:paddingStart="@dimen/ui_075m"
             android:paddingTop="3dp">
 
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/touchpoint_carousel_card_level_icon"
-                android:layout_width="7dp"
-                android:layout_height="@dimen/ui_1_25m"
+                android:layout_width="@dimen/ui_1_25m"
+                android:layout_height="@dimen/ui_1_5m"
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="@dimen/ui_050m"
-                tools:ignore="ContentDescription" />
+                tools:ignore="ContentDescription"
+                android:translationY="-1dp"/>
 
             <TextView
                 android:id="@+id/touchpoint_carousel_card_level"
                 style="@style/touchpoint_carousel_label_font"
                 android:maxWidth="@dimen/ui_9m"
-                android:translationY="-1dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="AGOTADO HOY" />

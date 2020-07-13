@@ -1,6 +1,5 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card;
 
-import android.graphics.Color;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCard;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselPill;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselTextFormat;
