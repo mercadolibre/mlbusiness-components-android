@@ -1,4 +1,5 @@
 ## VERSION 1.6.0
+_13_07_2020_
 * FEATURE - Adding functionality to use the carousel on discount center
 
 ## VERSION 1.5.0
