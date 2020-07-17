@@ -198,7 +198,7 @@ public class CarouselCard implements TouchpointTrackeable, Serializable {
             hasSubtitle = true;
         }
 
-        double spaceToMainLabel = 100, topLabelHeight = 14, mainLabelHeight = 28, titleHeight = 23, subtitleHeight = 13, spaceToBottom = 23;
+        double spaceToMainLabel = 100, topLabelHeight = 14, mainLabelHeight = 28, titleHeight = 23, subtitleHeight = 13, spaceToBottom = 28;
 
         double maxItemHeight = spaceToMainLabel
             + (hasTopLabel ? topLabelHeight : 0.0)
