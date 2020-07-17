@@ -1,4 +1,5 @@
 ## NEW
+* FEATURE - Se modifica el largo del titulo y subtitulo de las cards del carrusel
 
 ## VERSION 1.6.0
 _13_07_2020_

@@ -113,18 +113,18 @@
             style="@style/touchpoint_carousel_card_top_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxWidth="86dp"
+            android:maxWidth="96dp"
             android:gravity="center"
-            tools:text="Mc Donald’s" />
+            tools:text="Mc Donald’s Mc Donald’s" />
 
         <TextView
             android:id="@+id/touchpoint_carousel_card_main_label"
             style="@style/touchpoint_carousel_card_main_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxWidth="86dp"
+            android:maxWidth="96dp"
             android:gravity="center"
             android:layout_marginTop="1dp"
-            tools:text="Comida rápida" />
+            tools:text="Comida rápida Comida rápida" />
     </LinearLayout>
 </merge>
