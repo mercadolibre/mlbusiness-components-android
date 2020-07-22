@@ -1,5 +1,7 @@
 ## NEW
 
+* FIX - Se restaura el alto de la card
+
 ## VERSION 1.6.1
 _17_07_2020_
 * FEATURE - Se modifica el largo del titulo y subtitulo de las cards del carrusel
