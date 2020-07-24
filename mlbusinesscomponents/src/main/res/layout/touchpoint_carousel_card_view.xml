@@ -115,7 +115,7 @@
             android:layout_height="wrap_content"
             android:maxWidth="96dp"
             android:gravity="center"
-            tools:text="Mc Donald’s Mc Donald’s" />
+            tools:text="Mc Donald’s Mc Donald’s Mc Donald’s" />
 
         <TextView
             android:id="@+id/touchpoint_carousel_card_main_label"
@@ -125,6 +125,6 @@
             android:maxWidth="96dp"
             android:gravity="center"
             android:layout_marginTop="1dp"
-            tools:text="Comida rápida Comida rápida" />
+            tools:text="Comida rápida Comida rápida Comida rápida" />
     </LinearLayout>
 </merge>
