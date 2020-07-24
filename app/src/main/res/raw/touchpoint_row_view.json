@@ -1,0 +1,47 @@
+{
+  "left_image": "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg",
+  "left_image_accessory": "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg",
+  "main_title": "Pizza Vegana",
+  "main_subtitle": "Restaurante",
+  "main_description": [
+    {
+      "type": "image",
+      "content": "location_icon",
+      "color": "#00000"
+    },
+    {
+      "type": "text",
+      "content": "623m",
+      "color": "#00000"
+    },
+    {
+      "type": "text",
+      "content": "·",
+      "color": "#00000"
+    },
+    {
+      "type": "image",
+      "content": "ratings_icon",
+      "color": "#00000"
+    },
+    {
+      "type": "text",
+      "content": "4.3 (24)",
+      "color": "#00000"
+    }
+  ],
+  "right_primary_label": "10%",
+  "right_secondary_label": "OFF",
+  "right_middle_label": "Tope de $ 100",
+  "right_top_label": "Hasta",
+  "right_label_status": "BLOCKED",
+  "right_bottom_info": {
+    "icon": "discount_payers_checked",
+    "label": "NIVEL 5",
+    "format": {
+      "text_color": "#FFFFFF",
+      "background_color": "#5DC959"
+    }
+  },
+  "link": "mercadopago://home"
+}
