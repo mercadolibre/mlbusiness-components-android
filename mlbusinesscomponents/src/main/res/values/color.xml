@@ -11,8 +11,8 @@
     <color name="touchpoint_semi_black">#CC000000</color>
 
     <color name="row_logo_overlay">#0A000000</color>
-    <color name="semi_black">#CC000000</color>
 
+    <color name="semi_black">#CC000000</color>
     <color name="light_grey">#73000000</color>
 
 </resources>

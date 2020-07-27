@@ -1,19 +1,25 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.row;
 
 import android.text.TextUtils;
+import com.mercadolibre.android.mlbusinesscomponents.components.row.model.DescriptionItemsInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.pill.model.PillResponseInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.row.model.TouchpointRowItemInterface;
 import java.util.List;
 import org.jetbrains.annotations.Nullable;
 
 public class TouchpointRowPresenter {
 
-    /* default */ void onBind(final TouchpointRowItem rowItem, final TouchpointRowView view) {
+    private static final String BLOCKED = "blocked";
+
+    /* default */ void onBind(final TouchpointRowItemInterface rowItem, final TouchpointRowView view) {
         if (!rowItem.isValid()) {
-            view.showSkeleton();
+            view.hideRow();
             return;
         }
-        view.hideSkeleton();
+        view.showRow();
         setImage(rowItem.getLeftImage(), view);
-        //setPill(rowItem.getPill(), view);
+        setImageAccessory(rowItem.getLeftImageAccessory(), view);
+        setRightBottomInfo(rowItem.getRightBottomInfo(), view);
         setTitle(rowItem.getMainTitle(), view);
         setSubtitle(rowItem.getMainSubtitle(), view);
         setTopLabel(rowItem.getRightTopLabel(), view);
@@ -22,9 +28,32 @@ public class TouchpointRowPresenter {
         setBottomLabel(rowItem.getRightMiddleLabel(), view);
         setDescriptionLabels(rowItem.getMainDescription(), view);
         setOnClickListener(rowItem.getLink(), view);
+        setRightLabelStatus(rowItem.getRightLabelStatus(), view);
     }
 
-    private void setDescriptionLabels(final List<DescriptionItems> mainDescription, final TouchpointRowView view) {
+    private void setRightLabelStatus(final String rightLabelStatus, final TouchpointRowView view) {
+        if (rightLabelStatus == null || rightLabelStatus.isEmpty()) {
+            return;
+        }
+
+        switch (rightLabelStatus.toLowerCase()) {
+        case BLOCKED:
+            view.setRightLabelsToBlockedStatus();
+            break;
+        default:
+            view.setRightLabelsToDefaultStatus();
+        }
+    }
+
+    private void setImageAccessory(final String leftImageAccessory, final TouchpointRowView view) {
+        if (TextUtils.isEmpty(leftImageAccessory)) {
+            view.hideImageAccessory();
+            return;
+        }
+        view.showImageAccessory(leftImageAccessory);
+    }
+
+    private void setDescriptionLabels(final List<DescriptionItemsInterface> mainDescription, final TouchpointRowView view) {
         if (mainDescription == null || mainDescription.isEmpty()) {
             view.hideDescriptionLabels();
             return;
@@ -46,21 +75,13 @@ public class TouchpointRowPresenter {
         view.showImage(image);
     }
 
-    private void setPill(@Nullable final PillResponse pill, final TouchpointRowView view) {
-        /*if (pill == null) {
-            view.hideLevel();
+    private void setRightBottomInfo(@Nullable final PillResponseInterface pill, final TouchpointRowView view) {
+        if (pill == null) {
+            view.hideRightBottomInfo();
             return;
         }
-        if (TextUtils.isEmpty(pill.getIcon())) {
-            view.hideLevelIcon();
-        } else {
-            view.showLevelIcon(pill.getIcon());
-            if (isValidPillFormat(pill)) {
-                view.tintPillAsset(pill.getFormat().getTextColor());
-            }
-        }
-        view.showLevelText(pill.getLabel(), pill.getFormat().getTextColor(),
-            pill.getFormat().getBackgroundColor());*/
+
+        view.showRightBottomInfo(pill);
     }
 
     private void setTitle(final String title, final TouchpointRowView view) {
@@ -77,16 +98,6 @@ public class TouchpointRowPresenter {
             return;
         }
         view.showSubtitle(subtitle);
-    }
-
-    private void setLocationLabel(final String distanceIcon, final String distanceLabel,
-        final TouchpointRowView view) {
-        /*if (!TextUtils.isEmpty(distanceLabel)) {
-            view.showDistanceLabel(distanceLabel);
-            if (!TextUtils.isEmpty(distanceIcon)) {
-                view.showDistanceIcon(distanceIcon);
-            }
-        }*/
     }
 
     private void setTopLabel(final String topLabel, final TouchpointRowView view) {
@@ -119,10 +130,5 @@ public class TouchpointRowPresenter {
             return;
         }
         view.showBottomLabel(bottomLabel);
-    }
-
-    private boolean isValidPillFormat(@Nullable final PillResponse pill) {
-        return pill != null && pill.getFormat() != null &&
-            !TextUtils.isEmpty(pill.getFormat().getTextColor());
     }
 }

@@ -36,7 +36,11 @@ public class MainDescriptionLabelsText extends FrameLayout {
         if (color == null || color.isEmpty()) {
             textView.setTextColor(ContextCompat.getColor(getContext(), R.color.light_grey));
         } else {
-            textView.setTextColor(Color.parseColor(color));
+            try {
+                textView.setTextColor(Color.parseColor(color));
+            }catch (Exception e){
+                textView.setTextColor(ContextCompat.getColor(getContext(), R.color.light_grey));
+            }
         }
     }
 }

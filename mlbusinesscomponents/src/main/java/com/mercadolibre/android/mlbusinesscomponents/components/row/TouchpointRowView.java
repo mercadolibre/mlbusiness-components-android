@@ -11,12 +11,18 @@ import android.widget.TextView;
 import android.widget.ViewSwitcher;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
+import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointAssetLoader;
+import com.mercadolibre.android.mlbusinesscomponents.components.pill.model.PillResponseInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.pill.view.RightBottomInfo;
+import com.mercadolibre.android.mlbusinesscomponents.components.row.model.DescriptionItemsInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.row.model.TouchpointRowItemInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.AssetLoader;
 import java.util.List;
 
-public class TouchpointRowView extends ViewSwitcher {
-    private static final String DEFAULT_STORE_LOGO = "default_store";
-    private static final int SKELETON_INDEX = 1;
-    private static final int VIEW_INDEX = 0;
+public class TouchpointRowView extends LinearLayout implements OnClickCallback {
+
+    private static final int TRANSLATION_PIXELS = 6;
 
     private final SimpleDraweeView leftImage;
     private final SimpleDraweeView leftImageAccessory;
@@ -26,16 +32,16 @@ public class TouchpointRowView extends ViewSwitcher {
     private final TextView rightPrimaryLabel;
     private final TextView rightSecondaryLabel;
     private final TextView rightMiddleLabel;
-    private final TextView rightBottomInfoText;
-    private final SimpleDraweeView rightBottomInfoIcon;
-    private final LinearLayout rightBottomInfoContainer;
+    private final RightBottomInfo rightBottomInfoContainer;
     private final LinearLayout mainDescriptionContainer;
     private final TouchpointRowPresenter presenter;
+    private OnClickCallback onClickCallback;
 
     /**
      * Constructor
      *
-     * @param context The execution context. **/
+     * @param context The execution context.
+     **/
     public TouchpointRowView(final Context context) {
         this(context, null);
     }
@@ -44,7 +50,8 @@ public class TouchpointRowView extends ViewSwitcher {
      * Constructor
      *
      * @param context The execution context.
-     * @param attrs The style attributes. **/
+     * @param attrs The style attributes.
+     **/
     public TouchpointRowView(final Context context, @Nullable final AttributeSet attrs) {
         super(context, attrs);
         inflate(context, R.layout.touchpoint_row_view, this);
@@ -58,47 +65,51 @@ public class TouchpointRowView extends ViewSwitcher {
         rightMiddleLabel = findViewById(R.id.right_middle_label);
         mainDescriptionContainer = findViewById(R.id.main_description_container);
         rightBottomInfoContainer = findViewById(R.id.right_bottom_info_container);
-        rightBottomInfoText = findViewById(R.id.right_bottom_info_text);
-        rightBottomInfoIcon = findViewById(R.id.right_bottom_info_image);
-
+        rightBottomInfoContainer.bindViews();
         presenter = new TouchpointRowPresenter();
     }
 
     /**
      * Binds the model
      *
-     * @param cardResponse the model **/
-    public void bind(final TouchpointRowItem cardResponse) {
+     * @param cardResponse the model
+     **/
+    public void bind(final TouchpointRowItemInterface cardResponse) {
         presenter.onBind(cardResponse, this);
     }
 
     /**
-     * Show skeleton **/
-    public void showSkeleton() {
-        setDisplayedChild(SKELETON_INDEX);
+     * Show skeleton
+     **/
+    public void showRow() {
+        setVisibility(VISIBLE);
     }
 
     /**
-     * Hide skeleton **/
-    public void hideSkeleton() {
-        setDisplayedChild(VIEW_INDEX);
+     * Hide skeleton
+     **/
+    public void hideRow() {
+        setVisibility(GONE);
     }
 
     /**
      * Show brand logo
      *
-     * @param logo the image source **/
+     * @param logo the image source
+     **/
     public void showImage(final String logo) {
-        /*ImageLoader.create()
-            .withContainer(leftImage)
-            .withSource(logo)
-            .withDefaultLocalSource(DEFAULT_STORE_LOGO)
-            .withPrefix(ImageLoader.DISCOUNTS_PAYERS_PREFIX)
-            .load();*/
+        AssetLoader.getImage(logo, leftImage, (shouldLoadImage -> {
+            leftImage.setVisibility(VISIBLE);
+
+            if (shouldLoadImage) {
+                TouchpointAssetLoader.create().withContainer(leftImage).withSource(logo).load();
+            }
+        }));
     }
 
     /**
-     * Hide the brand logo **/
+     * Hide the brand logo
+     **/
     public void hideImage() {
         leftImage.setVisibility(GONE);
     }
@@ -106,14 +117,16 @@ public class TouchpointRowView extends ViewSwitcher {
     /**
      * Show brand name
      *
-     * @param title The brand name **/
+     * @param title The brand name
+     **/
     public void showTitle(final String title) {
         mainTitle.setText(title);
         mainTitle.setVisibility(VISIBLE);
     }
 
     /**
-     * Hide brand name **/
+     * Hide brand name
+     **/
     public void hideTitle() {
         mainTitle.setVisibility(GONE);
     }
@@ -121,14 +134,16 @@ public class TouchpointRowView extends ViewSwitcher {
     /**
      * Show subtitle
      *
-     * @param subtitle The subtitle **/
+     * @param subtitle The subtitle
+     **/
     public void showSubtitle(final String subtitle) {
         mainSubtitle.setText(subtitle);
         mainSubtitle.setVisibility(VISIBLE);
     }
 
     /**
-     * hide subtitle **/
+     * hide subtitle
+     **/
     public void hideSubtitle() {
         mainSubtitle.setVisibility(GONE);
     }
@@ -136,14 +151,16 @@ public class TouchpointRowView extends ViewSwitcher {
     /**
      * Show topLabel
      *
-     * @param topLabel The untilText **/
+     * @param topLabel The untilText
+     **/
     public void showTopLabel(final String topLabel) {
         rightTopLabel.setText(topLabel);
         rightTopLabel.setVisibility(VISIBLE);
     }
 
     /**
-     * Hide topLabel **/
+     * Hide topLabel
+     **/
     public void hideTopLabel() {
         rightTopLabel.setVisibility(GONE);
     }
@@ -151,14 +168,16 @@ public class TouchpointRowView extends ViewSwitcher {
     /**
      * Show discount mainLabel
      *
-     * @param mainLabel The discount mainLabel **/
+     * @param mainLabel The discount mainLabel
+     **/
     public void showMainLabel(final String mainLabel) {
         rightPrimaryLabel.setText(mainLabel);
         rightPrimaryLabel.setVisibility(VISIBLE);
     }
 
     /**
-     * Hide discount rightLabel **/
+     * Hide discount rightLabel
+     **/
     public void hideRightLabel() {
         rightSecondaryLabel.setVisibility(GONE);
     }
@@ -166,14 +185,16 @@ public class TouchpointRowView extends ViewSwitcher {
     /**
      * Show discount rightLabel
      *
-     * @param rightLabel The discount rightLabel **/
+     * @param rightLabel The discount rightLabel
+     **/
     public void showRightLabel(final String rightLabel) {
         rightSecondaryLabel.setText(rightLabel);
         rightSecondaryLabel.setVisibility(VISIBLE);
     }
 
     /**
-     * Hide discount mainLabel */
+     * Hide discount mainLabel
+     */
     public void hideMainLabel() {
         rightPrimaryLabel.setVisibility(GONE);
     }
@@ -182,7 +203,7 @@ public class TouchpointRowView extends ViewSwitcher {
      * Show discount bottom label
      *
      * @param bottomLabel The discount bottom label
-    */
+     */
     public void showBottomLabel(final String bottomLabel) {
         rightMiddleLabel.setText(bottomLabel);
         rightMiddleLabel.setVisibility(VISIBLE);
@@ -190,76 +211,28 @@ public class TouchpointRowView extends ViewSwitcher {
 
     /**
      * Hide discount bottom label
-    */
+     */
     public void hideBottomLabel() {
         rightMiddleLabel.setVisibility(GONE);
-    }
-
-    /**
-     * Show level
-     *
-     * @param text The level text
-     * @param textColor The text color
-     * @param backgroundColor The background color
-    */
-    public void showLevelText(final String text, final String textColor,
-        final String backgroundColor) {
-        try {
-            rightBottomInfoText.setText(text);
-            rightBottomInfoText.setTextColor(Color.parseColor(textColor));
-            setLevelBackground(backgroundColor);
-        } catch (final IllegalArgumentException e) {
-            hideLevel();
-        }
-    }
-
-    /**
-     * Show level
-     *
-     * @param iconName The name of resource
-    */
-    public void showLevelIcon(final String iconName) {
-        rightBottomInfoIcon.setVisibility(VISIBLE);
-        /*ImageLoader.create()
-            .withContainer(rightBottomInfoIcon)
-            .withSource(iconName)
-            .withPrefix(ImageLoader.DISCOUNTS_PAYERS_PREFIX)
-            .load();*/
-    }
-
-    /**
-     * Hide level icon
-    */
-    public void hideLevelIcon() {
-        rightBottomInfoIcon.setVisibility(GONE);
-    }
-
-    /**
-     * Hide level
-    */
-    public void hideLevel() {
-        rightBottomInfoContainer.setVisibility(INVISIBLE);
-        /*decorateLogo(Boolean.FALSE);*/
     }
 
     /**
      * Show store distance
      *
      * @param mainDescription the labels.
-    */
-    public void showDescriptionLabels(final List<DescriptionItems> mainDescription) {
-        if(mainDescription != null && !mainDescription.isEmpty()) {
-            if(mainDescriptionContainer.getChildCount() > 0) {
+     */
+    public void showDescriptionLabels(final List<DescriptionItemsInterface> mainDescription) {
+        if (mainDescription != null && !mainDescription.isEmpty()) {
+            if (mainDescriptionContainer.getChildCount() > 0) {
                 mainDescriptionContainer.removeAllViews();
             }
             mainDescriptionContainer.setVisibility(VISIBLE);
             addDescriptionLabels(mainDescription);
         }
-
     }
 
-    private void addDescriptionLabels(final List<DescriptionItems> mainDescription) {
-        for (DescriptionItems item: mainDescription) {
+    private void addDescriptionLabels(final List<DescriptionItemsInterface> mainDescription) {
+        for (DescriptionItemsInterface item : mainDescription) {
             switch (item.getType()) {
             case "image":
                 addImageDescription(item.getContent(), item.getColor());
@@ -287,45 +260,66 @@ public class TouchpointRowView extends ViewSwitcher {
 
     /**
      * Hide store description
-     *
-    */
+     */
     public void hideDescriptionLabels() {
-        if(mainDescriptionContainer.getChildCount() > 0) {
+        if (mainDescriptionContainer.getChildCount() > 0) {
             mainDescriptionContainer.removeAllViews();
         }
         mainDescriptionContainer.setVisibility(GONE);
     }
 
-
     /**
      * Set on click listener
      *
      * @param link The deep link to launch
-    */
+     */
     public void onClick(final String link) {
         setOnClickListener(view -> onClickEvent(link, view));
     }
 
     private void onClickEvent(final String link, final View view) {
-        /*if (tapListener != null) {
-            tapListener.tap(tracking);
+        if (onClickCallback != null) {
+            onClickCallback.onClick(link);
         }
-        IntentUtils.launchDeepLink(view.getContext(), link);*/
     }
 
-    private void setLevelBackground(final String backgroundColor) {
-        /*try {
-            rightBottomInfoContainer.setVisibility(VISIBLE);
-            decorateLogo(Boolean.TRUE);
-            final int color = Color.parseColor(backgroundColor);
-            final GradientDrawable shape = (GradientDrawable) getResources()
-                .getDrawable(R.drawable.discounts_payers_level_background);
-            shape.setColor(color);
-            rightBottomInfoContainer.setBackground(shape);
-            rightBottomInfoContainer.bringToFront();
-        } catch (final IllegalArgumentException ie) {
-            rightBottomInfoContainer.setVisibility(GONE);
-        }*/
+    public void setOnClickCallback(final OnClickCallback onClickCallback) {
+        this.onClickCallback = onClickCallback;
     }
 
+    public void hideImageAccessory() {
+        leftImageAccessory.setVisibility(GONE);
+    }
+
+    public void showImageAccessory(final String leftImageAccessory) {
+        AssetLoader.getImage(leftImageAccessory, this.leftImageAccessory, (shouldLoadImage -> {
+            this.leftImageAccessory.setVisibility(VISIBLE);
+
+            if (shouldLoadImage) {
+                TouchpointAssetLoader.create().withContainer(this.leftImageAccessory).withSource(leftImageAccessory).load();
+            }
+        }));
+    }
+
+    public void setRightLabelsToBlockedStatus() {
+        rightMiddleLabel.setAlpha(0.4f);
+        rightPrimaryLabel.setAlpha(0.4f);
+        rightSecondaryLabel.setAlpha(0.4f);
+    }
+
+    public void setRightLabelsToDefaultStatus() {
+        rightMiddleLabel.setAlpha(1f);
+        rightPrimaryLabel.setAlpha(1f);
+        rightSecondaryLabel.setAlpha(1f);
+    }
+
+    public void hideRightBottomInfo() {
+        rightBottomInfoContainer.hideRightBottomInfoView();
+    }
+
+    public void showRightBottomInfo(final PillResponseInterface pill) {
+        rightBottomInfoContainer.bind(pill);
+        rightBottomInfoContainer.setTranslationX(TRANSLATION_PIXELS * getResources().getDisplayMetrics().density);
+        rightBottomInfoContainer.setTranslationY(-TRANSLATION_PIXELS * getResources().getDisplayMetrics().density);;
+    }
 }

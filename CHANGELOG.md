@@ -1,4 +1,5 @@
 ## NEW
+* FEATURE - Se agrega un componente de row hibrido
 
 ## VERSION 1.6.1
 _17_07_2020_

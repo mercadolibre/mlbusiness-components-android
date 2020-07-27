@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mercadolibre.android.mlbusinesscomponents.components.pill.view.RightBottomInfo xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/ui_2m"
+    android:layout_gravity="end"
+    android:background="@drawable/level_background"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/ui_025m"
+    android:paddingEnd="@dimen/ui_075m"
+    android:paddingStart="@dimen/ui_075m"
+    android:paddingTop="3dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/right_bottom_info_image"
+        android:layout_width="@dimen/ui_1_25m"
+        android:layout_height="@dimen/ui_1_25m"
+        android:layout_gravity="center_vertical"
+        android:scaleType="fitCenter"
+        app:actualImageScaleType="fitCenter"
+        android:layout_marginEnd="@dimen/ui_050m" />
+
+    <TextView
+        android:id="@+id/right_bottom_info_text"
+        style="@style/discounts_payers_commons_level"
+        android:maxWidth="@dimen/ui_9m"
+        android:translationY="-1dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="AGOTADO HOY" />
+
+</com.mercadolibre.android.mlbusinesscomponents.components.pill.view.RightBottomInfo>
