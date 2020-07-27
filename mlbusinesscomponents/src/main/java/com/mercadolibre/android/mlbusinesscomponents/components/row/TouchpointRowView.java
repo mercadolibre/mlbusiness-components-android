@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.ViewSwitcher;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointAssetLoader;
@@ -17,9 +18,11 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callb
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.AssetLoader;
 import java.util.List;
 
-public class TouchpointRowView extends LinearLayout implements OnClickCallback {
+public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
 
     private static final int TRANSLATION_PIXELS = 6;
+    private static final int SKELETON_INDEX = 1;
+    private static final int VIEW_INDEX = 0;
 
     private final SimpleDraweeView leftImage;
     private final SimpleDraweeView leftImageAccessory;
@@ -77,16 +80,16 @@ public class TouchpointRowView extends LinearLayout implements OnClickCallback {
 
     /**
      * Show skeleton
-     **/
-    public void showRow() {
-        setVisibility(VISIBLE);
+     */
+    public void showSkeleton() {
+        setDisplayedChild(SKELETON_INDEX);
     }
 
     /**
      * Hide skeleton
-     **/
-    public void hideRow() {
-        setVisibility(GONE);
+     */
+    public void hideSkeleton() {
+        setDisplayedChild(VIEW_INDEX);
     }
 
     /**
@@ -317,6 +320,7 @@ public class TouchpointRowView extends LinearLayout implements OnClickCallback {
     public void showRightBottomInfo(final PillResponseInterface pill) {
         rightBottomInfoContainer.bind(pill);
         rightBottomInfoContainer.setTranslationX(TRANSLATION_PIXELS * getResources().getDisplayMetrics().density);
-        rightBottomInfoContainer.setTranslationY(-TRANSLATION_PIXELS * getResources().getDisplayMetrics().density);;
+        rightBottomInfoContainer.setTranslationY(-TRANSLATION_PIXELS * getResources().getDisplayMetrics().density);
+        ;
     }
 }

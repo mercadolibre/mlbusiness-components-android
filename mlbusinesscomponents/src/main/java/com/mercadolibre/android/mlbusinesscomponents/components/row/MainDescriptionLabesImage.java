@@ -38,11 +38,5 @@ public class MainDescriptionLabesImage extends FrameLayout {
             }
         }));
 
-        try {
-            image.setColorFilter(Color.parseColor(color));
-        } catch (Exception e){
-            // no op..
-        }
-
     }
 }

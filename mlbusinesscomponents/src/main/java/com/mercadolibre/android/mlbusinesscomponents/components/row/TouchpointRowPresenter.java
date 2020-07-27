@@ -13,10 +13,10 @@ public class TouchpointRowPresenter {
 
     /* default */ void onBind(final TouchpointRowItemInterface rowItem, final TouchpointRowView view) {
         if (!rowItem.isValid()) {
-            view.hideRow();
+            view.showSkeleton();
             return;
         }
-        view.showRow();
+        view.hideSkeleton();
         setImage(rowItem.getLeftImage(), view);
         setImageAccessory(rowItem.getLeftImageAccessory(), view);
         setRightBottomInfo(rowItem.getRightBottomInfo(), view);

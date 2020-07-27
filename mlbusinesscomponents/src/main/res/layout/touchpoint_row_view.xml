@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:parentTag="android.widget.LinearLayout"
+    tools:parentTag="android.widget.ViewSwitcher"
     tools:measureAllChildren="true">
 
     <android.support.constraint.ConstraintLayout
@@ -75,6 +75,7 @@
             android:layout_marginBottom="@dimen/ui_2m"
             android:layout_marginStart="@dimen/ui_2m"
             android:orientation="horizontal"
+            android:gravity="center_vertical"
             app:layout_constraintTop_toBottomOf="@+id/main_subtitle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/left_image" >
@@ -86,9 +87,10 @@
         <LinearLayout
             android:id="@+id/discounts_payers_list_row_label_container"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="96dp"
             android:orientation="vertical"
             android:layout_marginEnd="@dimen/ui_2m"
+            android:gravity="center"
             app:layout_constraintBottom_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="parent" >
@@ -106,9 +108,10 @@
                 android:id="@+id/discounts_payers_list_row_main_label_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
+                android:layout_gravity="center_vertical|end"
+                android:gravity="center"
                 android:translationY="-1dp"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/right_primary_label"
@@ -133,14 +136,13 @@
                 style="@style/discounts_payers_list_row_bottom_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:translationY="-5dp"
+                android:translationY="-4dp"
                 android:gravity="end"
                 android:layout_gravity="end"
                 tools:text="Sin tope" />
 
             <include layout="@layout/bottom_right_info_view"
                 android:id="@+id/right_bottom_info_container"
-                android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/discounts_payers_list_row_label_container"
                 app:layout_constraintStart_toStartOf="@+id/discounts_payers_list_row_label_container"
@@ -167,5 +169,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
+
+    <include layout="@layout/touchpoint_row_skeleton"/>
 
 </merge>

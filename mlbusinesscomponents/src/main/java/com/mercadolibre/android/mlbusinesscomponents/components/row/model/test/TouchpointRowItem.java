@@ -34,10 +34,10 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
     @Override
     public List<DescriptionItemsInterface> getMainDescription() {
         List<DescriptionItemsInterface> list = new ArrayList<>();
-        DescriptionItems descriptionItems1 = new DescriptionItems("image", "location_icon", "#000000");
+        DescriptionItems descriptionItems1 = new DescriptionItems("image", "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg", "#000000");
         DescriptionItems descriptionItems2 = new DescriptionItems("text", "623m", "#73000000");
         DescriptionItems descriptionItems3 = new DescriptionItems("text", " · ", "#00as0000");
-        DescriptionItems descriptionItems4 = new DescriptionItems("image", "ratings_icon", "#000000");
+        DescriptionItems descriptionItems4 = new DescriptionItems("image", "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg", "#000000");
         DescriptionItems descriptionItems5 = new DescriptionItems("text", "4.3 (24)", "#73000000");
 
         list.add(descriptionItems1);
@@ -81,7 +81,7 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
 
     @Override
     public String getRightLabelStatus() {
-        return "blockedasdasd";
+        return "blocked";
     }
 
     @Override

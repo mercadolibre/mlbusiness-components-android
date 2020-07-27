@@ -36,7 +36,7 @@ public class RightBottomInfoView extends LinearLayout {
      *
      * @param pill the data to create the view
      */
-    public void bind (PillResponseInterface pill) {
+    public void bind(PillResponseInterface pill) {
 
         if (TextUtils.isEmpty(pill.getIcon())) {
             hideLevelIcon();
@@ -59,9 +59,8 @@ public class RightBottomInfoView extends LinearLayout {
      * Hide level
      */
     public void hideRightBottomInfoView() {
-        setVisibility(INVISIBLE);
+        setVisibility(GONE);
     }
-
 
     private void showRightBottomInfoText(final String text, final String textColor,
         final String backgroundColor) {
@@ -90,7 +89,7 @@ public class RightBottomInfoView extends LinearLayout {
     }
 
     private void tintRightBottomInfoIcon(final String textColor) {
-        try{
+        try {
             rightBottomInfoIcon.setColorFilter(Color.parseColor(textColor));
         } catch (Exception e) {
             // no op..
@@ -114,5 +113,4 @@ public class RightBottomInfoView extends LinearLayout {
         return pill != null && pill.getFormat() != null &&
             !TextUtils.isEmpty(pill.getFormat().getTextColor());
     }
-
 }
