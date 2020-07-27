@@ -14,20 +14,20 @@ import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointAssetLoade
 import com.mercadolibre.android.mlbusinesscomponents.components.pill.model.PillResponseInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.AssetLoader;
 
-public class RightBottomInfo extends LinearLayout {
+public class RightBottomInfoView extends LinearLayout {
 
     private TextView rightBottomInfoText;
     private SimpleDraweeView rightBottomInfoIcon;
 
-    public RightBottomInfo(final Context context) {
+    public RightBottomInfoView(final Context context) {
         this(context, null);
     }
 
-    public RightBottomInfo(final Context context, @Nullable final AttributeSet attrs) {
+    public RightBottomInfoView(final Context context, @Nullable final AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public RightBottomInfo(final Context context, @Nullable final AttributeSet attrs, final int defStyleAttr) {
+    public RightBottomInfoView(final Context context, @Nullable final AttributeSet attrs, final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

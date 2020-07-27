@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.mercadolibre.android.mlbusinesscomponents.components.pill.view.RightBottomInfo xmlns:android="http://schemas.android.com/apk/res/android"
+<com.mercadolibre.android.mlbusinesscomponents.components.pill.view.RightBottomInfoView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="@dimen/ui_2m"
     android:layout_gravity="end"
@@ -30,4 +30,4 @@
         android:layout_height="wrap_content"
         tools:text="AGOTADO HOY" />
 
-</com.mercadolibre.android.mlbusinesscomponents.components.pill.view.RightBottomInfo>
+</com.mercadolibre.android.mlbusinesscomponents.components.pill.view.RightBottomInfoView>

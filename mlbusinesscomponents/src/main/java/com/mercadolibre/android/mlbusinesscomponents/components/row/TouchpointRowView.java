@@ -1,19 +1,16 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.row;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.ViewSwitcher;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointAssetLoader;
 import com.mercadolibre.android.mlbusinesscomponents.components.pill.model.PillResponseInterface;
-import com.mercadolibre.android.mlbusinesscomponents.components.pill.view.RightBottomInfo;
+import com.mercadolibre.android.mlbusinesscomponents.components.pill.view.RightBottomInfoView;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.DescriptionItemsInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.TouchpointRowItemInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
@@ -32,7 +29,7 @@ public class TouchpointRowView extends LinearLayout implements OnClickCallback {
     private final TextView rightPrimaryLabel;
     private final TextView rightSecondaryLabel;
     private final TextView rightMiddleLabel;
-    private final RightBottomInfo rightBottomInfoContainer;
+    private final RightBottomInfoView rightBottomInfoContainer;
     private final LinearLayout mainDescriptionContainer;
     private final TouchpointRowPresenter presenter;
     private OnClickCallback onClickCallback;
