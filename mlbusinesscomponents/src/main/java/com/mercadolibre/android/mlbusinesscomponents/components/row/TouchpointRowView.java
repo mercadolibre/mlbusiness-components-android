@@ -20,7 +20,8 @@ import java.util.List;
 
 public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
 
-    private static final int TRANSLATION_PIXELS = 6;
+    private static final int TRANSLATION_PIXELS_X = 6;
+    private static final int TRANSLATION_PIXELS_Y = 5;
     private static final int SKELETON_INDEX = 1;
     private static final int VIEW_INDEX = 0;
 
@@ -319,8 +320,8 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
 
     public void showRightBottomInfo(final PillResponseInterface pill) {
         rightBottomInfoContainer.bind(pill);
-        rightBottomInfoContainer.setTranslationX(TRANSLATION_PIXELS * getResources().getDisplayMetrics().density);
-        rightBottomInfoContainer.setTranslationY(-TRANSLATION_PIXELS * getResources().getDisplayMetrics().density);
+        rightBottomInfoContainer.setTranslationX(TRANSLATION_PIXELS_X * getResources().getDisplayMetrics().density);
+        rightBottomInfoContainer.setTranslationY(-TRANSLATION_PIXELS_Y * getResources().getDisplayMetrics().density);
         ;
     }
 }
