@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:parentTag="android.widget.ViewSwitcher"
+    tools:measureAllChildren="true">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/left_image"
+            android:layout_width="@dimen/ui_8m"
+            android:layout_height="@dimen/ui_8m"
+            android:layout_marginBottom="@dimen/ui_2m"
+            android:layout_marginStart="@dimen/ui_2m"
+            android:layout_marginTop="@dimen/ui_2m"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            fresco:actualImageScaleType="fitCenter"
+            fresco:overlayImage="@color/row_logo_overlay"
+            fresco:placeholderImage="@drawable/oval_skeleton"
+            fresco:roundAsCircle="true" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/left_image_accessory"
+            android:layout_width="@dimen/ui_2_5m"
+            android:layout_height="@dimen/ui_2_5m"
+            android:layout_marginStart="@dimen/ui_2m"
+            android:layout_marginTop="@dimen/ui_2m"
+            app:layout_constraintBottom_toBottomOf="@+id/left_image"
+            app:layout_constraintEnd_toEndOf="@+id/left_image"
+            app:layout_constraintVertical_chainStyle="packed"
+            fresco:actualImageScaleType="fitCenter"
+            fresco:roundAsCircle="true" />
+
+        <TextView
+            android:id="@+id/main_title"
+            style="@style/discounts_payers_list_card_title_font"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ui_2m"
+            android:layout_marginStart="@dimen/ui_2m"
+            android:layout_marginEnd="@dimen/ui_1_75m"
+            app:layout_constraintStart_toEndOf="@+id/left_image"
+            app:layout_constraintEnd_toStartOf="@+id/discounts_payers_list_row_label_container"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/main_subtitle"
+            tools:text="Burger King" />
+
+        <TextView
+            android:id="@+id/main_subtitle"
+            style="@style/discounts_payers_list_card_subtitle_font"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/ui_1_75m"
+            android:layout_marginStart="@dimen/ui_2m"
+            android:layout_marginTop="@dimen/ui_025m"
+            app:layout_constraintBottom_toTopOf="@+id/main_description_container"
+            app:layout_constraintEnd_toStartOf="@+id/discounts_payers_list_row_label_container"
+            app:layout_constraintStart_toEndOf="@+id/left_image"
+            app:layout_constraintTop_toBottomOf="@+id/main_title"
+            tools:text="Comida rápida" />
+
+        <LinearLayout
+            android:id="@+id/main_description_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/ui_2m"
+            android:layout_marginStart="@dimen/ui_2m"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:translationY="-2dp"
+            app:layout_constraintTop_toBottomOf="@+id/main_subtitle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/left_image" >
+
+            <!-- add childs here -->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/discounts_payers_list_row_label_container"
+            android:layout_width="wrap_content"
+            android:layout_height="96dp"
+            android:orientation="vertical"
+            android:layout_marginEnd="@dimen/ui_2m"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="parent" >
+
+            <TextView
+                android:id="@+id/right_top_label"
+                style="@style/discounts_payers_list_card_top_label_font"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:layout_gravity="end"
+                tools:text="Hasta" />
+
+            <LinearLayout
+                android:id="@+id/discounts_payers_list_row_main_label_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|end"
+                android:gravity="center"
+                android:translationY="-1dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/right_primary_label"
+                    style="@style/discounts_payers_list_card_main_label_font"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="99%" />
+
+                <TextView
+                    android:id="@+id/right_secondary_label"
+                    style="@style/discounts_payers_list_row_right_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/ui_050m"
+                    tools:text="OFF" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/right_middle_label"
+                style="@style/discounts_payers_list_row_bottom_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:translationY="-5dp"
+                android:gravity="end"
+                android:layout_gravity="end"
+                tools:text="Sin tope" />
+
+            <include layout="@layout/bottom_right_info_view"
+                android:id="@+id/right_bottom_info_container"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/discounts_payers_list_row_label_container"
+                app:layout_constraintStart_toStartOf="@+id/discounts_payers_list_row_label_container"
+                app:layout_constraintTop_toBottomOf="@+id/right_middle_label"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="@dimen/ui_0125m"
+            android:background="@color/ui_components_light_grey_color"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <View
+            android:id="@+id/discounts_payers_list_row_click"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="?android:attr/selectableItemBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <include layout="@layout/touchpoint_row_skeleton"/>
+
+</merge>

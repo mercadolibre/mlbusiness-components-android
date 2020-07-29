@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.Toast;
+import com.mercadolibre.android.mlbusinesscomponents.components.row.TouchpointRowView;
+import com.mercadolibre.android.mlbusinesscomponents.components.row.model.test.TouchpointRowItem;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointResponse;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
@@ -25,6 +27,7 @@ public class TouchpointTestActivity extends AppCompatActivity implements OnClick
 
     private MLBusinessTouchpointView touchpointView;
     private MLBusinessTouchpointListener touchpointListener;
+    private TouchpointRowView touchpointRowView;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -34,7 +37,14 @@ public class TouchpointTestActivity extends AppCompatActivity implements OnClick
         touchpointView = findViewById(R.id.touchpoint_view);
         touchpointChangerBottom = findViewById(R.id.touchpoint_button_bottom);
         touchpointChangerTop = findViewById(R.id.touchpoint_button_top);
+        touchpointRowView = findViewById(R.id.row_view);
         init();
+        initRowView();
+    }
+
+    private void initRowView() {
+        touchpointRowView.setOnClickCallback(this);
+        touchpointRowView.bind(new TouchpointRowItem());
     }
 
     private void init() {

@@ -21,6 +21,13 @@
             android:gravity="center|top"
             android:text="Scrollea para abajo para ver el componente"/>
 
+        <com.mercadolibre.android.mlbusinesscomponents.components.row.TouchpointRowView
+            android:id="@+id/row_view"
+            android:layout_marginTop="@dimen/ui_1m"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
         <Button
             android:id="@+id/touchpoint_button_top"
             android:layout_width="match_parent"

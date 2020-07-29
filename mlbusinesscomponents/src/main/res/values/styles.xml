@@ -49,4 +49,57 @@
         <item name="android:ellipsize">end</item>
     </style>
 
+    <style name="discounts_payers_commons_level" parent="MLFont.Bold">
+        <item name="android:textSize">10sp</item>
+        <item name="android:lineSpacingExtra">1sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="discounts_payers_list_card_title_font" parent="MLFont.Bold.Semi">
+        <item name="android:textSize">@dimen/ui_fontsize_xsmall</item>
+        <item name="android:textColor">@color/semi_black</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:lineSpacingExtra">@dimen/ui_linespacing_large</item>
+    </style>
+
+    <style name="discounts_payers_list_card_subtitle_font" parent="MLFont.Regular">
+        <item name="android:textSize">@dimen/ui_fontsize_xsmall</item>
+        <item name="android:textColor">@color/semi_black</item>
+        <item name="android:lineSpacingExtra">1sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="discounts_payers_list_card_description_font" parent="MLFont.Regular">
+        <item name="android:textSize">@dimen/ui_fontsize_xxsmall</item>
+        <item name="android:textColor">@color/light_grey</item>
+        <item name="android:lineSpacingExtra">3sp</item>
+    </style>
+
+    <style name="discounts_payers_list_card_top_label_font" parent="MLFont.Bold.Semi">
+        <item name="android:textSize">@dimen/ui_fontsize_xsmall</item>
+        <item name="android:textColor">@color/semi_black</item>
+        <item name="android:lineSpacingExtra">1sp</item>
+    </style>
+
+    <style name="discounts_payers_list_card_main_label_font" parent="MLFont.Bold.Semi">
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">@color/semi_black</item>
+        <item name="android:lineSpacingExtra">-1sp</item>
+    </style>
+
+    <style name="discounts_payers_list_row_bottom_label" parent="MLFont.Regular">
+        <item name="android:textSize">@dimen/ui_fontsize_xxsmall</item>
+        <item name="android:textColor">@color/light_grey</item>
+        <item name="android:lineSpacingExtra">3sp</item>
+    </style>
+
+    <style name="discounts_payers_list_row_right_label" parent="MLFont.Bold.Semi">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/semi_black</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+    </style>
+
 </resources>

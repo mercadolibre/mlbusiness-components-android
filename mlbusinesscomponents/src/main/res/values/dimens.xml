@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="right_bottom_info_padding_top">3dp</dimen>
+</resources>

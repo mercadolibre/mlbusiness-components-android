@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    android:id="@+id/main_description_image_label_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/main_description_icon"
+        android:layout_width="@dimen/ui_1_25m"
+        android:layout_height="@dimen/ui_1_25m"
+        android:layout_gravity="center"
+        xmlns:android="http://schemas.android.com/apk/res/android" />
+
+</merge>
