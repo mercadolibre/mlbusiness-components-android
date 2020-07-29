@@ -1,4 +1,5 @@
-## NEW
+## VERSION 1.7.0
+_29_07_2020_
 * FEATURE - Se agrega un componente de row hibrido
 * FEATURE - Se modifica la forma en la que se envian los trackeos a la central de descuentos desde la card de carrusel de touchpoint
 
