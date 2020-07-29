@@ -11,7 +11,7 @@ class MLBusinessActionCardViewDataSample: MLBusinessActionCardViewData {
 
     override fun getTitleWeight() = "semi_bold"
 
-    override fun getImageUrl() = "https://i.imgur.com/OX0LH62.png"
+    override fun getImageUrl() = "https://i.imgur.com/bsRTGju.png"
 
     override fun getAffordanceText() = "Dividir gasto"
 }
