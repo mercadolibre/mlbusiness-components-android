@@ -198,8 +198,13 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
 
     private void onClickEvent(final String link) {
         if (onClickCallback != null) {
-            trackTap(tracker, tracking);
-            onClickCallback.onClickWithTracking(link, tracking);
+            if (tracker != null) {
+                trackTap(tracker, tracking);
+            } else {
+                onClickCallback.sendTapTracking(tracking);
+            }
+
+            onClickCallback.onClick(link);
         }
     }
 

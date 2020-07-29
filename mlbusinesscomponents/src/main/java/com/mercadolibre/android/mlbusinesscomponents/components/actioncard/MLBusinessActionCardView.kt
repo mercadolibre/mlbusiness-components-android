@@ -2,19 +2,22 @@ package com.mercadolibre.android.mlbusinesscomponents.components.actioncard
 
 import android.content.Context
 import android.graphics.Color
+import android.os.Build
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.AppCompatImageView
 import android.support.v7.widget.AppCompatTextView
 import android.support.v7.widget.CardView
 import android.util.AttributeSet
+import android.util.TypedValue
 import com.mercadolibre.android.mlbusinesscomponents.R
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.FontHelper
 import com.mercadolibre.android.picassodiskcache.PicassoDiskLoader
 import com.mercadolibre.android.ui.font.TypefaceHelper
 
-class MLBusinessActionCardView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : CardView(context, attrs, defStyleAttr) {
+class MLBusinessActionCardView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : CardView(context,
+    attrs, defStyleAttr) {
 
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
-
     constructor(context: Context) : this(context, null, 0)
 
     init {
@@ -23,6 +26,13 @@ class MLBusinessActionCardView(context: Context, attrs: AttributeSet?, defStyleA
 
     private fun initView(context: Context) {
         inflate(context, R.layout.ml_view_action_card, this)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            isClickable = true
+            foreground = ContextCompat.getDrawable(context, TypedValue().run {
+                context.theme.resolveAttribute(android.R.attr.selectableItemBackground, this, true)
+                resourceId
+            })
+        }
     }
 
     fun init(actionCardViewData: MLBusinessActionCardViewData) {

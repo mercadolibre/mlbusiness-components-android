@@ -39,7 +39,7 @@
             android:lineSpacingExtra="1dp"
             android:textAllCaps="true"
             android:textSize="@dimen/ui_2m"
-            app:lineHeight="17dp"
+            app:lineHeight="20dp"
             app:layout_constraintVertical_chainStyle="spread_inside"
             app:layout_constraintBottom_toTopOf="@+id/split_button"
             app:layout_constraintEnd_toStartOf="@+id/guide_line"
