@@ -2,8 +2,8 @@ package com.mercadolibre.android.mlbusinesscomponents.components.row.model.test;
 
 import android.support.annotation.Keep;
 import android.text.TextUtils;
-import com.mercadolibre.android.mlbusinesscomponents.components.row.model.DescriptionItemsInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.pill.model.PillResponseInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.row.model.DescriptionItemsInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.TouchpointRowItemInterface;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,10 +34,12 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
     @Override
     public List<DescriptionItemsInterface> getMainDescription() {
         List<DescriptionItemsInterface> list = new ArrayList<>();
-        DescriptionItems descriptionItems1 = new DescriptionItems("image", "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg", "#000000");
+        DescriptionItems descriptionItems1 =
+            new DescriptionItems("image", "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg", "#000000");
         DescriptionItems descriptionItems2 = new DescriptionItems("text", "623m", "#73000000");
         DescriptionItems descriptionItems3 = new DescriptionItems("text", " · ", "#00as0000");
-        DescriptionItems descriptionItems4 = new DescriptionItems("image", "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg", "#000000");
+        DescriptionItems descriptionItems4 =
+            new DescriptionItems("image", "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg", "#000000");
         DescriptionItems descriptionItems5 = new DescriptionItems("text", "4.3 (24)", "#73000000");
 
         list.add(descriptionItems1);

@@ -27,7 +27,7 @@ public class TouchpointRowPresenter {
         setRightLabel(rowItem.getRightSecondaryLabel(), view);
         setBottomLabel(rowItem.getRightMiddleLabel(), view);
         setDescriptionLabels(rowItem.getMainDescription(), view);
-        setOnClickListener(rowItem.getLink(), view);
+        setOnClick(rowItem.getLink(), view);
         setRightLabelStatus(rowItem.getRightLabelStatus(), view);
     }
 
@@ -61,7 +61,22 @@ public class TouchpointRowPresenter {
         view.showDescriptionLabels(mainDescription);
     }
 
-    private void setOnClickListener(final String link, final TouchpointRowView view) {
+    public void addDescriptionLabels(final List<DescriptionItemsInterface> mainDescription, final TouchpointRowView view) {
+        for (DescriptionItemsInterface item : mainDescription) {
+            switch (item.getType()) {
+            case "image":
+                view.addImageDescription(item.getContent(), item.getColor());
+                break;
+            case "text":
+                view.addTextDescription(item.getContent(), item.getColor());
+                break;
+            default:
+                // no op..
+            }
+        }
+    }
+
+    private void setOnClick(final String link, final TouchpointRowView view) {
         if (!TextUtils.isEmpty(link)) {
             view.onClick(link);
         }

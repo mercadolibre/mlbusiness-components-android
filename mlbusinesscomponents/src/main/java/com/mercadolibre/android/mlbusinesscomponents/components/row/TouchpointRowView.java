@@ -10,6 +10,7 @@ import android.widget.ViewSwitcher;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointAssetLoader;
+import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointImageLoader;
 import com.mercadolibre.android.mlbusinesscomponents.components.pill.model.PillResponseInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.pill.view.RightBottomInfoView;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.DescriptionItemsInterface;
@@ -100,12 +101,12 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
      **/
     public void showImage(final String logo) {
         AssetLoader.getImage(logo, leftImage, (shouldLoadImage -> {
-            leftImage.setVisibility(VISIBLE);
-
             if (shouldLoadImage) {
                 TouchpointAssetLoader.create().withContainer(leftImage).withSource(logo).load();
             }
         }));
+
+        leftImage.setVisibility(VISIBLE);
     }
 
     /**
@@ -223,37 +224,20 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
      * @param mainDescription the labels.
      */
     public void showDescriptionLabels(final List<DescriptionItemsInterface> mainDescription) {
-        if (mainDescription != null && !mainDescription.isEmpty()) {
-            if (mainDescriptionContainer.getChildCount() > 0) {
-                mainDescriptionContainer.removeAllViews();
-            }
-            mainDescriptionContainer.setVisibility(VISIBLE);
-            addDescriptionLabels(mainDescription);
+        if (mainDescriptionContainer.getChildCount() > 0) {
+            mainDescriptionContainer.removeAllViews();
         }
+        mainDescriptionContainer.setVisibility(VISIBLE);
+        presenter.addDescriptionLabels(mainDescription, this);
     }
 
-    private void addDescriptionLabels(final List<DescriptionItemsInterface> mainDescription) {
-        for (DescriptionItemsInterface item : mainDescription) {
-            switch (item.getType()) {
-            case "image":
-                addImageDescription(item.getContent(), item.getColor());
-                break;
-            case "text":
-                addTextDescription(item.getContent(), item.getColor());
-                break;
-            default:
-                // no op..
-            }
-        }
-    }
-
-    private void addTextDescription(final String content, final String color) {
+    public void addTextDescription(final String content, final String color) {
         MainDescriptionLabelsText mainDescriptionLabelsText = new MainDescriptionLabelsText(getContext());
         mainDescriptionLabelsText.setText(content, color);
         mainDescriptionContainer.addView(mainDescriptionLabelsText);
     }
 
-    private void addImageDescription(final String content, final String color) {
+    public void addImageDescription(final String content, final String color) {
         MainDescriptionLabesImage mainDescriptionLabesImage = new MainDescriptionLabesImage(getContext());
         mainDescriptionLabesImage.setImage(content, color);
         mainDescriptionContainer.addView(mainDescriptionLabesImage);
@@ -294,12 +278,12 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
 
     public void showImageAccessory(final String leftImageAccessory) {
         AssetLoader.getImage(leftImageAccessory, this.leftImageAccessory, (shouldLoadImage -> {
-            this.leftImageAccessory.setVisibility(VISIBLE);
-
             if (shouldLoadImage) {
                 TouchpointAssetLoader.create().withContainer(this.leftImageAccessory).withSource(leftImageAccessory).load();
             }
         }));
+
+        this.leftImageAccessory.setVisibility(VISIBLE);
     }
 
     public void setRightLabelsToBlockedStatus() {
@@ -322,6 +306,14 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
         rightBottomInfoContainer.bind(pill);
         rightBottomInfoContainer.setTranslationX(TRANSLATION_PIXELS_X * getResources().getDisplayMetrics().density);
         rightBottomInfoContainer.setTranslationY(-TRANSLATION_PIXELS_Y * getResources().getDisplayMetrics().density);
-        ;
+    }
+
+    /**
+     * Sets the image loader
+     *
+     * @param imageLoader the image loader.
+     */
+    public void setImageLoader(final TouchpointImageLoader imageLoader) {
+        AssetLoader.setStrategy(imageLoader);
     }
 }

@@ -50,6 +50,14 @@ public class RightBottomInfoView extends LinearLayout {
             pill.getFormat().getBackgroundColor());
     }
 
+    private boolean isValidPillFormat(@Nullable final PillResponseInterface pill) {
+        return pill != null && pill.getFormat() != null &&
+            !TextUtils.isEmpty(pill.getFormat().getTextColor());
+    }
+
+    /**
+     * Binds the views.
+     */
     public void bindViews() {
         rightBottomInfoText = findViewById(R.id.right_bottom_info_text);
         rightBottomInfoIcon = findViewById(R.id.right_bottom_info_image);
@@ -74,14 +82,13 @@ public class RightBottomInfoView extends LinearLayout {
     }
 
     private void showRightBottomInfoIcon(final String iconName) {
-        rightBottomInfoIcon.setVisibility(VISIBLE);
         AssetLoader.getImage(iconName, rightBottomInfoIcon, (shouldLoadImage -> {
-            rightBottomInfoIcon.setVisibility(VISIBLE);
-
             if (shouldLoadImage) {
                 TouchpointAssetLoader.create().withContainer(rightBottomInfoIcon).withSource(iconName).load();
             }
         }));
+
+        rightBottomInfoIcon.setVisibility(VISIBLE);
     }
 
     private void hideLevelIcon() {
@@ -107,10 +114,5 @@ public class RightBottomInfoView extends LinearLayout {
         } catch (final IllegalArgumentException ie) {
             setVisibility(GONE);
         }
-    }
-
-    private boolean isValidPillFormat(@org.jetbrains.annotations.Nullable final PillResponseInterface pill) {
-        return pill != null && pill.getFormat() != null &&
-            !TextUtils.isEmpty(pill.getFormat().getTextColor());
     }
 }

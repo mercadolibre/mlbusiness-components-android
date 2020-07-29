@@ -31,12 +31,11 @@ public class MainDescriptionLabesImage extends FrameLayout {
 
     public void setImage(final String content, final String color) {
         AssetLoader.getImage(content, image, (shouldLoadImage -> {
-            image.setVisibility(VISIBLE);
-
             if (shouldLoadImage) {
                 TouchpointAssetLoader.create().withContainer(image).withSource(content).load();
             }
         }));
 
+        image.setVisibility(VISIBLE);
     }
 }

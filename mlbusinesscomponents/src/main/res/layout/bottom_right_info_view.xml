@@ -8,7 +8,7 @@
     android:paddingBottom="@dimen/ui_025m"
     android:paddingEnd="@dimen/ui_075m"
     android:paddingStart="@dimen/ui_075m"
-    android:paddingTop="3dp"
+    android:paddingTop="@dimen/right_bottom_info_padding_top"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
