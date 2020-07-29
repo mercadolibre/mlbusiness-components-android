@@ -15,9 +15,9 @@ public interface OnClickCallback {
     /**
      * On click callback with tracking
      *
-     * @param deepLink The desiree link to lunch
+     * @param touchpointTracking The tracking tap data.
      */
-    default void onClickWithTracking(@Nullable final String deepLink, @Nullable final TouchpointTracking touchpointTracking) {
+    default void sendTapTracking(@Nullable final TouchpointTracking touchpointTracking) {
         // no op..
     }
 }
