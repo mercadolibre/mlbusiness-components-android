@@ -1,8 +1,6 @@
 apply plugin:'com.android.application'
 apply plugin:'kotlin-android-extensions'
 apply plugin:'kotlin-android'
-apply plugin:'kotlin-android-extensions'
-apply plugin:'kotlin-android'
 
 android {
 
@@ -51,9 +49,4 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation "com.mercadolibre.android:ui:$meli_ui_lib"
     implementation "com.android.support:cardview-v7:$support_library_version"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-}
-repositories {
-    maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
-    mavenCentral()
 }
