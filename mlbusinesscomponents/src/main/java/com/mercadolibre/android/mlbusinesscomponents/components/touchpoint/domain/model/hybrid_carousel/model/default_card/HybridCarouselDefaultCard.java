@@ -17,11 +17,11 @@ public class HybridCarouselDefaultCard implements Serializable, TouchpointItem {
     private final String bottomPrimaryLabel;
     private final String bottomSecondaryLabel;
     private final String bottomLabelStatus;
-    private final PillResponse bottomInfo;
+    private final HybridPillResponse bottomInfo;
 
     public HybridCarouselDefaultCard(final String topImage, final String topImageAccessory, final String middleTitle, final String middleSubtitle,
         final String bottomTopLabel, final String bottomPrimaryLabel, final String bottomSecondaryLabel, final String bottomLabelStatus,
-        final PillResponse bottomInfo) {
+        final HybridPillResponse bottomInfo) {
         this.topImage = topImage;
         this.topImageAccessory = topImageAccessory;
         this.middleTitle = middleTitle;
