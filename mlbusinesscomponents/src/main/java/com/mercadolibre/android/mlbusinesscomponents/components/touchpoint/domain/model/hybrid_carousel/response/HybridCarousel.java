@@ -1,4 +1,4 @@
-package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.hybrid_carousel.test;
+package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.hybrid_carousel.response;
 
 import android.support.annotation.Keep;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent;
@@ -12,5 +12,9 @@ public class HybridCarousel implements TouchpointContent, Serializable {
 
     public HybridCarousel(final List<HybridCarouselCardContainer> items) {
         this.items = items;
+    }
+
+    public List<HybridCarouselCardContainer> getItems() {
+        return items;
     }
 }

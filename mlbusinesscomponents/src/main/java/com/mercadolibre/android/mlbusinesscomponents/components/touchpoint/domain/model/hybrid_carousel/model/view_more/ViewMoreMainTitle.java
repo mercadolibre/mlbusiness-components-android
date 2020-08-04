@@ -1,4 +1,4 @@
-package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.hybrid_carousel.test.view_more;
+package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.hybrid_carousel.model.view_more;
 
 import android.support.annotation.Keep;
 import java.io.Serializable;
