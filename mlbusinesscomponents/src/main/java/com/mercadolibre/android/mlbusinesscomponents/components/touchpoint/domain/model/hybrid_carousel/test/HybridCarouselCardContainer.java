@@ -9,16 +9,16 @@ import java.io.Serializable;
 @Keep
 public class HybridCarouselCardContainer implements Serializable {
 
-    private final String cardType;
+    private final String type;
     private final String link;
     private final TouchpointTracking tracking;
-    @Nullable public JsonElement cardContent;
+    @Nullable public JsonElement content;
 
-    public HybridCarouselCardContainer(final String cardType, final String link,
-        final TouchpointTracking tracking, @Nullable final JsonElement cardContent) {
-        this.cardType = cardType;
+    public HybridCarouselCardContainer(final String type, final String link,
+        final TouchpointTracking tracking, @Nullable final JsonElement content) {
+        this.type = type;
         this.link = link;
         this.tracking = tracking;
-        this.cardContent = cardContent;
+        this.content = content;
     }
 }

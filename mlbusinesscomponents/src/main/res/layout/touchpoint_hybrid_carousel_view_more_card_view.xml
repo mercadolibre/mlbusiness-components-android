@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:parentTag="android.support.v7.widget.CardView">
+
+    <LinearLayout
+        android:id="@+id/touchpoint_hybrid_carousel_default_card_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="@dimen/ui_1m"
+        android:paddingStart="@dimen/ui_1m"
+        android:paddingBottom="@dimen/ui_1_5m"
+        android:orientation="vertical"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center">
+
+        <FrameLayout
+            android:id="@+id/touchpoint_hybrid_carousel_default_card_image_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/ui_1_5m"
+            android:layout_marginBottom="@dimen/ui_1_5m"
+            android:layout_marginEnd="@dimen/ui_1_75m"
+            android:layout_marginStart="@dimen/ui_1_75m">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/touchpoint_hybrid_carousel_default_card_top_image"
+                android:layout_width="@dimen/ui_9m"
+                android:layout_height="@dimen/ui_9m"
+                android:scaleType="fitCenter"
+                tools:src="@drawable/mercado_pago"
+                android:src="@drawable/skeleton"
+                app:roundAsCircle="true"
+                android:contentDescription="@string/app_name" />
+
+            <View
+                android:id="@+id/touchpoint_hybrid_carousel_default_card_top_image_overlay"
+                android:layout_width="@dimen/ui_9m"
+                android:layout_height="@dimen/ui_9m"
+                android:background="@drawable/box_icon_overlay" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/touchpoint_hybrid_carousel_default_card_middle_title"
+            style="@style/touchpoint_view_more_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="96dp"
+            android:gravity="center"
+            tools:text="Mc Donald’s Mc Donald’s Mc Donald’s" />
+
+    </LinearLayout>
+
+</merge>

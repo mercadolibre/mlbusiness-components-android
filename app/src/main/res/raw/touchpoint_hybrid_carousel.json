@@ -4,8 +4,8 @@
   "content": {
     "items": [
       {
-        "card_type": "DEFAULT_CARD",
-        "card_content": {
+        "type": "DEFAULT",
+        "content": {
           "top_image": "https://i.ibb.co/N2rkn9K/Captura-de-Pantalla-2020-07-30-a-la-s-02-27-45.png",
           "middle_subtitle": "Club de la Birra",
           "middle_title": "Restaurante"
@@ -34,8 +34,8 @@
         }
       },
       {
-        "card_type": "DEFAULT_CARD",
-        "card_content": {
+        "type": "DEFAULT",
+        "content": {
           "top_image": "https://i.ibb.co/N2rkn9K/Captura-de-Pantalla-2020-07-30-a-la-s-02-27-45.png",
           "top_image_accessory": "https://i.ibb.co/QY2xvkC/icon20-Whatsapp-Ios-3x.png",
           "middle_subtitle": "Club de la Birra",
@@ -65,8 +65,8 @@
         }
       },
       {
-        "card_type": "DEFAULT_CARD",
-        "card_content": {
+        "type": "DEFAULT",
+        "content": {
           "top_image": "https://i.ibb.co/N2rkn9K/Captura-de-Pantalla-2020-07-30-a-la-s-02-27-45.png",
           "middle_subtitle": "Club de la Birra",
           "middle_title": "Restaurante",
@@ -97,8 +97,8 @@
         }
       },
       {
-        "card_type": "DEFAULT_CARD",
-        "card_content": {
+        "type": "DEFAULT",
+        "content": {
           "top_image": "https://i.ibb.co/N2rkn9K/Captura-de-Pantalla-2020-07-30-a-la-s-02-27-45.png",
           "middle_subtitle": "Club de la Birra",
           "middle_title": "Restaurante",
@@ -137,8 +137,8 @@
         }
       },
       {
-        "card_type": "DEFAULT_CARD",
-        "card_content": {
+        "type": "DEFAULT",
+        "content": {
           "top_image": "https://i.ibb.co/N2rkn9K/Captura-de-Pantalla-2020-07-30-a-la-s-02-27-45.png",
           "middle_subtitle": "Club de la Birra",
           "middle_title": "Restaurante",
@@ -178,8 +178,8 @@
         }
       },
       {
-        "card_type": "DEFAULT_CARD",
-        "card_content": {
+        "type": "DEFAULT",
+        "content": {
           "top_image": "https://i.ibb.co/N2rkn9K/Captura-de-Pantalla-2020-07-30-a-la-s-02-27-45.png",
           "middle_subtitle": "Club de la Birra",
           "middle_title": "Restaurante",
@@ -218,8 +218,8 @@
         }
       },
       {
-        "card_type": "DEFAULT_CARD",
-        "card_content": {
+        "type": "DEFAULT",
+        "content": {
           "top_image": "https://i.ibb.co/N2rkn9K/Captura-de-Pantalla-2020-07-30-a-la-s-02-27-45.png",
           "middle_subtitle": "Club de la Birra",
           "middle_title": "Restaurante",
@@ -259,8 +259,8 @@
         }
       },
       {
-        "card_type": "DEFAULT_CARD",
-        "card_content": {
+        "type": "DEFAULT",
+        "content": {
           "top_image": "https://i.ibb.co/N2rkn9K/Captura-de-Pantalla-2020-07-30-a-la-s-02-27-45.png",
           "middle_subtitle": "Club de la Birra",
           "middle_title": "Restaurante",
@@ -298,8 +298,8 @@
         }
       },
       {
-        "card_type": "DEFAULT_CARD",
-        "card_content": {
+        "type": "DEFAULT",
+        "content": {
           "top_image": "https://i.ibb.co/j33yDv9/Captura-de-Pantalla-2020-07-30-a-la-s-02-42-58.png",
           "middle_title": "Mercados",
           "bottom_top_label": "Hasta",
@@ -330,8 +330,8 @@
         }
       },
       {
-        "card_type": "VIEW_MORE",
-        "card_content": {
+        "type": "VIEW_MORE",
+        "content": {
           "main_image": "https://i.ibb.co/GkLzZSC/Captura-de-Pantalla-2020-07-30-a-la-s-02-23-03.png",
           "main_title": {
             "label": "Ver más",
