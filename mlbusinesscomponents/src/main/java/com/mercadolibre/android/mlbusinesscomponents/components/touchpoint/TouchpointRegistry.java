@@ -11,6 +11,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.Carousel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid.Grid;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.hybrid_carousel.test.HybridCarousel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointResponse;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
@@ -22,8 +23,8 @@ import com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtil
 public enum TouchpointRegistry {
 
     GRID(Grid.class, GridView::new),
-    CAROUSEL(Carousel.class, CarouselView::new)
-    ;
+    CAROUSEL(Carousel.class, CarouselView::new);
+    //HYBRID_CAROUSEL(HybridCarousel.class, CarouselView::new);
 
     private final Class<? extends TouchpointContent> model;
     private final TouchpointViewFactory factory;
