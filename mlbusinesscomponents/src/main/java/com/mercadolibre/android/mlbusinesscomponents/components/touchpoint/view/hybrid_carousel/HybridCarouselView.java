@@ -13,6 +13,8 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.hybrid_carousel.response.HybridCarousel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.HeightCalculatorDelegate;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.HorizontalScrollingEnhancer;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.TrackListener;
 import java.util.List;
 
 import static android.support.v7.widget.RecyclerView.SCROLL_STATE_IDLE;
@@ -22,6 +24,8 @@ public class HybridCarouselView extends AbstractTouchpointChildView<HybridCarous
     private HybridCarouselPresenter presenter;
     private HybridCarouselAdater carouselAdapter;
     private RecyclerView recyclerView;
+    private TrackListener trackListener;
+    private HorizontalScrollingEnhancer horizontalScrollingEnhancer;
 
     public HybridCarouselView(@NonNull final Context context) {
         this(context, null);
@@ -74,18 +78,16 @@ public class HybridCarouselView extends AbstractTouchpointChildView<HybridCarous
             public void onScrollStateChanged(@NonNull final RecyclerView recyclerView, final int state) {
                 super.onScrollStateChanged(recyclerView, state);
                 if (state == SCROLL_STATE_IDLE) {
-                    /*if (trackListener == null) {
-                        print();
-                    } else {
+                    if (trackListener != null) {
                         trackListener.print();
-                    }*/
+                    }
                 }
             }
         });
 
-        /*if (horizontalScrollingEnhancer != null) {
+        if (horizontalScrollingEnhancer != null) {
             horizontalScrollingEnhancer.enhanceHorizontalScroll(recyclerView);
-        }*/
+        }
     }
 
     /**
@@ -104,5 +106,14 @@ public class HybridCarouselView extends AbstractTouchpointChildView<HybridCarous
      */
     public void setOnClickCallback(@Nullable final OnClickCallback onClickCallback) {
         carouselAdapter.setOnClickCallback(onClickCallback);
+    }
+
+    public void setTrackListener(final TrackListener trackListener) {
+        this.trackListener = trackListener;
+    }
+
+    public void setHorizontalScrollingEnhancer(
+        final HorizontalScrollingEnhancer horizontalScrollingEnhancer) {
+        this.horizontalScrollingEnhancer = horizontalScrollingEnhancer;
     }
 }

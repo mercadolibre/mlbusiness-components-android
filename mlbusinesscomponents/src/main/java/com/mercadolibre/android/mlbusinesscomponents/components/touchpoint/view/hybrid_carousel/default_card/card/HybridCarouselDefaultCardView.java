@@ -16,10 +16,11 @@ import com.mercadolibre.android.mlbusinesscomponents.components.pill.model.PillR
 import com.mercadolibre.android.mlbusinesscomponents.components.pill.view.RightBottomInfoView;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.hybrid_carousel.model.HybridCarouselCardContainerModel;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.AssetLoader;
 
-public class HybridCarouselDefaultCardView extends CardView {
+public class HybridCarouselDefaultCardView extends CardView implements TouchpointTrackeable {
 
     private HybridCarouselDefaultCardPresenter presenter;
     private final FrameLayout topImageContainer;
@@ -31,6 +32,7 @@ public class HybridCarouselDefaultCardView extends CardView {
     private final TextView bottomPrimaryLabel;
     private final TextView bottomSecondaryLabel;
     private final RightBottomInfoView rightBottomInfoContainer;
+    @Nullable private TouchpointTracking tracking;
 
     @Nullable private OnClickCallback onClickCallback;
 
@@ -64,6 +66,7 @@ public class HybridCarouselDefaultCardView extends CardView {
      * @param size the card's size
      */
     public void bind(final HybridCarouselCardContainerModel model, final double size) {
+        this.tracking = model.getTracking();
         ViewGroup.LayoutParams layoutParams = getLayoutParams();
         layoutParams.height = (int) (size * getResources().getDisplayMetrics().density);
         presenter.bindView(model);
@@ -261,5 +264,11 @@ public class HybridCarouselDefaultCardView extends CardView {
     private void setText(final TextView view, final String text) {
         view.setVisibility(VISIBLE);
         view.setText(text);
+    }
+
+    @Nullable
+    @Override
+    public TouchpointTracking getTracking() {
+        return tracking;
     }
 }

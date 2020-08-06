@@ -15,15 +15,17 @@ import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointImageLoade
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.hybrid_carousel.model.HybridCarouselCardContainerModel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.hybrid_carousel.model.view_more.ViewMoreMainTitleFormat;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.AssetLoader;
 
-public class HybridCarouselViewMoreCardView extends CardView {
+public class HybridCarouselViewMoreCardView extends CardView implements TouchpointTrackeable {
 
     private final TextView middleTitle;
     private final SimpleDraweeView topImage;
     private final HybridViewMoreCardPresenter presenter;
     @Nullable private OnClickCallback onClickCallback;
+    @Nullable private TouchpointTracking tracking;
 
     public HybridCarouselViewMoreCardView(@NonNull final Context context) {
         this(context, null);
@@ -49,6 +51,7 @@ public class HybridCarouselViewMoreCardView extends CardView {
      */
     public void bind(final HybridCarouselCardContainerModel model, final double size) {
         ViewGroup.LayoutParams layoutParams = getLayoutParams();
+        this.tracking = model.getTracking();
         layoutParams.height = (int) (size * getResources().getDisplayMetrics().density);
         presenter.bindView(model);
     }
@@ -145,5 +148,11 @@ public class HybridCarouselViewMoreCardView extends CardView {
      */
     public void setImageLoader(final TouchpointImageLoader imageLoader) {
         AssetLoader.setStrategy(imageLoader);
+    }
+
+    @Nullable
+    @Override
+    public TouchpointTracking getTracking() {
+        return tracking;
     }
 }
