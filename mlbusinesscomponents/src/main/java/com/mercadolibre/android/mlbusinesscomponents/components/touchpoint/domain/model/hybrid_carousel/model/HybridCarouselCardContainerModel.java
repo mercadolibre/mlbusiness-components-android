@@ -36,4 +36,13 @@ public class HybridCarouselCardContainerModel {
     public TouchpointItem getContent() {
         return content;
     }
+
+    /**
+     * Returns the card height
+     *
+     * @return the card height
+     */
+    public double getHeight() {
+        return content.getHeight();
+    }
 }

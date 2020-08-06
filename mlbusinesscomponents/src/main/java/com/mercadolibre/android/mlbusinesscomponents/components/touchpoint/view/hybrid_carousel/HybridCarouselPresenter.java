@@ -27,6 +27,6 @@ public class HybridCarouselPresenter {
      */
     public void mapResponse(final HybridCarousel response) {
         model = mapper.mapResponse(response);
-        view.showItems(model.getItems());
+        view.showItems(model.getItems(), model);
     }
 }

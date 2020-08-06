@@ -14,4 +14,16 @@ public class ViewMoreMainTitle implements Serializable {
         this.label = label;
         this.format = format;
     }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public ViewMoreMainTitleFormat getFormat() {
+        return format;
+    }
+
+    public boolean isValid() {
+        return label != null && !label.isEmpty() && format != null && format.isValid();
+    }
 }

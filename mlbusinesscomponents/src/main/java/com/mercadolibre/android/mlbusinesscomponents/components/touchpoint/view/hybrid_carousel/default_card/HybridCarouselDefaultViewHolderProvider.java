@@ -12,7 +12,7 @@ public class HybridCarouselDefaultViewHolderProvider implements ItemViewHolderPr
     @Override
     public ItemViewHolder getViewHolderFromType(final ViewGroup parent) {
         final View view = LayoutInflater.from(parent.getContext())
-            .inflate(R.layout.touchpoint__hybrid_carousel_default_card_view, parent, false);
+            .inflate(R.layout.touchpoint_hybrid_carousel_default_card_container, parent, false);
         return new HybridCarouselDefaultViewHolder(view);
     }
 }

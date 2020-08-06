@@ -13,4 +13,16 @@ public class ViewMoreMainTitleFormat implements Serializable {
         this.textColor = textColor;
         this.backgroundColor = backgroundColor;
     }
+
+    public String getTextColor() {
+        return textColor;
+    }
+
+    public String getBackgroundColor() {
+        return backgroundColor;
+    }
+
+    public boolean isValid() {
+        return textColor != null && !textColor.isEmpty() && backgroundColor != null && !backgroundColor.isEmpty();
+    }
 }
