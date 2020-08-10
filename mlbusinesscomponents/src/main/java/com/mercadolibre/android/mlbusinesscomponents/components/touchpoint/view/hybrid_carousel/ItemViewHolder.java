@@ -12,6 +12,7 @@ public abstract class ItemViewHolder<M extends HybridCarouselCardContainerModel>
 
     /**
      * Constructor
+     *
      * @param itemView parent view.
      */
     public ItemViewHolder(@NonNull final View itemView) {
@@ -23,5 +24,6 @@ public abstract class ItemViewHolder<M extends HybridCarouselCardContainerModel>
      *
      * @param item The model
      */
-    public abstract void bindView(final M item, final TouchpointImageLoader imageLoader, @Nullable final OnClickCallback onClickCallback, final double size);
+    public abstract void bindView(final M item, final TouchpointImageLoader imageLoader, @Nullable final OnClickCallback onClickCallback,
+        final double size);
 }

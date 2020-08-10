@@ -13,7 +13,6 @@
         android:layout_gravity="center_horizontal"
         android:paddingEnd="@dimen/ui_1m"
         android:paddingStart="@dimen/ui_1m"
-        android:paddingBottom="@dimen/ui_1_5m"
         android:orientation="vertical"
         android:background="?android:attr/selectableItemBackground">
 
@@ -72,7 +71,6 @@
             android:layout_height="wrap_content"
             android:maxWidth="96dp"
             android:gravity="center"
-            android:layout_marginTop="1dp"
             tools:text="Comida rápida Comida rápida Comida rápida" />
 
         <LinearLayout
@@ -80,7 +78,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center_vertical"
-            android:layout_marginTop="@dimen/ui_075m">
+            android:layout_marginTop="@dimen/ui_050m">
 
             <TextView
                 android:id="@+id/touchpoint_hybrid_carousel_default_card_bottom_top_label"
@@ -91,10 +89,13 @@
                 tools:text="Hasta"/>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:orientation="horizontal">
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/ui_025m"
+                android:layout_marginTop="@dimen/ui_050m">
 
                 <TextView
                     android:id="@+id/touchpoint_hybrid_carousel_default_card_bottom_primary_label"
@@ -119,7 +120,7 @@
                 android:layout_height="@dimen/ui_2m"
                 android:id="@+id/touchpoint_hybrid_carousel_default_card_bottom_info_container"
                 android:layout_gravity="center"
-                android:layout_marginTop="@dimen/ui_025m"/>
+                android:layout_marginBottom="@dimen/ui_075m" />
 
         </LinearLayout>
 

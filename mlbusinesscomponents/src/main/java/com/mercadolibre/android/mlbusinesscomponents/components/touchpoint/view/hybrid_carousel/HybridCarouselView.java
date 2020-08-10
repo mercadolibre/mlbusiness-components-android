@@ -12,9 +12,11 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callb
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.hybrid_carousel.model.HybridCarouselCardContainerModel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.hybrid_carousel.response.HybridCarousel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.CarouselDecorator;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.HeightCalculatorDelegate;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.HorizontalScrollingEnhancer;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.TrackListener;
+import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils;
 import java.util.List;
 
 import static android.support.v7.widget.RecyclerView.SCROLL_STATE_IDLE;
@@ -50,7 +52,7 @@ public class HybridCarouselView extends AbstractTouchpointChildView<HybridCarous
             setVisibility(GONE);
             return;
         }
-
+        decorate();
         presenter.mapResponse(model);
     }
 
@@ -115,5 +117,17 @@ public class HybridCarouselView extends AbstractTouchpointChildView<HybridCarous
     public void setHorizontalScrollingEnhancer(
         final HorizontalScrollingEnhancer horizontalScrollingEnhancer) {
         this.horizontalScrollingEnhancer = horizontalScrollingEnhancer;
+    }
+
+    private void decorate() {
+        if (additionalInsets != null) {
+            setPadding(0, (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getTop()),
+                0, (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getBottom()));
+            if (recyclerView.getItemDecorationCount() == 0) {
+                recyclerView.addItemDecoration(
+                    new CarouselDecorator((int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getLeft()),
+                        (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getRight())));
+            }
+        }
     }
 }
