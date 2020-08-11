@@ -87,7 +87,7 @@ public class HybridCarouselDefaultCard implements Serializable, TouchpointItem {
 
     @Override
     public double getHeight() {
-        boolean hasTopLabel = false, hasMainLabel = false, hasTitle = false, hasSubtitle = false;
+        boolean hasTopLabel = false, hasMainLabel = false, hasTitle = false, hasSubtitle = false, hasBottomInfo = false;
 
         if (bottomTopLabel != null && !bottomTopLabel.isEmpty()) {
             hasTopLabel = true;
@@ -101,14 +101,19 @@ public class HybridCarouselDefaultCard implements Serializable, TouchpointItem {
         if (middleSubtitle != null && !middleSubtitle.isEmpty()) {
             hasSubtitle = true;
         }
+        if (bottomInfo != null) {
+            hasBottomInfo = true;
+        }
 
-        double spaceToMainLabel = 100, topLabelHeight = 14, mainLabelHeight = 28, titleHeight = 23, subtitleHeight = 13, spaceToBottom = 13;
+        double spaceToMainLabel = 100, topLabelHeight = 14, mainLabelHeight = 28, titleHeight = 23, subtitleHeight = 13, spaceToBottom = 13,
+            spaceBottomInfo = 5;
 
         double maxItemHeight = spaceToMainLabel
             + (hasTopLabel ? topLabelHeight : 0.0)
             + (hasMainLabel ? mainLabelHeight : 0.0)
             + (hasTitle ? titleHeight : 0.0)
             + (hasSubtitle ? subtitleHeight : 0.0)
+            + (hasBottomInfo ? spaceBottomInfo : 0.0)
             + spaceToBottom;
 
         return maxItemHeight;

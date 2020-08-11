@@ -17,9 +17,8 @@
 
     <style name="touchpoint_carousel_card_main_title" parent="MLFont.Bold.Semi">
         <item name="android:textColor">@color/touchpoint_semi_black</item>
-        <item name="android:textSize">26sp</item>
+        <item name="android:textSize">23sp</item>
         <item name="android:layout_gravity">center_horizontal</item>
-        <item name="lineHeight">25sp</item>
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
     </style>
@@ -64,7 +63,7 @@
     </style>
 
     <style name="discounts_payers_commons_level" parent="MLFont.Bold">
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">9sp</item>
         <item name="android:lineSpacingExtra">1sp</item>
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
