@@ -271,4 +271,14 @@ public class HybridCarouselDefaultCardView extends CardView implements Touchpoin
     public TouchpointTracking getTracking() {
         return tracking;
     }
+
+    public void setBottomLabelsToBlockedStatus() {
+        bottomPrimaryLabel.setAlpha(0.4f);
+        bottomSecondaryLabel.setAlpha(0.4f);
+    }
+
+    public void setBottomLabelsToDefaultStatus() {
+        bottomPrimaryLabel.setAlpha(1f);
+        bottomSecondaryLabel.setAlpha(1f);
+    }
 }

@@ -6,6 +6,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
 
 public class HybridCarouselDefaultCardPresenter {
+    private static final String BLOCKED = "blocked";
 
     private final HybridCarouselDefaultCardView view;
 
@@ -39,8 +40,23 @@ public class HybridCarouselDefaultCardPresenter {
         setBottomPrimaryLabel(data.getBottomPrimaryLabel());
         setBottomSecondaryLabel(data.getBottomSecondaryLabel());
         setBottomInfo(data.getBottomInfo());
+        setRightLabelStatus(data.getBottomLabelStatus());
 
         view.showView();
+    }
+
+    private void setRightLabelStatus(final String bottomLabelStatus) {
+        if (bottomLabelStatus == null || bottomLabelStatus.isEmpty()) {
+            return;
+        }
+
+        switch (bottomLabelStatus.toLowerCase()) {
+        case BLOCKED:
+            view.setBottomLabelsToBlockedStatus();
+            break;
+        default:
+            view.setBottomLabelsToDefaultStatus();
+        }
     }
 
     private void setBottomInfo(final HybridPillResponse bottomInfo) {
