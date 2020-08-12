@@ -18,9 +18,11 @@ public class TouchpointItemContentMapper {
 
     /**
      * Constructor
+     *
+     * @param gson the mapper
      */
-    public TouchpointItemContentMapper() {
-        this.gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create();
+    public TouchpointItemContentMapper(final Gson gson) {
+        this.gson = gson;
     }
 
     /**
