@@ -75,12 +75,12 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center_vertical"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/ui_075m"
-            android:layout_marginBottom="@dimen/ui_050m">
+            android:layout_marginBottom="@dimen/ui_050m"
+            android:layout_marginTop="@dimen/ui_025m">
 
             <TextView
                 android:id="@+id/touchpoint_hybrid_carousel_default_card_bottom_top_label"
@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:translationY="@dimen/ui_050m"
                 android:gravity="center"
-                tools:text="Hasta" />
+                tools:text="Hasta"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -97,7 +97,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:layout_marginBottom="@dimen/ui_075m"
+                android:layout_marginBottom="@dimen/ui_025m"
                 android:layout_marginTop="@dimen/ui_025m">
 
                 <TextView

@@ -258,7 +258,6 @@ public class HybridCarouselDefaultCardView extends CardView implements Touchpoin
      */
     public void showRightBottomInfo(final PillResponseInterface pill) {
         rightBottomInfoContainer.bind(pill);
-        rightBottomInfoContainer.setTranslationY(-6 * getResources().getDisplayMetrics().density);
     }
 
     private void setText(final TextView view, final String text) {

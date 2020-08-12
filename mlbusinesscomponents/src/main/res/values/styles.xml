@@ -38,7 +38,6 @@
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:textSize">@dimen/ui_fontsize_xsmall</item>
         <item name="android:maxLines">1</item>
-        <item name="lineHeight">18sp</item>
         <item name="android:lineSpacingExtra">4sp</item>
         <item name="android:ellipsize">end</item>
     </style>
@@ -57,7 +56,6 @@
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:textSize">@dimen/ui_fontsize_xxsmall</item>
         <item name="android:maxLines">1</item>
-        <item name="lineHeight">15sp</item>
         <item name="android:lineSpacingExtra">3sp</item>
         <item name="android:ellipsize">end</item>
     </style>
