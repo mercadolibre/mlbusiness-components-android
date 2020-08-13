@@ -28,6 +28,6 @@
         android:translationY="-1dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="AGOTADO HOY" />
+        tools:text="ULTIMOS" />
 
 </com.mercadolibre.android.mlbusinesscomponents.components.pill.view.RightBottomInfoView>

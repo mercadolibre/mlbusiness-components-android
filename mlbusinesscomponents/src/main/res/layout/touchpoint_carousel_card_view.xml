@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/touchpoint_carousel_card_button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:paddingEnd="@dimen/ui_1m"
         android:paddingStart="@dimen/ui_1m"

@@ -1,4 +1,4 @@
-package com.mercadolibre.android.mlbusinesscomponents.components.row.model.test;
+package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.hybrid_carousel.model.default_card;
 
 import android.support.annotation.Keep;
 import com.mercadolibre.android.mlbusinesscomponents.components.pill.model.FeatureFormatResponseInterface;
@@ -6,11 +6,11 @@ import com.mercadolibre.android.mlbusinesscomponents.components.pill.model.PillR
 import java.io.Serializable;
 
 @Keep
-public class PillResponse implements Serializable, PillResponseInterface {
+public class HybridPillResponse implements Serializable, PillResponseInterface {
 
     private final String icon;
     private final String label;
-    private final FeatureFormatResponse format;
+    private final HybridFeatureFormatResponse format;
 
     /**
      * Constructor
@@ -19,8 +19,8 @@ public class PillResponse implements Serializable, PillResponseInterface {
      * @param label The text
      * @param format The background and text color
      */
-    public PillResponse(final String icon, final String label,
-        final FeatureFormatResponse format) {
+    public HybridPillResponse(final String icon, final String label,
+        final HybridFeatureFormatResponse format) {
         this.icon = icon;
         this.label = label;
         this.format = format;

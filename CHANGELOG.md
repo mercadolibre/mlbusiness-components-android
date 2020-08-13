@@ -1,4 +1,5 @@
 ## NEW
+* FEATURE - Se agrega un componente de carrusel hibrido
 
 ## VERSION 1.7.1
 _30_07_2020_

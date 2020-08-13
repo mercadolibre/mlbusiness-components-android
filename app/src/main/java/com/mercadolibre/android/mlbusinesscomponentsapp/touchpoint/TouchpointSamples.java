@@ -10,6 +10,7 @@ public enum TouchpointSamples {
     FULL_GRID(R.raw.touchpoint_grid_full_content),
     PARTIAL_GRID(R.raw.touchpoint_grid_partial_content),
     CAROUSEL(R.raw.touchpoint_carousel),
+    HYBRID_CAROUSEL(R.raw.touchpoint_hybrid_carousel),
     ;
 
     final int rawId;

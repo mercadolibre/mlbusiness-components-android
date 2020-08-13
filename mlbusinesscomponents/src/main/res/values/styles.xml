@@ -10,6 +10,7 @@
         <item name="android:textSize">10sp</item>
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:maxLines">1</item>
+        <item name="lineHeight">12sp</item>
         <item name="android:lineSpacingExtra">2sp</item>
         <item name="android:ellipsize">end</item>
     </style>
@@ -27,12 +28,22 @@
         <item name="android:layout_gravity">top|center</item>
         <item name="android:textSize">10sp</item>
         <item name="android:maxLines">1</item>
+        <item name="lineHeight">12sp</item>
         <item name="android:lineSpacingExtra">2sp</item>
         <item name="android:ellipsize">end</item>
     </style>
 
     <style name="touchpoint_carousel_card_top_label" parent="MLFont.Bold.Semi">
         <item name="android:textColor">@color/touchpoint_semi_black</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:textSize">@dimen/ui_fontsize_xsmall</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="touchpoint_view_more_title" parent="MLFont.Bold.Semi">
+        <item name="android:textColor">#009ee3</item>
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:textSize">@dimen/ui_fontsize_xsmall</item>
         <item name="android:maxLines">1</item>
@@ -50,7 +61,7 @@
     </style>
 
     <style name="discounts_payers_commons_level" parent="MLFont.Bold">
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">9sp</item>
         <item name="android:lineSpacingExtra">1sp</item>
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>

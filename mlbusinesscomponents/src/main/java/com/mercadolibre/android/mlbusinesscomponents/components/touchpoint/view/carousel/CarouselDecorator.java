@@ -5,12 +5,12 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-/* default */ class CarouselDecorator extends RecyclerView.ItemDecoration {
+/* default */ public class CarouselDecorator extends RecyclerView.ItemDecoration {
 
     private final int marginLeft;
     private final int marginRight;
 
-    /* default */ CarouselDecorator(final int marginLeft, final int marginRight) {
+    public CarouselDecorator(final int marginLeft, final int marginRight) {
         this.marginLeft = marginLeft;
         this.marginRight = marginRight;
     }
