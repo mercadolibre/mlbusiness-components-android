@@ -79,8 +79,8 @@
             android:orientation="vertical"
             android:gravity="center_vertical"
             android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/ui_050m"
-            android:layout_marginTop="@dimen/ui_025m">
+            android:layout_marginBottom="@dimen/ui_075m"
+            android:layout_marginTop="@dimen/ui_050m">
 
             <TextView
                 android:id="@+id/touchpoint_hybrid_carousel_default_card_bottom_top_label"
@@ -97,7 +97,6 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:layout_marginBottom="@dimen/ui_025m"
                 android:layout_marginTop="@dimen/ui_025m">
 
                 <TextView

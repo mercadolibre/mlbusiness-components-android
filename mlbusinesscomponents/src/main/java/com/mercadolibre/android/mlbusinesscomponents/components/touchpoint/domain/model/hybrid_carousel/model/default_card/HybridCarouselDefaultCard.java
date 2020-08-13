@@ -106,7 +106,7 @@ public class HybridCarouselDefaultCard implements Serializable, TouchpointItem {
         }
 
         double spaceToMainLabel = 100, topLabelHeight = 14, mainLabelHeight = 28, titleHeight = 23, subtitleHeight = 13, spaceToBottom = 13,
-            spaceBottomInfo = 10;
+            spaceBottomInfo = 13;
 
         double maxItemHeight = spaceToMainLabel
             + (hasTopLabel ? topLabelHeight : 0.0)
