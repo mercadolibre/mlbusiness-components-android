@@ -124,7 +124,6 @@
             android:layout_height="wrap_content"
             android:maxWidth="96dp"
             android:gravity="center"
-            android:layout_marginTop="1dp"
             tools:text="Comida rápida Comida rápida Comida rápida" />
     </LinearLayout>
 </merge>

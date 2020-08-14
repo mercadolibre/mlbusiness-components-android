@@ -9,6 +9,9 @@
         "subtitle":"Ver más",
         "title":"Farmacias",
         "text_color":"#ffEEff",
+        "main_label": "20%",
+        "top_label": "hasta",
+        "right_label": "OFF",
         "background_color":"#23395D",
         "image_format":{
           "overlay":false
