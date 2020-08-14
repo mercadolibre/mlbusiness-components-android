@@ -5,12 +5,12 @@
     android:layout_height="wrap_content"
     tools:parentTag="android.widget.FrameLayout">
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/touchpoint_hybrid_carousel_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <!--  Childs added here   -->
 
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 </merge>

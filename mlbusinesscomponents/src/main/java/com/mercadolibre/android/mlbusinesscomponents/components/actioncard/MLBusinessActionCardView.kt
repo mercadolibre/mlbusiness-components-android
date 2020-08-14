@@ -3,10 +3,10 @@ package com.mercadolibre.android.mlbusinesscomponents.components.actioncard
 import android.content.Context
 import android.graphics.Color
 import android.os.Build
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.AppCompatImageView
-import android.support.v7.widget.AppCompatTextView
-import android.support.v7.widget.CardView
+import androidx.core.content.ContextCompat
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.AppCompatTextView
+import androidx.cardview.widget.CardView
 import android.util.AttributeSet
 import android.util.TypedValue
 import com.mercadolibre.android.mlbusinesscomponents.R

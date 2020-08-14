@@ -1,6 +1,6 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent;
 import java.io.Serializable;
 import java.util.List;

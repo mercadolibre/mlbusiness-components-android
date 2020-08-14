@@ -2,7 +2,7 @@ package com.mercadolibre.android.mlbusinesscomponentsapp;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Toast;
 import com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.ButtonProgress;
 import com.mercadolibre.android.mlbusinesscomponents.components.explodingbutton.OnFinishAnimationListener;

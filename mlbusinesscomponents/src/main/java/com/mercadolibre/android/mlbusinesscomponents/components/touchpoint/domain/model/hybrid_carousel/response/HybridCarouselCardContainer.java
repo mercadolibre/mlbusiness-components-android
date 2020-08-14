@@ -1,7 +1,7 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.hybrid_carousel.response;
 
-import android.support.annotation.Keep;
-import android.support.annotation.Nullable;
+import androidx.annotation.Keep;
+import androidx.annotation.Nullable;
 import com.google.gson.JsonElement;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
 import java.io.Serializable;

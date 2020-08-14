@@ -1,6 +1,6 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.hybrid_carousel.model.default_card;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.mercadolibre.android.mlbusinesscomponents.components.pill.model.FeatureFormatResponseInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.pill.model.PillResponseInterface;
 import java.io.Serializable;

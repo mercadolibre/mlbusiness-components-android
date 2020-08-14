@@ -4,20 +4,19 @@ apply plugin:'kotlin-android-extensions'
 
 android {
 
-    compileSdkVersion api_level as int
-    buildToolsVersion build_tools_version as String
+    compileSdkVersion apiLevel as int
+    buildToolsVersion buildTools as String
 
     defaultConfig {
-        minSdkVersion min_api_level
-        targetSdkVersion api_level
+        minSdkVersion minApiLevel
+        targetSdkVersion apiLevel
         versionCode 1
         versionName version_to_deploy as String
         consumerProguardFiles 'proguard-rules.pro'
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
 
     buildTypes {
-
         debug {
             versionNameSuffix ".debug"
             debuggable true
@@ -36,19 +35,18 @@ android {
 
 apply from:"$rootDir/gradle/deploy_business_components.gradle"
 
-
 dependencies {
     implementation fileTree(dir:'libs', include:['*.jar'])
 
-    implementation "com.android.support:appcompat-v7:$support_library_version"
+    implementation "androidx.appcompat:appcompat:$appCompat"
     testImplementation "junit:junit:$junit"
-    androidTestImplementation "com.android.support.test:runner:$android_runner"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso"
+    androidTestImplementation "androidx.test.ext:junit:$testRunner"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
 
     implementation "com.google.code.gson:gson:$gson"
-    implementation "com.android.support:recyclerview-v7:$support_library_version"
+    implementation "androidx.recyclerview:recyclerview:$recyclerView"
     implementation "com.mercadolibre.android:picasso-disk-cache:$picassoDiskCache"
-    implementation "com.mercadolibre.android:ui:$meli_ui_lib"
-    implementation "com.android.support.constraint:constraint-layout:$constraint_layout"
-    implementation "com.android.support:cardview-v7:$support_library_version"
+    implementation "com.mercadolibre.android:ui:$meliUi"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayout"
+    implementation "androidx.cardview:cardview:$cardView"
 }

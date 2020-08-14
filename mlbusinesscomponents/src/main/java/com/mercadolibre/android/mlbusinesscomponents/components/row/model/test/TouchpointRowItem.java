@@ -1,6 +1,6 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.row.model.test;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import android.text.TextUtils;
 import com.mercadolibre.android.mlbusinesscomponents.components.pill.model.PillResponseInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.DescriptionItemsInterface;

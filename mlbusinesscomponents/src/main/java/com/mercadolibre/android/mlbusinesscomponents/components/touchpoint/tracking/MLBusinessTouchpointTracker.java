@@ -1,6 +1,6 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import java.util.Map;
 
 public interface MLBusinessTouchpointTracker {

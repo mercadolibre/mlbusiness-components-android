@@ -1,6 +1,6 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.utils;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 public final class StringUtils {
 

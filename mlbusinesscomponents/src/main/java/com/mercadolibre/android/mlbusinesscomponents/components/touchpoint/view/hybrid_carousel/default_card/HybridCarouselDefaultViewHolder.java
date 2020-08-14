@@ -1,7 +1,7 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.hybrid_carousel.default_card;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.view.View;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointImageLoader;
