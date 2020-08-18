@@ -58,7 +58,7 @@ public class HybridCarouselView extends AbstractTouchpointChildView<HybridCarous
 
     @Override
     public int getStaticHeight() {
-        return 0;
+        return getResources().getDimensionPixelSize(R.dimen.hybrid_carousel_static_height);
     }
 
     @Override

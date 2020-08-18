@@ -16,6 +16,7 @@
 
     <!-- Touchpoint static height -->
     <dimen name="carousel_static_height">210dp</dimen>
+    <dimen name="hybrid_carousel_static_height">240dp</dimen>
     <dimen name="grid_static_height">290dp</dimen>
 
 </resources>
