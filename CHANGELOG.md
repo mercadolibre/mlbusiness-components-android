@@ -1,4 +1,5 @@
 ## NEW
+* FEATURE - Se corrige un padding de la card de carrusel
 
 ## VERSION 1.8.0
 _13_08_2020_
