@@ -1,8 +1,7 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.row.model.test;
 
 import android.support.annotation.Keep;
-import com.mercadolibre.android.mlbusinesscomponents.components.row.model.DescriptionItemsInterface;
-import java.io.Serializable;
+import com.mercadolibre.android.mlbusinesscomponents.components.pickup.model.DescriptionItemsInterface;
 
 @Keep
 public class DescriptionItems implements DescriptionItemsInterface {

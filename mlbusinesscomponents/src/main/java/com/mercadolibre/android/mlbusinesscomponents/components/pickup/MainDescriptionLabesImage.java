@@ -1,4 +1,4 @@
-package com.mercadolibre.android.mlbusinesscomponents.components.row;
+package com.mercadolibre.android.mlbusinesscomponents.components.pickup;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -36,6 +36,13 @@ public class MainDescriptionLabesImage extends FrameLayout {
             }
         }));
 
+        if(color != null && color.isEmpty()) {
+            try {
+                image.setColorFilter(Color.parseColor(color));
+            } catch (Exception e) {
+                //no op..
+            }
+        }
         image.setVisibility(VISIBLE);
     }
 }
