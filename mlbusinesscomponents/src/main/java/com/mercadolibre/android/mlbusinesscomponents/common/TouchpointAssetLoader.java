@@ -151,7 +151,7 @@ public class TouchpointAssetLoader {
         }
 
         /**
-         * Sets the imageSource.
+         * Sets the controller listener.
          *
          * @param listener The controller listener
          * @return The builder.
