@@ -1,6 +1,6 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import java.io.Serializable;
 
 @Keep
