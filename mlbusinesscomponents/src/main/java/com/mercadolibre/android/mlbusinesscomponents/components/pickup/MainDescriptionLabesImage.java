@@ -36,7 +36,7 @@ public class MainDescriptionLabesImage extends FrameLayout {
             }
         }));
 
-        if(color != null && color.isEmpty()) {
+        if(color != null && !color.isEmpty()) {
             try {
                 image.setColorFilter(Color.parseColor(color));
             } catch (Exception e) {
