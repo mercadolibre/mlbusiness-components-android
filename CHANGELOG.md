@@ -1,6 +1,7 @@
 ## NEW
 * FEATURE - Se corrige un padding de la card de carrusel
 * FEATURE - Se componentiza la vista de pickup de row hibrida
+* FEATURE - Se modifica la card del carrusel hibrido	
 
 ## VERSION 1.8.0
 _13_08_2020_

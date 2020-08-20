@@ -10,6 +10,7 @@ import android.util.Patterns;
 import com.facebook.common.util.UriUtil;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.backends.pipeline.PipelineDraweeControllerBuilder;
+import com.facebook.drawee.controller.ControllerListener;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import java.util.Locale;
@@ -22,6 +23,7 @@ public class TouchpointAssetLoader {
 
     private final SimpleDraweeView imageContainer;
     private final String imageSource;
+    private final ControllerListener listener;
     /* default */ final int defaultLocalSource;
     private final String prefix;
     private final PipelineDraweeControllerBuilder controllerBuilder;
@@ -37,6 +39,7 @@ public class TouchpointAssetLoader {
         final PipelineDraweeControllerBuilder controllerBuilder) {
         imageContainer = builder.imageContainer;
         imageSource = builder.imageSource;
+        listener = builder.listener;
         prefix = builder.prefix;
         defaultLocalSource = getLocalIconId(builder.defaultLocalSource);
         this.controllerBuilder = controllerBuilder;
@@ -51,6 +54,7 @@ public class TouchpointAssetLoader {
         imageContainer = builder.imageContainer;
         imageSource = builder.imageSource;
         prefix = builder.prefix;
+        listener = builder.listener;
         defaultLocalSource = getLocalIconId(builder.defaultLocalSource);
         controllerBuilder = Fresco.newDraweeControllerBuilder();
     }
@@ -80,6 +84,7 @@ public class TouchpointAssetLoader {
     private void setImageURL() {
         final DraweeController controller = controllerBuilder
             .setUri(imageSource)
+            .setControllerListener(listener)
             .build();
         imageContainer.setController(controller);
     }
@@ -118,6 +123,7 @@ public class TouchpointAssetLoader {
     public static class Builder {
 
         /* default */ SimpleDraweeView imageContainer;
+        /* default */ ControllerListener listener;
         /* default */ String imageSource;
         /* default */ String defaultLocalSource;
         /* default */ String prefix;
@@ -141,6 +147,17 @@ public class TouchpointAssetLoader {
          */
         public Builder withSource(@NonNull final String imageSource) {
             this.imageSource = imageSource;
+            return this;
+        }
+
+        /**
+         * Sets the imageSource.
+         *
+         * @param listener The controller listener
+         * @return The builder.
+         */
+        public Builder withControllerListener(@NonNull final ControllerListener listener) {
+            this.listener = listener;
             return this;
         }
 
