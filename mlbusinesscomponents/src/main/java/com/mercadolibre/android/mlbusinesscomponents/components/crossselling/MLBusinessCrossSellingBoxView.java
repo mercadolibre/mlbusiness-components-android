@@ -1,10 +1,10 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.crossselling;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.widget.AppCompatImageView;
-import android.support.v7.widget.AppCompatTextView;
+import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.picassodiskcache.PicassoDiskLoader;

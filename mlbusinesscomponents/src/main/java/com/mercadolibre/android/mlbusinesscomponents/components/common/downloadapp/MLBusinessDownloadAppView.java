@@ -1,11 +1,11 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.common.downloadapp;
 
 import android.content.Context;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.AppCompatTextView;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.ui.widgets.MeliButton;

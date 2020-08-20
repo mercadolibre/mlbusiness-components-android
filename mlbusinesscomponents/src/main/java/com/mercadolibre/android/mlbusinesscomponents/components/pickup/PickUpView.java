@@ -1,9 +1,9 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.pickup;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
+import androidx.annotation.Nullable;
 import com.mercadolibre.android.mlbusinesscomponents.components.pickup.model.DescriptionItemsInterface;
 import java.util.List;
 

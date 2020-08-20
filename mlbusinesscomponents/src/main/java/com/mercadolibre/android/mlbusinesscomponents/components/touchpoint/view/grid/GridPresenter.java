@@ -1,10 +1,9 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.grid;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid.Grid;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid.GridItem;
-import com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtils;
 import java.util.List;
 
 /* default */ class GridPresenter {

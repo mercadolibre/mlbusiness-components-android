@@ -1,6 +1,6 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.row.model.test;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.mercadolibre.android.mlbusinesscomponents.components.pickup.model.DescriptionItemsInterface;
 
 @Keep
@@ -37,5 +37,4 @@ public class DescriptionItems implements DescriptionItemsInterface {
     public String getColor() {
         return color;
     }
-
 }

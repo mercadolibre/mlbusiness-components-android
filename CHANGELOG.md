@@ -1,4 +1,6 @@
-## NEW
+## VERSION 1.9.0
+_20_08_2020_
+* FEATURE - Se migra a AndroidX y API 29.
 * FEATURE - Se corrige un padding de la card de carrusel
 * FEATURE - Se componentiza la vista de pickup de row hibrida
 * FEATURE - Se modifica la card del carrusel hibrido

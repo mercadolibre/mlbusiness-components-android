@@ -1,6 +1,6 @@
 package com.mercadolibre.android.mlbusinesscomponentsapp;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import com.mercadolibre.android.mlbusinesscomponents.common.MLBusinessSingleItem;
 
 public class SingleItemDataSample implements MLBusinessSingleItem {

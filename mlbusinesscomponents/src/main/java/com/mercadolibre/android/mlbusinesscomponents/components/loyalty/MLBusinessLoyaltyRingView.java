@@ -2,10 +2,9 @@ package com.mercadolibre.android.mlbusinesscomponents.components.loyalty;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
+import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import android.util.AttributeSet;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import java.lang.ref.WeakReference;

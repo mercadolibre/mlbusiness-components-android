@@ -2,10 +2,10 @@ package com.mercadolibre.android.mlbusinesscomponents.components.pickup;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointAssetLoader;
@@ -36,7 +36,7 @@ public class MainDescriptionLabesImage extends FrameLayout {
             }
         }));
 
-        if(color != null && !color.isEmpty()) {
+        if (color != null && !color.isEmpty()) {
             try {
                 image.setColorFilter(Color.parseColor(color));
             } catch (Exception e) {
