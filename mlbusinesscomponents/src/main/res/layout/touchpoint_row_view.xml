@@ -85,7 +85,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/main_characteristics_container"
-            android:translationY="-2dp"
+            android:translationY="-4dp"
             android:layout_marginBottom="@dimen/ui_2m"
             android:layout_marginStart="@dimen/ui_2m"
             app:layout_constraintTop_toBottomOf="@+id/main_description_container"
