@@ -1,3 +1,6 @@
+## new
+* FEATURE - Se agregan @Keep a modelos de carousel.
+
 ## VERSION 1.9.0
 _20_08_2020_
 * FEATURE - Se migra a AndroidX y API 29.
