@@ -27,7 +27,7 @@ public class TouchpointRowPresenter {
         setRightLabel(rowItem.getRightSecondaryLabel(), view);
         setBottomLabel(rowItem.getRightMiddleLabel(), view);
         setDescriptionLabels(rowItem.getMainDescription(), view);
-        setCharacterísticsLabels(rowItem.getMainCharacteristics(), view);
+        setCharacteristicsLabels(rowItem.getMainCharacteristics(), view);
         setOnClick(rowItem.getLink(), view);
         setRightLabelStatus(rowItem.getRightLabelStatus(), view);
     }
@@ -62,7 +62,7 @@ public class TouchpointRowPresenter {
         view.showDescriptionLabels(mainDescription);
     }
 
-    private void setCharacterísticsLabels(final List<DescriptionItemsInterface> mainDescription, final TouchpointRowView view) {
+    private void setCharacteristicsLabels(final List<DescriptionItemsInterface> mainDescription, final TouchpointRowView view) {
         if (mainDescription == null || mainDescription.isEmpty()) {
             view.hideCharacterísticsLabels();
             return;

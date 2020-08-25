@@ -180,12 +180,12 @@ public class HybridCarouselDefaultCardView extends CardView implements Touchpoin
     private ControllerListener getControllerListener() {
         return new BaseControllerListener<ImageInfo>() {
             @Override
-            public void onIntermediateImageSet(String id, @Nullable ImageInfo imageInfo) {
+            public void onIntermediateImageSet(final String id, @Nullable final ImageInfo imageInfo) {
                 updateViewSize(imageInfo);
             }
 
             @Override
-            public void onFinalImageSet(String id, @Nullable ImageInfo imageInfo, @Nullable Animatable animatable) {
+            public void onFinalImageSet(final String id, @Nullable final ImageInfo imageInfo, @Nullable final Animatable animatable) {
                 updateViewSize(imageInfo);
             }
         };
