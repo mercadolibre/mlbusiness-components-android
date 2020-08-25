@@ -1,4 +1,4 @@
-package com.mercadolibre.android.mlbusinesscomponents.components.row.model;
+package com.mercadolibre.android.mlbusinesscomponents.components.pickup.model;
 
 public interface DescriptionItemsInterface {
 

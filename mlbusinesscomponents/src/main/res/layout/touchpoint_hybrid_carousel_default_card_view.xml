@@ -46,10 +46,11 @@
                 android:layout_width="@dimen/ui_2_5m"
                 android:layout_height="@dimen/ui_2_5m"
                 android:scaleType="fitCenter"
+                app:roundedCornerRadius="10dp"
+                app:roundingBorderWidth="@dimen/ui_0125m"
+                app:roundingBorderColor="@color/ui_meli_white"
                 android:layout_gravity="bottom|end"
-                tools:src="@drawable/mercado_pago"
                 android:src="@drawable/skeleton"
-                app:roundAsCircle="true"
                 android:contentDescription="@string/app_name" />
 
         </FrameLayout>

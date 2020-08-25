@@ -7,8 +7,8 @@
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/main_description_icon"
-        android:layout_width="@dimen/ui_1_25m"
-        android:layout_height="@dimen/ui_1_25m"
+        android:layout_width="@dimen/ui_1_5m"
+        android:layout_height="@dimen/ui_1_5m"
         android:layout_gravity="center"
         xmlns:android="http://schemas.android.com/apk/res/android" />
 

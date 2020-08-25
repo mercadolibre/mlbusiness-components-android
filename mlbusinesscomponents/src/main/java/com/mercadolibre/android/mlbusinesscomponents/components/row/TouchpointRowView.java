@@ -11,9 +11,12 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointAssetLoader;
 import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointImageLoader;
+import com.mercadolibre.android.mlbusinesscomponents.components.pickup.MainDescriptionLabelsText;
+import com.mercadolibre.android.mlbusinesscomponents.components.pickup.MainDescriptionLabesImage;
+import com.mercadolibre.android.mlbusinesscomponents.components.pickup.PickUpView;
 import com.mercadolibre.android.mlbusinesscomponents.components.pill.model.PillResponseInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.pill.view.RightBottomInfoView;
-import com.mercadolibre.android.mlbusinesscomponents.components.row.model.DescriptionItemsInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.pickup.model.DescriptionItemsInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.TouchpointRowItemInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.AssetLoader;
@@ -35,7 +38,8 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     private final TextView rightSecondaryLabel;
     private final TextView rightMiddleLabel;
     private final RightBottomInfoView rightBottomInfoContainer;
-    private final LinearLayout mainDescriptionContainer;
+    private final PickUpView mainDescriptionContainer;
+    private final PickUpView mainCharacteristicsContainer;
     private final TouchpointRowPresenter presenter;
     private OnClickCallback onClickCallback;
 
@@ -66,6 +70,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
         rightSecondaryLabel = findViewById(R.id.right_secondary_label);
         rightMiddleLabel = findViewById(R.id.right_middle_label);
         mainDescriptionContainer = findViewById(R.id.main_description_container);
+        mainCharacteristicsContainer = findViewById(R.id.main_characteristics_container);
         rightBottomInfoContainer = findViewById(R.id.right_bottom_info_container);
         rightBottomInfoContainer.bindViews();
         presenter = new TouchpointRowPresenter();
@@ -224,23 +229,9 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
      * @param mainDescription the labels.
      */
     public void showDescriptionLabels(final List<DescriptionItemsInterface> mainDescription) {
-        if (mainDescriptionContainer.getChildCount() > 0) {
-            mainDescriptionContainer.removeAllViews();
+        if(mainDescriptionContainer != null) {
+            mainDescriptionContainer.bindViews(mainDescription);
         }
-        mainDescriptionContainer.setVisibility(VISIBLE);
-        presenter.addDescriptionLabels(mainDescription, this);
-    }
-
-    public void addTextDescription(final String content, final String color) {
-        MainDescriptionLabelsText mainDescriptionLabelsText = new MainDescriptionLabelsText(getContext());
-        mainDescriptionLabelsText.setText(content, color);
-        mainDescriptionContainer.addView(mainDescriptionLabelsText);
-    }
-
-    public void addImageDescription(final String content, final String color) {
-        MainDescriptionLabesImage mainDescriptionLabesImage = new MainDescriptionLabesImage(getContext());
-        mainDescriptionLabesImage.setImage(content, color);
-        mainDescriptionContainer.addView(mainDescriptionLabesImage);
     }
 
     /**
@@ -315,5 +306,27 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
      */
     public void setImageLoader(final TouchpointImageLoader imageLoader) {
         AssetLoader.setStrategy(imageLoader);
+    }
+
+
+    /**
+     * Show store distance
+     *
+     * @param mainDescription the labels.
+     */
+    public void showCharacterísticsLabels(final List<DescriptionItemsInterface> mainDescription) {
+        if(mainCharacteristicsContainer != null) {
+            mainCharacteristicsContainer.bindViews(mainDescription);
+        }
+    }
+
+    /**
+     * Hide store characteristics
+     */
+    public void hideCharacterísticsLabels() {
+        if (mainCharacteristicsContainer.getChildCount() > 0) {
+            mainCharacteristicsContainer.removeAllViews();
+        }
+        mainCharacteristicsContainer.setVisibility(GONE);
     }
 }

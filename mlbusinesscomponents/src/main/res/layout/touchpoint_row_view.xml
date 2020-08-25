@@ -61,29 +61,36 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/ui_1_75m"
             android:layout_marginStart="@dimen/ui_2m"
-            android:layout_marginTop="@dimen/ui_025m"
+            android:layout_marginTop="@dimen/ui_050m"
             app:layout_constraintBottom_toTopOf="@+id/main_description_container"
             app:layout_constraintEnd_toStartOf="@+id/discounts_payers_list_row_label_container"
             app:layout_constraintStart_toEndOf="@+id/left_image"
             app:layout_constraintTop_toBottomOf="@+id/main_title"
             tools:text="Comida rápida" />
 
-        <LinearLayout
-            android:id="@+id/main_description_container"
-            android:layout_width="wrap_content"
+        <include
+            layout="@layout/touchpoint_pick_up_view"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:id="@+id/main_description_container"
+            android:translationY="-2dp"
+            android:layout_marginBottom="@dimen/ui_1_5m"
+            android:layout_marginStart="@dimen/ui_2m"
+            app:layout_constraintTop_toBottomOf="@+id/main_subtitle"
+            app:layout_constraintBottom_toTopOf="@+id/main_characteristics_container"
+            app:layout_constraintStart_toEndOf="@+id/left_image" />
+
+        <include
+            layout="@layout/touchpoint_pick_up_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/main_characteristics_container"
+            android:translationY="-4dp"
             android:layout_marginBottom="@dimen/ui_2m"
             android:layout_marginStart="@dimen/ui_2m"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:translationY="-2dp"
-            app:layout_constraintTop_toBottomOf="@+id/main_subtitle"
+            app:layout_constraintTop_toBottomOf="@+id/main_description_container"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/left_image" >
-
-            <!-- add childs here -->
-
-        </LinearLayout>
+            app:layout_constraintStart_toEndOf="@+id/left_image" />
 
         <LinearLayout
             android:id="@+id/discounts_payers_list_row_label_container"

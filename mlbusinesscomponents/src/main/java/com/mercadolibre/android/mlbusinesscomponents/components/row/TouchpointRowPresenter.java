@@ -1,7 +1,7 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.row;
 
 import android.text.TextUtils;
-import com.mercadolibre.android.mlbusinesscomponents.components.row.model.DescriptionItemsInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.pickup.model.DescriptionItemsInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.pill.model.PillResponseInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.TouchpointRowItemInterface;
 import java.util.List;
@@ -27,6 +27,7 @@ public class TouchpointRowPresenter {
         setRightLabel(rowItem.getRightSecondaryLabel(), view);
         setBottomLabel(rowItem.getRightMiddleLabel(), view);
         setDescriptionLabels(rowItem.getMainDescription(), view);
+        setCharacteristicsLabels(rowItem.getMainCharacteristics(), view);
         setOnClick(rowItem.getLink(), view);
         setRightLabelStatus(rowItem.getRightLabelStatus(), view);
     }
@@ -61,19 +62,12 @@ public class TouchpointRowPresenter {
         view.showDescriptionLabels(mainDescription);
     }
 
-    public void addDescriptionLabels(final List<DescriptionItemsInterface> mainDescription, final TouchpointRowView view) {
-        for (DescriptionItemsInterface item : mainDescription) {
-            switch (item.getType()) {
-            case "image":
-                view.addImageDescription(item.getContent(), item.getColor());
-                break;
-            case "text":
-                view.addTextDescription(item.getContent(), item.getColor());
-                break;
-            default:
-                // no op..
-            }
+    private void setCharacteristicsLabels(final List<DescriptionItemsInterface> mainDescription, final TouchpointRowView view) {
+        if (mainDescription == null || mainDescription.isEmpty()) {
+            view.hideCharacterísticsLabels();
+            return;
         }
+        view.showCharacterísticsLabels(mainDescription);
     }
 
     private void setOnClick(final String link, final TouchpointRowView view) {
