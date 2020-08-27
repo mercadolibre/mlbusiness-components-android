@@ -1,3 +1,8 @@
+## VERSION 1.10.0
+_27_08_2020_
+* FEATURE - Se componentiza la vista de pickup de row hibrida
+* FEATURE - Se modifica la card del carrusel hibrido
+
 ## VERSION 1.9.0
 _20_08_2020_
 * FEATURE - Se migra a AndroidX y API 29.
