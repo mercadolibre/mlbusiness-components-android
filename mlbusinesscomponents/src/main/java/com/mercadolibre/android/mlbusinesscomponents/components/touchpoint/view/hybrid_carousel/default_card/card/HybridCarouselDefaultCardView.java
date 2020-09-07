@@ -1,7 +1,6 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.hybrid_carousel.default_card.card;
 
 import android.content.Context;
-import android.graphics.drawable.Animatable;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -9,10 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
-import com.facebook.drawee.controller.BaseControllerListener;
-import com.facebook.drawee.controller.ControllerListener;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.facebook.imagepipeline.image.ImageInfo;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointAssetLoader;
 import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointImageLoader;
@@ -171,31 +167,9 @@ public class HybridCarouselDefaultCardView extends CardView implements Touchpoin
         this.topImageAccessory.setVisibility(VISIBLE);
         AssetLoader.getImage(topImageAccessory, this.topImageAccessory, (shouldLoadImage -> {
             if (shouldLoadImage) {
-                TouchpointAssetLoader.create().withContainer(this.topImageAccessory).withControllerListener(getControllerListener())
-                    .withSource(topImageAccessory).load();
+                TouchpointAssetLoader.create().withContainer(this.topImageAccessory).withSource(topImageAccessory).load();
             }
         }));
-    }
-
-    private ControllerListener getControllerListener() {
-        return new BaseControllerListener<ImageInfo>() {
-            @Override
-            public void onIntermediateImageSet(final String id, @Nullable final ImageInfo imageInfo) {
-                updateViewSize(imageInfo);
-            }
-
-            @Override
-            public void onFinalImageSet(final String id, @Nullable final ImageInfo imageInfo, @Nullable final Animatable animatable) {
-                updateViewSize(imageInfo);
-            }
-        };
-    }
-
-    private void updateViewSize(@Nullable ImageInfo imageInfo) {
-        if (imageInfo != null) {
-            topImageAccessory.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
-            topImageAccessory.setAspectRatio((float) imageInfo.getWidth() / imageInfo.getHeight());
-        }
     }
 
     /**

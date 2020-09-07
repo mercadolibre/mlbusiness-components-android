@@ -2,12 +2,12 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view
 
 import android.content.Context;
 import android.graphics.Color;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointAssetLoader;
@@ -46,6 +46,7 @@ public class HybridCarouselViewMoreCardView extends CardView implements Touchpoi
 
     /**
      * Binds the view.
+     *
      * @param model the data to bind
      * @param size the card size
      */
@@ -72,14 +73,32 @@ public class HybridCarouselViewMoreCardView extends CardView implements Touchpoi
 
     /**
      * Shows the middle title
+     *
      * @param label the text
      * @param format the format
      */
     public void setMiddleTitle(final String label, final ViewMoreMainTitleFormat format) {
+        if (label == null) {
+            return;
+        }
         middleTitle.setVisibility(VISIBLE);
-        middleTitle.setText(label);
-        middleTitle.setTextColor(Color.parseColor(format.getTextColor()));
-        middleTitle.setBackgroundColor(Color.parseColor(format.getBackgroundColor()));
+        if (!label.isEmpty()) {
+            middleTitle.setText(label);
+        }
+        if (format.getTextColor() != null && !format.getTextColor().isEmpty()) {
+            try {
+                middleTitle.setTextColor(Color.parseColor(format.getTextColor()));
+            } catch (Exception e) {
+                // no op..
+            }
+        }
+        if (format.getBackgroundColor() != null && !format.getBackgroundColor().isEmpty()) {
+            try {
+                middleTitle.setBackgroundColor(Color.parseColor(format.getBackgroundColor()));
+            } catch (Exception e) {
+                // no op..
+            }
+        }
     }
 
     /**
@@ -91,6 +110,7 @@ public class HybridCarouselViewMoreCardView extends CardView implements Touchpoi
 
     /**
      * shows the image
+     *
      * @param mainImage the image link
      */
     public void setImage(final String mainImage) {
@@ -111,6 +131,7 @@ public class HybridCarouselViewMoreCardView extends CardView implements Touchpoi
 
     /**
      * Sets the click listener
+     *
      * @param link link to push
      * @param tracking data to track
      */
@@ -135,6 +156,7 @@ public class HybridCarouselViewMoreCardView extends CardView implements Touchpoi
 
     /**
      * Sets the click callback
+     *
      * @param onClickCallback
      */
     public void setOnClickCallback(@Nullable final OnClickCallback onClickCallback) {

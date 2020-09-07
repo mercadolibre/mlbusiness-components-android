@@ -1,3 +1,6 @@
+## NEW
+* FEATURE - Se corrige el image accessory del carrusel hibrido.
+
 ## VERSION 1.10.0
 _27_08_2020_
 * FEATURE - Se componentiza la vista de pickup de row hibrida
