@@ -95,13 +95,13 @@
         <LinearLayout
             android:id="@+id/discounts_payers_list_row_label_container"
             android:layout_width="wrap_content"
-            android:layout_height="96dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginEnd="@dimen/ui_2m"
             android:gravity="center"
-            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="parent" >
+            app:layout_constraintTop_toTopOf="parent" >
 
             <TextView
                 android:id="@+id/right_top_label"
@@ -150,11 +150,7 @@
                 tools:text="Sin tope" />
 
             <include layout="@layout/bottom_right_info_view"
-                android:id="@+id/right_bottom_info_container"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/discounts_payers_list_row_label_container"
-                app:layout_constraintStart_toStartOf="@+id/discounts_payers_list_row_label_container"
-                app:layout_constraintTop_toBottomOf="@+id/right_middle_label"/>
+                android:id="@+id/right_bottom_info_container" />
 
         </LinearLayout>
 
