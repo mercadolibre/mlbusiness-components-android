@@ -33,6 +33,7 @@
                 tools:src="@drawable/mercado_pago"
                 android:src="@drawable/skeleton"
                 app:roundAsCircle="true"
+                app:actualImageScaleType="fitCenter"
                 android:contentDescription="@string/app_name" />
 
             <View
