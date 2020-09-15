@@ -1,4 +1,4 @@
-## VERSION 1.11.0
+## NEW
 * FIX - Se corrige label croppeado al aumentar el tamaño del texto
 * FIX - Se corrige la imagen croppeada en hybrid y default Tochview
 
