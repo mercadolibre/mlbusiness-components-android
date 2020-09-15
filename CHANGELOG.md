@@ -1,4 +1,7 @@
 ## VERSION 1.11.0
+* FIX - Se corrige label croppeado al aumentar el tamaño del texto
+* FIX - Se corrige la imagen croppeada en hybrid y default Tochview
+
 _07_09_2020_
 * FEATURE - Se corrige el image accessory del carrusel hibrido.
 
