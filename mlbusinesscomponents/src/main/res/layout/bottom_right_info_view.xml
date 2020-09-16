@@ -18,7 +18,6 @@
         android:layout_width="@dimen/ui_1_25m"
         android:layout_height="@dimen/ui_1_25m"
         android:scaleType="fitCenter"
-        android:src="@drawable/info_icon_background"
         app:actualImageScaleType="fitCenter"
         android:layout_marginEnd="@dimen/ui_050m" />
 
