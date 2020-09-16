@@ -24,6 +24,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.track
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
 import java.util.Map;
 
+import static com.mercadolibre.android.mlbusinesscomponents.common.Constants.NON_SIZE;
 import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.trackTap;
 
 public class CarouselCardView extends CardView implements TouchpointTrackeable {
@@ -43,10 +44,14 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
     private final LinearLayout button;
     private final FrameLayout logoContainer;
     private final View logoOverlay;
-    @Nullable private TouchpointTracking tracking;
-    @Nullable private Map<String, Object> extraData;
-    @Nullable private OnClickCallback onClickCallback;
-    @Nullable private MLBusinessTouchpointTracker tracker;
+    @Nullable
+    private TouchpointTracking tracking;
+    @Nullable
+    private Map<String, Object> extraData;
+    @Nullable
+    private OnClickCallback onClickCallback;
+    @Nullable
+    private MLBusinessTouchpointTracker tracker;
     private boolean isMPInstalled = true;
     private final CarouselCardPresenter presenter;
 
@@ -100,10 +105,22 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
      *
      * @param card the model
      */
-    public void bind(final CarouselCard card, final double size) {
+    public void bind(final CarouselCard card) {
+       bind(card, NON_SIZE);
+    }
+
+    /**
+     * Binds the model
+     *
+     * @param card the model
+     * @param size the size in pixels
+     */
+    public void bind(final CarouselCard card, final int size) {
+        if (size != NON_SIZE) {
+            ViewGroup.LayoutParams layoutParams = getLayoutParams();
+            layoutParams.height = size;
+        }
         presenter.onBind(card, this);
-        ViewGroup.LayoutParams layoutParams = getLayoutParams();
-        layoutParams.height = (int) (size * getResources().getDisplayMetrics().density);
     }
 
     /* default */ void showImage(final String logo) {

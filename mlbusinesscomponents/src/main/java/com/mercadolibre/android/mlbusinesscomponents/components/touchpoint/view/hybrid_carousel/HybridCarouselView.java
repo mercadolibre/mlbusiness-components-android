@@ -1,6 +1,7 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.hybrid_carousel;
 
 import android.content.Context;
+import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,6 +17,8 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.HeightCalculatorDelegate;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.HorizontalScrollingEnhancer;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.TrackListener;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.hybrid_carousel.default_card.card.HybridCarouselDefaultCardView;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.hybrid_carousel.view_more.card.HybridCarouselViewMoreCardView;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils;
 import java.util.List;
 
@@ -28,6 +31,9 @@ public class HybridCarouselView extends AbstractTouchpointChildView<HybridCarous
     private RecyclerView recyclerView;
     private TrackListener trackListener;
     private HorizontalScrollingEnhancer horizontalScrollingEnhancer;
+    private HybridCarouselDefaultCardView defaultTemplateView;
+    private HybridCarouselViewMoreCardView viewMoreTemplateView;
+    private int currentHeight = 0;
 
     public HybridCarouselView(@NonNull final Context context) {
         this(context, null);
@@ -43,6 +49,8 @@ public class HybridCarouselView extends AbstractTouchpointChildView<HybridCarous
         recyclerView = findViewById(R.id.touchpoint_hybrid_carousel_recycler_view);
         presenter = new HybridCarouselPresenter(this);
         carouselAdapter = new HybridCarouselAdater();
+        defaultTemplateView = findViewById(R.id.defaultTemplateView);
+        viewMoreTemplateView = findViewById(R.id.viewMoreTemplateView);
         initList(context);
     }
 
@@ -68,8 +76,27 @@ public class HybridCarouselView extends AbstractTouchpointChildView<HybridCarous
 
     @Override
     public void showItems(final List<HybridCarouselCardContainerModel> items, final HeightCalculatorDelegate heightCalculator) {
-        carouselAdapter.setCardHeight(heightCalculator.getFixedCardHeight());
-        carouselAdapter.setItems(items);
+        final HybridCarouselCardContainerModel model = items.get(heightCalculator.getMaxHeightItemIndex());
+        if (model.getType().equals("DEFAULT")) {
+            defaultTemplateView.bind(model);
+            setItemsWithHeight(defaultTemplateView, items, model);
+        } else {
+            viewMoreTemplateView.bind(model);
+            setItemsWithHeight(viewMoreTemplateView, items, model);
+        }
+    }
+
+    private <T extends View> void setItemsWithHeight(final T templateView,  final List<HybridCarouselCardContainerModel> items,
+        final HybridCarouselCardContainerModel model) {
+        templateView.setVisibility(INVISIBLE);
+        templateView.post(() -> {
+            if (currentHeight != templateView.getHeight()) {
+                currentHeight = templateView.getHeight();
+                templateView.setVisibility(GONE);
+                carouselAdapter.setCardHeight(currentHeight);
+                carouselAdapter.setItems(items);
+            }
+        });
     }
 
     private void initList(final Context context) {

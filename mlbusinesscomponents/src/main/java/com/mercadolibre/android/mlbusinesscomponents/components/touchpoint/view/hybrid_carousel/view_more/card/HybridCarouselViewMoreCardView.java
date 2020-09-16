@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
+import com.mercadolibre.android.mlbusinesscomponents.common.Constants;
 import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointAssetLoader;
 import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointImageLoader;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
@@ -45,15 +46,26 @@ public class HybridCarouselViewMoreCardView extends CardView implements Touchpoi
     }
 
     /**
-     * Binds the view.
+     * binds the view.
      *
      * @param model the data to bind
-     * @param size the card size
      */
-    public void bind(final HybridCarouselCardContainerModel model, final double size) {
-        ViewGroup.LayoutParams layoutParams = getLayoutParams();
-        this.tracking = model.getTracking();
-        layoutParams.height = (int) (size * getResources().getDisplayMetrics().density);
+    public void bind(final HybridCarouselCardContainerModel model) {
+        bind(model, Constants.NON_SIZE);
+    }
+
+    /**
+     * binds the view.
+     *
+     * @param model the data to bind
+     * @param size the card's size
+     */
+    public void bind(final HybridCarouselCardContainerModel model, final int size) {
+        if (size != Constants.NON_SIZE) {
+            ViewGroup.LayoutParams layoutParams = getLayoutParams();
+            layoutParams.height = size;
+        }
+        tracking = model.getTracking();
         presenter.bindView(model);
     }
 

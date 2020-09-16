@@ -23,7 +23,9 @@ public abstract class ItemViewHolder<M extends HybridCarouselCardContainerModel>
      * Bind view
      *
      * @param item The model
+     * @param onClickCallback the onclick callback
+     * @param size the size in pixels
      */
     public abstract void bindView(final M item, final TouchpointImageLoader imageLoader, @Nullable final OnClickCallback onClickCallback,
-        final double size);
+        final int size);
 }

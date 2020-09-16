@@ -5,6 +5,18 @@
     android:layout_height="wrap_content"
     tools:parentTag="android.widget.FrameLayout">
 
+    <com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.hybrid_carousel.default_card.card.HybridCarouselDefaultCardView
+        android:id="@+id/defaultTemplateView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
+    <com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.hybrid_carousel.view_more.card.HybridCarouselViewMoreCardView
+        android:id="@+id/viewMoreTemplateView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/touchpoint_hybrid_carousel_recycler_view"
         android:layout_width="match_parent"
@@ -13,4 +25,5 @@
         <!--  Childs added here   -->
 
     </androidx.recyclerview.widget.RecyclerView>
+
 </merge>

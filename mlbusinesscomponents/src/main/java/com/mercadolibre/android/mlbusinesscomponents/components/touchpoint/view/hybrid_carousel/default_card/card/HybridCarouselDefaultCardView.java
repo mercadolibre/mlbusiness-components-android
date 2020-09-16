@@ -1,7 +1,9 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.hybrid_carousel.default_card.card;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -19,6 +21,8 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.AssetLoader;
+
+import static com.mercadolibre.android.mlbusinesscomponents.common.Constants.NON_SIZE;
 
 public class HybridCarouselDefaultCardView extends CardView implements TouchpointTrackeable {
 
@@ -64,13 +68,28 @@ public class HybridCarouselDefaultCardView extends CardView implements Touchpoin
      * binds the view.
      *
      * @param model the data to bind
+     */
+    public void bind(final HybridCarouselCardContainerModel model) {
+        bind(model, NON_SIZE);
+    }
+
+    /**
+     * binds the view.
+     *
+     * @param model the data to bind
      * @param size the card's size
      */
-    public void bind(final HybridCarouselCardContainerModel model, final double size) {
-        this.tracking = model.getTracking();
-        ViewGroup.LayoutParams layoutParams = getLayoutParams();
-        layoutParams.height = (int) (size * getResources().getDisplayMetrics().density);
+    public void bind(final HybridCarouselCardContainerModel model, final int size) {
+        tracking = model.getTracking();
+        if(size != NON_SIZE) {
+          setNewHeight(size);
+        }
         presenter.bindView(model);
+    }
+
+    private void setNewHeight(final int size) {
+        ViewGroup.LayoutParams layoutParams = getLayoutParams();
+        layoutParams.height = size;
     }
 
     /**
