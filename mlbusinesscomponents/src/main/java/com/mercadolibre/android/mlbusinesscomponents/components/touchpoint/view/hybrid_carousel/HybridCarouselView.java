@@ -10,6 +10,7 @@ import android.util.AttributeSet;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointImageLoader;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.hybrid_carousel.TouchpointItemType;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.hybrid_carousel.model.HybridCarouselCardContainerModel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.hybrid_carousel.response.HybridCarousel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
@@ -77,7 +78,7 @@ public class HybridCarouselView extends AbstractTouchpointChildView<HybridCarous
     @Override
     public void showItems(final List<HybridCarouselCardContainerModel> items, final HeightCalculatorDelegate heightCalculator) {
         final HybridCarouselCardContainerModel model = items.get(heightCalculator.getMaxHeightItemIndex());
-        if (model.getType().equals("DEFAULT")) {
+        if (TouchpointItemType.DEFAULT.ordinal() == model.getContent().getItemType() ) {
             defaultTemplateView.bind(model);
             setItemsWithHeight(defaultTemplateView, items, model);
         } else {
