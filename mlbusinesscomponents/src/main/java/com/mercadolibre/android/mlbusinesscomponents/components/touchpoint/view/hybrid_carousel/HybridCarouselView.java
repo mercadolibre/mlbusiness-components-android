@@ -32,9 +32,9 @@ public class HybridCarouselView extends AbstractTouchpointChildView<HybridCarous
     private RecyclerView recyclerView;
     private TrackListener trackListener;
     private HorizontalScrollingEnhancer horizontalScrollingEnhancer;
+    private int currentHeight = 0;
     private HybridCarouselDefaultCardView defaultTemplateView;
     private HybridCarouselViewMoreCardView viewMoreTemplateView;
-    private int currentHeight = 0;
 
     public HybridCarouselView(@NonNull final Context context) {
         this(context, null);
@@ -50,8 +50,8 @@ public class HybridCarouselView extends AbstractTouchpointChildView<HybridCarous
         recyclerView = findViewById(R.id.touchpoint_hybrid_carousel_recycler_view);
         presenter = new HybridCarouselPresenter(this);
         carouselAdapter = new HybridCarouselAdater();
-        defaultTemplateView = findViewById(R.id.defaultTemplateView);
-        viewMoreTemplateView = findViewById(R.id.viewMoreTemplateView);
+        defaultTemplateView = new HybridCarouselDefaultCardView(getContext());
+        viewMoreTemplateView = new HybridCarouselViewMoreCardView(getContext());
         initList(context);
     }
 
@@ -76,28 +76,27 @@ public class HybridCarouselView extends AbstractTouchpointChildView<HybridCarous
     }
 
     @Override
-    public void showItems(final List<HybridCarouselCardContainerModel> items, final HeightCalculatorDelegate heightCalculator) {
+    public void showItems(final List<HybridCarouselCardContainerModel> items,
+        final HeightCalculatorDelegate heightCalculator) {
         final HybridCarouselCardContainerModel model = items.get(heightCalculator.getMaxHeightItemIndex());
         if (TouchpointItemType.DEFAULT.ordinal() == model.getContent().getItemType() ) {
             defaultTemplateView.bind(model);
-            setItemsWithHeight(defaultTemplateView, items, model);
+            setItemsWithHeight(defaultTemplateView, items);
         } else {
             viewMoreTemplateView.bind(model);
-            setItemsWithHeight(viewMoreTemplateView, items, model);
+            setItemsWithHeight(viewMoreTemplateView, items);
         }
     }
 
-    private <T extends View> void setItemsWithHeight(final T templateView,  final List<HybridCarouselCardContainerModel> items,
-        final HybridCarouselCardContainerModel model) {
-        templateView.setVisibility(INVISIBLE);
-        templateView.post(() -> {
-            if (currentHeight != templateView.getHeight()) {
-                currentHeight = templateView.getHeight();
-                templateView.setVisibility(GONE);
-                carouselAdapter.setCardHeight(currentHeight);
-                carouselAdapter.setItems(items);
-            }
-        });
+    private <T extends View> void setItemsWithHeight(final T templateView,
+        final List<HybridCarouselCardContainerModel> items) {
+        final int measureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        templateView.measure(measureSpec, measureSpec);
+        if (currentHeight != templateView.getMeasuredHeight()) {
+            currentHeight = templateView.getMeasuredHeight();
+            carouselAdapter.setCardHeight(currentHeight);
+            carouselAdapter.setItems(items);
+        }
     }
 
     private void initList(final Context context) {

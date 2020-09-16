@@ -5,12 +5,6 @@
     android:layout_height="wrap_content"
     tools:parentTag="android.widget.FrameLayout">
 
-    <com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.CarouselCardView
-        android:id="@+id/templateCardView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"/>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/touchpoint_carousel_recycler_view"
         android:layout_width="match_parent"

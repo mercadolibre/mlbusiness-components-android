@@ -35,6 +35,7 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
     private TouchpointImageLoader imageLoader;
     private HorizontalScrollingEnhancer horizontalScrollingEnhancer;
     private CarouselCardView templateCardView;
+    private int currentHeight = 0;
 
     /**
      * Constructor
@@ -68,7 +69,7 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
         recyclerView = findViewById(R.id.touchpoint_carousel_recycler_view);
         adapter = new CarouselAdapter();
         rect = new Rect();
-        templateCardView = findViewById(R.id.templateCardView);
+        templateCardView = new CarouselCardView(getContext());
         initList(context);
     }
 
@@ -137,12 +138,13 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
 
     private void showCards(final List<CarouselCard> cards, final HeightCalculatorDelegate heightCalculator) {
         templateCardView.bind(cards.get(heightCalculator.getMaxHeightItemIndex()));
-        templateCardView.setVisibility(INVISIBLE);
-        templateCardView.post(() -> {
-            adapter.setCardHeight(templateCardView.getHeight());
+        final int measureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        templateCardView.measure(measureSpec, measureSpec);
+        if (currentHeight != templateCardView.getMeasuredHeight()) {
+            currentHeight = templateCardView.getMeasuredHeight();
+            adapter.setCardHeight(currentHeight);
             adapter.setItems(cards);
-            templateCardView.setVisibility(GONE);
-        });
+        }
     }
 
     @Override
