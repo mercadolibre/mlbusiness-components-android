@@ -1,7 +1,6 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.grid;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid.Grid;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid.GridItem;
 import java.util.List;
@@ -41,5 +40,9 @@ import java.util.List;
             rowCount = 1;
         }
         view.setRawCount(rowCount);
+    }
+
+    public int getGridSize() {
+        return rowCount;
     }
 }
