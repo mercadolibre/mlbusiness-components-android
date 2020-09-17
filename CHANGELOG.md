@@ -1,3 +1,5 @@
+* FIX - Se corrige el alto default de la grilla
+
 ## VERSION 1.11.0
 _07_09_2020_
 * FEATURE - Se corrige el image accessory del carrusel hibrido.
