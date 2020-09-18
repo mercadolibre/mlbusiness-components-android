@@ -78,6 +78,11 @@ public class HybridCarouselView extends AbstractTouchpointChildView<HybridCarous
     @Override
     public void showItems(final List<HybridCarouselCardContainerModel> items,
         final HeightCalculatorDelegate heightCalculator) {
+
+        if (items == null && items.isEmpty()) {
+            return;
+        }
+
         final HybridCarouselCardContainerModel model = items.get(heightCalculator.getMaxHeightItemIndex());
         if (TouchpointItemType.DEFAULT.ordinal() == model.getContent().getItemType() ) {
             defaultTemplateView.bind(model);
