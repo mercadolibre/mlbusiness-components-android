@@ -111,6 +111,7 @@ public class GridView extends AbstractTouchpointChildView<Grid> {
 
     @Override
     public int getStaticHeight() {
-        return getResources().getDimensionPixelSize(R.dimen.grid_static_height);
+        return presenter.getGridSize() == 2 ? getResources().getDimensionPixelSize(R.dimen.large_grid_static_height)
+            : getResources().getDimensionPixelSize(R.dimen.small_grid_static_height);
     }
 }

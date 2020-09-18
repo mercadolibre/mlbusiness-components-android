@@ -42,4 +42,8 @@ import java.util.List;
         }
         view.setRawCount(rowCount);
     }
+
+    public int getGridSize() {
+        return rowCount;
+    }
 }
