@@ -79,17 +79,15 @@ public class HybridCarouselView extends AbstractTouchpointChildView<HybridCarous
     public void showItems(final List<HybridCarouselCardContainerModel> items,
         final HeightCalculatorDelegate heightCalculator) {
 
-        if (items == null && items.isEmpty()) {
-            return;
-        }
-
-        final HybridCarouselCardContainerModel model = items.get(heightCalculator.getMaxHeightItemIndex());
-        if (TouchpointItemType.DEFAULT.ordinal() == model.getContent().getItemType() ) {
-            defaultTemplateView.bind(model);
-            setItemsWithHeight(defaultTemplateView, items);
-        } else {
-            viewMoreTemplateView.bind(model);
-            setItemsWithHeight(viewMoreTemplateView, items);
+        if (items != null && !items.isEmpty()) {
+            final HybridCarouselCardContainerModel model = items.get(heightCalculator.getMaxHeightItemIndex());
+            if (TouchpointItemType.DEFAULT.ordinal() == model.getContent().getItemType() ) {
+                defaultTemplateView.bind(model);
+                setItemsWithHeight(defaultTemplateView, items);
+            } else {
+                viewMoreTemplateView.bind(model);
+                setItemsWithHeight(viewMoreTemplateView, items);
+            }
         }
     }
 
