@@ -98,8 +98,8 @@ public class HybridCarouselView extends AbstractTouchpointChildView<HybridCarous
         if (currentHeight != templateView.getMeasuredHeight()) {
             currentHeight = templateView.getMeasuredHeight();
             carouselAdapter.setCardHeight(currentHeight);
-            carouselAdapter.setItems(items);
         }
+        carouselAdapter.setItems(items);
     }
 
     private void initList(final Context context) {

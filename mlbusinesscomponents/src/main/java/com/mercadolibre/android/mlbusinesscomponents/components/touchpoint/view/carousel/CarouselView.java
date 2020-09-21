@@ -137,12 +137,14 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
     }
 
     private void showCards(final List<CarouselCard> cards, final HeightCalculatorDelegate heightCalculator) {
-        templateCardView.bind(cards.get(heightCalculator.getMaxHeightItemIndex()));
-        final int measureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
-        templateCardView.measure(measureSpec, measureSpec);
-        if (currentHeight != templateCardView.getMeasuredHeight()) {
-            currentHeight = templateCardView.getMeasuredHeight();
-            adapter.setCardHeight(currentHeight);
+        if (cards != null && !cards.isEmpty()) {
+            templateCardView.bind(cards.get(heightCalculator.getMaxHeightItemIndex()));
+            final int measureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+            templateCardView.measure(measureSpec, measureSpec);
+            if (currentHeight != templateCardView.getMeasuredHeight()) {
+                currentHeight = templateCardView.getMeasuredHeight();
+                adapter.setCardHeight(currentHeight);
+            }
             adapter.setItems(cards);
         }
     }
