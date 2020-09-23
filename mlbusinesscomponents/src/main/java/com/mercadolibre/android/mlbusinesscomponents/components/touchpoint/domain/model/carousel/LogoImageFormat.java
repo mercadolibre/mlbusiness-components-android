@@ -1,5 +1,8 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel;
 
+import androidx.annotation.Keep;
+
+@Keep
 public class LogoImageFormat {
     private final boolean overlay;
 
