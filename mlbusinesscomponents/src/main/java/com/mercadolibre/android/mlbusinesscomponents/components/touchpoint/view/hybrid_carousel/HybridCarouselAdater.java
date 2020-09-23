@@ -18,7 +18,7 @@ public class HybridCarouselAdater extends RecyclerView.Adapter<ItemViewHolder> {
     private final List<HybridCarouselCardContainerModel> elements;
     private TouchpointImageLoader imageLoader;
     private OnClickCallback onClickCallback;
-    private double size;
+    private int size;
 
     /**
      * Constructor
@@ -89,7 +89,7 @@ public class HybridCarouselAdater extends RecyclerView.Adapter<ItemViewHolder> {
      *
      * @param fixedCardHeight the card height.
      */
-    public void setCardHeight(final double fixedCardHeight) {
-        this.size = fixedCardHeight;
+    public void setCardHeight(final int fixedCardHeight) {
+        size = fixedCardHeight;
     }
 }

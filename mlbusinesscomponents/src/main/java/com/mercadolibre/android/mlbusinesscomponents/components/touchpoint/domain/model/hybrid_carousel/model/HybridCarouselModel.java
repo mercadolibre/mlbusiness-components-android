@@ -19,13 +19,17 @@ public class HybridCarouselModel implements HeightCalculatorDelegate {
     }
 
     @Override
-    public double getFixedCardHeight() {
+    public int getMaxHeightItemIndex() {
         double maxHeight = 0;
-        for (final HybridCarouselCardContainerModel carouselCard : items) {
-            if (maxHeight < carouselCard.getHeight()) {
-                maxHeight = carouselCard.getHeight();
+        int i = 0;
+        int maxHeigtIndex = 0;
+        for (final HybridCarouselCardContainerModel item : items) {
+            if (maxHeight < item.getHeight()) {
+                maxHeight = item.getHeight();
+                maxHeigtIndex = i;
             }
+            i++;
         }
-        return maxHeight;
+        return maxHeigtIndex;
     }
 }

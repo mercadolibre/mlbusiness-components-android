@@ -13,4 +13,5 @@
         <!--  Childs added here   -->
 
     </androidx.recyclerview.widget.RecyclerView>
+
 </merge>

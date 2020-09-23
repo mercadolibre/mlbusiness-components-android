@@ -27,7 +27,7 @@ public class HybridCarouselDefaultViewHolder extends ItemViewHolder {
 
     @Override
     public void bindView(final HybridCarouselCardContainerModel model, final TouchpointImageLoader imageLoader, @Nullable
-    final OnClickCallback onClickCallback, final double size) {
+    final OnClickCallback onClickCallback, final int size) {
         if (!model.equals(this.model)) {
             this.model = model;
             this.model.getContent().setAdapterPosition(getAdapterPosition());

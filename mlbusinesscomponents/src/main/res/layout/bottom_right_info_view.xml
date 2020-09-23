@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="end"
     android:background="@drawable/level_background"
+    android:gravity="center_vertical"
     android:orientation="horizontal"
     android:paddingBottom="@dimen/ui_025m"
     android:paddingEnd="@dimen/ui_075m"
@@ -16,7 +17,6 @@
         android:id="@+id/right_bottom_info_image"
         android:layout_width="@dimen/ui_1_25m"
         android:layout_height="@dimen/ui_1_25m"
-        android:layout_gravity="center_vertical"
         android:scaleType="fitCenter"
         app:actualImageScaleType="fitCenter"
         android:layout_marginEnd="@dimen/ui_050m" />
@@ -25,9 +25,9 @@
         android:id="@+id/right_bottom_info_text"
         style="@style/discounts_payers_commons_level"
         android:maxWidth="@dimen/ui_9m"
-        android:translationY="-1dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         tools:text="ULTIMOS" />
 
 </com.mercadolibre.android.mlbusinesscomponents.components.pill.view.RightBottomInfoView>
