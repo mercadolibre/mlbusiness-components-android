@@ -1,5 +1,4 @@
-
-## NEW
+## VERSION 1.12.0
 * FIX - Se corrige el calculo de la altura de los items touchpoint
 * FIX - Se corrige label croppeado al aumentar el tamaño del texto
 * FIX - Se corrige la imagen croppeada en hybrid y default Tochview
