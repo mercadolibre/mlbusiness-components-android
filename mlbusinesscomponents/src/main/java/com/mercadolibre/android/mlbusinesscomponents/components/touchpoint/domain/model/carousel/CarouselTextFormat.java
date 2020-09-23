@@ -1,7 +1,9 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel;
 
+import androidx.annotation.Keep;
 import java.io.Serializable;
 
+@Keep
 public class CarouselTextFormat implements Serializable {
     private final int size;
     private final String color;

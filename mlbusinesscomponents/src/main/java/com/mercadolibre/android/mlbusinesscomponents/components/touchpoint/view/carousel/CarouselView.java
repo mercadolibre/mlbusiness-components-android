@@ -15,6 +15,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCard;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.CarouselCardView;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.TrackListener;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils;
 import java.util.ArrayList;
@@ -33,6 +34,8 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
     private TrackListener trackListener;
     private TouchpointImageLoader imageLoader;
     private HorizontalScrollingEnhancer horizontalScrollingEnhancer;
+    private CarouselCardView templateCardView;
+    private int currentHeight = 0;
 
     /**
      * Constructor
@@ -66,6 +69,7 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
         recyclerView = findViewById(R.id.touchpoint_carousel_recycler_view);
         adapter = new CarouselAdapter();
         rect = new Rect();
+        templateCardView = new CarouselCardView(getContext());
         initList(context);
     }
 
@@ -133,8 +137,16 @@ public class CarouselView extends AbstractTouchpointChildView<Carousel> {
     }
 
     private void showCards(final List<CarouselCard> cards, final HeightCalculatorDelegate heightCalculator) {
-        adapter.setItems(cards);
-        adapter.setCardHeight(heightCalculator.getFixedCardHeight());
+        if (cards != null && !cards.isEmpty()) {
+            templateCardView.bind(cards.get(heightCalculator.getMaxHeightItemIndex()));
+            final int measureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+            templateCardView.measure(measureSpec, measureSpec);
+            if (currentHeight != templateCardView.getMeasuredHeight()) {
+                currentHeight = templateCardView.getMeasuredHeight();
+                adapter.setCardHeight(currentHeight);
+            }
+            adapter.setItems(cards);
+        }
     }
 
     @Override

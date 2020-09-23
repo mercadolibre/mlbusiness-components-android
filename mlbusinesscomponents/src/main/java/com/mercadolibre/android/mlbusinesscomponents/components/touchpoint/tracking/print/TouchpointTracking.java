@@ -1,8 +1,10 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print;
 
+import androidx.annotation.Keep;
 import java.io.Serializable;
 import java.util.Map;
 
+@Keep
 public class TouchpointTracking implements Serializable {
 
     private static final long serialVersionUID = 5550209236409614639L;

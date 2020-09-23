@@ -1,4 +1,10 @@
+
+## NEW
+* FIX - Se corrige el calculo de la altura de los items touchpoint
+* FIX - Se corrige label croppeado al aumentar el tamaño del texto
+* FIX - Se corrige la imagen croppeada en hybrid y default Tochview
 * FIX - Se corrige el alto default de la grilla
+* FEATURE - Se agregan @Keep a modelos de carousel.
 
 ## VERSION 1.11.0
 _07_09_2020_

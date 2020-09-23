@@ -33,6 +33,7 @@
                 tools:src="@drawable/mercado_pago"
                 android:src="@drawable/skeleton"
                 app:roundAsCircle="true"
+                app:actualImageScaleType="fitCenter"
                 android:contentDescription="@string/app_name" />
 
             <View
@@ -117,7 +118,7 @@
 
             <include layout="@layout/bottom_right_info_view"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/ui_2m"
+                android:layout_height="wrap_content"
                 android:id="@+id/touchpoint_hybrid_carousel_default_card_bottom_info_container"
                 android:layout_gravity="center"
                 android:layout_marginBottom="@dimen/ui_050m"/>

@@ -50,13 +50,17 @@ public class Carousel implements TouchpointContent, Serializable, HeightCalculat
     }
 
     @Override
-    public double getFixedCardHeight() {
+    public int getMaxHeightItemIndex() {
         double maxHeight = 0;
-        for (final CarouselCard carouselCard: items) {
-            if(maxHeight < carouselCard.getHeight()) {
-                maxHeight = carouselCard.getHeight();
+        int i = 0;
+        int maxHeigtIndex = 0;
+        for (final CarouselCard item : items) {
+            if (maxHeight < item.getHeight()) {
+                maxHeight = item.getHeight();
+                maxHeigtIndex = i;
             }
+            i++;
         }
-        return maxHeight;
+        return maxHeigtIndex;
     }
 }

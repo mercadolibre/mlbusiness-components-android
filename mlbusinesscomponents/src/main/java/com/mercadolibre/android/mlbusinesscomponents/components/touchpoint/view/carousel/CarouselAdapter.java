@@ -24,7 +24,7 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
     @Nullable private OnClickCallback onClickCallback;
     @Nullable private MLBusinessTouchpointTracker tracker;
     @Nullable private Map<String, Object> extraData;
-    private double cardHeight;
+    private int cardHeight;
     private boolean isMPInstalled = true;
     private TouchpointImageLoader imageLoader;
 
@@ -92,7 +92,7 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
         this.isMPInstalled = isMPInstalled;
     }
 
-    public void setCardHeight(final double fixedCardHeight) {
+    public void setCardHeight(final int fixedCardHeight) {
         cardHeight = fixedCardHeight;
     }
 
@@ -105,7 +105,7 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
             view = itemView.findViewById(R.id.touchpoint_carousel_card_view);
         }
 
-        /* default */ void bindView(final CarouselCard card, final double size) {
+        /* default */ void bindView(final CarouselCard card, final int size) {
             view.bind(card, size);
         }
 

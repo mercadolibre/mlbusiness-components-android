@@ -1,6 +1,7 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.hybrid_carousel;
 
 import android.content.Context;
+import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,6 +10,7 @@ import android.util.AttributeSet;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointImageLoader;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.hybrid_carousel.TouchpointItemType;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.hybrid_carousel.model.HybridCarouselCardContainerModel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.hybrid_carousel.response.HybridCarousel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
@@ -16,6 +18,8 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.HeightCalculatorDelegate;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.HorizontalScrollingEnhancer;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.TrackListener;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.hybrid_carousel.default_card.card.HybridCarouselDefaultCardView;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.hybrid_carousel.view_more.card.HybridCarouselViewMoreCardView;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils;
 import java.util.List;
 
@@ -28,6 +32,9 @@ public class HybridCarouselView extends AbstractTouchpointChildView<HybridCarous
     private RecyclerView recyclerView;
     private TrackListener trackListener;
     private HorizontalScrollingEnhancer horizontalScrollingEnhancer;
+    private int currentHeight = 0;
+    private HybridCarouselDefaultCardView defaultTemplateView;
+    private HybridCarouselViewMoreCardView viewMoreTemplateView;
 
     public HybridCarouselView(@NonNull final Context context) {
         this(context, null);
@@ -43,6 +50,8 @@ public class HybridCarouselView extends AbstractTouchpointChildView<HybridCarous
         recyclerView = findViewById(R.id.touchpoint_hybrid_carousel_recycler_view);
         presenter = new HybridCarouselPresenter(this);
         carouselAdapter = new HybridCarouselAdater();
+        defaultTemplateView = new HybridCarouselDefaultCardView(getContext());
+        viewMoreTemplateView = new HybridCarouselViewMoreCardView(getContext());
         initList(context);
     }
 
@@ -67,8 +76,29 @@ public class HybridCarouselView extends AbstractTouchpointChildView<HybridCarous
     }
 
     @Override
-    public void showItems(final List<HybridCarouselCardContainerModel> items, final HeightCalculatorDelegate heightCalculator) {
-        carouselAdapter.setCardHeight(heightCalculator.getFixedCardHeight());
+    public void showItems(final List<HybridCarouselCardContainerModel> items,
+        final HeightCalculatorDelegate heightCalculator) {
+
+        if (items != null && !items.isEmpty()) {
+            final HybridCarouselCardContainerModel model = items.get(heightCalculator.getMaxHeightItemIndex());
+            if (TouchpointItemType.DEFAULT.ordinal() == model.getContent().getItemType() ) {
+                defaultTemplateView.bind(model);
+                setItemsWithHeight(defaultTemplateView, items);
+            } else {
+                viewMoreTemplateView.bind(model);
+                setItemsWithHeight(viewMoreTemplateView, items);
+            }
+        }
+    }
+
+    private <T extends View> void setItemsWithHeight(final T templateView,
+        final List<HybridCarouselCardContainerModel> items) {
+        final int measureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        templateView.measure(measureSpec, measureSpec);
+        if (currentHeight != templateView.getMeasuredHeight()) {
+            currentHeight = templateView.getMeasuredHeight();
+            carouselAdapter.setCardHeight(currentHeight);
+        }
         carouselAdapter.setItems(items);
     }
 
