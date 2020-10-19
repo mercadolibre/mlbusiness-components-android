@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import com.google.gson.JsonElement;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Keep
 public class HybridCarouselCardContainer implements Serializable {
@@ -37,5 +38,24 @@ public class HybridCarouselCardContainer implements Serializable {
     @Nullable
     public JsonElement getContent() {
         return content;
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        final HybridCarouselCardContainer that = (HybridCarouselCardContainer) o;
+        return Objects.equals(type, that.type) &&
+            Objects.equals(link, that.link) &&
+            content == null ? that.content == null : content.toString().equals(that.content.toString());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(type, link, content);
     }
 }
