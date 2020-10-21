@@ -1,5 +1,7 @@
-## VERSION 1.13.0
+## new
 - Se Agrega equals a HybridCarousel
+
+## VERSION 1.13.0
 - Se quita el separador de la touchpoint row view.
 
 ## VERSION 1.12.0
