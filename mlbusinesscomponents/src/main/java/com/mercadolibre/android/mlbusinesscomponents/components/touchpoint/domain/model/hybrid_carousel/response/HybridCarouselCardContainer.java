@@ -48,10 +48,12 @@ public class HybridCarouselCardContainer implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
+
         final HybridCarouselCardContainer that = (HybridCarouselCardContainer) o;
-        return Objects.equals(type, that.type) &&
-            Objects.equals(link, that.link) &&
-            content == null ? that.content == null : content.toString().equals(that.content.toString());
+        return Objects.equals(type, that.type)
+            && Objects.equals(link, that.link)
+            && content == null ? that.content == null
+            : (that.content != null && content.toString().equals(that.content.toString()));
     }
 
     @Override
