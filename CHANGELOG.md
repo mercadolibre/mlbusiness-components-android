@@ -1,4 +1,4 @@
-## new
+## VERSION 1.14.0
 - Se Agrega equals a HybridCarousel
 
 ## VERSION 1.13.0
