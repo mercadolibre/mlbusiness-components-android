@@ -15,7 +15,8 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.MLBusinessTouchpointListener;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.MLBusinessTouchpointView;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.hybrid_carousel.cover_card.card.HybridCoverCardView;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardView;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCard;
 import com.mercadolibre.android.mlbusinesscomponentsapp.R;
 import java.util.Map;
 
@@ -29,7 +30,7 @@ public class TouchpointTestActivity extends AppCompatActivity implements OnClick
     private MLBusinessTouchpointView touchpointView;
     private MLBusinessTouchpointListener touchpointListener;
     private TouchpointRowView touchpointRowView;
-    private HybridCoverCardView coverCardView;
+    private CoverCardView coverCardView;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -52,7 +53,7 @@ public class TouchpointTestActivity extends AppCompatActivity implements OnClick
     }
 
     private void initCoverCard() {
-        coverCardView.init();
+        coverCardView.bind(new CoverCard("https://cocinerosveganossinfronteras.files.wordpress.com/2018/07/pizza-vegana.jpg", new TouchpointRowItem()));
     }
 
     private void init() {

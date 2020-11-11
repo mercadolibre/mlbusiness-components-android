@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"/>
 
-        <com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.hybrid_carousel.cover_card.card.HybridCoverCardView
+        <com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardView
             android:id="@+id/touchpoint_row_cover"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

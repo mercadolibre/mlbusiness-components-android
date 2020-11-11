@@ -1,4 +1,4 @@
-package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.hybrid_carousel.cover_card.card;
+package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -10,17 +10,17 @@ import androidx.cardview.widget.CardView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.TouchpointRowView;
-import com.mercadolibre.android.mlbusinesscomponents.components.row.model.test.TouchpointRowItem;
+import com.mercadolibre.android.mlbusinesscomponents.components.row.model.TouchpointRowItemInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.hybrid_carousel.model.HybridCarouselCardContainerModel;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
 
 import static com.mercadolibre.android.mlbusinesscomponents.common.Constants.NON_SIZE;
 
-public class HybridCoverCardView extends CardView implements TouchpointTrackeable {
+public class CoverCardView extends CardView implements TouchpointTrackeable {
 
-    private HybridCoverCardPresenter presenter;
+    private final CoverCardPresenter presenter;
     private final LinearLayout cardCointaier;
     private final SimpleDraweeView cardCoverImage;
     private final TouchpointRowView cardCoverRow;
@@ -29,21 +29,21 @@ public class HybridCoverCardView extends CardView implements TouchpointTrackeabl
 
     @Nullable private OnClickCallback onClickCallback;
 
-    public HybridCoverCardView(@NonNull final Context context) {
+    public CoverCardView(@NonNull final Context context) {
         this(context, null);
     }
 
-    public HybridCoverCardView(@NonNull final Context context, @Nullable final AttributeSet attrs) {
+    public CoverCardView(@NonNull final Context context, @Nullable final AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public HybridCoverCardView(@NonNull final Context context, @Nullable final AttributeSet attrs, final int defStyleAttr) {
+    public CoverCardView(@NonNull final Context context, @Nullable final AttributeSet attrs, final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         inflate(getContext(), R.layout.touchpoint_hybrid_carousel_cover_card_view, this);
         cardCointaier = findViewById(R.id.touchpoint_hybrid_carousel_cover_card_container);
         cardCoverImage = findViewById(R.id.touchpoint_hybrid_carousel_cover_card_image);
         cardCoverRow = findViewById(R.id.touchpoint_hybrid_carousel_cover_card_row);
-        presenter = new HybridCoverCardPresenter(this);
+        presenter = new CoverCardPresenter(this);
     }
 
     /**
@@ -51,7 +51,7 @@ public class HybridCoverCardView extends CardView implements TouchpointTrackeabl
      *
      * @param model the data to bind
      */
-    public void bind(final HybridCarouselCardContainerModel model) {
+    public void bind(final CoverCardInterface model) {
         bind(model, NON_SIZE);
     }
 
@@ -61,8 +61,7 @@ public class HybridCoverCardView extends CardView implements TouchpointTrackeabl
      * @param model the data to bind
      * @param size the card's size
      */
-    public void bind(final HybridCarouselCardContainerModel model, final int size) {
-        tracking = model.getTracking();
+    public void bind(final CoverCardInterface model, final int size) {
         if(size != NON_SIZE) {
             setNewHeight(size);
         }
@@ -72,6 +71,24 @@ public class HybridCoverCardView extends CardView implements TouchpointTrackeabl
     private void setNewHeight(final int size) {
         ViewGroup.LayoutParams layoutParams = getLayoutParams();
         layoutParams.height = size;
+    }
+
+    /**
+     * Binds data from descriptions into an hybrid_row
+     *
+     * @param description the data to bind.
+     */
+    public void setRowDescription(final TouchpointRowItemInterface description) {
+        cardCoverRow.bind(description);
+    }
+
+    /**
+     * Cover image for the card.
+     *
+     * @param cover url for the cover image.
+     */
+    public void setCoverImage(final String cover) {
+        cardCoverImage.setImageURI(cover);
     }
 
     /**
@@ -126,9 +143,5 @@ public class HybridCoverCardView extends CardView implements TouchpointTrackeabl
     @Override
     public TouchpointTracking getTracking() {
         return tracking;
-    }
-
-    public void init() {
-        cardCoverRow.bind(new TouchpointRowItem());
     }
 }

@@ -1,0 +1,443 @@
+{
+  "type": "COVER_CAROUSEL",
+  "id": "test_cover_carousel",
+  "content": {
+    "header": {
+      "title": "Las mejores marcas",
+      "action": {
+        "title": "Ver más",
+        "link": "some link"
+      }
+    },
+    "items": [
+      {
+        "cover": "https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2018/05/hamburguesa-con-fondue-receta.jpg",
+        "description": {
+          "left_image": "https://urbancomunicacion.com/wp-content/uploads/2017/04/Logotipos-famosos-Starbucks-Urban-comunicacion-1.png",
+          "left_image_accessory": "https://urbancomunicacion.com/wp-content/uploads/2017/04/Logotipos-famosos-Starbucks-Urban-comunicacion-1.png",
+          "main_title": "Starbucks",
+          "main_subtitle": "Cafetería",
+          "main_description": [
+            {
+              "type": "image",
+              "content": "https://i.ibb.co/2KcdLdy/16-px.png",
+              "color": "#454545"
+            },
+            {
+              "type": "text",
+              "content": "598m",
+              "color": "#454545"
+            },
+            {
+              "type": "text",
+              "content": " . ",
+              "color": "#454545"
+            },
+            {
+              "type": "image",
+              "content": "https://i.ibb.co/prSV6dY/estrella-android.png",
+              "color": "#454545"
+            },
+            {
+              "type": "text",
+              "content": "4.3 (24)",
+              "color": "#454545"
+            }
+          ],
+          "main_secondary_description": [
+            {
+              "type": "image",
+              "content": "https://i.ibb.co/bWSWDHc/icon-delivery-android.png",
+              "color": "#00a650"
+            },
+            {
+              "type": "text",
+              "content": "Envio . ",
+              "color": "#00a650"
+            },
+            {
+              "type": "image",
+              "content": "https://i.ibb.co/n8gJqYk/icon-pickup-android.png",
+              "color": "#00a650"
+            },
+            {
+              "type": "text",
+              "content": "Retiro",
+              "color": "#00a650"
+            }
+          ],
+          "right_primary_label": "25%",
+          "right_secondary_label": "OFF",
+          "right_middle_label": "Tope de $100",
+          "right_label_status": "AVAILABLE",
+          "right_bottom_info": {
+            "icon": "https://urbancomunicacion.com/wp-content/uploads/2017/04/Logotipos-famosos-Starbucks-Urban-comunicacion-1.png",
+            "label": "QUEDA 1 DÍA",
+            "format": {
+              "text_color": "#FF7733",
+              "background_color": "#00FFFFFF"
+            },
+            "tracking": {
+              "tracking_id": "33772688",
+              "event_data": {
+                "store_id": 33772688,
+                "collector_id": 172672547,
+                "brand_id": 101,
+                "name": "Supermercado Fede",
+                "distance": 837627,
+                "category": "Supermercado",
+                "mcc": "471120",
+                "index": 0
+              }
+            },
+            "link": "mercadopago://discount_center_payers/detail?campaign_id\\u003d33772688\\u0026detail\\u003dqr-directory#from\\u003d/discount_center_payers/list"
+          }
+        }
+      },
+      {
+        "cover": "https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2018/05/hamburguesa-con-fondue-receta.jpg",
+        "description": {
+          "left_image": "https://urbancomunicacion.com/wp-content/uploads/2017/04/Logotipos-famosos-Starbucks-Urban-comunicacion-1.png",
+          "left_image_accessory": "https://urbancomunicacion.com/wp-content/uploads/2017/04/Logotipos-famosos-Starbucks-Urban-comunicacion-1.png",
+          "main_title": "Starbucks",
+          "main_subtitle": "Cafetería",
+          "main_description": [
+            {
+              "type": "image",
+              "content": "https://i.ibb.co/2KcdLdy/16-px.png",
+              "color": "#454545"
+            },
+            {
+              "type": "text",
+              "content": "598m",
+              "color": "#454545"
+            },
+            {
+              "type": "text",
+              "content": " . ",
+              "color": "#454545"
+            },
+            {
+              "type": "image",
+              "content": "https://i.ibb.co/prSV6dY/estrella-android.png",
+              "color": "#454545"
+            },
+            {
+              "type": "text",
+              "content": "4.3 (24)",
+              "color": "#454545"
+            }
+          ],
+          "main_secondary_description": [
+            {
+              "type": "image",
+              "content": "https://i.ibb.co/bWSWDHc/icon-delivery-android.png",
+              "color": "#00a650"
+            },
+            {
+              "type": "text",
+              "content": "Envio . ",
+              "color": "#00a650"
+            },
+            {
+              "type": "image",
+              "content": "https://i.ibb.co/n8gJqYk/icon-pickup-android.png",
+              "color": "#00a650"
+            },
+            {
+              "type": "text",
+              "content": "Retiro",
+              "color": "#00a650"
+            }
+          ],
+          "right_primary_label": "25%",
+          "right_secondary_label": "OFF",
+          "right_middle_label": "Tope de $100",
+          "right_label_status": "AVAILABLE",
+          "right_bottom_info": {
+            "icon": "https://urbancomunicacion.com/wp-content/uploads/2017/04/Logotipos-famosos-Starbucks-Urban-comunicacion-1.png",
+            "label": "QUEDA 1 DÍA",
+            "format": {
+              "text_color": "#FF7733",
+              "background_color": "#00FFFFFF"
+            },
+            "tracking": {
+              "tracking_id": "33772688",
+              "event_data": {
+                "store_id": 33772688,
+                "collector_id": 172672547,
+                "brand_id": 101,
+                "name": "Supermercado Fede",
+                "distance": 837627,
+                "category": "Supermercado",
+                "mcc": "471120",
+                "index": 0
+              }
+            },
+            "link": "mercadopago://discount_center_payers/detail?campaign_id\\u003d33772688\\u0026detail\\u003dqr-directory#from\\u003d/discount_center_payers/list"
+          }
+        }
+      },
+      {
+        "cover": "https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2018/05/hamburguesa-con-fondue-receta.jpg",
+        "description": {
+          "left_image": "https://urbancomunicacion.com/wp-content/uploads/2017/04/Logotipos-famosos-Starbucks-Urban-comunicacion-1.png",
+          "left_image_accessory": "https://urbancomunicacion.com/wp-content/uploads/2017/04/Logotipos-famosos-Starbucks-Urban-comunicacion-1.png",
+          "main_title": "Starbucks",
+          "main_subtitle": "Cafetería",
+          "main_description": [
+            {
+              "type": "image",
+              "content": "https://i.ibb.co/2KcdLdy/16-px.png",
+              "color": "#454545"
+            },
+            {
+              "type": "text",
+              "content": "598m",
+              "color": "#454545"
+            },
+            {
+              "type": "text",
+              "content": " . ",
+              "color": "#454545"
+            },
+            {
+              "type": "image",
+              "content": "https://i.ibb.co/prSV6dY/estrella-android.png",
+              "color": "#454545"
+            },
+            {
+              "type": "text",
+              "content": "4.3 (24)",
+              "color": "#454545"
+            }
+          ],
+          "main_secondary_description": [
+            {
+              "type": "image",
+              "content": "https://i.ibb.co/bWSWDHc/icon-delivery-android.png",
+              "color": "#00a650"
+            },
+            {
+              "type": "text",
+              "content": "Envio . ",
+              "color": "#00a650"
+            },
+            {
+              "type": "image",
+              "content": "https://i.ibb.co/n8gJqYk/icon-pickup-android.png",
+              "color": "#00a650"
+            },
+            {
+              "type": "text",
+              "content": "Retiro",
+              "color": "#00a650"
+            }
+          ],
+          "right_primary_label": "25%",
+          "right_secondary_label": "OFF",
+          "right_middle_label": "Tope de $100",
+          "right_label_status": "AVAILABLE",
+          "right_bottom_info": {
+            "icon": "https://urbancomunicacion.com/wp-content/uploads/2017/04/Logotipos-famosos-Starbucks-Urban-comunicacion-1.png",
+            "label": "QUEDA 1 DÍA",
+            "format": {
+              "text_color": "#FF7733",
+              "background_color": "#00FFFFFF"
+            },
+            "tracking": {
+              "tracking_id": "33772688",
+              "event_data": {
+                "store_id": 33772688,
+                "collector_id": 172672547,
+                "brand_id": 101,
+                "name": "Supermercado Fede",
+                "distance": 837627,
+                "category": "Supermercado",
+                "mcc": "471120",
+                "index": 0
+              }
+            },
+            "link": "mercadopago://discount_center_payers/detail?campaign_id\\u003d33772688\\u0026detail\\u003dqr-directory#from\\u003d/discount_center_payers/list"
+          }
+        }
+      },
+      {
+        "cover": "https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2018/05/hamburguesa-con-fondue-receta.jpg",
+        "description": {
+          "left_image": "https://urbancomunicacion.com/wp-content/uploads/2017/04/Logotipos-famosos-Starbucks-Urban-comunicacion-1.png",
+          "left_image_accessory": "https://urbancomunicacion.com/wp-content/uploads/2017/04/Logotipos-famosos-Starbucks-Urban-comunicacion-1.png",
+          "main_title": "Starbucks",
+          "main_subtitle": "Cafetería",
+          "main_description": [
+            {
+              "type": "image",
+              "content": "https://i.ibb.co/2KcdLdy/16-px.png",
+              "color": "#454545"
+            },
+            {
+              "type": "text",
+              "content": "598m",
+              "color": "#454545"
+            },
+            {
+              "type": "text",
+              "content": " . ",
+              "color": "#454545"
+            },
+            {
+              "type": "image",
+              "content": "https://i.ibb.co/prSV6dY/estrella-android.png",
+              "color": "#454545"
+            },
+            {
+              "type": "text",
+              "content": "4.3 (24)",
+              "color": "#454545"
+            }
+          ],
+          "main_secondary_description": [
+            {
+              "type": "image",
+              "content": "https://i.ibb.co/bWSWDHc/icon-delivery-android.png",
+              "color": "#00a650"
+            },
+            {
+              "type": "text",
+              "content": "Envio . ",
+              "color": "#00a650"
+            },
+            {
+              "type": "image",
+              "content": "https://i.ibb.co/n8gJqYk/icon-pickup-android.png",
+              "color": "#00a650"
+            },
+            {
+              "type": "text",
+              "content": "Retiro",
+              "color": "#00a650"
+            }
+          ],
+          "right_primary_label": "25%",
+          "right_secondary_label": "OFF",
+          "right_middle_label": "Tope de $100",
+          "right_label_status": "AVAILABLE",
+          "right_bottom_info": {
+            "icon": "https://urbancomunicacion.com/wp-content/uploads/2017/04/Logotipos-famosos-Starbucks-Urban-comunicacion-1.png",
+            "label": "QUEDA 1 DÍA",
+            "format": {
+              "text_color": "#FF7733",
+              "background_color": "#00FFFFFF"
+            },
+            "tracking": {
+              "tracking_id": "33772688",
+              "event_data": {
+                "store_id": 33772688,
+                "collector_id": 172672547,
+                "brand_id": 101,
+                "name": "Supermercado Fede",
+                "distance": 837627,
+                "category": "Supermercado",
+                "mcc": "471120",
+                "index": 0
+              }
+            },
+            "link": "mercadopago://discount_center_payers/detail?campaign_id\\u003d33772688\\u0026detail\\u003dqr-directory#from\\u003d/discount_center_payers/list"
+          }
+        }
+      },
+      {
+        "cover": "https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2018/05/hamburguesa-con-fondue-receta.jpg",
+        "description": {
+          "left_image": "https://urbancomunicacion.com/wp-content/uploads/2017/04/Logotipos-famosos-Starbucks-Urban-comunicacion-1.png",
+          "left_image_accessory": "https://urbancomunicacion.com/wp-content/uploads/2017/04/Logotipos-famosos-Starbucks-Urban-comunicacion-1.png",
+          "main_title": "Starbucks",
+          "main_subtitle": "Cafetería",
+          "main_description": [
+            {
+              "type": "image",
+              "content": "https://i.ibb.co/2KcdLdy/16-px.png",
+              "color": "#454545"
+            },
+            {
+              "type": "text",
+              "content": "598m",
+              "color": "#454545"
+            },
+            {
+              "type": "text",
+              "content": " . ",
+              "color": "#454545"
+            },
+            {
+              "type": "image",
+              "content": "https://i.ibb.co/prSV6dY/estrella-android.png",
+              "color": "#454545"
+            },
+            {
+              "type": "text",
+              "content": "4.3 (24)",
+              "color": "#454545"
+            }
+          ],
+          "main_secondary_description": [
+            {
+              "type": "image",
+              "content": "https://i.ibb.co/bWSWDHc/icon-delivery-android.png",
+              "color": "#00a650"
+            },
+            {
+              "type": "text",
+              "content": "Envio . ",
+              "color": "#00a650"
+            },
+            {
+              "type": "image",
+              "content": "https://i.ibb.co/n8gJqYk/icon-pickup-android.png",
+              "color": "#00a650"
+            },
+            {
+              "type": "text",
+              "content": "Retiro",
+              "color": "#00a650"
+            }
+          ],
+          "right_primary_label": "25%",
+          "right_secondary_label": "OFF",
+          "right_middle_label": "Tope de $100",
+          "right_label_status": "AVAILABLE",
+          "right_bottom_info": {
+            "icon": "https://urbancomunicacion.com/wp-content/uploads/2017/04/Logotipos-famosos-Starbucks-Urban-comunicacion-1.png",
+            "label": "QUEDA 1 DÍA",
+            "format": {
+              "text_color": "#FF7733",
+              "background_color": "#00FFFFFF"
+            },
+            "tracking": {
+              "tracking_id": "33772688",
+              "event_data": {
+                "store_id": 33772688,
+                "collector_id": 172672547,
+                "brand_id": 101,
+                "name": "Supermercado Fede",
+                "distance": 837627,
+                "category": "Supermercado",
+                "mcc": "471120",
+                "index": 0
+              }
+            },
+            "link": "mercadopago://discount_center_payers/detail?campaign_id\\u003d33772688\\u0026detail\\u003dqr-directory#from\\u003d/discount_center_payers/list"
+          }
+        }
+      }
+    ],
+    "tracking": {
+      "id": "mp_home",
+      "type": "COVER_CAROUSEL",
+      "info_adicional": "Valor de la info adicional"
+    },
+    "format": {
+      "margin": 16
+    }
+  }
+}
