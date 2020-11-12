@@ -1,14 +1,13 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.row.model.test;
 
 import android.text.TextUtils;
-import androidx.annotation.Keep;
-import com.mercadolibre.android.mlbusinesscomponents.components.pill.model.PillResponseInterface;
+import com.google.gson.annotations.SerializedName;
 import com.mercadolibre.android.mlbusinesscomponents.components.pickup.model.DescriptionItemsInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.pill.model.PillResponseInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.TouchpointRowItemInterface;
 import java.util.ArrayList;
 import java.util.List;
 
-@Keep
 public class TouchpointRowItem implements TouchpointRowItemInterface {
 
     private final String leftImage;
@@ -16,15 +15,36 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
     private final String mainTitle;
     private final String mainSubtitle;
     private final List<DescriptionItems> mainDescription;
+    @SerializedName("main_secondary_description")
     private final List<DescriptionItems> mainCharacteristics;
     private final String rightTopLabel;
-    private final String rightPrimarylabel;
-    private final String rightSecondarylabel;
+    private final String rightPrimaryLabel;
+    private final String rightSecondaryLabel;
     private final String rightMiddleLabel;
     private final PillResponse pillResponse;
     private final String link;
     private final String rightLabelStatus;
-    private final boolean isValid;
+
+    public TouchpointRowItem(final String leftImage, final String leftImageAccessory, final String mainTitle,
+        final String mainSubtitle,
+        final List<DescriptionItems> mainDescription,
+        final List<DescriptionItems> mainCharacteristics, final String rightTopLabel, final String rightPrimaryLabel,
+        final String rightSecondaryLabel, final String rightMiddleLabel,
+        final PillResponse pillResponse, final String link, final String rightLabelStatus) {
+        this.leftImage = leftImage;
+        this.leftImageAccessory = leftImageAccessory;
+        this.mainTitle = mainTitle;
+        this.mainSubtitle = mainSubtitle;
+        this.mainDescription = mainDescription;
+        this.mainCharacteristics = mainCharacteristics;
+        this.rightTopLabel = rightTopLabel;
+        this.rightPrimaryLabel = rightPrimaryLabel;
+        this.rightSecondaryLabel = rightSecondaryLabel;
+        this.rightMiddleLabel = rightMiddleLabel;
+        this.pillResponse = pillResponse;
+        this.link = link;
+        this.rightLabelStatus = rightLabelStatus;
+    }
 
     public TouchpointRowItem() {
         leftImage = "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg";
@@ -32,38 +52,32 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
         mainTitle = "Pizza Vegana";
         mainSubtitle = "Restaurante";
 
-        List<DescriptionItems> list = new ArrayList<>();
-        DescriptionItems descriptionItems1 =
-            new DescriptionItems("image", "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg", "#000000");
-        DescriptionItems descriptionItems2 = new DescriptionItems("text", "623m", "#73000000");
-        DescriptionItems descriptionItems3 = new DescriptionItems("text", " · ", "#00as0000");
-        DescriptionItems descriptionItems4 =
-            new DescriptionItems("image", "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg", "#000000");
-        DescriptionItems descriptionItems5 = new DescriptionItems("text", "4.3 (24)", "#73000000");
+        List<DescriptionItems> list = new ArrayList<DescriptionItems>(){{
+            DescriptionItems descriptionItems1 =
+                new DescriptionItems("image", "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg", "#000000");
+            DescriptionItems descriptionItems2 = new DescriptionItems("text", "623m", "#73000000");
+            DescriptionItems descriptionItems3 = new DescriptionItems("text", " · ", "#00as0000");
+            DescriptionItems descriptionItems4 =
+                new DescriptionItems("image", "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg", "#000000");
+            DescriptionItems descriptionItems5 = new DescriptionItems("text", "4.3 (24)", "#73000000");
 
-        list.add(descriptionItems1);
-        list.add(descriptionItems2);
-        list.add(descriptionItems3);
-        list.add(descriptionItems4);
-        list.add(descriptionItems5);
+            add(descriptionItems1);
+            add(descriptionItems2);
+            add(descriptionItems3);
+            add(descriptionItems4);
+            add(descriptionItems5);
+        }};
 
         mainDescription = new ArrayList<>(list);
         mainCharacteristics = new ArrayList<>(list);
+
         rightTopLabel = null;
-        rightPrimarylabel = "10%";
-        rightSecondarylabel = "OFF";
+        rightPrimaryLabel = "10%";
+        rightSecondaryLabel = "OFF";
         rightMiddleLabel = "Tope de $ 100";
         pillResponse = new PillResponse("discount_payers_checked", "NIVEL 5", new FeatureFormatResponse("#FFFFFF", "#000000"));
         link = "mercadopago://home";
         rightLabelStatus = "blocked";
-        isValid = setIsValidState();
-    }
-
-    private boolean setIsValidState() {
-        return !TextUtils.isEmpty(getLeftImage())
-            || !TextUtils.isEmpty(getMainTitle())
-            || !TextUtils.isEmpty(getMainSubtitle())
-            || !TextUtils.isEmpty(getLink());
     }
 
     @Override
@@ -103,12 +117,12 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
 
     @Override
     public String getRightPrimaryLabel() {
-        return rightPrimarylabel;
+        return rightPrimaryLabel;
     }
 
     @Override
     public String getRightSecondaryLabel() {
-        return rightSecondarylabel;
+        return rightSecondaryLabel;
     }
 
     @Override
@@ -133,6 +147,9 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
 
     @Override
     public boolean isValid() {
-        return isValid;
+        return !TextUtils.isEmpty(getLeftImage())
+            || !TextUtils.isEmpty(getMainTitle())
+            || !TextUtils.isEmpty(getMainSubtitle())
+            || !TextUtils.isEmpty(getLink());
     }
 }

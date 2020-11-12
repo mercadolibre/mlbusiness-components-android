@@ -27,6 +27,8 @@
                 android:layout_weight="1"
                 style="@style/MLFont.Bold.Semi"
                 android:textSize="@dimen/ui_fontsize_medium"
+                android:ellipsize="end"
+                android:lines="1"
                 tools:text="Las mejores marcas"/>
 
             <TextView

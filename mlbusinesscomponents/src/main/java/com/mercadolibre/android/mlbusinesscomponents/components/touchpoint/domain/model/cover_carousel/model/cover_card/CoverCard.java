@@ -1,8 +1,8 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card;
 
 import androidx.annotation.Keep;
-import com.mercadolibre.android.mlbusinesscomponents.components.row.model.TouchpointRowItemInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.test.TouchpointRowItem;
+import com.mercadolibre.android.mlbusinesscomponents.components.row.model.TouchpointRowItemInterface;
 import java.io.Serializable;
 
 @Keep
