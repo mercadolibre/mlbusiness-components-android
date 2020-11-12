@@ -39,7 +39,7 @@ public class CoverCardView extends CardView implements TouchpointTrackeable {
 
     public CoverCardView(@NonNull final Context context, @Nullable final AttributeSet attrs, final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        inflate(getContext(), R.layout.touchpoint_hybrid_carousel_cover_card_view, this);
+        inflate(getContext(), R.layout.touchpoint_cover_carousel_card_view, this);
         cardCointaier = findViewById(R.id.touchpoint_hybrid_carousel_cover_card_container);
         cardCoverImage = findViewById(R.id.touchpoint_hybrid_carousel_cover_card_image);
         cardCoverRow = findViewById(R.id.touchpoint_hybrid_carousel_cover_card_row);

@@ -5,5 +5,7 @@
     android:id="@+id/touchpoint_hybrid_carousel_cover_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/ui_1m"
-    app:elevation="@dimen/ui_025m"/>
+    android:layout_marginStart="@dimen/ui_050m"
+    android:layout_marginEnd="@dimen/ui_050m"
+    app:elevation="@dimen/ui_025m"
+    app:cardCornerRadius="@dimen/ui_075m"/>

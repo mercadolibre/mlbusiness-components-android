@@ -1,5 +1,8 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.common.action;
 
+import androidx.annotation.Keep;
+
+@Keep
 public class Action implements ActionInterface {
 
     private final String title;
@@ -11,12 +14,12 @@ public class Action implements ActionInterface {
     }
 
     @Override
-    public String getTitle() {
-        return null;
+    public String getActionTitle() {
+        return title;
     }
 
     @Override
-    public String getLink() {
-        return null;
+    public String getActionLink() {
+        return link;
     }
 }

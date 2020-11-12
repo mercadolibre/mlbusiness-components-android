@@ -9,7 +9,6 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCard;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardView;
 import java.util.ArrayList;
@@ -31,7 +30,7 @@ public class CarouselCoverAdapter extends RecyclerView.Adapter<CarouselCoverAdap
     @Override
     public CoverCardViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, final int viewType) {
         final View view = LayoutInflater.from(parent.getContext())
-            .inflate(R.layout.touchpoint_hybrid_carousel_cover_card_container, parent, false);
+            .inflate(R.layout.touchpoint_cover_card_container, parent, false);
         return new CoverCardViewHolder(view, parent.getContext());
     }
 

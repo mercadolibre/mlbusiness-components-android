@@ -8,4 +8,14 @@ public interface CoverCarouselViewInterface {
     void setVisibilityGone();
 
     void setItemsList(final List<CoverCardInterface> items);
+
+    void hideHeaderContainer();
+
+    void setHeaderTitle(String title);
+
+    void hideHeaderAction();
+
+    void setHeaderActionTitle(String title);
+
+    void setHeaderActionClickListener(String link);
 }
