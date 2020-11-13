@@ -8,11 +8,7 @@ public interface CoverCarouselInterface {
 
     HeaderInterface getHeader();
 
-    boolean getAlphaAnimation();
-
-    boolean getScaleAnimation();
-
-    boolean getPressAnimation();
+    CarouselAnimationInterface getCarouselAnimation();
 
     List<CoverCardInterface> getItems();
 }

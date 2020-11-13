@@ -14,18 +14,16 @@ import java.util.List;
 public class CoverCarousel implements CoverCarouselInterface, TouchpointContent, Serializable {
 
     private final Header header;
-    private final boolean alphaAnimation;
-    private final boolean scaleAnimation;
-    private final boolean pressAnimation;
+    private final CarouselAnimation carouselAnimation;
     private final List<CoverCard> items;
 
     public CoverCarousel(final Header header,
         final boolean alphaAnimation, final boolean scaleAnimation,
-        final boolean pressAnimation, final List<CoverCard> items) {
+        final boolean pressAnimation,
+        final CarouselAnimation carouselAnimation,
+        final List<CoverCard> items) {
         this.header = header;
-        this.alphaAnimation = alphaAnimation;
-        this.scaleAnimation = scaleAnimation;
-        this.pressAnimation = pressAnimation;
+        this.carouselAnimation = carouselAnimation;
         this.items = items;
     }
 
@@ -35,18 +33,8 @@ public class CoverCarousel implements CoverCarouselInterface, TouchpointContent,
     }
 
     @Override
-    public boolean getAlphaAnimation() {
-        return alphaAnimation;
-    }
-
-    @Override
-    public boolean getScaleAnimation() {
-        return scaleAnimation;
-    }
-
-    @Override
-    public boolean getPressAnimation() {
-        return pressAnimation;
+    public CarouselAnimationInterface getCarouselAnimation() {
+        return carouselAnimation;
     }
 
     @Override

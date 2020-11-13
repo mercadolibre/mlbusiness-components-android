@@ -9,6 +9,11 @@
         "link": "some link"
       }
     },
+    "carousel_animation": {
+      "alpha_animation": false,
+      "scale_animation": false,
+      "press_animation": false
+    },
     "items": [
       {
         "cover": "https://cdn.cnn.com/cnnnext/dam/assets/200526153607-starbucks-coffee-full-169.jpg",
