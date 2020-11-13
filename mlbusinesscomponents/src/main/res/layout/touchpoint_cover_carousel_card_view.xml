@@ -16,7 +16,8 @@
             android:id="@+id/touchpoint_hybrid_carousel_cover_card_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/cross_selling_action_color"
+            android:background="@color/ui_meli_light_grey"
+            app:actualImageScaleType="centerCrop"
             app:viewAspectRatio="3.2"/>
 
         <com.mercadolibre.android.mlbusinesscomponents.components.row.TouchpointRowView

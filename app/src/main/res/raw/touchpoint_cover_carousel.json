@@ -11,7 +11,7 @@
     },
     "items": [
       {
-        "cover": "https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2018/05/hamburguesa-con-fondue-receta.jpg",
+        "cover": "https://cdn.cnn.com/cnnnext/dam/assets/200526153607-starbucks-coffee-full-169.jpg",
         "description": {
           "left_image": "https://urbancomunicacion.com/wp-content/uploads/2017/04/Logotipos-famosos-Starbucks-Urban-comunicacion-1.png",
           "left_image_accessory": "https://urbancomunicacion.com/wp-content/uploads/2017/04/Logotipos-famosos-Starbucks-Urban-comunicacion-1.png",
@@ -95,12 +95,12 @@
         }
       },
       {
-        "cover": "https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2018/05/hamburguesa-con-fondue-receta.jpg",
+        "cover": "https://cdn.needish.com/prod-boxfish/2dc86124-ac84-4449-8144-c32bf329d549-grpn/scale/900x600.jpg",
         "description": {
-          "left_image": "https://urbancomunicacion.com/wp-content/uploads/2017/04/Logotipos-famosos-Starbucks-Urban-comunicacion-1.png",
-          "left_image_accessory": "https://urbancomunicacion.com/wp-content/uploads/2017/04/Logotipos-famosos-Starbucks-Urban-comunicacion-1.png",
-          "main_title": "Starbucks",
-          "main_subtitle": "Cafetería",
+          "left_image": "https://pedidos.masdelivery.com/panel/images/business/761/panel.jpg",
+          "left_image_accessory": "https://pedidos.masdelivery.com/panel/images/business/761/panel.jpg",
+          "main_title": "La Guitarrita",
+          "main_subtitle": "Pizzería",
           "main_description": [
             {
               "type": "image",
