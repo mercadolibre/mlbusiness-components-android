@@ -7,21 +7,20 @@
     tools:parentTag="androidx.cardview.widget.CardView">
 
     <LinearLayout
-        android:id="@+id/touchpoint_hybrid_carousel_cover_card_container"
+        android:id="@+id/touchpoint_cover_carousel_card_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/touchpoint_hybrid_carousel_cover_card_image"
+            android:id="@+id/touchpoint_cover_carousel_card_image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/touchpoint_cover_carousel_card_image_height"
             android:background="@color/ui_meli_light_grey"
-            app:actualImageScaleType="centerCrop"
-            app:viewAspectRatio="3.2"/>
+            app:actualImageScaleType="centerCrop"/>
 
         <com.mercadolibre.android.mlbusinesscomponents.components.row.TouchpointRowView
-            android:id="@+id/touchpoint_hybrid_carousel_cover_card_row"
+            android:id="@+id/touchpoint_cover_carousel_card_row"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

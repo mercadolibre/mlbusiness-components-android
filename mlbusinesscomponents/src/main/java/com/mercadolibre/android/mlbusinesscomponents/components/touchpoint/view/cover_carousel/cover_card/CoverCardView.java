@@ -2,6 +2,7 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
@@ -19,6 +20,8 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.track
 import static com.mercadolibre.android.mlbusinesscomponents.common.Constants.NON_SIZE;
 
 public class CoverCardView extends CardView implements TouchpointTrackeable {
+
+    private static final float CORNER_RADIUS_VALUE = 6f;
 
     private final CoverCardPresenter presenter;
     private final LinearLayout cardCointaier;
@@ -40,10 +43,18 @@ public class CoverCardView extends CardView implements TouchpointTrackeable {
     public CoverCardView(@NonNull final Context context, @Nullable final AttributeSet attrs, final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         inflate(getContext(), R.layout.touchpoint_cover_carousel_card_view, this);
-        cardCointaier = findViewById(R.id.touchpoint_hybrid_carousel_cover_card_container);
-        cardCoverImage = findViewById(R.id.touchpoint_hybrid_carousel_cover_card_image);
-        cardCoverRow = findViewById(R.id.touchpoint_hybrid_carousel_cover_card_row);
+        cardCointaier = findViewById(R.id.touchpoint_cover_carousel_card_container);
+        cardCoverImage = findViewById(R.id.touchpoint_cover_carousel_card_image);
+        cardCoverRow = findViewById(R.id.touchpoint_cover_carousel_card_row);
         presenter = new CoverCardPresenter(this);
+
+        setCornerRadius();
+    }
+
+    private void setCornerRadius() {
+        setRadius(TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP, CORNER_RADIUS_VALUE, getResources().getDisplayMetrics()
+        ));
     }
 
     /**
@@ -143,5 +154,21 @@ public class CoverCardView extends CardView implements TouchpointTrackeable {
     @Override
     public TouchpointTracking getTracking() {
         return tracking;
+    }
+
+    public int getCoverCardHeight() {
+        cardCoverRow.measure(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        return cardCoverImage.getLayoutParams().height + cardCoverRow.getMeasuredHeight();
+    }
+
+    public void adjustRowHeight(final int newRowHeight) {
+        final ViewGroup.LayoutParams params = cardCoverRow.getLayoutParams();
+        params.height = (int) TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP, newRowHeight, getResources().getDisplayMetrics()
+        );
+    }
+
+    public int getCoverCardRowHeight() {
+        return cardCoverRow.getMeasuredHeight();
     }
 }

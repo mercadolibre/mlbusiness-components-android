@@ -3,10 +3,12 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view
 import com.mercadolibre.android.mlbusinesscomponents.components.common.action.ActionInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.common.header.HeaderInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CarouselAnimationInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CoverCarouselInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardView;
 import java.util.List;
 
-public class CarouselCoverPresenter {
+public class CoverCarouselPresenter {
 
     private final CoverCarouselViewInterface view;
 
@@ -15,7 +17,7 @@ public class CarouselCoverPresenter {
      *
      * @param view view to interact with
      */
-    public CarouselCoverPresenter(final CoverCarouselViewInterface view) {
+    public CoverCarouselPresenter(final CoverCarouselViewInterface view) {
         this.view = view;
     }
 
@@ -32,6 +34,7 @@ public class CarouselCoverPresenter {
         }
 
         setCarouselHeader(response.getHeader());
+        setCarouselAnimation(response.getCarouselAnimation());
         setItemsList(response.getItems());
     }
 
@@ -54,6 +57,18 @@ public class CarouselCoverPresenter {
         view.setHeaderActionClickListener(action.getActionLink());
     }
 
+    private void setCarouselAnimation(final CarouselAnimationInterface carouselAnimation) {
+        if (carouselAnimation.getAlphaAnimation()) {
+            view.setAlphaAnimation();
+        }
+        if (carouselAnimation.getScaleAnimation()) {
+            view.setScaleAnimation();
+        }
+        if (carouselAnimation.getPressAnimation()) {
+            view.setPressAnimation();
+        }
+    }
+
     private void setItemsList(final List<CoverCardInterface> items) {
         if (items == null || items.isEmpty()) {
             view.setVisibilityGone();
@@ -61,5 +76,32 @@ public class CarouselCoverPresenter {
         }
 
         view.setItemsList(items);
+    }
+
+    public void getMaxHeight(final List<CoverCardView> coverCardsViews) {
+        int maxCoverCardHeight = 0;
+        int maxCoverCardRowHeight = 0;
+
+        for (final CoverCardView view : coverCardsViews) {
+            final int itemHeight = view.getCoverCardHeight();
+            final int rowHeight = view.getCoverCardRowHeight();
+
+            maxCoverCardHeight = Math.max(maxCoverCardHeight, itemHeight);
+            maxCoverCardRowHeight = Math.max(maxCoverCardRowHeight, rowHeight);
+        }
+
+        view.setViewPagerHeight(maxCoverCardHeight);
+
+        setSameHeightForAllItems(coverCardsViews, maxCoverCardRowHeight);
+    }
+
+    private void setSameHeightForAllItems(final List<CoverCardView> coverCardsViews,
+        final int maxCoverCardRowHeight) {
+
+        for (final CoverCardView view: coverCardsViews) {
+            view.adjustRowHeight(maxCoverCardRowHeight);
+        }
+
+        view.setElementsViews(coverCardsViews);
     }
 }

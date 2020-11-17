@@ -2,57 +2,65 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.TypedValue;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.PagerSnapHelper;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.SnapHelper;
+import androidx.viewpager.widget.ViewPager;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CoverCarousel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardView;
+import java.util.ArrayList;
 import java.util.List;
 
-public class CarouselCoverView extends AbstractTouchpointChildView<CoverCarousel> implements
+public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel> implements
     CoverCarouselViewInterface {
 
-    private final CarouselCoverPresenter presenter;
+    private static final int MARGIN_BETWEEN_PAGES = 8;
 
-    private final RecyclerView recyclerView;
-    private final CarouselCoverAdapter adapter;
+    private final CoverCarouselPresenter presenter;
+
     private final LinearLayout headerContainer;
     private final TextView headerTitle;
     private final TextView headerAction;
 
-    public CarouselCoverView(@NonNull final Context context) {
+    private final ViewPager viewPager;
+    private final CoverCardViewPagerAdapter viewPagerAdapter;
+
+    public CoverCarouselView(@NonNull final Context context) {
         this(context, null);
     }
 
-    public CarouselCoverView(@NonNull final Context context, @Nullable final AttributeSet attrs) {
+    public CoverCarouselView(@NonNull final Context context, @Nullable final AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public CarouselCoverView(@NonNull final Context context, @Nullable final AttributeSet attrs,
+    public CoverCarouselView(@NonNull final Context context, @Nullable final AttributeSet attrs,
         final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         inflate(context, R.layout.touchpoint_cover_carousel_view, this);
-        presenter = new CarouselCoverPresenter(this);
-        recyclerView = findViewById(R.id.touchpoint_cover_carousel_recycler_view);
-        SnapHelper helper = new PagerSnapHelper();
-        helper.attachToRecyclerView(recyclerView);
+
+        presenter = new CoverCarouselPresenter(this);
+
         headerContainer = findViewById(R.id.touchpoint_cover_carousel_header_container);
         headerTitle = findViewById(R.id.touchpoint_cover_carousel_header_title);
         headerAction = findViewById(R.id.touchpoint_cover_carousel_header_action);
-        adapter = new CarouselCoverAdapter();
-        intiList(context);
+
+        viewPager = findViewById(R.id.cover_carouse_view_pager);
+        viewPagerAdapter = new CoverCardViewPagerAdapter();
+
+        initViewPager();
     }
 
-    private void intiList(final Context context) {
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+    private void initViewPager() {
+        viewPager.setAdapter(viewPagerAdapter);
+        viewPager.setPageMargin((int) TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP, MARGIN_BETWEEN_PAGES, getResources().getDisplayMetrics()
+        ));
     }
 
     @Override
@@ -77,7 +85,27 @@ public class CarouselCoverView extends AbstractTouchpointChildView<CoverCarousel
 
     @Override
     public void setItemsList(final List<CoverCardInterface> items) {
-        adapter.bindItems(items);
+        final List<CoverCardView> coverCardsViews = new ArrayList<>();
+
+        CoverCardView view;
+        for (final CoverCardInterface itemData : items) {
+            view = new CoverCardView(getContext());
+            view.bind(itemData);
+            coverCardsViews.add(view);
+        }
+
+        presenter.getMaxHeight(coverCardsViews);
+    }
+
+    @Override
+    public void setViewPagerHeight(final int maxHeight) {
+        final ViewGroup.LayoutParams params = viewPager.getLayoutParams();
+        params.height = maxHeight;
+    }
+
+    @Override
+    public void setElementsViews(final List<CoverCardView> coverCardsViews) {
+        viewPagerAdapter.setElementsView(coverCardsViews);
     }
 
     @Override
@@ -103,5 +131,20 @@ public class CarouselCoverView extends AbstractTouchpointChildView<CoverCarousel
     @Override
     public void setHeaderActionClickListener(final String link) {
         //TODO: Set listener.
+    }
+
+    @Override
+    public void setAlphaAnimation() {
+
+    }
+
+    @Override
+    public void setScaleAnimation() {
+
+    }
+
+    @Override
+    public void setPressAnimation() {
+
     }
 }

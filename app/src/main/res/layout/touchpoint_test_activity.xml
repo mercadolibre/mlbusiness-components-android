@@ -33,6 +33,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+        <com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.CoverCarouselView
+            android:id="@+id/touchpoint_carousel_cover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
         <Button
             android:id="@+id/touchpoint_button_top"
             android:layout_width="match_parent"

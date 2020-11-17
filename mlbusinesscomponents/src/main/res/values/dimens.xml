@@ -2,4 +2,5 @@
 <resources>
     <dimen name="right_bottom_info_padding_top">3dp</dimen>
     <dimen name="image_accessory_height">22dp</dimen>
+    <dimen name="touchpoint_cover_carousel_card_image_height">102dp</dimen>
 </resources>
