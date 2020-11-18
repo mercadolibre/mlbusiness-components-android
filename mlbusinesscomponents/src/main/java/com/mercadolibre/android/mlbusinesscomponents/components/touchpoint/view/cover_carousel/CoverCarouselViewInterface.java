@@ -20,13 +20,9 @@ public interface CoverCarouselViewInterface {
 
     void setHeaderActionClickListener(String link);
 
-    void setAlphaAnimation();
-
-    void setScaleAnimation();
-
-    void setPressAnimation();
-
     void setViewPagerHeight(int maxHeight);
 
     void setElementsViews(List<CoverCardView> coverCardsViews);
+
+    void setAnimations(boolean alphaAnimation, boolean scaleAnimation, boolean pressAnimation);
 }

@@ -58,15 +58,7 @@ public class CoverCarouselPresenter {
     }
 
     private void setCarouselAnimation(final CarouselAnimationInterface carouselAnimation) {
-        if (carouselAnimation.getAlphaAnimation()) {
-            view.setAlphaAnimation();
-        }
-        if (carouselAnimation.getScaleAnimation()) {
-            view.setScaleAnimation();
-        }
-        if (carouselAnimation.getPressAnimation()) {
-            view.setPressAnimation();
-        }
+        view.setAnimations(carouselAnimation.getAlphaAnimation(), carouselAnimation.getScaleAnimation(), carouselAnimation.getPressAnimation());
     }
 
     private void setItemsList(final List<CoverCardInterface> items) {

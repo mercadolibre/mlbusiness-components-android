@@ -21,6 +21,8 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
     CoverCarouselViewInterface {
 
     private static final int MARGIN_BETWEEN_PAGES = 8;
+    private static final int MARGIN_BETWEEN_SCALED_PAGES = -10;
+    //TODO Add this logic to the presenter.
 
     private final CoverCarouselPresenter presenter;
 
@@ -109,6 +111,17 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
     }
 
     @Override
+    public void setAnimations(final boolean alphaAnimation, final boolean scaleAnimation,
+        final boolean pressAnimation) {
+        final CoverCarouselPageTransformer transformer = new CoverCarouselPageTransformer(
+            alphaAnimation, scaleAnimation, getContext()
+        );
+
+
+        viewPager.setPageTransformer(false , transformer);
+    }
+
+    @Override
     public void hideHeaderContainer() {
         headerContainer.setVisibility(GONE);
     }
@@ -131,20 +144,5 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
     @Override
     public void setHeaderActionClickListener(final String link) {
         //TODO: Set listener.
-    }
-
-    @Override
-    public void setAlphaAnimation() {
-
-    }
-
-    @Override
-    public void setScaleAnimation() {
-
-    }
-
-    @Override
-    public void setPressAnimation() {
-
     }
 }
