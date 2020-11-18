@@ -58,6 +58,11 @@ public class CoverCarouselPresenter {
     }
 
     private void setCarouselAnimation(final CarouselAnimationInterface carouselAnimation) {
+        if (carouselAnimation.getScaleAnimation()) {
+            view.setMarginsForScaledAnimation();
+        } else {
+            view.setMarginsForNonScaledAnimation();
+        }
         view.setAnimations(carouselAnimation.getAlphaAnimation(), carouselAnimation.getScaleAnimation(), carouselAnimation.getPressAnimation());
     }
 

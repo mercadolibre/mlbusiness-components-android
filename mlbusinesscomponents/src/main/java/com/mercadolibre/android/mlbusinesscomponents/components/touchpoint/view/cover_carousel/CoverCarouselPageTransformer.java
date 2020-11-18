@@ -21,24 +21,43 @@ public class CoverCarouselPageTransformer implements ViewPager.PageTransformer {
 
     private final boolean alphaAnimation;
     private final boolean scaleAnimation;
+    private final boolean pressAnimation;
     private final Context context;
 
     public CoverCarouselPageTransformer(final boolean alphaAnimation, final boolean scaleAnimation,
+        final boolean pressAnimation,
         final Context context) {
         this.alphaAnimation = alphaAnimation;
         this.scaleAnimation = scaleAnimation;
+        this.pressAnimation = pressAnimation;
         this.context = context;
     }
 
     @Override
     public void transformPage(@NonNull final View page, final float position) {
 
-        if (scaleAnimation) {
-            setScaleAnimation(page, position);
-        }
         if (alphaAnimation) {
             setAlphaAnimation(page, position);
         }
+        if (scaleAnimation) {
+            setScaleAnimation(page, position);
+        }
+        if (pressAnimation) {
+            setPressAnimation(page);
+        }
+    }
+
+    private void setAlphaAnimation(final View page, final float position) {
+        if (position != 0) {
+            page.setAlpha(ALPHA_VALUE - Math.abs(position));
+        }
+    }
+
+    private void setScaleAnimation(final View page, final float position) {
+        final float scaleFactor = 1 - Math.abs( position ) + SCALE_VALUE * Math.abs( position );
+
+        page.setScaleX( scaleFactor );
+        page.setScaleY( scaleFactor );
     }
 
     //TODO: Adjust the press animation,
@@ -50,19 +69,6 @@ public class CoverCarouselPageTransformer implements ViewPager.PageTransformer {
                     ));
                 }
             );
-        }
-    }
-
-    private void setScaleAnimation(final View page, final float position) {
-        final float scaleFactor = 1 - Math.abs( position ) + SCALE_VALUE * Math.abs( position );
-
-        page.setScaleX( scaleFactor );
-        page.setScaleY( scaleFactor );
-    }
-
-    private void setAlphaAnimation(final View page, final float position) {
-        if (position != 0) {
-            page.setAlpha(ALPHA_VALUE - Math.abs(position));
         }
     }
 }

@@ -54,15 +54,7 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
 
         viewPager = findViewById(R.id.cover_carouse_view_pager);
         viewPagerAdapter = new CoverCardViewPagerAdapter();
-
-        initViewPager();
-    }
-
-    private void initViewPager() {
         viewPager.setAdapter(viewPagerAdapter);
-        viewPager.setPageMargin((int) TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP, MARGIN_BETWEEN_PAGES, getResources().getDisplayMetrics()
-        ));
     }
 
     @Override
@@ -113,12 +105,25 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
     @Override
     public void setAnimations(final boolean alphaAnimation, final boolean scaleAnimation,
         final boolean pressAnimation) {
-        final CoverCarouselPageTransformer transformer = new CoverCarouselPageTransformer(
-            alphaAnimation, scaleAnimation, getContext()
+        final ViewPager.PageTransformer transformer = new CoverCarouselPageTransformer(
+            alphaAnimation, scaleAnimation, pressAnimation, getContext()
         );
 
-
         viewPager.setPageTransformer(false , transformer);
+    }
+
+    @Override
+    public void setMarginsForScaledAnimation() {
+        viewPager.setPageMargin((int) TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP, MARGIN_BETWEEN_SCALED_PAGES, getResources().getDisplayMetrics()
+        ));
+    }
+
+    @Override
+    public void setMarginsForNonScaledAnimation() {
+        viewPager.setPageMargin((int) TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP, MARGIN_BETWEEN_PAGES, getResources().getDisplayMetrics()
+        ));
     }
 
     @Override

@@ -25,4 +25,8 @@ public interface CoverCarouselViewInterface {
     void setElementsViews(List<CoverCardView> coverCardsViews);
 
     void setAnimations(boolean alphaAnimation, boolean scaleAnimation, boolean pressAnimation);
+
+    void setMarginsForScaledAnimation();
+
+    void setMarginsForNonScaledAnimation();
 }
