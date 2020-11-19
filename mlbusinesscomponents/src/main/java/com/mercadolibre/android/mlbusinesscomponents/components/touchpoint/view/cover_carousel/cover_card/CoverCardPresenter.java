@@ -29,11 +29,10 @@ public class CoverCardPresenter {
             return;
         }
 
+        view.hideSkeleton();
         setRow(model.getContent());
         setCoverImage(model.getContent().getCover());
         setOnClick(model.getLink(), model.getTracking());
-
-        view.showView();
     }
 
     private void setRow(final TouchpointRowItemInterface description) {

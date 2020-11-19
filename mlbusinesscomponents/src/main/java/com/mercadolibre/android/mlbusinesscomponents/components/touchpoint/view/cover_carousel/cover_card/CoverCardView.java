@@ -52,6 +52,7 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, OnC
         presenter = new CoverCardPresenter(this);
 
         setCornerRadius();
+        showSkeleton();
     }
 
     private void setCornerRadius() {
@@ -108,13 +109,6 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, OnC
     }
 
     /**
-     * shows the view
-     */
-    public void showView() {
-        setVisibility(VISIBLE);
-    }
-
-    /**
      * Sets the click listener
      *
      * @param link the link
@@ -163,5 +157,9 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, OnC
     public void showSkeleton() {
         skeletonView.setVisibility(VISIBLE);
         cardCoverRow.showSkeleton();
+    }
+
+    public void hideSkeleton() {
+        skeletonView.setVisibility(GONE);
     }
 }
