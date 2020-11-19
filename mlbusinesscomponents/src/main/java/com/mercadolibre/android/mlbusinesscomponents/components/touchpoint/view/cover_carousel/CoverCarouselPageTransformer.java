@@ -41,7 +41,7 @@ public class CoverCarouselPageTransformer implements ViewPager.PageTransformer {
             setAlphaAnimation(page, position);
         }
         if (scaleAnimation) {
-            setScaleAnimation(page, position);
+            //TODO add the scale animation when is fixed.
         }
         if (pressAnimation) {
             setPressAnimation(page);
