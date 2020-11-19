@@ -3,17 +3,10 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view
 import android.animation.AnimatorInflater;
 import android.content.Context;
 import android.os.Build;
-import android.util.AttributeSet;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.viewpager.widget.ViewPager;
 import com.mercadolibre.android.mlbusinesscomponents.R;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardView;
 
 public class CoverCarouselPageTransformer implements ViewPager.PageTransformer {
 
