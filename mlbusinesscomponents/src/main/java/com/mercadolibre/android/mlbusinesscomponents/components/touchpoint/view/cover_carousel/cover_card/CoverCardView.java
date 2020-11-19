@@ -3,6 +3,7 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
@@ -27,6 +28,7 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, OnC
     private final LinearLayout cardCointaier;
     private final SimpleDraweeView cardCoverImage;
     private final TouchpointRowView cardCoverRow;
+    private final View skeletonView;
 
     @Nullable private TouchpointTracking tracking;
 
@@ -46,6 +48,7 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, OnC
         cardCointaier = findViewById(R.id.touchpoint_cover_carousel_card_container);
         cardCoverImage = findViewById(R.id.touchpoint_cover_carousel_card_image);
         cardCoverRow = findViewById(R.id.touchpoint_cover_carousel_card_row);
+        skeletonView = findViewById(R.id.touchpoint_cover_carousel_image_skeleton);
         presenter = new CoverCardPresenter(this);
 
         setCornerRadius();
@@ -162,5 +165,10 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, OnC
     public int getCoverCardHeight() {
         cardCoverRow.measure(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         return cardCoverImage.getLayoutParams().height + cardCoverRow.getMeasuredHeight();
+    }
+
+    public void showSkeleton() {
+        skeletonView.setVisibility(VISIBLE);
+        cardCoverRow.showSkeleton();
     }
 }

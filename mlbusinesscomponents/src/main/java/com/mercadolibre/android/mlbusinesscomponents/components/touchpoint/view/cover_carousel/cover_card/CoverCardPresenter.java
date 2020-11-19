@@ -25,7 +25,7 @@ public class CoverCardPresenter {
     public void bindView(final CoverCardInterface model) {
 
         if (model == null) {
-            hideView();
+            view.showSkeleton();
             return;
         }
 
