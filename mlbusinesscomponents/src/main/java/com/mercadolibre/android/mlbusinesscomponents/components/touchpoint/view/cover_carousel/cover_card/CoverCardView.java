@@ -163,8 +163,4 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, OnC
         cardCoverRow.measure(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         return cardCoverImage.getLayoutParams().height + cardCoverRow.getMeasuredHeight();
     }
-
-    public int getCoverCardRowHeight() {
-        return cardCoverRow.getMeasuredHeight();
-    }
 }
