@@ -56,11 +56,9 @@ public class CoverCarouselPresenter {
     }
 
     private void setCarouselAnimation(final CarouselAnimationInterface carouselAnimation) {
-        if (carouselAnimation.getScaleAnimation()) {
-            view.setMarginsForScaledAnimation();
-        } else {
-            view.setMarginsForNonScaledAnimation();
-        }
+        //TODO: Add an if to set the margin between pages when scaled property is true.
+        view.setMarginsForNonScaledAnimation();
+
         view.setAnimations(carouselAnimation.getAlphaAnimation(), carouselAnimation.getScaleAnimation(),
             carouselAnimation.getPressAnimation());
     }
