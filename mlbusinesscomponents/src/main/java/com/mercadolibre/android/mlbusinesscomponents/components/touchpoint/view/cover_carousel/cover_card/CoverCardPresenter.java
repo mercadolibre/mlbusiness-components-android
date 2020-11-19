@@ -44,10 +44,6 @@ public class CoverCardPresenter {
         view.setCoverImage(cover);
     }
 
-    private void hideView() {
-        view.hideView();
-    }
-
     private void setOnClick(final String link, final TouchpointTracking tracking) {
         if (link != null && !link.isEmpty()) {
             view.setOnClick(link, tracking);
