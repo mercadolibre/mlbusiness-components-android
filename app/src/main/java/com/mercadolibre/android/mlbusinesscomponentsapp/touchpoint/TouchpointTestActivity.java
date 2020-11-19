@@ -11,10 +11,14 @@ import android.widget.Toast;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.TouchpointRowView;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.test.TouchpointRowItem;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.TouchpointMapper;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardContent;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CoverCarousel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointResponse;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.MLBusinessTouchpointListener;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.MLBusinessTouchpointView;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.CoverCarouselView;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardView;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCard;
 import com.mercadolibre.android.mlbusinesscomponentsapp.R;
@@ -45,6 +49,7 @@ public class TouchpointTestActivity extends AppCompatActivity implements OnClick
         init();
         initRowView();
         initCoverCard();
+        initCoverCarousel();
     }
 
     private void initRowView() {
@@ -53,7 +58,16 @@ public class TouchpointTestActivity extends AppCompatActivity implements OnClick
     }
 
     private void initCoverCard() {
-        coverCardView.bind(new CoverCard("https://cocinerosveganossinfronteras.files.wordpress.com/2018/07/pizza-vegana.jpg", new TouchpointRowItem()));
+        coverCardView.bind(new CoverCard(new CoverCardContent("https://cdn.cnn.com/cnnnext/dam/assets/200526153607-starbucks-coffee-full-169.jpg"), null, null));
+    }
+
+    private void initCoverCarousel() {
+        final MLBusinessTouchpointResponse data =
+            TouchpointSamples.values()[4].retrieveResponse(this);
+
+        final CoverCarouselView coverCarouselView = findViewById(R.id.touchpoint_carousel_cover);
+        coverCarouselView.bind((CoverCarousel) TouchpointMapper.mapToContent(data));
+
     }
 
     private void init() {

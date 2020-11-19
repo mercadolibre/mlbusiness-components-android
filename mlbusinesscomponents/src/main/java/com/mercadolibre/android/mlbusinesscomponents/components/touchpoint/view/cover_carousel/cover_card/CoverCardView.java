@@ -19,7 +19,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.track
 
 import static com.mercadolibre.android.mlbusinesscomponents.common.Constants.NON_SIZE;
 
-public class CoverCardView extends CardView implements TouchpointTrackeable {
+public class CoverCardView extends CardView implements TouchpointTrackeable, OnClickCallback {
 
     private static final float CORNER_RADIUS_VALUE = 6f;
 
@@ -91,6 +91,7 @@ public class CoverCardView extends CardView implements TouchpointTrackeable {
      */
     public void setRowDescription(final TouchpointRowItemInterface description) {
         cardCoverRow.bind(description);
+        cardCoverRow.setOnClickCallback(this);
     }
 
     /**
@@ -124,14 +125,15 @@ public class CoverCardView extends CardView implements TouchpointTrackeable {
      */
     public void setOnClick(final String link, @Nullable final TouchpointTracking tracking) {
         setClickable(true);
-        setOnClickListener(v -> onClickEvent(link, tracking));
-    }
-
-    private void onClickEvent(final String link, @Nullable final TouchpointTracking tracking) {
         if (onClickCallback != null) {
-            onClickCallback.onClick(link);
+            onClick(link);
             onClickCallback.sendTapTracking(tracking);
         }
+    }
+
+    @Override
+    public void onClick(final String deepLink) {
+        setOnClickListener(v -> onClickCallback.onClick(deepLink));
     }
 
     /**

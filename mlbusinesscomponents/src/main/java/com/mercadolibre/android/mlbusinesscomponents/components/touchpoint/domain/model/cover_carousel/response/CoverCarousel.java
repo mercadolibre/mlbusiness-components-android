@@ -1,8 +1,6 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response;
 
 import androidx.annotation.Keep;
-import com.mercadolibre.android.mlbusinesscomponents.components.common.header.Header;
-import com.mercadolibre.android.mlbusinesscomponents.components.common.header.HeaderInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCard;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterface;
@@ -13,23 +11,34 @@ import java.util.List;
 @Keep
 public class CoverCarousel implements CoverCarouselInterface, TouchpointContent, Serializable {
 
-    private final Header header;
+    private final String link;
+    private final String label;
+    private final String title;
     private final CarouselAnimation carouselAnimation;
     private final List<CoverCard> items;
 
-    public CoverCarousel(final Header header,
-        final boolean alphaAnimation, final boolean scaleAnimation,
-        final boolean pressAnimation,
-        final CarouselAnimation carouselAnimation,
+    public CoverCarousel(final String link, final String label, final String title, final CarouselAnimation carouselAnimation,
         final List<CoverCard> items) {
-        this.header = header;
+        this.link = link;
+        this.label = label;
+        this.title = title;
         this.carouselAnimation = carouselAnimation;
         this.items = items;
     }
 
     @Override
-    public HeaderInterface getHeader() {
-        return header;
+    public String getTitle() {
+        return title;
+    }
+
+    @Override
+    public String getLabel() {
+        return label;
+    }
+
+    @Override
+    public String getLink() {
+        return link;
     }
 
     @Override

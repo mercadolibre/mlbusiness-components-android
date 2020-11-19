@@ -29,8 +29,9 @@ public class CoverCardPresenter {
             return;
         }
 
-        setRowDescription(model.getDescription());
-        setCoverImage(model.getCover());
+        setRowDescription(model.getContent());
+        setCoverImage(model.getContent().getCover());
+        setOnClick(model.getLink(), model.getTracking());
 
         view.showView();
     }

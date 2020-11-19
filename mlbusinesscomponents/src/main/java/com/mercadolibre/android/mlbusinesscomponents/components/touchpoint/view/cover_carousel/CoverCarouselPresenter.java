@@ -1,7 +1,5 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel;
 
-import com.mercadolibre.android.mlbusinesscomponents.components.common.action.ActionInterface;
-import com.mercadolibre.android.mlbusinesscomponents.components.common.header.HeaderInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CarouselAnimationInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CoverCarouselInterface;
@@ -33,28 +31,28 @@ public class CoverCarouselPresenter {
             return;
         }
 
-        setCarouselHeader(response.getHeader());
+        setCarouselHeader(response.getTitle(), response.getLabel(), response.getLink());
         setCarouselAnimation(response.getCarouselAnimation());
         setItemsList(response.getItems());
     }
 
-    private void setCarouselHeader(final HeaderInterface header) {
-        if (header.getTitle() == null) {
+    private void setCarouselHeader(final String title, final String label, final String link) {
+        if (title == null) {
             view.hideHeaderContainer();
             return;
         }
-        view.setHeaderTitle(header.getTitle());
+        view.setHeaderTitle(title);
 
-        setHeaderAction(header.getAction());
+        setHeaderAction(label, link);
     }
 
-    private void setHeaderAction(final ActionInterface action) {
-        if (action.getActionTitle() == null || action.getActionLink() == null) {
+    private void setHeaderAction(final String label, final String link) {
+        if (label == null || link == null) {
             view.hideHeaderAction();
             return;
         }
-        view.setHeaderActionTitle(action.getActionTitle());
-        view.setHeaderActionClickListener(action.getActionLink());
+        view.setHeaderActionTitle(label);
+        view.setHeaderActionClickListener(link);
     }
 
     private void setCarouselAnimation(final CarouselAnimationInterface carouselAnimation) {

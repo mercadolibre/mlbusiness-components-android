@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.viewpager.widget.ViewPager;
 import com.mercadolibre.android.mlbusinesscomponents.R;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardView;
 
 public class CoverCarouselPageTransformer implements ViewPager.PageTransformer {
@@ -60,15 +61,21 @@ public class CoverCarouselPageTransformer implements ViewPager.PageTransformer {
         page.setScaleY( scaleFactor );
     }
 
-    //TODO: Adjust the press animation,
     private void setPressAnimation(final View page) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+            if (page.getStateListAnimator() == null) {
+                page.setStateListAnimator(AnimatorInflater.loadStateListAnimator(
+                    context, R.drawable.cover_card_click_animation
+                ));
+            }
+
             page.setOnClickListener(view -> {
-                    view.setStateListAnimator(AnimatorInflater.loadStateListAnimator(
-                        context, R.drawable.cover_card_click_animation
-                    ));
-                }
-            );
+                view.setStateListAnimator(AnimatorInflater.loadStateListAnimator(
+                    context, R.drawable.cover_card_click_animation
+                ));
+            });
+
         }
     }
 }
