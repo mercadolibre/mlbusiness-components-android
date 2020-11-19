@@ -108,13 +108,6 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, OnC
     }
 
     /**
-     * hides the view
-     */
-    public void hideView() {
-        setVisibility(GONE);
-    }
-
-    /**
      * shows the view
      */
     public void showView() {
