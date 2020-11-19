@@ -76,28 +76,14 @@ public class CoverCarouselPresenter {
 
     public void getMaxHeight(final List<CoverCardView> coverCardsViews) {
         int maxCoverCardHeight = 0;
-        int maxCoverCardRowHeight = 0;
 
         for (final CoverCardView view : coverCardsViews) {
             final int itemHeight = view.getCoverCardHeight();
-            final int rowHeight = view.getCoverCardRowHeight();
 
             maxCoverCardHeight = Math.max(maxCoverCardHeight, itemHeight);
-            maxCoverCardRowHeight = Math.max(maxCoverCardRowHeight, rowHeight);
         }
 
         view.setViewPagerHeight(maxCoverCardHeight);
-
-        setSameHeightForAllItems(coverCardsViews, maxCoverCardRowHeight);
-    }
-
-    private void setSameHeightForAllItems(final List<CoverCardView> coverCardsViews,
-        final int maxCoverCardRowHeight) {
-
-        for (final CoverCardView view : coverCardsViews) {
-            view.adjustRowHeight(maxCoverCardRowHeight);
-        }
-
         view.setElementsViews(coverCardsViews);
     }
 }

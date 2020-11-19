@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -89,9 +90,10 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, OnC
      *
      * @param description the data to bind.
      */
-    public void setRowDescription(final TouchpointRowItemInterface description) {
+    public void setRow(final TouchpointRowItemInterface description) {
         cardCoverRow.bind(description);
         cardCoverRow.setOnClickCallback(this);
+        cardCoverRow.removeRippleEffect();
     }
 
     /**
@@ -125,15 +127,15 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, OnC
      */
     public void setOnClick(final String link, @Nullable final TouchpointTracking tracking) {
         setClickable(true);
-        if (onClickCallback != null) {
-            onClick(link);
-            onClickCallback.sendTapTracking(tracking);
-        }
+        onClick(link);
+        this.tracking = tracking;
     }
 
     @Override
     public void onClick(final String deepLink) {
-        setOnClickListener(v -> onClickCallback.onClick(deepLink));
+        if (onClickCallback != null) {
+            setOnClickListener(v -> onClickCallback.onClick(deepLink));
+        }
     }
 
     /**
@@ -161,13 +163,6 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, OnC
     public int getCoverCardHeight() {
         cardCoverRow.measure(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         return cardCoverImage.getLayoutParams().height + cardCoverRow.getMeasuredHeight();
-    }
-
-    public void adjustRowHeight(final int newRowHeight) {
-        final ViewGroup.LayoutParams params = cardCoverRow.getLayoutParams();
-        params.height = (int) TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP, newRowHeight, getResources().getDisplayMetrics()
-        );
     }
 
     public int getCoverCardRowHeight() {

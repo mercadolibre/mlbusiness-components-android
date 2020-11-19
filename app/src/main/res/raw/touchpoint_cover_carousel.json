@@ -130,28 +130,7 @@
               "color": "#454545"
             }
           ],
-          "main_secondary_description": [
-            {
-              "type": "image",
-              "content": "https://i.ibb.co/bWSWDHc/icon-delivery-android.png",
-              "color": "#00a650"
-            },
-            {
-              "type": "text",
-              "content": "Envio . ",
-              "color": "#00a650"
-            },
-            {
-              "type": "image",
-              "content": "https://i.ibb.co/n8gJqYk/icon-pickup-android.png",
-              "color": "#00a650"
-            },
-            {
-              "type": "text",
-              "content": "Retiro",
-              "color": "#00a650"
-            }
-          ],
+          "main_secondary_description": [],
           "right_primary_label": "25%",
           "right_secondary_label": "OFF",
           "right_middle_label": "Tope de $100",
@@ -298,28 +277,7 @@
               "color": "#454545"
             }
           ],
-          "main_secondary_description": [
-            {
-              "type": "image",
-              "content": "https://i.ibb.co/bWSWDHc/icon-delivery-android.png",
-              "color": "#00a650"
-            },
-            {
-              "type": "text",
-              "content": "Envio . ",
-              "color": "#00a650"
-            },
-            {
-              "type": "image",
-              "content": "https://i.ibb.co/n8gJqYk/icon-pickup-android.png",
-              "color": "#00a650"
-            },
-            {
-              "type": "text",
-              "content": "Retiro",
-              "color": "#00a650"
-            }
-          ],
+          "main_secondary_description": [],
           "right_primary_label": "25%",
           "right_secondary_label": "OFF",
           "right_middle_label": "Tope de $100",
@@ -466,28 +424,7 @@
               "color": "#454545"
             }
           ],
-          "main_secondary_description": [
-            {
-              "type": "image",
-              "content": "https://i.ibb.co/bWSWDHc/icon-delivery-android.png",
-              "color": "#00a650"
-            },
-            {
-              "type": "text",
-              "content": "Envio . ",
-              "color": "#00a650"
-            },
-            {
-              "type": "image",
-              "content": "https://i.ibb.co/n8gJqYk/icon-pickup-android.png",
-              "color": "#00a650"
-            },
-            {
-              "type": "text",
-              "content": "Retiro",
-              "color": "#00a650"
-            }
-          ],
+          "main_secondary_description": [],
           "right_primary_label": "25%",
           "right_secondary_label": "OFF",
           "right_middle_label": "Tope de $100",

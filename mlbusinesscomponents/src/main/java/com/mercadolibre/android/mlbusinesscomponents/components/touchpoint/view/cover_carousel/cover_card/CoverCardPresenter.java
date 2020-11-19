@@ -29,15 +29,15 @@ public class CoverCardPresenter {
             return;
         }
 
-        setRowDescription(model.getContent());
+        setRow(model.getContent());
         setCoverImage(model.getContent().getCover());
         setOnClick(model.getLink(), model.getTracking());
 
         view.showView();
     }
 
-    private void setRowDescription(final TouchpointRowItemInterface description) {
-        view.setRowDescription(description);
+    private void setRow(final TouchpointRowItemInterface description) {
+        view.setRow(description);
     }
 
     private void setCoverImage(final String cover) {
