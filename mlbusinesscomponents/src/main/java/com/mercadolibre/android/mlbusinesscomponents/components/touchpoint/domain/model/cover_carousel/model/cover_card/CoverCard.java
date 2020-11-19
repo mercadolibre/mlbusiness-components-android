@@ -5,7 +5,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.track
 import java.io.Serializable;
 
 @Keep
-public class CoverCard implements CoverCardInterface, Serializable{
+public class CoverCard implements CoverCardInterface, Serializable {
 
     private final CoverCardContent content;
     private final TouchpointTracking tracking;

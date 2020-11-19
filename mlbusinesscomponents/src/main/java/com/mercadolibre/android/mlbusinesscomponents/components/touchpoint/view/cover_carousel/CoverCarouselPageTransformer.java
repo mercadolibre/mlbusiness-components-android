@@ -55,10 +55,10 @@ public class CoverCarouselPageTransformer implements ViewPager.PageTransformer {
     }
 
     private void setScaleAnimation(final View page, final float position) {
-        final float scaleFactor = 1 - Math.abs( position ) + SCALE_VALUE * Math.abs( position );
+        final float scaleFactor = 1 - Math.abs(position) + SCALE_VALUE * Math.abs(position);
 
-        page.setScaleX( scaleFactor );
-        page.setScaleY( scaleFactor );
+        page.setScaleX(scaleFactor);
+        page.setScaleY(scaleFactor);
     }
 
     private void setPressAnimation(final View page) {
@@ -75,7 +75,6 @@ public class CoverCarouselPageTransformer implements ViewPager.PageTransformer {
                     context, R.drawable.cover_card_click_animation
                 ));
             });
-
         }
     }
 }

@@ -17,7 +17,8 @@ public class CoverCarousel implements CoverCarouselInterface, TouchpointContent,
     private final CarouselAnimation carouselAnimation;
     private final List<CoverCard> items;
 
-    public CoverCarousel(final String link, final String label, final String title, final CarouselAnimation carouselAnimation,
+    public CoverCarousel(final String link, final String label, final String title,
+        final CarouselAnimation carouselAnimation,
         final List<CoverCard> items) {
         this.link = link;
         this.label = label;

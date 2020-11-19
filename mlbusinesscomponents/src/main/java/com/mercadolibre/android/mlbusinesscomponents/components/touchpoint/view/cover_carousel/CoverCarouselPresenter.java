@@ -61,7 +61,8 @@ public class CoverCarouselPresenter {
         } else {
             view.setMarginsForNonScaledAnimation();
         }
-        view.setAnimations(carouselAnimation.getAlphaAnimation(), carouselAnimation.getScaleAnimation(), carouselAnimation.getPressAnimation());
+        view.setAnimations(carouselAnimation.getAlphaAnimation(), carouselAnimation.getScaleAnimation(),
+            carouselAnimation.getPressAnimation());
     }
 
     private void setItemsList(final List<CoverCardInterface> items) {
@@ -93,7 +94,7 @@ public class CoverCarouselPresenter {
     private void setSameHeightForAllItems(final List<CoverCardView> coverCardsViews,
         final int maxCoverCardRowHeight) {
 
-        for (final CoverCardView view: coverCardsViews) {
+        for (final CoverCardView view : coverCardsViews) {
             view.adjustRowHeight(maxCoverCardRowHeight);
         }
 

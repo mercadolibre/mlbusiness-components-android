@@ -73,7 +73,7 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, OnC
      * @param size the card's size
      */
     public void bind(final CoverCardInterface model, final int size) {
-        if(size != NON_SIZE) {
+        if (size != NON_SIZE) {
             setNewHeight(size);
         }
         presenter.bindView(model);

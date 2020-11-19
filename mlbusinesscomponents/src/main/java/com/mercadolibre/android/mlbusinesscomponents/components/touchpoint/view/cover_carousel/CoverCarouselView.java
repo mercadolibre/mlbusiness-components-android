@@ -22,7 +22,6 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
 
     private static final int MARGIN_BETWEEN_PAGES = 8;
     private static final int MARGIN_BETWEEN_SCALED_PAGES = -10;
-    //TODO Add this logic to the presenter.
 
     private final CoverCarouselPresenter presenter;
 

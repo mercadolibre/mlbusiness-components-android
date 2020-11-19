@@ -21,6 +21,7 @@ public class CoverCardViewPagerAdapter extends PagerAdapter {
         elementsView.addAll(itemsView);
         notifyDataSetChanged();
     }
+
     @NonNull
     @Override
     public Object instantiateItem(@NonNull final ViewGroup container, final int position) {
