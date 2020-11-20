@@ -49,6 +49,7 @@
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/ui_2m"
             android:paddingEnd="@dimen/ui_2m"
+            android:paddingBottom="@dimen/ui_2m"
             android:clipToPadding="false"
             android:overScrollMode="never" />
 

@@ -54,9 +54,7 @@ public class TouchpointTestActivity extends AppCompatActivity implements OnClick
     }
 
     private void initCoverCard() {
-        coverCardView.bind(new CoverCard(new CoverCardContent("https://cdn.cnn.com/cnnnext/dam/assets/200526153607-starbucks-coffee-full-169.jpg",
-            leftImage, leftImageAccessory, mainTitle, mainSubtitle, mainDescription, mainCharacteristics, rightTopLabel,
-            rightPrimaryLabel, rightSecondaryLabel, rightMiddleLabel, pillResponse, link, rightLabelStatus), null, null));
+        coverCardView.bind(new CoverCard(new CoverCardContent(), null, null));
     }
 
     private void init() {

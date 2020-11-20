@@ -20,7 +20,7 @@ public interface CoverCarouselViewInterface {
 
     void setHeaderActionClickListener(String link);
 
-    void setViewPagerHeight(int maxHeight);
+    void setViewPagerHeight(int maxHeight, final boolean isSkeletonVisible);
 
     void setElementsViews(List<CoverCardView> coverCardsViews);
 

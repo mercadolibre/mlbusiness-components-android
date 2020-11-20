@@ -22,6 +22,7 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
 
     private static final int MARGIN_BETWEEN_PAGES = 8;
     private static final int MARGIN_BETWEEN_SCALED_PAGES = -10;
+    private static final int VIEW_PAGER_PADDING_DIP = 16;
 
     private final CoverCarouselPresenter presenter;
 
@@ -91,9 +92,19 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
     }
 
     @Override
-    public void setViewPagerHeight(final int maxHeight) {
+    public void setViewPagerHeight(final int maxHeight, final boolean isSkeletonVisible) {
         final ViewGroup.LayoutParams params = viewPager.getLayoutParams();
-        params.height = maxHeight;
+
+        if (isSkeletonVisible) {
+            final int viewPagerPadding = (int) TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                VIEW_PAGER_PADDING_DIP,
+                getResources().getDisplayMetrics()
+            );
+            params.height = maxHeight + viewPagerPadding;
+        } else {
+            params.height = maxHeight;
+        }
     }
 
     @Override
@@ -108,7 +119,7 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
             alphaAnimation, scaleAnimation, pressAnimation, getContext()
         );
 
-        viewPager.setPageTransformer(false , transformer);
+        viewPager.setPageTransformer(false, transformer);
     }
 
     @Override

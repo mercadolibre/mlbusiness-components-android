@@ -4,8 +4,11 @@ import android.text.TextUtils;
 import com.google.gson.annotations.SerializedName;
 import com.mercadolibre.android.mlbusinesscomponents.components.pickup.model.DescriptionItemsInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.pill.model.PillResponseInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.row.model.TouchpointRowItemInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.test.DescriptionItems;
+import com.mercadolibre.android.mlbusinesscomponents.components.row.model.test.FeatureFormatResponse;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.test.PillResponse;
+import com.mercadolibre.android.mlbusinesscomponents.components.row.model.test.TouchpointRowItem;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardContentInterface;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +51,41 @@ public class CoverCardContent implements CoverCardContentInterface {
         this.pillResponse = pillResponse;
         this.link = link;
         this.rightLabelStatus = rightLabelStatus;
+    }
+
+    public CoverCardContent() {
+        cover = "https://cdn.cnn.com/cnnnext/dam/assets/200526153607-starbucks-coffee-full-169.jpg";
+        final TouchpointRowItemInterface item = new TouchpointRowItem();
+        leftImage = item.getLeftImage();
+        leftImageAccessory = item.getLeftImageAccessory();
+        mainTitle = item.getMainTitle();
+        mainSubtitle = item.getMainSubtitle();
+
+        final List<DescriptionItems> list = new ArrayList<>();
+        final DescriptionItems descriptionItems1 =
+            new DescriptionItems("image", "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg", "#000000");
+        final DescriptionItems descriptionItems2 = new DescriptionItems("text", "623m", "#73000000");
+        final DescriptionItems descriptionItems3 = new DescriptionItems("text", " · ", "#00as0000");
+        final DescriptionItems descriptionItems4 =
+            new DescriptionItems("image", "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg", "#000000");
+        final DescriptionItems descriptionItems5 = new DescriptionItems("text", "4.3 (24)", "#73000000");
+
+        list.add(descriptionItems1);
+        list.add(descriptionItems2);
+        list.add(descriptionItems3);
+        list.add(descriptionItems4);
+        list.add(descriptionItems5);
+
+        mainDescription = new ArrayList<>(list);
+        mainCharacteristics = new ArrayList<>(list);
+
+        rightTopLabel = item.getRightTopLabel();
+        rightPrimaryLabel = item.getRightPrimaryLabel();
+        rightSecondaryLabel = item.getRightSecondaryLabel();
+        rightMiddleLabel = item.getRightMiddleLabel();
+        pillResponse = new PillResponse("discount_payers_checked", "NIVEL 5", new FeatureFormatResponse("#FFFFFF", "#000000"));
+        link = item.getLink();
+        rightLabelStatus = item.getRightLabelStatus();
     }
 
     @Override

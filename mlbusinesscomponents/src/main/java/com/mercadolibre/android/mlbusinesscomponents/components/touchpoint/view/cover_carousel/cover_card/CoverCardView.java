@@ -162,4 +162,8 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, OnC
     public void hideSkeleton() {
         skeletonView.setVisibility(GONE);
     }
+
+    public boolean getSkeletonState() {
+        return skeletonView.getVisibility() == VISIBLE;
+    }
 }

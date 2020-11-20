@@ -74,14 +74,16 @@ public class CoverCarouselPresenter {
 
     public void getMaxHeight(final List<CoverCardView> coverCardsViews) {
         int maxCoverCardHeight = 0;
+        boolean isSkeletonVisible = false;
 
         for (final CoverCardView view : coverCardsViews) {
             final int itemHeight = view.getCoverCardHeight();
+            isSkeletonVisible = view.getSkeletonState();
 
             maxCoverCardHeight = Math.max(maxCoverCardHeight, itemHeight);
         }
 
-        view.setViewPagerHeight(maxCoverCardHeight);
+        view.setViewPagerHeight(maxCoverCardHeight, isSkeletonVisible);
         view.setElementsViews(coverCardsViews);
     }
 }
