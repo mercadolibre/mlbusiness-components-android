@@ -48,7 +48,7 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, OnC
         cardCointaier = findViewById(R.id.touchpoint_cover_carousel_card_container);
         cardCoverImage = findViewById(R.id.touchpoint_cover_carousel_card_image);
         cardCoverRow = findViewById(R.id.touchpoint_cover_carousel_card_row);
-        skeletonView = findViewById(R.id.touchpoint_cover_carousel_image_skeleton);
+        skeletonView = findViewById(R.id.touchpoint_cover_carousel_card_image_skeleton);
         presenter = new CoverCardPresenter(this);
 
         setCornerRadius();

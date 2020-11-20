@@ -29,4 +29,8 @@ public interface CoverCarouselViewInterface {
     void setMarginsForScaledAnimation();
 
     void setMarginsForNonScaledAnimation();
+
+    void showSkeleton();
+
+    void hideSkeleton();
 }

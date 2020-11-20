@@ -27,10 +27,11 @@ public class CoverCarouselPresenter {
     public void mapResponse(final CoverCarouselInterface response) {
 
         if (response == null) {
-            view.setVisibilityGone();
+            view.showSkeleton();
             return;
         }
 
+        view.hideSkeleton();
         setCarouselHeader(response.getTitle(), response.getLabel(), response.getLink());
         setCarouselAnimation(response.getCarouselAnimation());
         setItemsList(response.getItems());

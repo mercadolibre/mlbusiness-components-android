@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -26,9 +27,11 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
 
     private final CoverCarouselPresenter presenter;
 
+    private final LinearLayout carouselContainer;
     private final LinearLayout headerContainer;
     private final TextView headerTitle;
     private final TextView headerAction;
+    private final LinearLayout skeleton;
 
     private final ViewPager viewPager;
     private final CoverCardViewPagerAdapter viewPagerAdapter;
@@ -48,9 +51,11 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
 
         presenter = new CoverCarouselPresenter(this);
 
+        carouselContainer = findViewById(R.id.touchpoint_cover_carousel_container);
         headerContainer = findViewById(R.id.touchpoint_cover_carousel_header_container);
         headerTitle = findViewById(R.id.touchpoint_cover_carousel_header_title);
         headerAction = findViewById(R.id.touchpoint_cover_carousel_header_action);
+        skeleton = findViewById(R.id.touchpoint_cover_carousel_skeleton);
 
         viewPager = findViewById(R.id.cover_carouse_view_pager);
         viewPagerAdapter = new CoverCardViewPagerAdapter();
@@ -134,6 +139,18 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
         viewPager.setPageMargin((int) TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP, MARGIN_BETWEEN_PAGES, getResources().getDisplayMetrics()
         ));
+    }
+
+    @Override
+    public void showSkeleton() {
+        skeleton.setVisibility(VISIBLE);
+        carouselContainer.setVisibility(GONE);
+    }
+
+    @Override
+    public void hideSkeleton() {
+        skeleton.setVisibility(GONE);
+        carouselContainer.setVisibility(VISIBLE);
     }
 
     @Override
