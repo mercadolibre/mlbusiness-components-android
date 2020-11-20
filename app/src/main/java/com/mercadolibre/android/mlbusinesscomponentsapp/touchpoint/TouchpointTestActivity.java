@@ -11,13 +11,13 @@ import android.widget.Toast;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.TouchpointRowView;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.test.TouchpointRowItem;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardContent;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.test.CoverCardContent;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointResponse;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.MLBusinessTouchpointListener;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.MLBusinessTouchpointView;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardView;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCard;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.test.CoverCard;
 import com.mercadolibre.android.mlbusinesscomponentsapp.R;
 import java.util.Map;
 
@@ -54,7 +54,9 @@ public class TouchpointTestActivity extends AppCompatActivity implements OnClick
     }
 
     private void initCoverCard() {
-        coverCardView.bind(new CoverCard(new CoverCardContent("https://cdn.cnn.com/cnnnext/dam/assets/200526153607-starbucks-coffee-full-169.jpg"), null, null));
+        coverCardView.bind(new CoverCard(new CoverCardContent("https://cdn.cnn.com/cnnnext/dam/assets/200526153607-starbucks-coffee-full-169.jpg",
+            leftImage, leftImageAccessory, mainTitle, mainSubtitle, mainDescription, mainCharacteristics, rightTopLabel,
+            rightPrimaryLabel, rightSecondaryLabel, rightMiddleLabel, pillResponse, link, rightLabelStatus), null, null));
     }
 
     private void init() {

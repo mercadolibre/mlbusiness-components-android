@@ -1,6 +1,8 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card;
 
-public interface CoverCardContentInterface {
+import com.mercadolibre.android.mlbusinesscomponents.components.row.model.TouchpointRowItemInterface;
+
+public interface CoverCardContentInterface extends TouchpointRowItemInterface {
 
     String getCover();
 }
