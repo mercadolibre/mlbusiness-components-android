@@ -7,6 +7,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.ViewPager;
 import com.mercadolibre.android.mlbusinesscomponents.R;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardView;
 
 public class CoverCarouselPageTransformer implements ViewPager.PageTransformer {
 
@@ -63,11 +64,8 @@ public class CoverCarouselPageTransformer implements ViewPager.PageTransformer {
                 ));
             }
 
-            page.setOnClickListener(view -> {
-                view.setStateListAnimator(AnimatorInflater.loadStateListAnimator(
-                    context, R.drawable.cover_card_click_animation
-                ));
-            });
+            //TODO: Change this cast to an Interface.
+            ((CoverCardView) page).setPressAnimation();
         }
     }
 }

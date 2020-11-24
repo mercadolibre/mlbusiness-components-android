@@ -89,6 +89,7 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
         CoverCardView view;
         for (final CoverCardInterface itemData : items) {
             view = new CoverCardView(getContext());
+            view.setOnClickCallback(onClickCallback);
             view.bind(itemData);
             coverCardsViews.add(view);
         }
@@ -175,6 +176,8 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
 
     @Override
     public void setHeaderActionClickListener(final String link) {
-        //TODO: Set listener.
+        if (onClickCallback != null) {
+            headerAction.setOnClickListener(v -> onClickCallback.onClick(link));
+        }
     }
 }

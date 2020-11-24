@@ -1,6 +1,8 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card;
 
+import android.animation.AnimatorInflater;
 import android.content.Context;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
@@ -95,7 +97,7 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, OnC
      */
     public void setRow(final TouchpointRowItemInterface description) {
         cardCoverRow.bind(description);
-        cardCoverRow.setOnClickCallback(this);
+        cardCoverRow.setOnClickCallback(onClickCallback);
         cardCoverRow.removeRippleEffect();
     }
 
@@ -116,15 +118,20 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, OnC
      */
     public void setOnClick(final String link, @Nullable final TouchpointTracking tracking) {
         setClickable(true);
-        onClick(link);
+        setOnClickListener(v -> onClickEvent(link, tracking));
         this.tracking = tracking;
+    }
+
+    private void onClickEvent(final String link, final TouchpointTracking tracking) {
+        if (onClickCallback != null) {
+            onClickCallback.onClick(link);
+            onClickCallback.sendTapTracking(tracking);
+        }
     }
 
     @Override
     public void onClick(final String deepLink) {
-        if (onClickCallback != null) {
-            setOnClickListener(v -> onClickCallback.onClick(deepLink));
-        }
+        //no op..
     }
 
     /**
@@ -165,5 +172,21 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, OnC
 
     public boolean getSkeletonState() {
         return skeletonView.getVisibility() == VISIBLE;
+    }
+
+    public void setPressAnimation() {
+        presenter.setPressAnimationWithLink();
+    }
+
+    public void setOnClickListenerWithAnimationAndLink(final String link, final TouchpointTracking tracking) {
+        setClickable(true);
+        setOnClickListener(v -> {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                v.setStateListAnimator(AnimatorInflater.loadStateListAnimator(
+                    getContext(), R.drawable.cover_card_click_animation
+                ));
+            }
+            onClickEvent(link, tracking);
+        });
     }
 }

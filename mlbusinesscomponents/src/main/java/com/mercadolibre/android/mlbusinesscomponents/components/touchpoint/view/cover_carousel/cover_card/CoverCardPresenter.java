@@ -7,6 +7,8 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.track
 public class CoverCardPresenter {
 
     private final CoverCardView view;
+    private String link =  null;
+    private TouchpointTracking tracking = null;
 
     /**
      * Constructor
@@ -46,6 +48,16 @@ public class CoverCardPresenter {
     private void setOnClick(final String link, final TouchpointTracking tracking) {
         if (link != null && !link.isEmpty()) {
             view.setOnClick(link, tracking);
+            this.link = link;
+            this.tracking = tracking;
+        } else {
+            view.dismissClickable();
+        }
+    }
+
+    public void setPressAnimationWithLink() {
+        if (link != null && !link.isEmpty()) {
+            view.setOnClickListenerWithAnimationAndLink(link, tracking);
         } else {
             view.dismissClickable();
         }

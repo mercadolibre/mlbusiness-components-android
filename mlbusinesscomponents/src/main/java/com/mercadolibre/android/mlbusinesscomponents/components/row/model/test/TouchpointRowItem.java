@@ -76,7 +76,7 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
         rightSecondaryLabel = "OFF";
         rightMiddleLabel = "Tope de $ 100";
         pillResponse = new PillResponse("discount_payers_checked", "NIVEL 5", new FeatureFormatResponse("#FFFFFF", "#000000"));
-        link = "mercadopago://home";
+        link = null;
         rightLabelStatus = "blocked";
     }
 
