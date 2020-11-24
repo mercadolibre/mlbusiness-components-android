@@ -1,11 +1,10 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card;
 
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.test.CoverCardContent;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
 
 public interface CoverCardInterface {
 
-    CoverCardContent getContent();
+    CoverCardContentInterface getContent();
 
     TouchpointTracking getTracking();
 
