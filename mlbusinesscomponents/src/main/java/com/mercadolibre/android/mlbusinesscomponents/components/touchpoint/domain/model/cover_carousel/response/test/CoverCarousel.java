@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Keep
-public class CoverCarousel implements CoverCarouselInterface, TouchpointContent, Serializable {
+public class CoverCarousel implements CoverCarouselInterface, Serializable {
 
     private static final long serialVersionUID = 5514383671266112753L;
 

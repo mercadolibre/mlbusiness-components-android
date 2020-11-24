@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -12,13 +11,13 @@ import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterface;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.test.CoverCarousel;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CoverCarouselInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel> implements
+public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarouselInterface> implements
     CoverCarouselViewInterface {
 
     private static final int MARGIN_BETWEEN_PAGES = 8;
@@ -63,7 +62,7 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
     }
 
     @Override
-    public void bind(@Nullable final CoverCarousel model) {
+    public void bind(@Nullable final CoverCarouselInterface model) {
         presenter.mapResponse(model);
     }
 
