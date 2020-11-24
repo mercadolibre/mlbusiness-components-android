@@ -13,6 +13,8 @@ import java.util.List;
 @Keep
 public class CoverCarousel implements CoverCarouselInterface, TouchpointContent, Serializable {
 
+    private static final long serialVersionUID = 5514383671266112753L;
+
     private final String link;
     private final String label;
     private final String title;

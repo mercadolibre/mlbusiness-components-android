@@ -8,6 +8,8 @@ import java.io.Serializable;
 @Keep
 public class CoverCard implements CoverCardInterface, Serializable {
 
+    private static final long serialVersionUID = 7527248206474585028L;
+
     private final CoverCardContent content;
     private final TouchpointTracking tracking;
     private final String link;
