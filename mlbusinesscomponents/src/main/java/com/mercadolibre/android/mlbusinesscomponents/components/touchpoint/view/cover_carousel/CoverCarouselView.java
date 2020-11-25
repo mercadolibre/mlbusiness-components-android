@@ -165,7 +165,7 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
 
     @Override
     public void hideHeaderAction() {
-        headerContainer.setVisibility(INVISIBLE);
+        headerAction.setVisibility(GONE);
     }
 
     @Override
