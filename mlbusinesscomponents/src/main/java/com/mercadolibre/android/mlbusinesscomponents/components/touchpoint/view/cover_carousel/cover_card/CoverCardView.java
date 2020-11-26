@@ -124,8 +124,8 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, OnC
 
     private void onClickEvent(final String link, final TouchpointTracking tracking) {
         if (onClickCallback != null) {
-            onClickCallback.onClick(link);
             onClickCallback.sendTapTracking(tracking);
+            onClickCallback.onClick(link);
         }
     }
 

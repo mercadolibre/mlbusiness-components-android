@@ -13,6 +13,7 @@ import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CoverCarouselInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.TrackListener;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardView;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,8 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
 
     private final ViewPager viewPager;
     private final CoverCardViewPagerAdapter viewPagerAdapter;
+
+    private TrackListener trackListener;
 
     public CoverCarouselView(@NonNull final Context context) {
         this(context, null);
@@ -85,6 +88,7 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
     public void setItemsList(final List<CoverCardInterface> items) {
         final List<CoverCardView> coverCardsViews = new ArrayList<>();
 
+        //TODO: Move this into the adapter.
         CoverCardView view;
         for (final CoverCardInterface itemData : items) {
             view = new CoverCardView(getContext());
@@ -178,5 +182,9 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
         if (onClickCallback != null) {
             headerAction.setOnClickListener(v -> onClickCallback.onClick(link));
         }
+    }
+
+    public void setTrackListener(final TrackListener trackListener) {
+        this.trackListener = trackListener;
     }
 }
