@@ -18,6 +18,8 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.trackShow;
+
 public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarouselInterface> implements
     CoverCarouselViewInterface {
 
@@ -61,12 +63,39 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
 
         viewPager = findViewById(R.id.cover_carouse_view_pager);
         viewPagerAdapter = new CoverCardViewPagerAdapter();
+
+        initViewPager();
+    }
+
+    private void initViewPager() {
         viewPager.setAdapter(viewPagerAdapter);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(final int position, final float positionOffset, final int positionOffsetPixels) {
+                //no op..
+            }
+
+            @Override
+            public void onPageSelected(final int position) {
+                if (trackListener != null) {
+                    trackListener.print();
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(final int state) {
+                //no op..
+            }
+        });
     }
 
     @Override
     public void bind(@Nullable final CoverCarouselInterface model) {
         presenter.mapResponse(model);
+
+        if (trackListener == null) {
+            trackShow(tracker, new ArrayList<>(model.getItems()));
+        }
     }
 
     @Override

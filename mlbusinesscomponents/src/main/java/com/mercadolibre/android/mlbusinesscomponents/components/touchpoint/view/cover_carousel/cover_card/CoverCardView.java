@@ -22,7 +22,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.track
 
 import static com.mercadolibre.android.mlbusinesscomponents.common.Constants.NON_SIZE;
 
-public class CoverCardView extends CardView implements TouchpointTrackeable, OnClickCallback {
+public class CoverCardView extends CardView implements TouchpointTrackeable {
 
     private static final float CORNER_RADIUS_VALUE = 6f;
 
@@ -54,13 +54,17 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, OnC
         presenter = new CoverCardPresenter(this);
 
         setCornerRadius();
-        showSkeleton();
+        onShowSkeleton();
     }
 
     private void setCornerRadius() {
         setRadius(TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP, CORNER_RADIUS_VALUE, getResources().getDisplayMetrics()
         ));
+    }
+
+    private void onShowSkeleton() {
+        showSkeleton();
     }
 
     /**
@@ -114,24 +118,17 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, OnC
      * Sets the click listener
      *
      * @param link the link
-     * @param tracking the tracking data
      */
-    public void setOnClick(final String link, @Nullable final TouchpointTracking tracking) {
+    public void setOnClick(final String link) {
         setClickable(true);
-        setOnClickListener(v -> onClickEvent(link, tracking));
-        this.tracking = tracking;
+        setOnClickListener(v -> onClickEvent(link));
     }
 
-    private void onClickEvent(final String link, final TouchpointTracking tracking) {
-        if (onClickCallback != null) {
+    private void onClickEvent(final String link) {
+        if (tracking != null) {
             onClickCallback.sendTapTracking(tracking);
-            onClickCallback.onClick(link);
         }
-    }
-
-    @Override
-    public void onClick(final String deepLink) {
-        //no op..
+        onClickCallback.onClick(link);
     }
 
     /**
@@ -186,7 +183,12 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, OnC
                     getContext(), R.drawable.cover_card_click_animation
                 ));
             }
-            onClickEvent(link, tracking);
+            setTracking(tracking);
+            onClickEvent(link);
         });
+    }
+
+    public void setTracking(@Nullable final TouchpointTracking tracking) {
+        this.tracking = tracking;
     }
 }

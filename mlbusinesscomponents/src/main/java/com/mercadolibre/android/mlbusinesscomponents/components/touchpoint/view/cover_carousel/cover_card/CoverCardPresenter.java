@@ -34,7 +34,8 @@ public class CoverCardPresenter {
         view.hideSkeleton();
         setRow(model.getContent());
         setCoverImage(model.getContent().getCover());
-        setOnClick(model.getLink(), model.getTracking());
+        setOnClick(model.getLink());
+        setTracking(model.getTracking());
     }
 
     private void setRow(final TouchpointRowItemInterface description) {
@@ -45,14 +46,18 @@ public class CoverCardPresenter {
         view.setCoverImage(cover);
     }
 
-    private void setOnClick(final String link, final TouchpointTracking tracking) {
+    private void setOnClick(final String link) {
         if (link != null && !link.isEmpty()) {
-            view.setOnClick(link, tracking);
+            view.setOnClick(link);
             this.link = link;
-            this.tracking = tracking;
         } else {
             view.dismissClickable();
         }
+    }
+
+    private void setTracking(final TouchpointTracking tracking) {
+        this.tracking = tracking;
+        view.setTracking(tracking);
     }
 
     public void setPressAnimationWithLink() {
