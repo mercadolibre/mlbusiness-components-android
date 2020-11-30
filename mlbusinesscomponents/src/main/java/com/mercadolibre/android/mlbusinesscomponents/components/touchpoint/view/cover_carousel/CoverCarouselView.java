@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 import com.mercadolibre.android.mlbusinesscomponents.R;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CoverCarouselInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
@@ -62,7 +63,7 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
         skeleton = findViewById(R.id.touchpoint_cover_carousel_skeleton);
 
         viewPager = findViewById(R.id.cover_carouse_view_pager);
-        viewPagerAdapter = new CoverCardViewPagerAdapter();
+        viewPagerAdapter = new CoverCardViewPagerAdapter(getContext());
 
         initViewPager();
     }
@@ -115,18 +116,8 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
 
     @Override
     public void setItemsList(final List<CoverCardInterface> items) {
-        final List<CoverCardView> coverCardsViews = new ArrayList<>();
-
-        //TODO: Move this into the adapter.
-        CoverCardView view;
-        for (final CoverCardInterface itemData : items) {
-            view = new CoverCardView(getContext());
-            view.setOnClickCallback(onClickCallback);
-            view.bind(itemData);
-            coverCardsViews.add(view);
-        }
-
-        presenter.getMaxHeight(coverCardsViews);
+        viewPagerAdapter.setElementsView(items);
+        presenter.getMaxHeight(viewPagerAdapter.getElementsList());
     }
 
     @Override
@@ -143,11 +134,6 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
         } else {
             params.height = maxHeight;
         }
-    }
-
-    @Override
-    public void setElementsViews(final List<CoverCardView> coverCardsViews) {
-        viewPagerAdapter.setElementsView(coverCardsViews);
     }
 
     @Override
@@ -215,5 +201,11 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
 
     public void setTrackListener(final TrackListener trackListener) {
         this.trackListener = trackListener;
+    }
+
+    @Override
+    public void setOnClickCallback(@Nullable final OnClickCallback onClickCallback) {
+        this.onClickCallback = onClickCallback;
+        viewPagerAdapter.setOnClickCallback(this.onClickCallback);
     }
 }

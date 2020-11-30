@@ -1,25 +1,50 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel;
 
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.viewpager.widget.PagerAdapter;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardView;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CoverCardViewPagerAdapter extends PagerAdapter {
 
+    private final Context context;
+    @Nullable private OnClickCallback onClickCallback;
     private final List<CoverCardView> elementsView;
 
-    /* default */ CoverCardViewPagerAdapter() {
+    /* default */ CoverCardViewPagerAdapter(final Context context) {
+        this.context = context;
         elementsView = new ArrayList<>();
     }
 
-    /* default */ void setElementsView(final List<CoverCardView> itemsView) {
+    /* default */ void setElementsView(final List<CoverCardInterface> itemsView) {
+        final List<CoverCardView> coverCardsViews = new ArrayList<>();
+
+        CoverCardView view;
+        for (final CoverCardInterface itemData : itemsView) {
+            view = new CoverCardView(context);
+            view.setOnClickCallback(onClickCallback);
+            view.bind(itemData);
+            coverCardsViews.add(view);
+        }
+
         elementsView.clear();
-        elementsView.addAll(itemsView);
+        elementsView.addAll(coverCardsViews);
         notifyDataSetChanged();
+    }
+
+    /* default */ List<CoverCardView> getElementsList() {
+        return elementsView;
+    }
+
+    /* default */ void setOnClickCallback(@Nullable final OnClickCallback onClickCallback) {
+        this.onClickCallback = onClickCallback;
     }
 
     @NonNull
@@ -43,5 +68,10 @@ public class CoverCardViewPagerAdapter extends PagerAdapter {
     @Override
     public boolean isViewFromObject(@NonNull final View view, @NonNull final Object object) {
         return view.equals(object);
+    }
+
+    @Override
+    public int getItemPosition(@NonNull final Object object) {
+        return POSITION_NONE;
     }
 }

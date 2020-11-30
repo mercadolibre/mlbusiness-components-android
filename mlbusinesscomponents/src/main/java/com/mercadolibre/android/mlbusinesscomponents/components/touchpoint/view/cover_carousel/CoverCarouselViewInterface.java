@@ -22,8 +22,6 @@ public interface CoverCarouselViewInterface {
 
     void setViewPagerHeight(int maxHeight, final boolean isSkeletonVisible);
 
-    void setElementsViews(List<CoverCardView> coverCardsViews);
-
     void setAnimations(boolean alphaAnimation, boolean scaleAnimation, boolean pressAnimation);
 
     void setMarginsForScaledAnimation();
