@@ -1,84 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/ui_2m">
 
     <ImageView
+        android:id="@+id/touchpoint_cover_carousel_skeleton_header_title"
         android:layout_width="@dimen/touchpoint_cover_carousel_header_skeleton_width"
         android:layout_height="@dimen/ui_2_5m"
         android:layout_marginBottom="@dimen/ui_1_5m"
         android:layout_marginStart="@dimen/ui_2m"
         android:layout_marginEnd="@dimen/ui_2m"
         android:layout_marginTop="@dimen/ui_2m"
-        android:background="@drawable/rectangle_skeleton"/>
+        android:background="@drawable/rectangle_skeleton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/touchpoint_cover_carousel_skeleton_card_1"/>
 
-        <HorizontalScrollView
+    <androidx.cardview.widget.CardView
+        android:id="@+id/touchpoint_cover_carousel_skeleton_card_1"
+        android:layout_width="@dimen/touchpoint_cover_carousel_card_image_skeleton_width"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/ui_2m"
+        android:layout_marginEnd="@dimen/ui_050m"
+        android:elevation="@dimen/ui_075m"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/touchpoint_cover_carousel_skeleton_header_title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:targetApi="lollipop">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="none">
+            android:orientation="vertical">
 
-            <LinearLayout
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/ui_2m"
-                android:paddingStart="@dimen/ui_1_5m"
-                android:paddingEnd="@dimen/ui_1_5m"
-                android:clipToPadding="false"
-                android:orientation="horizontal"
-                android:isScrollContainer="true">
+                android:layout_height="@dimen/touchpoint_cover_carousel_card_image_height"
+                android:background="@color/ui_meli_light_grey"/>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="@dimen/touchpoint_cover_carousel_card_image_skeleton_width"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/ui_050m"
-                    android:layout_marginEnd="@dimen/ui_050m">
+            <include
+                layout="@layout/touchpoint_row_skeleton"/>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+        </LinearLayout>
 
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/touchpoint_cover_carousel_card_image_height"
-                            android:background="@color/ui_meli_light_grey"/>
+    </androidx.cardview.widget.CardView>
 
-                        <include
-                            layout="@layout/touchpoint_row_skeleton"/>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/touchpoint_cover_carousel_skeleton_card_2"
+        android:layout_width="@dimen/touchpoint_cover_carousel_card_image_skeleton_width"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/ui_1m"
+        android:layout_marginEnd="@dimen/ui_050m"
+        android:elevation="@dimen/ui_075m"
+        app:layout_constraintTop_toTopOf="@id/touchpoint_cover_carousel_skeleton_card_1"
+        app:layout_constraintStart_toEndOf="@id/touchpoint_cover_carousel_skeleton_card_1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:targetApi="lollipop">
 
-                    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-                </androidx.cardview.widget.CardView>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/touchpoint_cover_carousel_card_image_height"
+                android:background="@color/ui_meli_light_grey"/>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="@dimen/touchpoint_cover_carousel_card_image_skeleton_width"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/ui_050m"
-                    android:layout_marginEnd="@dimen/ui_050m">
+            <include
+                layout="@layout/touchpoint_row_skeleton"/>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+        </LinearLayout>
 
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/touchpoint_cover_carousel_card_image_height"
-                            android:background="@color/ui_meli_light_grey"/>
+    </androidx.cardview.widget.CardView>
 
-                        <include
-                            layout="@layout/touchpoint_row_skeleton"/>
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-            </LinearLayout>
-
-        </HorizontalScrollView>
-
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
