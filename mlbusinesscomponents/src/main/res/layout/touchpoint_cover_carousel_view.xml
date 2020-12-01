@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ViewFlipper
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/touchpoint_cover_carousel_view_flipper"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:parentTag="android.widget.FrameLayout">
+
+    <LinearLayout
+        android:id="@+id/touchpoint_cover_carousel_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/ui_2m"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/touchpoint_cover_carousel_header_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/ui_1_5m"
+            android:layout_marginStart="@dimen/ui_2m"
+            android:layout_marginEnd="@dimen/ui_2m"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/touchpoint_cover_carousel_header_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/MLFont.Bold.Semi"
+                android:textSize="@dimen/ui_fontsize_medium"
+                android:ellipsize="end"
+                android:lines="1"
+                tools:text="Las mejores marcas"/>
+
+            <TextView
+                android:id="@+id/touchpoint_cover_carousel_header_action"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                style="@style/MLFont.Bold.Semi"
+                android:textColor="@color/components_primary_color"
+                android:textSize="@dimen/ui_fontsize_xsmall"
+                android:gravity="end|bottom"
+                tools:text="Ver más"/>
+
+        </LinearLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/cover_carouse_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/ui_2m"
+            android:paddingEnd="@dimen/ui_2m"
+            android:paddingBottom="@dimen/ui_2m"
+            android:clipToPadding="false"
+            android:overScrollMode="never" />
+
+    </LinearLayout>
+
+    <include
+        layout="@layout/touchpoint_cover_carousel_skeleton"
+        android:id="@+id/touchpoint_cover_carousel_skeleton"/>
+
+</ViewFlipper>

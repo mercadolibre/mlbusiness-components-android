@@ -41,6 +41,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     private final PickUpView mainDescriptionContainer;
     private final PickUpView mainCharacteristicsContainer;
     private final TouchpointRowPresenter presenter;
+    private final View rippleView;
     private OnClickCallback onClickCallback;
 
     /**
@@ -72,6 +73,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
         mainDescriptionContainer = findViewById(R.id.main_description_container);
         mainCharacteristicsContainer = findViewById(R.id.main_characteristics_container);
         rightBottomInfoContainer = findViewById(R.id.right_bottom_info_container);
+        rippleView = findViewById(R.id.discounts_payers_list_row_click);
         rightBottomInfoContainer.bindViews();
         presenter = new TouchpointRowPresenter();
     }
@@ -328,5 +330,9 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
             mainCharacteristicsContainer.removeAllViews();
         }
         mainCharacteristicsContainer.setVisibility(GONE);
+    }
+
+    public void removeRippleEffect() {
+        rippleView.setVisibility(GONE);
     }
 }
