@@ -11,8 +11,7 @@ public enum TouchpointSamples {
     PARTIAL_GRID(R.raw.touchpoint_grid_partial_content),
     CAROUSEL(R.raw.touchpoint_carousel),
     HYBRID_CAROUSEL(R.raw.touchpoint_hybrid_carousel),
-    COVER_CAROUSEL(R.raw.touchpoint_cover_carousel),
-    ;
+    COVER_CAROUSEL(R.raw.touchpoint_cover_carousel);
 
     final int rawId;
     final Gson gson;
