@@ -64,8 +64,7 @@ public class CoverCarouselPageTransformer implements ViewPager.PageTransformer {
                 ));
             }
 
-            //TODO: Change this cast to an Interface.
-            ((CoverCardView) page).setPressAnimation();
+            ((CardTransformer) page).setPressAnimation();
         }
     }
 }

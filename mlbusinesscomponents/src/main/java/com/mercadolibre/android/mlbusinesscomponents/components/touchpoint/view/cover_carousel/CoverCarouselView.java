@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewpager.widget.ViewPager;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
@@ -34,7 +35,7 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
     private final LinearLayout headerContainer;
     private final TextView headerTitle;
     private final TextView headerAction;
-    private final LinearLayout skeleton;
+    private final ConstraintLayout skeleton;
 
     private final ViewPager viewPager;
     private final CoverCardViewPagerAdapter viewPagerAdapter;

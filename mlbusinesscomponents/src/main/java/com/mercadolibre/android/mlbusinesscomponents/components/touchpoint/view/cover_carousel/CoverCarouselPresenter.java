@@ -3,6 +3,7 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CarouselAnimationInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CoverCarouselInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardInterfaceView;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardView;
 import java.util.List;
 
@@ -73,11 +74,11 @@ public class CoverCarouselPresenter {
         view.setItemsList(items);
     }
 
-    public void getMaxHeight(final List<CoverCardView> coverCardsViews) {
+    public void getMaxHeight(final List<CoverCardInterfaceView> coverCardsViews) {
         int maxCoverCardHeight = 0;
         boolean isSkeletonVisible = false;
 
-        for (final CoverCardView view : coverCardsViews) {
+        for (final CoverCardInterfaceView view : coverCardsViews) {
             final int itemHeight = view.getCoverCardHeight();
             isSkeletonVisible = view.getSkeletonState();
 

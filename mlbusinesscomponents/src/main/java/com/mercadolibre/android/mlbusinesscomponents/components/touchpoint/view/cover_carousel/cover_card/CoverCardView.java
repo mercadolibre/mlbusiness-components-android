@@ -19,10 +19,11 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callb
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.CardTransformer;
 
 import static com.mercadolibre.android.mlbusinesscomponents.common.Constants.NON_SIZE;
 
-public class CoverCardView extends CardView implements TouchpointTrackeable {
+public class CoverCardView extends CardView implements TouchpointTrackeable, CoverCardInterfaceView, CardTransformer {
 
     private static final float CORNER_RADIUS_VALUE = 6f;
 
@@ -51,7 +52,7 @@ public class CoverCardView extends CardView implements TouchpointTrackeable {
         cardCoverImage = findViewById(R.id.touchpoint_cover_carousel_card_image);
         cardCoverRow = findViewById(R.id.touchpoint_cover_carousel_card_row);
         skeletonView = findViewById(R.id.touchpoint_cover_carousel_card_image_skeleton);
-        presenter = new CoverCardPresenter(this);
+        presenter = new CoverCardPresenter();
 
         setCornerRadius();
         onShowSkeleton();
@@ -72,6 +73,7 @@ public class CoverCardView extends CardView implements TouchpointTrackeable {
      *
      * @param model the data to bind
      */
+    @Override
     public void bind(final CoverCardInterface model) {
         bind(model, NON_SIZE);
     }
@@ -82,11 +84,12 @@ public class CoverCardView extends CardView implements TouchpointTrackeable {
      * @param model the data to bind
      * @param size the card's size
      */
+    @Override
     public void bind(final CoverCardInterface model, final int size) {
         if (size != NON_SIZE) {
             setNewHeight(size);
         }
-        presenter.bindView(model);
+        presenter.bindView(model, this);
     }
 
     private void setNewHeight(final int size) {
@@ -99,6 +102,7 @@ public class CoverCardView extends CardView implements TouchpointTrackeable {
      *
      * @param description the data to bind.
      */
+    @Override
     public void setRow(final TouchpointRowItemInterface description) {
         cardCoverRow.bind(description);
         cardCoverRow.setOnClickCallback(onClickCallback);
@@ -110,6 +114,7 @@ public class CoverCardView extends CardView implements TouchpointTrackeable {
      *
      * @param cover url for the cover image.
      */
+    @Override
     public void setCoverImage(final String cover) {
         cardCoverImage.setImageURI(cover);
     }
@@ -119,6 +124,7 @@ public class CoverCardView extends CardView implements TouchpointTrackeable {
      *
      * @param link the link
      */
+    @Override
     public void setOnClick(final String link) {
         setClickable(true);
         setOnClickListener(v -> onClickEvent(link));
@@ -134,6 +140,7 @@ public class CoverCardView extends CardView implements TouchpointTrackeable {
     /**
      * dissmiss the click action
      */
+    @Override
     public void dismissClickable() {
         setClickable(false);
     }
@@ -143,6 +150,7 @@ public class CoverCardView extends CardView implements TouchpointTrackeable {
      *
      * @param onClickCallback
      */
+    @Override
     public void setOnClickCallback(@Nullable final OnClickCallback onClickCallback) {
         this.onClickCallback = onClickCallback;
     }
@@ -153,28 +161,34 @@ public class CoverCardView extends CardView implements TouchpointTrackeable {
         return tracking;
     }
 
+    @Override
     public int getCoverCardHeight() {
         cardCoverRow.measure(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         return cardCoverImage.getLayoutParams().height + cardCoverRow.getMeasuredHeight();
     }
 
+    @Override
     public void showSkeleton() {
         skeletonView.setVisibility(VISIBLE);
         cardCoverRow.showSkeleton();
     }
 
+    @Override
     public void hideSkeleton() {
         skeletonView.setVisibility(GONE);
     }
 
+    @Override
     public boolean getSkeletonState() {
         return skeletonView.getVisibility() == VISIBLE;
     }
 
+    @Override
     public void setPressAnimation() {
-        presenter.setPressAnimationWithLink();
+        presenter.setPressAnimationWithLink(this);
     }
 
+    @Override
     public void setOnClickListenerWithAnimationAndLink(final String link, final TouchpointTracking tracking) {
         setClickable(true);
         setOnClickListener(v -> {
@@ -188,7 +202,13 @@ public class CoverCardView extends CardView implements TouchpointTrackeable {
         });
     }
 
+    @Override
     public void setTracking(@Nullable final TouchpointTracking tracking) {
         this.tracking = tracking;
+    }
+
+    @Override
+    public CoverCardView getView() {
+        return this;
     }
 }

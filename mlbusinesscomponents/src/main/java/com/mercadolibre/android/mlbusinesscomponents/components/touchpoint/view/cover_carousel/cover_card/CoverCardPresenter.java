@@ -6,17 +6,14 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.track
 
 public class CoverCardPresenter {
 
-    private final CoverCardView view;
     private String link =  null;
     private TouchpointTracking tracking = null;
 
     /**
      * Constructor
-     *
-     * @param view the CoverView
      */
-    public CoverCardPresenter(final CoverCardView view) {
-        this.view = view;
+    public CoverCardPresenter() {
+
     }
 
     /**
@@ -24,7 +21,7 @@ public class CoverCardPresenter {
      *
      * @param model the data to bind.
      */
-    public void bindView(final CoverCardInterface model) {
+    public void bindView(final CoverCardInterface model, final CoverCardInterfaceView view) {
 
         if (model == null) {
             view.showSkeleton();
@@ -32,21 +29,21 @@ public class CoverCardPresenter {
         }
 
         view.hideSkeleton();
-        setRow(model.getContent());
-        setCoverImage(model.getContent().getCover());
-        setOnClick(model.getLink());
-        setTracking(model.getTracking());
+        setRow(model.getContent(), view);
+        setCoverImage(model.getContent().getCover(), view);
+        setOnClick(model.getLink(), view);
+        setTracking(model.getTracking(), view);
     }
 
-    private void setRow(final TouchpointRowItemInterface description) {
+    private void setRow(final TouchpointRowItemInterface description, final CoverCardInterfaceView view) {
         view.setRow(description);
     }
 
-    private void setCoverImage(final String cover) {
+    private void setCoverImage(final String cover, final CoverCardInterfaceView view) {
         view.setCoverImage(cover);
     }
 
-    private void setOnClick(final String link) {
+    private void setOnClick(final String link, final CoverCardInterfaceView view) {
         if (link != null && !link.isEmpty()) {
             view.setOnClick(link);
             this.link = link;
@@ -55,12 +52,12 @@ public class CoverCardPresenter {
         }
     }
 
-    private void setTracking(final TouchpointTracking tracking) {
+    private void setTracking(final TouchpointTracking tracking, final CoverCardInterfaceView view) {
         this.tracking = tracking;
         view.setTracking(tracking);
     }
 
-    public void setPressAnimationWithLink() {
+    public void setPressAnimationWithLink(final CoverCardInterfaceView view) {
         if (link != null && !link.isEmpty()) {
             view.setOnClickListenerWithAnimationAndLink(link, tracking);
         } else {

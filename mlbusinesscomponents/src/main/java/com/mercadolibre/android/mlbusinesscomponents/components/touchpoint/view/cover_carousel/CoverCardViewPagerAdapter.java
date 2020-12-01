@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.viewpager.widget.PagerAdapter;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardInterfaceView;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardView;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ public class CoverCardViewPagerAdapter extends PagerAdapter {
 
     private final Context context;
     @Nullable private OnClickCallback onClickCallback;
-    private final List<CoverCardView> elementsView;
+    private final List<CoverCardInterfaceView> elementsView;
 
     /* default */ CoverCardViewPagerAdapter(final Context context) {
         this.context = context;
@@ -24,7 +25,7 @@ public class CoverCardViewPagerAdapter extends PagerAdapter {
     }
 
     /* default */ void setElementsView(final List<CoverCardInterface> itemsView) {
-        final List<CoverCardView> coverCardsViews = new ArrayList<>();
+        final List<CoverCardInterfaceView> coverCardsViews = new ArrayList<>();
 
         CoverCardView view;
         for (final CoverCardInterface itemData : itemsView) {
@@ -39,7 +40,7 @@ public class CoverCardViewPagerAdapter extends PagerAdapter {
         notifyDataSetChanged();
     }
 
-    /* default */ List<CoverCardView> getElementsList() {
+    /* default */ List<CoverCardInterfaceView> getElementsList() {
         return elementsView;
     }
 
@@ -51,7 +52,7 @@ public class CoverCardViewPagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull final ViewGroup container, final int position) {
         final int virtualPosition = position % elementsView.size();
-        container.addView(elementsView.get(virtualPosition));
+        container.addView(elementsView.get(virtualPosition).getView());
         return elementsView.get(virtualPosition);
     }
 
