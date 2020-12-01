@@ -1,6 +1,7 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.row.model.test;
 
 import android.text.TextUtils;
+import androidx.annotation.Keep;
 import com.google.gson.annotations.SerializedName;
 import com.mercadolibre.android.mlbusinesscomponents.components.pickup.model.DescriptionItemsInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.pill.model.PillResponseInterface;
@@ -8,6 +9,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.row.model.Touchp
 import java.util.ArrayList;
 import java.util.List;
 
+@Keep
 public class TouchpointRowItem implements TouchpointRowItemInterface {
 
     private final String leftImage;

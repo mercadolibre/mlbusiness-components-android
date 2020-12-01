@@ -1,7 +1,9 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.test;
 
+import androidx.annotation.Keep;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CarouselAnimationInterfaceModel;
 
+@Keep
 public class CarouselAnimationResponse implements CarouselAnimationInterfaceModel {
 
     private final boolean alphaAnimation;
