@@ -6,6 +6,7 @@ import android.util.TypedValue;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -24,17 +25,19 @@ import static com.mercadolibre.android.mlbusinesscomponents.components.utils.Tra
 public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarouselInterfaceModel> implements
     CoverCarouselViewInterface {
 
+    private static final int COVER_CAROUSEL_CONTAINER_INDEX = 0;
+    private static final int COVER_CAROUSEL_SKELETON_INDEX = 1;
+
     private static final int MARGIN_BETWEEN_PAGES = 8;
     private static final int MARGIN_BETWEEN_SCALED_PAGES = -10;
     private static final int VIEW_PAGER_PADDING_DIP = 16;
 
     private final CoverCarouselPresenter presenter;
 
-    private final LinearLayout carouselContainer;
     private final LinearLayout headerContainer;
     private final TextView headerTitle;
     private final TextView headerAction;
-    private final ConstraintLayout skeleton;
+    private final ViewFlipper flipper;
 
     private final ViewPager viewPager;
     private final CoverCardViewPagerAdapter viewPagerAdapter;
@@ -56,11 +59,10 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
 
         presenter = new CoverCarouselPresenter();
 
-        carouselContainer = findViewById(R.id.touchpoint_cover_carousel_container);
+        flipper = findViewById(R.id.touchpoint_cover_carousel_view_flipper);
         headerContainer = findViewById(R.id.touchpoint_cover_carousel_header_container);
         headerTitle = findViewById(R.id.touchpoint_cover_carousel_header_title);
         headerAction = findViewById(R.id.touchpoint_cover_carousel_header_action);
-        skeleton = findViewById(R.id.touchpoint_cover_carousel_skeleton);
 
         viewPager = findViewById(R.id.cover_carouse_view_pager);
         viewPagerAdapter = new CoverCardViewPagerAdapter(getContext());
@@ -162,14 +164,12 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
 
     @Override
     public void showSkeleton() {
-        skeleton.setVisibility(VISIBLE);
-        carouselContainer.setVisibility(GONE);
+        flipper.setDisplayedChild(COVER_CAROUSEL_SKELETON_INDEX);
     }
 
     @Override
     public void hideSkeleton() {
-        skeleton.setVisibility(GONE);
-        carouselContainer.setVisibility(VISIBLE);
+        flipper.setDisplayedChild(COVER_CAROUSEL_CONTAINER_INDEX);
     }
 
     @Override
