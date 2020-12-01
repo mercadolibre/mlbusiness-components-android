@@ -10,13 +10,6 @@ public class CoverCardPresenter {
     private TouchpointTracking tracking = null;
 
     /**
-     * Constructor
-     */
-    public CoverCardPresenter() {
-
-    }
-
-    /**
      * Binds the view.
      *
      * @param model the data to bind.
