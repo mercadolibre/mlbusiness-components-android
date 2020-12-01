@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewpager.widget.PagerAdapter;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterfaceModel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardInterfaceView;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardView;
 import java.util.ArrayList;
@@ -24,11 +24,11 @@ public class CoverCardViewPagerAdapter extends PagerAdapter {
         elementsView = new ArrayList<>();
     }
 
-    /* default */ void setElementsView(final List<CoverCardInterface> itemsView) {
+    /* default */ void setElementsView(final List<CoverCardInterfaceModel> itemsView) {
         final List<CoverCardInterfaceView> coverCardsViews = new ArrayList<>();
 
         CoverCardView view;
-        for (final CoverCardInterface itemData : itemsView) {
+        for (final CoverCardInterfaceModel itemData : itemsView) {
             view = new CoverCardView(context);
             view.setOnClickCallback(onClickCallback);
             view.bind(itemData);

@@ -1,14 +1,13 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel;
 
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterface;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardView;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterfaceModel;
 import java.util.List;
 
 public interface CoverCarouselViewInterface {
 
     void setVisibilityGone();
 
-    void setItemsList(final List<CoverCardInterface> items);
+    void setItemsList(final List<CoverCardInterfaceModel> items);
 
     void hideHeaderContainer();
 

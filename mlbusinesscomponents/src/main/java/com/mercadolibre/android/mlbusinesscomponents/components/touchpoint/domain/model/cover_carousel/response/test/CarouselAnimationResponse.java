@@ -1,14 +1,14 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.test;
 
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CarouselAnimationInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CarouselAnimationInterfaceModel;
 
-public class CarouselAnimation implements CarouselAnimationInterface {
+public class CarouselAnimationResponse implements CarouselAnimationInterfaceModel {
 
     private final boolean alphaAnimation;
     private final boolean scaleAnimation;
     private final boolean pressAnimation;
 
-    public CarouselAnimation(final boolean alphaAnimation, final boolean scaleAnimation, final boolean pressAnimation) {
+    public CarouselAnimationResponse(final boolean alphaAnimation, final boolean scaleAnimation, final boolean pressAnimation) {
         this.alphaAnimation = alphaAnimation;
         this.scaleAnimation = scaleAnimation;
         this.pressAnimation = pressAnimation;

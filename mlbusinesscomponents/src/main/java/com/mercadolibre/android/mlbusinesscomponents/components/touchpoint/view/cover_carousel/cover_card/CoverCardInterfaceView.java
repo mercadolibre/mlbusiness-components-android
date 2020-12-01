@@ -3,14 +3,14 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view
 import androidx.annotation.Nullable;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.TouchpointRowItemInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterfaceModel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
 
 public interface CoverCardInterfaceView {
 
-    void bind(final CoverCardInterface model);
+    void bind(final CoverCardInterfaceModel model);
 
-    void bind(final CoverCardInterface model, final int size);
+    void bind(final CoverCardInterfaceModel model, final int size);
 
     void setRow(final TouchpointRowItemInterface description);
 

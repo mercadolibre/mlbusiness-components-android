@@ -12,17 +12,16 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewpager.widget.ViewPager;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterface;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CoverCarouselInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterfaceModel;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CoverCarouselInterfaceModel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.TrackListener;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardView;
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.trackShow;
 
-public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarouselInterface> implements
+public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarouselInterfaceModel> implements
     CoverCarouselViewInterface {
 
     private static final int MARGIN_BETWEEN_PAGES = 8;
@@ -92,7 +91,7 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
     }
 
     @Override
-    public void bind(@Nullable final CoverCarouselInterface model) {
+    public void bind(@Nullable final CoverCarouselInterfaceModel model) {
         presenter.mapResponse(model, this);
 
         if (trackListener == null) {
@@ -116,7 +115,7 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
     }
 
     @Override
-    public void setItemsList(final List<CoverCardInterface> items) {
+    public void setItemsList(final List<CoverCardInterfaceModel> items) {
         viewPagerAdapter.setElementsView(items);
         presenter.getMaxHeight(viewPagerAdapter.getElementsList(), this);
     }

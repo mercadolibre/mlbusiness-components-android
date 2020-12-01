@@ -1,8 +1,8 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel;
 
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterface;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CarouselAnimationInterface;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CoverCarouselInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterfaceModel;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CarouselAnimationInterfaceModel;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CoverCarouselInterfaceModel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardInterfaceView;
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class CoverCarouselPresenter {
      *
      * @param response to map.
      */
-    public void mapResponse(final CoverCarouselInterface response, final CoverCarouselViewInterface view) {
+    public void mapResponse(final CoverCarouselInterfaceModel response, final CoverCarouselViewInterface view) {
 
         if (response == null) {
             view.showSkeleton();
@@ -52,7 +52,7 @@ public class CoverCarouselPresenter {
         view.setHeaderActionClickListener(link);
     }
 
-    private void setCarouselAnimation(final CarouselAnimationInterface carouselAnimation, final CoverCarouselViewInterface view) {
+    private void setCarouselAnimation(final CarouselAnimationInterfaceModel carouselAnimation, final CoverCarouselViewInterface view) {
         //TODO: Add an if to set the margin between pages when scaled property is true.
         view.setMarginsForNonScaledAnimation();
 
@@ -60,7 +60,7 @@ public class CoverCarouselPresenter {
             carouselAnimation.getPressAnimation());
     }
 
-    private void setItemsList(final List<CoverCardInterface> items, final CoverCarouselViewInterface view) {
+    private void setItemsList(final List<CoverCardInterfaceModel> items, final CoverCarouselViewInterface view) {
         if (items == null || items.isEmpty()) {
             view.setVisibilityGone();
             return;

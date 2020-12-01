@@ -2,7 +2,7 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.doma
 
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.TouchpointRowItemInterface;
 
-public interface CoverCardContentInterface extends TouchpointRowItemInterface {
+public interface CoverCardContentInterfaceModel extends TouchpointRowItemInterface {
 
     String getCover();
 }

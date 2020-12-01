@@ -9,11 +9,11 @@ import com.mercadolibre.android.mlbusinesscomponents.components.row.model.test.D
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.test.FeatureFormatResponse;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.test.PillResponse;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.test.TouchpointRowItem;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardContentInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardContentInterfaceModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CoverCardContent implements CoverCardContentInterface {
+public class CoverCardContent implements CoverCardContentInterfaceModel {
 
     private final String cover;
     private final String leftImage;

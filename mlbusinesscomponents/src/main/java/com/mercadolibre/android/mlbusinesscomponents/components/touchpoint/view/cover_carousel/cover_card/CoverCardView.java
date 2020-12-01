@@ -7,7 +7,6 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
@@ -16,7 +15,7 @@ import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.TouchpointRowView;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.TouchpointRowItemInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterfaceModel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.CardTransformer;
@@ -28,7 +27,6 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, Cov
     private static final float CORNER_RADIUS_VALUE = 6f;
 
     private final CoverCardPresenter presenter;
-    private final LinearLayout cardCointaier;
     private final SimpleDraweeView cardCoverImage;
     private final TouchpointRowView cardCoverRow;
     private final View skeletonView;
@@ -48,7 +46,6 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, Cov
     public CoverCardView(@NonNull final Context context, @Nullable final AttributeSet attrs, final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         inflate(getContext(), R.layout.touchpoint_cover_carousel_card_view, this);
-        cardCointaier = findViewById(R.id.touchpoint_cover_carousel_card_container);
         cardCoverImage = findViewById(R.id.touchpoint_cover_carousel_card_image);
         cardCoverRow = findViewById(R.id.touchpoint_cover_carousel_card_row);
         skeletonView = findViewById(R.id.touchpoint_cover_carousel_card_image_skeleton);
@@ -74,7 +71,7 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, Cov
      * @param model the data to bind
      */
     @Override
-    public void bind(final CoverCardInterface model) {
+    public void bind(final CoverCardInterfaceModel model) {
         bind(model, NON_SIZE);
     }
 
@@ -85,7 +82,7 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, Cov
      * @param size the card's size
      */
     @Override
-    public void bind(final CoverCardInterface model, final int size) {
+    public void bind(final CoverCardInterfaceModel model, final int size) {
         if (size != NON_SIZE) {
             setNewHeight(size);
         }

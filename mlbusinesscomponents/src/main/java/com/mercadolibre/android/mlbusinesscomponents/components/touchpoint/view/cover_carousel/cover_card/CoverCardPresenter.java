@@ -1,7 +1,7 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card;
 
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.TouchpointRowItemInterface;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterfaceModel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
 
 public class CoverCardPresenter {
@@ -21,7 +21,7 @@ public class CoverCardPresenter {
      *
      * @param model the data to bind.
      */
-    public void bindView(final CoverCardInterface model, final CoverCardInterfaceView view) {
+    public void bindView(final CoverCardInterfaceModel model, final CoverCardInterfaceView view) {
 
         if (model == null) {
             view.showSkeleton();

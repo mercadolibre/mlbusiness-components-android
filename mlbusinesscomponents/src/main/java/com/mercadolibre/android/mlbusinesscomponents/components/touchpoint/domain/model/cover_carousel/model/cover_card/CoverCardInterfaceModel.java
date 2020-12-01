@@ -2,9 +2,9 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.doma
 
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 
-public interface CoverCardInterface extends TouchpointTrackeable {
+public interface CoverCardInterfaceModel extends TouchpointTrackeable {
 
-    CoverCardContentInterface getContent();
+    CoverCardContentInterfaceModel getContent();
 
     String getLink();
 }

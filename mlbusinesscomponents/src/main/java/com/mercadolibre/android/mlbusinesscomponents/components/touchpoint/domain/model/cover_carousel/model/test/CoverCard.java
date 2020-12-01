@@ -1,14 +1,13 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.test;
 
 import androidx.annotation.Keep;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardContentInterface;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterface;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardContentInterfaceModel;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterfaceModel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
 import java.io.Serializable;
 
 @Keep
-public class CoverCard implements CoverCardInterface, Serializable {
+public class CoverCard implements CoverCardInterfaceModel, Serializable {
 
     private static final long serialVersionUID = 7527248206474585028L;
 
@@ -25,7 +24,7 @@ public class CoverCard implements CoverCardInterface, Serializable {
     }
 
     @Override
-    public CoverCardContentInterface getContent() {
+    public CoverCardContentInterfaceModel getContent() {
         return content;
     }
 
