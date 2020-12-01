@@ -4,20 +4,15 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CarouselAnimationInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CoverCarouselInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardInterfaceView;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardView;
 import java.util.List;
 
 public class CoverCarouselPresenter {
 
-    private final CoverCarouselViewInterface view;
-
     /**
      * Constructor
-     *
-     * @param view view to interact with
      */
-    public CoverCarouselPresenter(final CoverCarouselViewInterface view) {
-        this.view = view;
+    public CoverCarouselPresenter() {
+
     }
 
     /**
@@ -25,7 +20,7 @@ public class CoverCarouselPresenter {
      *
      * @param response to map.
      */
-    public void mapResponse(final CoverCarouselInterface response) {
+    public void mapResponse(final CoverCarouselInterface response, final CoverCarouselViewInterface view) {
 
         if (response == null) {
             view.showSkeleton();
@@ -33,22 +28,22 @@ public class CoverCarouselPresenter {
         }
 
         view.hideSkeleton();
-        setCarouselHeader(response.getTitle(), response.getLabel(), response.getLink());
-        setCarouselAnimation(response.getCarouselAnimation());
-        setItemsList(response.getItems());
+        setCarouselHeader(response.getTitle(), response.getLabel(), response.getLink(), view);
+        setCarouselAnimation(response.getCarouselAnimation(), view);
+        setItemsList(response.getItems(), view);
     }
 
-    private void setCarouselHeader(final String title, final String label, final String link) {
+    private void setCarouselHeader(final String title, final String label, final String link, final CoverCarouselViewInterface view) {
         if (title == null) {
             view.hideHeaderContainer();
             return;
         }
         view.setHeaderTitle(title);
 
-        setHeaderAction(label, link);
+        setHeaderAction(label, link, view);
     }
 
-    private void setHeaderAction(final String label, final String link) {
+    private void setHeaderAction(final String label, final String link, final CoverCarouselViewInterface view) {
         if (label == null || link == null) {
             view.hideHeaderAction();
             return;
@@ -57,7 +52,7 @@ public class CoverCarouselPresenter {
         view.setHeaderActionClickListener(link);
     }
 
-    private void setCarouselAnimation(final CarouselAnimationInterface carouselAnimation) {
+    private void setCarouselAnimation(final CarouselAnimationInterface carouselAnimation, final CoverCarouselViewInterface view) {
         //TODO: Add an if to set the margin between pages when scaled property is true.
         view.setMarginsForNonScaledAnimation();
 
@@ -65,7 +60,7 @@ public class CoverCarouselPresenter {
             carouselAnimation.getPressAnimation());
     }
 
-    private void setItemsList(final List<CoverCardInterface> items) {
+    private void setItemsList(final List<CoverCardInterface> items, final CoverCarouselViewInterface view) {
         if (items == null || items.isEmpty()) {
             view.setVisibilityGone();
             return;
@@ -74,13 +69,13 @@ public class CoverCarouselPresenter {
         view.setItemsList(items);
     }
 
-    public void getMaxHeight(final List<CoverCardInterfaceView> coverCardsViews) {
+    public void getMaxHeight(final List<CoverCardInterfaceView> coverCardsViews, final CoverCarouselViewInterface view) {
         int maxCoverCardHeight = 0;
         boolean isSkeletonVisible = false;
 
-        for (final CoverCardInterfaceView view : coverCardsViews) {
-            final int itemHeight = view.getCoverCardHeight();
-            isSkeletonVisible = view.getSkeletonState();
+        for (final CoverCardInterfaceView cardView : coverCardsViews) {
+            final int itemHeight = cardView.getCoverCardHeight();
+            isSkeletonVisible = cardView.getSkeletonState();
 
             maxCoverCardHeight = Math.max(maxCoverCardHeight, itemHeight);
         }

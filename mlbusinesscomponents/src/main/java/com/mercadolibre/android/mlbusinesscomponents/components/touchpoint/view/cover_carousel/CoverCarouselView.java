@@ -55,7 +55,7 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
         super(context, attrs, defStyleAttr);
         inflate(context, R.layout.touchpoint_cover_carousel_view, this);
 
-        presenter = new CoverCarouselPresenter(this);
+        presenter = new CoverCarouselPresenter();
 
         carouselContainer = findViewById(R.id.touchpoint_cover_carousel_container);
         headerContainer = findViewById(R.id.touchpoint_cover_carousel_header_container);
@@ -93,7 +93,7 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
 
     @Override
     public void bind(@Nullable final CoverCarouselInterface model) {
-        presenter.mapResponse(model);
+        presenter.mapResponse(model, this);
 
         if (trackListener == null) {
             trackShow(tracker, new ArrayList<>(model.getItems()));
@@ -118,7 +118,7 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
     @Override
     public void setItemsList(final List<CoverCardInterface> items) {
         viewPagerAdapter.setElementsView(items);
-        presenter.getMaxHeight(viewPagerAdapter.getElementsList());
+        presenter.getMaxHeight(viewPagerAdapter.getElementsList(), this);
     }
 
     @Override
