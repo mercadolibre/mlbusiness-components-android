@@ -25,18 +25,13 @@ public class CoverCardViewPagerAdapter extends PagerAdapter {
     }
 
     /* default */ void setElementsView(final List<CoverCardInterfaceModel> itemsView) {
-        final List<CoverCardInterfaceView> coverCardsViews = new ArrayList<>();
-
-        CoverCardView view;
-        for (final CoverCardInterfaceModel itemData : itemsView) {
-            view = new CoverCardView(context);
-            view.setOnClickCallback(onClickCallback);
-            view.bind(itemData);
-            coverCardsViews.add(view);
+        if (itemsView.size() <= elementsView.size()) {
+            while (itemsView.size() != elementsView.size()) {
+                elementsView.remove(elementsView.size() - 1);
+            }
         }
 
-        elementsView.clear();
-        elementsView.addAll(coverCardsViews);
+        addItemsInElementsView(itemsView);
         notifyDataSetChanged();
     }
 
@@ -46,6 +41,22 @@ public class CoverCardViewPagerAdapter extends PagerAdapter {
 
     /* default */ void setOnClickCallback(@Nullable final OnClickCallback onClickCallback) {
         this.onClickCallback = onClickCallback;
+    }
+
+    private void addItemsInElementsView(final List<CoverCardInterfaceModel> itemsView) {
+        CoverCardView view;
+
+        for (final CoverCardInterfaceModel model: itemsView) {
+
+            if (itemsView.indexOf(model) < elementsView.size()) {
+                elementsView.get(itemsView.indexOf(model)).bind(model);
+            } else {
+                view = new CoverCardView(context);
+                view.setOnClickCallback(onClickCallback);
+                view.bind(model);
+                elementsView.add(elementsView.size(), view);
+            }
+        }
     }
 
     @NonNull
