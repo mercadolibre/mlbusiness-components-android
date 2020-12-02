@@ -11,10 +11,13 @@ import android.widget.Toast;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.TouchpointRowView;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.test.TouchpointRowItem;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.test.CoverCardContent;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointResponse;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.MLBusinessTouchpointListener;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.MLBusinessTouchpointView;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardView;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.test.CoverCard;
 import com.mercadolibre.android.mlbusinesscomponentsapp.R;
 import java.util.Map;
 
@@ -28,6 +31,7 @@ public class TouchpointTestActivity extends AppCompatActivity implements OnClick
     private MLBusinessTouchpointView touchpointView;
     private MLBusinessTouchpointListener touchpointListener;
     private TouchpointRowView touchpointRowView;
+    private CoverCardView coverCardView;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -38,13 +42,19 @@ public class TouchpointTestActivity extends AppCompatActivity implements OnClick
         touchpointChangerBottom = findViewById(R.id.touchpoint_button_bottom);
         touchpointChangerTop = findViewById(R.id.touchpoint_button_top);
         touchpointRowView = findViewById(R.id.row_view);
+        coverCardView = findViewById(R.id.touchpoint_row_cover);
         init();
         initRowView();
+        initCoverCard();
     }
 
     private void initRowView() {
         touchpointRowView.setOnClickCallback(this);
         touchpointRowView.bind(new TouchpointRowItem());
+    }
+
+    private void initCoverCard() {
+        coverCardView.bind(new CoverCard(new CoverCardContent(), null, null));
     }
 
     private void init() {

@@ -1,4 +1,4 @@
-package com.mercadolibre.android.mlbusinesscomponents.components.row.model.test;
+package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.test;
 
 import android.text.TextUtils;
 import androidx.annotation.Keep;
@@ -6,12 +6,18 @@ import com.google.gson.annotations.SerializedName;
 import com.mercadolibre.android.mlbusinesscomponents.components.pickup.model.DescriptionItemsInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.pill.model.PillResponseInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.TouchpointRowItemInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.row.model.test.DescriptionItems;
+import com.mercadolibre.android.mlbusinesscomponents.components.row.model.test.FeatureFormatResponse;
+import com.mercadolibre.android.mlbusinesscomponents.components.row.model.test.PillResponse;
+import com.mercadolibre.android.mlbusinesscomponents.components.row.model.test.TouchpointRowItem;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardContentInterfaceModel;
 import java.util.ArrayList;
 import java.util.List;
 
 @Keep
-public class TouchpointRowItem implements TouchpointRowItemInterface {
+public class CoverCardContent implements CoverCardContentInterfaceModel {
 
+    private final String cover;
     private final String leftImage;
     private final String leftImageAccessory;
     private final String mainTitle;
@@ -27,12 +33,13 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
     private final String link;
     private final String rightLabelStatus;
 
-    public TouchpointRowItem(final String leftImage, final String leftImageAccessory, final String mainTitle,
-        final String mainSubtitle,
+    public CoverCardContent(final String cover, final String leftImage, final String leftImageAccessory,
+        final String mainTitle, final String mainSubtitle,
         final List<DescriptionItems> mainDescription,
-        final List<DescriptionItems> mainCharacteristics, final String rightTopLabel, final String rightPrimaryLabel,
-        final String rightSecondaryLabel, final String rightMiddleLabel,
+        final List<DescriptionItems> mainCharacteristics, final String rightTopLabel,
+        final String rightPrimaryLabel, final String rightSecondaryLabel, final String rightMiddleLabel,
         final PillResponse pillResponse, final String link, final String rightLabelStatus) {
+        this.cover = cover;
         this.leftImage = leftImage;
         this.leftImageAccessory = leftImageAccessory;
         this.mainTitle = mainTitle;
@@ -48,38 +55,44 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
         this.rightLabelStatus = rightLabelStatus;
     }
 
-    public TouchpointRowItem() {
-        leftImage = "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg";
-        leftImageAccessory = "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg";
-        mainTitle = "Pizza Vegana";
-        mainSubtitle = "Restaurante";
+    public CoverCardContent() {
+        cover = "https://cdn.cnn.com/cnnnext/dam/assets/200526153607-starbucks-coffee-full-169.jpg";
+        final TouchpointRowItemInterface item = new TouchpointRowItem();
+        leftImage = item.getLeftImage();
+        leftImageAccessory = item.getLeftImageAccessory();
+        mainTitle = item.getMainTitle();
+        mainSubtitle = item.getMainSubtitle();
 
-        List<DescriptionItems> list = new ArrayList<DescriptionItems>(){{
-            DescriptionItems descriptionItems1 =
-                new DescriptionItems("image", "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg", "#000000");
-            DescriptionItems descriptionItems2 = new DescriptionItems("text", "623m", "#73000000");
-            DescriptionItems descriptionItems3 = new DescriptionItems("text", " · ", "#00as0000");
-            DescriptionItems descriptionItems4 =
-                new DescriptionItems("image", "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg", "#000000");
-            DescriptionItems descriptionItems5 = new DescriptionItems("text", "4.3 (24)", "#73000000");
+        final List<DescriptionItems> list = new ArrayList<>();
+        final DescriptionItems descriptionItems1 =
+            new DescriptionItems("image", "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg", "#000000");
+        final DescriptionItems descriptionItems2 = new DescriptionItems("text", "623m", "#73000000");
+        final DescriptionItems descriptionItems3 = new DescriptionItems("text", " · ", "#00as0000");
+        final DescriptionItems descriptionItems4 =
+            new DescriptionItems("image", "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg", "#000000");
+        final DescriptionItems descriptionItems5 = new DescriptionItems("text", "4.3 (24)", "#73000000");
 
-            add(descriptionItems1);
-            add(descriptionItems2);
-            add(descriptionItems3);
-            add(descriptionItems4);
-            add(descriptionItems5);
-        }};
+        list.add(descriptionItems1);
+        list.add(descriptionItems2);
+        list.add(descriptionItems3);
+        list.add(descriptionItems4);
+        list.add(descriptionItems5);
 
         mainDescription = new ArrayList<>(list);
         mainCharacteristics = new ArrayList<>(list);
 
-        rightTopLabel = null;
-        rightPrimaryLabel = "10%";
-        rightSecondaryLabel = "OFF";
-        rightMiddleLabel = "Tope de $ 100";
+        rightTopLabel = item.getRightTopLabel();
+        rightPrimaryLabel = item.getRightPrimaryLabel();
+        rightSecondaryLabel = item.getRightSecondaryLabel();
+        rightMiddleLabel = item.getRightMiddleLabel();
         pillResponse = new PillResponse("discount_payers_checked", "NIVEL 5", new FeatureFormatResponse("#FFFFFF", "#000000"));
-        link = null;
-        rightLabelStatus = "blocked";
+        link = item.getLink();
+        rightLabelStatus = item.getRightLabelStatus();
+    }
+
+    @Override
+    public String getCover() {
+        return cover;
     }
 
     @Override

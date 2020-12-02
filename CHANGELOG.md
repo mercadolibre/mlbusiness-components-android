@@ -1,7 +1,7 @@
 # new
+- Se Agrega CoverCarousel
 
-
-## VERSION 1.14.0
+## VERSION 1.14.1
 - Se Agrega equals a HybridCarousel
 
 ## VERSION 1.13.0
