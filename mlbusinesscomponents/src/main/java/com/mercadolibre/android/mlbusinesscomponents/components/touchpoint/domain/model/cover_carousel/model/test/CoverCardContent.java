@@ -1,6 +1,7 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.test;
 
 import android.text.TextUtils;
+import androidx.annotation.Keep;
 import com.google.gson.annotations.SerializedName;
 import com.mercadolibre.android.mlbusinesscomponents.components.pickup.model.DescriptionItemsInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.pill.model.PillResponseInterface;
@@ -13,6 +14,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 import java.util.ArrayList;
 import java.util.List;
 
+@Keep
 public class CoverCardContent implements CoverCardContentInterfaceModel {
 
     private final String cover;

@@ -9,13 +9,6 @@ import java.util.List;
 public class CoverCarouselPresenter {
 
     /**
-     * Constructor
-     */
-    public CoverCarouselPresenter() {
-
-    }
-
-    /**
      * Map response to model.
      *
      * @param response to map.
