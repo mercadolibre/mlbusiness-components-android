@@ -118,6 +118,7 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
     @Override
     public void setItemsList(final List<CoverCardInterfaceModel> items) {
         viewPagerAdapter.setElementsView(items);
+        viewPager.setCurrentItem(0);
         presenter.getMaxHeight(viewPagerAdapter.getElementsList(), this);
     }
 
