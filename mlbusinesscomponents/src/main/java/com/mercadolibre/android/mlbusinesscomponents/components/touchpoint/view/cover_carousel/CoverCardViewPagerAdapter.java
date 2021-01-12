@@ -81,9 +81,4 @@ public class CoverCardViewPagerAdapter extends PagerAdapter {
     public boolean isViewFromObject(@NonNull final View view, @NonNull final Object object) {
         return view.equals(object);
     }
-
-    @Override
-    public int getItemPosition(@NonNull final Object object) {
-        return POSITION_NONE;
-    }
 }
