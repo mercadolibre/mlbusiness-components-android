@@ -45,10 +45,12 @@ public class CoverCardViewPagerAdapter extends PagerAdapter {
 
     private void addItemsInElementsView(final List<CoverCardInterfaceModel> itemsView) {
         CoverCardView view;
+        int itemsViewIndex = 0;
+        final int elementsViewSize = elementsView.size();
 
         for (final CoverCardInterfaceModel model: itemsView) {
 
-            if (itemsView.indexOf(model) < elementsView.size()) {
+            if (itemsViewIndex < elementsViewSize) {
                 elementsView.get(itemsView.indexOf(model)).bind(model);
             } else {
                 view = new CoverCardView(context);
@@ -56,6 +58,8 @@ public class CoverCardViewPagerAdapter extends PagerAdapter {
                 view.bind(model);
                 elementsView.add(elementsView.size(), view);
             }
+
+            itemsViewIndex++;
         }
     }
 
