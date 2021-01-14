@@ -1,3 +1,6 @@
+## VERSION 1.15.1
+- Se mejora el CoverCarousel reutiliznado las vistas creadas.
+
 ## VERSION 1.15.0
 - Se Agrega CoverCarousel
 
