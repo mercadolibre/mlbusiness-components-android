@@ -114,6 +114,7 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, Cov
     @Override
     public void setCoverImage(final String cover) {
         cardCoverImage.setImageURI(cover);
+        cardCoverImage.refreshDrawableState();
     }
 
     /**

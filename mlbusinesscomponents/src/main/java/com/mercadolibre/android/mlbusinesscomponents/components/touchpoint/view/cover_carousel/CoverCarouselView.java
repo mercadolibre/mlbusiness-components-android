@@ -9,7 +9,6 @@ import android.widget.TextView;
 import android.widget.ViewFlipper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewpager.widget.ViewPager;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
@@ -119,6 +118,7 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
     @Override
     public void setItemsList(final List<CoverCardInterfaceModel> items) {
         viewPagerAdapter.setElementsView(items);
+        viewPager.setCurrentItem(0);
         presenter.getMaxHeight(viewPagerAdapter.getElementsList(), this);
     }
 

@@ -25,18 +25,13 @@ public class CoverCardViewPagerAdapter extends PagerAdapter {
     }
 
     /* default */ void setElementsView(final List<CoverCardInterfaceModel> itemsView) {
-        final List<CoverCardInterfaceView> coverCardsViews = new ArrayList<>();
-
-        CoverCardView view;
-        for (final CoverCardInterfaceModel itemData : itemsView) {
-            view = new CoverCardView(context);
-            view.setOnClickCallback(onClickCallback);
-            view.bind(itemData);
-            coverCardsViews.add(view);
+        if (itemsView.size() <= elementsView.size()) {
+            while (itemsView.size() != elementsView.size()) {
+                elementsView.remove(elementsView.size() - 1);
+            }
         }
 
-        elementsView.clear();
-        elementsView.addAll(coverCardsViews);
+        addItemsInElementsView(itemsView);
         notifyDataSetChanged();
     }
 
@@ -46,6 +41,25 @@ public class CoverCardViewPagerAdapter extends PagerAdapter {
 
     /* default */ void setOnClickCallback(@Nullable final OnClickCallback onClickCallback) {
         this.onClickCallback = onClickCallback;
+    }
+
+    private void addItemsInElementsView(final List<CoverCardInterfaceModel> itemsView) {
+        CoverCardView view;
+        int itemsViewIndex = 0;
+
+        for (final CoverCardInterfaceModel model: itemsView) {
+
+            if (itemsViewIndex < elementsView.size()) {
+                elementsView.get(itemsViewIndex).bind(model);
+            } else {
+                view = new CoverCardView(context);
+                view.setOnClickCallback(onClickCallback);
+                view.bind(model);
+                elementsView.add(elementsView.size(), view);
+            }
+
+            itemsViewIndex++;
+        }
     }
 
     @NonNull
@@ -69,10 +83,5 @@ public class CoverCardViewPagerAdapter extends PagerAdapter {
     @Override
     public boolean isViewFromObject(@NonNull final View view, @NonNull final Object object) {
         return view.equals(object);
-    }
-
-    @Override
-    public int getItemPosition(@NonNull final Object object) {
-        return POSITION_NONE;
     }
 }
