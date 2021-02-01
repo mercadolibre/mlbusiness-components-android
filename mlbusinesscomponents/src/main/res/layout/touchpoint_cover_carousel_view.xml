@@ -11,7 +11,7 @@
         android:id="@+id/touchpoint_cover_carousel_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/ui_2m"
+        android:paddingTop="@dimen/ui_1_5m"
         android:orientation="vertical">
 
         <LinearLayout
