@@ -1,3 +1,6 @@
+## new
+- Se reduce en 4dp el margen superior del CoverCarousel
+
 ## 1.16.0
 - Se mejora el CoverCarousel reutilizando las vistas creadas.
 
