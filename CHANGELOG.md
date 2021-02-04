@@ -1,4 +1,4 @@
-## new
+## 1.16.1
 - Se reduce en 4dp el margen superior del CoverCarousel
 
 ## 1.16.0
