@@ -40,6 +40,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     private final RightBottomInfoView rightBottomInfoContainer;
     private final PickUpView mainDescriptionContainer;
     private final PickUpView mainCharacteristicsContainer;
+    private final PickUpView cardStatusContainer;
     private final TouchpointRowPresenter presenter;
     private final View rippleView;
     private OnClickCallback onClickCallback;
@@ -72,6 +73,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
         rightMiddleLabel = findViewById(R.id.right_middle_label);
         mainDescriptionContainer = findViewById(R.id.main_description_container);
         mainCharacteristicsContainer = findViewById(R.id.main_characteristics_container);
+        cardStatusContainer = findViewById(R.id.card_status_container);
         rightBottomInfoContainer = findViewById(R.id.right_bottom_info_container);
         rippleView = findViewById(R.id.discounts_payers_list_row_click);
         rightBottomInfoContainer.bindViews();
@@ -332,7 +334,41 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
         mainCharacteristicsContainer.setVisibility(GONE);
     }
 
+    /**
+     * Hide Card Status
+     */
+    public void hideStatusDescription() {
+        if (cardStatusContainer.getChildCount() > 0) {
+            cardStatusContainer.removeAllViews();
+        }
+        cardStatusContainer.setVisibility(GONE);
+    }
+
+    /**
+     * Show card status
+     *
+     * @param cardStatus the status.
+     */
+    public void showStatusDescription(final List<DescriptionItemsInterface> cardStatus) {
+        if(cardStatusContainer != null) {
+            cardStatusContainer.bindViews(cardStatus);
+        }
+    }
+
     public void removeRippleEffect() {
         rippleView.setVisibility(GONE);
+    }
+
+    /**
+     * Sets left image to default status
+     */
+    public void setLeftImageToDefaultStatus() {
+        leftImage.setAlpha(1f);
+        leftImageAccessory.setAlpha(1f);
+    }
+
+    public void setLeftImageToClosedStatus() {
+        leftImage.setAlpha(0.2f);
+        leftImageAccessory.setAlpha(0.2f);
     }
 }

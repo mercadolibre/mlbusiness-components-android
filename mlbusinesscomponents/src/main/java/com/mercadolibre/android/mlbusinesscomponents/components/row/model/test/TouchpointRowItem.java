@@ -19,6 +19,7 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
     private final List<DescriptionItems> mainDescription;
     @SerializedName("main_secondary_description")
     private final List<DescriptionItems> mainCharacteristics;
+    private final List<DescriptionItems> statusDescription;
     private final String rightTopLabel;
     private final String rightPrimaryLabel;
     private final String rightSecondaryLabel;
@@ -26,19 +27,24 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
     private final PillResponse pillResponse;
     private final String link;
     private final String rightLabelStatus;
+    private final String leftImageStatus;
 
     public TouchpointRowItem(final String leftImage, final String leftImageAccessory, final String mainTitle,
         final String mainSubtitle,
         final List<DescriptionItems> mainDescription,
-        final List<DescriptionItems> mainCharacteristics, final String rightTopLabel, final String rightPrimaryLabel,
+        final List<DescriptionItems> mainCharacteristics,
+        final List<DescriptionItems> statusDescription,
+        final String rightTopLabel, final String rightPrimaryLabel,
         final String rightSecondaryLabel, final String rightMiddleLabel,
-        final PillResponse pillResponse, final String link, final String rightLabelStatus) {
+        final PillResponse pillResponse, final String link, final String rightLabelStatus,
+        final String leftImageStatus) {
         this.leftImage = leftImage;
         this.leftImageAccessory = leftImageAccessory;
         this.mainTitle = mainTitle;
         this.mainSubtitle = mainSubtitle;
         this.mainDescription = mainDescription;
         this.mainCharacteristics = mainCharacteristics;
+        this.statusDescription = statusDescription;
         this.rightTopLabel = rightTopLabel;
         this.rightPrimaryLabel = rightPrimaryLabel;
         this.rightSecondaryLabel = rightSecondaryLabel;
@@ -46,6 +52,7 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
         this.pillResponse = pillResponse;
         this.link = link;
         this.rightLabelStatus = rightLabelStatus;
+        this.leftImageStatus = leftImageStatus;
     }
 
     public TouchpointRowItem() {
@@ -70,8 +77,19 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
             add(descriptionItems5);
         }};
 
+        List<DescriptionItems> list1 = new ArrayList<DescriptionItems>(){{
+            DescriptionItems descriptionItems1 = new DescriptionItems("text", "Cerrado", "#F23D4F");
+            DescriptionItems descriptionItems2 = new DescriptionItems("text", " · ", "#F23D4F");
+            DescriptionItems descriptionItems3 = new DescriptionItems("text", " Abre el lunes ", "#F23D4F");
+
+            add(descriptionItems1);
+            add(descriptionItems2);
+            add(descriptionItems3);
+        }};
+
         mainDescription = new ArrayList<>(list);
         mainCharacteristics = new ArrayList<>(list);
+        statusDescription = new ArrayList<>(list1);
 
         rightTopLabel = null;
         rightPrimaryLabel = "10%";
@@ -79,7 +97,8 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
         rightMiddleLabel = "Tope de $ 100";
         pillResponse = new PillResponse("discount_payers_checked", "NIVEL 5", new FeatureFormatResponse("#FFFFFF", "#000000"));
         link = null;
-        rightLabelStatus = "blocked";
+        rightLabelStatus = "closed";
+        leftImageStatus = "closed";
     }
 
     @Override
@@ -110,6 +129,11 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
     @Override
     public List<DescriptionItemsInterface> getMainCharacteristics() {
         return new ArrayList<>(mainCharacteristics);
+    }
+
+    @Override
+    public List<DescriptionItemsInterface> getStatusDescription() {
+        return  statusDescription == null ? null : new ArrayList<>(statusDescription);
     }
 
     @Override
@@ -145,6 +169,11 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
     @Override
     public String getRightLabelStatus() {
         return rightLabelStatus;
+    }
+
+    @Override
+    public String getLeftImageStatus() {
+        return leftImageStatus;
     }
 
     @Override

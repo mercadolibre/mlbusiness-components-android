@@ -10,7 +10,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/ui_2m">
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/left_image"
@@ -22,6 +23,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             app:layout_constraintVertical_chainStyle="packed"
             fresco:actualImageScaleType="fitCenter"
             fresco:overlayImage="@color/row_logo_overlay"
@@ -45,13 +47,14 @@
             style="@style/discounts_payers_list_card_title_font"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/ui_2m"
-            android:layout_marginStart="@dimen/ui_2m"
             android:layout_marginEnd="@dimen/ui_1_75m"
-            app:layout_constraintStart_toEndOf="@+id/left_image"
-            app:layout_constraintEnd_toStartOf="@+id/discounts_payers_list_row_label_container"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="@dimen/ui_2m"
+            android:layout_marginTop="@dimen/ui_2m"
             app:layout_constraintBottom_toTopOf="@+id/main_subtitle"
+            app:layout_constraintEnd_toStartOf="@+id/discounts_payers_list_row_label_container"
+            app:layout_constraintStart_toEndOf="@+id/left_image"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.19"
             tools:text="Burger King" />
 
         <TextView
@@ -86,9 +89,19 @@
             android:layout_height="wrap_content"
             android:id="@+id/main_characteristics_container"
             android:translationY="-4dp"
-            android:layout_marginBottom="@dimen/ui_2m"
             android:layout_marginStart="@dimen/ui_2m"
             app:layout_constraintTop_toBottomOf="@+id/main_description_container"
+            app:layout_constraintBottom_toTopOf="@id/card_status_container"
+            app:layout_constraintStart_toEndOf="@+id/left_image" />
+
+        <include
+            layout="@layout/touchpoint_pick_up_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/card_status_container"
+            android:layout_marginStart="@dimen/ui_2m"
+            android:layout_marginTop="@dimen/ui_025m"
+            app:layout_constraintTop_toBottomOf="@+id/main_characteristics_container"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/left_image" />
 

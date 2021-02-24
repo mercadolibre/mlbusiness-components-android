@@ -10,6 +10,7 @@ import org.jetbrains.annotations.Nullable;
 public class TouchpointRowPresenter {
 
     private static final String BLOCKED = "blocked";
+    private static final String CLOSED = "closed";
 
     /* default */ void onBind(final TouchpointRowItemInterface rowItem, final TouchpointRowView view) {
         if (!rowItem.isValid()) {
@@ -28,8 +29,25 @@ public class TouchpointRowPresenter {
         setBottomLabel(rowItem.getRightMiddleLabel(), view);
         setDescriptionLabels(rowItem.getMainDescription(), view);
         setCharacteristicsLabels(rowItem.getMainCharacteristics(), view);
+        setStatusDescription(rowItem.getStatusDescription(), view);
         setOnClick(rowItem.getLink(), view);
         setRightLabelStatus(rowItem.getRightLabelStatus(), view);
+        setLeftImageStatus(rowItem.getLeftImageStatus(), view);
+    }
+
+    private void setLeftImageStatus(final String leftImageStatus, final TouchpointRowView view) {
+        if (leftImageStatus == null || leftImageStatus.isEmpty()) {
+            view.setLeftImageToDefaultStatus();
+            return;
+        }
+
+        switch (leftImageStatus.toLowerCase()) {
+        case CLOSED:
+            view.setLeftImageToClosedStatus();
+            break;
+        default:
+            view.setLeftImageToDefaultStatus();
+        }
     }
 
     private void setRightLabelStatus(final String rightLabelStatus, final TouchpointRowView view) {
@@ -39,6 +57,7 @@ public class TouchpointRowPresenter {
 
         switch (rightLabelStatus.toLowerCase()) {
         case BLOCKED:
+        case CLOSED:
             view.setRightLabelsToBlockedStatus();
             break;
         default:
@@ -68,6 +87,14 @@ public class TouchpointRowPresenter {
             return;
         }
         view.showCharacterísticsLabels(mainDescription);
+    }
+
+    private void setStatusDescription(final List<DescriptionItemsInterface> statusDescription, final TouchpointRowView view) {
+        if (statusDescription == null || statusDescription.isEmpty()) {
+            view.hideStatusDescription();
+            return;
+        }
+        view.showStatusDescription(statusDescription);
     }
 
     private void setOnClick(final String link, final TouchpointRowView view) {
