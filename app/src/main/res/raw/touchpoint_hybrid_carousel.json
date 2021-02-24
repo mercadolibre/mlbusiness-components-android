@@ -11,10 +11,11 @@
           "middle_title": "Restaurante",
           "bottom_primary_label": "15%",
           "bottom_secondary_label": "OFF",
+          "left_image_status": "CLOSED",
           "bottom_label_status": "closed",
           "top_image_pill_accessory": {
             "icon": "discount_payers_green_check",
-            "label": "cerrado",
+            "label": "Cerrado",
             "format": {
               "text_color": "#ff9601",
               "background_color": "#ffd8a0"
@@ -273,6 +274,7 @@
         "type": "DEFAULT",
         "content": {
           "top_image": "https://i.ibb.co/N2rkn9K/Captura-de-Pantalla-2020-07-30-a-la-s-02-27-45.png",
+          "top_image_accessory": "https://i.ibb.co/QY2xvkC/icon20-Whatsapp-Ios-3x.png",
           "middle_subtitle": "Club de la Birra",
           "middle_title": "Restaurante",
           "bottom_primary_label": "R$ 15",
@@ -312,6 +314,7 @@
         "type": "DEFAULT",
         "content": {
           "top_image": "https://i.ibb.co/j33yDv9/Captura-de-Pantalla-2020-07-30-a-la-s-02-42-58.png",
+          "top_image_accessory": "https://i.ibb.co/QY2xvkC/icon20-Whatsapp-Ios-3x.png",
           "middle_title": "Mercados",
           "bottom_top_label": "Hasta",
           "bottom_primary_label": "15%",
