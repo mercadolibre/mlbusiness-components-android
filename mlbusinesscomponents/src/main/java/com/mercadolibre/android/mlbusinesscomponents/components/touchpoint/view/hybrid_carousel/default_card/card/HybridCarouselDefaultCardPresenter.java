@@ -7,6 +7,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.track
 
 public class HybridCarouselDefaultCardPresenter {
     private static final String BLOCKED = "blocked";
+    private static final String CLOSED = "closed";
 
     private final HybridCarouselDefaultCardView view;
 
@@ -41,18 +42,30 @@ public class HybridCarouselDefaultCardPresenter {
         setBottomSecondaryLabel(data.getBottomSecondaryLabel());
         setBottomInfo(data.getBottomInfo());
         setRightLabelStatus(data.getBottomLabelStatus());
-
+        setTopImagePillAccessory(data.getTopImagePillAccessory(), data.getTopImageAccessory());
         view.showView();
+    }
+
+    private void setTopImagePillAccessory(final HybridPillResponse topImagePillAccessory, String topImageAccesory) {
+        if (topImageAccesory == null && topImagePillAccessory != null) {
+            view.setTopImagePillAccessory(topImagePillAccessory);
+        } else {
+            view.hideTopImagePillAccessory();
+        }
     }
 
     private void setRightLabelStatus(final String bottomLabelStatus) {
         if (bottomLabelStatus == null || bottomLabelStatus.isEmpty()) {
+            view.setBottomLabelsToDefaultStatus();
             return;
         }
 
         switch (bottomLabelStatus.toLowerCase()) {
         case BLOCKED:
             view.setBottomLabelsToBlockedStatus();
+            break;
+        case CLOSED:
+            view.setBottomLabelsToClosedStatus();
             break;
         default:
             view.setBottomLabelsToDefaultStatus();
@@ -120,6 +133,7 @@ public class HybridCarouselDefaultCardPresenter {
             view.setImage(topImage);
             if (topImageAccessory != null && !topImageAccessory.isEmpty()) {
                 view.setImageAccessory(topImageAccessory);
+                view.hideTopImagePillAccessory();
             } else {
                 view.hideImageAccessory();
             }

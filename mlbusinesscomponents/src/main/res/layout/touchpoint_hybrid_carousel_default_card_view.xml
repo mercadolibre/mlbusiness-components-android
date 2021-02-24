@@ -51,6 +51,12 @@
                 android:src="@drawable/skeleton"
                 android:contentDescription="@string/app_name" />
 
+            <include layout="@layout/bottom_right_info_view"
+                android:id="@+id/touchpoint_hybrid_carousel_default_card_top_image_pill_accessory"
+                android:layout_width="@dimen/ui_9m"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"/>
+
         </FrameLayout>
 
         <TextView
@@ -73,6 +79,7 @@
             tools:text="Comida rápida Comida rápida Comida rápida" />
 
         <LinearLayout
+            android:id="@+id/touchpoint_hybrid_carousel_default_card_bottom_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"

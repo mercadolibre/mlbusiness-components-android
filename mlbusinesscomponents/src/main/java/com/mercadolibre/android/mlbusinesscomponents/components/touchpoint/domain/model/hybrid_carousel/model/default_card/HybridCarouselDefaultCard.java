@@ -17,12 +17,16 @@ public class HybridCarouselDefaultCard implements Serializable, TouchpointItem {
     private final String bottomSecondaryLabel;
     private final String bottomLabelStatus;
     private final HybridPillResponse bottomInfo;
+    private final HybridPillResponse topImagePillAccessory;
 
     private int position;
 
-    public HybridCarouselDefaultCard(final String topImage, final String topImageAccessory, final String middleTitle, final String middleSubtitle,
-        final String bottomTopLabel, final String bottomPrimaryLabel, final String bottomSecondaryLabel, final String bottomLabelStatus,
-        final HybridPillResponse bottomInfo) {
+    public HybridCarouselDefaultCard(final String topImage, final String topImageAccessory, final String middleTitle,
+        final String middleSubtitle,
+        final String bottomTopLabel, final String bottomPrimaryLabel, final String bottomSecondaryLabel,
+        final String bottomLabelStatus,
+        final HybridPillResponse bottomInfo,
+        final HybridPillResponse topImagePillAccessory) {
         this.topImage = topImage;
         this.topImageAccessory = topImageAccessory;
         this.middleTitle = middleTitle;
@@ -32,6 +36,7 @@ public class HybridCarouselDefaultCard implements Serializable, TouchpointItem {
         this.bottomSecondaryLabel = bottomSecondaryLabel;
         this.bottomLabelStatus = bottomLabelStatus;
         this.bottomInfo = bottomInfo;
+        this.topImagePillAccessory = topImagePillAccessory;
     }
 
     public String getTopImage() {
@@ -68,6 +73,10 @@ public class HybridCarouselDefaultCard implements Serializable, TouchpointItem {
 
     public HybridPillResponse getBottomInfo() {
         return bottomInfo;
+    }
+
+    public HybridPillResponse getTopImagePillAccessory() {
+        return topImagePillAccessory;
     }
 
     @Override
