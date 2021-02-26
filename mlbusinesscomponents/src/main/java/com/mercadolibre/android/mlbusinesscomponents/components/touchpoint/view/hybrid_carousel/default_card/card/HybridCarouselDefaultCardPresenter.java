@@ -7,6 +7,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.track
 
 public class HybridCarouselDefaultCardPresenter {
     private static final String BLOCKED = "blocked";
+    private static final String CLOSED = "closed";
 
     private final HybridCarouselDefaultCardView view;
 
@@ -33,7 +34,7 @@ public class HybridCarouselDefaultCardPresenter {
         }
 
         setOnClick(model.getLink(), model.getTracking());
-        setImage(data.getTopImage(), data.getTopImageAccessory());
+        setImage(data.getTopImage(), data.getTopImageAccessory(), data.getTopImagePillAccessory());
         setMiddleTitle(data.getMiddleTitle());
         setMiddleSubtitle(data.getMiddleSubtitle());
         setBottomTopLabel(data.getBottomTopLabel());
@@ -41,18 +42,21 @@ public class HybridCarouselDefaultCardPresenter {
         setBottomSecondaryLabel(data.getBottomSecondaryLabel());
         setBottomInfo(data.getBottomInfo());
         setRightLabelStatus(data.getBottomLabelStatus());
-
         view.showView();
     }
 
     private void setRightLabelStatus(final String bottomLabelStatus) {
         if (bottomLabelStatus == null || bottomLabelStatus.isEmpty()) {
+            view.setBottomLabelsToDefaultStatus();
             return;
         }
 
         switch (bottomLabelStatus.toLowerCase()) {
         case BLOCKED:
             view.setBottomLabelsToBlockedStatus();
+            break;
+        case CLOSED:
+            view.setBottomLabelsToClosedStatus();
             break;
         default:
             view.setBottomLabelsToDefaultStatus();
@@ -115,15 +119,24 @@ public class HybridCarouselDefaultCardPresenter {
         }
     }
 
-    private void setImage(final String topImage, final String topImageAccessory) {
+    private void setImage(final String topImage, final String topImageAccessory,
+        final HybridPillResponse topImagePillAccessory) {
         if (topImage != null && !topImage.isEmpty()) {
             view.setImage(topImage);
-            if (topImageAccessory != null && !topImageAccessory.isEmpty()) {
-                view.setImageAccessory(topImageAccessory);
-            } else {
+            if (topImagePillAccessory != null) {
                 view.hideImageAccessory();
+                view.setTopImagePillAccessory(topImagePillAccessory);
+            } else {
+                view.hideTopImagePillAccessory();
+                if (topImageAccessory != null && !topImageAccessory.isEmpty()) {
+                    view.setImageAccessory(topImageAccessory);
+                } else {
+                    view.hideImageAccessory();
+                }
             }
         } else {
+            view.hideTopImagePillAccessory();
+            view.hideImageAccessory();
             view.hideTopImage();
         }
     }
