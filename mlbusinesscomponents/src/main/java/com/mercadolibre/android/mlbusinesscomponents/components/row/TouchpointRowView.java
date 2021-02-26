@@ -33,6 +33,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     private final SimpleDraweeView leftImageAccessory;
     private final TextView mainTitle;
     private final TextView mainSubtitle;
+    private final View rightContainer;
     private final TextView rightTopLabel;
     private final TextView rightPrimaryLabel;
     private final TextView rightSecondaryLabel;
@@ -67,6 +68,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
         leftImageAccessory = findViewById(R.id.left_image_accessory);
         mainTitle = findViewById(R.id.main_title);
         mainSubtitle = findViewById(R.id.main_subtitle);
+        rightContainer = findViewById(R.id.discounts_payers_list_row_label_container);
         rightTopLabel = findViewById(R.id.right_top_label);
         rightPrimaryLabel = findViewById(R.id.right_primary_label);
         rightSecondaryLabel = findViewById(R.id.right_secondary_label);
@@ -288,6 +290,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     }
 
     public void setRightLabelsToDefaultStatus() {
+        rightContainer.setAlpha(1f);
         rightMiddleLabel.setAlpha(1f);
         rightPrimaryLabel.setAlpha(1f);
         rightSecondaryLabel.setAlpha(1f);
@@ -370,5 +373,9 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     public void setLeftImageToClosedStatus() {
         leftImage.setAlpha(0.2f);
         leftImageAccessory.setAlpha(0.2f);
+    }
+
+    public void setRightContainerToClosedStatus() {
+        rightContainer.setAlpha(0.4f);
     }
 }

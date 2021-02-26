@@ -2,6 +2,7 @@ package com.mercadolibre.android.mlbusinesscomponents.components.pickup;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 import com.mercadolibre.android.mlbusinesscomponents.components.pickup.model.DescriptionItemsInterface;
@@ -42,5 +43,11 @@ public class PickUpView extends LinearLayout {
         MainDescriptionLabesImage mainDescriptionLabesImage = new MainDescriptionLabesImage(getContext());
         mainDescriptionLabesImage.setImage(content, color);
         addView(mainDescriptionLabesImage);
+    }
+
+    public void removeMargingStart() {
+        final View firstItem = getChildAt(0);
+        final LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) firstItem.getLayoutParams();
+        layoutParams.setMarginStart(0);
     }
 }

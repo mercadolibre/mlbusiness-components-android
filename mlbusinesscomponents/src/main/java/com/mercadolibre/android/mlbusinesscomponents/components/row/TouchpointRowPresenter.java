@@ -52,13 +52,16 @@ public class TouchpointRowPresenter {
 
     private void setRightLabelStatus(final String rightLabelStatus, final TouchpointRowView view) {
         if (rightLabelStatus == null || rightLabelStatus.isEmpty()) {
+            view.setRightLabelsToDefaultStatus();
             return;
         }
 
         switch (rightLabelStatus.toLowerCase()) {
         case BLOCKED:
-        case CLOSED:
             view.setRightLabelsToBlockedStatus();
+            break;
+        case CLOSED:
+            view.setRightContainerToClosedStatus();
             break;
         default:
             view.setRightLabelsToDefaultStatus();
