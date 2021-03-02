@@ -34,7 +34,7 @@ public class HybridCarouselDefaultCardPresenter {
         }
 
         setOnClick(model.getLink(), model.getTracking());
-        setImage(data.getTopImage(), data.getTopImageAccessory(), data.getTopImagePillAccessory());
+        setImage(data.getTopImage(), data.getTopImageAccessory());
         setMiddleTitle(data.getMiddleTitle());
         setMiddleSubtitle(data.getMiddleSubtitle());
         setBottomTopLabel(data.getBottomTopLabel());
@@ -119,24 +119,15 @@ public class HybridCarouselDefaultCardPresenter {
         }
     }
 
-    private void setImage(final String topImage, final String topImageAccessory,
-        final HybridPillResponse topImagePillAccessory) {
+    private void setImage(final String topImage, final String topImageAccessory) {
         if (topImage != null && !topImage.isEmpty()) {
             view.setImage(topImage);
-            if (topImagePillAccessory != null) {
-                view.hideImageAccessory();
-                view.setTopImagePillAccessory(topImagePillAccessory);
+            if (topImageAccessory != null && !topImageAccessory.isEmpty()) {
+                view.setImageAccessory(topImageAccessory);
             } else {
-                view.hideTopImagePillAccessory();
-                if (topImageAccessory != null && !topImageAccessory.isEmpty()) {
-                    view.setImageAccessory(topImageAccessory);
-                } else {
-                    view.hideImageAccessory();
-                }
+                view.hideImageAccessory();
             }
         } else {
-            view.hideTopImagePillAccessory();
-            view.hideImageAccessory();
             view.hideTopImage();
         }
     }
