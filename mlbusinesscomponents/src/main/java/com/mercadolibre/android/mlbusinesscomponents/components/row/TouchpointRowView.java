@@ -29,6 +29,9 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     private static final int SKELETON_INDEX = 1;
     private static final int VIEW_INDEX = 0;
 
+    private static final float DISABLE_VIEW = 0.4f;
+    private static final float ENABLE_VIEW = 1f;
+
     private final SimpleDraweeView leftImage;
     private final SimpleDraweeView leftImageAccessory;
     private final TextView mainTitle;
@@ -366,13 +369,13 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
      * Sets left image to default status
      */
     public void setLeftImageToDefaultStatus() {
-        leftImage.setAlpha(1f);
-        leftImageAccessory.setAlpha(1f);
+        leftImage.setAlpha(ENABLE_VIEW);
+        leftImageAccessory.setAlpha(ENABLE_VIEW);
     }
 
     public void setLeftImageToClosedStatus() {
-        leftImage.setAlpha(0.2f);
-        leftImageAccessory.setAlpha(0.2f);
+        leftImage.setAlpha(DISABLE_VIEW);
+        leftImageAccessory.setAlpha(DISABLE_VIEW);
     }
 
     public void setRightContainerToClosedStatus() {
