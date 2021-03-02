@@ -17,7 +17,6 @@ import com.mercadolibre.android.mlbusinesscomponents.components.pill.model.PillR
 import com.mercadolibre.android.mlbusinesscomponents.components.pill.view.RightBottomInfoView;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.hybrid_carousel.model.HybridCarouselCardContainerModel;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.hybrid_carousel.model.default_card.HybridPillResponse;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.AssetLoader;
@@ -26,6 +25,8 @@ import static com.mercadolibre.android.mlbusinesscomponents.common.Constants.NON
 
 public class HybridCarouselDefaultCardView extends CardView implements TouchpointTrackeable {
 
+    private static final float DISABLE_VIEW = 0.4f;
+    private static final float ENABLE_VIEW = 1f;
     private HybridCarouselDefaultCardPresenter presenter;
     private final FrameLayout topImageContainer;
     private final SimpleDraweeView topImage;
@@ -36,7 +37,6 @@ public class HybridCarouselDefaultCardView extends CardView implements Touchpoin
     private final TextView bottomPrimaryLabel;
     private final TextView bottomSecondaryLabel;
     private final RightBottomInfoView rightBottomInfoContainer;
-    private final RightBottomInfoView topImagePillAccessoryContainer;
     private final View bottomContainer;
     @Nullable private TouchpointTracking tracking;
 
@@ -64,8 +64,6 @@ public class HybridCarouselDefaultCardView extends CardView implements Touchpoin
         rightBottomInfoContainer = findViewById(R.id.touchpoint_hybrid_carousel_default_card_bottom_info_container);
         rightBottomInfoContainer.bindViews();
         bottomContainer = findViewById(R.id.touchpoint_hybrid_carousel_default_card_bottom_container);
-        topImagePillAccessoryContainer = findViewById(R.id.touchpoint_hybrid_carousel_default_card_top_image_pill_accessory);
-        topImagePillAccessoryContainer.bindViews();
         presenter = new HybridCarouselDefaultCardPresenter(this);
     }
 
@@ -302,30 +300,27 @@ public class HybridCarouselDefaultCardView extends CardView implements Touchpoin
     }
 
     public void setBottomLabelsToBlockedStatus() {
-        topImage.setAlpha(1f);
-        bottomContainer.setAlpha(1f);
-        bottomPrimaryLabel.setAlpha(0.4f);
-        bottomSecondaryLabel.setAlpha(0.4f);
+        bottomContainer.setAlpha(ENABLE_VIEW);
+        bottomPrimaryLabel.setAlpha(DISABLE_VIEW);
+        bottomSecondaryLabel.setAlpha(DISABLE_VIEW);
     }
 
     public void setBottomLabelsToDefaultStatus() {
-        bottomPrimaryLabel.setAlpha(1f);
-        bottomSecondaryLabel.setAlpha(1f);
-        bottomContainer.setAlpha(1f);
-        topImage.setAlpha(1f);
+        bottomPrimaryLabel.setAlpha(ENABLE_VIEW);
+        bottomSecondaryLabel.setAlpha(ENABLE_VIEW);
+        bottomContainer.setAlpha(ENABLE_VIEW);
+        topImage.setAlpha(ENABLE_VIEW);
     }
-
-    public void hideTopImagePillAccessory() {
-        topImagePillAccessoryContainer.setVisibility(GONE);
-    }
-
-    public void setTopImagePillAccessory(final HybridPillResponse pill) {
-        topImagePillAccessoryContainer.bind(pill);
-    }
-
 
     public void setBottomLabelsToClosedStatus() {
-        bottomContainer.setAlpha(0.4f);
-        topImage.setAlpha(0.2f);
+        bottomContainer.setAlpha(DISABLE_VIEW);
+    }
+
+    public void setTopImageToDefaultStatus() {
+        topImage.setAlpha(ENABLE_VIEW);
+    }
+
+    public void setTopImageToClosedStatus() {
+        topImage.setAlpha(DISABLE_VIEW);
     }
 }

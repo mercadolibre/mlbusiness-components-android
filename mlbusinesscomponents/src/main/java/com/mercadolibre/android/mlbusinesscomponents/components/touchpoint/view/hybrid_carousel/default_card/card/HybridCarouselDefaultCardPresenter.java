@@ -35,6 +35,7 @@ public class HybridCarouselDefaultCardPresenter {
 
         setOnClick(model.getLink(), model.getTracking());
         setImage(data.getTopImage(), data.getTopImageAccessory());
+        setTopImageStatus(data.getTopImageStatus());
         setMiddleTitle(data.getMiddleTitle());
         setMiddleSubtitle(data.getMiddleSubtitle());
         setBottomTopLabel(data.getBottomTopLabel());
@@ -43,6 +44,15 @@ public class HybridCarouselDefaultCardPresenter {
         setBottomInfo(data.getBottomInfo());
         setRightLabelStatus(data.getBottomLabelStatus());
         view.showView();
+    }
+
+
+    private void setTopImageStatus(final String topImageStatus) {
+        if (CLOSED.equals(topImageStatus)) {
+            view.setTopImageToDefaultStatus();
+        } else {
+            view.setTopImageToClosedStatus();
+        }
     }
 
     private void setRightLabelStatus(final String bottomLabelStatus) {
