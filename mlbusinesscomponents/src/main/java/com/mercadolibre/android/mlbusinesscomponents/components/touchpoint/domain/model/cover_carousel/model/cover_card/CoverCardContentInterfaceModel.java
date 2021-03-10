@@ -6,5 +6,7 @@ public interface CoverCardContentInterfaceModel extends TouchpointRowItemInterfa
 
     String getCover();
 
-    String getTopImageStatus();
+    default String getTopImageStatus() {
+        return null;
+    }
 }
