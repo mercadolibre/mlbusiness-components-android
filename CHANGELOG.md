@@ -1,5 +1,5 @@
 ## 1.17.0
-- Se Agrega el campo description status
+- Se Agrega el campo description status.
 
 ## 1.16.1
 - Se reduce en 4dp el margen superior del CoverCarousel
