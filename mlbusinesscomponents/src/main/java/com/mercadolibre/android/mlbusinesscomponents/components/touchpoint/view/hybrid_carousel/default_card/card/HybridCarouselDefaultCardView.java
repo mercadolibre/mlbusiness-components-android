@@ -1,9 +1,8 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.hybrid_carousel.default_card.card;
 
 import android.content.Context;
-import android.graphics.Canvas;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -26,6 +25,8 @@ import static com.mercadolibre.android.mlbusinesscomponents.common.Constants.NON
 
 public class HybridCarouselDefaultCardView extends CardView implements TouchpointTrackeable {
 
+    private static final float DISABLE_VIEW = 0.4f;
+    private static final float ENABLE_VIEW = 1f;
     private HybridCarouselDefaultCardPresenter presenter;
     private final FrameLayout topImageContainer;
     private final SimpleDraweeView topImage;
@@ -36,6 +37,7 @@ public class HybridCarouselDefaultCardView extends CardView implements Touchpoin
     private final TextView bottomPrimaryLabel;
     private final TextView bottomSecondaryLabel;
     private final RightBottomInfoView rightBottomInfoContainer;
+    private final View bottomContainer;
     @Nullable private TouchpointTracking tracking;
 
     @Nullable private OnClickCallback onClickCallback;
@@ -61,6 +63,7 @@ public class HybridCarouselDefaultCardView extends CardView implements Touchpoin
         bottomSecondaryLabel = findViewById(R.id.touchpoint_hybrid_carousel_default_card_bottom_secondary_label);
         rightBottomInfoContainer = findViewById(R.id.touchpoint_hybrid_carousel_default_card_bottom_info_container);
         rightBottomInfoContainer.bindViews();
+        bottomContainer = findViewById(R.id.touchpoint_hybrid_carousel_default_card_bottom_container);
         presenter = new HybridCarouselDefaultCardPresenter(this);
     }
 
@@ -297,12 +300,27 @@ public class HybridCarouselDefaultCardView extends CardView implements Touchpoin
     }
 
     public void setBottomLabelsToBlockedStatus() {
-        bottomPrimaryLabel.setAlpha(0.4f);
-        bottomSecondaryLabel.setAlpha(0.4f);
+        bottomContainer.setAlpha(ENABLE_VIEW);
+        bottomPrimaryLabel.setAlpha(DISABLE_VIEW);
+        bottomSecondaryLabel.setAlpha(DISABLE_VIEW);
     }
 
     public void setBottomLabelsToDefaultStatus() {
-        bottomPrimaryLabel.setAlpha(1f);
-        bottomSecondaryLabel.setAlpha(1f);
+        bottomPrimaryLabel.setAlpha(ENABLE_VIEW);
+        bottomSecondaryLabel.setAlpha(ENABLE_VIEW);
+        bottomContainer.setAlpha(ENABLE_VIEW);
+        topImage.setAlpha(ENABLE_VIEW);
+    }
+
+    public void setBottomLabelsToClosedStatus() {
+        bottomContainer.setAlpha(DISABLE_VIEW);
+    }
+
+    public void setTopImageToDefaultStatus() {
+        topImage.setAlpha(ENABLE_VIEW);
+    }
+
+    public void setTopImageToClosedStatus() {
+        topImage.setAlpha(DISABLE_VIEW);
     }
 }

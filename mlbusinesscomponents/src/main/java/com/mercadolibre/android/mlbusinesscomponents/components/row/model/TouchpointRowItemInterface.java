@@ -18,6 +18,10 @@ public interface TouchpointRowItemInterface {
 
     List<DescriptionItemsInterface> getMainCharacteristics();
 
+    default List<DescriptionItemsInterface> getStatusDescription() {
+        return null;
+    }
+
     String getRightTopLabel();
 
     String getRightPrimaryLabel();
@@ -31,6 +35,10 @@ public interface TouchpointRowItemInterface {
     String getLink();
 
     String getRightLabelStatus();
+
+    default String getLeftImageStatus() {
+        return null;
+    }
 
     boolean isValid();
 }

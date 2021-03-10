@@ -209,4 +209,14 @@ public class CoverCardView extends CardView implements TouchpointTrackeable, Cov
     public CoverCardView getView() {
         return this;
     }
+
+    @Override
+    public void setTopImageToClosedtStatus() {
+        cardCoverImage.setAlpha(0.4f);
+    }
+
+    @Override
+    public void setTopImageToDefaultStatus() {
+        cardCoverImage.setAlpha(1f);
+    }
 }

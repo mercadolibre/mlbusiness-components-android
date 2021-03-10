@@ -26,6 +26,11 @@ public class MainDescriptionLabelsText extends FrameLayout {
         super(context, attrs, defStyleAttr);
         inflate(context, R.layout.description_labels_text, this);
         textView = findViewById(R.id.main_description_text);
+        final FrameLayout.LayoutParams layoutParams = (LayoutParams) getLayoutParams();
+        if (layoutParams != null) {
+            layoutParams.setMarginStart(getResources().getDimensionPixelSize(R.dimen.ui_025m));
+        }
+
     }
 
     public void setText(final String content, final String color) {

@@ -5,4 +5,8 @@ import com.mercadolibre.android.mlbusinesscomponents.components.row.model.Touchp
 public interface CoverCardContentInterfaceModel extends TouchpointRowItemInterface {
 
     String getCover();
+
+    default String getTopImageStatus() {
+        return null;
+    }
 }

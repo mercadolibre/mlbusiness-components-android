@@ -29,10 +29,14 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     private static final int SKELETON_INDEX = 1;
     private static final int VIEW_INDEX = 0;
 
+    private static final float DISABLE_VIEW = 0.4f;
+    private static final float ENABLE_VIEW = 1f;
+
     private final SimpleDraweeView leftImage;
     private final SimpleDraweeView leftImageAccessory;
     private final TextView mainTitle;
     private final TextView mainSubtitle;
+    private final View rightContainer;
     private final TextView rightTopLabel;
     private final TextView rightPrimaryLabel;
     private final TextView rightSecondaryLabel;
@@ -40,6 +44,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     private final RightBottomInfoView rightBottomInfoContainer;
     private final PickUpView mainDescriptionContainer;
     private final PickUpView mainCharacteristicsContainer;
+    private final PickUpView cardStatusContainer;
     private final TouchpointRowPresenter presenter;
     private final View rippleView;
     private OnClickCallback onClickCallback;
@@ -66,12 +71,14 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
         leftImageAccessory = findViewById(R.id.left_image_accessory);
         mainTitle = findViewById(R.id.main_title);
         mainSubtitle = findViewById(R.id.main_subtitle);
+        rightContainer = findViewById(R.id.discounts_payers_list_row_label_container);
         rightTopLabel = findViewById(R.id.right_top_label);
         rightPrimaryLabel = findViewById(R.id.right_primary_label);
         rightSecondaryLabel = findViewById(R.id.right_secondary_label);
         rightMiddleLabel = findViewById(R.id.right_middle_label);
         mainDescriptionContainer = findViewById(R.id.main_description_container);
         mainCharacteristicsContainer = findViewById(R.id.main_characteristics_container);
+        cardStatusContainer = findViewById(R.id.card_status_container);
         rightBottomInfoContainer = findViewById(R.id.right_bottom_info_container);
         rippleView = findViewById(R.id.discounts_payers_list_row_click);
         rightBottomInfoContainer.bindViews();
@@ -286,6 +293,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     }
 
     public void setRightLabelsToDefaultStatus() {
+        rightContainer.setAlpha(1f);
         rightMiddleLabel.setAlpha(1f);
         rightPrimaryLabel.setAlpha(1f);
         rightSecondaryLabel.setAlpha(1f);
@@ -332,7 +340,45 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
         mainCharacteristicsContainer.setVisibility(GONE);
     }
 
+    /**
+     * Hide Card Status
+     */
+    public void hideStatusDescription() {
+        if (cardStatusContainer.getChildCount() > 0) {
+            cardStatusContainer.removeAllViews();
+        }
+        cardStatusContainer.setVisibility(GONE);
+    }
+
+    /**
+     * Show card status
+     *
+     * @param cardStatus the status.
+     */
+    public void showStatusDescription(final List<DescriptionItemsInterface> cardStatus) {
+        if(cardStatusContainer != null) {
+            cardStatusContainer.bindViews(cardStatus);
+        }
+    }
+
     public void removeRippleEffect() {
         rippleView.setVisibility(GONE);
+    }
+
+    /**
+     * Sets left image to default status
+     */
+    public void setLeftImageToDefaultStatus() {
+        leftImage.setAlpha(ENABLE_VIEW);
+        leftImageAccessory.setAlpha(ENABLE_VIEW);
+    }
+
+    public void setLeftImageToClosedStatus() {
+        leftImage.setAlpha(DISABLE_VIEW);
+        leftImageAccessory.setAlpha(DISABLE_VIEW);
+    }
+
+    public void setRightContainerToClosedStatus() {
+        rightContainer.setAlpha(0.4f);
     }
 }

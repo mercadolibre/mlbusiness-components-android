@@ -73,6 +73,7 @@
             tools:text="Comida rápida Comida rápida Comida rápida" />
 
         <LinearLayout
+            android:id="@+id/touchpoint_hybrid_carousel_default_card_bottom_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"

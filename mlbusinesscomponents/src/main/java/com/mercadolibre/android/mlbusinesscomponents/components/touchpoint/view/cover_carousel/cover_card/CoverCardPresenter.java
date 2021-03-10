@@ -6,6 +6,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.track
 
 public class CoverCardPresenter {
 
+    public static final String CLOSED = "closed";
     private String link =  null;
     private TouchpointTracking tracking = null;
 
@@ -26,6 +27,15 @@ public class CoverCardPresenter {
         setCoverImage(model.getContent().getCover(), view);
         setOnClick(model.getLink(), view);
         setTracking(model.getTracking(), view);
+        setTopImageStatus(model.getContent().getTopImageStatus(), view);
+    }
+
+    private void setTopImageStatus(final String topImageStatus, final CoverCardInterfaceView view) {
+        if (topImageStatus != null  && CLOSED.equals(topImageStatus.toLowerCase())) {
+            view.setTopImageToClosedtStatus();
+        } else {
+            view.setTopImageToDefaultStatus();
+        }
     }
 
     private void setRow(final TouchpointRowItemInterface description, final CoverCardInterfaceView view) {
