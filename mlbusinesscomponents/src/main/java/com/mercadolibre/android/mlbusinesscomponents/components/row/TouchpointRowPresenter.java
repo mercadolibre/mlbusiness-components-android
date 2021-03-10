@@ -41,11 +41,9 @@ public class TouchpointRowPresenter {
             return;
         }
 
-        switch (leftImageStatus.toLowerCase()) {
-        case CLOSED:
+        if (CLOSED.equals(leftImageStatus.toLowerCase())) {
             view.setLeftImageToClosedStatus();
-            break;
-        default:
+        } else {
             view.setLeftImageToDefaultStatus();
         }
     }

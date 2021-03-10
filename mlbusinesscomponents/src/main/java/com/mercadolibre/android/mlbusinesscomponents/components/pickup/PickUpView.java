@@ -48,6 +48,8 @@ public class PickUpView extends LinearLayout {
     public void removeMargingStart() {
         final View firstItem = getChildAt(0);
         final LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) firstItem.getLayoutParams();
-        layoutParams.setMarginStart(0);
+        if (layoutParams != null) {
+            layoutParams.setMarginStart(0);
+        }
     }
 }
