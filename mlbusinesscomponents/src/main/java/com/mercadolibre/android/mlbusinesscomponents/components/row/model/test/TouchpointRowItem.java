@@ -89,7 +89,7 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
 
         mainDescription = new ArrayList<>(list);
         mainCharacteristics = new ArrayList<>(list);
-        statusDescription = null;
+        statusDescription = new ArrayList<>(list1);
 
         rightTopLabel = null;
         rightPrimaryLabel = "10%";

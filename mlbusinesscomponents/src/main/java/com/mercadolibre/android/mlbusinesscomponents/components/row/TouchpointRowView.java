@@ -348,11 +348,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
         if (cardStatusContainer.getChildCount() > 0) {
             cardStatusContainer.removeAllViews();
         }
-        ConstraintLayout.LayoutParams layoutParams =
-            (ConstraintLayout.LayoutParams) mainCharacteristicsContainer.getLayoutParams();
-        if (layoutParams != null) {
-            layoutParams.setMargins(0, 0, 0, getResources().getDimensionPixelSize(R.dimen.ui_2m));
-        }
+        setMainCharacteristicMarginBottom(getResources().getDimensionPixelSize(R.dimen.ui_2m));
         cardStatusContainer.setVisibility(GONE);
     }
 
@@ -364,11 +360,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     public void showStatusDescription(final List<DescriptionItemsInterface> cardStatus) {
         if(cardStatusContainer != null) {
             cardStatusContainer.bindViews(cardStatus);
-            ConstraintLayout.LayoutParams layoutParams =
-                (ConstraintLayout.LayoutParams) mainCharacteristicsContainer.getLayoutParams();
-            if (layoutParams != null) {
-                layoutParams.setMargins(0, 0, 0, 0);
-            }
+            setMainCharacteristicMarginBottom(0);
         }
     }
 
@@ -391,5 +383,13 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
 
     public void setRightContainerToClosedStatus() {
         rightContainer.setAlpha(0.4f);
+    }
+
+    private void setMainCharacteristicMarginBottom(final int dimensionPixelSize) {
+        ConstraintLayout.LayoutParams layoutParams =
+            (ConstraintLayout.LayoutParams) mainCharacteristicsContainer.getLayoutParams();
+        if (layoutParams != null) {
+            layoutParams.setMargins(0, 0, 0, dimensionPixelSize);
+        }
     }
 }
