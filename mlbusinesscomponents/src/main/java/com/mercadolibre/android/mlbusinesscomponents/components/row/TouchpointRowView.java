@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointAssetLoader;
@@ -347,6 +348,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
         if (cardStatusContainer.getChildCount() > 0) {
             cardStatusContainer.removeAllViews();
         }
+        setMainCharacteristicMarginBottom(getResources().getDimensionPixelSize(R.dimen.ui_2m));
         cardStatusContainer.setVisibility(GONE);
     }
 
@@ -358,6 +360,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     public void showStatusDescription(final List<DescriptionItemsInterface> cardStatus) {
         if(cardStatusContainer != null) {
             cardStatusContainer.bindViews(cardStatus);
+            setMainCharacteristicMarginBottom(0);
         }
     }
 
@@ -380,5 +383,13 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
 
     public void setRightContainerToClosedStatus() {
         rightContainer.setAlpha(0.4f);
+    }
+
+    private void setMainCharacteristicMarginBottom(final int dimensionPixelSize) {
+        ConstraintLayout.LayoutParams layoutParams =
+            (ConstraintLayout.LayoutParams) mainCharacteristicsContainer.getLayoutParams();
+        if (layoutParams != null) {
+            layoutParams.setMargins(0, 0, 0, dimensionPixelSize);
+        }
     }
 }

@@ -97,8 +97,8 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
         rightMiddleLabel = "Tope de $ 100";
         pillResponse = new PillResponse("discount_payers_checked", "NIVEL 5", new FeatureFormatResponse("#FFFFFF", "#000000"));
         link = null;
-        rightLabelStatus = "blocked";
-        leftImageStatus = "blocked";
+        rightLabelStatus = "closed";
+        leftImageStatus = "closed";
     }
 
     @Override

@@ -10,8 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/ui_2m">
+        android:layout_height="wrap_content">
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/left_image"
@@ -90,6 +89,7 @@
             android:id="@+id/main_characteristics_container"
             android:translationY="-4dp"
             android:layout_marginStart="@dimen/ui_2m"
+            android:layout_marginBottom="@dimen/ui_2m"
             app:layout_constraintTop_toBottomOf="@+id/main_description_container"
             app:layout_constraintBottom_toTopOf="@id/card_status_container"
             app:layout_constraintStart_toEndOf="@+id/left_image" />
@@ -103,6 +103,7 @@
             android:layout_marginTop="@dimen/ui_025m"
             app:layout_constraintTop_toBottomOf="@+id/main_characteristics_container"
             app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/ui_2m"
             app:layout_constraintStart_toEndOf="@+id/left_image" />
 
         <LinearLayout
