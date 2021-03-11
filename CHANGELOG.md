@@ -1,4 +1,4 @@
-## new
+## 1.17.1
 - Se fixea el margen inferior de hybrid row
 
 ## 1.17.0
