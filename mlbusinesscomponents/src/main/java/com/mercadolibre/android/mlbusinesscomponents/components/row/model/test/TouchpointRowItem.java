@@ -89,7 +89,7 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
 
         mainDescription = new ArrayList<>(list);
         mainCharacteristics = new ArrayList<>(list);
-        statusDescription = new ArrayList<>(list1);
+        statusDescription = null;
 
         rightTopLabel = null;
         rightPrimaryLabel = "10%";
@@ -97,8 +97,8 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
         rightMiddleLabel = "Tope de $ 100";
         pillResponse = new PillResponse("discount_payers_checked", "NIVEL 5", new FeatureFormatResponse("#FFFFFF", "#000000"));
         link = null;
-        rightLabelStatus = "blocked";
-        leftImageStatus = "blocked";
+        rightLabelStatus = "closed";
+        leftImageStatus = "closed";
     }
 
     @Override
