@@ -1,4 +1,4 @@
-## new 
+## 1.18.0
 - Se apaga el netedscroll para evitar conflictos con el coordinator layout
 
 ## 1.17.1
