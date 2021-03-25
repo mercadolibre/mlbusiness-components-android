@@ -1,4 +1,4 @@
-## new
+## 1.18.1
 - Se arregla top Image status
 
 ## 1.18.0
