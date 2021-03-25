@@ -309,7 +309,6 @@ public class HybridCarouselDefaultCardView extends CardView implements Touchpoin
         bottomPrimaryLabel.setAlpha(ENABLE_VIEW);
         bottomSecondaryLabel.setAlpha(ENABLE_VIEW);
         bottomContainer.setAlpha(ENABLE_VIEW);
-        topImage.setAlpha(ENABLE_VIEW);
     }
 
     public void setBottomLabelsToClosedStatus() {

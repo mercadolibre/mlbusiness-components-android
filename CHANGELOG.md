@@ -1,3 +1,6 @@
+## new
+- Se arregla top Image status
+
 ## 1.18.0
 - Se apaga el netedscroll para evitar conflictos con el coordinator layout
 
