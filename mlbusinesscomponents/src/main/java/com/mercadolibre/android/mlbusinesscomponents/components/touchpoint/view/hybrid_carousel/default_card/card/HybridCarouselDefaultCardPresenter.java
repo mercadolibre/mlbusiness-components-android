@@ -48,10 +48,10 @@ public class HybridCarouselDefaultCardPresenter {
 
 
     private void setTopImageStatus(final String topImageStatus) {
-        if (CLOSED.equals(topImageStatus)) {
-            view.setTopImageToDefaultStatus();
-        } else {
+        if (topImageStatus != null && CLOSED.equals(topImageStatus.toLowerCase())) {
             view.setTopImageToClosedStatus();
+        } else {
+            view.setTopImageToDefaultStatus();
         }
     }
 
