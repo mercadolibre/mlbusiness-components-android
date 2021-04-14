@@ -1,6 +1,6 @@
 apply plugin:'com.android.application'
-apply plugin:'kotlin-android-extensions'
 apply plugin:'kotlin-android'
+apply plugin:'kotlin-android-extensions'
 
 android {
     compileSdkVersion apiLevel as int
@@ -12,7 +12,7 @@ android {
         minSdkVersion minApiLevel as int
         targetSdkVersion apiLevel as int
         versionCode 1
-        versionName version_to_deploy as String
+        versionName libraryVersion as String
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
 

@@ -41,5 +41,4 @@ public final class LoyaltyBroadcaster {
 
         LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
-
 }

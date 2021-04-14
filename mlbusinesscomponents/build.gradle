@@ -11,7 +11,7 @@ android {
         minSdkVersion minApiLevel
         targetSdkVersion apiLevel
         versionCode 1
-        versionName version_to_deploy as String
+        versionName libraryVersion as String
         consumerProguardFiles 'proguard-rules.pro'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
@@ -39,6 +39,7 @@ dependencies {
     implementation fileTree(dir:'libs', include:['*.jar'])
 
     implementation "androidx.appcompat:appcompat:$appCompat"
+    implementation "androidx.localbroadcastmanager:localbroadcastmanager:$localBroadcastManager"
     testImplementation "junit:junit:$junit"
     androidTestImplementation "androidx.test.ext:junit:$testRunner"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
