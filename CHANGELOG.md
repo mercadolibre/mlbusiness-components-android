@@ -1,3 +1,7 @@
+## 1.19.0
+- Se elimina del skeleton de la hybrid row
+- Se arregla las condiciones para disparar el skeleton del cover carousel
+
 ## 1.18.1
 - Se arregla top Image status
 

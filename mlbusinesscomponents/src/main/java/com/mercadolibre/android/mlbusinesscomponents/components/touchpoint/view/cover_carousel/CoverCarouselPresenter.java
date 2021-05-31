@@ -15,7 +15,7 @@ public class CoverCarouselPresenter {
      */
     public void mapResponse(final CoverCarouselInterfaceModel response, final CoverCarouselViewInterface view) {
 
-        if (response == null) {
+        if (response == null || response.getItems() == null) {
             view.showSkeleton();
             return;
         }
