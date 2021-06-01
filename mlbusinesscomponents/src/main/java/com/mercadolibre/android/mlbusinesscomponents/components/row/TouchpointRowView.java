@@ -1,19 +1,18 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.row;
 
 import android.content.Context;
+import android.graphics.Rect;
 import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointAssetLoader;
 import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointImageLoader;
-import com.mercadolibre.android.mlbusinesscomponents.components.pickup.MainDescriptionLabelsText;
-import com.mercadolibre.android.mlbusinesscomponents.components.pickup.MainDescriptionLabesImage;
 import com.mercadolibre.android.mlbusinesscomponents.components.pickup.PickUpView;
 import com.mercadolibre.android.mlbusinesscomponents.components.pill.model.PillResponseInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.pill.view.RightBottomInfoView;
@@ -84,6 +83,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
         rippleView = findViewById(R.id.discounts_payers_list_row_click);
         rightBottomInfoContainer.bindViews();
         presenter = new TouchpointRowPresenter();
+        post(this::analyzeComponentsPositions);
     }
 
     /**
@@ -391,5 +391,62 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
         if (layoutParams != null) {
             layoutParams.setMargins(0, 0, 0, dimensionPixelSize);
         }
+    }
+
+    private Rect getRectFromView(final View view, final int[] position) {
+        return new Rect(
+            position[0], position[1],
+            position[0] + view.getMeasuredWidth(),
+            position[1] + view.getMeasuredHeight()
+        );
+    }
+
+    private boolean areViewsOverlapping(final Rect firstViewRect, final Rect secondViewRect, final Rect thirdViewRect,
+        final Rect intersectedView) {
+        return firstViewRect.intersect(intersectedView) || secondViewRect.intersect(intersectedView) ||
+            thirdViewRect.intersect(intersectedView);
+    }
+
+    private void analyzeComponentsPositions() {
+        final int[] mainDescriptionContainerPositions = new int[2];
+        final int[] mainCharacteristicsContainerPositions = new int[2];
+        final int[] cardStatusContainerPosition = new int[2];
+        final int[] rightContainerPosition = new int[2];
+
+        mainDescriptionContainer.getLocationOnScreen(mainDescriptionContainerPositions);
+        mainCharacteristicsContainer.getLocationOnScreen(mainCharacteristicsContainerPositions);
+        cardStatusContainer.getLocationOnScreen(cardStatusContainerPosition);
+        rightContainer.getLocationOnScreen(rightContainerPosition);
+
+        final Rect mainDescriptionRect =
+            getRectFromView(mainDescriptionContainer, mainDescriptionContainerPositions);
+        final Rect mainCharacteristicsRect =
+            getRectFromView(mainCharacteristicsContainer, mainCharacteristicsContainerPositions);
+        final Rect cardStatusRect = getRectFromView(cardStatusContainer, cardStatusContainerPosition);
+        final Rect rightContainerRect = getRectFromView(rightContainer, rightContainerPosition);
+
+        final boolean viewsAreOverlapping =
+            areViewsOverlapping(mainDescriptionRect, mainCharacteristicsRect, cardStatusRect, rightContainerRect);
+
+        if (viewsAreOverlapping) {
+            setNewConstraintsForOverlappingViews();
+        }
+    }
+
+    private void setNewConstraintsForOverlappingViews() {
+        final ConstraintLayout constraintContainer = findViewById(R.id.touchpoint_row_view_constraint_container);
+        final ConstraintSet constraintSet = new ConstraintSet();
+
+        constraintSet.clone(constraintContainer);
+        constraintSet.connect(R.id.main_description_container, ConstraintSet.TOP,
+            R.id.discounts_payers_list_row_label_container, ConstraintSet.BOTTOM);
+        constraintSet.connect(R.id.discounts_payers_list_row_label_container, ConstraintSet.TOP, R.id.main_title,
+            ConstraintSet.TOP);
+        constraintSet.connect(R.id.discounts_payers_list_row_label_container, ConstraintSet.BOTTOM,
+            R.id.main_description_container, ConstraintSet.TOP);
+        constraintSet.clear(R.id.discounts_payers_list_row_label_container, ConstraintSet.BOTTOM);
+        constraintSet.applyTo(constraintContainer);
+
+        requestLayout();
     }
 }

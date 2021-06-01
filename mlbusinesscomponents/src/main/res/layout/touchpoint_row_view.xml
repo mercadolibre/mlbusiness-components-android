@@ -9,6 +9,7 @@
     tools:measureAllChildren="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/touchpoint_row_view_constraint_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -49,6 +50,7 @@
             android:layout_marginEnd="@dimen/ui_1_75m"
             android:layout_marginStart="@dimen/ui_2m"
             android:layout_marginTop="@dimen/ui_2m"
+            app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintBottom_toTopOf="@+id/main_subtitle"
             app:layout_constraintEnd_toStartOf="@+id/discounts_payers_list_row_label_container"
             app:layout_constraintStart_toEndOf="@+id/left_image"
@@ -64,6 +66,7 @@
             android:layout_marginEnd="@dimen/ui_1_75m"
             android:layout_marginStart="@dimen/ui_2m"
             android:layout_marginTop="@dimen/ui_050m"
+            android:layout_marginBottom="@dimen/ui_050m"
             app:layout_constraintBottom_toTopOf="@+id/main_description_container"
             app:layout_constraintEnd_toStartOf="@+id/discounts_payers_list_row_label_container"
             app:layout_constraintStart_toEndOf="@+id/left_image"
@@ -176,7 +179,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
