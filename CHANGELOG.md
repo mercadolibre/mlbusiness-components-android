@@ -1,3 +1,6 @@
+## 1.19.0
+- Se arregla un bug de superposición de textos en la touchpoint row para fuentes grandes y pantallas chicas.
+
 ## 1.18.1
 - Se arregla top Image status
 
