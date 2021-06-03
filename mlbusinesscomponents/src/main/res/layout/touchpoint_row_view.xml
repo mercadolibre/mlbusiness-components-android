@@ -11,6 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/touchpoint_row_view_constraint_container"
         android:layout_width="match_parent"
+        android:background="@color/ui_meli_red"
         android:layout_height="wrap_content">
 
         <com.facebook.drawee.view.SimpleDraweeView
@@ -75,7 +76,7 @@
 
         <include
             layout="@layout/touchpoint_pick_up_view"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/main_description_container"
             android:translationY="-2dp"
@@ -87,7 +88,7 @@
 
         <include
             layout="@layout/touchpoint_pick_up_view"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/main_characteristics_container"
             android:translationY="-4dp"
@@ -99,7 +100,7 @@
 
         <include
             layout="@layout/touchpoint_pick_up_view"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/card_status_container"
             android:layout_marginStart="@dimen/ui_2m"
