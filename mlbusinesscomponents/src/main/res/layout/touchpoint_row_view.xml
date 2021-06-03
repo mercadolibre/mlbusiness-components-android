@@ -74,40 +74,46 @@
             tools:text="Comida rápida" />
 
         <include
+            android:id="@+id/main_description_container"
             layout="@layout/touchpoint_pick_up_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/main_description_container"
-            android:translationY="-2dp"
+            android:layout_marginEnd="@dimen/ui_1_75m"
             android:layout_marginBottom="@dimen/ui_1_5m"
-            android:layout_marginStart="@dimen/ui_2m"
-            app:layout_constraintTop_toBottomOf="@+id/main_subtitle"
+            android:translationY="-2dp"
             app:layout_constraintBottom_toTopOf="@+id/main_characteristics_container"
-            app:layout_constraintStart_toEndOf="@+id/left_image" />
+            app:layout_constraintEnd_toStartOf="@+id/discounts_payers_list_row_label_container"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/main_subtitle"
+            app:layout_constraintTop_toBottomOf="@+id/main_subtitle" />
 
         <include
+            android:id="@+id/main_characteristics_container"
             layout="@layout/touchpoint_pick_up_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/main_characteristics_container"
             android:translationY="-4dp"
-            android:layout_marginStart="@dimen/ui_2m"
+            android:layout_marginEnd="@dimen/ui_1_75m"
             android:layout_marginBottom="@dimen/ui_2m"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintEnd_toEndOf="@+id/main_description_container"
             app:layout_constraintTop_toBottomOf="@+id/main_description_container"
             app:layout_constraintBottom_toTopOf="@id/card_status_container"
-            app:layout_constraintStart_toEndOf="@+id/left_image" />
+            app:layout_constraintStart_toStartOf="@+id/main_subtitle" />
 
         <include
             layout="@layout/touchpoint_pick_up_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/card_status_container"
-            android:layout_marginStart="@dimen/ui_2m"
+            android:layout_marginEnd="@dimen/ui_1_75m"
             android:layout_marginTop="@dimen/ui_025m"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintEnd_toEndOf="@+id/main_description_container"
             app:layout_constraintTop_toBottomOf="@+id/main_characteristics_container"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="@dimen/ui_2m"
-            app:layout_constraintStart_toEndOf="@+id/left_image" />
+            app:layout_constraintStart_toStartOf="@+id/main_subtitle" />
 
         <LinearLayout
             android:id="@+id/discounts_payers_list_row_label_container"
