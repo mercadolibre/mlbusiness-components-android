@@ -440,6 +440,8 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
         constraintSet.clone(constraintContainer);
         constraintSet.connect(R.id.main_description_container, ConstraintSet.TOP,
             R.id.discounts_payers_list_row_label_container, ConstraintSet.BOTTOM);
+        constraintSet.connect(R.id.main_description_container, ConstraintSet.END,
+                ConstraintSet.PARENT_ID, ConstraintSet.END);
         constraintSet.connect(R.id.discounts_payers_list_row_label_container, ConstraintSet.TOP, R.id.main_title,
             ConstraintSet.TOP);
         constraintSet.connect(R.id.discounts_payers_list_row_label_container, ConstraintSet.BOTTOM,
