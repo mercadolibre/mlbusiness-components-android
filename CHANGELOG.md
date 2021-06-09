@@ -1,7 +1,7 @@
 ## 1.19.0
-- Se fixean las constraints de pickup  en hybrid row
-- Se elimina el separador del skeleton de hybrid row
-- Se arregla las condiciones para disparar el skeleton del cover carousel
+- Se fixean las constraints de pickup  en hybrid row.
+- Se elimina el separador del skeleton de hybrid row.
+- Se arregla las condiciones para disparar el skeleton del cover carousel.
 - Se arregla un bug de superposición de textos en la touchpoint row para fuentes grandes y pantallas chicas.
 
 ## 1.18.1
