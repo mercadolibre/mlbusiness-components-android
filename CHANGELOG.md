@@ -1,4 +1,4 @@
-## 1.19.0
+## 1.19.1
 - Se fixean las constraints de pickup  en hybrid row.
 - Se elimina el separador del skeleton de hybrid row.
 - Se arregla las condiciones para disparar el skeleton del cover carousel.
