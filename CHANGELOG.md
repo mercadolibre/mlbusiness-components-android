@@ -1,5 +1,5 @@
 ## Sin Publicar
-- Se agrega soporte a status color en el Title y Subtitle de TouchPointRow.
+- Se agrega soporte a status color en el title y subtitle de TouchPointRow.
 
 ## 1.19.1
 - Se fixean las constraints de pickup  en hybrid row.
