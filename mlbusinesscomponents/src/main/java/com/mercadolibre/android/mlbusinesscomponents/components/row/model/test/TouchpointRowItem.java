@@ -15,6 +15,7 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
     private final String leftImage;
     private final String leftImageAccessory;
     private final String mainTitle;
+    private final String mainTitleStatus;
     private final String mainSubtitle;
     private final List<DescriptionItems> mainDescription;
     @SerializedName("main_secondary_description")
@@ -29,7 +30,7 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
     private final String rightLabelStatus;
     private final String leftImageStatus;
 
-    public TouchpointRowItem(final String leftImage, final String leftImageAccessory, final String mainTitle,
+    public TouchpointRowItem(final String leftImage, final String leftImageAccessory, final String mainTitle, final String mainTitleStatus,
         final String mainSubtitle,
         final List<DescriptionItems> mainDescription,
         final List<DescriptionItems> mainCharacteristics,
@@ -41,6 +42,7 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
         this.leftImage = leftImage;
         this.leftImageAccessory = leftImageAccessory;
         this.mainTitle = mainTitle;
+        this.mainTitleStatus = mainTitleStatus;
         this.mainSubtitle = mainSubtitle;
         this.mainDescription = mainDescription;
         this.mainCharacteristics = mainCharacteristics;
@@ -60,6 +62,7 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
         leftImageAccessory = "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg";
         mainTitle = "Pizza Vegana";
         mainSubtitle = "Restaurante";
+        mainTitleStatus = null;
 
         List<DescriptionItems> list = new ArrayList<DescriptionItems>(){{
             DescriptionItems descriptionItems1 =
@@ -114,6 +117,11 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
     @Override
     public String getMainTitle() {
         return mainTitle;
+    }
+
+    @Override
+    public String getMainTitleStatus() {
+        return mainTitleStatus;
     }
 
     @Override
@@ -181,6 +189,7 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
         return !TextUtils.isEmpty(getLeftImage())
             || !TextUtils.isEmpty(getMainTitle())
             || !TextUtils.isEmpty(getMainSubtitle())
+            || !TextUtils.isEmpty(getMainTitleStatus())
             || !TextUtils.isEmpty(getLink());
     }
 }

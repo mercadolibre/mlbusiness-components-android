@@ -16,8 +16,6 @@ public interface TouchpointRowItemInterface {
 
     String getMainSubtitle();
 
-    String showStatusClosedTextColor();
-
     List<DescriptionItemsInterface> getMainDescription();
 
     List<DescriptionItemsInterface> getMainCharacteristics();
