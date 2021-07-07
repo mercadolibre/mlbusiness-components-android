@@ -172,7 +172,7 @@ public class TouchpointRowPresenter {
     }
 
     public void setStatusTextColor(final String status, final TouchpointRowView view) {
-        if (status.isEmpty()) {
+        if (TextUtils.isEmpty(status)) {
             return;
         }
 

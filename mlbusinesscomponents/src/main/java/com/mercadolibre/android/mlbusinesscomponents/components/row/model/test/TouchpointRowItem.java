@@ -62,7 +62,6 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
         leftImageAccessory = "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg";
         mainTitle = "Pizza Vegana";
         mainSubtitle = "Restaurante";
-        mainTitleStatus = null;
 
         List<DescriptionItems> list = new ArrayList<DescriptionItems>(){{
             DescriptionItems descriptionItems1 =
@@ -102,6 +101,7 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
         link = null;
         rightLabelStatus = "closed";
         leftImageStatus = "closed";
+        mainTitleStatus = "closed";
     }
 
     @Override

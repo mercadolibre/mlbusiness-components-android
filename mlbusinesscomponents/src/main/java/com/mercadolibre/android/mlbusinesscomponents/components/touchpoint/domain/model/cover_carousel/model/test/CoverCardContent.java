@@ -21,6 +21,7 @@ public class CoverCardContent implements CoverCardContentInterfaceModel {
     private final String leftImage;
     private final String leftImageAccessory;
     private final String mainTitle;
+    private final String mainTitleStatus;
     private final String mainSubtitle;
     private final List<DescriptionItems> mainDescription;
     @SerializedName("main_secondary_description")
@@ -37,7 +38,7 @@ public class CoverCardContent implements CoverCardContentInterfaceModel {
     private final String leftImageStatus;
 
     public CoverCardContent(final String cover, final String leftImage, final String leftImageAccessory,
-        final String mainTitle, final String mainSubtitle,
+        final String mainTitle, final String mainTitleStatus, final String mainSubtitle,
         final List<DescriptionItems> mainDescription,
         final List<DescriptionItems> mainCharacteristics,
         final List<DescriptionItems> statusDescription,
@@ -49,6 +50,7 @@ public class CoverCardContent implements CoverCardContentInterfaceModel {
         this.leftImage = leftImage;
         this.leftImageAccessory = leftImageAccessory;
         this.mainTitle = mainTitle;
+        this.mainTitleStatus = mainTitleStatus;
         this.mainSubtitle = mainSubtitle;
         this.mainDescription = mainDescription;
         this.mainCharacteristics = mainCharacteristics;
@@ -110,6 +112,7 @@ public class CoverCardContent implements CoverCardContentInterfaceModel {
         rightLabelStatus = item.getRightLabelStatus();
         topImageStatus = "closed";
         leftImageStatus = item.getLeftImageStatus();
+        mainTitleStatus = item.getMainTitleStatus();
     }
 
     @Override
@@ -130,6 +133,11 @@ public class CoverCardContent implements CoverCardContentInterfaceModel {
     @Override
     public String getMainTitle() {
         return mainTitle;
+    }
+
+    @Override
+    public String getMainTitleStatus() {
+        return mainTitleStatus;
     }
 
     @Override
@@ -202,6 +210,7 @@ public class CoverCardContent implements CoverCardContentInterfaceModel {
         return !TextUtils.isEmpty(getLeftImage())
             || !TextUtils.isEmpty(getMainTitle())
             || !TextUtils.isEmpty(getMainSubtitle())
+            || !TextUtils.isEmpty(getMainTitleStatus())
             || !TextUtils.isEmpty(getLink());
     }
 }
