@@ -2,13 +2,11 @@ package com.mercadolibre.android.mlbusinesscomponents.components.row;
 
 import android.content.Context;
 import android.graphics.Rect;
-import android.os.Build;
 import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
-import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -144,9 +142,9 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     }
 
     /**
-     * Show status closed text color
+     * Set title and subtitle to closed status
      **/
-    public void showStatusClosedTextColor(){
+    public void setTitleToClosedStatus() {
         mainTitle.setAlpha(DISABLE_VIEW);
         mainSubtitle.setAlpha(DISABLE_VIEW);
     }
@@ -249,7 +247,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
      * @param mainDescription the labels.
      */
     public void showDescriptionLabels(final List<DescriptionItemsInterface> mainDescription) {
-        if(mainDescriptionContainer != null) {
+        if (mainDescriptionContainer != null) {
             mainDescriptionContainer.bindViews(mainDescription);
         }
     }
@@ -329,14 +327,13 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
         AssetLoader.setStrategy(imageLoader);
     }
 
-
     /**
      * Show store distance
      *
      * @param mainDescription the labels.
      */
     public void showCharacterísticsLabels(final List<DescriptionItemsInterface> mainDescription) {
-        if(mainCharacteristicsContainer != null) {
+        if (mainCharacteristicsContainer != null) {
             mainCharacteristicsContainer.bindViews(mainDescription);
         }
     }
@@ -368,7 +365,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
      * @param cardStatus the status.
      */
     public void showStatusDescription(final List<DescriptionItemsInterface> cardStatus) {
-        if(cardStatusContainer != null) {
+        if (cardStatusContainer != null) {
             cardStatusContainer.bindViews(cardStatus);
             setMainCharacteristicMarginBottom(0);
         }
@@ -451,7 +448,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
         constraintSet.connect(R.id.main_description_container, ConstraintSet.TOP,
             R.id.discounts_payers_list_row_label_container, ConstraintSet.BOTTOM);
         constraintSet.connect(R.id.main_description_container, ConstraintSet.END,
-                ConstraintSet.PARENT_ID, ConstraintSet.END);
+            ConstraintSet.PARENT_ID, ConstraintSet.END);
         constraintSet.connect(R.id.discounts_payers_list_row_label_container, ConstraintSet.TOP, R.id.main_title,
             ConstraintSet.TOP);
         constraintSet.connect(R.id.discounts_payers_list_row_label_container, ConstraintSet.BOTTOM,

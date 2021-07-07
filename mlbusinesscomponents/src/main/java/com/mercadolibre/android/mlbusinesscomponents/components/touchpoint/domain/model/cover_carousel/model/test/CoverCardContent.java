@@ -89,7 +89,7 @@ public class CoverCardContent implements CoverCardContentInterfaceModel {
         list.add(descriptionItems4);
         list.add(descriptionItems5);
 
-        List<DescriptionItems> list1 = new ArrayList<DescriptionItems>(){{
+        List<DescriptionItems> list1 = new ArrayList<DescriptionItems>() {{
             DescriptionItems descriptionItems1 = new DescriptionItems("text", "Cerrado", "#F23D4F");
             DescriptionItems descriptionItems2 = new DescriptionItems("text", " · ", "#F23D4F");
             DescriptionItems descriptionItems3 = new DescriptionItems("text", " Abre el lunes ", "#F23D4F");
@@ -202,7 +202,7 @@ public class CoverCardContent implements CoverCardContentInterfaceModel {
 
     @Override
     public List<DescriptionItemsInterface> getStatusDescription() {
-        return  statusDescription  == null ? null : new ArrayList<>(statusDescription);
+        return statusDescription == null ? null : new ArrayList<>(statusDescription);
     }
 
     @Override
