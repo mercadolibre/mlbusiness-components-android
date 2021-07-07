@@ -147,8 +147,8 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
      * Show status closed text color
      **/
     public void showStatusClosedTextColor(){
-        mainTitle.setTextColor(getResources().getColor(R.color.text_status_closed));
-        mainSubtitle.setTextColor(getResources().getColor(R.color.text_status_closed));
+        mainTitle.setAlpha(DISABLE_VIEW);
+        mainSubtitle.setAlpha(DISABLE_VIEW);
     }
 
     /**
@@ -298,9 +298,9 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     }
 
     public void setRightLabelsToBlockedStatus() {
-        rightMiddleLabel.setAlpha(0.4f);
-        rightPrimaryLabel.setAlpha(0.4f);
-        rightSecondaryLabel.setAlpha(0.4f);
+        rightMiddleLabel.setAlpha(DISABLE_VIEW);
+        rightPrimaryLabel.setAlpha(DISABLE_VIEW);
+        rightSecondaryLabel.setAlpha(DISABLE_VIEW);
     }
 
     public void setRightLabelsToDefaultStatus() {
@@ -392,7 +392,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     }
 
     public void setRightContainerToClosedStatus() {
-        rightContainer.setAlpha(0.4f);
+        rightContainer.setAlpha(DISABLE_VIEW);
     }
 
     private void setMainCharacteristicMarginBottom(final int dimensionPixelSize) {
