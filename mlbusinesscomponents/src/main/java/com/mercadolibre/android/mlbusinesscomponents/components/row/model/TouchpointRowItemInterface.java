@@ -12,7 +12,11 @@ public interface TouchpointRowItemInterface {
 
     String getMainTitle();
 
+    String getMainTitleStatus();
+
     String getMainSubtitle();
+
+    String showStatusClosedTextColor();
 
     List<DescriptionItemsInterface> getMainDescription();
 

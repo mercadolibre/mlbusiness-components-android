@@ -2,11 +2,13 @@ package com.mercadolibre.android.mlbusinesscomponents.components.row;
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.os.Build;
 import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
+import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -139,6 +141,14 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     public void showTitle(final String title) {
         mainTitle.setText(title);
         mainTitle.setVisibility(VISIBLE);
+    }
+
+    /**
+     * Show status closed text color
+     **/
+    public void showStatusClosedTextColor(){
+        mainTitle.setTextColor(getResources().getColor(R.color.text_status_closed));
+        mainSubtitle.setTextColor(getResources().getColor(R.color.text_status_closed));
     }
 
     /**
