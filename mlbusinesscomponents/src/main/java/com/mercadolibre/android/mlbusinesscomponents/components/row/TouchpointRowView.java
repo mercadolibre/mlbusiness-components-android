@@ -142,11 +142,11 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     }
 
     /**
-     * Set title and subtitle to closed status
+     * Set title and subtitle to closed status color
      **/
-    public void setTitleToClosedStatus() {
-        mainTitle.setAlpha(DISABLE_VIEW);
-        mainSubtitle.setAlpha(DISABLE_VIEW);
+    public void setTitleToClosedStatusColor() {
+        mainTitle.setTextColor(getResources().getColor(R.color.touchpoint_closed_status));
+        mainSubtitle.setTextColor(getResources().getColor(R.color.touchpoint_closed_status));
     }
 
     /**
