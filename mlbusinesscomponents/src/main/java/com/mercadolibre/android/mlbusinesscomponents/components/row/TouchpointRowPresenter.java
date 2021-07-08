@@ -177,7 +177,7 @@ public class TouchpointRowPresenter {
         }
 
         if (CLOSED.equals(status.toLowerCase())) {
-            view.setTitleToClosedStatusColor();
+            view.setTitleToClosedStatus();
         }
     }
 }
