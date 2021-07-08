@@ -85,7 +85,7 @@ public class TouchpointRowPresenter {
 
     private void setCharacteristicsLabels(final List<DescriptionItemsInterface> mainDescription, final TouchpointRowView view) {
         if (mainDescription == null || mainDescription.isEmpty()) {
-            view.hideCharacterísticsLabels();
+            view.hideCharacteristicsLabels();
             return;
         }
         view.showCharacterísticsLabels(mainDescription);

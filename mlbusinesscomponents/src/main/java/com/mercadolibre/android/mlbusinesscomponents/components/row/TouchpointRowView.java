@@ -341,7 +341,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     /**
      * Hide store characteristics
      */
-    public void hideCharacterísticsLabels() {
+    public void hideCharacteristicsLabels() {
         if (mainCharacteristicsContainer.getChildCount() > 0) {
             mainCharacteristicsContainer.removeAllViews();
         }
