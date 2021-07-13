@@ -23,6 +23,7 @@ public class TouchpointRowPresenter {
         setRightBottomInfo(rowItem.getRightBottomInfo(), view);
         setTitle(rowItem.getMainTitle(), view);
         setSubtitle(rowItem.getMainSubtitle(), view);
+        setStatusTextColor(rowItem.getMainTitleStatus(), view);
         setTopLabel(rowItem.getRightTopLabel(), view);
         setMainLabel(rowItem.getRightPrimaryLabel(), view);
         setRightLabel(rowItem.getRightSecondaryLabel(), view);
@@ -84,7 +85,7 @@ public class TouchpointRowPresenter {
 
     private void setCharacteristicsLabels(final List<DescriptionItemsInterface> mainDescription, final TouchpointRowView view) {
         if (mainDescription == null || mainDescription.isEmpty()) {
-            view.hideCharacterísticsLabels();
+            view.hideCharacteristicsLabels();
             return;
         }
         view.showCharacterísticsLabels(mainDescription);
@@ -126,6 +127,7 @@ public class TouchpointRowPresenter {
             view.hideTitle();
             return;
         }
+
         view.showTitle(title);
     }
 
@@ -167,5 +169,15 @@ public class TouchpointRowPresenter {
             return;
         }
         view.showBottomLabel(bottomLabel);
+    }
+
+    public void setStatusTextColor(final String status, final TouchpointRowView view) {
+        if (TextUtils.isEmpty(status)) {
+            return;
+        }
+
+        if (CLOSED.equals(status.toLowerCase())) {
+            view.setTitleToClosedStatus();
+        }
     }
 }

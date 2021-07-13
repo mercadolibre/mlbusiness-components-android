@@ -142,6 +142,14 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     }
 
     /**
+     * Set title and subtitle to closed status
+     **/
+    public void setTitleToClosedStatus() {
+        mainTitle.setAlpha(DISABLE_VIEW);
+        mainSubtitle.setAlpha(DISABLE_VIEW);
+    }
+
+    /**
      * Hide brand name
      **/
     public void hideTitle() {
@@ -239,7 +247,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
      * @param mainDescription the labels.
      */
     public void showDescriptionLabels(final List<DescriptionItemsInterface> mainDescription) {
-        if(mainDescriptionContainer != null) {
+        if (mainDescriptionContainer != null) {
             mainDescriptionContainer.bindViews(mainDescription);
         }
     }
@@ -288,9 +296,9 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     }
 
     public void setRightLabelsToBlockedStatus() {
-        rightMiddleLabel.setAlpha(0.4f);
-        rightPrimaryLabel.setAlpha(0.4f);
-        rightSecondaryLabel.setAlpha(0.4f);
+        rightMiddleLabel.setAlpha(DISABLE_VIEW);
+        rightPrimaryLabel.setAlpha(DISABLE_VIEW);
+        rightSecondaryLabel.setAlpha(DISABLE_VIEW);
     }
 
     public void setRightLabelsToDefaultStatus() {
@@ -319,14 +327,13 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
         AssetLoader.setStrategy(imageLoader);
     }
 
-
     /**
      * Show store distance
      *
      * @param mainDescription the labels.
      */
     public void showCharacterísticsLabels(final List<DescriptionItemsInterface> mainDescription) {
-        if(mainCharacteristicsContainer != null) {
+        if (mainCharacteristicsContainer != null) {
             mainCharacteristicsContainer.bindViews(mainDescription);
         }
     }
@@ -334,7 +341,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     /**
      * Hide store characteristics
      */
-    public void hideCharacterísticsLabels() {
+    public void hideCharacteristicsLabels() {
         if (mainCharacteristicsContainer.getChildCount() > 0) {
             mainCharacteristicsContainer.removeAllViews();
         }
@@ -358,7 +365,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
      * @param cardStatus the status.
      */
     public void showStatusDescription(final List<DescriptionItemsInterface> cardStatus) {
-        if(cardStatusContainer != null) {
+        if (cardStatusContainer != null) {
             cardStatusContainer.bindViews(cardStatus);
             setMainCharacteristicMarginBottom(0);
         }
@@ -382,7 +389,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     }
 
     public void setRightContainerToClosedStatus() {
-        rightContainer.setAlpha(0.4f);
+        rightContainer.setAlpha(DISABLE_VIEW);
     }
 
     private void setMainCharacteristicMarginBottom(final int dimensionPixelSize) {
@@ -441,7 +448,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
         constraintSet.connect(R.id.main_description_container, ConstraintSet.TOP,
             R.id.discounts_payers_list_row_label_container, ConstraintSet.BOTTOM);
         constraintSet.connect(R.id.main_description_container, ConstraintSet.END,
-                ConstraintSet.PARENT_ID, ConstraintSet.END);
+            ConstraintSet.PARENT_ID, ConstraintSet.END);
         constraintSet.connect(R.id.discounts_payers_list_row_label_container, ConstraintSet.TOP, R.id.main_title,
             ConstraintSet.TOP);
         constraintSet.connect(R.id.discounts_payers_list_row_label_container, ConstraintSet.BOTTOM,

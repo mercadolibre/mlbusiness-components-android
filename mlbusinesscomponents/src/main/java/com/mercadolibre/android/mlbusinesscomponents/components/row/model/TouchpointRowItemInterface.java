@@ -12,6 +12,8 @@ public interface TouchpointRowItemInterface {
 
     String getMainTitle();
 
+    String getMainTitleStatus();
+
     String getMainSubtitle();
 
     List<DescriptionItemsInterface> getMainDescription();

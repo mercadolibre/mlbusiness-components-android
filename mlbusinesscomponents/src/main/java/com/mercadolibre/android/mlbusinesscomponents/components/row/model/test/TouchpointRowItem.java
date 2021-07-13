@@ -15,6 +15,7 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
     private final String leftImage;
     private final String leftImageAccessory;
     private final String mainTitle;
+    private final String mainTitleStatus;
     private final String mainSubtitle;
     private final List<DescriptionItems> mainDescription;
     @SerializedName("main_secondary_description")
@@ -29,7 +30,7 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
     private final String rightLabelStatus;
     private final String leftImageStatus;
 
-    public TouchpointRowItem(final String leftImage, final String leftImageAccessory, final String mainTitle,
+    public TouchpointRowItem(final String leftImage, final String leftImageAccessory, final String mainTitle, final String mainTitleStatus,
         final String mainSubtitle,
         final List<DescriptionItems> mainDescription,
         final List<DescriptionItems> mainCharacteristics,
@@ -41,6 +42,7 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
         this.leftImage = leftImage;
         this.leftImageAccessory = leftImageAccessory;
         this.mainTitle = mainTitle;
+        this.mainTitleStatus = mainTitleStatus;
         this.mainSubtitle = mainSubtitle;
         this.mainDescription = mainDescription;
         this.mainCharacteristics = mainCharacteristics;
@@ -61,7 +63,7 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
         mainTitle = "Pizza Vegana";
         mainSubtitle = "Restaurante";
 
-        List<DescriptionItems> list = new ArrayList<DescriptionItems>(){{
+        List<DescriptionItems> list = new ArrayList<DescriptionItems>() {{
             DescriptionItems descriptionItems1 =
                 new DescriptionItems("image", "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg", "#000000");
             DescriptionItems descriptionItems2 = new DescriptionItems("text", "623m", "#73000000");
@@ -77,7 +79,7 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
             add(descriptionItems5);
         }};
 
-        List<DescriptionItems> list1 = new ArrayList<DescriptionItems>(){{
+        List<DescriptionItems> list1 = new ArrayList<DescriptionItems>() {{
             DescriptionItems descriptionItems1 = new DescriptionItems("text", "Cerrado", "#F23D4F");
             DescriptionItems descriptionItems2 = new DescriptionItems("text", " · ", "#F23D4F");
             DescriptionItems descriptionItems3 = new DescriptionItems("text", " Abre el lunes ", "#F23D4F");
@@ -99,6 +101,7 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
         link = null;
         rightLabelStatus = "closed";
         leftImageStatus = "closed";
+        mainTitleStatus = "closed";
     }
 
     @Override
@@ -114,6 +117,11 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
     @Override
     public String getMainTitle() {
         return mainTitle;
+    }
+
+    @Override
+    public String getMainTitleStatus() {
+        return mainTitleStatus;
     }
 
     @Override
@@ -133,7 +141,7 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
 
     @Override
     public List<DescriptionItemsInterface> getStatusDescription() {
-        return  statusDescription == null ? null : new ArrayList<>(statusDescription);
+        return statusDescription == null ? null : new ArrayList<>(statusDescription);
     }
 
     @Override
@@ -181,6 +189,7 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
         return !TextUtils.isEmpty(getLeftImage())
             || !TextUtils.isEmpty(getMainTitle())
             || !TextUtils.isEmpty(getMainSubtitle())
+            || !TextUtils.isEmpty(getMainTitleStatus())
             || !TextUtils.isEmpty(getLink());
     }
 }
