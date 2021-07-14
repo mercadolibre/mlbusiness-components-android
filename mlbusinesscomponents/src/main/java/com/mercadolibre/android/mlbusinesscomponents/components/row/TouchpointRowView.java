@@ -150,6 +150,14 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     }
 
     /**
+     * Set default title and subtitle closed status
+     **/
+    public void setDefaultTitleClosedStatus() {
+        mainTitle.setTextColor(getResources().getColor(R.color.semi_black));
+        mainSubtitle.setTextColor(getResources().getColor(R.color.semi_black));
+    }
+
+    /**
      * Hide brand name
      **/
     public void hideTitle() {
@@ -332,7 +340,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
      *
      * @param mainDescription the labels.
      */
-    public void showCharacterísticsLabels(final List<DescriptionItemsInterface> mainDescription) {
+    public void showCharacteristicsLabels(final List<DescriptionItemsInterface> mainDescription) {
         if (mainCharacteristicsContainer != null) {
             mainCharacteristicsContainer.bindViews(mainDescription);
         }
