@@ -1,3 +1,5 @@
+## Sin Publicar
+
 ## 1.20.0
 - Se agrega soporte a status closed en el title y subtitle de TouchPointRow.
 
