@@ -153,8 +153,8 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
      * Set default title and subtitle closed status
      **/
     public void setDefaultTitleClosedStatus() {
-        mainTitle.setTextColor(getResources().getColor(R.color.semi_black));
-        mainSubtitle.setTextColor(getResources().getColor(R.color.semi_black));
+        mainTitle.setAlpha(ENABLE_VIEW);
+        mainSubtitle.setAlpha(ENABLE_VIEW);
     }
 
     /**
@@ -310,10 +310,10 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     }
 
     public void setRightLabelsToDefaultStatus() {
-        rightContainer.setAlpha(1f);
-        rightMiddleLabel.setAlpha(1f);
-        rightPrimaryLabel.setAlpha(1f);
-        rightSecondaryLabel.setAlpha(1f);
+        rightContainer.setAlpha(ENABLE_VIEW);
+        rightMiddleLabel.setAlpha(ENABLE_VIEW);
+        rightPrimaryLabel.setAlpha(ENABLE_VIEW);
+        rightSecondaryLabel.setAlpha(ENABLE_VIEW);
     }
 
     public void hideRightBottomInfo() {
