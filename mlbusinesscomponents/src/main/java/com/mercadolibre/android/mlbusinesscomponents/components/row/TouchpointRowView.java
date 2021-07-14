@@ -150,6 +150,14 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     }
 
     /**
+     * Set default title and subtitle closed status
+     **/
+    public void setDefaultTitleClosedStatus() {
+        mainTitle.setAlpha(ENABLE_VIEW);
+        mainSubtitle.setAlpha(ENABLE_VIEW);
+    }
+
+    /**
      * Hide brand name
      **/
     public void hideTitle() {
@@ -302,10 +310,10 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     }
 
     public void setRightLabelsToDefaultStatus() {
-        rightContainer.setAlpha(1f);
-        rightMiddleLabel.setAlpha(1f);
-        rightPrimaryLabel.setAlpha(1f);
-        rightSecondaryLabel.setAlpha(1f);
+        rightContainer.setAlpha(ENABLE_VIEW);
+        rightMiddleLabel.setAlpha(ENABLE_VIEW);
+        rightPrimaryLabel.setAlpha(ENABLE_VIEW);
+        rightSecondaryLabel.setAlpha(ENABLE_VIEW);
     }
 
     public void hideRightBottomInfo() {
@@ -332,7 +340,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
      *
      * @param mainDescription the labels.
      */
-    public void showCharacterísticsLabels(final List<DescriptionItemsInterface> mainDescription) {
+    public void showCharacteristicsLabels(final List<DescriptionItemsInterface> mainDescription) {
         if (mainCharacteristicsContainer != null) {
             mainCharacteristicsContainer.bindViews(mainDescription);
         }

@@ -88,7 +88,7 @@ public class TouchpointRowPresenter {
             view.hideCharacteristicsLabels();
             return;
         }
-        view.showCharacterísticsLabels(mainDescription);
+        view.showCharacteristicsLabels(mainDescription);
     }
 
     private void setStatusDescription(final List<DescriptionItemsInterface> statusDescription, final TouchpointRowView view) {
@@ -178,6 +178,8 @@ public class TouchpointRowPresenter {
 
         if (CLOSED.equals(status.toLowerCase())) {
             view.setTitleToClosedStatus();
+        } else {
+            view.setDefaultTitleClosedStatus();
         }
     }
 }
