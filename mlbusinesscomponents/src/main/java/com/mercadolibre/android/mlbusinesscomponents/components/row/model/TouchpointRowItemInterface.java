@@ -12,7 +12,9 @@ public interface TouchpointRowItemInterface {
 
     String getMainTitle();
 
-    String getMainTitleStatus();
+    default String getMainTitleStatus() {
+        return null;
+    }
 
     String getMainSubtitle();
 
