@@ -1,5 +1,8 @@
 ## Sin Publicar
 
+## 1.20.1
+- Se agrega default en el método de la interface TouchpointRowItemInterface
+
 ## 1.20.0
 - Se agrega soporte a status closed en el title y subtitle de TouchPointRow.
 
