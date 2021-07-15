@@ -134,7 +134,7 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
             );
             params.height = maxHeight + viewPagerPadding;
         } else {
-            params.height = maxHeight;
+            params.height = maxHeight + getResources().getDimensionPixelSize(R.dimen.ui_2m);
         }
     }
 

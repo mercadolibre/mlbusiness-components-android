@@ -5,7 +5,7 @@
     android:id="@+id/touchpoint_cover_carousel_view_flipper"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:parentTag="android.widget.FrameLayout">
+    android:measureAllChildren="false">
 
     <LinearLayout
         android:id="@+id/touchpoint_cover_carousel_container"
