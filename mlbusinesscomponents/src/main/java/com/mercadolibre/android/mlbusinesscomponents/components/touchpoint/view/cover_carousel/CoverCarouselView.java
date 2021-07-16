@@ -16,6 +16,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CoverCarouselInterfaceModel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.TrackListener;
+import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -120,6 +121,18 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
         viewPagerAdapter.setElementsView(items);
         viewPager.setCurrentItem(0);
         presenter.getMaxHeight(viewPagerAdapter.getElementsList(), this);
+    }
+
+    @Override
+    public void decorate() {
+        if (additionalInsets != null) {
+            viewPager.setPadding(
+                ScaleUtils.getPxFromSp(getContext(), additionalInsets.getLeft()),
+                ScaleUtils.getPxFromSp(getContext(), additionalInsets.getTop()),
+                ScaleUtils.getPxFromSp(getContext(), additionalInsets.getRight()),
+                ScaleUtils.getPxFromSp(getContext(), additionalInsets.getBottom())
+            );
+        }
     }
 
     @Override

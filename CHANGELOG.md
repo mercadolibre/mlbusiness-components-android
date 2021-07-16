@@ -1,5 +1,6 @@
 ## Sin Publicar
 - Se arregla la altura del CoverCarousel.
+- Se agrega la decoración por AdditionalInsets para utilizar el CoverCarousel como Touchpoint en la Home de la Wallet.
 
 ## 1.20.1
 - Se agrega default en el método de la interface TouchpointRowItemInterface
