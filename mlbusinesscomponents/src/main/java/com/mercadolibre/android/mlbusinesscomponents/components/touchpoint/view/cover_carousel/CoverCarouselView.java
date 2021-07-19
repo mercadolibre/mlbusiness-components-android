@@ -127,10 +127,10 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
     public void decorate() {
         if (additionalInsets != null) {
             viewPager.setPadding(
-                ScaleUtils.getPxFromSp(getContext(), additionalInsets.getLeft()),
-                ScaleUtils.getPxFromSp(getContext(), additionalInsets.getTop()),
-                ScaleUtils.getPxFromSp(getContext(), additionalInsets.getRight()),
-                ScaleUtils.getPxFromSp(getContext(), additionalInsets.getBottom())
+                (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getLeft()),
+                (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getTop()),
+                (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getRight()),
+                (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getBottom())
             );
         }
     }
