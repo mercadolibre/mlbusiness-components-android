@@ -16,6 +16,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CoverCarouselInterfaceModel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.TrackListener;
+import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -123,6 +124,18 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
     }
 
     @Override
+    public void decorate() {
+        if (additionalInsets != null) {
+            viewPager.setPadding(
+                (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getLeft()),
+                (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getTop()),
+                (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getRight()),
+                (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getBottom())
+            );
+        }
+    }
+
+    @Override
     public void setViewPagerHeight(final int maxHeight, final boolean isSkeletonVisible) {
         final ViewGroup.LayoutParams params = viewPager.getLayoutParams();
 
@@ -134,7 +147,7 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
             );
             params.height = maxHeight + viewPagerPadding;
         } else {
-            params.height = maxHeight;
+            params.height = maxHeight + getResources().getDimensionPixelSize(R.dimen.ui_2m);
         }
     }
 

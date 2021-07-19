@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/touchpoint_cover_carousel_view_flipper"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:parentTag="android.widget.FrameLayout">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:id="@+id/touchpoint_cover_carousel_container"

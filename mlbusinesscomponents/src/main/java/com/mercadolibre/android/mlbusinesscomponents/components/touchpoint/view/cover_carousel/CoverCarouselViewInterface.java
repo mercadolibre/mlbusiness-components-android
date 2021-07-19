@@ -30,4 +30,6 @@ public interface CoverCarouselViewInterface {
     void showSkeleton();
 
     void hideSkeleton();
+
+    void decorate();
 }

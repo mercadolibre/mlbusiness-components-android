@@ -74,5 +74,6 @@ public class CoverCarouselPresenter {
         }
 
         view.setViewPagerHeight(maxCoverCardHeight, isSkeletonVisible);
+        view.decorate();
     }
 }
