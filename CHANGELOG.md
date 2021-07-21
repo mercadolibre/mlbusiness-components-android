@@ -1,3 +1,5 @@
+## Sin Publicar
+
 ## 1.21.0
 - Se arregla la altura del CoverCarousel.
 - Se agrega la decoración por AdditionalInsets para utilizar el CoverCarousel como Touchpoint en la Home de la Wallet.
