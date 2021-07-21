@@ -12,10 +12,12 @@ import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.AdditionalEdgeInsets;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterfaceModel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CoverCarouselInterfaceModel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.TrackListener;
+import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -123,6 +125,27 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
     }
 
     @Override
+    public void decorate() {
+        if (additionalInsets != null) {
+            setViewPagerPaddingsFromInsets(additionalInsets);
+        }
+    }
+
+    private void setViewPagerPaddingsFromInsets(
+        final AdditionalEdgeInsets additionalInsets) {
+        viewPager.setPadding(
+            getInsetInPx(additionalInsets.getLeft()),
+            getInsetInPx(additionalInsets.getTop()),
+            getInsetInPx(additionalInsets.getRight()),
+            getInsetInPx(additionalInsets.getBottom())
+        );
+    }
+
+    private int getInsetInPx(final int inset) {
+        return (int) ScaleUtils.getPxFromDp(getContext(), inset);
+    }
+
+    @Override
     public void setViewPagerHeight(final int maxHeight, final boolean isSkeletonVisible) {
         final ViewGroup.LayoutParams params = viewPager.getLayoutParams();
 
@@ -134,7 +157,7 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
             );
             params.height = maxHeight + viewPagerPadding;
         } else {
-            params.height = maxHeight;
+            params.height = maxHeight + getResources().getDimensionPixelSize(R.dimen.ui_2m);
         }
     }
 
