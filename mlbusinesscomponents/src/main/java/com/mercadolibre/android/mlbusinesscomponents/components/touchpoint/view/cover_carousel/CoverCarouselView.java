@@ -134,11 +134,15 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
     private void setViewPagerPaddingsFromInsets(
         final AdditionalEdgeInsets additionalInsets) {
         viewPager.setPadding(
-            (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getLeft()),
-            (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getTop()),
-            (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getRight()),
-            (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getBottom())
+            getInsetInPx(additionalInsets.getLeft()),
+            getInsetInPx(additionalInsets.getTop()),
+            getInsetInPx(additionalInsets.getRight()),
+            getInsetInPx(additionalInsets.getBottom())
         );
+    }
+
+    private int getInsetInPx(final int inset) {
+        return (int) ScaleUtils.getPxFromDp(getContext(), inset);
     }
 
     @Override
