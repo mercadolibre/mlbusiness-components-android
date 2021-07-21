@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.AdditionalEdgeInsets;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterfaceModel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CoverCarouselInterfaceModel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
@@ -126,13 +127,18 @@ public class CoverCarouselView extends AbstractTouchpointChildView<CoverCarousel
     @Override
     public void decorate() {
         if (additionalInsets != null) {
-            viewPager.setPadding(
-                (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getLeft()),
-                (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getTop()),
-                (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getRight()),
-                (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getBottom())
-            );
+            setViewPagerPaddingsFromInsets(additionalInsets);
         }
+    }
+
+    private void setViewPagerPaddingsFromInsets(
+        final AdditionalEdgeInsets additionalInsets) {
+        viewPager.setPadding(
+            (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getLeft()),
+            (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getTop()),
+            (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getRight()),
+            (int) ScaleUtils.getPxFromDp(getContext(), additionalInsets.getBottom())
+        );
     }
 
     @Override
