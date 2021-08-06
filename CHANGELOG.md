@@ -1,4 +1,5 @@
 ## Sin Publicar
+- Cambios en el componente de beneficios de Loyalty
 
 ## 1.21.0
 - Se arregla la altura del CoverCarousel.

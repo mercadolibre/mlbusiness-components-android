@@ -23,7 +23,7 @@ public class MLBusinessInfoDataSample implements MLBusinessInfoData {
     }
 
     @Override
-    public int getLogoSize() {
+    public int getIconSize() {
         return 40;
     }
 

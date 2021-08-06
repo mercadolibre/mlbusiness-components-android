@@ -60,7 +60,7 @@ public class MLBusinessInfoView extends ConstraintLayout {
     }
 
     private void setIconSize() {
-        int iconSize = businessInfoData.getLogoSize();
+        int iconSize = businessInfoData.getIconSize();
         if (iconSize != 0) {
             final float density = getContext().getResources().getDisplayMetrics().density;
             final int valueInDp = (int) (iconSize * density);
