@@ -21,4 +21,14 @@ public class MLBusinessInfoDataSample implements MLBusinessInfoData {
     public String getIconBackgroundHexaColor() {
         return "#1AC2B0";
     }
+
+    @Override
+    public int getLogoSize() {
+        return 40;
+    }
+
+    @Override
+    public int getTextSize() {
+        return 20;
+    }
 }

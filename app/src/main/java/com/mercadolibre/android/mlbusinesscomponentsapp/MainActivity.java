@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity
         MLBusinessActionCardView splitPaymentView = findViewById(R.id.money_split);
         MLBusinessCrossSellingBoxView crossSellingBoxView = findViewById(R.id.crossSellingView);
         MLBusinessLoyaltyHeaderView loyaltyHeaderView = findViewById(R.id.loyaltyHeaderView);
+        MLBusinessLoyaltyHeaderView loyaltyHeaderViewWithSubscription = findViewById(R.id.loyaltyHeaderViewWithSubscription);
         LinearLayout benefitContainer = findViewById(R.id.loyaltyBenefitsContainer);
 
         Button button = findViewById(R.id.buttonOpen);
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity
         crossSellingBoxView.init(new MLBusinessCrossSellingBoxDataSample(), this);
 
         loyaltyHeaderView.init(new MLBusinessLoyaltyHeaderDataSample());
+        loyaltyHeaderViewWithSubscription.init(new MLBusinessLoyaltyHeaderDataSampleWithSubscription());
 
         benefitView.init(new MLBusinessInfoDataSample());
         benefitContainer.addView(benefitView);

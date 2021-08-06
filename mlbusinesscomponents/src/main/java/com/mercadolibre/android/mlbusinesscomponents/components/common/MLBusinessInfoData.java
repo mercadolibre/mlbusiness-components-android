@@ -13,4 +13,8 @@ public interface MLBusinessInfoData {
     @NonNull
     String getIconBackgroundHexaColor();
 
+    int getLogoSize();
+
+    int getTextSize();
+
 }
