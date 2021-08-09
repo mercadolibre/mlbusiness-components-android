@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/ui_meli_white"
+    android:minHeight="56dp"
     android:paddingStart="16dp"
     android:paddingLeft="16dp"
     android:paddingTop="10dp"
@@ -34,7 +35,7 @@
         tools:text="Beneficios" />
 
     <TextView
-        android:id="@+id/loyaltyLevelInfo"
+        android:id="@+id/subtitleInfo"
         style="@style/MLFont.Bold.Semi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

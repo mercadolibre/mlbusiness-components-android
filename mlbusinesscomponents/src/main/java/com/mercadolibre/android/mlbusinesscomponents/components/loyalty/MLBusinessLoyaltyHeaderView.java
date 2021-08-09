@@ -2,11 +2,16 @@ package com.mercadolibre.android.mlbusinesscomponents.components.loyalty;
 
 import android.content.Context;
 import android.graphics.Color;
+
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
+
 import android.util.AttributeSet;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import com.mercadolibre.android.mlbusinesscomponents.R;
 
 public class MLBusinessLoyaltyHeaderView extends ConstraintLayout {
@@ -14,7 +19,7 @@ public class MLBusinessLoyaltyHeaderView extends ConstraintLayout {
     private final ViewGroup containerView;
     private final LoyaltyProgress progress;
     private final TextView title;
-    private final TextView loyaltyLevelInfo;
+    private final TextView subtitleInfo;
     private MLBusinessLoyaltyHeaderData businessLoyaltyHeaderData;
 
     public MLBusinessLoyaltyHeaderView(final Context context) {
@@ -33,20 +38,51 @@ public class MLBusinessLoyaltyHeaderView extends ConstraintLayout {
         containerView = findViewById(R.id.containerView);
         progress = findViewById(R.id.loyaltyRing);
         title = findViewById(R.id.loyaltyTitle);
-        loyaltyLevelInfo = findViewById(R.id.loyaltyLevelInfo);
+        subtitleInfo = findViewById(R.id.subtitleInfo);
     }
 
     private void configLoyaltyHeaderView() {
-        updateRing();
+        if (businessLoyaltyHeaderData.getRingNumber() == 0) {
+            progress.setVisibility(View.GONE);
+        } else {
+            updateRing();
+        }
 
-        final int textColor = Color.parseColor(businessLoyaltyHeaderData.getPrimaryHexaColor());
-        title.setText(businessLoyaltyHeaderData.getTitle());
-        title.setTextColor(textColor);
-
-        loyaltyLevelInfo.setText(businessLoyaltyHeaderData.getSubtitle());
-        loyaltyLevelInfo.setTextColor(textColor);
-
+        setTitles();
         containerView.setBackgroundColor(Color.parseColor(businessLoyaltyHeaderData.getBackgroundHexaColor()));
+    }
+
+    private void setTitles() {
+        final int textColor = Color.parseColor(businessLoyaltyHeaderData.getPrimaryHexaColor());
+
+        if (businessLoyaltyHeaderData.getTitle() != null) {
+            title.setText(businessLoyaltyHeaderData.getTitle());
+            title.setTextColor(textColor);
+        } else {
+            title.setVisibility(View.GONE);
+            if (businessLoyaltyHeaderData.getSubtitle() != null) {
+                setSubtitleConstraintsWhenTitleIsEmpty();
+            }
+        }
+
+        if (businessLoyaltyHeaderData.getSubtitle() != null) {
+            subtitleInfo.setText(businessLoyaltyHeaderData.getSubtitle());
+            subtitleInfo.setTextColor(textColor);
+        }
+
+    }
+
+    private void setSubtitleConstraintsWhenTitleIsEmpty() {
+        int subtitleId = R.id.subtitleInfo;
+        int containerId = R.id.containerView;
+        ConstraintLayout constraintLayout = findViewById(containerId);
+        ConstraintSet constraintSet = new ConstraintSet();
+        constraintSet.clone(constraintLayout);
+        constraintSet.connect(subtitleId, ConstraintSet.END, containerId, ConstraintSet.END, 0);
+        constraintSet.connect(subtitleId, ConstraintSet.TOP, containerId, ConstraintSet.TOP, 0);
+        constraintSet.connect(subtitleId, ConstraintSet.START, containerId, ConstraintSet.START, 0);
+        constraintSet.connect(subtitleId, ConstraintSet.BOTTOM, containerId, ConstraintSet.BOTTOM, 0);
+        constraintSet.applyTo(constraintLayout);
     }
 
     private void updateRing() {
