@@ -53,7 +53,7 @@ public class MLBusinessInfoView extends ConstraintLayout {
     }
 
     private void setDescriptionTextSize() {
-        int descriptionTextSize = businessInfoData.getTextSize();
+        int descriptionTextSize = businessInfoData.getDescriptionSize();
         if (descriptionTextSize != 0) {
             description.setTextSize(TypedValue.COMPLEX_UNIT_SP, descriptionTextSize);
         }

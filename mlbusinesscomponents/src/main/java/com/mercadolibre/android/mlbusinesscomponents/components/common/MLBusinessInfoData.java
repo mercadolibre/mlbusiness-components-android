@@ -15,6 +15,6 @@ public interface MLBusinessInfoData {
 
     int getIconSize();
 
-    int getTextSize();
+    int getDescriptionSize();
 
 }

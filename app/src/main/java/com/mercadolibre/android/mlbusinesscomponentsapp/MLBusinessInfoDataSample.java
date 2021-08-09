@@ -28,7 +28,7 @@ public class MLBusinessInfoDataSample implements MLBusinessInfoData {
     }
 
     @Override
-    public int getTextSize() {
+    public int getDescriptionSize() {
         return 20;
     }
 }
