@@ -38,7 +38,7 @@ public class MLBusinessLoyaltyHeaderView extends ConstraintLayout {
         containerView = findViewById(R.id.containerView);
         progress = findViewById(R.id.loyaltyRing);
         title = findViewById(R.id.loyaltyTitle);
-        subtitleInfo = findViewById(R.id.loyaltyLevelInfo);
+        subtitleInfo = findViewById(R.id.subtitleInfo);
     }
 
     private void configLoyaltyHeaderView() {
@@ -60,12 +60,12 @@ public class MLBusinessLoyaltyHeaderView extends ConstraintLayout {
             title.setTextColor(textColor);
         } else {
             title.setVisibility(View.GONE);
-            if (subtitleInfo != null) {
+            if (businessLoyaltyHeaderData.getSubtitle() != null) {
                 setSubtitleConstraintsWhenTitleIsEmpty();
             }
         }
 
-        if (subtitleInfo != null) {
+        if (businessLoyaltyHeaderData.getSubtitle() != null) {
             subtitleInfo.setText(businessLoyaltyHeaderData.getSubtitle());
             subtitleInfo.setTextColor(textColor);
         }
@@ -73,7 +73,7 @@ public class MLBusinessLoyaltyHeaderView extends ConstraintLayout {
     }
 
     private void setSubtitleConstraintsWhenTitleIsEmpty() {
-        int subtitleId = R.id.loyaltyLevelInfo;
+        int subtitleId = R.id.subtitleInfo;
         int containerId = R.id.containerView;
         ConstraintLayout constraintLayout = findViewById(containerId);
         ConstraintSet constraintSet = new ConstraintSet();

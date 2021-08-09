@@ -35,7 +35,7 @@
         tools:text="Beneficios" />
 
     <TextView
-        android:id="@+id/loyaltyLevelInfo"
+        android:id="@+id/subtitleInfo"
         style="@style/MLFont.Bold.Semi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
