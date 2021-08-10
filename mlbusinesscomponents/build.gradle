@@ -50,4 +50,5 @@ dependencies {
     implementation "com.mercadolibre.android:ui:$meliUi"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayout"
     implementation "androidx.cardview:cardview:$cardView"
+    implementation "com.facebook.fresco:fresco:$frescoVersion"
 }

@@ -55,6 +55,10 @@ public class HybridCarouselDefaultCardView extends CardView implements Touchpoin
         inflate(getContext(), R.layout.touchpoint_hybrid_carousel_default_card_view, this);
         topImageContainer = findViewById(R.id.touchpoint_hybrid_carousel_default_card_image_container);
         topImage = findViewById(R.id.touchpoint_hybrid_carousel_default_card_top_image);
+        if (topImage.getHierarchy() != null
+                && topImage.getHierarchy().getRoundingParams() != null ) {
+            topImage.getHierarchy().getRoundingParams().setPaintFilterBitmap(true);
+        }
         topImageAccessory = findViewById(R.id.touchpoint_hybrid_carousel_default_card_top_image_accessory);
         middleTitle = findViewById(R.id.touchpoint_hybrid_carousel_default_card_middle_title);
         middleSubtitle = findViewById(R.id.touchpoint_hybrid_carousel_default_card_middle_subtitle);

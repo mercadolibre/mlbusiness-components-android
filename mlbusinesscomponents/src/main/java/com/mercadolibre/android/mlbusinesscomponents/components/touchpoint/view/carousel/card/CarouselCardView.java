@@ -86,6 +86,10 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
         super(context, attrs, defStyleAttr);
         inflate(getContext(), R.layout.touchpoint_carousel_card_view, this);
         logo = findViewById(R.id.touchpoint_carousel_card_logo);
+        if (logo.getHierarchy() != null
+                && logo.getHierarchy().getRoundingParams() != null ) {
+            logo.getHierarchy().getRoundingParams().setPaintFilterBitmap(true);
+        }
         levelContainer = findViewById(R.id.touchpoint_carousel_card_level_container);
         levelIcon = findViewById(R.id.touchpoint_carousel_card_level_icon);
         levelDescription = findViewById(R.id.touchpoint_carousel_card_level);

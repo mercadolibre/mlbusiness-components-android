@@ -25,10 +25,10 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
             app:layout_constraintVertical_chainStyle="packed"
-            fresco:actualImageScaleType="fitCenter"
+            app:actualImageScaleType="centerCrop"
             fresco:overlayImage="@color/row_logo_overlay"
-            fresco:placeholderImage="@drawable/oval_skeleton"
-            fresco:roundAsCircle="true" />
+            app:placeholderImage="@drawable/oval_skeleton"
+            app:roundAsCircle="true" />
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/left_image_accessory"
@@ -39,7 +39,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/left_image"
             app:layout_constraintEnd_toEndOf="@+id/left_image"
             app:layout_constraintVertical_chainStyle="packed"
-            fresco:actualImageScaleType="fitCenter"
+            fresco:actualImageScaleType="centerCrop"
             fresco:roundAsCircle="true" />
 
         <TextView

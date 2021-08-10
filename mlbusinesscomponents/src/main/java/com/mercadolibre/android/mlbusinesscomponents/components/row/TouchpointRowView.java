@@ -68,6 +68,10 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
         super(context, attrs);
         inflate(context, R.layout.touchpoint_row_view, this);
         leftImage = findViewById(R.id.left_image);
+        if (leftImage.getHierarchy() != null
+                && leftImage.getHierarchy().getRoundingParams() != null ) {
+            leftImage.getHierarchy().getRoundingParams().setPaintFilterBitmap(true);
+        }
         leftImageAccessory = findViewById(R.id.left_image_accessory);
         mainTitle = findViewById(R.id.main_title);
         mainSubtitle = findViewById(R.id.main_subtitle);
