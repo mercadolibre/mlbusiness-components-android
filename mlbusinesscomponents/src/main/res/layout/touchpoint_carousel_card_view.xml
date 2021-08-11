@@ -30,10 +30,10 @@
                 android:id="@+id/touchpoint_carousel_card_logo"
                 android:layout_width="@dimen/ui_9m"
                 android:layout_height="@dimen/ui_9m"
-                android:scaleType="fitCenter"
+                android:scaleType="centerCrop"
                 tools:src="@drawable/mercado_pago"
                 android:src="@drawable/skeleton"
-                app:actualImageScaleType="fitCenter"
+                app:actualImageScaleType="centerCrop"
                 app:roundAsCircle="true"
                 android:contentDescription="@string/app_name" />
 

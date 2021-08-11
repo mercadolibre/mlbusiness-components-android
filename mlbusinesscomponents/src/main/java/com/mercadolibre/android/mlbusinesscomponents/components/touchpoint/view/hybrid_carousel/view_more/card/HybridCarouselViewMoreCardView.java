@@ -41,7 +41,10 @@ public class HybridCarouselViewMoreCardView extends CardView implements Touchpoi
         inflate(getContext(), R.layout.touchpoint_hybrid_carousel_view_more_card_view, this);
         middleTitle = findViewById(R.id.touchpoint_hybrid_carousel_view_more_card_middle_title);
         topImage = findViewById(R.id.touchpoint_hybrid_carousel_view_more_card_top_image);
-
+        if (topImage.getHierarchy() != null
+                && topImage.getHierarchy().getRoundingParams() != null ) {
+            topImage.getHierarchy().getRoundingParams().setPaintFilterBitmap(true);
+        }
         presenter = new HybridViewMoreCardPresenter(this);
     }
 
