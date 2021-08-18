@@ -1,4 +1,7 @@
-## Sin Publicar
+## SIN PUBLICAR
+
+
+## 1.22.0
 - Cambios en el componente de beneficios de Loyalty
 - Se arregla la perdida de calidad de imagenes al redondear con fresco
 
