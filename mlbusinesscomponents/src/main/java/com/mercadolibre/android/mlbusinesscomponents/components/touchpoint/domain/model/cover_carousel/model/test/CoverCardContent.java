@@ -5,6 +5,7 @@ import androidx.annotation.Keep;
 import com.google.gson.annotations.SerializedName;
 import com.mercadolibre.android.mlbusinesscomponents.components.pickup.model.DescriptionItemsInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.pill.model.PillResponseInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.row.model.MainTitleTopInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.TouchpointRowItemInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.test.DescriptionItems;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.test.FeatureFormatResponse;

@@ -45,4 +45,6 @@ public interface TouchpointRowItemInterface {
     }
 
     boolean isValid();
+
+    default MainTitleTopInterface getMainTitleTop() { return null; }
 }

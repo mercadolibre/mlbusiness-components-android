@@ -42,6 +42,28 @@
             fresco:actualImageScaleType="centerCrop"
             fresco:roundAsCircle="true" />
 
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:barrierDirection="top"
+            app:constraint_referenced_ids="left_image" />
+
+        <TextView
+            android:id="@+id/main_title_top"
+            style="@style/discounts_payers_list_card_top_title_font"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/ui_2m"
+            android:layout_marginEnd="@dimen/ui_1_75m"
+            android:layout_marginBottom="@dimen/ui_050m"
+            app:layout_constraintBottom_toTopOf="@+id/main_title"
+            app:layout_constraintEnd_toStartOf="@+id/discounts_payers_list_row_label_container"
+            app:layout_constraintStart_toEndOf="@+id/left_image"
+            app:layout_constraintTop_toTopOf="@+id/barrier"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Cerrado" />
+
         <TextView
             android:id="@+id/main_title"
             style="@style/discounts_payers_list_card_title_font"
@@ -49,12 +71,12 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/ui_1_75m"
             android:layout_marginStart="@dimen/ui_2m"
-            android:layout_marginTop="@dimen/ui_2m"
             app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintBottom_toTopOf="@+id/main_subtitle"
             app:layout_constraintEnd_toStartOf="@+id/discounts_payers_list_row_label_container"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/left_image"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_title_top"
             app:layout_constraintVertical_bias="0.19"
             tools:text="Burger King" />
 
@@ -71,6 +93,7 @@
             app:layout_constraintEnd_toStartOf="@+id/discounts_payers_list_row_label_container"
             app:layout_constraintStart_toEndOf="@+id/left_image"
             app:layout_constraintTop_toBottomOf="@+id/main_title"
+            app:layout_constraintVertical_chainStyle="packed"
             tools:text="Comida rápida" />
 
         <include
@@ -78,13 +101,15 @@
             layout="@layout/touchpoint_pick_up_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/ui_2m"
             android:layout_marginEnd="@dimen/ui_1_75m"
             android:layout_marginBottom="@dimen/ui_1_5m"
             android:translationY="-2dp"
             app:layout_constraintBottom_toTopOf="@+id/main_characteristics_container"
             app:layout_constraintEnd_toStartOf="@+id/discounts_payers_list_row_label_container"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/main_subtitle"
+            app:layout_constraintStart_toEndOf="@+id/left_image"
+            app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintTop_toBottomOf="@+id/main_subtitle" />
 
         <include
