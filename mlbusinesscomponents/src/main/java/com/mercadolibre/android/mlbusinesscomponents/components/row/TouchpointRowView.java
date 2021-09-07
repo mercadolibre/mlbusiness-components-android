@@ -151,6 +151,8 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
 
     /**
      * Show brand name
+     *
+     * @param title The brand name
      **/
     public void showTitle(final String title) {
         mainTitle.setText(title);
