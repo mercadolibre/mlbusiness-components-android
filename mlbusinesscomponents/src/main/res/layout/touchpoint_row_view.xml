@@ -43,11 +43,18 @@
             fresco:roundAsCircle="true" />
 
         <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/barrier"
+            android:id="@+id/vertical_barrier"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:barrierDirection="top"
             app:constraint_referenced_ids="left_image" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/horizontal_barrier"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:barrierDirection="left"
+            app:constraint_referenced_ids="main_title_top, main_title"/>
 
         <TextView
             android:id="@+id/main_title_top"
@@ -60,7 +67,7 @@
             app:layout_constraintBottom_toTopOf="@+id/main_title"
             app:layout_constraintEnd_toStartOf="@+id/discounts_payers_list_row_label_container"
             app:layout_constraintStart_toEndOf="@+id/left_image"
-            app:layout_constraintTop_toTopOf="@+id/barrier"
+            app:layout_constraintTop_toTopOf="@+id/vertical_barrier"
             app:layout_constraintVertical_chainStyle="packed"
             tools:text="Cerrado" />
 

@@ -1,5 +1,5 @@
 ## SIN PUBLICAR
-
+- Se ajusta la TouchPointRowView
 
 ## 1.22.0
 - Cambios en el componente de beneficios de Loyalty
