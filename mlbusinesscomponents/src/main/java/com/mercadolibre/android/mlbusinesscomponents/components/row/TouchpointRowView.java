@@ -33,6 +33,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
 
     private static final float DISABLE_VIEW = 0.4f;
     private static final float ENABLE_VIEW = 1f;
+    private static final String TITLE_COLOR_CLOSED = "737373";
 
     private final SimpleDraweeView leftImage;
     private final SimpleDraweeView leftImageAccessory;
@@ -163,7 +164,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
      * Set title and subtitle to closed status
      **/
     public void setTitleToClosedStatus() {
-        mainTitle.setTextColor(Color.parseColor("#737373"));
+        mainTitle.setTextColor(Color.parseColor(TITLE_COLOR_CLOSED));
         mainSubtitle.setAlpha(DISABLE_VIEW);
     }
 
