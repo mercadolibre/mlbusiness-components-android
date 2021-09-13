@@ -31,8 +31,8 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     private static final int SKELETON_INDEX = 1;
     private static final int VIEW_INDEX = 0;
 
-    private static final float LEFT_IMAGE_DISABLE_VIEW = 0.3f;
-    private static final float TITLE_DISABLE_VIEW = 0.7f;
+    private static final float LEFT_IMAGE_DISABLE_VIEW_ALPHA = 0.3f;
+    private static final float TITLE_DISABLE_VIEW_ALPHA = 0.7f;
     private static final float DISABLE_VIEW = 0.4f;
     private static final float ENABLE_VIEW = 1f;
 
