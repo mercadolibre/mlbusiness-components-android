@@ -165,7 +165,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
      * Set title and subtitle to closed status
      **/
     public void setTitleToClosedStatus() {
-        mainTitle.setAlpha(TITLE_DISABLE_VIEW);
+        mainTitle.setAlpha(TITLE_DISABLE_VIEW_ALPHA);
         mainSubtitle.setAlpha(DISABLE_VIEW);
     }
 
@@ -419,7 +419,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     }
 
     public void setLeftImageToClosedStatus() {
-        leftImage.setAlpha(LEFT_IMAGE_DISABLE_VIEW);
+        leftImage.setAlpha(LEFT_IMAGE_DISABLE_VIEW_ALPHA);
         leftImageAccessory.setAlpha(DISABLE_VIEW);
     }
 
