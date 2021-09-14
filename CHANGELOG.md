@@ -1,4 +1,5 @@
-## SIN PUBLICAR
+## 2.0.0
+- Se migra a api mínimo 21 y target 30.
 
 ## 1.23.0
 - Se ajusta la TouchPointRowView
