@@ -5,6 +5,7 @@ import androidx.annotation.Keep;
 import com.google.gson.annotations.SerializedName;
 import com.mercadolibre.android.mlbusinesscomponents.components.pickup.model.DescriptionItemsInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.pill.model.PillResponseInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.row.model.MainTitleTopInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.TouchpointRowItemInterface;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,7 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
 
     private final String leftImage;
     private final String leftImageAccessory;
+    private final MainTitleTopResponse mainTitleTopResponse;
     private final String mainTitle;
     private final String mainTitleStatus;
     private final String mainSubtitle;
@@ -30,7 +32,7 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
     private final String rightLabelStatus;
     private final String leftImageStatus;
 
-    public TouchpointRowItem(final String leftImage, final String leftImageAccessory, final String mainTitle, final String mainTitleStatus,
+    public TouchpointRowItem(final String leftImage, final String leftImageAccessory, final MainTitleTopResponse mainTitleTopResponse, final String mainTitle, final String mainTitleStatus,
         final String mainSubtitle,
         final List<DescriptionItems> mainDescription,
         final List<DescriptionItems> mainCharacteristics,
@@ -41,6 +43,7 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
         final String leftImageStatus) {
         this.leftImage = leftImage;
         this.leftImageAccessory = leftImageAccessory;
+        this.mainTitleTopResponse = mainTitleTopResponse;
         this.mainTitle = mainTitle;
         this.mainTitleStatus = mainTitleStatus;
         this.mainSubtitle = mainSubtitle;
@@ -60,6 +63,7 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
     public TouchpointRowItem() {
         leftImage = "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg";
         leftImageAccessory = "https://mla-s1-p.mlstatic.com/952848-MLA41109062105_032020-O.jpg";
+        mainTitleTopResponse = new MainTitleTopResponse("Envios pausados", "#FF9A6F");
         mainTitle = "Pizza Vegana";
         mainSubtitle = "Restaurante";
 
@@ -113,6 +117,9 @@ public class TouchpointRowItem implements TouchpointRowItemInterface {
     public String getLeftImageAccessory() {
         return leftImageAccessory;
     }
+
+    @Override
+    public MainTitleTopInterface getMainTitleTop() { return mainTitleTopResponse; }
 
     @Override
     public String getMainTitle() {

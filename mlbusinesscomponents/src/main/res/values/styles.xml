@@ -67,6 +67,12 @@
         <item name="android:ellipsize">end</item>
     </style>
 
+    <style name="discounts_payers_list_card_top_title_font" parent="MLFont.Bold.Semi">
+        <item name="android:textSize">@dimen/ui_fontsize_xxsmall</item>
+        <item name="android:textColor">@color/semi_black</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
     <style name="discounts_payers_list_card_title_font" parent="MLFont.Bold.Semi">
         <item name="android:textSize">@dimen/ui_fontsize_xsmall</item>
         <item name="android:textColor">@color/semi_black</item>

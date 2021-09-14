@@ -3,6 +3,7 @@ package com.mercadolibre.android.mlbusinesscomponents.components.row;
 import android.text.TextUtils;
 import com.mercadolibre.android.mlbusinesscomponents.components.pickup.model.DescriptionItemsInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.pill.model.PillResponseInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.row.model.MainTitleTopInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.TouchpointRowItemInterface;
 import java.util.List;
 import org.jetbrains.annotations.Nullable;
@@ -21,6 +22,7 @@ public class TouchpointRowPresenter {
         setImage(rowItem.getLeftImage(), view);
         setImageAccessory(rowItem.getLeftImageAccessory(), view);
         setRightBottomInfo(rowItem.getRightBottomInfo(), view);
+        setMainTitleTop(rowItem.getMainTitleTop(), view);
         setTitle(rowItem.getMainTitle(), view);
         setSubtitle(rowItem.getMainSubtitle(), view);
         setStatusTextColor(rowItem.getMainTitleStatus(), view);
@@ -120,6 +122,15 @@ public class TouchpointRowPresenter {
         }
 
         view.showRightBottomInfo(pill);
+    }
+
+    private void setMainTitleTop(final MainTitleTopInterface mainTitle, final TouchpointRowView view) {
+        if (mainTitle == null) {
+            view.hideMainTitleTop();
+            return;
+        }
+
+        view.showMainTitleTop(mainTitle);
     }
 
     private void setTitle(final String title, final TouchpointRowView view) {

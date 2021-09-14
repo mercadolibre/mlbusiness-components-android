@@ -1,6 +1,7 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.row;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Rect;
 import androidx.annotation.Nullable;
 import android.util.AttributeSet;
@@ -17,6 +18,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.pickup.PickUpVie
 import com.mercadolibre.android.mlbusinesscomponents.components.pill.model.PillResponseInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.pill.view.RightBottomInfoView;
 import com.mercadolibre.android.mlbusinesscomponents.components.pickup.model.DescriptionItemsInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.row.model.MainTitleTopInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.TouchpointRowItemInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.AssetLoader;
@@ -29,11 +31,14 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     private static final int SKELETON_INDEX = 1;
     private static final int VIEW_INDEX = 0;
 
+    private static final float LEFT_IMAGE_DISABLE_VIEW_ALPHA = 0.3f;
+    private static final float TITLE_DISABLE_VIEW_ALPHA = 0.7f;
     private static final float DISABLE_VIEW = 0.4f;
     private static final float ENABLE_VIEW = 1f;
 
     private final SimpleDraweeView leftImage;
     private final SimpleDraweeView leftImageAccessory;
+    private final TextView mainTitleTop;
     private final TextView mainTitle;
     private final TextView mainSubtitle;
     private final View rightContainer;
@@ -73,6 +78,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
             leftImage.getHierarchy().getRoundingParams().setPaintFilterBitmap(true);
         }
         leftImageAccessory = findViewById(R.id.left_image_accessory);
+        mainTitleTop = findViewById(R.id.main_title_top);
         mainTitle = findViewById(R.id.main_title);
         mainSubtitle = findViewById(R.id.main_subtitle);
         rightContainer = findViewById(R.id.discounts_payers_list_row_label_container);
@@ -136,6 +142,16 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     }
 
     /**
+     * Show main title top
+     * @param title
+     */
+    public void showMainTitleTop(final MainTitleTopInterface title) {
+        mainTitleTop.setText(title.getText());
+        mainTitleTop.setTextColor(Color.parseColor(title.getColor()));
+        mainTitleTop.setVisibility(VISIBLE);
+    }
+
+    /**
      * Show brand name
      *
      * @param title The brand name
@@ -149,7 +165,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
      * Set title and subtitle to closed status
      **/
     public void setTitleToClosedStatus() {
-        mainTitle.setAlpha(DISABLE_VIEW);
+        mainTitle.setAlpha(TITLE_DISABLE_VIEW_ALPHA);
         mainSubtitle.setAlpha(DISABLE_VIEW);
     }
 
@@ -159,6 +175,13 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     public void setDefaultTitleClosedStatus() {
         mainTitle.setAlpha(ENABLE_VIEW);
         mainSubtitle.setAlpha(ENABLE_VIEW);
+    }
+
+    /**
+     * Hide main title
+     */
+    public void hideMainTitleTop() {
+       mainTitleTop.setVisibility(GONE);
     }
 
     /**
@@ -396,7 +419,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     }
 
     public void setLeftImageToClosedStatus() {
-        leftImage.setAlpha(DISABLE_VIEW);
+        leftImage.setAlpha(LEFT_IMAGE_DISABLE_VIEW_ALPHA);
         leftImageAccessory.setAlpha(DISABLE_VIEW);
     }
 
