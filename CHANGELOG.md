@@ -1,4 +1,6 @@
 ## SIN PUBLICAR
+
+## 1.23.0
 - Se ajusta la TouchPointRowView
 
 ## 1.22.0
