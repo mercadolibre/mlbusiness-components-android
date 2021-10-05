@@ -283,7 +283,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
      */
     public void showDescriptionLabels(final List<DescriptionItemsInterface> mainDescription) {
         if (mainDescriptionContainer != null) {
-            mainDescriptionContainer.bindViews(mainDescription);
+            mainDescriptionContainer.bindViews(null, mainDescription);
         }
     }
 
@@ -369,7 +369,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
      */
     public void showCharacteristicsLabels(final List<DescriptionItemsInterface> mainDescription) {
         if (mainCharacteristicsContainer != null) {
-            mainCharacteristicsContainer.bindViews(mainDescription);
+            mainCharacteristicsContainer.bindViews(null, mainDescription);
         }
     }
 
@@ -401,7 +401,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
      */
     public void showStatusDescription(final List<DescriptionItemsInterface> cardStatus) {
         if (cardStatusContainer != null) {
-            cardStatusContainer.bindViews(cardStatus);
+            cardStatusContainer.bindViews(null, cardStatus);
             setMainCharacteristicMarginBottom(0);
         }
     }
