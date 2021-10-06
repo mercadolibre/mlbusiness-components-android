@@ -39,9 +39,9 @@ public class PickUpView extends LinearLayout {
         addView(mainDescriptionLabelsText);
     }
 
-    public void addImageDescription(final String content, final String color) {
+    public void addImageDescription(@Nullable final String size, final String content, final String color) {
         MainDescriptionLabesImage mainDescriptionLabesImage = new MainDescriptionLabesImage(getContext());
-        mainDescriptionLabesImage.setImage(content, color);
+        mainDescriptionLabesImage.setImage(size, content, color);
         addView(mainDescriptionLabesImage);
     }
 

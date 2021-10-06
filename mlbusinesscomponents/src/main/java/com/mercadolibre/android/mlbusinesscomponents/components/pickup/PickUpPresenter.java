@@ -15,7 +15,7 @@ public class PickUpPresenter {
         for (DescriptionItemsInterface item : mainDescription) {
             switch (item.getType()) {
             case "image":
-                pickUpView.addImageDescription(item.getContent(), item.getColor());
+                pickUpView.addImageDescription(size, item.getContent(), item.getColor());
                 break;
             case TEXT:
                 pickUpView.addTextDescription(size, item.getContent(), item.getColor());
