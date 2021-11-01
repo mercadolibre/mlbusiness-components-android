@@ -35,17 +35,14 @@ public class MainDescriptionLabelsText extends FrameLayout {
     }
 
     public void setText(@Nullable final String size, final String content, final String color) {
+        float textSize;
         if (content != null && !content.isEmpty()) {
             textView.setText(content);
         }
 
         if (size != null && !size.isEmpty()) {
-            try {
-                SizeType sizeType = SizeType.valueOf(size.toUpperCase());
-                textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(sizeType.getFontSize()));
-            } catch (Exception e) {
-                textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(SizeType.SMALL.getFontSize()));
-            }
+            textSize = getResources().getDimension(SizeType.getSizeOrDefault(size.toUpperCase(), SizeType.SMALL.getFontSize()));
+            textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
         }
 
         if (color == null || color.isEmpty()) {
