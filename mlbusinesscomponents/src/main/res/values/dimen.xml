@@ -20,4 +20,7 @@
     <dimen name="small_grid_static_height">145dp</dimen>
     <dimen name="large_grid_static_height">290dp</dimen>
 
+    <!-- Main Description Label Image Size -->
+    <dimen name="ui_image_size_medium">18dp</dimen>
+
 </resources>

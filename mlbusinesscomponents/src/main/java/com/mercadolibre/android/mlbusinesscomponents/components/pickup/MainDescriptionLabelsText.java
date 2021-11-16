@@ -41,7 +41,7 @@ public class MainDescriptionLabelsText extends FrameLayout {
         }
 
         if (size != null && !size.isEmpty()) {
-            textSize = getResources().getDimension(SizeType.getSizeOrDefault(size.toUpperCase(), SizeType.SMALL.getFontSize()));
+            textSize = getResources().getDimension(SizeType.getFontSizeOrDefault(size.toUpperCase(), SizeType.SMALL.getFontSize()));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
         }
 

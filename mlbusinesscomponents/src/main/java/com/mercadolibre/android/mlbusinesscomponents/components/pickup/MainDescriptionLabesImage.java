@@ -45,15 +45,8 @@ public class MainDescriptionLabesImage extends FrameLayout {
         }
 
         if (size != null && !size.isEmpty()) {
-            int params;
-            try {
-                SizeType sizeType = SizeType.valueOf(size.toUpperCase());
-                params = getResources().getDimensionPixelSize(sizeType.getImageSize());
-                image.setLayoutParams(new LayoutParams(params, params));
-            } catch (Exception e) {
-                params = getResources().getDimensionPixelSize(SizeType.SMALL.getImageSize());
-                image.setLayoutParams(new LayoutParams(params, params));
-            }
+            int imageSize = getResources().getDimensionPixelSize(SizeType.getImageSizeOrDefault(size.toUpperCase(), SizeType.SMALL.getImageSize()));
+            image.setLayoutParams(new LayoutParams(imageSize, imageSize));
         }
         image.setVisibility(VISIBLE);
     }
