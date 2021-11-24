@@ -10,24 +10,18 @@ enum class SizeType(val fontSize: Int, val imageSize: Int) {
     companion object {
         @JvmStatic
         fun getFontSizeOrDefault(size: String?, defaultSize: Int) : Int {
-            size?.let {
-                return if (values().any { it.name.equals(size, ignoreCase = true) }) {
-                    valueOf(size).fontSize
-                } else {
-                    defaultSize
-                }
-            } ?: return defaultSize
+            return size
+                ?.let { values().firstOrNull { value -> value.name.equals(it, ignoreCase = true) } }
+                ?.fontSize
+                ?: defaultSize
         }
 
         @JvmStatic
         fun getImageSizeOrDefault(size: String?, defaultSize: Int) : Int {
-            size?.let {
-                return if (values().any { it.name.equals(size, ignoreCase = true) }) {
-                    valueOf(size).imageSize
-                } else {
-                    defaultSize
-                }
-            } ?: return defaultSize
+            return size
+                ?.let { values().firstOrNull { value -> value.name.equals(it, ignoreCase = true) } }
+                ?.imageSize
+                ?: defaultSize
         }
     }
 }
