@@ -25,23 +25,23 @@ public class PickUpView extends LinearLayout {
         presenter = new PickUpPresenter();
     }
 
-    public void bindViews(final List<DescriptionItemsInterface> mainDescription) {
+    public void bindViews(@Nullable final String size, final List<DescriptionItemsInterface> mainDescription) {
         if (getChildCount() > 0) {
             removeAllViews();
         }
         setVisibility(VISIBLE);
-        presenter.addDescriptionLabels(mainDescription, this);
+        presenter.addDescriptionLabels(size, mainDescription, this);
     }
 
-    public void addTextDescription(final String content, final String color) {
+    public void addTextDescription(@Nullable final String size, final String content, final String color) {
         MainDescriptionLabelsText mainDescriptionLabelsText = new MainDescriptionLabelsText(getContext());
-        mainDescriptionLabelsText.setText(content, color);
+        mainDescriptionLabelsText.setText(size, content, color);
         addView(mainDescriptionLabelsText);
     }
 
-    public void addImageDescription(final String content, final String color) {
+    public void addImageDescription(@Nullable final String size, final String content, final String color) {
         MainDescriptionLabesImage mainDescriptionLabesImage = new MainDescriptionLabesImage(getContext());
-        mainDescriptionLabesImage.setImage(content, color);
+        mainDescriptionLabesImage.setImage(size, content, color);
         addView(mainDescriptionLabesImage);
     }
 

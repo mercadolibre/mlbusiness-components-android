@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
@@ -33,9 +34,15 @@ public class MainDescriptionLabelsText extends FrameLayout {
 
     }
 
-    public void setText(final String content, final String color) {
+    public void setText(@Nullable final String size, final String content, final String color) {
+        float textSize;
         if (content != null && !content.isEmpty()) {
             textView.setText(content);
+        }
+
+        if (size != null && !size.isEmpty()) {
+            textSize = getResources().getDimension(SizeType.getFontSizeOrDefault(size.toUpperCase(), SizeType.SMALL.getFontSize()));
+            textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
         }
 
         if (color == null || color.isEmpty()) {

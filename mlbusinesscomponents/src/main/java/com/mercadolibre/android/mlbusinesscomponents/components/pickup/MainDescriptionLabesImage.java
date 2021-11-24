@@ -29,7 +29,7 @@ public class MainDescriptionLabesImage extends FrameLayout {
         image = findViewById(R.id.main_description_icon);
     }
 
-    public void setImage(final String content, final String color) {
+    public void setImage(@Nullable final String size, final String content, final String color) {
         AssetLoader.getImage(content, image, (shouldLoadImage -> {
             if (shouldLoadImage) {
                 TouchpointAssetLoader.create().withContainer(image).withSource(content).load();
@@ -42,6 +42,11 @@ public class MainDescriptionLabesImage extends FrameLayout {
             } catch (Exception e) {
                 //no op..
             }
+        }
+
+        if (size != null && !size.isEmpty()) {
+            int imageSize = getResources().getDimensionPixelSize(SizeType.getImageSizeOrDefault(size.toUpperCase(), SizeType.SMALL.getImageSize()));
+            image.setLayoutParams(new LayoutParams(imageSize, imageSize));
         }
         image.setVisibility(VISIBLE);
     }

@@ -1,5 +1,6 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.pickup;
 
+import androidx.annotation.Nullable;
 import com.mercadolibre.android.mlbusinesscomponents.components.pickup.model.DescriptionItemsInterface;
 import java.util.List;
 
@@ -7,17 +8,17 @@ public class PickUpPresenter {
 
     private static final String TEXT = "text";
 
-    public void addDescriptionLabels(final List<DescriptionItemsInterface> mainDescription, final PickUpView pickUpView) {
+    public void addDescriptionLabels(@Nullable final String size, final List<DescriptionItemsInterface> mainDescription, final PickUpView pickUpView) {
         if (mainDescription == null) {
             return;
         }
         for (DescriptionItemsInterface item : mainDescription) {
             switch (item.getType()) {
             case "image":
-                pickUpView.addImageDescription(item.getContent(), item.getColor());
+                pickUpView.addImageDescription(size, item.getContent(), item.getColor());
                 break;
             case TEXT:
-                pickUpView.addTextDescription(item.getContent(), item.getColor());
+                pickUpView.addTextDescription(size, item.getContent(), item.getColor());
                 break;
             default:
                 // no op..
