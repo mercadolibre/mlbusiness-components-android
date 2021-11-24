@@ -1,5 +1,7 @@
 ## SIN PUBLICAR
-- Se customiza el font size e image size de MainDescriptionLabelText y MainDescriptionLabelImage.
+
+## 2.1.0
+ - Se customiza el font size e image size de MainDescriptionLabelText y MainDescriptionLabelImage.
 
 ## 2.0.0
 - Se migra a api mínimo 21 y target 30.
