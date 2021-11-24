@@ -1,4 +1,4 @@
-## SIN PUBLICAR
+## 2.1.0
 - Se customiza el font size e image size de MainDescriptionLabelText y MainDescriptionLabelImage.
 
 ## 2.0.0
