@@ -452,7 +452,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     @Override
     protected void onDraw(final Canvas canvas) {
         super.onDraw(canvas);
-        analyzeComponentsPositions();
+        post(this::analyzeComponentsPositions);
     }
 
     private void analyzeComponentsPositions() {
