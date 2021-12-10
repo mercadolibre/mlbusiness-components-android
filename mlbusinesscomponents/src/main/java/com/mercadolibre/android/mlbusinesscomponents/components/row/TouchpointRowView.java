@@ -455,7 +455,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
         super.onDraw(canvas);
         if (!hasAnalyzedComponentsPositions) {
             post(this::analyzeComponentsPositions);
-            hasAnalyzedComponentsPositions = true
+            hasAnalyzedComponentsPositions = true;
         }
     }
 
