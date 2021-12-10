@@ -54,6 +54,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     private final TouchpointRowPresenter presenter;
     private final View rippleView;
     private OnClickCallback onClickCallback;
+    private boolean hasAnalyzedComponentsPositions = false;
 
     /**
      * Constructor
@@ -452,7 +453,10 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     @Override
     protected void onDraw(final Canvas canvas) {
         super.onDraw(canvas);
-        post(this::analyzeComponentsPositions);
+        if (!hasAnalyzedComponentsPositions) {
+            post(this::analyzeComponentsPositions);
+            hasAnalyzedComponentsPositions = true
+        }
     }
 
     private void analyzeComponentsPositions() {
