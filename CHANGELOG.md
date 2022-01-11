@@ -1,4 +1,5 @@
 ## SIN PUBLICAR
+- Bump Kotlin 1.5.
 
 ## 2.1.0
  - Se customiza el font size e image size de MainDescriptionLabelText y MainDescriptionLabelImage.
