@@ -1,6 +1,7 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.row;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Rect;
 import androidx.annotation.Nullable;
@@ -53,6 +54,7 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
     private final TouchpointRowPresenter presenter;
     private final View rippleView;
     private OnClickCallback onClickCallback;
+    private boolean hasAnalyzedComponentsPositions = false;
 
     /**
      * Constructor
@@ -93,7 +95,6 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
         rippleView = findViewById(R.id.discounts_payers_list_row_click);
         rightBottomInfoContainer.bindViews();
         presenter = new TouchpointRowPresenter();
-        post(this::analyzeComponentsPositions);
     }
 
     /**
@@ -447,6 +448,15 @@ public class TouchpointRowView extends ViewSwitcher implements OnClickCallback {
         final Rect intersectedView) {
         return firstViewRect.intersect(intersectedView) || secondViewRect.intersect(intersectedView) ||
             thirdViewRect.intersect(intersectedView);
+    }
+
+    @Override
+    protected void onDraw(final Canvas canvas) {
+        super.onDraw(canvas);
+        if (!hasAnalyzedComponentsPositions) {
+            post(this::analyzeComponentsPositions);
+            hasAnalyzedComponentsPositions = true;
+        }
     }
 
     private void analyzeComponentsPositions() {

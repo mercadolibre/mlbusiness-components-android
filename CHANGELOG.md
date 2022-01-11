@@ -1,4 +1,5 @@
 ## SIN PUBLICAR
+- Se fixea el solapamiento de vistas en la row del CoverCarousel.
 
 ## 2.1.0
  - Se customiza el font size e image size de MainDescriptionLabelText y MainDescriptionLabelImage.
