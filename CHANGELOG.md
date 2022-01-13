@@ -1,4 +1,10 @@
 ## SIN PUBLICAR
+
+## 2.2.1
+- Revert bump Kotlin 1.5.
+
+## 2.2.0
+- Bump Kotlin 1.5.
 - Se fixea el solapamiento de vistas en la row del CoverCarousel.
 
 ## 2.1.0
