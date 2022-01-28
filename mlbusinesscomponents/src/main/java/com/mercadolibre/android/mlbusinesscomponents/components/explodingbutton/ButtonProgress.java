@@ -109,7 +109,10 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     public void setState(ButtonProgressState state) {
         if (state == DISABLED) {
             this.setClickable(false);
-            paintButton(R.color.mlbusiness_color_disable_button, R.color.mlbusiness_color_disable_button);
+            paintButton(
+                ContextCompat.getColor(getContext(), R.color.mlbusiness_color_disable_button),
+                ContextCompat.getColor(getContext(), R.color.mlbusiness_color_disable_button)
+            );
             paintText(R.color.ui_meli_white);
         } else {
             this.setClickable(true);
