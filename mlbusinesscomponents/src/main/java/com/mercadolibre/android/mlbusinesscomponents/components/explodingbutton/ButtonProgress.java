@@ -52,10 +52,10 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     private int rippleColor;
     @ColorRes
     private int colorText;
-    @ColorRes
-    private int backgroundColor = R.color.components_primary_color;
-    @ColorRes
-    private int progressColor = R.color.components_secondary_color;
+    @ColorInt
+    private int backgroundColor;
+    @ColorInt
+    private int progressColor;
     private String titleProgress;
     private int durationRipple = 500;
     private int durationTimeout = 7000;
@@ -133,7 +133,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         LayerDrawable dr = (LayerDrawable) getResources().getDrawable(R.drawable.button_background);
         GradientDrawable background = (GradientDrawable) dr.findDrawableByLayerId(R.id.background);
         ClipDrawable progress = (ClipDrawable) dr.findDrawableByLayerId(R.id.progress);
-        background.setColor(ContextCompat.getColor(getContext(), backgroundColor));
+        background.setColor(backgroundColor);
         DrawableCompat.setTint(progress, progressColor);
         progressBar.setProgressDrawable(dr);
     }
@@ -221,6 +221,10 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         animator = ObjectAnimator.ofInt(progressBar, "progress", 0, durationTimeout);
         adjustHeight(circle);
         adjustHeight(icon);
+
+
+        backgroundColor = ContextCompat.getColor(context, R.color.components_primary_color);
+        progressColor = ContextCompat.getColor(context, R.color.components_secondary_color);
     }
 
     @Override
