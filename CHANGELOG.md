@@ -1,4 +1,5 @@
 ## SIN PUBLICAR
+- Se arregla un bug en el componente ButtonProgress.
 
 ## 2.2.1
 - Revert bump Kotlin 1.5.
