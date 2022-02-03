@@ -32,8 +32,7 @@
                 tools:src="@drawable/mercado_pago"
                 android:src="@drawable/skeleton"
                 app:roundAsCircle="true"
-                app:actualImageScaleType="centerCrop"
-                android:contentDescription="@string/app_name" />
+                app:actualImageScaleType="centerCrop" />
 
             <View
                 android:id="@+id/touchpoint_hybrid_carousel_default_card_top_image_overlay"
@@ -47,8 +46,7 @@
                 android:layout_height="@dimen/image_accessory_height"
                 android:scaleType="fitCenter"
                 android:layout_gravity="bottom|end"
-                android:src="@drawable/skeleton"
-                android:contentDescription="@string/app_name" />
+                android:src="@drawable/skeleton" />
 
         </FrameLayout>
 
