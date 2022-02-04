@@ -1,4 +1,5 @@
 ## SIN PUBLICAR
+- Se borra el content description con el app name por accesibilidad
 
 ## 2.2.1
 - Revert bump Kotlin 1.5.
