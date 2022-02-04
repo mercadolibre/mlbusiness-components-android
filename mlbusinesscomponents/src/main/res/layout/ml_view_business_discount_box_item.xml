@@ -31,8 +31,7 @@
                     android:layout_width="@dimen/ui_7m"
                     android:layout_height="@dimen/ui_7m"
                     android:scaleType="centerInside"
-                    tools:src="@drawable/mercado_pago"
-                    android:contentDescription="@string/app_name" />
+                    tools:src="@drawable/mercado_pago" />
 
                 <View
                     android:id="@+id/discount_item_overlay"
