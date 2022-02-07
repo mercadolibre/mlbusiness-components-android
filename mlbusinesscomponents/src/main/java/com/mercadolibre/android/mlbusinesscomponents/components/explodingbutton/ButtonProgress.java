@@ -129,10 +129,10 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         paintText(R.color.ui_meli_white);
     }
 
-    public ButtonProgress setColorButton(int backgroundColor, int progressColor) {
-        this.backgroundColor = backgroundColor;
-        this.progressColor = progressColor;
-        paintButton(backgroundColor, progressColor);
+    public ButtonProgress setColorButton(@ColorRes int backgroundColor, @ColorRes int progressColor) {
+        this.backgroundColor = ContextCompat.getColor(getContext(), backgroundColor);
+        this.progressColor = ContextCompat.getColor(getContext(), progressColor);
+        paintButton(this.backgroundColor, this.progressColor);
         return this;
     }
 
@@ -232,7 +232,6 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         animator = ObjectAnimator.ofInt(progressBar, "progress", 0, durationTimeout);
         adjustHeight(circle);
         adjustHeight(icon);
-
 
         backgroundColor = ContextCompat.getColor(context, R.color.components_primary_color);
         progressColor = ContextCompat.getColor(context, R.color.components_secondary_color);
