@@ -1,4 +1,5 @@
 ## SIN PUBLICAR
+- Se arregla un bug en el componente ButtonProgress.
 
 ## 2.3.0
 - Se borra el content description con el app name por accesibilidad
