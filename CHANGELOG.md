@@ -1,3 +1,5 @@
+## SIN PUBLICAR
+
 ## 2.4.0
 - Se arregla un bug en el componente ButtonProgress.
 
