@@ -5,14 +5,15 @@ import android.util.AttributeSet;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 
 import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.picassodiskcache.PicassoDiskLoader;
 
 public class MLBusinessAdBannerView extends ConstraintLayout {
         private final AppCompatImageView image;
+        private final  CardView cardView;
 
     public interface OnClickAdBannerView {
         void OnClickAdBannerViewLink(@NonNull final String deepLink);
@@ -30,16 +31,14 @@ public class MLBusinessAdBannerView extends ConstraintLayout {
                                          final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         inflate(context, R.layout.ml_view_ad_banner, this);
-        if (getBackground() == null) {
-            setBackground(ContextCompat.getDrawable(getContext(), R.drawable.ad_banner_background));
-        }
         image = findViewById(R.id.adBannerImage);
+        cardView = findViewById(R.id.card);
     }
 
     public void init(@NonNull final MLBusinessAdBannerData businessAdBannerData,
                      @NonNull final OnClickAdBannerView onClick) {
         loadImageUrl(businessAdBannerData.getImageUrl());
-        image.setOnClickListener(v -> onClick
+        cardView.setOnClickListener(v -> onClick
                 .OnClickAdBannerViewLink(businessAdBannerData.getUrlDeepLink()));
     }
 
@@ -48,7 +47,6 @@ public class MLBusinessAdBannerView extends ConstraintLayout {
         if ((context = getContext()) != null) {
             PicassoDiskLoader.get(context)
                     .load(url)
-                    .transform(new RoundedDrawableTransform(6, 6))
                     .placeholder(R.drawable.rectangle_skeleton)
                     .into(image);
         }
