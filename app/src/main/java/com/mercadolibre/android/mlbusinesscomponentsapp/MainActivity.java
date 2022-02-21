@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void OnClickAdBannerViewLink(@NonNull final String deepLink) {
+    public void onClickAdBannerViewLink(@NonNull final String deepLink) {
         launchActivity(deepLink);
     }
 
