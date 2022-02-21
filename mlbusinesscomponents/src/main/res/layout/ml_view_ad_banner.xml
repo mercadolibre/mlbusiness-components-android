@@ -5,7 +5,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="6dp">
@@ -14,9 +13,9 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/adBannerImage"
         tools:src="@drawable/rectangle_skeleton"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:scaleType="centerCrop"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="H,16:9"
         />
     </androidx.cardview.widget.CardView>
 </merge>

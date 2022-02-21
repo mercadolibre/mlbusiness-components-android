@@ -5,7 +5,6 @@ import android.util.AttributeSet;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageView;
-import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.mercadolibre.android.mlbusinesscomponents.R;
@@ -13,7 +12,6 @@ import com.mercadolibre.android.picassodiskcache.PicassoDiskLoader;
 
 public class MLBusinessAdBannerView extends ConstraintLayout {
         private final AppCompatImageView image;
-        private final  CardView cardView;
 
     public interface OnClickAdBannerView {
         void OnClickAdBannerViewLink(@NonNull final String deepLink);
@@ -32,13 +30,12 @@ public class MLBusinessAdBannerView extends ConstraintLayout {
         super(context, attrs, defStyleAttr);
         inflate(context, R.layout.ml_view_ad_banner, this);
         image = findViewById(R.id.adBannerImage);
-        cardView = findViewById(R.id.card);
     }
 
     public void init(@NonNull final MLBusinessAdBannerData businessAdBannerData,
                      @NonNull final OnClickAdBannerView onClick) {
         loadImageUrl(businessAdBannerData.getImageUrl());
-        cardView.setOnClickListener(v -> onClick
+        image.setOnClickListener(v -> onClick
                 .OnClickAdBannerViewLink(businessAdBannerData.getUrlDeepLink()));
     }
 
