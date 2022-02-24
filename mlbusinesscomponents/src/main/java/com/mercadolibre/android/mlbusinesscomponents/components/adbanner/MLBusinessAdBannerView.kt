@@ -10,6 +10,7 @@ import com.mercadolibre.android.mlbusinesscomponents.R
 import android.util.TypedValue
 
 private const val CORNER_RADIUS = 6f
+private const val CARD_ELEVATION = 12f
 
 class MLBusinessAdBannerView @JvmOverloads constructor(
     context: Context,
@@ -21,6 +22,7 @@ class MLBusinessAdBannerView @JvmOverloads constructor(
 
     init {
         radius = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, CORNER_RADIUS, resources.displayMetrics)
+        cardElevation = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, CARD_ELEVATION, resources.displayMetrics)
         inflate(context, R.layout.ml_view_ad_banner, this)
         image = findViewById(R.id.adBannerImage)
     }
