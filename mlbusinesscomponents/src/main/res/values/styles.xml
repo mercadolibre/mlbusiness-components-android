@@ -60,6 +60,15 @@
         <item name="android:ellipsize">end</item>
     </style>
 
+    <style name="touchpoint_carousel_v2_main_label" parent="MLFont.Bold.Semi">
+        <item name="android:textColor">@color/ui_meli_white</item>
+        <item name="android:layout_gravity">bottom|center_horizontal</item>
+        <item name="android:textSize">@dimen/ui_fontsize_small</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
     <style name="discounts_payers_commons_level" parent="MLFont.Bold">
         <item name="android:textSize">9sp</item>
         <item name="android:lineSpacingExtra">1sp</item>

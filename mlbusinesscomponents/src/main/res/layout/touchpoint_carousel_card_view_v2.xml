@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:id="@+id/touchpoint_v2_carousel_card_image_container"
+            android:layout_width="@dimen/touchpoint_v2_card_width"
+            android:layout_height="@dimen/touchpoint_v2_card_height"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/ui_2m"
+            android:layout_marginEnd="@dimen/ui_2m"
+            android:layout_marginStart="@dimen/ui_1m">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/touchpoint_v2_carousel_card_image"
+                android:layout_width="@dimen/touchpoint_v2_card_width"
+                android:layout_height="@dimen/touchpoint_v2_card_height"
+                android:scaleType="centerCrop"
+                android:src="@drawable/skeleton"
+                android:background="@drawable/touchpoint_v2_background_image"
+                app:actualImageScaleType="centerCrop"
+                tools:backgroundTint="@color/ui_meli_grey"/>
+
+            <View
+                android:id="@+id/touchpoint_v2_carousel_footer"
+                android:layout_width="@dimen/touchpoint_v2_card_width"
+                android:layout_height="@dimen/ui_3m"
+                android:layout_gravity="bottom"
+                android:background="@drawable/touchpoint_v2_background_footer" />
+
+            <TextView
+                android:id="@+id/touchpoint_v2_carousel_card_main_label"
+                style="@style/touchpoint_carousel_v2_main_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="@dimen/touchpoint_v2_max_width"
+                android:layout_marginBottom="@dimen/touchpoint_v2_text_margin_bottom"
+                tools:text="Pizza" />
+
+        </FrameLayout>
+</merge>
