@@ -12,17 +12,19 @@ import com.facebook.drawee.view.SimpleDraweeView
 import com.mercadolibre.android.mlbusinesscomponents.R
 import com.mercadolibre.android.mlbusinesscomponents.common.Constants
 import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointAssetLoader
+import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointImageLoader
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.AssetLoader
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.CarouselCardV2Presenter
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.carouselCardInterface
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils
 
-open class CarouselCardV2 @JvmOverloads constructor(
+class CarouselCardV2 @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null
-) : CardView(context, attrs), TouchpointTrackeable {
+) : CardView(context, attrs), TouchpointTrackeable, carouselCardInterface {
 
     private var mainImage: SimpleDraweeView
     private val mainLabel: TextView
@@ -58,7 +60,7 @@ open class CarouselCardV2 @JvmOverloads constructor(
      * @param card the model
      * @param size the size in pixels
      */
-    open fun bind(card: CarouselCard?, size: Int) {
+    fun bind(card: CarouselCard?, size: Int) {
         if (size != Constants.NON_SIZE) {
             val layoutParams: ViewGroup.LayoutParams = layoutParams
             layoutParams.height = size
@@ -94,7 +96,7 @@ open class CarouselCardV2 @JvmOverloads constructor(
     /**
      * Hides the main label view
      */
-    open fun hideMainLabel() {
+    fun hideMainLabel() {
         mainLabel.visibility = View.GONE
     }
 
@@ -105,7 +107,7 @@ open class CarouselCardV2 @JvmOverloads constructor(
     }
 
     /* default */
-    open fun onClick(link: String) {
+    fun onClick(link: String) {
         button.isClickable = isMPInstalled
         if (isMPInstalled) {
             button.setOnClickListener { onClickEvent(link) }
@@ -124,23 +126,27 @@ open class CarouselCardV2 @JvmOverloads constructor(
         }
     }
 
-    fun setOnClickCallback(onClickCallback: OnClickCallback?) {
-        this.onClickCallback = onClickCallback
-    }
-
     fun setTracking(tracking: TouchpointTracking?) {
         this.tracking = tracking
     }
 
-    open fun setTracker(tracker: MLBusinessTouchpointTracker?) {
+    override fun setOnClickCallback(onClickCallback: OnClickCallback) {
+        this.onClickCallback = onClickCallback
+    }
+
+    override fun setTracker(tracker: MLBusinessTouchpointTracker) {
         this.tracker = tracker
     }
 
-    open fun setCanOpenMercadoPago(isMPInstalled: Boolean) {
+    override fun setExtraData(extraData: MutableMap<String, Any>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun setCanOpenMercadoPago(isMPInstalled: Boolean) {
         this.isMPInstalled = isMPInstalled
     }
 
-    fun setImageLoader() {
-        // no-op
+    override fun setImageLoader(touchPointImageLoader: TouchpointImageLoader) {
+        TODO("Not yet implemented")
     }
 }

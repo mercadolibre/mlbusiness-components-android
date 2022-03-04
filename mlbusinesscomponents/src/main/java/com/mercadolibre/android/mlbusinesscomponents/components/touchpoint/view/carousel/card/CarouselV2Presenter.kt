@@ -5,11 +5,11 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 
 internal class CarouselCardV2Presenter {
 
-    fun onBind(card: CarouselCard, view: CarouselCardV2) {
-        setImage(card.image, view)
-        setTitle(card.subtitle, view)
-        setOnClickEvent(card.link, view)
-        view.tracking = card.tracking
+    fun onBind(card: CarouselCard?, view: CarouselCardV2) {
+        setImage(card?.image, view)
+        setTitle(card?.subtitle, view)
+        setOnClickEvent(card?.link, view)
+        view.tracking = card?.tracking
     }
 
     private fun setImage(image: String?, view: CarouselCardV2) {
