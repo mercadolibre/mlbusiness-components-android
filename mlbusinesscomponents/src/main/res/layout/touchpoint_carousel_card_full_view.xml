@@ -6,31 +6,31 @@
     android:layout_height="wrap_content">
 
         <FrameLayout
-            android:id="@+id/touchpoint_v2_carousel_card_image_container"
-            android:layout_width="@dimen/touchpoint_v2_card_width"
-            android:layout_height="@dimen/touchpoint_v2_card_height"
+            android:id="@+id/touchpoint_carousel_card_full_view_image_container"
+            android:layout_width="@dimen/touchpoint_card_full_view_width"
+            android:layout_height="@dimen/touchpoint_card_full_view_height"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/ui_2m"
             android:layout_marginEnd="@dimen/ui_2m"
             android:layout_marginStart="@dimen/ui_1m">
 
             <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/touchpoint_v2_carousel_card_image"
-                android:layout_width="@dimen/touchpoint_v2_card_width"
-                android:layout_height="@dimen/touchpoint_v2_card_height"
+                android:id="@+id/touchpoint_carousel_card_full_view_card_image"
+                android:layout_width="@dimen/touchpoint_card_full_view_width"
+                android:layout_height="@dimen/touchpoint_card_full_view_height"
                 android:scaleType="centerCrop"
                 android:src="@drawable/skeleton"
-                android:background="@drawable/touchpoint_v2_background_image"
+                android:background="@drawable/touchpoint_carousel_card_full_view_background_image"
                 app:actualImageScaleType="centerCrop"
                 tools:backgroundTint="@color/ui_meli_grey"/>
 
             <TextView
-                android:id="@+id/touchpoint_v2_carousel_card_main_label"
+                android:id="@+id/touchpoint_carousel_card_full_view_main_label"
                 style="@style/touchpoint_carousel_v2_main_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxWidth="@dimen/touchpoint_v2_max_width"
-                android:layout_marginBottom="@dimen/touchpoint_v2_text_margin_bottom"
+                android:maxWidth="@dimen/touchpoint_card_full_view_max_width"
+                android:layout_marginBottom="@dimen/touchpoint_card_full_view_margin_bottom"
                 tools:text="Pizza" />
 
         </FrameLayout>

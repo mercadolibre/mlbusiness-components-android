@@ -1,6 +1,6 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel
 
-enum class TouchpointItemType() {
+enum class CardCarouselItemType() {
     DEFAULT,
     FULL;
 }

@@ -18,11 +18,11 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.track
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.AssetLoader
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.CarouselCardV2Presenter
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.CarouselCardFullViewPresenter
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.CarouselCardInterface
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils
 
-class CarouselCardV2 @JvmOverloads constructor(
+class CarouselCardFullView @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null
 ) : CardView(context, attrs), TouchpointTrackeable, CarouselCardInterface {
 
@@ -33,17 +33,16 @@ class CarouselCardV2 @JvmOverloads constructor(
     private var isMPInstalled = true
     private val button: FrameLayout
     private var tracking: TouchpointTracking? = null
-    private val presenter: CarouselCardV2Presenter
+    private val presenter: CarouselCardFullViewPresenter
     private var extraData: Map<String, Any>? = null
 
     init {
+        inflate(context, R.layout.touchpoint_carousel_card_full_view, this)
 
-        inflate(context, R.layout.touchpoint_carousel_card_view_v2, this)
-
-        mainImage = findViewById(R.id.touchpoint_v2_carousel_card_image)
-        mainLabel = findViewById(R.id.touchpoint_v2_carousel_card_main_label)
-        button = findViewById(R.id.touchpoint_v2_carousel_card_image_container)
-        presenter = CarouselCardV2Presenter()
+        mainImage = findViewById(R.id.touchpoint_carousel_card_full_view_card_image)
+        mainLabel = findViewById(R.id.touchpoint_carousel_card_full_view_main_label)
+        button = findViewById(R.id.touchpoint_carousel_card_full_view_image_container)
+        presenter = CarouselCardFullViewPresenter()
     }
 
     /**

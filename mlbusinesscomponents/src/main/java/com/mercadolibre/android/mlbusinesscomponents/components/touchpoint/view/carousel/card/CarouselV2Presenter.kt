@@ -1,18 +1,18 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card
 
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCard
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCardV2
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCardFullView
 
-internal class CarouselCardV2Presenter {
+internal class CarouselCardFullViewPresenter {
 
-    fun onBind(card: CarouselCard?, view: CarouselCardV2) {
+    fun onBind(card: CarouselCard?, view: CarouselCardFullView) {
         setImage(card?.image, view)
         setTitle(card?.subtitle, view)
         setOnClickEvent(card?.link, view)
         view.tracking = card?.tracking
     }
 
-    private fun setImage(image: String?, view: CarouselCardV2) {
+    private fun setImage(image: String?, view: CarouselCardFullView) {
         image?.let {
             view.showImage(it)
         } ?: run {
@@ -20,7 +20,7 @@ internal class CarouselCardV2Presenter {
         }
     }
 
-    private fun setTitle(title: String?, view: CarouselCardV2) {
+    private fun setTitle(title: String?, view: CarouselCardFullView) {
         title?.let {
             view.showMainLabel(it)
         } ?: run {
@@ -28,7 +28,7 @@ internal class CarouselCardV2Presenter {
         }
     }
 
-    private fun setOnClickEvent(link: String?, view: CarouselCardV2) {
+    private fun setOnClickEvent(link: String?, view: CarouselCardFullView) {
         link?.let {
             view.onClick(it)
         }
