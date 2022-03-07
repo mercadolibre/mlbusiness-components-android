@@ -24,13 +24,6 @@
                 app:actualImageScaleType="centerCrop"
                 tools:backgroundTint="@color/ui_meli_grey"/>
 
-            <View
-                android:id="@+id/touchpoint_v2_carousel_footer"
-                android:layout_width="@dimen/touchpoint_v2_card_width"
-                android:layout_height="@dimen/ui_3m"
-                android:layout_gravity="bottom"
-                android:background="@drawable/touchpoint_v2_background_footer" />
-
             <TextView
                 android:id="@+id/touchpoint_v2_carousel_card_main_label"
                 style="@style/touchpoint_carousel_v2_main_label"

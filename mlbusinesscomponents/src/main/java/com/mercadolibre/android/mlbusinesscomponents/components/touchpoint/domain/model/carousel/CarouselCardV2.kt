@@ -19,12 +19,12 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.track
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.AssetLoader
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.CarouselCardV2Presenter
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.carouselCardInterface
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.CarouselCardInterface
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils
 
 class CarouselCardV2 @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null
-) : CardView(context, attrs), TouchpointTrackeable, carouselCardInterface {
+) : CardView(context, attrs), TouchpointTrackeable, CarouselCardInterface {
 
     private var mainImage: SimpleDraweeView
     private val mainLabel: TextView
@@ -34,6 +34,7 @@ class CarouselCardV2 @JvmOverloads constructor(
     private val button: FrameLayout
     private var tracking: TouchpointTracking? = null
     private val presenter: CarouselCardV2Presenter
+    private var extraData: Map<String, Any>? = null
 
     init {
 
@@ -50,7 +51,7 @@ class CarouselCardV2 @JvmOverloads constructor(
      *
      * @param card the model
      */
-    open fun bind(card: CarouselCard?) {
+    fun bind(card: CarouselCard?) {
         bind(card, Constants.NON_SIZE)
     }
 
@@ -60,7 +61,7 @@ class CarouselCardV2 @JvmOverloads constructor(
      * @param card the model
      * @param size the size in pixels
      */
-    fun bind(card: CarouselCard?, size: Int) {
+    override fun bind(card: CarouselCard?, size: Int) {
         if (size != Constants.NON_SIZE) {
             val layoutParams: ViewGroup.LayoutParams = layoutParams
             layoutParams.height = size
@@ -139,7 +140,7 @@ class CarouselCardV2 @JvmOverloads constructor(
     }
 
     override fun setExtraData(extraData: MutableMap<String, Any>) {
-        TODO("Not yet implemented")
+        this.extraData = extraData
     }
 
     override fun setCanOpenMercadoPago(isMPInstalled: Boolean) {
@@ -147,6 +148,6 @@ class CarouselCardV2 @JvmOverloads constructor(
     }
 
     override fun setImageLoader(touchPointImageLoader: TouchpointImageLoader) {
-        TODO("Not yet implemented")
+        AssetLoader.setStrategy(touchPointImageLoader)
     }
 }

@@ -2,9 +2,12 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view
 
 import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointImageLoader
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCard
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker
 
-interface carouselCardInterface {
+interface CarouselCardInterface {
+
+    fun bind(card: CarouselCard?, size: Int)
 
     fun setOnClickCallback(onClickCallback: OnClickCallback)
 
