@@ -26,7 +26,7 @@
 
             <TextView
                 android:id="@+id/touchpoint_carousel_card_full_view_main_label"
-                style="@style/touchpoint_carousel_v2_main_label"
+                style="@style/touchpoint_carousel_card_full_view_main_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxWidth="@dimen/touchpoint_card_full_view_max_width"

@@ -60,7 +60,7 @@
         <item name="android:ellipsize">end</item>
     </style>
 
-    <style name="touchpoint_carousel_v2_main_label" parent="MLFont.Bold.Semi">
+    <style name="touchpoint_carousel_card_full_view_main_label" parent="MLFont.Bold.Semi">
         <item name="android:textColor">@color/ui_meli_white</item>
         <item name="android:layout_gravity">bottom|center_horizontal</item>
         <item name="android:textSize">@dimen/ui_fontsize_small</item>
