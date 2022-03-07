@@ -12,10 +12,10 @@ import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointImageLoade
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCard;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCardV2;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.TouchpointV2ItemType;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.TouchpointItemType;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.CarouselCardView;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.carouselCardInterface;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.CarouselCardInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.DiffUtils;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,25 +41,40 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
 
     @NonNull
     @Override
-    public CarouselViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, final int index) {
-        final View view = LayoutInflater.from(parent.getContext())
-            .inflate(R.layout.touchpoint_carousel_card_view_container, parent, false);
+    public CarouselViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, final int viewType) {
+        final View view;
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+
+        if (viewType == TouchpointItemType.FULL.ordinal()) {
+            view = layoutInflater.inflate(R.layout.touchpoint_carousel_card_view_v2_container, parent, false);
+        } else {
+            view = layoutInflater.inflate(R.layout.touchpoint_carousel_card_view_container, parent, false);
+        }
         return new CarouselViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final CarouselViewHolder holder, final int index) {
+        holder.bindView(cards.get(index), cardHeight);
         holder.setOnClickCallback(onClickCallback);
         holder.setTracker(tracker);
         holder.setExtraData(extraData);
         holder.setCanOpenMercadoPago(isMPInstalled);
         holder.setImageLoader(imageLoader);
-        holder.bindView(cards.get(index), cardHeight);
     }
 
     @Override
     public int getItemCount() {
         return cards.size();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (TouchpointItemType.FULL.name().equals(cards.get(position).getType())) {
+            return TouchpointItemType.FULL.ordinal();
+        } else {
+            return TouchpointItemType.DEFAULT.ordinal();
+        }
     }
 
     /**
@@ -103,7 +118,7 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
 
         private final CarouselCardView defaultView;
         private final CarouselCardV2 fullView;
-        private carouselCardInterface currentView;
+        private CarouselCardInterface currentView;
 
         /* default */ CarouselViewHolder(@NonNull final View itemView) {
             super(itemView);
@@ -112,13 +127,12 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
         }
 
         /* default */ void bindView(final CarouselCard card, final int size) {
-            if (TouchpointV2ItemType.FULL.name().equals(card.getType())) {
-                fullView.bind(null);
+            if (TouchpointItemType.FULL.name().equals(card.getType())) {
                 currentView = fullView;
-                return;
+            } else {
+                currentView = defaultView;
             }
-            currentView = defaultView;
-            defaultView.bind(card, size);
+            currentView.bind(card, size);
         }
 
         /* default */ void setOnClickCallback(@Nullable final OnClickCallback onClickCallback) {
@@ -141,6 +155,7 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
         }
 
         /* default */ void setImageLoader(final TouchpointImageLoader touchpointImageLoader) {
+            if (touchpointImageLoader == null) return;
             currentView.setImageLoader(touchpointImageLoader);
         }
     }
