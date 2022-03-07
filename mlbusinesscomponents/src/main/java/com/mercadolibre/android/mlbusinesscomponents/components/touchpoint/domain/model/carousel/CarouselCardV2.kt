@@ -147,7 +147,7 @@ class CarouselCardV2 @JvmOverloads constructor(
         this.isMPInstalled = isMPInstalled
     }
 
-    override fun setImageLoader(touchPointImageLoader: TouchpointImageLoader) {
-        AssetLoader.setStrategy(touchPointImageLoader)
+    override fun setImageLoader(imageLoader: TouchpointImageLoader) {
+        AssetLoader.setStrategy(imageLoader)
     }
 }
