@@ -10,7 +10,6 @@
             android:layout_width="@dimen/touchpoint_card_full_view_width"
             android:layout_height="@dimen/touchpoint_card_full_view_height"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/touchpoint_carousel_card_full_view_background_image"
             tools:background="@color/light_grey">
 
             <com.facebook.drawee.view.SimpleDraweeView

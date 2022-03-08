@@ -1,4 +1,4 @@
-package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel
+package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card_full
 
 import android.content.Context
 import android.graphics.Color
@@ -14,12 +14,12 @@ import com.mercadolibre.android.mlbusinesscomponents.common.Constants
 import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointAssetLoader
 import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointImageLoader
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCard
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.AssetLoader
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.CarouselCardFullViewPresenter
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.CarouselCardInterface
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.CarouselCardInterface
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils
 
 class CarouselCardFullView @JvmOverloads constructor(

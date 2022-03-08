@@ -1,4 +1,4 @@
-package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card
+package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel
 
 import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointImageLoader
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCardFullView
+<com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card_full.CarouselCardFullView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/touchpoint_carousel_card_full_view"

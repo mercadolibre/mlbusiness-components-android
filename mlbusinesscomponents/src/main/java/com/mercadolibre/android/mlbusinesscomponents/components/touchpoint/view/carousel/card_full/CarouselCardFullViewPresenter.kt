@@ -1,7 +1,6 @@
-package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card
+package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card_full
 
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCard
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCardFullView
 
 internal class CarouselCardFullViewPresenter {
 

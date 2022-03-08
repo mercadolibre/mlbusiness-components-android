@@ -22,6 +22,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.CarouselCardInterface;
 import java.util.Map;
 
 import static com.mercadolibre.android.mlbusinesscomponents.common.Constants.NON_SIZE;
