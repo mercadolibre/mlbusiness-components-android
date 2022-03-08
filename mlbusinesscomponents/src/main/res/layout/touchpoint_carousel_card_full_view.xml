@@ -10,9 +10,8 @@
             android:layout_width="@dimen/touchpoint_card_full_view_width"
             android:layout_height="@dimen/touchpoint_card_full_view_height"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/ui_2m"
-            android:layout_marginEnd="@dimen/ui_2m"
-            android:layout_marginStart="@dimen/ui_1m">
+            android:background="@drawable/touchpoint_carousel_card_full_view_background_image"
+            tools:background="@color/light_grey">
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/touchpoint_carousel_card_full_view_card_image"
@@ -20,9 +19,8 @@
                 android:layout_height="@dimen/touchpoint_card_full_view_height"
                 android:scaleType="centerCrop"
                 android:src="@drawable/skeleton"
-                android:background="@drawable/touchpoint_carousel_card_full_view_background_image"
-                app:actualImageScaleType="centerCrop"
-                tools:backgroundTint="@color/ui_meli_grey"/>
+                app:roundedCornerRadius="@dimen/touchpoint_card_full_view_radius_border"
+                app:actualImageScaleType="fitCenter" />
 
             <TextView
                 android:id="@+id/touchpoint_carousel_card_full_view_main_label"

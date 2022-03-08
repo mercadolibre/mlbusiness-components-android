@@ -6,4 +6,5 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/ui_1m"
+    android:background="@color/ui_transparent"
     app:elevation="@dimen/ui_025m"/>
