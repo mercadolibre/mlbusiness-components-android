@@ -9,9 +9,6 @@ import androidx.appcompat.widget.AppCompatImageView
 import com.mercadolibre.android.mlbusinesscomponents.R
 import android.util.TypedValue
 
-private const val CORNER_RADIUS = 6f
-private const val CARD_ELEVATION = 12f
-
 class MLBusinessAdBannerView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -21,8 +18,6 @@ class MLBusinessAdBannerView @JvmOverloads constructor(
     private val image: AppCompatImageView
 
     init {
-        radius = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, CORNER_RADIUS, resources.displayMetrics)
-        cardElevation = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, CARD_ELEVATION, resources.displayMetrics)
         inflate(context, R.layout.ml_view_ad_banner, this)
         image = findViewById(R.id.adBannerImage)
     }
@@ -31,9 +26,20 @@ class MLBusinessAdBannerView @JvmOverloads constructor(
         fun onClickAdBannerViewLink(deepLink: String)
     }
 
-    fun init(businessAdBannerData: MLBusinessAdBannerData, onClick: OnClickAdBannerView) {
+    interface SendUrlOnClick {
+        fun sendUrl(url: String)
+    }
+
+    fun init(
+        businessAdBannerData: MLBusinessAdBannerData,
+        onClick: OnClickAdBannerView,
+        sendUrlOnClick: SendUrlOnClick? = null
+    ) {
         loadImageUrl(businessAdBannerData.imageUrl)
-        image.setOnClickListener { onClick.onClickAdBannerViewLink(businessAdBannerData.urlDeepLink) }
+        image.setOnClickListener {
+            sendUrlOnClick?.sendUrl(businessAdBannerData.urlClick)
+            onClick.onClickAdBannerViewLink(businessAdBannerData.urlDeepLink)
+        }
     }
 
     private fun loadImageUrl(url: String) {
