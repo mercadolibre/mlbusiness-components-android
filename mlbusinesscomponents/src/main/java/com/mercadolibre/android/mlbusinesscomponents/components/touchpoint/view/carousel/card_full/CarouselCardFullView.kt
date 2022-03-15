@@ -2,6 +2,7 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view
 
 import android.content.Context
 import android.graphics.Color
+import android.os.Build
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
@@ -18,8 +19,8 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.AssetLoader
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.CarouselCardInterface
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.AssetLoader
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils
 
 class CarouselCardFullView @JvmOverloads constructor(
@@ -148,5 +149,87 @@ class CarouselCardFullView @JvmOverloads constructor(
 
     override fun setImageLoader(imageLoader: TouchpointImageLoader) {
         AssetLoader.setStrategy(imageLoader)
+    }
+
+    /**
+     * Returns the title font style to a default value
+     */
+    fun changeTitleFontStyleToDefault() {
+        try {
+            if (Build.VERSION.SDK_INT < 23) {
+                mainLabel.setTextAppearance(context, R.style.touchpoint_carousel_card_full_view_main_label)
+            } else {
+                mainLabel.setTextAppearance(R.style.touchpoint_carousel_card_full_view_main_label)
+            }
+        } catch (e: IllegalArgumentException) {
+            //no op..
+        }
+    }
+
+    /**
+     * Changes the title font style.
+     *
+     * @param weight font style to change to.
+     */
+    fun changeTitleFontStyle(weight: String) {
+        try {
+            if (Build.VERSION.SDK_INT < 23) {
+                mainLabel.setTextAppearance(context, getStyle(weight))
+            } else {
+                mainLabel.setTextAppearance(getStyle(weight))
+            }
+        } catch (e: IllegalArgumentException) {
+            //no op..
+        }
+    }
+
+    /**
+     * Changes the title color
+     *
+     * @param color to change the title.
+     */
+    fun changeTitleColor(color: String?) {
+        try {
+            mainLabel.setTextColor(Color.parseColor(color))
+        } catch (e: IllegalArgumentException) {
+            mainLabel.setTextColor(resources.getColor(R.color.ui_meli_white))
+        }
+    }
+
+    /**
+     * Changes the title size.
+     *
+     * @param size to change the title size to.
+     */
+    fun changeTitleSize(size: Int) {
+        try {
+            mainLabel.textSize = size.toFloat()
+        } catch (e: IllegalArgumentException) {
+            mainLabel.textSize = resources.getDimension(R.dimen.ui_fontsize_small)
+        }
+    }
+
+    /**
+     * Returns the title size to a default value.
+     */
+    fun changeTitleSizeToDefault() {
+        try {
+            mainLabel.textSize = resources.getDimension(R.dimen.ui_fontsize_small)
+        } catch (e: IllegalArgumentException) {
+            //no op..
+        }
+    }
+
+    private fun getStyle(weight: String): Int {
+        return when (weight) {
+            REGULAR -> R.style.touchpoint_carousel_card_main_label
+            SEMI_BOLD -> R.style.touchpoint_carousel_card_full_view_main_label
+            else -> R.style.touchpoint_carousel_card_full_view_main_label
+        }
+    }
+
+    companion object {
+        private const val REGULAR = "regular"
+        private const val SEMI_BOLD = "semibold"
     }
 }
