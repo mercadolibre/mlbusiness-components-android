@@ -21,6 +21,9 @@ import java.util.Map;
 
 public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.CarouselViewHolder> {
 
+    private static final int DEFAULT_TYPE = -1;
+    private static final int FULL_TYPE = 0;
+
     private final List<CarouselCard> cards;
     @Nullable private OnClickCallback onClickCallback;
     @Nullable private MLBusinessTouchpointTracker tracker;
@@ -43,7 +46,7 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
         final View view;
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
 
-        if (viewType == CardCarouselItemType.FULL.ordinal()) {
+        if (viewType == FULL_TYPE) {
             view = layoutInflater.inflate(R.layout.touchpoint_carousel_card_full_view_container, parent, false);
         } else {
             view = layoutInflater.inflate(R.layout.touchpoint_carousel_card_view_container, parent, false);
@@ -68,10 +71,10 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
 
     @Override
     public int getItemViewType(int position) {
-        if (CardCarouselItemType.FULL.name().equals(cards.get(position).getType())) {
-            return CardCarouselItemType.FULL.ordinal();
+        if (CardCarouselItemType.FULL.equals(cards.get(position).getType())) {
+            return FULL_TYPE;
         } else {
-            return CardCarouselItemType.DEFAULT.ordinal();
+            return DEFAULT_TYPE;
         }
     }
 
@@ -125,7 +128,7 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
         }
 
         /* default */ void bindView(final CarouselCard card, final int size) {
-            if (CardCarouselItemType.FULL.name().equals(card.getType())) {
+            if (CardCarouselItemType.FULL.equals(card.getType())) {
                 currentView = fullView;
             } else {
                 currentView = defaultView;

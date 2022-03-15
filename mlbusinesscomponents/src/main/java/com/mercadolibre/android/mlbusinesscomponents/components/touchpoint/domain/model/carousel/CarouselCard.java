@@ -25,7 +25,7 @@ public class CarouselCard implements TouchpointTrackeable, Serializable {
     private final CarouselTextFormat subtitleFormat;
     private final LogoImageFormat imageFormat;
     @Nullable private final TouchpointTracking tracking;
-    @Nullable private final String type;
+    @Nullable private String type;
 
     /**
      * Constructor
@@ -43,7 +43,6 @@ public class CarouselCard implements TouchpointTrackeable, Serializable {
      * @param titleFormat the title format
      * @param subtitleFormat the subtitle format
      * @param imageFormat the image format
-     * @param type the type of Card
      * @param tracking A {@link TouchpointTracking}
      */
     public CarouselCard(final String image, final CarouselPill pill, final String title,
@@ -53,8 +52,7 @@ public class CarouselCard implements TouchpointTrackeable, Serializable {
         final CarouselTextFormat titleFormat,
         final CarouselTextFormat subtitleFormat,
         final LogoImageFormat imageFormat,
-        @Nullable final TouchpointTracking tracking,
-        @Nullable final String type) {
+        @Nullable final TouchpointTracking tracking) {
         this.image = image;
         this.pill = pill;
         this.title = title;
@@ -69,7 +67,6 @@ public class CarouselCard implements TouchpointTrackeable, Serializable {
         this.subtitleFormat = subtitleFormat;
         this.imageFormat = imageFormat;
         this.tracking = tracking;
-        this.type = type;
     }
 
     public String getImage() {
@@ -128,6 +125,10 @@ public class CarouselCard implements TouchpointTrackeable, Serializable {
     @Nullable
     public TouchpointTracking getTracking() {
         return tracking;
+    }
+
+    public void setType(@Nullable String type) {
+        this.type = type;
     }
 
     @Nullable
