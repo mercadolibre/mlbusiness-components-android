@@ -155,15 +155,7 @@ class CarouselCardFullView @JvmOverloads constructor(
      * Returns the title font style to a default value
      */
     fun changeTitleFontStyleToDefault() {
-        try {
-            if (Build.VERSION.SDK_INT < 23) {
-                mainLabel.setTextAppearance(context, R.style.touchpoint_carousel_card_full_view_main_label)
-            } else {
-                mainLabel.setTextAppearance(R.style.touchpoint_carousel_card_full_view_main_label)
-            }
-        } catch (e: IllegalArgumentException) {
-            //no op..
-        }
+        TextViewCompat.setTextAppearance(mainLabel, R.style. touchpoint_carousel_card_full_view_main_label)
     }
 
     /**
