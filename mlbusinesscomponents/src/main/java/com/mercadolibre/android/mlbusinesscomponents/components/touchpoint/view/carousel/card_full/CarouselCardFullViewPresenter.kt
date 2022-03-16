@@ -34,7 +34,7 @@ internal class CarouselCardFullViewPresenter {
             view.changeTitleFontStyleToDefault()
             return
         }
-        if (titleFormat.weight != null && titleFormat.weight.isNotEmpty()) {
+        if (!titleFormat.weight.isNullOrEmpty()) {
             view.changeTitleFontStyle(titleFormat.weight)
         } else {
             view.changeTitleFontStyleToDefault()
