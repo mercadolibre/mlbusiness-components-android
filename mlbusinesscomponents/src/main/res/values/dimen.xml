@@ -23,4 +23,11 @@
     <!-- Main Description Label Image Size -->
     <dimen name="ui_image_size_medium">18dp</dimen>
 
+    <!-- Touchpoint Card Full View Dimens -->
+    <dimen name="touchpoint_card_full_view_height">136dp</dimen>
+    <dimen name="touchpoint_card_full_view_width">112dp</dimen>
+    <dimen name="touchpoint_card_full_view_max_width">96dp</dimen>
+    <dimen name="touchpoint_card_full_view_margin_bottom">17dp</dimen>
+    <dimen name="touchpoint_card_full_view_radius_border">6dp</dimen>
+
 </resources>

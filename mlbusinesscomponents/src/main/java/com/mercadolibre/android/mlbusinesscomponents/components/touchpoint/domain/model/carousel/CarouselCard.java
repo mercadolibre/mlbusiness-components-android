@@ -25,6 +25,7 @@ public class CarouselCard implements TouchpointTrackeable, Serializable {
     private final CarouselTextFormat subtitleFormat;
     private final LogoImageFormat imageFormat;
     @Nullable private final TouchpointTracking tracking;
+    @Nullable private String type;
 
     /**
      * Constructor
@@ -124,6 +125,15 @@ public class CarouselCard implements TouchpointTrackeable, Serializable {
     @Nullable
     public TouchpointTracking getTracking() {
         return tracking;
+    }
+
+    public void setType(@Nullable String type) {
+        this.type = type;
+    }
+
+    @Nullable
+    public  String getType() {
+        return type;
     }
 
     @Override

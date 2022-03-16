@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:id="@+id/touchpoint_carousel_card_full_view_image_container"
+            android:layout_width="@dimen/touchpoint_card_full_view_width"
+            android:layout_height="@dimen/touchpoint_card_full_view_height"
+            android:layout_gravity="center_horizontal"
+            tools:background="@color/light_grey">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/touchpoint_carousel_card_full_view_card_image"
+                android:layout_width="@dimen/touchpoint_card_full_view_width"
+                android:layout_height="@dimen/touchpoint_card_full_view_height"
+                android:scaleType="centerCrop"
+                android:src="@drawable/skeleton"
+                app:roundedCornerRadius="@dimen/touchpoint_card_full_view_radius_border"
+                app:actualImageScaleType="fitCenter" />
+
+            <TextView
+                android:id="@+id/touchpoint_carousel_card_full_view_main_label"
+                style="@style/touchpoint_carousel_card_full_view_main_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="@dimen/touchpoint_card_full_view_max_width"
+                android:layout_marginBottom="@dimen/touchpoint_card_full_view_margin_bottom"
+                tools:text="Pizza" />
+
+        </FrameLayout>
+</merge>

@@ -22,12 +22,13 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.CarouselCardInterface;
 import java.util.Map;
 
 import static com.mercadolibre.android.mlbusinesscomponents.common.Constants.NON_SIZE;
 import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.trackTap;
 
-public class CarouselCardView extends CardView implements TouchpointTrackeable {
+public class CarouselCardView extends CardView implements TouchpointTrackeable, CarouselCardInterface {
 
     private static final String REGULAR = "regular";
     private static final String SEMIBOLD = "semibold";
@@ -119,6 +120,7 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable {
      * @param card the model
      * @param size the size in pixels
      */
+    @Override
     public void bind(final CarouselCard card, final int size) {
         if (size != NON_SIZE) {
             ViewGroup.LayoutParams layoutParams = getLayoutParams();

@@ -11,6 +11,7 @@ import com.mercadolibre.android.mlbusinesscomponents.R;
 import com.mercadolibre.android.mlbusinesscomponents.common.TouchpointImageLoader;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.CarouselCard;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card_full.CarouselCardFullView;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.CarouselCardView;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.DiffUtils;
@@ -19,6 +20,9 @@ import java.util.List;
 import java.util.Map;
 
 public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.CarouselViewHolder> {
+
+    private static final int DEFAULT_TYPE = -1;
+    private static final int FULL_TYPE = 0;
 
     private final List<CarouselCard> cards;
     @Nullable private OnClickCallback onClickCallback;
@@ -38,25 +42,40 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
 
     @NonNull
     @Override
-    public CarouselViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, final int index) {
-        final View view = LayoutInflater.from(parent.getContext())
-            .inflate(R.layout.touchpoint_carousel_card_view_container, parent, false);
+    public CarouselViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, final int viewType) {
+        final View view;
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+
+        if (viewType == FULL_TYPE) {
+            view = layoutInflater.inflate(R.layout.touchpoint_carousel_card_full_view_container, parent, false);
+        } else {
+            view = layoutInflater.inflate(R.layout.touchpoint_carousel_card_view_container, parent, false);
+        }
         return new CarouselViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final CarouselViewHolder holder, final int index) {
+        holder.bindView(cards.get(index), cardHeight);
         holder.setOnClickCallback(onClickCallback);
         holder.setTracker(tracker);
         holder.setExtraData(extraData);
         holder.setCanOpenMercadoPago(isMPInstalled);
         holder.setImageLoader(imageLoader);
-        holder.bindView(cards.get(index), cardHeight);
     }
 
     @Override
     public int getItemCount() {
         return cards.size();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (CardCarouselItemType.FULL.equals(cards.get(position).getType())) {
+            return FULL_TYPE;
+        } else {
+            return DEFAULT_TYPE;
+        }
     }
 
     /**
@@ -98,35 +117,47 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
 
     /* default */ static class CarouselViewHolder extends RecyclerView.ViewHolder {
 
-        private final CarouselCardView view;
+        private final CarouselCardView defaultView;
+        private final CarouselCardFullView fullView;
+        private CarouselCardInterface currentView;
 
         /* default */ CarouselViewHolder(@NonNull final View itemView) {
             super(itemView);
-            view = itemView.findViewById(R.id.touchpoint_carousel_card_view);
+            defaultView = itemView.findViewById(R.id.touchpoint_carousel_card_view);
+            fullView = itemView.findViewById(R.id.touchpoint_carousel_card_full_view);
         }
 
         /* default */ void bindView(final CarouselCard card, final int size) {
-            view.bind(card, size);
+            if (CardCarouselItemType.FULL.equals(card.getType())) {
+                currentView = fullView;
+            } else {
+                currentView = defaultView;
+            }
+            currentView.bind(card, size);
         }
 
         /* default */ void setOnClickCallback(@Nullable final OnClickCallback onClickCallback) {
-            view.setOnClickCallback(onClickCallback);
+            if (onClickCallback == null) return;
+            currentView.setOnClickCallback(onClickCallback);
         }
 
         /* default */ void setTracker(@Nullable final MLBusinessTouchpointTracker tracker) {
-            view.setTracker(tracker);
+            if (tracker == null) return;
+            currentView.setTracker(tracker);
         }
 
         /* default */ void setExtraData(@Nullable final Map<String, Object> extraData) {
-            view.setExtraData(extraData);
+            if (extraData == null) return;
+            currentView.setExtraData(extraData);
         }
 
         /* default */ void setCanOpenMercadoPago(final boolean isMPInstalled) {
-            view.setCanOpenMercadoPago(isMPInstalled);
+            currentView.setCanOpenMercadoPago(isMPInstalled);
         }
 
         /* default */ void setImageLoader(final TouchpointImageLoader touchpointImageLoader) {
-            view.setImageLoader(touchpointImageLoader);
+            if (touchpointImageLoader == null) return;
+            currentView.setImageLoader(touchpointImageLoader);
         }
     }
 }

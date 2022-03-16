@@ -1,4 +1,7 @@
 ## SIN PUBLICAR
+- Se añade un nuevo campo a CarouselCard. Para tener la posibilidad de mostrar touchpointV2
+
+## 2.4.0
 - Se arregla un bug en el componente ButtonProgress.
 
 ## 2.3.0
