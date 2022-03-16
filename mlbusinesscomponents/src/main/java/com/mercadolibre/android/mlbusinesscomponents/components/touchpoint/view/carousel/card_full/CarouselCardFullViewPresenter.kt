@@ -36,16 +36,12 @@ internal class CarouselCardFullViewPresenter {
         }
         if (!titleFormat.weight.isNullOrEmpty()) {
             view.changeTitleFontStyle(titleFormat.weight)
-        } else {
-            view.changeTitleFontStyleToDefault()
         }
         if (!titleFormat.color.isNullOrEmpty()) {
             view.changeTitleColor(titleFormat.color)
         }
         if (titleFormat.size > 0) {
             view.changeTitleSize(titleFormat.size)
-        } else {
-            view.changeTitleSizeToDefault()
         }
     }
 

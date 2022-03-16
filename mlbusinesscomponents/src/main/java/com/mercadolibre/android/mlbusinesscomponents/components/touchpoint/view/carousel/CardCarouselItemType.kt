@@ -6,8 +6,9 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.
 
 @Retention(AnnotationRetention.SOURCE)
 @StringDef(DEFAULT, FULL)
-annotation class CardCarouselItemType() {companion object {
-    const val DEFAULT = "DEFAULT"
-    const val FULL = "FULL"
-}
+annotation class CardCarouselItemType() {
+    companion object {
+        const val DEFAULT = "DEFAULT"
+        const val FULL = "FULL"
+    }
 }

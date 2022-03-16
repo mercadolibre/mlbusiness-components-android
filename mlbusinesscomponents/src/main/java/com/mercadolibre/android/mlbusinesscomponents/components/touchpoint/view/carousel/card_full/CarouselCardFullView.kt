@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.widget.TextViewCompat
 import com.facebook.drawee.view.SimpleDraweeView
 import com.mercadolibre.android.mlbusinesscomponents.R
 import com.mercadolibre.android.mlbusinesscomponents.common.Constants
@@ -155,7 +156,7 @@ class CarouselCardFullView @JvmOverloads constructor(
      * Returns the title font style to a default value
      */
     fun changeTitleFontStyleToDefault() {
-        TextViewCompat.setTextAppearance(mainLabel, R.style. touchpoint_carousel_card_full_view_main_label)
+        TextViewCompat.setTextAppearance(mainLabel, R.style.touchpoint_carousel_card_full_view_main_label)
     }
 
     /**
@@ -164,15 +165,7 @@ class CarouselCardFullView @JvmOverloads constructor(
      * @param weight font style to change to.
      */
     fun changeTitleFontStyle(weight: String) {
-        try {
-            if (Build.VERSION.SDK_INT < 23) {
-                mainLabel.setTextAppearance(context, getStyle(weight))
-            } else {
-                mainLabel.setTextAppearance(getStyle(weight))
-            }
-        } catch (e: IllegalArgumentException) {
-            //no op..
-        }
+        TextViewCompat.setTextAppearance(mainLabel, getStyle(weight))
     }
 
     /**
@@ -181,11 +174,7 @@ class CarouselCardFullView @JvmOverloads constructor(
      * @param color to change the title.
      */
     fun changeTitleColor(color: String?) {
-        try {
-            mainLabel.setTextColor(Color.parseColor(color))
-        } catch (e: IllegalArgumentException) {
-            mainLabel.setTextColor(resources.getColor(R.color.ui_meli_white))
-        }
+        mainLabel.setTextColor(Color.parseColor(color))
     }
 
     /**
@@ -194,22 +183,7 @@ class CarouselCardFullView @JvmOverloads constructor(
      * @param size to change the title size to.
      */
     fun changeTitleSize(size: Int) {
-        try {
-            mainLabel.textSize = size.toFloat()
-        } catch (e: IllegalArgumentException) {
-            mainLabel.textSize = resources.getDimension(R.dimen.ui_fontsize_small)
-        }
-    }
-
-    /**
-     * Returns the title size to a default value.
-     */
-    fun changeTitleSizeToDefault() {
-        try {
-            mainLabel.textSize = resources.getDimension(R.dimen.ui_fontsize_small)
-        } catch (e: IllegalArgumentException) {
-            //no op..
-        }
+        mainLabel.textSize = size.toFloat()
     }
 
     private fun getStyle(weight: String): Int {
