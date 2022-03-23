@@ -1,0 +1,72 @@
+{
+  "id": "test",
+  "type": "CAROUSEL",
+  "content": {
+    "items": [
+      {
+        "tracking": {
+          "tracking_id": "pizza"
+        },
+        "title_format": {
+          "size": 16,
+          "color": "#ffffff",
+          "weight": "semibold"
+        },
+        "image": "https://http2.mlstatic.com/D_NQ_NP_712272-MLA49325654560_032022-P.jpg",
+        "title": "Pizza",
+        "link": "mercadopago://discount_center_payers/list?product_type=delivery&dynamic_categories=pizza&skeleton_id=delivery_marketplace#from=/home_ml/discount_center",
+        "type": "FULL"
+      },
+      {
+        "tracking": {
+          "tracking_id": "japanese"
+        },
+        "title_format": {
+          "size": 16,
+          "color": "#ffffff",
+          "weight": "semibold"
+        },
+        "image": "https://http2.mlstatic.com/D_NQ_NP_847948-MLA49325654986_032022-P.jpg",
+        "title": "Japonesa",
+        "link": "mercadopago://discount_center_payers/list?product_type=delivery&dynamic_categories=japanese&skeleton_id=delivery_marketplace#from=/home_ml/discount_center",
+        "type": "FULL"
+      },
+      {
+        "tracking": {
+          "tracking_id": "lanches"
+        },
+        "title_format": {
+          "size": 16,
+          "color": "#ffffff",
+          "weight": "semibold"
+        },
+        "image": "https://http2.mlstatic.com/D_NQ_NP_957110-MLA49325763097_032022-P.jpg",
+        "title": "Lanches",
+        "link": "mercadopago://discount_center_payers/list?product_type=delivery&dynamic_categories=lanches&skeleton_id=delivery_marketplace#from=/home_ml/discount_center",
+        "type": "FULL"
+      },
+      {
+        "tracking": {
+          "tracking_id": "lanches"
+        },
+        "title_format": {
+          "size": 16,
+          "color": "#ffffff",
+          "weight": "semibold"
+        },
+        "image": "https://http2.mlstatic.com/D_NQ_NP_957110-MLA49325763097_032022-P.jpg",
+        "title": "Lanches",
+        "link": "mercadopago://discount_center_payers/list?product_type=delivery&dynamic_categories=lanches&skeleton_id=delivery_marketplace#from=/home_ml/discount_center",
+        "type": "FULL"
+      }
+    ]
+  },
+  "tracking": {
+    "id": "mp_home",
+    "type": "CAROUSEL",
+    "info_adicional": "Valor de la info adicional"
+  },
+  "format": {
+    "margin": 16
+  }
+}

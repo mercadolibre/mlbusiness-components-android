@@ -5,6 +5,8 @@
     android:id="@+id/touchpoint_carousel_card_full_view"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/ui_1m"
+    android:layout_marginHorizontal="@dimen/ui_050m"
     android:background="@color/ui_transparent"
-    app:elevation="@dimen/ui_025m"/>
+    android:backgroundTint="@color/ui_meli_white"
+    app:elevation="@dimen/ui_025m"
+    app:cardCornerRadius="@dimen/touchpoint_card_full_view_radius_border"/>
