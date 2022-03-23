@@ -1,4 +1,4 @@
-## SIN PUBLICAR
+# Sin publicar
 - Se actualiza container Card Full View.
 
 ## 2.5.0
