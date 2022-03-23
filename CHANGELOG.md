@@ -1,4 +1,4 @@
-# 2.6.0
+# 2.6.1
 _23_03_2022_
 - Se actualiza container Card Full View.
 
