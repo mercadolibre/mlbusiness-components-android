@@ -1,4 +1,4 @@
-## 2.6.1
+## 2.6.2
 - Se actualiza container Card Full View.
 
 ## 2.5.0
