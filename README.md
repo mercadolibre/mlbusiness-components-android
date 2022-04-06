@@ -18,6 +18,12 @@ With this command you can generate a local version for testing:
 
 ```./gradlew publishLocal```
 
+#### CI deployment
+
+With this commit you can generate a lib through the CI:
+
+```git commit -m "[ci deploy]"```
+
 # 🐒 How to use
 
 ### 1 - Android Studio
