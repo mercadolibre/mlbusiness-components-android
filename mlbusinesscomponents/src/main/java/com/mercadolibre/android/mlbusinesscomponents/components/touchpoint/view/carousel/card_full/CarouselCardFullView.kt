@@ -152,6 +152,16 @@ class CarouselCardFullView @JvmOverloads constructor(
         AssetLoader.setStrategy(imageLoader)
     }
 
+    override fun removeMarginStart() {
+        val params = (layoutParams as MarginLayoutParams)
+        params.setMargins(0, params.topMargin, params.rightMargin, params.bottomMargin)
+    }
+
+    override fun removeMarginEnd() {
+        val params = (layoutParams as MarginLayoutParams)
+        params.setMargins(params.leftMargin, params.topMargin, 0, params.bottomMargin)
+    }
+
     /**
      * Returns the title font style to a default value
      */

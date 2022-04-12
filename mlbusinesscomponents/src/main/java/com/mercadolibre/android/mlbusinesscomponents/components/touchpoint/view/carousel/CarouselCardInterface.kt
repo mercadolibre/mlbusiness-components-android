@@ -49,4 +49,14 @@ interface CarouselCardInterface {
      * @param imageLoader The image loader.
      */
     fun setImageLoader(imageLoader: TouchpointImageLoader)
+
+    /**
+     * Remove margins start of first item.
+     */
+    fun removeMarginStart()
+
+    /**
+     * Remove margins end of last item.
+     */
+    fun removeMarginEnd()
 }
