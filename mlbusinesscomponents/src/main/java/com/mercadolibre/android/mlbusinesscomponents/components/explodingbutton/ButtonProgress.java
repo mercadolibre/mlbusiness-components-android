@@ -52,10 +52,10 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
     private int rippleColor;
     @ColorRes
     private int colorText;
-    @ColorInt
-    private int backgroundColor;
-    @ColorInt
-    private int progressColor;
+    @ColorRes
+    private int backgroundColor = R.color.components_primary_color;
+    @ColorRes
+    private int progressColor = R.color.components_secondary_color;
     private String titleProgress;
     private int durationRipple = 500;
     private int durationTimeout = 7000;
@@ -108,31 +108,20 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
 
     public void setState(ButtonProgressState state) {
         if (state == DISABLED) {
-            setDisabledState();
+            this.setClickable(false);
+            paintButton(R.color.mlbusiness_color_disable_button, R.color.mlbusiness_color_disable_button);
+            paintText(R.color.ui_meli_white);
         } else {
-            setEnabledState();
+            this.setClickable(true);
+            paintButton(backgroundColor, progressColor);
+            paintText(colorText);
         }
     }
 
-    private void setEnabledState() {
-        this.setClickable(true);
+    public ButtonProgress setColorButton(int backgroundColor, int progressColor) {
+        this.backgroundColor = backgroundColor;
+        this.progressColor = progressColor;
         paintButton(backgroundColor, progressColor);
-        paintText(colorText);
-    }
-
-    private void setDisabledState() {
-        this.setClickable(false);
-        paintButton(
-            ContextCompat.getColor(getContext(), R.color.mlbusiness_color_disable_button),
-            ContextCompat.getColor(getContext(), R.color.mlbusiness_color_disable_button)
-        );
-        paintText(R.color.ui_meli_white);
-    }
-
-    public ButtonProgress setColorButton(@ColorRes int backgroundColor, @ColorRes int progressColor) {
-        this.backgroundColor = ContextCompat.getColor(getContext(), backgroundColor);
-        this.progressColor = ContextCompat.getColor(getContext(), progressColor);
-        paintButton(this.backgroundColor, this.progressColor);
         return this;
     }
 
@@ -144,7 +133,7 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         LayerDrawable dr = (LayerDrawable) getResources().getDrawable(R.drawable.button_background);
         GradientDrawable background = (GradientDrawable) dr.findDrawableByLayerId(R.id.background);
         ClipDrawable progress = (ClipDrawable) dr.findDrawableByLayerId(R.id.progress);
-        background.setColor(backgroundColor);
+        background.setColor(ContextCompat.getColor(getContext(), backgroundColor));
         DrawableCompat.setTint(progress, progressColor);
         progressBar.setProgressDrawable(dr);
     }
@@ -232,9 +221,6 @@ public class ButtonProgress extends LinearLayout implements View.OnClickListener
         animator = ObjectAnimator.ofInt(progressBar, "progress", 0, durationTimeout);
         adjustHeight(circle);
         adjustHeight(icon);
-
-        backgroundColor = ContextCompat.getColor(context, R.color.components_primary_color);
-        progressColor = ContextCompat.getColor(context, R.color.components_secondary_color);
     }
 
     @Override
