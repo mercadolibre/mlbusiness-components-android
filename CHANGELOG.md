@@ -1,4 +1,7 @@
 # Sin publicar
+- Se hace revert del pr https://github.com/mercadolibre/mlbusiness-components-android/pull/158 por posible crash con vencimiento 14/04
+
+## 2.6.0
 - Se actualiza container Card Full View.
 
 ## 2.5.0
