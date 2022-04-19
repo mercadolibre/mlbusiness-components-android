@@ -517,4 +517,16 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable, 
     public void setImageLoader(final TouchpointImageLoader imageLoader) {
         AssetLoader.setStrategy(imageLoader);
     }
+
+    @Override
+    public void removeMarginStart() {
+        MarginLayoutParams params = (MarginLayoutParams) getLayoutParams();
+        params.setMargins(0, params.topMargin, params.rightMargin, params.bottomMargin);
+    }
+
+    @Override
+    public void removeMarginEnd() {
+        MarginLayoutParams params = (MarginLayoutParams) getLayoutParams();
+        params.setMargins(params.leftMargin, params.topMargin, 0, params.bottomMargin);
+    }
 }

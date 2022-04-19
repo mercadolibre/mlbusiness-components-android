@@ -1,4 +1,7 @@
 # Sin publicar
+- Se borra el margin start y end en los carouseles.
+
+## 2.6.0
 - Se actualiza container Card Full View.
 
 ## 2.5.0

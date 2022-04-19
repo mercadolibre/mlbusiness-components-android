@@ -62,6 +62,12 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
         holder.setExtraData(extraData);
         holder.setCanOpenMercadoPago(isMPInstalled);
         holder.setImageLoader(imageLoader);
+        if (index == 0) {
+            holder.removeMarginStartFirstItem();
+        }
+        if (getItemCount() - 1 == index) {
+            holder.removeMarginEndLastItem();
+        }
     }
 
     @Override
@@ -158,6 +164,14 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
         /* default */ void setImageLoader(final TouchpointImageLoader touchpointImageLoader) {
             if (touchpointImageLoader == null) return;
             currentView.setImageLoader(touchpointImageLoader);
+        }
+
+        /* default */ void removeMarginStartFirstItem() {
+            currentView.removeMarginStart();
+        }
+
+        /* default */ void removeMarginEndLastItem() {
+            currentView.removeMarginEnd();
         }
     }
 }
