@@ -1,5 +1,8 @@
-# Sin publicar
-- Se borra el margin start y end en los carouseles.
+# SIN PUBLICAR
+
+
+## 2.7.0
+- Se borra el margin start y end en los carousels.
 
 ## 2.6.0
 - Se actualiza container Card Full View.
