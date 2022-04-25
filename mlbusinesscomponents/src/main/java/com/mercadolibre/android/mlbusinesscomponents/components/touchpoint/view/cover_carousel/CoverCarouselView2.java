@@ -36,7 +36,7 @@ public class CoverCarouselView2 extends AbstractTouchpointChildView<CoverCarouse
     private static final int MARGIN_BETWEEN_SCALED_PAGES = -10;
     private static final int VIEW_PAGER_PADDING_DIP = 16;
 
-    private final CoverCarouselPresenter presenter;
+    private final CoverCarouselPresenter2 presenter;
 
     private final LinearLayout headerContainer;
     private final TextView headerTitle;
@@ -44,7 +44,7 @@ public class CoverCarouselView2 extends AbstractTouchpointChildView<CoverCarouse
     private final ViewFlipper flipper;
 
     private final ViewPager viewPager;
-    private final CoverCardViewPagerAdapter viewPagerAdapter;
+    private final CoverCardViewPagerAdapter2 viewPagerAdapter;
 
     private TrackListener trackListener;
 
@@ -59,9 +59,9 @@ public class CoverCarouselView2 extends AbstractTouchpointChildView<CoverCarouse
     public CoverCarouselView2(@NonNull final Context context, @Nullable final AttributeSet attrs,
                               final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        inflate(context, R.layout.touchpoint_cover_carousel_view, this);
+        inflate(context, R.layout.touchpoint_cover_carousel_view2, this);
 
-        presenter = new CoverCarouselPresenter();
+        presenter = new CoverCarouselPresenter2();
 
         flipper = findViewById(R.id.touchpoint_cover_carousel_view_flipper);
         headerContainer = findViewById(R.id.touchpoint_cover_carousel_header_container);
@@ -69,7 +69,7 @@ public class CoverCarouselView2 extends AbstractTouchpointChildView<CoverCarouse
         headerAction = findViewById(R.id.touchpoint_cover_carousel_header_action);
 
         viewPager = findViewById(R.id.cover_carouse_view_pager);
-        viewPagerAdapter = new CoverCardViewPagerAdapter(getContext());
+        viewPagerAdapter = new CoverCardViewPagerAdapter2(getContext());
 
         initViewPager();
     }
