@@ -13,7 +13,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.Carousel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.test.CoverCarouselResponse;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.test.CoverCarouselResponse2;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.test.FlexCoverCarouselResponse;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid.Grid;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.hybrid_carousel.response.HybridCarousel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointResponse;
@@ -22,7 +22,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.TouchpointViewFactory;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.CarouselView;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.CoverCarouselView;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.CoverCarouselView2;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.FlexCoverCarouselView;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.grid.GridView;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.hybrid_carousel.HybridCarouselView;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtils;
@@ -33,7 +33,7 @@ public enum TouchpointRegistry {
     CAROUSEL(Carousel.class, CarouselView::new),
     HYBRID_CAROUSEL(HybridCarousel.class, HybridCarouselView::new),
     COVER_CAROUSEL(CoverCarouselResponse.class, CoverCarouselView::new),
-    FLEX_COVER_CAROUSEL (CoverCarouselResponse2.class, CoverCarouselView2::new);
+    FLEX_COVER_CAROUSEL (FlexCoverCarouselResponse.class, FlexCoverCarouselView::new);
 
     private final Class<? extends TouchpointContent> model;
     private final TouchpointViewFactory factory;

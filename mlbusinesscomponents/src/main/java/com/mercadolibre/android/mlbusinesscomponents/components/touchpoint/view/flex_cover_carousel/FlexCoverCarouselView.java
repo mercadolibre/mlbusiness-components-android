@@ -1,4 +1,4 @@
-package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel;
+package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel;
 
 import static com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils.trackShow;
 
@@ -21,13 +21,15 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CoverCarouselInterfaceModel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.TrackListener;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.CoverCarouselPageTransformer;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.CoverCarouselViewInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CoverCarouselView2 extends AbstractTouchpointChildView<CoverCarouselInterfaceModel> implements
-    CoverCarouselViewInterface {
+public class FlexCoverCarouselView extends AbstractTouchpointChildView<CoverCarouselInterfaceModel> implements
+        CoverCarouselViewInterface {
 
     private static final int COVER_CAROUSEL_CONTAINER_INDEX = 0;
     private static final int COVER_CAROUSEL_SKELETON_INDEX = 1;
@@ -36,7 +38,7 @@ public class CoverCarouselView2 extends AbstractTouchpointChildView<CoverCarouse
     private static final int MARGIN_BETWEEN_SCALED_PAGES = -10;
     private static final int VIEW_PAGER_PADDING_DIP = 16;
 
-    private final CoverCarouselPresenter2 presenter;
+    private final FlexCoverCarouselPresenter presenter;
 
     private final LinearLayout headerContainer;
     private final TextView headerTitle;
@@ -44,32 +46,32 @@ public class CoverCarouselView2 extends AbstractTouchpointChildView<CoverCarouse
     private final ViewFlipper flipper;
 
     private final ViewPager viewPager;
-    private final CoverCardViewPagerAdapter2 viewPagerAdapter;
+    private final FlexCoverCardViewPagerAdapter viewPagerAdapter;
 
     private TrackListener trackListener;
 
-    public CoverCarouselView2(@NonNull final Context context) {
+    public FlexCoverCarouselView(@NonNull final Context context) {
         this(context, null);
     }
 
-    public CoverCarouselView2(@NonNull final Context context, @Nullable final AttributeSet attrs) {
+    public FlexCoverCarouselView(@NonNull final Context context, @Nullable final AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public CoverCarouselView2(@NonNull final Context context, @Nullable final AttributeSet attrs,
-                              final int defStyleAttr) {
+    public FlexCoverCarouselView(@NonNull final Context context, @Nullable final AttributeSet attrs,
+                                 final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        inflate(context, R.layout.touchpoint_cover_carousel_view2, this);
+        inflate(context, R.layout.touchpoint_flex_cover_carousel_view, this);
 
-        presenter = new CoverCarouselPresenter2();
+        presenter = new FlexCoverCarouselPresenter();
 
         flipper = findViewById(R.id.touchpoint_cover_carousel_view_flipper);
-        headerContainer = findViewById(R.id.touchpoint_cover_carousel_header_container);
-        headerTitle = findViewById(R.id.touchpoint_cover_carousel_header_title);
-        headerAction = findViewById(R.id.touchpoint_cover_carousel_header_action);
+        headerContainer = findViewById(R.id.touchpoint_flex_cover_carousel_header_container);
+        headerTitle = findViewById(R.id.touchpoint_flex_cover_carousel_header_title);
+        headerAction = findViewById(R.id.touchpoint_flex_cover_carousel_header_action);
 
-        viewPager = findViewById(R.id.cover_carouse_view_pager);
-        viewPagerAdapter = new CoverCardViewPagerAdapter2(getContext());
+        viewPager = findViewById(R.id.flex_cover_carousel_view_pager);
+        viewPagerAdapter = new FlexCoverCardViewPagerAdapter(getContext());
 
         initViewPager();
     }

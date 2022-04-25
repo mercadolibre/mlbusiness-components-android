@@ -1,13 +1,14 @@
-package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel;
+package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel;
 
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterfaceModel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CarouselAnimationInterfaceModel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CoverCarouselInterfaceModel;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.CoverCarouselViewInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardInterfaceView;
 
 import java.util.List;
 
-public class CoverCarouselPresenter2 {
+public class FlexCoverCarouselPresenter {
 
     /**
      * Map response to model.

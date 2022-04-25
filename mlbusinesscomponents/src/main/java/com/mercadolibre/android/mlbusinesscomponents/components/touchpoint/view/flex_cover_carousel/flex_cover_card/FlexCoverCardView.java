@@ -1,4 +1,4 @@
-package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card;
+package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.flex_cover_card;
 
 import static com.mercadolibre.android.mlbusinesscomponents.common.Constants.NON_SIZE;
 
@@ -23,12 +23,13 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.CardTransformer;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardInterfaceView;
 
-public class CoverCardView2 extends CardView implements TouchpointTrackeable, CoverCardInterfaceView, CardTransformer {
+public class FlexCoverCardView extends CardView implements TouchpointTrackeable, CoverCardInterfaceView, CardTransformer {
 
     private static final float CORNER_RADIUS_VALUE = 6f;
 
-    private final CoverCardPresenter2 presenter;
+    private final FlexCoverCardPresenter presenter;
     private final SimpleDraweeView cardCoverImage;
     private final TouchpointRowView cardCoverRow;
     private final View skeletonView;
@@ -37,21 +38,21 @@ public class CoverCardView2 extends CardView implements TouchpointTrackeable, Co
 
     @Nullable private OnClickCallback onClickCallback;
 
-    public CoverCardView2(@NonNull final Context context) {
+    public FlexCoverCardView(@NonNull final Context context) {
         this(context, null);
     }
 
-    public CoverCardView2(@NonNull final Context context, @Nullable final AttributeSet attrs) {
+    public FlexCoverCardView(@NonNull final Context context, @Nullable final AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public CoverCardView2(@NonNull final Context context, @Nullable final AttributeSet attrs, final int defStyleAttr) {
+    public FlexCoverCardView(@NonNull final Context context, @Nullable final AttributeSet attrs, final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        inflate(getContext(), R.layout.touchpoint_cover_carousel_card_view2, this);
-        cardCoverImage = findViewById(R.id.touchpoint_cover_carousel_card_image);
+        inflate(getContext(), R.layout.touchpoint_flex_cover_carousel_card_view, this);
+        cardCoverImage = findViewById(R.id.touchpoint_flex_cover_carousel_card_image);
         cardCoverRow = findViewById(R.id.touchpoint_cover_carousel_card_row);
         skeletonView = findViewById(R.id.touchpoint_cover_carousel_card_image_skeleton);
-        presenter = new CoverCardPresenter2();
+        presenter = new FlexCoverCardPresenter();
 
         setCornerRadius();
         onShowSkeleton();
@@ -208,7 +209,7 @@ public class CoverCardView2 extends CardView implements TouchpointTrackeable, Co
     }
 
     @Override
-    public CoverCardView2 getView() {
+    public FlexCoverCardView getView() {
         return this;
     }
 

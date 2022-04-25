@@ -1,4 +1,4 @@
-package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel;
+package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel;
 
 import android.content.Context;
 import android.view.View;
@@ -11,19 +11,18 @@ import androidx.viewpager.widget.PagerAdapter;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterfaceModel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardInterfaceView;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardView;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardView2;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.flex_cover_card.FlexCoverCardView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CoverCardViewPagerAdapter2 extends PagerAdapter {
+public class FlexCoverCardViewPagerAdapter extends PagerAdapter {
 
     private final Context context;
     @Nullable private OnClickCallback onClickCallback;
     private final List<CoverCardInterfaceView> elementsView;
 
-    /* default */ CoverCardViewPagerAdapter2(final Context context) {
+    /* default */ FlexCoverCardViewPagerAdapter(final Context context) {
         this.context = context;
         elementsView = new ArrayList<>();
     }
@@ -48,7 +47,7 @@ public class CoverCardViewPagerAdapter2 extends PagerAdapter {
     }
 
     private void addItemsInElementsView(final List<CoverCardInterfaceModel> itemsView) {
-        CoverCardView2 view;
+        FlexCoverCardView view;
         int itemsViewIndex = 0;
 
         for (final CoverCardInterfaceModel model: itemsView) {
@@ -56,7 +55,7 @@ public class CoverCardViewPagerAdapter2 extends PagerAdapter {
             if (itemsViewIndex < elementsView.size()) {
                 elementsView.get(itemsViewIndex).bind(model);
             } else {
-                view = new CoverCardView2(context);
+                view = new FlexCoverCardView(context);
                 view.setOnClickCallback(onClickCallback);
                 view.bind(model);
                 elementsView.add(elementsView.size(), view);

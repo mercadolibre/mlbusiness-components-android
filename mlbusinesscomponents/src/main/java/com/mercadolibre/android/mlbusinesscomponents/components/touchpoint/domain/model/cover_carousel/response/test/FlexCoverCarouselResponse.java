@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Keep
-public class CoverCarouselResponse2 implements CoverCarouselInterfaceModel, Serializable {
+public class FlexCoverCarouselResponse implements CoverCarouselInterfaceModel, Serializable {
 
     private static final long serialVersionUID = 5514383671266112753L;
 
@@ -22,9 +22,9 @@ public class CoverCarouselResponse2 implements CoverCarouselInterfaceModel, Seri
     private final CarouselAnimationResponse carouselAnimation;
     private final List<CoverCard> items;
 
-    public CoverCarouselResponse2(final String link, final String label, final String title,
-                                  final CarouselAnimationResponse carouselAnimation,
-                                  final List<CoverCard> items) {
+    public FlexCoverCarouselResponse(final String link, final String label, final String title,
+                                     final CarouselAnimationResponse carouselAnimation,
+                                     final List<CoverCard> items) {
         this.link = link;
         this.label = label;
         this.title = title;

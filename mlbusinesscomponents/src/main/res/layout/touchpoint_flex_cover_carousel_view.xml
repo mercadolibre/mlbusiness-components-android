@@ -7,14 +7,14 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:id="@+id/touchpoint_cover_carousel_container"
+        android:id="@+id/touchpoint_flex_cover_carousel_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/ui_1_5m"
         android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/touchpoint_cover_carousel_header_container"
+            android:id="@+id/touchpoint_flex_cover_carousel_header_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/ui_1_5m"
@@ -23,7 +23,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/touchpoint_cover_carousel_header_title"
+                android:id="@+id/touchpoint_flex_cover_carousel_header_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -34,7 +34,7 @@
                 tools:text="Las mejores marcas"/>
 
             <TextView
-                android:id="@+id/touchpoint_cover_carousel_header_action"
+                android:id="@+id/touchpoint_flex_cover_carousel_header_action"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 style="@style/MLFont.Bold.Semi"
@@ -46,7 +46,7 @@
         </LinearLayout>
 
         <androidx.viewpager.widget.ViewPager
-            android:id="@+id/cover_carouse_view_pager"
+            android:id="@+id/flex_cover_carousel_view_pager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/ui_2m"
