@@ -1,6 +1,5 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.flex_cover_card;
 
-import com.mercadolibre.android.mlbusinesscomponents.components.row.model.TouchpointRowItemInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterfaceModel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.cover_carousel.cover_card.CoverCardInterfaceView;
@@ -24,7 +23,6 @@ public class FlexCoverCardPresenter {
         }
 
         view.hideSkeleton();
-        setRow(model.getContent(), view);
         setCoverImage(model.getContent().getCover(), view);
         setOnClick(model.getLink(), view);
         setTracking(model.getTracking(), view);
@@ -37,10 +35,6 @@ public class FlexCoverCardPresenter {
         } else {
             view.setTopImageToDefaultStatus();
         }
-    }
-
-    private void setRow(final TouchpointRowItemInterface description, final CoverCardInterfaceView view) {
-        view.setRow(description);
     }
 
     private void setCoverImage(final String cover, final CoverCardInterfaceView view) {

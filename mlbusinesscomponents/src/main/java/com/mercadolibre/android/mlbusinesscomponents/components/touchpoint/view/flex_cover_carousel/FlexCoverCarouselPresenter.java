@@ -23,7 +23,6 @@ public class FlexCoverCarouselPresenter {
         }
 
         view.hideSkeleton();
-        setCarouselHeader(response.getTitle(), response.getLabel(), response.getLink(), view);
         setCarouselAnimation(response.getCarouselAnimation(), view);
         setItemsList(response.getItems(), view);
     }

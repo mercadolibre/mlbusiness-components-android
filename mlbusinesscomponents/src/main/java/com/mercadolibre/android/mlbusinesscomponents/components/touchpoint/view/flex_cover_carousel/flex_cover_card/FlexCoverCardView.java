@@ -6,9 +6,13 @@ import android.animation.AnimatorInflater;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,7 +20,6 @@ import androidx.cardview.widget.CardView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.mercadolibre.android.mlbusinesscomponents.R;
-import com.mercadolibre.android.mlbusinesscomponents.components.row.TouchpointRowView;
 import com.mercadolibre.android.mlbusinesscomponents.components.row.model.TouchpointRowItemInterface;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterfaceModel;
@@ -31,8 +34,8 @@ public class FlexCoverCardView extends CardView implements TouchpointTrackeable,
 
     private final FlexCoverCardPresenter presenter;
     private final SimpleDraweeView cardCoverImage;
-    private final TouchpointRowView cardCoverRow;
     private final View skeletonView;
+    private final LinearLayout cardCoverContent;
 
     @Nullable private TouchpointTracking tracking;
 
@@ -50,8 +53,8 @@ public class FlexCoverCardView extends CardView implements TouchpointTrackeable,
         super(context, attrs, defStyleAttr);
         inflate(getContext(), R.layout.touchpoint_flex_cover_carousel_card_view, this);
         cardCoverImage = findViewById(R.id.touchpoint_flex_cover_carousel_card_image);
-        cardCoverRow = findViewById(R.id.touchpoint_cover_carousel_card_row);
         skeletonView = findViewById(R.id.touchpoint_cover_carousel_card_image_skeleton);
+        cardCoverContent = findViewById(R.id.touchpoint_flex_cover_carousel_card_content);
         presenter = new FlexCoverCardPresenter();
 
         setCornerRadius();
@@ -86,7 +89,7 @@ public class FlexCoverCardView extends CardView implements TouchpointTrackeable,
      */
     @Override
     public void bind(final CoverCardInterfaceModel model, final int size) {
-        if (size != NON_SIZE) {
+       if (size != NON_SIZE) {
             setNewHeight(size);
         }
         presenter.bindView(model, this);
@@ -104,9 +107,7 @@ public class FlexCoverCardView extends CardView implements TouchpointTrackeable,
      */
     @Override
     public void setRow(final TouchpointRowItemInterface description) {
-        cardCoverRow.bind(description);
-        cardCoverRow.setOnClickCallback(onClickCallback);
-        cardCoverRow.removeRippleEffect();
+
     }
 
     /**
@@ -164,14 +165,12 @@ public class FlexCoverCardView extends CardView implements TouchpointTrackeable,
 
     @Override
     public int getCoverCardHeight() {
-        cardCoverRow.measure(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        return cardCoverImage.getLayoutParams().height + cardCoverRow.getMeasuredHeight();
+        return cardCoverImage.getLayoutParams().height + cardCoverContent.getLayoutParams().height;
     }
 
     @Override
     public void showSkeleton() {
         skeletonView.setVisibility(VISIBLE);
-        cardCoverRow.showSkeleton();
     }
 
     @Override

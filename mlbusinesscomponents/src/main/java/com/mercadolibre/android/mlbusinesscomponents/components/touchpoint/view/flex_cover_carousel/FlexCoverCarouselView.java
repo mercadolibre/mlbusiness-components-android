@@ -40,9 +40,6 @@ public class FlexCoverCarouselView extends AbstractTouchpointChildView<CoverCaro
 
     private final FlexCoverCarouselPresenter presenter;
 
-    private final LinearLayout headerContainer;
-    private final TextView headerTitle;
-    private final TextView headerAction;
     private final ViewFlipper flipper;
 
     private final ViewPager viewPager;
@@ -65,10 +62,7 @@ public class FlexCoverCarouselView extends AbstractTouchpointChildView<CoverCaro
 
         presenter = new FlexCoverCarouselPresenter();
 
-        flipper = findViewById(R.id.touchpoint_cover_carousel_view_flipper);
-        headerContainer = findViewById(R.id.touchpoint_flex_cover_carousel_header_container);
-        headerTitle = findViewById(R.id.touchpoint_flex_cover_carousel_header_title);
-        headerAction = findViewById(R.id.touchpoint_flex_cover_carousel_header_action);
+        flipper = findViewById(R.id.touchpoint_flex_cover_carousel_view_flipper);
 
         viewPager = findViewById(R.id.flex_cover_carousel_view_pager);
         viewPagerAdapter = new FlexCoverCardViewPagerAdapter(getContext());
@@ -202,28 +196,28 @@ public class FlexCoverCarouselView extends AbstractTouchpointChildView<CoverCaro
 
     @Override
     public void hideHeaderContainer() {
-        headerContainer.setVisibility(GONE);
+
     }
 
     @Override
     public void setHeaderTitle(final String title) {
-        headerTitle.setText(title);
+
     }
 
     @Override
     public void hideHeaderAction() {
-        headerAction.setVisibility(GONE);
+
     }
 
     @Override
     public void setHeaderActionTitle(final String title) {
-        headerAction.setText(title);
+
     }
 
     @Override
     public void setHeaderActionClickListener(final String link) {
         if (onClickCallback != null) {
-            headerAction.setOnClickListener(v -> onClickCallback.onClick(link));
+
         }
     }
 
