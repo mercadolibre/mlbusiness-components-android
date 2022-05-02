@@ -1,7 +1,12 @@
 {
   "id": "flex_cover_carousel",
   "type": "flex_cover_carousel",
-  "segment_id": "flex_cover_carousel",
+  "additional_edge_insets": {
+    "top": 32,
+    "left": 16,
+    "bottom": 16,
+    "right": 16
+  },
   "content": {
     "link": "mercadopago://discount_center_payers/list?skeleton_id\\u003dlist\\u0026cluster_id\\u003donly_new_discounts#from\\u003d/discount_center_payers/list",
     "label": "Ver más",
@@ -454,5 +459,5 @@
         "link": "mercadopago://discount_center_payers/detail?campaign_id\\u003d33772688\\u0026detail\\u003dqr-directory#from\\u003d/discount_center_payers/list"
       }
     ]
-  }
+  },
 }
