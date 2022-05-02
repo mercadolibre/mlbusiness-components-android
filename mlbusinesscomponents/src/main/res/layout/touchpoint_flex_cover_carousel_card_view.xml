@@ -2,26 +2,26 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:parentTag="androidx.cardview.widget.CardView">
 
     <LinearLayout
         android:id="@+id/touchpoint_flex_cover_carousel_card_container"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/touchpoint_flex_cover_carousel_card_image"
-            android:layout_width="240dp"
-            android:layout_height="83dp"
+            android:layout_width="match_parent"
+            android:layout_height="104dp"
             android:background="@color/ui_meli_light_grey"
             app:actualImageScaleType="centerCrop"/>
 
         <LinearLayout
             android:id="@+id/touchpoint_flex_cover_carousel_card_content"
-            android:layout_width="240dp"
+            android:layout_width="match_parent"
             android:layout_height="107dp">
 
         <TextView
@@ -37,8 +37,8 @@
 
     <View
         android:id="@+id/touchpoint_cover_carousel_card_image_skeleton"
-        android:layout_width="240dp"
-        android:layout_height="83dp"
+        android:layout_width="match_parent"
+        android:layout_height="104dp"
         android:background="@color/ui_meli_light_grey"/>
 
 </merge>
