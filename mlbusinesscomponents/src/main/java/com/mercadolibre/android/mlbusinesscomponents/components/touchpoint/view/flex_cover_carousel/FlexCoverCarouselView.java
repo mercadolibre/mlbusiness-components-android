@@ -125,19 +125,17 @@ public class FlexCoverCarouselView extends AbstractTouchpointChildView<CoverCaro
 
     @Override
     public void decorate() {
-        if (additionalInsets != null) {
+        // Traer este valor desde la firma
+       // if (additionalInsets != null) {
             setViewPagerPaddingsFromInsets(additionalInsets);
-        }
+      //  }
     }
 
     private void setViewPagerPaddingsFromInsets(
         final AdditionalEdgeInsets additionalInsets) {
-        viewPager.setPadding(
-            getInsetInPx(additionalInsets.getLeft()),
-            getInsetInPx(additionalInsets.getTop()),
-            getInsetInPx(additionalInsets.getRight()),
-            getInsetInPx(additionalInsets.getBottom())
-        );
+        viewPager.setClipToPadding(false);
+        // eliminar valores harcodeados
+        viewPager.setPadding(getInsetInPx(16), 0, getInsetInPx(72), getInsetInPx(12));
     }
 
     private int getInsetInPx(final int inset) {
@@ -168,6 +166,14 @@ public class FlexCoverCarouselView extends AbstractTouchpointChildView<CoverCaro
         );
 
         viewPager.setPageTransformer(false, transformer);
+
+        viewPager.setPageTransformer(false, (page, position) -> {
+            if (viewPager.getCurrentItem() == viewPagerAdapter.getCount() - 1) {
+                page.setTranslationX(viewPager.getPaddingRight() - viewPager.getPaddingLeft());
+            } else {
+                page.setTranslationX(0);
+            }
+        });
     }
 
     @Override
