@@ -212,13 +212,14 @@ public class FlexCoverCardView extends CardView implements TouchpointTrackeable,
         return this;
     }
 
+    //eliminar estos metodos que apagan el color de la imagen
     @Override
     public void setTopImageToClosedtStatus() {
-        cardCoverImage.setAlpha(0.4f);
+     //   cardCoverImage.setAlpha(0.4f);
     }
 
     @Override
     public void setTopImageToDefaultStatus() {
-        cardCoverImage.setAlpha(1f);
+      //  cardCoverImage.setAlpha(1f);
     }
 }
