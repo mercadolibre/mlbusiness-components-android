@@ -7,12 +7,12 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 
 interface FlexCoverCardInterfaceView {
 
-        fun bind(model: FlexCoverCard?)
-        fun bind(model: FlexCoverCard?, size: Int)
-        fun setCoverImage(cover: String)
-        fun setOnClick(link: String)
-        fun dismissClickable()
-        fun setOnClickCallback(onClickCallback: OnClickCallback?)
-        fun getCoverCardHeight(): Int
-        fun getView(): CardView
+    fun bind(model: FlexCoverCard?)
+    fun bind(model: FlexCoverCard?, size: Int)
+    fun setCoverImage(cover: String)
+    fun setOnClick(link: String)
+    fun dismissClickable()
+    fun setOnClickCallback(onClickCallback: OnClickCallback?)
+    fun getCoverCardHeight(): Int
+    fun getView(): CardView
 }

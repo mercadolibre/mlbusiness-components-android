@@ -14,21 +14,15 @@ class FlexCoverCarouselPresenter {
         setItemsList(response?.items, view)
     }
 
-    private fun setItemsList(
-        items: List<FlexCoverCard>?,
-        view: FlexCoverCarouselViewInterface
-    ) {
-        if (items == null || items.isEmpty()) {
+    private fun setItemsList(items: List<FlexCoverCard>?, view: FlexCoverCarouselViewInterface) {
+        if (items.isNullOrEmpty()) {
             view.setVisibilityGone()
             return
         }
         view.setItemsList(items)
     }
 
-    fun getMaxHeight(
-        coverCardsViews: MutableList<FlexCoverCardInterfaceView>,
-        view: FlexCoverCarouselViewInterface
-    ) {
+    fun getMaxHeight(coverCardsViews: MutableList<FlexCoverCardInterfaceView>, view: FlexCoverCarouselViewInterface) {
         var maxCoverCardHeight = 0
         for (cardView in coverCardsViews) {
             val itemHeight = cardView.getCoverCardHeight()

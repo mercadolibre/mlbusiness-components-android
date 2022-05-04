@@ -30,21 +30,10 @@ class FlexCoverCardView @JvmOverloads constructor(
         setCornerRadius()
     }
 
-    /**
-     * binds the view.
-     *
-     * @param model the data to bind
-     */
     override fun bind(model: FlexCoverCard?) {
         bind(model, Constants.NON_SIZE)
     }
 
-    /**
-     * binds the view.
-     *
-     * @param model the data to bind
-     * @param size the card's size
-     */
     override fun bind(model: FlexCoverCard?, size: Int) {
         if (size != Constants.NON_SIZE) {
             setNewHeight(size)
@@ -57,20 +46,10 @@ class FlexCoverCardView @JvmOverloads constructor(
         layoutParams.height = size
     }
 
-    /**
-     * Cover image for the card.
-     *
-     * @param cover url for the cover image.
-     */
     override fun setCoverImage(cover: String) {
         cardCoverImage.setImageURI(cover)
     }
 
-    /**
-     * Sets the click listener
-     *
-     * @param link the link
-     */
     override fun setOnClick(link: String) {
         isClickable = true
         setOnClickListener { onClickEvent(link) }
@@ -80,18 +59,10 @@ class FlexCoverCardView @JvmOverloads constructor(
         onClickCallback?.onClick(link)
     }
 
-    /**
-     * dissmiss the click action
-     */
     override fun dismissClickable() {
         isClickable = false
     }
 
-    /**
-     * sets the onclick callback
-     *
-     * @param onClickCallback
-     */
     override fun setOnClickCallback(onClickCallback: OnClickCallback?) {
         this.onClickCallback = onClickCallback
     }

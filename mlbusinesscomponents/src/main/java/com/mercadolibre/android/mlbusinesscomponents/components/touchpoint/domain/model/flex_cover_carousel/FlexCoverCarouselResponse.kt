@@ -22,13 +22,13 @@ data class FlexCoverCard(
     val subtitle: Subtitle,
     val title: Title,
     val tracking: Tracking
-): Serializable
+) : Serializable
 
 @Keep
 data class Description(
     val text: String,
     val text_color: String
-): Serializable
+) : Serializable
 
 @Keep
 data class Logo(
@@ -36,7 +36,7 @@ data class Logo(
     val label: Label,
     val style: Style,
     val type: String
-): Serializable
+) : Serializable
 
 @Keep
 data class Pill(
@@ -44,30 +44,30 @@ data class Pill(
     val border_color: String,
     val text: String,
     val text_color: String
-): Serializable
+) : Serializable
 
 @Keep
 data class Subtitle(
     val text: String,
     val text_color: String
-): Serializable
+) : Serializable
 
 @Keep
 data class Title(
     val text: String,
     val text_color: String
-): Serializable
+) : Serializable
 
 @Keep
 data class Tracking(
     val tracking_id: String
-): Serializable
+) : Serializable
 
 @Keep
 data class Label(
     val text: String,
     val text_color: String
-): Serializable
+) : Serializable
 
 @Keep
 data class Style(
@@ -76,4 +76,4 @@ data class Style(
     val border_color: String,
     val height: Int,
     val width: Int
-): Serializable
+) : Serializable

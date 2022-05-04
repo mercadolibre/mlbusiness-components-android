@@ -16,11 +16,7 @@ class FlexCoverCardViewPagerAdapter internal constructor(private val context: Co
 
 
     fun setElementsView(itemsView: List<FlexCoverCard?>?) {
-        if (itemsView?.size!! <= elementsList.size) {
-            while (itemsView.size != elementsList.size) {
-                elementsList.removeAt(elementsList.size - 1)
-            }
-        }
+        elementsList.clear()
         addItemsInElementsView(itemsView)
         notifyDataSetChanged()
     }
@@ -31,18 +27,12 @@ class FlexCoverCardViewPagerAdapter internal constructor(private val context: Co
 
     private fun addItemsInElementsView(itemsView: List<FlexCoverCard?>?) {
         var view: FlexCoverCardView
-        var itemsViewIndex = 0
-        if (itemsView != null) {
-            for (model in itemsView) {
-                if (itemsViewIndex < elementsList.size) {
-                    elementsList[itemsViewIndex].bind(model)
-                } else {
-                    view = FlexCoverCardView(context)
-                    view.setOnClickCallback(onClickCallback)
-                    view.bind(model)
-                    elementsList.add(elementsList.size, view)
-                }
-                itemsViewIndex++
+        itemsView.let {
+            for (model in itemsView!!) {
+                view = FlexCoverCardView(context)
+                view.setOnClickCallback(onClickCallback)
+                view.bind(model)
+                elementsList.add(view)
             }
         }
     }
