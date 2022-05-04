@@ -13,7 +13,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.carousel.Carousel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.test.CoverCarouselResponse;
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.test.FlexCoverCarouselResponse;
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCarouselResponse;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.grid.Grid;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.hybrid_carousel.response.HybridCarousel;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointResponse;
@@ -73,7 +73,7 @@ public enum TouchpointRegistry {
         view.setCanOpenMercadoPago(isMPInstalled);
         view.setOnClickCallback(onClickCallback);
         view.setExtraData(response.tracking);
-        view.setAdditionalInsets(response.additionalEdgeInsets);
+        view.setAdditionalInsets(response.additional_edge_insets);
         view.bind(TouchpointMapper.mapToContent(response));
         return view;
     }

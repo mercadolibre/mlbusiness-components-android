@@ -9,18 +9,16 @@ import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.mercadolibre.android.mlbusinesscomponents.R
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterfaceModel
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CoverCarouselInterfaceModel
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.AdditionalEdgeInsets
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCard
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCarouselResponse
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.TrackListener
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils
-import com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils
 
 class FlexCoverCarouselView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : AbstractTouchpointChildView<CoverCarouselInterfaceModel?>(context, attrs, defStyleAttr),
+) : AbstractTouchpointChildView<FlexCoverCarouselResponse?>(context, attrs, defStyleAttr),
     FlexCoverCarouselViewInterface {
 
     private val presenter: FlexCoverCarouselPresenter
@@ -68,7 +66,7 @@ class FlexCoverCarouselView @JvmOverloads constructor(
         }
     }
 
-    override fun bind(model: CoverCarouselInterfaceModel?) {
+    override fun bind(model: FlexCoverCarouselResponse?) {
         presenter.mapResponse(model, this)
     }
 
@@ -84,24 +82,25 @@ class FlexCoverCarouselView @JvmOverloads constructor(
         visibility = GONE
     }
 
-    override fun setItemsList(items: List<CoverCardInterfaceModel?>?) {
+    override fun setItemsList(items: List<FlexCoverCard?>?) {
         viewPagerAdapter.setElementsView(items)
         viewPager.currentItem = 0
         presenter.getMaxHeight(viewPagerAdapter.elementsList, this)
     }
 
     override fun decorate() {
-        // Traer este valor desde la firma
-        // if (additionalInsets != null) {
-        setViewPagerPaddingsFromInsets()//additionalInsets!!)
-        //  }
+        additionalInsets?.let { setViewPagerPaddingsFromInsets(it) }
     }
 
     private fun setViewPagerPaddingsFromInsets(
-        //additionalInsets: AdditionalEdgeInsets
+        additionalInsets: AdditionalEdgeInsets
     ) {
-        // eliminar valores harcodeados
-        viewPager.setPadding(getInsetInPx(16), 0, getInsetInPx(72), getInsetInPx(12))
+        viewPager.setPadding(
+            getInsetInPx(additionalInsets.left),
+            getInsetInPx(additionalInsets.top),
+            getInsetInPx(additionalInsets.right),
+            getInsetInPx(additionalInsets.bottom)
+        )
     }
 
     private fun getInsetInPx(inset: Int): Int {

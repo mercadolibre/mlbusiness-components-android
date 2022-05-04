@@ -5,9 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCard
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.flex_cover_card.FlexCoverCardInterfaceView
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.flex_cover_card.FlexCoverCardView
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterfaceModel as CoverCardInterfaceModel1
 
 class FlexCoverCardViewPagerAdapter internal constructor(private val context: Context) :
     PagerAdapter() {
@@ -15,13 +15,13 @@ class FlexCoverCardViewPagerAdapter internal constructor(private val context: Co
     val elementsList = mutableListOf<FlexCoverCardInterfaceView>()
 
 
-    fun setElementsView(itemsView: List<CoverCardInterfaceModel1?>?) {
+    fun setElementsView(itemsView: List<FlexCoverCard?>?) {
         if (itemsView?.size!! <= elementsList.size) {
             while (itemsView.size != elementsList.size) {
                 elementsList.removeAt(elementsList.size - 1)
             }
         }
-        addItemsInElementsView(itemsView as List<CoverCardInterfaceModel1>)
+        addItemsInElementsView(itemsView)
         notifyDataSetChanged()
     }
 
@@ -29,19 +29,21 @@ class FlexCoverCardViewPagerAdapter internal constructor(private val context: Co
         this.onClickCallback = onClickCallback
     }
 
-    private fun addItemsInElementsView(itemsView: List<CoverCardInterfaceModel1>) {
+    private fun addItemsInElementsView(itemsView: List<FlexCoverCard?>?) {
         var view: FlexCoverCardView
         var itemsViewIndex = 0
-        for (model in itemsView) {
-            if (itemsViewIndex < elementsList.size) {
-                elementsList[itemsViewIndex].bind(model)
-            } else {
-                view = FlexCoverCardView(context)
-                view.setOnClickCallback(onClickCallback)
-                view.bind(model)
-                elementsList.add(elementsList.size, view)
+        if (itemsView != null) {
+            for (model in itemsView) {
+                if (itemsViewIndex < elementsList.size) {
+                    elementsList[itemsViewIndex].bind(model)
+                } else {
+                    view = FlexCoverCardView(context)
+                    view.setOnClickCallback(onClickCallback)
+                    view.bind(model)
+                    elementsList.add(elementsList.size, view)
+                }
+                itemsViewIndex++
             }
-            itemsViewIndex++
         }
     }
 

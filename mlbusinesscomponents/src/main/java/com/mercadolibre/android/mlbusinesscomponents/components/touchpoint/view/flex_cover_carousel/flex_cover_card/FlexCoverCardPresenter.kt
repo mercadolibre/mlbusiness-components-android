@@ -1,6 +1,6 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.flex_cover_card
 
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterfaceModel
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCard
 
 class FlexCoverCardPresenter {
     /**
@@ -8,9 +8,9 @@ class FlexCoverCardPresenter {
      *
      * @param model the data to bind.
      */
-    fun bindView(model: CoverCardInterfaceModel?, view: FlexCoverCardInterfaceView) {
+    fun bindView(model: FlexCoverCard?, view: FlexCoverCardInterfaceView) {
         model?.let {
-            setCoverImage(model.content.cover, view)
+            setCoverImage(model.image_header, view)
             setOnClick(model.link, view)
         }
     }

@@ -1,7 +1,7 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel
 
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterfaceModel
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.response.CoverCarouselInterfaceModel
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCard
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCarouselResponse
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.flex_cover_card.FlexCoverCardInterfaceView
 
 class FlexCoverCarouselPresenter {
@@ -10,12 +10,12 @@ class FlexCoverCarouselPresenter {
      *
      * @param response to map.
      */
-    fun mapResponse(response: CoverCarouselInterfaceModel?, view: FlexCoverCarouselViewInterface) {
+    fun mapResponse(response: FlexCoverCarouselResponse?, view: FlexCoverCarouselViewInterface) {
         setItemsList(response?.items, view)
     }
 
     private fun setItemsList(
-        items: List<CoverCardInterfaceModel>?,
+        items: List<FlexCoverCard>?,
         view: FlexCoverCarouselViewInterface
     ) {
         if (items == null || items.isEmpty()) {

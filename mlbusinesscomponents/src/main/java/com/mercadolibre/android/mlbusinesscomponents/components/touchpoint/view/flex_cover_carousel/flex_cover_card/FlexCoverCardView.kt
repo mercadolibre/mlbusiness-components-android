@@ -9,7 +9,7 @@ import com.facebook.drawee.view.SimpleDraweeView
 import com.mercadolibre.android.mlbusinesscomponents.R
 import com.mercadolibre.android.mlbusinesscomponents.common.Constants
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterfaceModel
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCard
 
 class FlexCoverCardView @JvmOverloads constructor(
     context: Context,
@@ -35,7 +35,7 @@ class FlexCoverCardView @JvmOverloads constructor(
      *
      * @param model the data to bind
      */
-    override fun bind(model: CoverCardInterfaceModel) {
+    override fun bind(model: FlexCoverCard?) {
         bind(model, Constants.NON_SIZE)
     }
 
@@ -45,7 +45,7 @@ class FlexCoverCardView @JvmOverloads constructor(
      * @param model the data to bind
      * @param size the card's size
      */
-    override fun bind(model: CoverCardInterfaceModel, size: Int) {
+    override fun bind(model: FlexCoverCard?, size: Int) {
         if (size != Constants.NON_SIZE) {
             setNewHeight(size)
         }
