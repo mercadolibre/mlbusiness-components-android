@@ -16,5 +16,5 @@ public class MLBusinessTouchpointResponse implements Serializable {
     public String type;
     @Nullable public JsonElement content;
     @Nullable public Map<String, Object> tracking;
-    @Nullable public AdditionalEdgeInsets additional_edge_insets;
+    @Nullable public AdditionalEdgeInsets additionalEdgeInsets;
 }

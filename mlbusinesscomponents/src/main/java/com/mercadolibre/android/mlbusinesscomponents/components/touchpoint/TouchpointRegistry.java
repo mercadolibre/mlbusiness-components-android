@@ -73,7 +73,7 @@ public enum TouchpointRegistry {
         view.setCanOpenMercadoPago(isMPInstalled);
         view.setOnClickCallback(onClickCallback);
         view.setExtraData(response.tracking);
-        view.setAdditionalInsets(response.additional_edge_insets);
+        view.setAdditionalInsets(response.additionalEdgeInsets);
         view.bind(TouchpointMapper.mapToContent(response));
         return view;
     }
