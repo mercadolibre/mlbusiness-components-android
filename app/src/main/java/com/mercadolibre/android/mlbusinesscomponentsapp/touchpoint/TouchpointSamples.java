@@ -1,7 +1,10 @@
 package com.mercadolibre.android.mlbusinesscomponentsapp.touchpoint;
 
 import android.content.Context;
+
+import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.response.MLBusinessTouchpointResponse;
 import com.mercadolibre.android.mlbusinesscomponentsapp.R;
 
@@ -20,7 +23,9 @@ public enum TouchpointSamples {
 
     TouchpointSamples(final int rawId) {
         this.rawId = rawId;
-        gson = new Gson();
+        gson = new GsonBuilder()
+                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+                .create();
     }
 
     public MLBusinessTouchpointResponse retrieveResponse(final Context context) {
