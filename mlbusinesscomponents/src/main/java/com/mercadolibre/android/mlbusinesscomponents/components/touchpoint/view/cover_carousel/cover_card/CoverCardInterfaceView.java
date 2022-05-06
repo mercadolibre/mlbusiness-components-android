@@ -36,7 +36,7 @@ public interface CoverCardInterfaceView {
 
     void setTracking(@Nullable final TouchpointTracking tracking);
 
-    CardView getView();
+    CoverCardView getView();
 
     void setTopImageToClosedtStatus();
 
