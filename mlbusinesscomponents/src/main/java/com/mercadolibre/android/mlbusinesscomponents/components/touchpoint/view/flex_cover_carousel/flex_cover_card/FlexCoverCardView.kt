@@ -30,11 +30,11 @@ class FlexCoverCardView @JvmOverloads constructor(
         setCornerRadius()
     }
 
-    override fun bind(model: FlexCoverCard?) {
+    override fun bind(model: FlexCoverCard) {
         bind(model, Constants.NON_SIZE)
     }
 
-    override fun bind(model: FlexCoverCard?, size: Int) {
+    override fun bind(model: FlexCoverCard, size: Int) {
         if (size != Constants.NON_SIZE) {
             setNewHeight(size)
         }
@@ -55,7 +55,7 @@ class FlexCoverCardView @JvmOverloads constructor(
         setOnClickListener { onClickEvent(link) }
     }
 
-    private fun onClickEvent(link: String?) {
+    private fun onClickEvent(link: String) {
         onClickCallback?.onClick(link)
     }
 
@@ -63,7 +63,7 @@ class FlexCoverCardView @JvmOverloads constructor(
         isClickable = false
     }
 
-    override fun setOnClickCallback(onClickCallback: OnClickCallback?) {
+    override fun setOnClickCallback(onClickCallback: OnClickCallback) {
         this.onClickCallback = onClickCallback
     }
 

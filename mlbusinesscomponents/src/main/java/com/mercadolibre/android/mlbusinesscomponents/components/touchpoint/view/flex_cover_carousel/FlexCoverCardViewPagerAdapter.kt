@@ -11,24 +11,24 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.
 
 class FlexCoverCardViewPagerAdapter internal constructor(private val context: Context) :
     PagerAdapter() {
-    private var onClickCallback: OnClickCallback? = null
+    private lateinit var onClickCallback: OnClickCallback
     val elementsList = mutableListOf<FlexCoverCardInterfaceView>()
 
 
-    fun setElementsView(itemsView: List<FlexCoverCard?>?) {
+    fun setElementsView(itemsView: List<FlexCoverCard>) {
         elementsList.clear()
         addItemsInElementsView(itemsView)
         notifyDataSetChanged()
     }
 
-    fun setOnClickCallback(onClickCallback: OnClickCallback?) {
+    fun setOnClickCallback(onClickCallback: OnClickCallback) {
         this.onClickCallback = onClickCallback
     }
 
-    private fun addItemsInElementsView(itemsView: List<FlexCoverCard?>?) {
+    private fun addItemsInElementsView(itemsView: List<FlexCoverCard>) {
         var view: FlexCoverCardView
         itemsView.let {
-            for (model in itemsView!!) {
+            for (model in itemsView) {
                 view = FlexCoverCardView(context)
                 view.setOnClickCallback(onClickCallback)
                 view.bind(model)

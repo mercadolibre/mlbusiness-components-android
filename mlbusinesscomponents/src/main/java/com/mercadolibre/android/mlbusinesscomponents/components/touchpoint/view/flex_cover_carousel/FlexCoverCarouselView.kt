@@ -18,7 +18,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils
 class FlexCoverCarouselView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : AbstractTouchpointChildView<FlexCoverCarouselResponse?>(context, attrs, defStyleAttr),
+) : AbstractTouchpointChildView<FlexCoverCarouselResponse>(context, attrs, defStyleAttr),
     FlexCoverCarouselViewInterface {
 
     private val presenter: FlexCoverCarouselPresenter
@@ -39,24 +39,6 @@ class FlexCoverCarouselView @JvmOverloads constructor(
     private fun initViewPager() {
         viewPager.adapter = viewPagerAdapter
         setMargins()
-        viewPager.addOnPageChangeListener(object : OnPageChangeListener {
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-                //no op..
-            }
-
-            override fun onPageSelected(position: Int) {
-                //no op..
-            }
-
-            override fun onPageScrollStateChanged(state: Int) {
-                //no op..
-            }
-        })
-
         viewPager.setPageTransformer(false) { page: View, position: Float ->
             if (viewPager.currentItem == viewPagerAdapter.count - 1) {
                 page.translationX = (viewPager.paddingRight - viewPager.paddingLeft).toFloat()
@@ -67,7 +49,9 @@ class FlexCoverCarouselView @JvmOverloads constructor(
     }
 
     override fun bind(model: FlexCoverCarouselResponse?) {
-        presenter.mapResponse(model, this)
+        model?.let {
+            presenter.mapResponse(model, this)
+        }
     }
 
     override fun getStaticHeight(): Int {
@@ -82,7 +66,7 @@ class FlexCoverCarouselView @JvmOverloads constructor(
         visibility = GONE
     }
 
-    override fun setItemsList(items: List<FlexCoverCard?>?) {
+    override fun setItemsList(items: List<FlexCoverCard>) {
         viewPagerAdapter.setElementsView(items)
         viewPager.currentItem = 0
         presenter.getMaxHeight(viewPagerAdapter.elementsList, this)
@@ -113,7 +97,7 @@ class FlexCoverCarouselView @JvmOverloads constructor(
 
     }
 
-    fun setMargins() {
+    private fun setMargins() {
         viewPager.pageMargin = TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP,
             MARGIN_BETWEEN_PAGES.toFloat(),
@@ -123,7 +107,7 @@ class FlexCoverCarouselView @JvmOverloads constructor(
 
     override fun setOnClickCallback(onClickCallback: OnClickCallback?) {
         this.onClickCallback = onClickCallback
-        viewPagerAdapter.setOnClickCallback(this.onClickCallback)
+        this.onClickCallback?.let { viewPagerAdapter.setOnClickCallback(it) }
     }
 
     companion object {

@@ -5,16 +5,12 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.flex_cover_card.FlexCoverCardInterfaceView
 
 class FlexCoverCarouselPresenter {
-    /**
-     * Map response to model.
-     *
-     * @param response to map.
-     */
-    fun mapResponse(response: FlexCoverCarouselResponse?, view: FlexCoverCarouselViewInterface) {
-        setItemsList(response?.items, view)
+
+    fun mapResponse(response: FlexCoverCarouselResponse, view: FlexCoverCarouselViewInterface) {
+        setItemsList(response.items, view)
     }
 
-    private fun setItemsList(items: List<FlexCoverCard>?, view: FlexCoverCarouselViewInterface) {
+    private fun setItemsList(items: List<FlexCoverCard>, view: FlexCoverCarouselViewInterface) {
         if (items.isNullOrEmpty()) {
             view.setVisibilityGone()
             return

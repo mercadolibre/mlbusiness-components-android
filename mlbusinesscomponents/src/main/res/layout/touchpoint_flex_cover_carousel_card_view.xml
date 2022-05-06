@@ -15,21 +15,15 @@
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/touchpoint_flex_cover_carousel_card_image"
             android:layout_width="match_parent"
-            android:layout_height="104dp"
+            android:layout_height="@dimen/touchpoint_flex_cover_carousel_card_view_image_height"
             android:background="@color/ui_meli_light_grey"
             app:actualImageScaleType="centerCrop"/>
 
         <LinearLayout
             android:id="@+id/touchpoint_flex_cover_carousel_card_content"
             android:layout_width="match_parent"
-            android:layout_height="107dp">
-
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:gravity="center"
-            android:layout_margin="16dp"
-            android:text="Delivery"/>
+            android:layout_height="@dimen/touchpoint_flex_cover_carousel_card_view_content_height"
+            android:orientation="vertical">
 
         </LinearLayout>
 
