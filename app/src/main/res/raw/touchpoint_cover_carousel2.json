@@ -5,340 +5,83 @@
     "top":0,
     "left":16,
     "bottom":12,
-    "right":72
+    "right":104
   },
-  "content":{
-    "items":[
+  "content": {
+    "items": [
       {
-        "image_header":"https://http2.mlstatic.com/D_NQ_NP_837352-MLA49808661088_042022-F.jpg",
-        "background_color":"#FFFFFF",
-        "corner_radius":3,
-        "has_shadow":true,
-        "link":"mercadopago://discount_center_payers/list?skeleton_id=list&cluster_id=all_stores_rank&dynamic_categories=markets&dynamic_discount=true&from=home_mp#from=/home_wallet/discount_center",
-        "logos":[
+        "background_color": "#1F293D",
+        "description": {
+          "text": "¡Ahora podés pedir delivery!\n¡Probalo ya!",
+          "text_color": "#ffffff"
+        },
+        "image_header": "https://http2.mlstatic.com/D_NQ_NP_837352-MLA49808661088_042022-F.jpg",
+        "link": "mercadopago://discount_center_payers/list?product_type=delivery&from=home_mp&skeleton_id=delivery_marketplace#from=/home_wallet/discount_center",
+        "logos": [
           {
-            "type":"image",
-            "image":"https://burger-king-logo.jpg",
-            "style":{
-              "width":40,
-              "height":40,
-              "border":1,
-              "border_color":"#F5F5F5",
-              "background_color":"#aaaa"
-            }
-          },
-          {
-            "type":"image",
-            "image":"https://deniro.jpg",
-            "style":{
-              "width":40,
-              "height":40,
-              "border":1,
-              "border_color":"#F5F5F5",
-              "background_color":"#aaaa"
-            }
-          },
-          {
-            "type":"text",
-            "image":"",
-            "style":{
-              "width":40,
-              "height":40,
-              "border":1,
-              "border_color":"#F5F5F5",
-              "background_color":"#aaaa"
+            "image": "https://http2.mlstatic.com/D_NQ_NP_694762-MLA49855163400_052022-F.jpg",
+            "style": {
+              "background_color": "#aaaa",
+              "border": 1,
+              "border_color": "#F5F5F5",
+              "height": 40,
+              "width": 40
             },
-            "label":{
-              "text":"+4",
-              "text_color":"#FFFFFF"
-            }
+            "type": "image"
           }
         ],
-        "title":{
-          "text":"10% OFF",
-          "text_color":"#FFFFFF"
+        "pill": {
+          "background_color": "#FF656F",
+          "border_color": "#FF656F",
+          "text": "DELIVERY",
+          "text_color": "#ffffff"
         },
-        "subtitle":{
-          "text":"10% OFF",
-          "text_color":"#FFFFFF"
+        "subtitle": {
+          "text": "Compra mínima $500",
+          "text_color": "#ffffff"
         },
-        "description":{
-          "text":"10% OFF",
-          "text_color":"#FFFFFF"
+        "title": {
+          "text": "$300 OFF",
+          "text_color": "#ffffff"
         },
-        "pill":{
-          "text":"DELIVERY",
-          "text_color":"#FFFFFF",
-          "background_color":"#00A650",
-          "border_color":"#009EE3"
-        },
-        "tracking":{
-          "tracking_id":"delivery_generic"
+        "tracking": {
+          "tracking_id": "delivery_generic"
         }
       },
       {
-        "image_header":"https://http2.mlstatic.com/D_NQ_NP_989588-MLA49808700504_042022-F.jpg",
-        "background_color":"#FFFFFF",
-        "corner_radius":3,
-        "has_shadow":true,
-        "link":"mercadopago://discount_center_payers/list?skeleton_id=list&cluster_id=all_stores_rank&dynamic_categories=markets&dynamic_discount=true&from=home_mp#from=/home_wallet/discount_center",
-        "logos":[
+        "background_color": "#1F293D",
+        "description": {
+          "text": "Los Mejores descuentos en locales\ncerca tuyo",
+          "text_color": "#ffffff"
+        },
+        "image_header": "https://http2.mlstatic.com/D_NQ_NP_989588-MLA49808700504_042022-F.jpg",
+        "link": "mercadopago://discount_center_payers/list?additional_info=shortcuts&from=home_mp#from=/home_wallet/shortcuts",
+        "logos": [
           {
-            "type":"image",
-            "image":"https://burger-king-logo.jpg",
-            "style":{
-              "width":40,
-              "height":40,
-              "border":1,
-              "border_color":"#F5F5F5",
-              "background_color":"#aaaa"
-            }
-          },
-          {
-            "type":"image",
-            "image":"https://deniro.jpg",
-            "style":{
-              "width":40,
-              "height":40,
-              "border":1,
-              "border_color":"#F5F5F5",
-              "background_color":"#aaaa"
-            }
-          },
-          {
-            "type":"text",
-            "image":"",
-            "style":{
-              "width":40,
-              "height":40,
-              "border":1,
-              "border_color":"#F5F5F5",
-              "background_color":"#aaaa"
+            "image": "https://http2.mlstatic.com/D_NQ_NP_898315-MLA49855154775_052022-F.jpg",
+            "style": {
+              "background_color": "#aaaa",
+              "border": 1,
+              "border_color": "#F5F5F5",
+              "height": 40,
+              "width": 40
             },
-            "label":{
-              "text":"+4",
-              "text_color":"#FFFFFF"
-            }
+            "type": "image"
           }
         ],
-        "title":{
-          "text":"10% OFF",
-          "text_color":"#FFFFFF"
+        "pill": {
+          "background_color": "#009EE3",
+          "border_color": "#009EE3",
+          "text": "PAGO CON QR",
+          "text_color": "#ffffff"
         },
-        "subtitle":{
-          "text":"10% OFF",
-          "text_color":"#FFFFFF"
+        "subtitle": {
+          "text": "*Válido hasta el 30/5",
+          "text_color": "#ffffff"
         },
-        "description":{
-          "text":"10% OFF",
-          "text_color":"#FFFFFF"
-        },
-        "pill":{
-          "text":"DELIVERY",
-          "text_color":"#FFFFFF",
-          "background_color":"#00A650",
-          "border_color":"#009EE3"
-        },
-        "tracking":{
-          "tracking_id":"delivery_generic"
-        }
-      },
-      {
-        "image_header":"https://http2.mlstatic.com/D_NQ_NP_837352-MLA49808661088_042022-F.jpg",
-        "background_color":"#FFFFFF",
-        "corner_radius":3,
-        "has_shadow":true,
-        "link":"mercadopago://discount_center_payers/list?skeleton_id=list&cluster_id=all_stores_rank&dynamic_categories=markets&dynamic_discount=true&from=home_mp#from=/home_wallet/discount_center",
-        "logos":[
-          {
-            "type":"image",
-            "image":"https://burger-king-logo.jpg",
-            "style":{
-              "width":40,
-              "height":40,
-              "border":1,
-              "border_color":"#F5F5F5",
-              "background_color":"#aaaa"
-            }
-          },
-          {
-            "type":"image",
-            "image":"https://deniro.jpg",
-            "style":{
-              "width":40,
-              "height":40,
-              "border":1,
-              "border_color":"#F5F5F5",
-              "background_color":"#aaaa"
-            }
-          },
-          {
-            "type":"text",
-            "image":"",
-            "style":{
-              "width":40,
-              "height":40,
-              "border":1,
-              "border_color":"#F5F5F5",
-              "background_color":"#aaaa"
-            },
-            "label":{
-              "text":"+4",
-              "text_color":"#FFFFFF"
-            }
-          }
-        ],
-        "title":{
-          "text":"10% OFF",
-          "text_color":"#FFFFFF"
-        },
-        "subtitle":{
-          "text":"10% OFF",
-          "text_color":"#FFFFFF"
-        },
-        "description":{
-          "text":"10% OFF",
-          "text_color":"#FFFFFF"
-        },
-        "pill":{
-          "text":"DELIVERY",
-          "text_color":"#FFFFFF",
-          "background_color":"#00A650",
-          "border_color":"#009EE3"
-        },
-        "tracking":{
-          "tracking_id":"delivery_generic"
-        }
-      },
-      {
-        "image_header":"https://http2.mlstatic.com/D_NQ_NP_837352-MLA49808661088_042022-F.jpg",
-        "background_color":"#FFFFFF",
-        "corner_radius":3,
-        "has_shadow":true,
-        "link":"mercadopago://discount_center_payers/list?skeleton_id=list&cluster_id=all_stores_rank&dynamic_categories=markets&dynamic_discount=true&from=home_mp#from=/home_wallet/discount_center",
-        "logos":[
-          {
-            "type":"image",
-            "image":"https://burger-king-logo.jpg",
-            "style":{
-              "width":40,
-              "height":40,
-              "border":1,
-              "border_color":"#F5F5F5",
-              "background_color":"#aaaa"
-            }
-          },
-          {
-            "type":"image",
-            "image":"https://deniro.jpg",
-            "style":{
-              "width":40,
-              "height":40,
-              "border":1,
-              "border_color":"#F5F5F5",
-              "background_color":"#aaaa"
-            }
-          },
-          {
-            "type":"text",
-            "image":"",
-            "style":{
-              "width":40,
-              "height":40,
-              "border":1,
-              "border_color":"#F5F5F5",
-              "background_color":"#aaaa"
-            },
-            "label":{
-              "text":"+4",
-              "text_color":"#FFFFFF"
-            }
-          }
-        ],
-        "title":{
-          "text":"10% OFF",
-          "text_color":"#FFFFFF"
-        },
-        "subtitle":{
-          "text":"10% OFF",
-          "text_color":"#FFFFFF"
-        },
-        "description":{
-          "text":"10% OFF",
-          "text_color":"#FFFFFF"
-        },
-        "pill":{
-          "text":"DELIVERY",
-          "text_color":"#FFFFFF",
-          "background_color":"#00A650",
-          "border_color":"#009EE3"
-        },
-        "tracking":{
-          "tracking_id":"delivery_generic"
-        }
-      },
-      {
-        "image_header":"https://http2.mlstatic.com/D_NQ_NP_837352-MLA49808661088_042022-F.jpg",
-        "background_color":"#FFFFFF",
-        "corner_radius":3,
-        "has_shadow":true,
-        "link":"mercadopago://discount_center_payers/list?skeleton_id=list&cluster_id=all_stores_rank&dynamic_categories=markets&dynamic_discount=true&from=home_mp#from=/home_wallet/discount_center",
-        "logos":[
-          {
-            "type":"image",
-            "image":"https://burger-king-logo.jpg",
-            "style":{
-              "width":40,
-              "height":40,
-              "border":1,
-              "border_color":"#F5F5F5",
-              "background_color":"#aaaa"
-            }
-          },
-          {
-            "type":"image",
-            "image":"https://deniro.jpg",
-            "style":{
-              "width":40,
-              "height":40,
-              "border":1,
-              "border_color":"#F5F5F5",
-              "background_color":"#aaaa"
-            }
-          },
-          {
-            "type":"text",
-            "image":"",
-            "style":{
-              "width":40,
-              "height":40,
-              "border":1,
-              "border_color":"#F5F5F5",
-              "background_color":"#aaaa"
-            },
-            "label":{
-              "text":"+4",
-              "text_color":"#FFFFFF"
-            }
-          }
-        ],
-        "title":{
-          "text":"10% OFF",
-          "text_color":"#FFFFFF"
-        },
-        "subtitle":{
-          "text":"10% OFF",
-          "text_color":"#FFFFFF"
-        },
-        "description":{
-          "text":"10% OFF",
-          "text_color":"#FFFFFF"
-        },
-        "pill":{
-          "text":"DELIVERY",
-          "text_color":"#FFFFFF",
-          "background_color":"#00A650",
-          "border_color":"#009EE3"
+        "title": {
+          "text": "Hasta 40% OFF",
+          "text_color": "#ffffff"
         },
         "tracking":{
           "tracking_id":"delivery_generic"

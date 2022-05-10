@@ -15,4 +15,8 @@ interface FlexCoverCardInterfaceView {
     fun setOnClickCallback(onClickCallback: OnClickCallback)
     fun getCoverCardHeight(): Int
     fun getView(): CardView
+    fun changeBackgroundColor(backgroundColor: String)
+    fun showTitle(title: String)
+    fun showDescription(description: String)
+    fun showSubtitle(subtitle: String)
 }

@@ -12,9 +12,7 @@ data class FlexCoverCarouselResponse(
 @Keep
 data class FlexCoverCard(
     val background_color: String,
-    val corner_radius: Int,
     val description: Description,
-    val has_shadow: Boolean,
     val image_header: String,
     val link: String,
     val logos: List<Logo>,

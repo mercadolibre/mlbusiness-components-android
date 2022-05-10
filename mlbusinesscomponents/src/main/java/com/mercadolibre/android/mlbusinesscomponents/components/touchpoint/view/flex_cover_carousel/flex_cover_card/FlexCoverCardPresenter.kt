@@ -7,6 +7,28 @@ class FlexCoverCardPresenter {
     fun bindView(model: FlexCoverCard?, view: FlexCoverCardInterfaceView) {
         setCoverImage(model?.image_header, view)
         setOnClick(model?.link, view)
+        setBackground(model?.background_color, view)
+        setTitle(model?.title?.text, view)
+        setSubtitle(model?.subtitle?.text, view)
+        setDescription(model?.description?.text, view)
+    }
+
+    private fun setDescription(description: String?, view: FlexCoverCardInterfaceView) {
+        description?.let {
+            view.showDescription(description)
+        }
+    }
+
+    private fun setSubtitle(subtitle: String?, view: FlexCoverCardInterfaceView) {
+        subtitle?.let {
+            view.showSubtitle(subtitle)
+        }
+    }
+
+    private fun setTitle(title: String?, view: FlexCoverCardInterfaceView) {
+        title?.let {
+            view.showTitle(title)
+        }
     }
 
     private fun setCoverImage(cover: String?, view: FlexCoverCardInterfaceView) {
@@ -19,5 +41,11 @@ class FlexCoverCardPresenter {
         link?.let {
             view.setOnClick(link)
         }
+    }
+
+    private fun setBackground (backgroundColor: String?, view: FlexCoverCardInterfaceView){
+       backgroundColor?.let {
+           view.changeBackgroundColor(backgroundColor)
+       }
     }
 }
