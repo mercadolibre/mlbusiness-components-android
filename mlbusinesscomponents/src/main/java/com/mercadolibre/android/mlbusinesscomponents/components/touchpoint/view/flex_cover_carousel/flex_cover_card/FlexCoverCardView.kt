@@ -13,6 +13,8 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.facebook.drawee.view.SimpleDraweeView
 import com.mercadolibre.android.mlbusinesscomponents.R
 import com.mercadolibre.android.mlbusinesscomponents.common.Constants
+import com.mercadolibre.android.mlbusinesscomponents.components.rowpill.PillInterface
+import com.mercadolibre.android.mlbusinesscomponents.components.rowpill.RowPillView
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCard
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtils
@@ -29,6 +31,7 @@ class FlexCoverCardView @JvmOverloads constructor(
     private val title: TextView
     private val subtitle: TextView
     private val description: TextView
+    private val pill: RowPillView
 
     init {
         inflate(getContext(), R.layout.touchpoint_flex_cover_carousel_card_view, this)
@@ -37,6 +40,7 @@ class FlexCoverCardView @JvmOverloads constructor(
         title = findViewById(R.id.touchpoint_flex_cover_carousel_title)
         subtitle = findViewById(R.id.touchpoint_flex_cover_carousel_subtitle)
         description = findViewById(R.id.touchpoint_flex_cover_carousel_description)
+        pill = findViewById(R.id.touchpoint_flex_cover_carousel_pill)
         setCornerRadius()
     }
 
@@ -103,6 +107,16 @@ class FlexCoverCardView @JvmOverloads constructor(
     override fun showSubtitle(subtitle: String) {
         this.subtitle.text = subtitle
         this.subtitle.visibility = VISIBLE
+    }
+
+    override fun showPill(pill: PillInterface, view: FlexCoverCardInterfaceView) {
+        this.pill.bind(pill)
+        this.pill.setTextSize(
+            resources.getDimension(
+                R.dimen.ui_font_pill_text
+            )
+        )
+        this.pill.visibility = VISIBLE
     }
 
     private fun setCornerRadius() {

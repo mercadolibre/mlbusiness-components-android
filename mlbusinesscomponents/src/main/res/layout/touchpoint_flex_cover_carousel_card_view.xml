@@ -10,7 +10,8 @@
         android:id="@+id/touchpoint_flex_cover_carousel_card_container"
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:background="#1F293D">
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/touchpoint_flex_cover_carousel_card_image"
@@ -63,6 +64,21 @@
             style="@style/touchpoint_flex_cover_carousel_card_view_description"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/touchpoint_flex_cover_carousel_subtitle" />
+
+        <com.mercadolibre.android.mlbusinesscomponents.components.rowpill.RowPillView
+            android:id="@+id/touchpoint_flex_cover_carousel_pill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/touchpoint_flex_cover_carousel_description"
+            tools:layout_height="16dp"
+            tools:layout_width="63dp"
+            tools:background="#FF656F"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

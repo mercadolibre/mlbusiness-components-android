@@ -1,6 +1,7 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel
 
 import androidx.annotation.Keep
+import com.mercadolibre.android.mlbusinesscomponents.components.rowpill.PillInterface
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent
 import java.io.Serializable
 
@@ -38,11 +39,12 @@ data class Logo(
 
 @Keep
 data class Pill(
-    val background_color: String,
-    val border_color: String,
-    val text: String,
-    val text_color: String
-) : Serializable
+    override val text: String,
+    override val textColor: String,
+    override val backgroundColor: String?,
+    override val leftIcon: String?,
+    override val borderColor: String?
+) : Serializable, PillInterface
 
 @Keep
 data class Subtitle(
