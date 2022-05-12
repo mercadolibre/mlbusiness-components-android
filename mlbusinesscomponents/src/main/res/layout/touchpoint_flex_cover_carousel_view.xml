@@ -3,12 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/touchpoint_flex_cover_carousel_view_flipper"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="12dp">
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/flex_cover_carousel_view_pager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="16dp"
             android:clipToPadding="false"
             android:overScrollMode="never" />
 

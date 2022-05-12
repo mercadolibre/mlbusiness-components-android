@@ -4,9 +4,9 @@ import android.content.Context
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ViewFlipper
 import androidx.viewpager.widget.ViewPager
-import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.mercadolibre.android.mlbusinesscomponents.R
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.AdditionalEdgeInsets
@@ -92,8 +92,8 @@ class FlexCoverCarouselView @JvmOverloads constructor(
     }
 
     override fun setViewPagerHeight(maxHeight: Int) {
-        val params = viewPager.layoutParams
-        params.height = maxHeight + resources.getDimensionPixelSize(R.dimen.ui_2m)
+        val params: ViewGroup.LayoutParams = viewPager.layoutParams
+        params.height = maxHeight + resources.getDimensionPixelSize(R.dimen.ui_3m)
 
     }
 

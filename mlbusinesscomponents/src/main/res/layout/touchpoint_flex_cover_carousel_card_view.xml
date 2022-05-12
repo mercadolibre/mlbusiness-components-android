@@ -55,15 +55,16 @@
 
         <TextView
             android:id="@+id/touchpoint_flex_cover_carousel_description"
+            style="@style/touchpoint_flex_cover_carousel_card_view_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="6dp"
-            android:maxWidth="208dp"
-            tools:text="Ahora podes pedir delivery. ¡Probalo ya!"
-            style="@style/touchpoint_flex_cover_carousel_card_view_description"
+            android:layout_marginBottom="36dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/touchpoint_flex_cover_carousel_subtitle" />
+            app:layout_constraintTop_toBottomOf="@+id/touchpoint_flex_cover_carousel_subtitle"
+            tools:text="Ahora podes pedir delivery. ¡Probalo ya!" />
 
         <com.mercadolibre.android.mlbusinesscomponents.components.rowpill.RowPillView
             android:id="@+id/touchpoint_flex_cover_carousel_pill"

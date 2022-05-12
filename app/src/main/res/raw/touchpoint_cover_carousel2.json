@@ -2,16 +2,16 @@
   "id":"mp_home",
   "type":"FLEX_COVER_CAROUSEL",
   "additional_edge_insets":{
-    "top":0,
+    "top":12,
     "left":16,
     "bottom":12,
-    "right":104
+    "right":88
   },
   "content": {
     "items": [
       {
         "background_color": "#1F293D",
-        "description": {
+        "main_description": {
           "text": "¡Ahora podés pedir delivery!\n¡Probalo ya!",
           "text_color": "#ffffff"
         },
@@ -50,7 +50,7 @@
       },
       {
         "background_color": "#1F293D",
-        "description": {
+        "main_description": {
           "text": "Los Mejores descuentos en locales\ncerca tuyo",
           "text_color": "#ffffff"
         },

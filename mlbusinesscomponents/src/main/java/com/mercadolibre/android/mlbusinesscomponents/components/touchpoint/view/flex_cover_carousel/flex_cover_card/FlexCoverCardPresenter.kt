@@ -2,7 +2,6 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view
 
 import com.mercadolibre.android.mlbusinesscomponents.components.rowpill.PillInterface
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCard
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.Pill
 
 class FlexCoverCardPresenter {
 
@@ -12,7 +11,7 @@ class FlexCoverCardPresenter {
         setBackground(model?.background_color, view)
         setTitle(model?.title?.text, view)
         setSubtitle(model?.subtitle?.text, view)
-        setDescription(model?.description?.text, view)
+        setDescription(model?.main_description?.text, view)
         setPill(model?.pill, view)
     }
 

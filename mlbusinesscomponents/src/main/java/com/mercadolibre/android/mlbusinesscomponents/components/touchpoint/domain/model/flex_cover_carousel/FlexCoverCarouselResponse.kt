@@ -13,7 +13,7 @@ data class FlexCoverCarouselResponse(
 @Keep
 data class FlexCoverCard(
     val background_color: String,
-    val description: Description,
+    val main_description: MainDescription,
     val image_header: String,
     val link: String,
     val logos: List<Logo>,
@@ -24,7 +24,7 @@ data class FlexCoverCard(
 ) : Serializable
 
 @Keep
-data class Description(
+data class MainDescription(
     val text: String,
     val text_color: String
 ) : Serializable
