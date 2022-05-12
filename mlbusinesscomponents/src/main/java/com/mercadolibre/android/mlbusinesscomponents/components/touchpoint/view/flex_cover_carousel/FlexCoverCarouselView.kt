@@ -40,10 +40,10 @@ class FlexCoverCarouselView @JvmOverloads constructor(
         viewPager.adapter = viewPagerAdapter
         setMargins()
         viewPager.setPageTransformer(false) { page: View, position: Float ->
-            if (viewPager.currentItem == viewPagerAdapter.count - 1) {
-                page.translationX = (viewPager.paddingRight - viewPager.paddingLeft).toFloat()
+            page.translationX = if (viewPager.currentItem == viewPagerAdapter.count - 1) {
+                (viewPager.paddingRight - viewPager.paddingLeft).toFloat()
             } else {
-                page.translationX = 0f
+                0f
             }
         }
     }
