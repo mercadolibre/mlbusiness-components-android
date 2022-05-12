@@ -49,9 +49,7 @@ class FlexCoverCarouselView @JvmOverloads constructor(
     }
 
     override fun bind(model: FlexCoverCarouselResponse?) {
-        model?.let {
-            presenter.mapResponse(model, this)
-        }
+        model?.let { presenter.mapResponse(it, this) }
     }
 
     override fun getStaticHeight(): Int {
