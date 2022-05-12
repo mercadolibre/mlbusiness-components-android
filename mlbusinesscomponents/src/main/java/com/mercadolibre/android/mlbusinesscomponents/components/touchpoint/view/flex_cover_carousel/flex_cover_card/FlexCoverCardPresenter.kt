@@ -11,13 +11,13 @@ class FlexCoverCardPresenter {
 
     private fun setCoverImage(cover: String?, view: FlexCoverCardInterfaceView) {
         cover?.let {
-            view.setCoverImage(cover)
+            view.setCoverImage(it)
         }
     }
 
     private fun setOnClick(link: String?, view: FlexCoverCardInterfaceView) {
         link?.let {
-            view.setOnClick(link)
+            view.setOnClick(it)
         }
     }
 }
