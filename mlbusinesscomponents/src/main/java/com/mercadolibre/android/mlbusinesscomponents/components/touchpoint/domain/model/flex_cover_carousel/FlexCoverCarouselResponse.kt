@@ -11,69 +11,51 @@ data class FlexCoverCarouselResponse(
 
 @Keep
 data class FlexCoverCard(
-    val background_color: String,
-    val corner_radius: Int,
-    val description: Description,
-    val has_shadow: Boolean,
-    val image_header: String,
+    val backgroundColor: String,
+    val cornerRadius: Int,
+    val mainDescription: Text,
+    val hasShadow: Boolean,
+    val imageHeader: String,
     val link: String,
     val logos: List<Logo>,
     val pill: Pill,
-    val subtitle: Subtitle,
-    val title: Title,
+    val subtitle: Text,
+    val title: Text,
     val tracking: Tracking
 ) : Serializable
 
 @Keep
-data class Description(
+data class Text(
     val text: String,
-    val text_color: String
+    val textColor: String
 ) : Serializable
 
 @Keep
 data class Logo(
     val image: String,
-    val label: Label,
+    val label: Text,
     val style: Style,
     val type: String
 ) : Serializable
 
 @Keep
 data class Pill(
-    val background_color: String,
-    val border_color: String,
+    val backgroundColor: String,
+    val borderColor: String,
     val text: String,
-    val text_color: String
-) : Serializable
-
-@Keep
-data class Subtitle(
-    val text: String,
-    val text_color: String
-) : Serializable
-
-@Keep
-data class Title(
-    val text: String,
-    val text_color: String
+    val textColor: String
 ) : Serializable
 
 @Keep
 data class Tracking(
-    val tracking_id: String
-) : Serializable
-
-@Keep
-data class Label(
-    val text: String,
-    val text_color: String
+    val trackingId: String
 ) : Serializable
 
 @Keep
 data class Style(
-    val background_color: String,
+    val backgroundColor: String,
     val border: Int,
-    val border_color: String,
+    val borderColor: String,
     val height: Int,
     val width: Int
 ) : Serializable

@@ -5,7 +5,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 class FlexCoverCardPresenter {
 
     fun bindView(model: FlexCoverCard?, view: FlexCoverCardInterfaceView) {
-        setCoverImage(model?.image_header, view)
+        setCoverImage(model?.imageHeader, view)
         setOnClick(model?.link, view)
     }
 
