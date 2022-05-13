@@ -1,79 +1,63 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel
 
-import androidx.annotation.Keep
 import com.mercadolibre.android.mlbusinesscomponents.components.rowpill.PillInterface
+import android.os.Parcelable
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent
-import java.io.Serializable
+import kotlinx.android.parcel.Parcelize
 
-@Keep
+@Parcelize
 data class FlexCoverCarouselResponse(
     val items: List<FlexCoverCard>
-) : TouchpointContent, Serializable
+) : TouchpointContent, Parcelable
 
-@Keep
+@Parcelize
 data class FlexCoverCard(
-    val background_color: String,
-    val main_description: MainDescription,
-    val image_header: String,
+    val backgroundColor: String,
+    val cornerRadius: Int,
+    val mainDescription: Text,
+    val hasShadow: Boolean,
+    val imageHeader: String,
     val link: String,
     val logos: List<Logo>,
     val pill: Pill,
-    val subtitle: Subtitle,
-    val title: Title,
+    val subtitle: Text,
+    val title: Text,
     val tracking: Tracking
-) : Serializable
+) : Parcelable
 
-@Keep
-data class MainDescription(
+@Parcelize
+data class Text(
     val text: String,
-    val text_color: String
-) : Serializable
+    val textColor: String
+) : Parcelable
 
-@Keep
+@Parcelize
 data class Logo(
     val image: String,
-    val label: Label,
+    val label: Text,
     val style: Style,
     val type: String
-) : Serializable
+) : Parcelable
 
-@Keep
+@Parcelize
 data class Pill(
     override val text: String,
     override val textColor: String,
     override val backgroundColor: String?,
     override val leftIcon: String?,
     override val borderColor: String?
-) : Serializable, PillInterface
+) : Parcelable, PillInterface
 
-@Keep
-data class Subtitle(
-    val text: String,
-    val text_color: String
-) : Serializable
-
-@Keep
-data class Title(
-    val text: String,
-    val text_color: String
-) : Serializable
-
-@Keep
+@Parcelize
 data class Tracking(
-    val tracking_id: String
-) : Serializable
+    val trackingId: String
+) : Parcelable
 
-@Keep
-data class Label(
-    val text: String,
-    val text_color: String
-) : Serializable
-
-@Keep
+@Parcelize
 data class Style(
-    val background_color: String,
+    val backgroundColor: String,
     val border: Int,
-    val border_color: String,
+    val borderColor: String,
     val height: Int,
     val width: Int
-) : Serializable
+) : Parcelable

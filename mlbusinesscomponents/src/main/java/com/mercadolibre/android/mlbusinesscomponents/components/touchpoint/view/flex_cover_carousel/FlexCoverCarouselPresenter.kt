@@ -19,11 +19,7 @@ class FlexCoverCarouselPresenter {
     }
 
     fun getMaxHeight(coverCardsViews: MutableList<FlexCoverCardInterfaceView>, view: FlexCoverCarouselViewInterface) {
-        var maxCoverCardHeight = 0
-        for (cardView in coverCardsViews) {
-            val itemHeight = cardView.getCoverCardHeight()
-            maxCoverCardHeight = Math.max(maxCoverCardHeight, itemHeight)
-        }
+        val maxCoverCardHeight = coverCardsViews.map { it.getCoverCardHeight() }.max() ?: 0
         view.setViewPagerHeight(maxCoverCardHeight)
         view.decorate()
     }

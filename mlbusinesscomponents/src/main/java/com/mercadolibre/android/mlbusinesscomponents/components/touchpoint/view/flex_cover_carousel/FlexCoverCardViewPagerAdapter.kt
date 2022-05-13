@@ -26,14 +26,11 @@ class FlexCoverCardViewPagerAdapter internal constructor(private val context: Co
     }
 
     private fun addItemsInElementsView(itemsView: List<FlexCoverCard>) {
-        var view: FlexCoverCardView
-        itemsView.let {
-            for (model in itemsView) {
-                view = FlexCoverCardView(context)
-                view.setOnClickCallback(onClickCallback)
-                view.bind(model)
-                elementsList.add(view)
-            }
+        for (model in itemsView) {
+            val view = FlexCoverCardView(context)
+            view.setOnClickCallback(onClickCallback)
+            view.bind(model)
+            elementsList.add(view)
         }
     }
 
