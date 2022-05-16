@@ -74,7 +74,7 @@ class RowPillView @JvmOverloads constructor(
     }
 
     companion object {
-        private const val DEFAULT_ROUND_CORNERS = 10
+        private const val DEFAULT_ROUND_CORNERS = 8
         private const val DEFAULT_STROKE_WIDTH = 4
         private const val DEFAULT_COLOR = Color.WHITE
     }
