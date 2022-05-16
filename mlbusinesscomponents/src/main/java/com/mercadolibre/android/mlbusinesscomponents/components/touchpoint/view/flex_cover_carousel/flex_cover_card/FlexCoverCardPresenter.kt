@@ -8,10 +8,10 @@ class FlexCoverCardPresenter {
     fun bindView(model: FlexCoverCard?, view: FlexCoverCardInterfaceView) {
         setCoverImage(model?.imageHeader, view)
         setOnClick(model?.link, view)
-        setBackground(model?.background_color, view)
+        setBackground(model?.backgroundColor, view)
         setTitle(model?.title?.text, view)
         setSubtitle(model?.subtitle?.text, view)
-        setDescription(model?.main_description?.text, view)
+        setDescription(model?.mainDescription?.text, view)
         setPill(model?.pill, view)
     }
 
