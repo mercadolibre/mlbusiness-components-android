@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ViewFlipper
 import androidx.viewpager.widget.ViewPager
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.mercadolibre.android.mlbusinesscomponents.R
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.AdditionalEdgeInsets
@@ -39,6 +40,23 @@ class FlexCoverCarouselView @JvmOverloads constructor(
     private fun initViewPager() {
         viewPager.adapter = viewPagerAdapter
         setMargins()
+        viewPager.addOnPageChangeListener(object : OnPageChangeListener {
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+                //no op..
+            }
+
+            override fun onPageSelected(position: Int) {
+                //no op..
+            }
+
+            override fun onPageScrollStateChanged(state: Int) {
+                //no op..
+            }
+        })
         viewPager.setPageTransformer(false) { page: View, position: Float ->
             page.translationX = if (viewPager.currentItem == viewPagerAdapter.count - 1) {
                 (viewPager.paddingRight - viewPager.paddingLeft).toFloat()
