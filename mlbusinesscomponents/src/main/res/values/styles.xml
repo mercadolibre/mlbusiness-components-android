@@ -72,19 +72,26 @@
     <style name="touchpoint_flex_cover_carousel_card_view_title" parent="MLFont.Bold">
         <item name="android:textColor">@color/ui_meli_white</item>
         <item name="android:textSize">16sp</item>
+        <item name="android:layout_gravity">top</item>
+        <item name="android:lineSpacingExtra">2sp</item>
         <item name="android:maxLines">1</item>
     </style>
 
     <style name="touchpoint_flex_cover_carousel_card_view_subtitle" parent="MLFont.Bold.Semi">
         <item name="android:textColor">@color/ui_meli_white</item>
         <item name="android:textSize">6sp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:lineSpacingExtra">0sp</item>
         <item name="android:maxLines">1</item>
     </style>
 
     <style name="touchpoint_flex_cover_carousel_card_view_description" parent="MLFont.Regular">
         <item name="android:textColor">@color/ui_meli_white</item>
         <item name="android:textSize">12sp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:lineSpacingExtra">2sp</item>
         <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
     </style>
 
     <style name="discounts_payers_commons_level" parent="MLFont.Bold">

@@ -15,6 +15,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.rowpill.PillInte
 import com.mercadolibre.android.mlbusinesscomponents.components.rowpill.RowPillView
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCard
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.Logo
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtils
 
 class FlexCoverCardView @JvmOverloads constructor(
@@ -30,11 +31,13 @@ class FlexCoverCardView @JvmOverloads constructor(
     private val subtitle: TextView
     private val description: TextView
     private val pill: RowPillView
+    private val logo: SimpleDraweeView
 
     init {
         inflate(getContext(), R.layout.touchpoint_flex_cover_carousel_card_view, this)
-        cardCoverImage = findViewById(R.id.touchpoint_flex_cover_carousel_card_image)
         presenter = FlexCoverCardPresenter()
+        cardCoverImage = findViewById(R.id.touchpoint_flex_cover_carousel_card_image)
+        logo = findViewById(R.id.touchpoint_flex_cover_carousel_logo)
         title = findViewById(R.id.touchpoint_flex_cover_carousel_title)
         subtitle = findViewById(R.id.touchpoint_flex_cover_carousel_subtitle)
         description = findViewById(R.id.touchpoint_flex_cover_carousel_description)
@@ -80,7 +83,8 @@ class FlexCoverCardView @JvmOverloads constructor(
     }
 
     override fun getCoverCardHeight(): Int {
-        val constraintLayout: ConstraintLayout = findViewById(R.id.touchpoint_flex_cover_carousel_card_container)
+        val constraintLayout: ConstraintLayout =
+            findViewById(R.id.touchpoint_flex_cover_carousel_card_container)
         return cardCoverImage.layoutParams.height + (constraintLayout.layoutParams.height - cardCoverImage.layoutParams.height)
     }
 
@@ -89,11 +93,15 @@ class FlexCoverCardView @JvmOverloads constructor(
     }
 
     override fun changeBackgroundColor(backgroundColor: String) {
-        if (StringUtils.isValidString(backgroundColor)) setCardBackgroundColor(Color.parseColor(backgroundColor))
+        if (StringUtils.isValidString(backgroundColor)) setCardBackgroundColor(
+            Color.parseColor(
+                backgroundColor
+            )
+        )
     }
 
-    override fun showTitle(title: String){
-       this.title.text =title
+    override fun showTitle(title: String) {
+        this.title.text = title
         this.title.visibility = VISIBLE
     }
 
@@ -115,6 +123,13 @@ class FlexCoverCardView @JvmOverloads constructor(
             )
         )
         this.pill.visibility = VISIBLE
+    }
+
+    override fun showLogo(logos: List<Logo>, view: FlexCoverCardInterfaceView) {
+        if (logos.size == 1 && logos[0].type == "image") {
+            logo.visibility = VISIBLE
+            logo.setImageURI(logos[0].image)
+        }
     }
 
     private fun setCornerRadius() {

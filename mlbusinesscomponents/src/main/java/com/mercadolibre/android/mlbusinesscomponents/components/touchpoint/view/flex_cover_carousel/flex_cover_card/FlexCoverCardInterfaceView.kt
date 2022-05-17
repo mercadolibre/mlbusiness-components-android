@@ -3,8 +3,8 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view
 import androidx.cardview.widget.CardView
 import com.mercadolibre.android.mlbusinesscomponents.components.rowpill.PillInterface
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.cover_carousel.model.cover_card.CoverCardInterfaceModel
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCard
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.Logo
 
 interface FlexCoverCardInterfaceView {
 
@@ -21,4 +21,5 @@ interface FlexCoverCardInterfaceView {
     fun showDescription(description: String)
     fun showSubtitle(subtitle: String)
     fun showPill(pill: PillInterface, view: FlexCoverCardInterfaceView)
+    fun showLogo(logos: List<Logo>, view: FlexCoverCardInterfaceView)
 }

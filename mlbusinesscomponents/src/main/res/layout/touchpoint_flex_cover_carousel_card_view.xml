@@ -10,7 +10,6 @@
         android:id="@+id/touchpoint_flex_cover_carousel_card_container"
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:orientation="vertical"
         tools:background="#1F293D">
 
         <com.facebook.drawee.view.SimpleDraweeView
@@ -32,16 +31,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/touchpoint_flex_cover_carousel_logo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:actualImageScaleType="centerCrop"
+            app:roundAsCircle="true"
+            android:visibility="gone"/>
+
         <TextView
             android:id="@+id/touchpoint_flex_cover_carousel_title"
+            style="@style/touchpoint_flex_cover_carousel_card_view_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="66dp"
-            tools:text="$100 OFF"
-            style="@style/touchpoint_flex_cover_carousel_card_view_title"
+            android:layout_marginTop="63dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="$100 OFF" />
 
         <TextView
             android:id="@+id/touchpoint_flex_cover_carousel_subtitle"
@@ -61,6 +72,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="6dp"
             android:layout_marginBottom="36dp"
+            android:maxWidth="208dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/touchpoint_flex_cover_carousel_subtitle"
@@ -73,7 +85,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/touchpoint_flex_cover_carousel_description"

@@ -15,7 +15,6 @@ data class FlexCoverCard(
     val backgroundColor: String,
     val cornerRadius: Int,
     val mainDescription: Text,
-    val hasShadow: Boolean,
     val imageHeader: String,
     val link: String,
     val logos: List<Logo>,

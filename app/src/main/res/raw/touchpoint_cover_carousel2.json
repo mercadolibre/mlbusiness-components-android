@@ -5,14 +5,14 @@
     "top":12,
     "left":16,
     "bottom":12,
-    "right":88
+    "right":104
   },
   "content": {
     "items": [
       {
         "background_color": "#1F293D",
         "main_description": {
-          "text": "¡Ahora podés pedir delivery!\n¡Probalo ya!",
+          "text": "¡Ahora podés pedir delivery! Descubrí\ntodos los restaurantes y pedí comida",
           "text_color": "#ffffff"
         },
         "image_header": "https://http2.mlstatic.com/D_NQ_NP_837352-MLA49808661088_042022-F.jpg",
