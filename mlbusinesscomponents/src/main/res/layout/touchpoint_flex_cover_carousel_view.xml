@@ -14,6 +14,7 @@
             android:layout_marginTop="@dimen/ui_1_5m"
             android:layout_marginBottom="@dimen/ui_1_5m"
             android:overScrollMode="never"
+            android:layoutAnimation="@anim/flex_cover_carousel_animation"
             app:ratio="0.4573170732"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/> <!--  150 % 328  -->
