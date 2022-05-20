@@ -19,4 +19,9 @@
     <declare-styleable name="RowPillView" tools:ignore="ResourceName">
         <attr name="pillCornerRadius" tools:ignore="ResourceName"/>
     </declare-styleable>
+
+    <attr name="ratio" format="float" tools:ignore="ResourceName" />
+    <declare-styleable name="RatioViewPager" tools:ignore="ResourceName">
+        <attr name="ratio" tools:ignore="ResourceName" />
+    </declare-styleable>
 </resources>

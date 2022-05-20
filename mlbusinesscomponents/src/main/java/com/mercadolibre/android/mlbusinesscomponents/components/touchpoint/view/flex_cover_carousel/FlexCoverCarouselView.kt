@@ -2,10 +2,7 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.TypedValue
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ViewFlipper
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.mercadolibre.android.mlbusinesscomponents.R
@@ -15,6 +12,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCarouselResponse
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils
+import kotlin.math.roundToInt
 
 class FlexCoverCarouselView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null,
@@ -23,47 +21,37 @@ class FlexCoverCarouselView @JvmOverloads constructor(
     FlexCoverCarouselViewInterface {
 
     private val presenter: FlexCoverCarouselPresenter
-    private val flipper: ViewFlipper
-    private val viewPager: ViewPager
+    private val viewPager: FlexCoverCarouselViewPager
     private val viewPagerAdapter: FlexCoverCardViewPagerAdapter
-
 
     init {
         inflate(context, R.layout.touchpoint_flex_cover_carousel_view, this)
+        viewPager = findViewById(R.id.view_pager)
+
         presenter = FlexCoverCarouselPresenter()
-        flipper = findViewById(R.id.touchpoint_flex_cover_carousel_view_flipper)
-        viewPager = findViewById(R.id.flex_cover_carousel_view_pager)
         viewPagerAdapter = FlexCoverCardViewPagerAdapter(getContext())
         initViewPager()
     }
 
     private fun initViewPager() {
+        setCarouselPadding(viewPager.currentItem)
         viewPager.adapter = viewPagerAdapter
-        setMargins()
+        viewPager.clipToPadding = false
+        viewPager.pageMargin = resources.getDimensionPixelOffset(R.dimen.ui_050m)
         viewPager.addOnPageChangeListener(object : OnPageChangeListener {
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
+            override fun onPageScrolled(i: Int, v: Float, i1: Int) {
                 //no op..
             }
 
             override fun onPageSelected(position: Int) {
                 //no op..
+                setCarouselPadding(position)
             }
 
             override fun onPageScrollStateChanged(state: Int) {
                 //no op..
             }
         })
-        viewPager.setPageTransformer(false) { page: View, position: Float ->
-            page.translationX = if (viewPager.currentItem == viewPagerAdapter.count - 1) {
-                (viewPager.paddingRight - viewPager.paddingLeft).toFloat()
-            } else {
-                0f
-            }
-        }
     }
 
     override fun bind(model: FlexCoverCarouselResponse?) {
@@ -85,7 +73,6 @@ class FlexCoverCarouselView @JvmOverloads constructor(
     override fun setItemsList(items: List<FlexCoverCard>) {
         viewPagerAdapter.setElementsView(items)
         viewPager.currentItem = 0
-        presenter.getMaxHeight(viewPagerAdapter.elementsList, this)
     }
 
     override fun decorate() {
@@ -103,6 +90,28 @@ class FlexCoverCarouselView @JvmOverloads constructor(
         )
     }
 
+    private fun setCarouselPadding(page: Int) {
+        if (page > 0 && page < viewPagerAdapter.count) {
+            viewPager.setPadding(
+                getInsetInPx(DEFAULT_CAROUSEL_PADDING),
+                0,
+                resources.getDimension(R.dimen.ui_2m).roundToInt(),
+                0
+            )
+        } else {
+            viewPager.setDefaultPagerPadding()
+        }
+    }
+
+    private fun ViewPager.setDefaultPagerPadding() {
+        setPadding(
+            resources.getDimension(R.dimen.ui_2m).roundToInt(),
+            0,
+            getInsetInPx(DEFAULT_CAROUSEL_PADDING),
+            0
+        )
+    }
+
     private fun getInsetInPx(inset: Int): Int {
         return ScaleUtils.getPxFromDp(context, inset.toFloat()).toInt()
     }
@@ -113,20 +122,12 @@ class FlexCoverCarouselView @JvmOverloads constructor(
 
     }
 
-    private fun setMargins() {
-        viewPager.pageMargin = TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            MARGIN_BETWEEN_PAGES.toFloat(),
-            resources.displayMetrics
-        ).toInt()
-    }
-
     override fun setOnClickCallback(onClickCallback: OnClickCallback?) {
         this.onClickCallback = onClickCallback
         this.onClickCallback?.let { viewPagerAdapter.setOnClickCallback(it) }
     }
 
     companion object {
-        private const val MARGIN_BETWEEN_PAGES = 8
+        private const val DEFAULT_CAROUSEL_PADDING = 104
     }
 }
