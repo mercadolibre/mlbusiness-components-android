@@ -16,13 +16,17 @@ import com.mercadolibre.android.mlbusinesscomponents.components.rowpill.RowPillV
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCard
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.Logo
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.StringUtils
+import com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils
 
 class FlexCoverCardView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : CardView(context, attrs, defStyleAttr), FlexCoverCardInterfaceView {
+) : CardView(context, attrs, defStyleAttr), FlexCoverCardInterfaceView, TouchpointTrackeable {
 
     private val presenter: FlexCoverCardPresenter
     private val cardCoverImage: SimpleDraweeView
@@ -32,6 +36,8 @@ class FlexCoverCardView @JvmOverloads constructor(
     private val description: TextView
     private val pill: RowPillView
     private val logo: SimpleDraweeView
+    private var tracking: TouchpointTracking? = null
+    private var tracker: MLBusinessTouchpointTracker? = null
 
     init {
         inflate(getContext(), R.layout.touchpoint_flex_cover_carousel_card_view, this)
@@ -71,7 +77,18 @@ class FlexCoverCardView @JvmOverloads constructor(
     }
 
     private fun onClickEvent(link: String) {
-        onClickCallback?.onClick(link)
+        if (onClickCallback != null) {
+            if (tracker != null) {
+                TrackingUtils.trackTap(tracker, tracking)
+            } else {
+                onClickCallback?.sendTapTracking(tracking)
+            }
+            onClickCallback?.onClick(link)
+        }
+    }
+
+    fun setTracking(tracking: TouchpointTracking?) {
+        this.tracking = tracking
     }
 
     override fun dismissClickable() {
@@ -161,5 +178,9 @@ class FlexCoverCardView @JvmOverloads constructor(
     companion object {
         private const val CORNER_RADIUS_VALUE = 6f
         private const val DEFAULT_LOGO_SIZE = 0
+    }
+
+    override fun getTracking(): TouchpointTracking? {
+        return tracking
     }
 }

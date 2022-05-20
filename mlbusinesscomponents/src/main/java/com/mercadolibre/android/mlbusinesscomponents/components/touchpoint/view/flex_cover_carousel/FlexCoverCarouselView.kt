@@ -10,8 +10,11 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callb
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.AdditionalEdgeInsets
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCard
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCarouselResponse
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.carousel.card.TrackListener
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils
+import com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils
 import kotlin.math.roundToInt
 
 class FlexCoverCarouselView @JvmOverloads constructor(
@@ -23,6 +26,8 @@ class FlexCoverCarouselView @JvmOverloads constructor(
     private val presenter: FlexCoverCarouselPresenter
     private val viewPager: FlexCoverCarouselViewPager
     private val viewPagerAdapter: FlexCoverCardViewPagerAdapter
+
+    private var trackListener: TrackListener? = null
 
     init {
         inflate(context, R.layout.touchpoint_flex_cover_carousel_view, this)
@@ -46,6 +51,7 @@ class FlexCoverCarouselView @JvmOverloads constructor(
             override fun onPageSelected(position: Int) {
                 //no op..
                 setCarouselPadding(position)
+                trackListener?.print()
             }
 
             override fun onPageScrollStateChanged(state: Int) {
@@ -56,6 +62,12 @@ class FlexCoverCarouselView @JvmOverloads constructor(
 
     override fun bind(model: FlexCoverCarouselResponse?) {
         model?.let { presenter.mapResponse(it, this) }
+
+        if (trackListener == null) {
+            if (model != null) {
+                TrackingUtils.trackShow(tracker, ArrayList<TouchpointTrackeable>(model.items))
+            }
+        }
     }
 
     override fun getStaticHeight(): Int {
@@ -125,6 +137,10 @@ class FlexCoverCarouselView @JvmOverloads constructor(
     override fun setOnClickCallback(onClickCallback: OnClickCallback?) {
         this.onClickCallback = onClickCallback
         this.onClickCallback?.let { viewPagerAdapter.setOnClickCallback(it) }
+    }
+
+    fun setTrackListener(trackListener: TrackListener?) {
+        this.trackListener = trackListener
     }
 
     companion object {

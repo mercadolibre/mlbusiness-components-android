@@ -1,8 +1,10 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel
 
-import com.mercadolibre.android.mlbusinesscomponents.components.rowpill.PillInterface
 import android.os.Parcelable
+import com.mercadolibre.android.mlbusinesscomponents.components.rowpill.PillInterface
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -21,8 +23,12 @@ data class FlexCoverCard(
     val pill: Pill,
     val subtitle: Text,
     val title: Text,
-    val tracking: Tracking
-) : Parcelable
+    private val tracking: TouchpointTracking
+) : Parcelable, TouchpointTrackeable {
+    override fun getTracking(): TouchpointTracking? {
+        return tracking
+    }
+}
 
 @Parcelize
 data class Text(
@@ -46,11 +52,6 @@ data class Pill(
     override val leftIcon: String?,
     override val borderColor: String?
 ) : Parcelable, PillInterface
-
-@Parcelize
-data class Tracking(
-    val trackingId: String
-) : Parcelable
 
 @Parcelize
 data class Style(
