@@ -126,9 +126,27 @@ class FlexCoverCardView @JvmOverloads constructor(
     }
 
     override fun showLogo(logos: List<Logo>, view: FlexCoverCardInterfaceView) {
-        if (logos.size == 1 && logos[0].type == "image") {
+        if (logos.size == 1 && logos[DEFAULT_LOGO_SIZE].type == "image") {
             logo.visibility = VISIBLE
             logo.setImageURI(logos[0].image)
+            setLogoStyle(logos)
+        }
+    }
+
+    private fun setLogoStyle(logos: List<Logo>) {
+        if (logos[DEFAULT_LOGO_SIZE].style.width != null && logos[DEFAULT_LOGO_SIZE].style.height != null) {
+            val width = logos[DEFAULT_LOGO_SIZE].style.width
+            val height = logos[DEFAULT_LOGO_SIZE].style.height
+            logo.layoutParams.width = TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                width.toFloat(),
+                resources.displayMetrics
+            ).toInt()
+            logo.layoutParams.height = TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                height.toFloat(),
+                resources.displayMetrics
+            ).toInt()
         }
     }
 
@@ -142,5 +160,6 @@ class FlexCoverCardView @JvmOverloads constructor(
 
     companion object {
         private const val CORNER_RADIUS_VALUE = 6f
+        private const val DEFAULT_LOGO_SIZE = 0
     }
 }
