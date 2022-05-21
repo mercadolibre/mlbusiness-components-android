@@ -1,16 +1,30 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel
 
-import android.content.Context
-import android.view.View
+import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.viewpager.widget.PagerAdapter
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback
+import androidx.recyclerview.widget.RecyclerView
+import com.mercadolibre.android.mlbusinesscomponents.R
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCard
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.flex_cover_card.FlexCoverCardInterfaceView
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.flex_cover_card.FlexCoverCardView
 
-class FlexCoverCardViewPagerAdapter internal constructor(private val context: Context) :
-    PagerAdapter() {
+class FlexCoverCardViewPagerAdapter(
+    var items: List<FlexCoverCard> = ArrayList()
+) : RecyclerView.Adapter<FlexCoverCarouselViewHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FlexCoverCarouselViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val view = layoutInflater.inflate(R.layout.touchpoint_flex_cover_carousel_item, parent, false)
+
+        return FlexCoverCarouselViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: FlexCoverCarouselViewHolder, position: Int) {
+        holder.bind(items[position])
+    }
+
+    override fun getItemCount(): Int = items.size
+
+
+    /*
     private lateinit var onClickCallback: OnClickCallback
     val elementsList = mutableListOf<FlexCoverCardInterfaceView>()
 
@@ -50,5 +64,5 @@ class FlexCoverCardViewPagerAdapter internal constructor(private val context: Co
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
         return view == `object`
-    }
+    }*/
 }

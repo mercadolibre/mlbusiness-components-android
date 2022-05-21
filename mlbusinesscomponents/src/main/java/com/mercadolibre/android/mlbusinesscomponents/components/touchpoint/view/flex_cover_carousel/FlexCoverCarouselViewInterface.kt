@@ -6,5 +6,4 @@ interface FlexCoverCarouselViewInterface {
     fun setVisibilityGone()
     fun setItemsList(items: List<FlexCoverCard>)
     fun setViewPagerHeight(maxHeight: Int)
-    fun decorate()
 }

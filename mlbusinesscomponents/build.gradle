@@ -38,6 +38,7 @@ dependencies {
 
     implementation "androidx.appcompat:appcompat:$appCompat"
     implementation "androidx.localbroadcastmanager:localbroadcastmanager:$localBroadcastManager"
+    implementation "androidx.viewpager2:viewpager2:$viewpager2Version"
     testImplementation "junit:junit:$junit"
     androidTestImplementation "androidx.test.ext:junit:$testRunner"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"

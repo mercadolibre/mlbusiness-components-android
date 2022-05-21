@@ -16,11 +16,11 @@ data class FlexCoverCarouselResponse(
 data class FlexCoverCard(
     val backgroundColor: String,
     val cornerRadius: Int,
-    val mainDescription: Text,
+    val mainDescription: Text?,
     val imageHeader: String,
     val link: String,
-    val logos: List<Logo>,
-    val pill: Pill,
+    val logos: List<Logo>?,
+    val pill: Pill?,
     val subtitle: Text,
     val title: Text,
     private val tracking: TouchpointTracking

@@ -11,10 +11,11 @@ class FlexCoverCarouselPresenter {
     }
 
     private fun setItemsList(items: List<FlexCoverCard>, view: FlexCoverCarouselViewInterface) {
+        /*
         if (items.isNullOrEmpty()) {
             view.setVisibilityGone()
             return
-        }
+        }*/
         view.setItemsList(items)
     }
 
