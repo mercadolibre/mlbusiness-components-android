@@ -42,7 +42,7 @@ class FlexCoverCarouselView @JvmOverloads constructor(
         setCarouselPadding(viewPager.currentItem)
         viewPager.adapter = viewPagerAdapter
         viewPager.clipToPadding = false
-        viewPager.pageMargin = resources.getDimensionPixelOffset(R.dimen.ui_050m)
+        viewPager.pageMargin = resources.getDimensionPixelOffset(R.dimen.ui_1m)
         viewPager.addOnPageChangeListener(object : OnPageChangeListener {
             override fun onPageScrolled(i: Int, v: Float, i1: Int) {
                 //no op..
