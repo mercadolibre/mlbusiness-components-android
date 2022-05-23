@@ -1,8 +1,9 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.flex_cover_card
 
-import com.mercadolibre.android.mlbusinesscomponents.components.rowpill.PillInterface
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.pill_touchpoint.PillInterface
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCard
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.Logo
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.Text
 
 class FlexCoverCardPresenter {
 
@@ -10,9 +11,9 @@ class FlexCoverCardPresenter {
         setCoverImage(model?.imageHeader, view)
         setOnClick(model?.link, view)
         setBackground(model?.backgroundColor, view)
-        setTitle(model?.title?.text, view)
-        setSubtitle(model?.subtitle?.text, view)
-        setDescription(model?.mainDescription?.text, view)
+        setTitle(model?.title, view)
+        setSubtitle(model?.subtitle, view)
+        setDescription(model?.mainDescription, view)
         setPill(model?.pill, view)
         setLogo(model?.logos, view)
     }
@@ -29,20 +30,20 @@ class FlexCoverCardPresenter {
         }
     }
 
-    private fun setDescription(description: String?, view: FlexCoverCardInterfaceView) {
-        description?.let {
+    private fun setDescription(description: Text?, view: FlexCoverCardInterfaceView) {
+        description?.text?.let {
             view.showDescription(description)
         }
     }
 
-    private fun setSubtitle(subtitle: String?, view: FlexCoverCardInterfaceView) {
-        subtitle?.let {
+    private fun setSubtitle(subtitle: Text?, view: FlexCoverCardInterfaceView) {
+        subtitle?.text?.let {
             view.showSubtitle(subtitle)
         }
     }
 
-    private fun setTitle(title: String?, view: FlexCoverCardInterfaceView) {
-        title?.let {
+    private fun setTitle(title: Text?, view: FlexCoverCardInterfaceView) {
+        title?.text?.let {
             view.showTitle(title)
         }
     }

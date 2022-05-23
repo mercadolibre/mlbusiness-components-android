@@ -21,14 +21,6 @@
         android:paddingStart="@dimen/ui_1m"
         android:paddingEnd="@dimen/ui_1m">
 
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/discounts_payers_pill_left_icon"
-            android:layout_width="@dimen/ui_1m"
-            android:layout_height="@dimen/ui_1m"
-            android:layout_marginEnd="@dimen/ui_025m"
-            android:visibility="gone"
-            tools:visibility="visible"/>
-
         <TextView
             android:id="@+id/chip_view_text"
             android:layout_width="wrap_content"
@@ -41,6 +33,6 @@
             android:textSize="@dimen/ui_fontsize_xxsmall"
             android:textIsSelectable="true"
             tools:textColor="#FFFFFF"
-            tools:text="15% OFF · Tope de $ 100"/>
+            tools:text="Delivery"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

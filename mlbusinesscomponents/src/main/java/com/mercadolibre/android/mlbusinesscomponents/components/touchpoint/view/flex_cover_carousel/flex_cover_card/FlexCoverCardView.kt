@@ -11,11 +11,12 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.facebook.drawee.view.SimpleDraweeView
 import com.mercadolibre.android.mlbusinesscomponents.R
 import com.mercadolibre.android.mlbusinesscomponents.common.Constants
-import com.mercadolibre.android.mlbusinesscomponents.components.rowpill.PillInterface
-import com.mercadolibre.android.mlbusinesscomponents.components.rowpill.RowPillView
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.pill_touchpoint.PillInterface
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.pill_touchpoint.RowPillView
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCard
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.Logo
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.Text
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking
@@ -91,6 +92,10 @@ class FlexCoverCardView @JvmOverloads constructor(
         this.tracking = tracking
     }
 
+    override fun getTracking(): TouchpointTracking? {
+        return tracking
+    }
+
     override fun dismissClickable() {
         isClickable = false
     }
@@ -117,19 +122,22 @@ class FlexCoverCardView @JvmOverloads constructor(
         )
     }
 
-    override fun showTitle(title: String) {
-        this.title.text = title
+    override fun showTitle(title: Text) {
+        this.title.text = title.text
         this.title.visibility = VISIBLE
+        title.textColor?.let { setTextColor(title.textColor, this.title) }
     }
 
-    override fun showDescription(description: String) {
-        this.description.text = description
+    override fun showDescription(description: Text) {
+        this.description.text = description.text
         this.description.visibility = VISIBLE
+        description.textColor?.let { setTextColor(description.textColor, this.description) }
     }
 
-    override fun showSubtitle(subtitle: String) {
-        this.subtitle.text = subtitle
+    override fun showSubtitle(subtitle: Text) {
+        this.subtitle.text = subtitle.text
         this.subtitle.visibility = VISIBLE
+        subtitle.textColor?.let { setTextColor(subtitle.textColor, this.subtitle) }
     }
 
     override fun showPill(pill: PillInterface, view: FlexCoverCardInterfaceView) {
@@ -145,26 +153,12 @@ class FlexCoverCardView @JvmOverloads constructor(
     override fun showLogo(logos: List<Logo>, view: FlexCoverCardInterfaceView) {
         if (logos.size == 1 && logos[DEFAULT_LOGO_SIZE].type == "image") {
             logo.visibility = VISIBLE
-            logo.setImageURI(logos[0].image)
-            setLogoStyle(logos)
+            logo.setImageURI(logos[DEFAULT_LOGO_SIZE].image)
         }
     }
 
-    private fun setLogoStyle(logos: List<Logo>) {
-        if (logos[DEFAULT_LOGO_SIZE].style.width != null && logos[DEFAULT_LOGO_SIZE].style.height != null) {
-            val width = logos[DEFAULT_LOGO_SIZE].style.width
-            val height = logos[DEFAULT_LOGO_SIZE].style.height
-            logo.layoutParams.width = TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP,
-                width.toFloat(),
-                resources.displayMetrics
-            ).toInt()
-            logo.layoutParams.height = TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP,
-                height.toFloat(),
-                resources.displayMetrics
-            ).toInt()
-        }
+    private fun setTextColor(textColor: String?, text: TextView) {
+        text.setTextColor(Color.parseColor(textColor))
     }
 
     private fun setCornerRadius() {
@@ -178,9 +172,5 @@ class FlexCoverCardView @JvmOverloads constructor(
     companion object {
         private const val CORNER_RADIUS_VALUE = 6f
         private const val DEFAULT_LOGO_SIZE = 0
-    }
-
-    override fun getTracking(): TouchpointTracking? {
-        return tracking
     }
 }

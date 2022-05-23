@@ -1,4 +1,4 @@
-package com.mercadolibre.android.mlbusinesscomponents.components.rowpill
+package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.pill_touchpoint
 
 class RowPillPresenter {
 
@@ -14,8 +14,6 @@ class RowPillPresenter {
 
         setText(pill.text, pill.textColor, view)
         setBackgroundColor(pill.backgroundColor, view)
-        setIcon(pill.leftIcon, view)
-        setBorderColor(pill.borderColor, view)
     }
 
     private fun setText(text: String, textColor: String?, view: RowPillView) {
@@ -24,13 +22,5 @@ class RowPillPresenter {
 
     private fun setBackgroundColor(backgroundColor: String?, view: RowPillView) {
         backgroundColor?.let { view.setBackground(it) }
-    }
-
-    private fun setIcon(icon: String?, view: RowPillView) {
-        icon?.let { view.setIcon(it) }
-    }
-
-    private fun setBorderColor(color: String? ,view: RowPillView) {
-        color?.let { view.setBorderColor(color) }
     }
 }

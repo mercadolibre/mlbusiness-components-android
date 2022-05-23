@@ -10,7 +10,7 @@
         android:id="@+id/touchpoint_flex_cover_carousel_card_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:background="#1F293D">
+        android:background="#1F293D">
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/touchpoint_flex_cover_carousel_card_image"
@@ -60,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginBottom="6dp"
+            android:gravity="top"
             app:layout_constraintBottom_toTopOf="@+id/touchpoint_flex_cover_carousel_description"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/touchpoint_flex_cover_carousel_title"
@@ -71,15 +71,16 @@
             style="@style/touchpoint_flex_cover_carousel_card_view_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="39dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/touchpoint_flex_cover_carousel_title"
-            tools:text="Ahora podes pedir delivery. ¡Probalo ya!" />
+            tools:text="¡Ahora podés pedir delivery! Descubrí todos los restaurantes y pedí comida" />
 
-        <com.mercadolibre.android.mlbusinesscomponents.components.rowpill.RowPillView
+        <com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.pill_touchpoint.RowPillView
             android:id="@+id/touchpoint_flex_cover_carousel_pill"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

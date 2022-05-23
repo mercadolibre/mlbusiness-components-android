@@ -1,4 +1,4 @@
-package com.mercadolibre.android.mlbusinesscomponents.components.rowpill
+package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.pill_touchpoint
 
 import android.content.Context
 import android.graphics.Color
@@ -11,7 +11,6 @@ import androidx.cardview.widget.CardView
 import com.facebook.drawee.view.SimpleDraweeView
 import com.mercadolibre.android.mlbusinesscomponents.R
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.DensityUtils
-import com.mercadolibre.android.picassodiskcache.loadImage
 
 class RowPillView @JvmOverloads constructor(
     context: Context,
@@ -21,7 +20,6 @@ class RowPillView @JvmOverloads constructor(
     private val presenter = RowPillPresenter()
     private val chipCardView : CardView
     private val chipViewText: TextView
-    private val discountsPayersPillLeftIcon: SimpleDraweeView
 
     init {
         inflate(context, R.layout.row_pill_view, this)
@@ -31,7 +29,6 @@ class RowPillView @JvmOverloads constructor(
         val cardCornerRadius = typedArray.getDimension(R.styleable.RowPillView_pillCornerRadius,
             DensityUtils.getPxFromDp(context, DEFAULT_ROUND_CORNERS).toFloat()
         )
-        discountsPayersPillLeftIcon = findViewById(R.id.discounts_payers_pill_left_icon)
         chipViewText = findViewById(R.id.chip_view_text)
         chipCardView = findViewById(R.id.chip_card_view)
         chipCardView.radius = cardCornerRadius
@@ -63,19 +60,7 @@ class RowPillView @JvmOverloads constructor(
         visibility = GONE
     }
 
-    fun setIcon(icon: String) {
-        discountsPayersPillLeftIcon.loadImage(icon)
-        discountsPayersPillLeftIcon.visibility = VISIBLE
-    }
-
-    fun setBorderColor(color: String) {
-       // chipCardView.strokeWidth = DEFAULT_STROKE_WIDTH
-       // chipCardView.strokeColor = color.parseColorOrDefault(DEFAULT_COLOR)
-    }
-
     companion object {
         private const val DEFAULT_ROUND_CORNERS = 8
-        private const val DEFAULT_STROKE_WIDTH = 4
-        private const val DEFAULT_COLOR = Color.WHITE
     }
 }
