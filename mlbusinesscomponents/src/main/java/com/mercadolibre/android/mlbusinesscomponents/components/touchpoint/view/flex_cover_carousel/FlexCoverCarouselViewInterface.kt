@@ -5,6 +5,6 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 interface FlexCoverCarouselViewInterface {
     fun setVisibilityGone()
     fun setItemsList(items: List<FlexCoverCard>)
-    fun setViewPagerHeight(maxHeight: Int)
+ //   fun setViewPagerHeight(maxHeight: Int)
     fun decorate()
 }

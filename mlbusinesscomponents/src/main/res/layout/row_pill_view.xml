@@ -30,7 +30,7 @@
             style="@style/MLFont.Bold.Semi"
             android:ellipsize="end"
             android:lines="1"
-            android:textSize="@dimen/ui_fontsize_xxsmall"
+            android:textSize="11sp"
             android:textIsSelectable="true"
             tools:textColor="#FFFFFF"
             tools:text="Delivery"/>

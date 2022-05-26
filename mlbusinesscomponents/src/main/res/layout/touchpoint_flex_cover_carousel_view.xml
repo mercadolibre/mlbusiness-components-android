@@ -9,14 +9,15 @@
         <com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.FlexCoverCarouselViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:minWidth="240dp"
+            android:layout_height="match_parent"
             android:layout_marginTop="@dimen/ui_1_5m"
             android:layout_marginBottom="@dimen/ui_1_5m"
             android:overScrollMode="never"
             android:layoutAnimation="@anim/flex_cover_carousel_animation"
-            app:ratio="0.4573170732"
+            android:minWidth="240dp"
+            android:minHeight="160dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/> <!--  150 % 328  -->
+            app:ratio="0.4573170732" /> <!--  150 % 328  -->
 
 </merge>

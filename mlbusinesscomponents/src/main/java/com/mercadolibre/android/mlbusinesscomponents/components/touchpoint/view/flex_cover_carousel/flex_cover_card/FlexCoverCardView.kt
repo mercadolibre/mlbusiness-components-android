@@ -104,12 +104,6 @@ class FlexCoverCardView @JvmOverloads constructor(
         this.onClickCallback = onClickCallback
     }
 
-    override fun getCoverCardHeight(): Int {
-        val constraintLayout: ConstraintLayout =
-            findViewById(R.id.touchpoint_flex_cover_carousel_card_container)
-        return cardCoverImage.layoutParams.height + (constraintLayout.layoutParams.height - cardCoverImage.layoutParams.height)
-    }
-
     override fun getView(): FlexCoverCardView {
         return this
     }

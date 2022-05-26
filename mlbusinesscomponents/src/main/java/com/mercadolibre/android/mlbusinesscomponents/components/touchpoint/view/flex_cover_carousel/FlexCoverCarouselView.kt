@@ -2,7 +2,6 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.ViewGroup
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.mercadolibre.android.mlbusinesscomponents.R
@@ -126,12 +125,6 @@ class FlexCoverCarouselView @JvmOverloads constructor(
 
     private fun getInsetInPx(inset: Int): Int {
         return ScaleUtils.getPxFromDp(context, inset.toFloat()).toInt()
-    }
-
-    override fun setViewPagerHeight(maxHeight: Int) {
-        val params: ViewGroup.LayoutParams = viewPager.layoutParams
-        params.height = maxHeight + resources.getDimensionPixelSize(R.dimen.ui_3m)
-
     }
 
     override fun setOnClickCallback(onClickCallback: OnClickCallback?) {
