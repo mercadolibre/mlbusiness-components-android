@@ -88,7 +88,7 @@ class FlexCoverCardView @JvmOverloads constructor(
         }
     }
 
-    fun setTracking(tracking: TouchpointTracking?) {
+    override fun setTracking(tracking: TouchpointTracking?) {
         this.tracking = tracking
     }
 

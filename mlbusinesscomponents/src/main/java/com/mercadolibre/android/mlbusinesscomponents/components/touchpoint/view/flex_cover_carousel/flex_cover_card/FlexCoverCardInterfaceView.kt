@@ -6,6 +6,7 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callb
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCard
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.Logo
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.Text
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking
 
 interface FlexCoverCardInterfaceView {
 
@@ -23,4 +24,5 @@ interface FlexCoverCardInterfaceView {
     fun showSubtitle(subtitle: Text)
     fun showPill(pill: PillInterface, view: FlexCoverCardInterfaceView)
     fun showLogo(logos: List<Logo>, view: FlexCoverCardInterfaceView)
+    fun setTracking(tracking: TouchpointTracking?)
 }

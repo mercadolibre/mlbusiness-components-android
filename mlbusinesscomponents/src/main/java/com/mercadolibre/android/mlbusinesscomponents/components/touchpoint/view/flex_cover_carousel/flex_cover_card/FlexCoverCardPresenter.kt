@@ -1,11 +1,14 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.flex_cover_card
 
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.pill_touchpoint.PillInterface
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCard
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.Logo
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.Text
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.pill_touchpoint.PillInterface
 
 class FlexCoverCardPresenter {
+
+    private var tracking: TouchpointTracking? = null
 
     fun bindView(model: FlexCoverCard?, view: FlexCoverCardInterfaceView) {
         setCoverImage(model?.imageHeader, view)
@@ -16,6 +19,7 @@ class FlexCoverCardPresenter {
         setDescription(model?.mainDescription, view)
         setPill(model?.pill, view)
         setLogo(model?.logos, view)
+        setTracking(model?.tracking, view)
     }
 
     private fun setLogo(logos: List<Logo>?, view: FlexCoverCardInterfaceView) {
@@ -64,5 +68,10 @@ class FlexCoverCardPresenter {
        backgroundColor?.let {
            view.changeBackgroundColor(backgroundColor)
        }
+    }
+
+    private fun setTracking(tracking: TouchpointTracking?, view: FlexCoverCardInterfaceView) {
+        this.tracking = tracking
+        view.setTracking(tracking)
     }
 }
