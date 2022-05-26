@@ -89,7 +89,7 @@
         <item name="android:textColor">@color/ui_meli_white</item>
         <item name="android:textSize">12sp</item>
         <item name="android:layout_gravity">center_vertical</item>
-        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:lineSpacingExtra">3sp</item>
         <item name="android:maxLines">2</item>
         <item name="android:ellipsize">end</item>
     </style>
