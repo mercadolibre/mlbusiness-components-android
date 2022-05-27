@@ -1,23 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
-        <com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.FlexCoverCarouselViewPager
-            android:id="@+id/view_pager"
+        <com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.FlexCoverCarouselComponent
+            android:id="@+id/touchpoint_flex_cover_carousel_card_component"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/ui_1_5m"
-            android:layout_marginBottom="@dimen/ui_1_5m"
-            android:overScrollMode="never"
-            android:layoutAnimation="@anim/flex_cover_carousel_animation"
-            android:minWidth="240dp"
-            android:minHeight="160dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:ratio="0.4573170732" /> <!--  150 % 328  -->
+            android:layout_height="wrap_content" />
 
 </merge>
