@@ -70,6 +70,7 @@ class FlexCoverCardView @JvmOverloads constructor(
 
     override fun setCoverImage(cover: String) {
         cardCoverImage.setImageURI(cover)
+        cardCoverImage.refreshDrawableState()
     }
 
     override fun setOnClick(link: String) {

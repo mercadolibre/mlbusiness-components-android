@@ -3,5 +3,5 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/flex_cover_carousel_item"
     android:layout_height="wrap_content"
-    android:layout_width="match_parent"
+    android:layout_width="@dimen/touchpoint_flex_cover_carousel_width"
     android:layout_gravity="center_horizontal"/>
