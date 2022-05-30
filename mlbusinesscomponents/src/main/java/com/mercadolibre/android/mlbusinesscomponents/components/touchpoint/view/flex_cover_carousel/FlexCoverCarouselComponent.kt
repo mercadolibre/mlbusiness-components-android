@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.mercadolibre.android.mlbusinesscomponents.R
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCard
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCarouselResponse
 
@@ -20,18 +21,18 @@ class FlexCoverCarouselComponent(
     private val snapHelper = PagerSnapHelper()
     private var isInitialized = false
 
-    override fun bind(model: FlexCoverCarouselResponse) {
+    override fun bind(model: FlexCoverCarouselResponse, onClickCallback: OnClickCallback?) {
         if (!isInitialized) {
             initialize()
         }
-        presenter.bind(model)
+        presenter.bind(model, onClickCallback)
     }
 
-    override fun setCards(cards: List<FlexCoverCard>) {
+    override fun setCards(cards: List<FlexCoverCard>, onClickCallback: OnClickCallback?) {
         cardsAdapter?.let {
             cardsAdapter?.updateData(cards)
         } ?: let {
-            cardsAdapter = FlexCoverCarouselComponentAdapter(cards)
+            cardsAdapter = FlexCoverCarouselComponentAdapter(cards, onClickCallback)
             adapter = cardsAdapter
             val decorator = FlexCoverCarouselComponentDecorator(resources.getDimensionPixelSize(R.dimen.ui_050m))
             addItemDecoration(decorator)

@@ -4,10 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mercadolibre.android.mlbusinesscomponents.R
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCard
 
 class FlexCoverCarouselComponentAdapter(
-    var cards: List<FlexCoverCard> = ArrayList()
+    var cards: List<FlexCoverCard> = ArrayList(),
+    val onClickCallback: OnClickCallback?
 ) : RecyclerView.Adapter<FlexCoverCarouselComponentViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FlexCoverCarouselComponentViewHolder {
@@ -18,7 +20,7 @@ class FlexCoverCarouselComponentAdapter(
     }
 
     override fun onBindViewHolder(holder: FlexCoverCarouselComponentViewHolder, position: Int) {
-        holder.bind(cards[position])
+        holder.bind(cards[position], onClickCallback)
     }
 
     override fun getItemCount(): Int = cards.size

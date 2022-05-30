@@ -20,7 +20,7 @@ class FlexCoverCarouselView @JvmOverloads constructor(
 
     override fun bind(model: FlexCoverCarouselResponse?) {
         model?.let {
-            component.bind(model)
+            component.bind(model, onClickCallback)
         }
     }
 
