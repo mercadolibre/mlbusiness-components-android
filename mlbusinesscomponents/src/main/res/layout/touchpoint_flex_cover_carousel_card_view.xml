@@ -9,29 +9,30 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/touchpoint_flex_cover_carousel_card_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:minWidth="240dp"
-        android:minHeight="160dp"
-        android:background="#1F293D">
+        android:layout_height="wrap_content"
+        android:background="#1F293D"
+        android:minHeight="160dp">
 
-        <com.facebook.drawee.view.SimpleDraweeView
+        <com.mercadolibre.android.mlbusinesscomponents.components.common.WrapContentDraweeView
             android:id="@+id/touchpoint_flex_cover_carousel_card_image"
             android:layout_width="match_parent"
-            android:layout_height="104dp"
+            android:layout_height="wrap_content"
             android:src="@drawable/flex_card_gradient"
             app:actualImageScaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:background="@color/ui_meli_light_grey"/>
+            tools:background="@color/ui_meli_light_grey"
+            tools:layout_height="104dp" />
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="104dp"
+            android:layout_height="0dp"
             android:background="@drawable/flex_card_gradient"
+            app:layout_constraintBottom_toBottomOf="@id/touchpoint_flex_cover_carousel_card_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/touchpoint_flex_cover_carousel_card_image" />
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/touchpoint_flex_cover_carousel_logo"
@@ -39,11 +40,11 @@
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:visibility="gone"
+            app:actualImageScaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:actualImageScaleType="centerCrop"
-            app:roundAsCircle="true"
-            android:visibility="gone"/>
+            app:roundAsCircle="true" />
 
         <TextView
             android:id="@+id/touchpoint_flex_cover_carousel_title"
@@ -74,10 +75,10 @@
             style="@style/touchpoint_flex_cover_carousel_card_view_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="39dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/touchpoint_flex_cover_carousel_title"
@@ -94,9 +95,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/touchpoint_flex_cover_carousel_description"
+            tools:background="#FF656F"
             tools:layout_height="16dp"
-            tools:layout_width="63dp"
-            tools:background="#FF656F"/>
+            tools:layout_width="63dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -5,7 +5,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
 class FlexCoverCarouselComponentDecorator(
-    private val margin: Int
+    private val marginBetweenItems: Int
 ) : RecyclerView.ItemDecoration() {
 
     override fun getItemOffsets(
@@ -14,9 +14,14 @@ class FlexCoverCarouselComponentDecorator(
         parent: RecyclerView,
         state: RecyclerView.State
     ) {
-        with(outRect) {
-            left = margin
-            right = margin
+
+        when (parent.getChildAdapterPosition(view)) {
+            0 -> outRect.right = marginBetweenItems / 2
+            parent.adapter?.itemCount?.minus(1) -> outRect.left = marginBetweenItems / 2
+            else -> {
+                outRect.left = marginBetweenItems / 2
+                outRect.right = marginBetweenItems / 2
+            }
         }
     }
 }

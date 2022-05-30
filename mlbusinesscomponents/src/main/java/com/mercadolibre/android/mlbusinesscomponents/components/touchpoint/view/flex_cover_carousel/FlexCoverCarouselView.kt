@@ -3,6 +3,7 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view
 import android.content.Context
 import android.util.AttributeSet
 import com.mercadolibre.android.mlbusinesscomponents.R
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.AdditionalEdgeInsets
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCarouselResponse
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.AbstractTouchpointChildView
 
@@ -19,6 +20,7 @@ class FlexCoverCarouselView @JvmOverloads constructor(
     }
 
     override fun bind(model: FlexCoverCarouselResponse?) {
+        additionalInsets?.let { component.notifyPadding(it) }
         model?.let {
             component.bind(model, onClickCallback)
         }

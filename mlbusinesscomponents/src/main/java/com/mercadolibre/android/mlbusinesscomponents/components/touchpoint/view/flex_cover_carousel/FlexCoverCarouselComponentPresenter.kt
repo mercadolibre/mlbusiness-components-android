@@ -3,7 +3,7 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCarouselResponse
 
-class FlexCoverCarouselComponentPresenter(val view: FlexCoverCarouselComponent) {
+class FlexCoverCarouselComponentPresenter(val view: FlexCoverCarouselComponentInterface) {
 
     private var model: FlexCoverCarouselResponse? = null
 

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+    tools:parentTag="android.widget.FrameLayout">
 
         <com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.FlexCoverCarouselComponent
             android:id="@+id/touchpoint_flex_cover_carousel_card_component"
