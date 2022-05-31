@@ -1,14 +1,17 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel
 
 import android.os.Parcelable
+import androidx.annotation.Keep
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent
 import kotlinx.android.parcel.Parcelize
 
+@Keep
 @Parcelize
 data class FlexCoverCarouselResponse(
     val items: List<FlexCoverCard>
 ) : TouchpointContent, Parcelable
 
+@Keep
 @Parcelize
 data class FlexCoverCard(
     val backgroundColor: String,
@@ -24,12 +27,14 @@ data class FlexCoverCard(
     val tracking: Tracking
 ) : Parcelable
 
+@Keep
 @Parcelize
 data class Text(
     val text: String,
     val textColor: String
 ) : Parcelable
 
+@Keep
 @Parcelize
 data class Logo(
     val image: String,
@@ -38,6 +43,7 @@ data class Logo(
     val type: String
 ) : Parcelable
 
+@Keep
 @Parcelize
 data class Pill(
     val backgroundColor: String,
@@ -46,11 +52,13 @@ data class Pill(
     val textColor: String
 ) : Parcelable
 
+@Keep
 @Parcelize
 data class Tracking(
     val trackingId: String
 ) : Parcelable
 
+@Keep
 @Parcelize
 data class Style(
     val backgroundColor: String,
