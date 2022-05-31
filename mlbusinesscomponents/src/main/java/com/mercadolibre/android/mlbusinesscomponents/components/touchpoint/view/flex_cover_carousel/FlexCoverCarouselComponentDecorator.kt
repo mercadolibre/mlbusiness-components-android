@@ -16,8 +16,14 @@ class FlexCoverCarouselComponentDecorator(
     ) {
 
         when (parent.getChildAdapterPosition(view)) {
-            0 -> outRect.right = marginBetweenItems / 2
-            parent.adapter?.itemCount?.minus(1) -> outRect.left = marginBetweenItems / 2
+            0 -> {
+                outRect.left = marginBetweenItems * 2
+                outRect.right = marginBetweenItems / 2
+            }
+            parent.adapter?.itemCount?.minus(1) -> {
+                outRect.left = marginBetweenItems / 2
+                outRect.right = marginBetweenItems * 2
+            }
             else -> {
                 outRect.left = marginBetweenItems / 2
                 outRect.right = marginBetweenItems / 2
