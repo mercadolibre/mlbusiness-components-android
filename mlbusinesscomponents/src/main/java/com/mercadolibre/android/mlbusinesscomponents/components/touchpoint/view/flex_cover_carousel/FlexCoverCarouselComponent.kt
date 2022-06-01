@@ -75,7 +75,7 @@ class FlexCoverCarouselComponent @JvmOverloads constructor(
     private fun updatePadding(itemCount: Int, isAtFirstElement: Boolean, isAtLastElement: Boolean) {
         if (isAtFirstElement == wasAtFirstElement || isAtLastElement == wasAtLastElement) return
         val (leftPadding, rightPadding) = when {
-            itemCount <= 1 -> normalPadding  to normalPadding // normal = 16, bigger = 104
+            itemCount <= 1 -> normalPadding  to normalPadding
             isAtFirstElement -> normalPadding to biggerPadding
             isAtLastElement -> biggerPadding to normalPadding
             else -> normalPadding to biggerPadding
