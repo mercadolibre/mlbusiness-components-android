@@ -126,7 +126,7 @@ class FlexCoverCardView @JvmOverloads constructor(
     override fun showDescription(description: Text) {
         this.description.text = description.text
         this.description.visibility = VISIBLE
-        description.textColor?.let { setTextColor(description.textColor, this.description) }
+        description.textColor?.let { setTextColor(it, this.description) }
     }
 
     override fun showSubtitle(subtitle: Text) {
