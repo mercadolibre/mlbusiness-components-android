@@ -43,7 +43,7 @@ class FlexCoverCarouselComponent @JvmOverloads constructor(
 
     override fun setCards(cards: List<FlexCoverCard>, onClickCallback: OnClickCallback?) {
         cardsAdapter?.let {
-            cardsAdapter?.updateData(cards)
+            it.updateData(cards)
         } ?: let {
             cardsAdapter = FlexCoverCarouselComponentAdapter(cards, onClickCallback)
             adapter = cardsAdapter
