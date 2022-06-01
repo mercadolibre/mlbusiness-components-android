@@ -12,10 +12,11 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domai
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCarouselResponse
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils
 
-class FlexCoverCarouselComponent(
+class FlexCoverCarouselComponent @JvmOverloads constructor(
     context: Context,
-    attr: AttributeSet?
-) : RecyclerView(context, attr), FlexCoverCarouselComponentInterface {
+    attr: AttributeSet? = null,
+    defStyle: Int = 0
+) : RecyclerView(context, attr, defStyle), FlexCoverCarouselComponentInterface {
 
     private val verticalPadding = resources.getDimensionPixelSize(R.dimen.ui_1_5m)
     private val linearLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
