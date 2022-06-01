@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <declare-styleable name="LoyaltyProgress">
         <attr name="loyaltyNumber" format="integer"/>
         <attr name="sizeLoyaltyNumber" format="dimension"/>
@@ -9,5 +9,19 @@
 
     <declare-styleable name="MLBusinessDividingLineView">
         <attr name="hasTriangle" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="CustomFilterCellView" tools:ignore="ResourceName">
+        <attr name="customFilterCellViewWidth" format="dimension"/>
+    </declare-styleable>
+
+    <attr name="pillCornerRadius" format="float" tools:ignore="ResourceName"/>
+    <declare-styleable name="RowPillView" tools:ignore="ResourceName">
+        <attr name="pillCornerRadius" tools:ignore="ResourceName"/>
+    </declare-styleable>
+
+    <attr name="ratio" format="float" tools:ignore="ResourceName" />
+    <declare-styleable name="RatioViewPager" tools:ignore="ResourceName">
+        <attr name="ratio" tools:ignore="ResourceName" />
     </declare-styleable>
 </resources>

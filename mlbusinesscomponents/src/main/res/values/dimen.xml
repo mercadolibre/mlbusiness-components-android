@@ -10,6 +10,7 @@
 
     <!-- Font Dimens -->
     <dimen name="ui_font_discount_title">22sp</dimen>
+    <dimen name="ui_font_pill_text">11sp</dimen>
 
     <!-- Exploting Button Dimens -->
     <dimen name="ui_exploting_button_height">48dp</dimen>
@@ -31,7 +32,7 @@
     <dimen name="touchpoint_card_full_view_radius_border">6dp</dimen>
 
     <!-- Touchpoint Flex Cover Carousel Card View Dimens -->
-    <dimen name="touchpoint_flex_cover_carousel_card_view_image_height">83dp</dimen>
-    <dimen name="touchpoint_flex_cover_carousel_card_view_content_height">107dp</dimen>
+    <dimen name="touchpoint_flex_cover_carousel_card_view_image_height">104dp</dimen>
+    <dimen name="touchpoint_flex_cover_carousel_card_view_content_height">56dp</dimen>
 
 </resources>

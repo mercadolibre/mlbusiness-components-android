@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/chip_card_view"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    app:cardBackgroundColor="#00000000"
+    app:cardElevation="0dp"
+    tools:cardBackgroundColor="#00A650"
+    tools:parentTag="androidx.cardview.widget.CardView">
+
+    <LinearLayout
+        android:id="@+id/view_container"
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/ui_1m"
+        android:paddingEnd="@dimen/ui_1m">
+
+        <TextView
+            android:id="@+id/chip_view_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ui_0125m"
+            android:padding="@dimen/ui_0125m"
+            style="@style/MLFont.Bold.Semi"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textSize="11sp"
+            android:textIsSelectable="true"
+            tools:textColor="#FFFFFF"
+            tools:text="Delivery"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

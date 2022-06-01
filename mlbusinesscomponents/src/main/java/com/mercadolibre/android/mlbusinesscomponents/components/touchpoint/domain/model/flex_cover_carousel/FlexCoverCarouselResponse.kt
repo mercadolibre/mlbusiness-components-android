@@ -2,7 +2,10 @@ package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.doma
 
 import android.os.Parcelable
 import androidx.annotation.Keep
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.pill_touchpoint.PillInterface
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.TouchpointContent
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking
 import kotlinx.android.parcel.Parcelize
 
 @Keep
@@ -15,23 +18,25 @@ data class FlexCoverCarouselResponse(
 @Parcelize
 data class FlexCoverCard(
     val backgroundColor: String,
-    val cornerRadius: Int,
     val mainDescription: Text,
-    val hasShadow: Boolean,
     val imageHeader: String,
     val link: String,
-    val logos: List<Logo>,
+    val logos: List<Logo>?,
     val pill: Pill,
     val subtitle: Text,
     val title: Text,
-    val tracking: Tracking
-) : Parcelable
+    private val tracking: TouchpointTracking
+) : Parcelable, TouchpointTrackeable {
+    override fun getTracking(): TouchpointTracking? {
+        return tracking
+    }
+}
 
 @Keep
 @Parcelize
 data class Text(
     val text: String,
-    val textColor: String
+    val textColor: String?
 ) : Parcelable
 
 @Keep
@@ -46,17 +51,11 @@ data class Logo(
 @Keep
 @Parcelize
 data class Pill(
-    val backgroundColor: String,
-    val borderColor: String,
-    val text: String,
-    val textColor: String
-) : Parcelable
-
-@Keep
-@Parcelize
-data class Tracking(
-    val trackingId: String
-) : Parcelable
+    override val text: String,
+    override val textColor: String,
+    override val backgroundColor: String?,
+    override val borderColor: String?
+) : Parcelable, PillInterface
 
 @Keep
 @Parcelize
