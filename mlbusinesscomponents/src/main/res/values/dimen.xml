@@ -30,4 +30,8 @@
     <dimen name="touchpoint_card_full_view_margin_bottom">17dp</dimen>
     <dimen name="touchpoint_card_full_view_radius_border">6dp</dimen>
 
+    <!-- Touchpoint Flex Cover Carousel Card View Dimens -->
+    <dimen name="touchpoint_flex_cover_carousel_card_view_image_height">83dp</dimen>
+    <dimen name="touchpoint_flex_cover_carousel_card_view_content_height">107dp</dimen>
+
 </resources>

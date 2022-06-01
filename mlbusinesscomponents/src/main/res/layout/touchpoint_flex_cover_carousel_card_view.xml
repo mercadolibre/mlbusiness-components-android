@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:parentTag="androidx.cardview.widget.CardView">
+
+    <LinearLayout
+        android:id="@+id/touchpoint_flex_cover_carousel_card_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/touchpoint_flex_cover_carousel_card_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/touchpoint_flex_cover_carousel_card_view_image_height"
+            android:background="@color/ui_meli_light_grey"
+            app:actualImageScaleType="centerCrop"/>
+
+        <LinearLayout
+            android:id="@+id/touchpoint_flex_cover_carousel_card_content"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/touchpoint_flex_cover_carousel_card_view_content_height"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</merge>
