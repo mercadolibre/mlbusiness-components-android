@@ -148,7 +148,7 @@ class FlexCoverCardView @JvmOverloads constructor(
     override fun showLogo(logos: List<Logo>, view: FlexCoverCardInterfaceView) {
         if (logos.size == 1 && logos[DEFAULT_LOGO_SIZE].type == "image") {
             logo.visibility = VISIBLE
-            logo.setImageURI(logos[DEFAULT_LOGO_SIZE].image)
+            logo.setImageURI(logos.first().image)
         }
     }
 
