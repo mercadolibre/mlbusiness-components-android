@@ -8,9 +8,8 @@ import android.util.TypedValue
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import com.facebook.drawee.view.SimpleDraweeView
 import com.mercadolibre.android.mlbusinesscomponents.R
-import com.mercadolibre.android.mlbusinesscomponents.components.utils.DensityUtils
+import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils
 
 class RowPillView @JvmOverloads constructor(
     context: Context,
@@ -27,7 +26,7 @@ class RowPillView @JvmOverloads constructor(
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.RowPillView)
         val cardCornerRadius = typedArray.getDimension(R.styleable.RowPillView_pillCornerRadius,
-            DensityUtils.getPxFromDp(context, DEFAULT_ROUND_CORNERS).toFloat()
+            ScaleUtils.getPxFromDp(context, DEFAULT_ROUND_CORNERS.toFloat())
         )
         chipViewText = findViewById(R.id.chip_view_text)
         chipCardView = findViewById(R.id.chip_card_view)
