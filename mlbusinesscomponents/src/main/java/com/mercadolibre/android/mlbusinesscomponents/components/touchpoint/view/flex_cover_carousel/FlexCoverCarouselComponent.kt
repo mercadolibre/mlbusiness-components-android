@@ -65,7 +65,7 @@ class FlexCoverCarouselComponent @JvmOverloads constructor(
         cardsAdapter?.let {
             it.updateData(cards)
         } ?: let {
-            cardsAdapter = FlexCoverCarouselComponentAdapter(cards, onClickCallback)
+            cardsAdapter = FlexCoverCarouselComponentAdapter(cards, onClickCallback, tracker)
             adapter = cardsAdapter
             val decorator =
                 FlexCoverCarouselComponentDecorator(resources.getDimensionPixelSize(R.dimen.ui_1m))

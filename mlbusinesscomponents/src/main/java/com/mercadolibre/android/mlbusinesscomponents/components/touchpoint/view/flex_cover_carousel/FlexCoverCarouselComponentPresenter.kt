@@ -16,8 +16,8 @@ class FlexCoverCarouselComponentPresenter(val view: FlexCoverCarouselComponentIn
         printProvider: TouchpointPrintProvider
     ) {
         this.model = model
-        view.setCards(model.items, onClickCallback)
         view.setTracker(tracker)
+        view.setCards(model.items, onClickCallback)
         view.setPrintProvide(printProvider)
     }
 }
