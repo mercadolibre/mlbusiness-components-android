@@ -10,7 +10,11 @@ import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callb
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.AdditionalEdgeInsets
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCard
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCarouselResponse
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.TouchpointTrackeable
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointPrintProvider
 import com.mercadolibre.android.mlbusinesscomponents.components.utils.ScaleUtils
+import com.mercadolibre.android.mlbusinesscomponents.components.utils.TrackingUtils
 
 class FlexCoverCarouselComponent @JvmOverloads constructor(
     context: Context,
@@ -28,17 +32,33 @@ class FlexCoverCarouselComponent @JvmOverloads constructor(
     private var wasAtLastElement: Boolean? = null
     private var normalPadding = 0
     private var biggerPadding = 0
+    private lateinit var tracker: MLBusinessTouchpointTracker
+    private lateinit var printProvider: TouchpointPrintProvider
+    private lateinit var trackeables: List<TouchpointTrackeable>
 
-    override fun bind(model: FlexCoverCarouselResponse, onClickCallback: OnClickCallback?) {
+    override fun bind(
+        model: FlexCoverCarouselResponse,
+        onClickCallback: OnClickCallback?,
+        tracker: MLBusinessTouchpointTracker?,
+        printProvider: TouchpointPrintProvider
+    ) {
         if (!isInitialized) {
             initialize()
         }
-        presenter.bind(model, onClickCallback)
+        presenter.bind(model, onClickCallback, tracker, printProvider)
     }
 
     override fun notifyPadding(additionalEdgeInsets: AdditionalEdgeInsets) {
         normalPadding = ScaleUtils.getPxFromDp(context, additionalEdgeInsets.left.toFloat()).toInt()
         biggerPadding = ScaleUtils.getPxFromDp(context, additionalEdgeInsets.right.toFloat()).toInt()
+    }
+
+    override fun setTracker(tracker: MLBusinessTouchpointTracker?) {
+        tracker?.let { this.tracker = it }
+    }
+
+    override fun setPrintProvide(printProvider: TouchpointPrintProvider) {
+        this.printProvider = printProvider
     }
 
     override fun setCards(cards: List<FlexCoverCard>, onClickCallback: OnClickCallback?) {
@@ -51,6 +71,7 @@ class FlexCoverCarouselComponent @JvmOverloads constructor(
                 FlexCoverCarouselComponentDecorator(resources.getDimensionPixelSize(R.dimen.ui_1m))
             addItemDecoration(decorator)
         }
+        trackeables = cards
         updatePadding(cards.size, wasAtFirstElement == null || isAtFirstElement(0), isAtLastElement(0))
     }
 
@@ -64,7 +85,14 @@ class FlexCoverCarouselComponent @JvmOverloads constructor(
 
     private fun createScrollListener() = object : OnScrollListener() {
 
-        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {}
+        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+            if (newState == SCROLL_STATE_IDLE) {
+                for (trackeable in trackeables) {
+                    printProvider.accumulateData(trackeable.tracking)
+                }
+                TrackingUtils.trackPrint(tracker, printProvider)
+            }
+        }
 
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)

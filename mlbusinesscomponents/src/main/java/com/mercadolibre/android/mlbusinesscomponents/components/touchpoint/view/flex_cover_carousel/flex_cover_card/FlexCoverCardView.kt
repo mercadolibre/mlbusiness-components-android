@@ -79,11 +79,7 @@ class FlexCoverCardView @JvmOverloads constructor(
 
     private fun onClickEvent(link: String) {
         if (onClickCallback != null) {
-            if (tracker != null) {
-                TrackingUtils.trackTap(tracker, tracking)
-            } else {
-                onClickCallback?.sendTapTracking(tracking)
-            }
+            TrackingUtils.trackTap(tracker, tracking)
             onClickCallback?.onClick(link)
         }
     }
