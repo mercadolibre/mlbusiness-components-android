@@ -1,7 +1,10 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel
 
 import android.content.Context
+import android.graphics.Rect
 import android.util.AttributeSet
+import android.view.View
+import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -35,6 +38,7 @@ class FlexCoverCarouselComponent @JvmOverloads constructor(
     private lateinit var tracker: MLBusinessTouchpointTracker
     private lateinit var printProvider: TouchpointPrintProvider
     private lateinit var trackeables: List<TouchpointTrackeable>
+    private val recyclerRect by lazy { Rect() }
 
     override fun bind(
         model: FlexCoverCarouselResponse,
@@ -87,10 +91,7 @@ class FlexCoverCarouselComponent @JvmOverloads constructor(
 
         override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
             if (newState == SCROLL_STATE_IDLE) {
-                for (trackeable in trackeables) {
-                    printProvider.accumulateData(trackeable.tracking)
-                }
-                TrackingUtils.trackPrint(tracker, printProvider)
+                print(recyclerView)
             }
         }
 
@@ -124,4 +125,26 @@ class FlexCoverCarouselComponent @JvmOverloads constructor(
     }
 
     private fun getLastItemIndex() = linearLayoutManager.itemCount - 1
+
+    fun print(recyclerView: RecyclerView) {
+        recyclerView.getHitRect(recyclerRect)
+        findData(recyclerView)
+        TrackingUtils.trackPrint(tracker, printProvider)
+    }
+
+    private fun findData(viewGroup: ViewGroup) {
+        for (i in 0 until viewGroup.childCount) {
+            val child = viewGroup.getChildAt(i)
+            if (child is ViewGroup && child !is TouchpointTrackeable) {
+                findData(child)
+            }
+            if (shouldTrackPrint(child)) {
+                printProvider.accumulateData((child as TouchpointTrackeable).tracking)
+            }
+        }
+    }
+
+    private fun shouldTrackPrint(child: View): Boolean {
+        return child is TouchpointTrackeable && child.getLocalVisibleRect(recyclerRect)
+    }
 }
