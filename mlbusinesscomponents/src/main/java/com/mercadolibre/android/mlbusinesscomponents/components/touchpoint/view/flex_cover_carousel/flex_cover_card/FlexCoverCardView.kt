@@ -1,5 +1,6 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.flex_cover_card
 
+import android.animation.AnimatorInflater
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
@@ -49,6 +50,7 @@ class FlexCoverCardView @JvmOverloads constructor(
         description = findViewById(R.id.touchpoint_flex_cover_carousel_description)
         pill = findViewById(R.id.touchpoint_flex_cover_carousel_pill)
         setCornerRadius()
+        setPressAnimation(context)
     }
 
     override fun bind(model: FlexCoverCard) {
@@ -160,6 +162,13 @@ class FlexCoverCardView @JvmOverloads constructor(
             TypedValue.COMPLEX_UNIT_DIP,
             CORNER_RADIUS_VALUE,
             resources.displayMetrics
+        )
+    }
+
+    private fun setPressAnimation(context: Context) {
+        stateListAnimator = AnimatorInflater.loadStateListAnimator(
+            context,
+            R.drawable.cover_card_click_animation
         )
     }
 
