@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.LinearLayout;
+
+import com.mercadolibre.android.mlbusinesscomponents.components.adbanner.MLBusinessAdBannerView;
 import com.mercadolibre.android.mlbusinesscomponents.components.common.MLBusinessInfoView;
 import com.mercadolibre.android.mlbusinesscomponents.components.common.downloadapp.MLBusinessDownloadAppView;
 import com.mercadolibre.android.mlbusinesscomponents.components.crossselling.MLBusinessCrossSellingBoxView;
@@ -24,7 +26,7 @@ import com.mercadolibre.android.mlbusinesscomponentsapp.touchpoint.TouchpointTes
 public class MainActivity extends AppCompatActivity
     implements MLBusinessLoyaltyRingView.OnClickLoyaltyRing, MLBusinessDiscountBoxView.OnClickDiscountBox,
     MLBusinessCrossSellingBoxView.OnClickCrossSellingBoxView,
-    MLBusinessDownloadAppView.OnClickDownloadApp {
+    MLBusinessDownloadAppView.OnClickDownloadApp, MLBusinessAdBannerView.OnClickAdBannerView {
 
     LoyaltyBroadcast loyaltyBroadcast;
 
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity
         MLBusinessLoyaltyHeaderView loyaltyHeaderView = findViewById(R.id.loyaltyHeaderView);
         MLBusinessLoyaltyHeaderView loyaltyHeaderViewWithSubscription = findViewById(R.id.loyaltyHeaderViewWithSubscription);
         LinearLayout benefitContainer = findViewById(R.id.loyaltyBenefitsContainer);
+        MLBusinessAdBannerView adBannerView = findViewById(R.id.adBannerView);
 
         Button button = findViewById(R.id.buttonOpen);
 
@@ -80,6 +83,8 @@ public class MainActivity extends AppCompatActivity
 
         loyaltyBroadcast = new LoyaltyBroadcast();
         LoyaltyBroadcaster.getInstance().register(loyaltyBroadcast, getApplicationContext());
+
+        adBannerView.init(new MLBusinessAdBannerDataSample(), this);
     }
 
     private static class LoyaltyBroadcast extends LoyaltyBroadcastReceiver {
@@ -121,6 +126,11 @@ public class MainActivity extends AppCompatActivity
 
     private void onClickSplitPaymentButton() {
         launchActivity("mercadopago://mplayer/money_split_external?operation_id=7068064969&source=px");
+    }
+
+    @Override
+    public void onClickAdBannerViewLink(@NonNull final String deepLink) {
+        launchActivity(deepLink);
     }
 
     private void launchActivity(@NonNull final String deepLink) {
