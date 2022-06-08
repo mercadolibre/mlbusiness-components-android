@@ -60,7 +60,7 @@ class FlexCoverCarouselComponent @JvmOverloads constructor(
         tracker?.let { this.tracker = it }
     }
 
-    override fun setPrintProvide(printProvider: TouchpointPrintProvider) {
+    override fun setPrintProvider(printProvider: TouchpointPrintProvider) {
         this.printProvider = printProvider
     }
 
