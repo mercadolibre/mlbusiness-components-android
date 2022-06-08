@@ -18,6 +18,6 @@ class FlexCoverCarouselComponentPresenter(val view: FlexCoverCarouselComponentIn
         this.model = model
         view.setTracker(tracker)
         view.setCards(model.items, onClickCallback)
-        view.setPrintProvide(printProvider)
+        view.setPrintProvider(printProvider)
     }
 }
