@@ -17,5 +17,5 @@ interface FlexCoverCarouselComponentInterface {
    fun setCards(cards: List<FlexCoverCard>, onClickCallback: OnClickCallback?)
    fun notifyPadding(additionalEdgeInsets: AdditionalEdgeInsets)
    fun setTracker(tracker: MLBusinessTouchpointTracker?)
-   fun setPrintProvide(printProvider: TouchpointPrintProvider)
+   fun setPrintProvider(printProvider: TouchpointPrintProvider)
 }
