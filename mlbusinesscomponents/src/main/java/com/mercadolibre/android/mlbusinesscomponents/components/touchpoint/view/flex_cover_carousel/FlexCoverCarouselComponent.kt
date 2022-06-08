@@ -37,7 +37,6 @@ class FlexCoverCarouselComponent @JvmOverloads constructor(
     private var biggerPadding = 0
     private lateinit var tracker: MLBusinessTouchpointTracker
     private lateinit var printProvider: TouchpointPrintProvider
-    private lateinit var trackeables: List<TouchpointTrackeable>
     private val recyclerRect by lazy { Rect() }
 
     override fun bind(
@@ -75,7 +74,6 @@ class FlexCoverCarouselComponent @JvmOverloads constructor(
                 FlexCoverCarouselComponentDecorator(resources.getDimensionPixelSize(R.dimen.ui_1m))
             addItemDecoration(decorator)
         }
-        trackeables = cards
         updatePadding(cards.size, wasAtFirstElement == null || isAtFirstElement(0), isAtLastElement(0))
     }
 
