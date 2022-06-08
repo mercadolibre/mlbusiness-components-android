@@ -1,5 +1,5 @@
 # SIN PUBLICAR
-
+- Se agrega animación al tapear las cards del touchpoint
 
 ## 2.8.0
 ### MP 2.225.0 || 02/06/2022
