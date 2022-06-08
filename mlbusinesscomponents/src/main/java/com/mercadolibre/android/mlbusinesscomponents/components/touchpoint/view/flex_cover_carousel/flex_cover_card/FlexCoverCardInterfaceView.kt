@@ -1,12 +1,13 @@
 package com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.flex_cover_card
 
 import androidx.cardview.widget.CardView
-import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.pill_touchpoint.PillInterface
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.callback.OnClickCallback
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.FlexCoverCard
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.Logo
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.domain.model.flex_cover_carousel.Text
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.MLBusinessTouchpointTracker
 import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.tracking.print.TouchpointTracking
+import com.mercadolibre.android.mlbusinesscomponents.components.touchpoint.view.flex_cover_carousel.pill_touchpoint.PillInterface
 
 interface FlexCoverCardInterfaceView {
 
@@ -24,4 +25,5 @@ interface FlexCoverCardInterfaceView {
     fun showPill(pill: PillInterface, view: FlexCoverCardInterfaceView)
     fun showLogo(logos: List<Logo>, view: FlexCoverCardInterfaceView)
     fun setTracking(tracking: TouchpointTracking?)
+    fun setTracker(tracker: MLBusinessTouchpointTracker?)
 }

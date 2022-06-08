@@ -45,7 +45,14 @@
           "text_color": "#ffffff"
         },
         "tracking": {
-          "tracking_id": "delivery_generic"
+          "tracking_id": "delivery_generic",
+          "event_data": {
+            "tracking_id": "delivery_generic",
+            "index":1,
+            "store_id": 1111,
+            "title":"$300 OFF",
+            "pill_text":"DELIVERY"
+          }
         }
       },
       {
@@ -83,8 +90,15 @@
           "text": "Hasta 40% OFF",
           "text_color": "#ffffff"
         },
-        "tracking":{
-          "tracking_id":"delivery_generic"
+        "tracking": {
+          "tracking_id": "qr_generic",
+          "event_data": {
+            "tracking_id": "qr_generic",
+            "index":2,
+            "store_id": 2222,
+            "title":"Hasta 40% OFF",
+            "pill_text":"PAGO CON QR"
+          }
         }
       }
     ]

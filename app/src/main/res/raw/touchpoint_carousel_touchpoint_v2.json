@@ -5,7 +5,10 @@
     "items": [
       {
         "tracking": {
-          "tracking_id": "pizza"
+          "tracking_id": "pizza",
+          "event_data": {
+            "tracking_id": "pizza"
+          }
         },
         "title_format": {
           "size": 16,
@@ -19,7 +22,10 @@
       },
       {
         "tracking": {
-          "tracking_id": "japanese"
+          "tracking_id": "japanese",
+          "event_data": {
+            "tracking_id": "japanese"
+          }
         },
         "title_format": {
           "size": 16,
@@ -33,7 +39,10 @@
       },
       {
         "tracking": {
-          "tracking_id": "lanches"
+          "tracking_id": "lanches",
+          "event_data": {
+            "tracking_id": "lanches"
+          }
         },
         "title_format": {
           "size": 16,
@@ -47,7 +56,10 @@
       },
       {
         "tracking": {
-          "tracking_id": "lanches"
+          "tracking_id": "lanches",
+          "event_data": {
+            "tracking_id": "lanches"
+          }
         },
         "title_format": {
           "size": 16,
