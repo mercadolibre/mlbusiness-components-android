@@ -34,6 +34,8 @@ android {
 apply from:"$rootDir/gradle/deploy_business_components.gradle"
 
 dependencies {
+
+    implementation "com.mercadolibre.android.andesui:components:5.+"
     implementation fileTree(dir:'libs', include:['*.jar'])
 
     implementation "androidx.appcompat:appcompat:$appCompat"

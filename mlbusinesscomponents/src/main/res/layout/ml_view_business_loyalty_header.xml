@@ -27,7 +27,7 @@
         android:lineSpacingExtra="2.4sp"
         android:maxLines="2"
         android:textSize="@dimen/ui_fontsize_xsmall"
-        android:textColor="@color/ui_fullscreenmodal_toolbar_text_color"
+        android:textColor="@color/andes_gray_900"
         app:layout_constraintBottom_toTopOf="@+id/loyaltyButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

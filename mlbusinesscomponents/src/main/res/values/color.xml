@@ -3,17 +3,17 @@
     <color name="divider_line_gray">#19000000</color>
     <color name="download_app_background_color">#f5f5f5</color>
     <color name="cross_selling_action_color">#009ee3</color>
-    <color name="text_secondary_color">#73000000</color>
+    <color name="text_secondary_color">@color/andes_gray_450</color>
     <color name="mlbusiness_color_disable_button">#c1c1c1</color>
     <color name="components_secondary_color">#007Eb5</color>
-    <color name="components_primary_color">#009EE3</color>
-    <color name="box_image_overlay_color">#0A000000</color>
-    <color name="touchpoint_semi_black">#CC000000</color>
+    <color name="components_primary_color">@color/andes_blue_mp_500</color>
+    <color name="box_image_overlay_color">@color/andes_gray_040</color>
+    <color name="touchpoint_semi_black">@color/andes_gray_800</color>
 
-    <color name="row_logo_overlay">#0A000000</color>
+    <color name="row_logo_overlay">@color/andes_gray_040</color>
 
-    <color name="semi_black">#CC000000</color>
-    <color name="light_grey">#73000000</color>
+    <color name="semi_black">@color/andes_gray_800</color>
+    <color name="light_grey">@color/andes_gray_450</color>
 
-    <color name="andes_transparent">#00000000</color>
+    <color name="andes_transparent">@color/andes_transparent</color>
 </resources>

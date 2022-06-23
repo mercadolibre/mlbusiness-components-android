@@ -17,7 +17,7 @@
         android:layout_marginStart="@dimen/ui_4m"
         android:lineSpacingExtra="@dimen/ui_linespacing_small"
         android:gravity="center"
-        android:textColor="@color/ui_fullscreenmodal_toolbar_text_color"
+        android:textColor="@color/andes_gray_900"
         android:textSize="@dimen/ui_fontsize_large"
         app:layout_goneMarginBottom="24dp"
         tools:text="200 descuentos" />
