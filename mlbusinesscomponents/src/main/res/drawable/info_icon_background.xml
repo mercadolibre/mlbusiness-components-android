@@ -5,7 +5,7 @@
 
         <shape android:shape="oval">
 
-            <solid android:color="@color/ui_meli_light_grey" />
+            <solid android:color="@color/andes_gray_070" />
 
         </shape>
 

@@ -1,3 +1,7 @@
+# v2.9.0
+## Migrated
+- Use andes ui colors instead of ui and ui legacy color resources.
+
 # SIN PUBLICAR
 - Se agrega animación al tapear las cards del touchpoint
 

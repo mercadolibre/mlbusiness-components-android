@@ -117,7 +117,7 @@ class LoyaltyProgress extends View {
     private void initRingPaint(final Context context, final float sizeRingStroke) {
         configPaint(ringPaint, sizeRingStroke);
         ringPaint
-            .setColor(ContextCompat.getColor(context, R.color.ui_meli_light_grey));
+            .setColor(ContextCompat.getColor(context, R.color.andes_gray_070));
     }
 
     public void setNumber(final int loyaltyNumber) {

@@ -23,7 +23,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:background="@color/ui_meli_light_grey"
+            tools:background="@color/andes_gray_070"
             tools:layout_height="104dp" />
 
         <ImageView

@@ -6,7 +6,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="@dimen/ui_050m"
-    android:background="@color/ui_transparent"
+    android:background="@color/andes_transparent"
     android:backgroundTint="@color/ui_meli_white"
     app:elevation="@dimen/ui_025m"
     app:cardCornerRadius="@dimen/touchpoint_card_full_view_radius_border"/>

@@ -18,7 +18,7 @@ public class ButtonsActivity extends AppCompatActivity {
         buttonProgress.Builder(findViewById(R.id.ripple))
                 .setTextSize(16)
                 .setTextInformation("Procesar Pago","Cargando")
-                .setColorText(R.color.ui_meli_red);
+                .setColorText(R.color.andes_red_500);
 
         buttonProgress.setOnClickListener(v -> {
                 Toast.makeText(ButtonsActivity.this,"hola", Toast.LENGTH_SHORT).show();

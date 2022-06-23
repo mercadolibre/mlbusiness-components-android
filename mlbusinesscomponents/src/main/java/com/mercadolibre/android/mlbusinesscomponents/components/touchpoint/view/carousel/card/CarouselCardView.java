@@ -329,11 +329,11 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable, 
      * Set all labels to a default color.
      */
     public void setDefaultColor() {
-        topTitle.setTextColor(getResources().getColor(R.color.ui_components_black_color));
-        mainTitle.setTextColor(getResources().getColor(R.color.ui_components_black_color));
-        rightTitle.setTextColor(getResources().getColor(R.color.ui_components_black_color));
-        mainLabel.setTextColor(getResources().getColor(R.color.ui_components_black_color));
-        topLabel.setTextColor(getResources().getColor(R.color.ui_components_black_color));
+        topTitle.setTextColor(getResources().getColor(R.color.andes_gray_900));
+        mainTitle.setTextColor(getResources().getColor(R.color.andes_gray_900));
+        rightTitle.setTextColor(getResources().getColor(R.color.andes_gray_900));
+        mainLabel.setTextColor(getResources().getColor(R.color.andes_gray_900));
+        topLabel.setTextColor(getResources().getColor(R.color.andes_gray_900));
     }
 
     /**
@@ -356,7 +356,7 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable, 
         try {
             topLabel.setTextColor(Color.parseColor(color));
         } catch (final IllegalArgumentException e) {
-            topLabel.setTextColor(getResources().getColor(R.color.ui_meli_black));
+            topLabel.setTextColor(getResources().getColor(R.color.andes_gray_900));
         }
     }
 
@@ -467,7 +467,7 @@ public class CarouselCardView extends CardView implements TouchpointTrackeable, 
         try {
             mainLabel.setTextColor(Color.parseColor(color));
         } catch (final IllegalArgumentException e) {
-            mainLabel.setTextColor(getResources().getColor(R.color.ui_meli_black));
+            mainLabel.setTextColor(getResources().getColor(R.color.andes_gray_900));
         }
     }
 

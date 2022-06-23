@@ -30,7 +30,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         tools:text="Gana $50 de regalo para tus pagos diarios"
-        android:textColor="@color/ui_components_grey_color"
+        android:textColor="@color/andes_gray_550"
         android:textSize="@dimen/ui_fontsize_xsmall"
         android:textAppearance="@style/MLFont.Regular"
         app:layout_constraintVertical_chainStyle="packed"

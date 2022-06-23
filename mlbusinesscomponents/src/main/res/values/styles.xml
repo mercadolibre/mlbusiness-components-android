@@ -2,7 +2,7 @@
 <resources>
     <style name="touchpoint_carousel_label_font" parent="MLFont.Bold.Semi">
         <item name="android:textSize">9sp</item>
-        <item name="android:textColor">@color/ui_components_white_color</item>
+        <item name="android:textColor">@color/andes_white</item>
     </style>
 
     <style name="touchpoint_carousel_card_top_title" parent="MLFont.Bold.Semi">
